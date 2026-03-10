@@ -1,1 +1,253 @@
 
+
+/* ─────────────────────────────────
+   FIX #1: unified colour — cyan only
+   FIX #2: warm card background
+───────────────────────────────── */
+:root {
+  --bg:        #0A1628;
+  --bg-card:   #111827;
+  --navy:      #0A1628;
+  --cyan:      #00c2cb;
+  --cyan-b:    rgba(0,194,203,0.22);
+  --cyan-s:    rgba(0,194,203,0.07);
+  --white:     #ffffff;
+  --body:      #8fa3b8;
+  --card-body: #8fa3b8;
+  --muted:     #4e6070;
+  --border:    rgba(255,255,255,0.07);
+  --card-bdr:  rgba(0,194,203,0.18);
+  --r:         10px;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { font-size: 15px; -webkit-text-size-adjust: 100%; }
+body {
+  background: var(--bg);
+  color: var(--body);
+  font-family: 'Questrial', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  min-height: 100vh;
+  padding-bottom: 72px;
+}
+
+.page {
+  max-width: 820px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* ─────────────────────────────────
+   HERO — FIX #3: smaller heading
+───────────────────────────────── */
+.hero {
+  text-align: center;
+  padding: 60px 16px 44px;
+}
+.hero h1 {
+  font-family:'Questrial',sans-serif;
+  font-size: clamp(1.8rem, 5.5vw, 2.6rem);
+  font-weight: 800;
+  color: var(--white);
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+  margin-bottom: 12px;
+}
+.hero-tag {
+  font-family:'Questrial',sans-serif;
+  font-size: 0.88rem;
+  font-weight: 600;
+  font-style: italic;
+  color: var(--cyan);
+  margin-bottom: 20px;
+  line-height: 1.5;
+}
+.title-bar {
+  width: 56px;
+  height: 3px;
+  background: var(--cyan);
+  border-radius: 2px;
+  margin: 0 auto 20px;
+}
+.hero-body {
+  font-size: 0.88rem;
+  color: var(--body);
+  line-height: 1.8;
+  max-width: 520px;
+  margin: 0 auto;
+}
+
+/* ─────────────────────────────────
+   GRID — FIX #9: align-items start
+───────────────────────────────── */
+.grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 12px;
+  align-items: stretch;
+  margin-bottom: 32px;
+}
+
+/* ─────────────────────────────────
+   CARD
+   FIX #1 unified cyan
+   FIX #2 warm bg
+   FIX #4 grain texture
+   FIX #6 visible hover
+───────────────────────────────── */
+.card {
+  background: var(--bg-card);
+  border: 1px solid var(--card-bdr);
+  border-radius: var(--r);
+  padding: 32px 28px 34px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  transition: border-color 0.22s ease, background 0.22s ease;
+}
+.card:hover {
+  border-color: var(--cyan);
+  background: #162035;
+}
+
+/* cyan top accent — FIX #1 same on all */
+.card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  background: linear-gradient(to right, var(--cyan), rgba(0,194,203,0.1));
+  border-radius: var(--r) var(--r) 0 0;
+}
+
+/* grain removed — dark cards */
+
+/* ─────────────────────────────────
+   ICON — FIX #1 all cyan
+───────────────────────────────── */
+.card-icon {
+  width: 54px; height: 54px;
+  border-radius: 50%;
+  background: var(--cyan-s);
+  border: 1.5px solid var(--cyan-b);
+  display: flex; align-items: center; justify-content: center;
+  margin-bottom: 16px;
+  flex-shrink: 0;
+  position: relative; z-index: 1;
+  transition: background 0.2s, border-color 0.2s;
+}
+.card:hover .card-icon {
+  background: rgba(0,194,203,0.12);
+  border-color: var(--cyan);
+}
+.card-icon svg {
+  width: 24px; height: 24px;
+  stroke: var(--cyan);
+  fill: none;
+  stroke-width: 1.6;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+/* ─────────────────────────────────
+   TITLE — FIX #1 cyan, FIX #8 no br
+───────────────────────────────── */
+.card-title {
+  font-family: 'Syne', sans-serif;
+  font-size: 0.92rem;
+  font-weight: 700;
+  color: var(--cyan);
+  line-height: 1.35;
+  margin-bottom: 12px;
+  max-width: 210px;
+  position: relative; z-index: 1;
+}
+.card-div {
+  width: 32px; height: 1px;
+  background: var(--cyan-b);
+  margin: 0 auto 14px;
+  border-radius: 1px;
+  position: relative; z-index: 1;
+}
+.card-body {
+  font-size: 0.83rem;
+  color: var(--card-body);
+  line-height: 1.72;
+  max-width: 260px;
+  position: relative; z-index: 1;
+}
+
+/* ─────────────────────────────────
+   FIX #7: closing CTA
+───────────────────────────────── */
+.closing {
+  text-align: center;
+  padding: 4px 16px 8px;
+  animation: rise 0.5s ease both 0.34s;
+}
+.closing-text {
+  font-size: 0.84rem;
+  font-style: italic;
+  color: var(--body);
+  line-height: 1.7;
+  max-width: 420px;
+  margin: 0 auto 18px;
+}
+.closing-link {
+  display: inline-block;
+  font-family: 'Syne', sans-serif;
+  font-size: 0.56rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--bg);
+  background: var(--cyan);
+  border-radius: 4px;
+  padding: 10px 24px;
+  text-decoration: none;
+  transition: opacity 0.18s, transform 0.18s;
+}
+.closing-link:hover {
+  opacity: 0.85;
+  transform: translateY(-1px);
+}
+
+/* ─────────────────────────────────
+   RESPONSIVE
+───────────────────────────────── */
+@media (min-width: 560px) {
+  .grid { grid-template-columns: 1fr 1fr; grid-template-rows: 1fr 1fr; gap: 14px; }
+}
+@media (min-width: 760px) {
+  .page { padding: 0 24px; }
+  .hero { padding: 68px 24px 48px; }
+  .card { padding: 36px 32px 36px; }
+}
+
+/* ─────────────────────────────────
+   ANIMATIONS
+───────────────────────────────── */
+@keyframes rise {
+  from { opacity: 0; transform: translateY(14px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.hero              { animation: rise 0.5s ease both 0.04s; }
+.card:nth-child(1) { animation: rise 0.5s ease both 0.10s; }
+.card:nth-child(2) { animation: rise 0.5s ease both 0.16s; }
+.card:nth-child(3) { animation: rise 0.5s ease both 0.22s; }
+.card:nth-child(4) { animation: rise 0.5s ease both 0.28s; }
+
+/* ─────────────────────────────────
+   PRINT
+───────────────────────────────── */
+@media print {
+  *{ animation:none!important; transition:none!important; }
+  body { background:#fff!important; }
+  .hero h1 { color:#111!important; }
+  .card { break-inside:avoid; border-color:#ccc!important; background:#fff!important; }
+  .card::after { display:none; }
+  .closing-link { background:#111!important; color:#fff!important; }
+}
