@@ -134,7 +134,7 @@ body::after{
 
 .conn-badge{
   position:absolute;top:-22px;left:50%;transform:translateX(-50%);
-  font-family:'Questrial',sans-serif;font-size:.3rem;font-weight:700;
+  font-family:'Questrial',sans-serif;font-size:.5rem;font-weight:700;
   letter-spacing:.09em;text-transform:uppercase;white-space:nowrap;
   padding:3px 10px;border-radius:100px;border:1px solid;
 }
