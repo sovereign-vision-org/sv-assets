@@ -62,7 +62,7 @@ body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:500;
 .radar-title{font-family:'Questrial',sans-serif;font-size:.80rem;font-weight:700;color:var(--muted);letter-spacing:.1em;text-transform:uppercase;}
 .radar-bars{display:flex;flex-direction:column;gap:9px;}
 .rbar-row{display:flex;align-items:center;gap:12px;position:relative;}
-.rbar-label{font-family:'Questrial',sans-serif;font-size:.44rem;font-weight:700;color:var(--ink2);width:130px;flex-shrink:0;}
+.rbar-label{font-family:'Questrial',sans-serif;font-size:.80rem;font-weight:700;color:var(--ink2);width:130px;flex-shrink:0;}
 .rbar-track{flex:1;height:5px;border-radius:3px;background:var(--b1);overflow:hidden;cursor:pointer;}
 .rbar-fill{height:100%;border-radius:3px;width:0%;transition:width 1.1s cubic-bezier(.16,1,.3,1);}
 .arb-block .rbar-fill{background:linear-gradient(90deg,var(--cyan-md),var(--cyan));}
