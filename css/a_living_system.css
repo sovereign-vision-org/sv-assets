@@ -236,7 +236,7 @@ body {
 
 .act-body { padding:13px 18px 13px 14px; }
 .act-who {
-  font-family:'Questrial',sans-serif;font-size:.42rem;font-weight:700;
+  font-family:'Questrial',sans-serif;font-size:.60rem;font-weight:700;
   letter-spacing:.1em;text-transform:uppercase;margin-bottom:3px;
 }
 .act-g-c { color:var(--amber); }
