@@ -1,0 +1,529 @@
+
+/* ═══════════════════════════════════════════
+   TOKENS — matched to sovereignvision.org
+═══════════════════════════════════════════ */
+:root {
+  --bg:          #0d1117;
+  --bg-card:     #131a25;
+  --bg-row-alt:  #111827;
+  --bg-tab-act:  #1a2535;
+
+  --cyan:        #00c2cb;
+  --cyan-soft:   rgba(0,194,203,0.12);
+  --cyan-border: rgba(0,194,203,0.3);
+  --cyan-glow:   rgba(0,194,203,0.08);
+
+  --green:       #6abf69;
+  --green-soft:  rgba(106,191,105,0.12);
+
+  --amber:       #f0b429;
+  --amber-soft:  rgba(240,180,41,0.12);
+
+  --white:  #ffffff;
+  --h-text: #e8edf2;
+  --body:   #9baab8;
+  --muted:  #5a6a7e;
+  --faint:  rgba(255,255,255,0.05);
+  --border: rgba(255,255,255,0.07);
+
+  --warn:        #c89040;
+  --warn-soft:   rgba(200,144,64,0.08);
+  --warn-border: rgba(200,144,64,0.28);
+
+  --r: 8px;
+}
+
+/* ═══════════════════════════════════════════
+   RESET
+═══════════════════════════════════════════ */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { font-size: 15px; -webkit-text-size-adjust: 100%; }
+body {
+  background: var(--bg);
+  color: var(--body);
+  font-family: 'Questrial', sans-serif;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  padding-bottom: 60px;
+}
+
+/* ═══════════════════════════════════════════
+   LAYOUT
+═══════════════════════════════════════════ */
+.wrap {
+  max-width: 580px;
+  margin: 0 auto;
+  padding: 0 18px;
+}
+
+/* ═══════════════════════════════════════════
+   HERO HEADER
+   Matches "Designed to Work Together" style:
+   - eyebrow in Questrial caps + cyan
+   - H1 in Questrial 800 white
+   - accent word italic cyan (like "Work Together")
+   - subtitle in Questrial body
+═══════════════════════════════════════════ */
+.hero {
+  text-align: center;
+  padding: 48px 18px 40px;
+  background: var(--bg);
+  border-bottom: 1px solid rgba(0,194,203,0.12);
+  max-width: 580px;
+  margin: 0 auto;
+}
+
+.eyebrow {
+  font-family: 'Questrial', sans-serif;
+  font-size: 0.58rem;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--cyan);
+  margin-bottom: 16px;
+}
+
+h1 {
+  font-family: 'Questrial', sans-serif;
+  font-weight: 800;
+  font-size: clamp(2rem, 8vw, 2.8rem);
+  color: var(--white);
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  margin-bottom: 14px;
+}
+
+/* Italic cyan accent — matches "Work Together" */
+h1 em {
+  font-style: italic;
+  color: var(--cyan);
+}
+
+.hero-sub {
+  font-size: 0.88rem;
+  color: var(--body);
+  line-height: 1.65;
+  max-width: 420px;
+  margin: 0 auto 18px;
+}
+
+/* Pill stat — matches "One Vai Tapu unit sustains ~500 people" */
+.hero-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  border: 1px solid var(--cyan-border);
+  border-radius: 20px;
+  padding: 5px 14px;
+  font-family: 'Questrial', sans-serif;
+  font-size: 0.77rem;
+  color: var(--cyan);
+}
+.hero-pill::before {
+  content: '●';
+  font-size: 0.5rem;
+  color: var(--cyan);
+}
+
+/* ═══════════════════════════════════════════
+   NOTICE
+═══════════════════════════════════════════ */
+.notice-wrap { padding: 22px 18px 0; max-width: 580px; margin: 0 auto; }
+.notice {
+  background: var(--warn-soft);
+  border: 1px solid var(--warn-border);
+  border-left: 3px solid var(--warn);
+  border-radius: var(--r);
+  padding: 12px 14px;
+  font-size: 0.8rem;
+  line-height: 1.6;
+}
+.notice strong { color: var(--warn); }
+.notice p + p  { margin-top: 7px; }
+
+/* ═══════════════════════════════════════════
+   SECTION
+═══════════════════════════════════════════ */
+.section { padding: 32px 0 0; }
+
+h2 {
+  font-family: 'Questrial', sans-serif;
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--white);
+  letter-spacing: 0.02em;
+  margin-bottom: 16px;
+}
+
+/* ═══════════════════════════════════════════
+   INTRO CARD — matches site's dark info boxes
+═══════════════════════════════════════════ */
+.intro-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-top: 2px solid var(--cyan);
+  border-radius: var(--r);
+  padding: 18px 16px;
+  font-size: 0.87rem;
+  line-height: 1.7;
+}
+.intro-card p + p { margin-top: 10px; }
+.intro-card strong { color: var(--h-text); }
+
+.pull-quote {
+  margin-top: 14px;
+  padding: 11px 14px;
+  background: var(--cyan-soft);
+  border-left: 3px solid var(--cyan);
+  border-radius: 4px;
+  font-family: 'Questrial', sans-serif;
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--white);
+  line-height: 1.45;
+  font-style: italic;
+}
+
+/* ═══════════════════════════════════════════
+   FLOW STEPS — matches the site's numbered
+   list style with connecting line
+═══════════════════════════════════════════ */
+.flow {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+.flow::before {
+  content: '';
+  position: absolute;
+  left: 17px; top: 18px; bottom: 18px;
+  width: 2px;
+  background: linear-gradient(to bottom,
+    var(--cyan) 0%,
+    rgba(0,194,203,0.1) 85%,
+    transparent 100%
+  );
+  z-index: 0;
+}
+
+.flow-item {
+  display: grid;
+  grid-template-columns: 36px 1fr;
+  gap: 0 12px;
+  padding-bottom: 24px;
+  position: relative;
+}
+.flow-item:last-child { padding-bottom: 0; }
+
+.f-dot {
+  width: 36px; height: 36px;
+  border-radius: 50%;
+  background: var(--bg);
+  border: 2px solid var(--cyan);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Questrial', sans-serif;
+  font-size: 0.62rem;
+  font-weight: 700;
+  color: var(--cyan);
+  flex-shrink: 0;
+  position: relative;
+  z-index: 1;
+}
+
+.f-body { padding-top: 5px; }
+
+.f-body h3 {
+  font-family: 'Questrial', sans-serif;
+  font-size: 0.78rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.09em;
+  color: var(--cyan);
+  margin-bottom: 5px;
+  line-height: 1.35;
+}
+
+.f-body p {
+  font-size: 0.86rem;
+  color: var(--body);
+  line-height: 1.65;
+}
+
+/* ═══════════════════════════════════════════
+   DETAIL TABLE — matches the site comparison
+   table with row labels + badge pills
+═══════════════════════════════════════════ */
+.detail-table {
+  width: 100%;
+  border: 1px solid var(--border);
+  border-radius: var(--r);
+  overflow: hidden;
+}
+
+.dt-row {
+  display: grid;
+  grid-template-columns: 100px 1fr;
+  border-bottom: 1px solid var(--faint);
+}
+.dt-row:last-child { border-bottom: none; }
+.dt-row:nth-child(even) { background: var(--bg-row-alt); }
+
+.dt-label {
+  padding: 11px 12px;
+  font-family: 'Questrial', sans-serif;
+  font-size: 0.6rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--muted);
+  border-right: 1px solid var(--faint);
+  display: flex;
+  align-items: flex-start;
+  line-height: 1.4;
+}
+
+.dt-val {
+  padding: 11px 14px;
+  font-size: 0.86rem;
+  color: var(--h-text);
+  line-height: 1.5;
+}
+
+.dt-val .main  { font-family: 'Questrial', sans-serif; font-weight: 700; font-size: 0.95rem; color: var(--white); display: block; margin-bottom: 3px; }
+.dt-val .sub   { font-size: 0.78rem; color: var(--body); display: block; margin-bottom: 6px; }
+.dt-val .sub2  { font-size: 0.76rem; color: var(--muted); display: block; }
+
+/* Inline badges — matches site's pill badges */
+.pill {
+  display: inline-block;
+  font-family: 'Questrial', sans-serif;
+  font-size: 0.58rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 2px 9px;
+  border-radius: 20px;
+  margin-top: 4px;
+}
+.pill-c { background: var(--cyan-soft);  color: var(--cyan);  border: 1px solid var(--cyan-border); }
+.pill-g { background: var(--green-soft); color: var(--green); border: 1px solid rgba(106,191,105,0.28); }
+.pill-a { background: var(--amber-soft); color: var(--amber); border: 1px solid rgba(240,180,41,0.28); }
+
+/* ═══════════════════════════════════════════
+   SPECS GRID — 2 col mobile
+═══════════════════════════════════════════ */
+.specs {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
+
+.spec {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--r);
+  padding: 12px 13px;
+}
+
+.spec-lbl {
+  font-family: 'Questrial', sans-serif;
+  font-size: 0.56rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 4px;
+}
+
+.spec-val {
+  font-family: 'Questrial', sans-serif;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--white);
+  line-height: 1.2;
+  margin-bottom: 3px;
+}
+
+.spec-note {
+  font-size: 0.7rem;
+  color: var(--muted);
+  line-height: 1.4;
+}
+
+/* ═══════════════════════════════════════════
+   COMPARISON TABLE — scrollable
+═══════════════════════════════════════════ */
+.t-wrap {
+  border: 1px solid var(--border);
+  border-radius: var(--r);
+  overflow: hidden;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 430px;
+  font-size: 0.8rem;
+}
+
+thead {
+  background: rgba(0,194,203,0.07);
+  border-bottom: 1px solid var(--cyan-border);
+}
+
+th {
+  text-align: left;
+  padding: 9px 11px;
+  font-family: 'Questrial', sans-serif;
+  font-size: 0.57rem;
+  font-weight: 700;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+  color: var(--cyan);
+  white-space: nowrap;
+}
+
+td {
+  padding: 9px 11px;
+  border-bottom: 1px solid var(--faint);
+  color: var(--body);
+  vertical-align: middle;
+  line-height: 1.4;
+}
+tr:last-child td { border-bottom: none; }
+tr:nth-child(even) td { background: var(--bg-row-alt); }
+tr:hover td { background: rgba(0,194,203,0.04); }
+td strong { color: var(--h-text); }
+
+.tag {
+  display: inline-block;
+  padding: 2px 8px;
+  border-radius: 20px;
+  font-family: 'Questrial', sans-serif;
+  font-size: 0.58rem;
+  font-weight: 700;
+  white-space: nowrap;
+}
+.ty   { background: var(--green-soft); color: var(--green); }
+.tn   { background: rgba(200,80,80,0.1); color: #d07070; }
+.tbst { background: var(--cyan-soft); color: var(--white); border: 1px solid var(--cyan); }
+
+/* ═══════════════════════════════════════════
+   BOTTOM 3-COL STATS
+   Matches the site's "System Resilience /
+   Cultural Integration / Guardian Oversight"
+   footer block
+═══════════════════════════════════════════ */
+.bottom-stats {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 0;
+  border: 1px solid var(--border);
+  border-radius: var(--r);
+  overflow: hidden;
+}
+
+.bs-col {
+  padding: 16px 14px;
+  border-right: 1px solid var(--faint);
+}
+.bs-col:last-child { border-right: none; }
+
+.bs-label {
+  font-family: 'Questrial', sans-serif;
+  font-size: 0.54rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 7px;
+}
+
+.bs-title {
+  font-family: 'Questrial', sans-serif;
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--white);
+  line-height: 1.3;
+  margin-bottom: 7px;
+}
+
+.bs-title .hl-c { color: var(--cyan); }
+.bs-title .hl-g { color: var(--green); }
+
+.bs-body {
+  font-size: 0.74rem;
+  color: var(--body);
+  line-height: 1.55;
+}
+
+/* ═══════════════════════════════════════════
+   RULE
+═══════════════════════════════════════════ */
+.rule {
+  height: 1px;
+  background: linear-gradient(to right, transparent, rgba(0,194,203,0.14), transparent);
+  margin: 32px 0 0;
+}
+
+/* ═══════════════════════════════════════════
+   CLOSING QUOTE
+═══════════════════════════════════════════ */
+.quote-card {
+  background: var(--bg-card);
+  border: 1px solid var(--cyan-border);
+  border-top: 2px solid var(--cyan);
+  border-radius: var(--r);
+  padding: 24px 18px;
+  text-align: center;
+}
+
+blockquote {
+  font-family: 'Questrial', sans-serif;
+  font-size: clamp(0.95rem, 3.8vw, 1.15rem);
+  font-weight: 700;
+  font-style: italic;
+  color: var(--cyan);
+  line-height: 1.5;
+  margin-bottom: 10px;
+}
+
+cite {
+  font-family: 'Questrial', sans-serif;
+  font-size: 0.58rem;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--muted);
+  font-style: normal;
+}
+
+/* ═══════════════════════════════════════════
+   TABLET +
+═══════════════════════════════════════════ */
+@media (min-width: 560px) {
+  .hero, .notice-wrap, .wrap { padding-left: 24px; padding-right: 24px; }
+  .specs { grid-template-columns: repeat(3, 1fr); }
+  .dt-row { grid-template-columns: 120px 1fr; }
+}
+
+@media (min-width: 760px) {
+  .hero, .notice-wrap, .wrap { max-width: 680px; padding-left: 32px; padding-right: 32px; }
+  h1 { font-size: 2.8rem; }
+}
+
+/* ═══════════════════════════════════════════
+   ANIMATIONS
+═══════════════════════════════════════════ */
+@keyframes fu {
+  from { opacity:0; transform:translateY(12px); }
+  to   { opacity:1; transform:translateY(0); }
+}
+.hero         { animation: fu 0.45s ease both 0.05s; }
+.notice-wrap  { animation: fu 0.45s ease both 0.1s; }
+.section      { animation: fu 0.45s ease both 0.15s; }
