@@ -36,7 +36,7 @@ body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:500;
 .hero{font-family:'Questrial',sans-serif;font-size:clamp(1rem,2vw,1.32rem);letter-spacing:-.02em;line-height:1.44;padding-bottom:20px;border-bottom:1px solid var(--b1);}
 .intro{font-size:.71rem;line-height:1.88;color:var(--mid);max-width:560px;}
 .radar-wrap{border-radius:12px;border:1px solid var(--b1);background:rgba(255,255,255,.4);padding:24px;display:flex;flex-direction:column;gap:14px;}
-.radar-title{font-family:'Questrial',sans-serif;font-size:.46rem;font-weight:700;color:var(--muted);letter-spacing:.1em;text-transform:uppercase;}
+.radar-title{font-family:'Questrial',sans-serif;font-size:.60rem;font-weight:700;color:var(--muted);letter-spacing:.1em;text-transform:uppercase;}
 .radar-bars{display:flex;flex-direction:column;gap:9px;}
 .rbar-row{display:flex;align-items:center;gap:12px;position:relative;}
 .rbar-label{font-family:'Questrial',sans-serif;font-size:.48rem;font-weight:700;color:var(--ink2);width:130px;flex-shrink:0;}
