@@ -106,7 +106,7 @@ body::after{
 
 /* node labels */
 .f-label{
-  font-family:'Questrial',sans-serif;font-size:.36rem;font-weight:700;
+  font-family:'Questrial',sans-serif;font-size:.46rem;font-weight:700;
   letter-spacing:.12em;text-transform:uppercase;text-align:center;
 }
 .fl-cit{color:var(--text-faint);}
