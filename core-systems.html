@@ -51,14 +51,29 @@ html{scroll-behavior:smooth;}
 body{background:var(--cream);color:var(--navy);font-family:'DM Sans',sans-serif;font-weight:300;overflow-x:hidden;-webkit-font-smoothing:antialiased;}
 
 /* ─── NAV ─── */
-nav{position:fixed;top:0;left:0;right:0;z-index:200;padding:0 3rem;height:72px;display:flex;align-items:center;justify-content:space-between;transition:background .4s,box-shadow .4s;}
-nav.scrolled{background:rgba(255,255,255,.96);box-shadow:0 1px 0 var(--border),0 4px 24px rgba(0,43,75,.06);backdrop-filter:blur(12px);}
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:200;
+  padding:0 3rem;height:72px;
+  display:flex;align-items:center;justify-content:space-between;
+  background:rgba(0,21,42,.85);
+  backdrop-filter:blur(16px);
+  -webkit-backdrop-filter:blur(16px);
+  border-bottom:1px solid rgba(255,255,255,.06);
+  transition:background .4s,box-shadow .4s,border-color .4s;
+}
+nav.scrolled{
+  background:rgba(255,255,255,.97);
+  box-shadow:0 1px 0 var(--border),0 4px 24px rgba(0,43,75,.08);
+  border-bottom-color:var(--border);
+}
 .nav-logo{display:flex;align-items:center;gap:.7rem;text-decoration:none;flex-shrink:0;}
 .nav-logo img{width:42px;height:42px;object-fit:contain;display:block;}
-.nav-logo-text{font-family:'Questrial',sans-serif;font-size:.78rem;letter-spacing:.14em;text-transform:uppercase;color:var(--navy);line-height:1.25;}
-.nav-logo-text span{display:block;font-size:.58rem;letter-spacing:.12em;color:var(--stone-light);font-family:'DM Sans',sans-serif;}
-nav:not(.scrolled) .nav-logo-text{color:var(--white);}
-nav:not(.scrolled) .nav-logo-text span{color:rgba(255,255,255,.55);}
+/* always white on dark base */
+.nav-logo-text{font-family:'Questrial',sans-serif;font-size:.78rem;letter-spacing:.14em;text-transform:uppercase;color:var(--white);line-height:1.25;}
+.nav-logo-text span{display:block;font-size:.58rem;letter-spacing:.12em;color:rgba(255,255,255,.55);font-family:'DM Sans',sans-serif;}
+/* switch to dark on scroll */
+nav.scrolled .nav-logo-text{color:var(--navy);}
+nav.scrolled .nav-logo-text span{color:var(--stone-light);}
 .nav-links{display:flex;align-items:center;gap:2rem;list-style:none;}
 .nav-links a{font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.8);text-decoration:none;font-weight:400;transition:color .25s;white-space:nowrap;}
 nav.scrolled .nav-links a{color:var(--stone);}
@@ -1229,7 +1244,7 @@ footer{background:var(--navy-deep);padding:4rem 3rem 2.5rem;}
         <span class="footer-logo-name">Sovereign Vision</span>
       </a>
       <p class="footer-desc">A comprehensive sovereign civilization infrastructure stack for Tuvalu — and an open-source blueprint for climate-vulnerable communities worldwide.</p>
-      <a href="mailto:trust@sovereignvision.org" class="footer-email">trust@sovereignvision.org</a>
+      <a href="/cdn-cgi/l/email-protection#60141215131420130f1605120509070e160913090f0e4e0f1207" class="footer-email"><span class="__cf_email__" data-cfemail="44303631373004372b322136212d232a322d372d2b2a6a2b3623">[email&#160;protected]</span></a>
     </div>
     <div>
       <div class="footer-col-h">Core Systems</div>
@@ -1280,7 +1295,7 @@ footer{background:var(--navy-deep);padding:4rem 3rem 2.5rem;}
 </footer>
 
 <!-- ─── JS ─── -->
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
 /* Nav */
 const nav = document.getElementById('nav');
 window.addEventListener('scroll', () => { nav.classList.toggle('scrolled', window.scrollY > 60); }, { passive: true });
