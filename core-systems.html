@@ -1,0 +1,1381 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="The 8 Pillars of Regeneration — Core Systems of the Tuvalu Sovereign Vision. Energy, Water, Food, Waste, Communications, AI Governance, Civic Infrastructure, Sovereign Treasury.">
+<title>Core Systems — 8 Pillars of Regeneration · Sovereign Vision</title>
+<link rel="icon" type="image/png" href="images/favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Questrial&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet">
+
+<style>
+/* ═══════════════════════════════════════════════
+   DESIGN TOKENS
+   Coral #fe5337  Gold #ffc61d  Teal #23c1c4  Navy #002b4b
+═══════════════════════════════════════════════ */
+:root {
+  --coral:       #fe5337;
+  --coral-dim:   #c9402a;
+  --coral-pale:  rgba(254,83,55,.08);
+  --gold:        #ffc61d;
+  --gold-dim:    #d4a400;
+  --gold-pale:   rgba(255,198,29,.10);
+  --teal:        #23c1c4;
+  --teal-dim:    #0096b9;
+  --teal-pale:   rgba(35,193,196,.09);
+  --navy:        #002b4b;
+  --navy-mid:    #00203a;
+  --navy-deep:   #00152a;
+  --navy-light:  #0d4070;
+  --cream:       #faf6ee;
+  --cream-mid:   #f2ead8;
+  --cream-dark:  #e8ddc8;
+  --stone:       #4a5568;
+  --stone-light: #718096;
+  --white:       #ffffff;
+  --text-dark:   rgba(250,246,238,.70);
+  --text-dimmer: rgba(250,246,238,.40);
+  --border:      rgba(0,43,75,.10);
+  --border-teal: rgba(35,193,196,.20);
+  --border-gold: rgba(255,198,29,.18);
+  --ease:        cubic-bezier(.22,1,.36,1);
+}
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important;}
+  .reveal{opacity:1!important;transform:none!important;}
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{background:var(--cream);color:var(--navy);font-family:'DM Sans',sans-serif;font-weight:300;overflow-x:hidden;-webkit-font-smoothing:antialiased;}
+
+/* ─── NAV ─── */
+nav{position:fixed;top:0;left:0;right:0;z-index:200;padding:0 3rem;height:72px;display:flex;align-items:center;justify-content:space-between;transition:background .4s,box-shadow .4s;}
+nav.scrolled{background:rgba(255,255,255,.96);box-shadow:0 1px 0 var(--border),0 4px 24px rgba(0,43,75,.06);backdrop-filter:blur(12px);}
+.nav-logo{display:flex;align-items:center;gap:.7rem;text-decoration:none;flex-shrink:0;}
+.nav-logo img{width:42px;height:42px;object-fit:contain;display:block;}
+.nav-logo-text{font-family:'Questrial',sans-serif;font-size:.78rem;letter-spacing:.14em;text-transform:uppercase;color:var(--navy);line-height:1.25;}
+.nav-logo-text span{display:block;font-size:.58rem;letter-spacing:.12em;color:var(--stone-light);font-family:'DM Sans',sans-serif;}
+nav:not(.scrolled) .nav-logo-text{color:var(--white);}
+nav:not(.scrolled) .nav-logo-text span{color:rgba(255,255,255,.55);}
+.nav-links{display:flex;align-items:center;gap:2rem;list-style:none;}
+.nav-links a{font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.8);text-decoration:none;font-weight:400;transition:color .25s;white-space:nowrap;}
+nav.scrolled .nav-links a{color:var(--stone);}
+.nav-links a:hover{color:var(--coral)!important;}
+.nav-dropdown{position:relative;}
+.nav-dropdown>a{display:flex;align-items:center;gap:.3rem;}
+.nav-dropdown>a::after{content:'▾';font-size:.6rem;opacity:.6;transition:transform .25s;}
+.nav-dropdown:hover>a::after{transform:rotate(180deg);}
+.dropdown-menu{position:absolute;top:calc(100% + 8px);left:50%;transform:translateX(-50%) translateY(-4px);background:var(--white);border:1px solid var(--border);box-shadow:0 12px 40px rgba(0,43,75,.12);min-width:210px;padding:.5rem 0;opacity:0;pointer-events:none;transition:opacity .2s,transform .2s;}
+.nav-dropdown:hover .dropdown-menu{opacity:1;pointer-events:all;transform:translateX(-50%) translateY(0);}
+.dropdown-menu a{display:block;padding:.55rem 1.2rem;font-size:.72rem;letter-spacing:.07em;text-transform:uppercase;color:var(--navy)!important;text-decoration:none;transition:background .2s,color .2s;}
+.dropdown-menu a:hover{background:var(--coral-pale);color:var(--coral)!important;}
+.nav-cta{background:var(--coral);color:var(--white)!important;padding:.5rem 1.4rem;font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;font-family:'Questrial',sans-serif;text-decoration:none;transition:background .25s,transform .2s;white-space:nowrap;flex-shrink:0;}
+.nav-cta:hover{background:var(--coral-dim);transform:translateY(-1px);}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:4px;}
+.hamburger span{width:22px;height:1.5px;background:var(--white);display:block;transition:all .3s var(--ease);}
+nav.scrolled .hamburger span{background:var(--navy);}
+.hamburger.open span:nth-child(1){transform:rotate(45deg) translate(4.7px,4.7px);}
+.hamburger.open span:nth-child(2){opacity:0;}
+.hamburger.open span:nth-child(3){transform:rotate(-45deg) translate(4.7px,-4.7px);}
+.mobile-menu{display:none;position:fixed;inset:0;z-index:199;background:var(--navy-deep);flex-direction:column;align-items:center;justify-content:center;gap:1.8rem;opacity:0;pointer-events:none;transition:opacity .35s;}
+.mobile-menu.open{opacity:1;pointer-events:all;}
+.mobile-menu a{font-family:'Cormorant Garamond',serif;font-size:2rem;font-weight:300;color:var(--white);text-decoration:none;letter-spacing:.04em;transition:color .25s;}
+.mobile-menu a:hover{color:var(--gold);}
+.mobile-menu .m-cta{font-family:'Questrial',sans-serif;font-size:.76rem;letter-spacing:.16em;text-transform:uppercase;color:var(--coral);border:1px solid var(--coral);padding:.65rem 2rem;margin-top:.5rem;}
+
+/* ─── BUTTONS ─── */
+.btn-coral{background:var(--coral);color:var(--white);border:1.5px solid var(--coral);padding:.8rem 2rem;font-family:'Questrial',sans-serif;font-size:.74rem;letter-spacing:.14em;text-transform:uppercase;text-decoration:none;display:inline-block;transition:background .25s,transform .2s;}
+.btn-coral:hover{background:var(--coral-dim);border-color:var(--coral-dim);transform:translateY(-2px);}
+.btn-ghost{background:transparent;color:rgba(255,255,255,.85);border:1.5px solid rgba(255,255,255,.3);padding:.8rem 2rem;font-family:'Questrial',sans-serif;font-size:.74rem;letter-spacing:.14em;text-transform:uppercase;text-decoration:none;display:inline-block;transition:all .25s;}
+.btn-ghost:hover{border-color:var(--white);color:var(--white);transform:translateY(-2px);}
+.btn-white{background:var(--white);color:var(--coral);border:1.5px solid var(--white);padding:.8rem 2rem;font-family:'Questrial',sans-serif;font-size:.74rem;letter-spacing:.14em;text-transform:uppercase;text-decoration:none;display:inline-block;transition:all .25s;}
+.btn-white:hover{background:transparent;color:var(--white);}
+.btn-ghost-white{background:transparent;color:rgba(255,255,255,.9);border:1.5px solid rgba(255,255,255,.4);padding:.8rem 2rem;font-family:'Questrial',sans-serif;font-size:.74rem;letter-spacing:.14em;text-transform:uppercase;text-decoration:none;display:inline-block;transition:all .25s;}
+.btn-ghost-white:hover{border-color:var(--white);color:var(--white);}
+.btn-outline-navy{background:transparent;color:var(--navy);border:1.5px solid rgba(0,43,75,.3);padding:.8rem 2rem;font-family:'Questrial',sans-serif;font-size:.74rem;letter-spacing:.14em;text-transform:uppercase;text-decoration:none;display:inline-block;transition:all .25s;}
+.btn-outline-navy:hover{border-color:var(--navy);background:var(--navy);color:var(--white);transform:translateY(-2px);}
+
+/* ─── SHARED ─── */
+.section-tag{font-family:'Questrial',sans-serif;font-size:.62rem;letter-spacing:.22em;text-transform:uppercase;color:var(--coral);margin-bottom:.9rem;display:flex;align-items:center;gap:.7rem;}
+.section-tag::before{content:'';width:20px;height:1.5px;background:var(--coral);flex-shrink:0;}
+.section-tag.teal{color:var(--teal-dim);}
+.section-tag.teal::before{background:var(--teal-dim);}
+.section-tag.gold{color:var(--gold-dim);}
+.section-tag.gold::before{background:var(--gold-dim);}
+.section-tag.white{color:rgba(255,255,255,.7);}
+.section-tag.white::before{background:rgba(255,255,255,.5);}
+.h2{font-family:'Cormorant Garamond',serif;font-size:clamp(2.2rem,4vw,4rem);font-weight:300;line-height:1.1;color:var(--navy);}
+.h2 em{font-style:italic;color:var(--coral);}
+.h2-white{color:var(--white);}
+.h2-white em{color:var(--gold);}
+.body-text{font-size:.95rem;line-height:1.85;color:var(--stone);}
+.reveal{opacity:0;transform:translateY(22px);transition:opacity .8s var(--ease),transform .8s var(--ease);}
+.reveal.visible{opacity:1;transform:none;}
+.reveal-left{opacity:0;transform:translateX(-24px);transition:opacity .8s var(--ease),transform .8s var(--ease);}
+.reveal-left.visible{opacity:1;transform:none;}
+
+/* ─── HERO ─── */
+.page-hero{background:linear-gradient(155deg,var(--navy-deep) 0%,#003d5c 40%,#005060 70%,var(--navy-mid) 100%);padding:140px 3rem 100px;position:relative;overflow:hidden;}
+.page-hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 65% 55% at 20% 65%,rgba(35,193,196,.14) 0%,transparent 60%),radial-gradient(ellipse 45% 40% at 75% 25%,rgba(255,198,29,.07) 0%,transparent 55%),radial-gradient(ellipse 40% 35% at 80% 75%,rgba(254,83,55,.06) 0%,transparent 50%);pointer-events:none;}
+#wave-canvas{position:absolute;inset:0;z-index:1;pointer-events:none;opacity:.5;}
+#wave-canvas-2{position:absolute;inset:0;z-index:1;pointer-events:none;opacity:.25;}
+.page-hero-inner{position:relative;z-index:2;max-width:1360px;margin:0 auto;}
+.hero-tag{display:inline-flex;align-items:center;gap:.7rem;font-family:'Questrial',sans-serif;font-size:.64rem;letter-spacing:.22em;text-transform:uppercase;color:var(--teal);margin-bottom:1.6rem;opacity:0;animation:fadeUp .8s .4s var(--ease) forwards;}
+.hero-tag::before{content:'';width:24px;height:1px;background:var(--teal);flex-shrink:0;}
+.page-hero h1{font-family:'Cormorant Garamond',serif;font-size:clamp(3rem,7vw,7rem);font-weight:300;line-height:.93;color:var(--white);max-width:820px;letter-spacing:-.02em;margin-bottom:1.8rem;opacity:0;animation:fadeUp .9s .6s var(--ease) forwards;}
+.page-hero h1 em{font-style:italic;color:var(--gold);}
+.page-hero-sub{font-size:clamp(.9rem,1.4vw,1.05rem);color:rgba(255,255,255,.72);max-width:520px;line-height:1.75;margin-bottom:2.4rem;opacity:0;animation:fadeUp .9s .8s var(--ease) forwards;}
+.hero-actions{display:flex;gap:1rem;flex-wrap:wrap;opacity:0;animation:fadeUp .9s 1s var(--ease) forwards;}
+.hero-meta{position:absolute;bottom:2.5rem;right:3rem;z-index:2;opacity:0;animation:fadeIn .8s 1.8s forwards;}
+.hero-loc{display:flex;align-items:center;gap:.5rem;font-size:.6rem;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.4);font-family:'Questrial',sans-serif;}
+.pulse-dot{width:6px;height:6px;background:var(--teal);border-radius:50%;animation:pulseDot 2.5s 2s infinite;}
+@keyframes pulseDot{0%,100%{box-shadow:0 0 0 0 rgba(35,193,196,.5);}50%{box-shadow:0 0 0 6px rgba(35,193,196,0);}}
+
+/* ─── INTRO BAND ─── */
+.intro-section{background:var(--navy);padding:6rem 3rem;text-align:center;position:relative;overflow:hidden;}
+.intro-section::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 60% 80% at 50% 50%,rgba(35,193,196,.06) 0%,transparent 65%);pointer-events:none;}
+.intro-tagline{font-family:'Cormorant Garamond',serif;font-size:clamp(1.6rem,3vw,3rem);font-weight:300;font-style:italic;color:var(--white);max-width:820px;margin:0 auto 1.5rem;line-height:1.4;position:relative;z-index:1;}
+.intro-tagline strong{font-style:normal;font-weight:300;color:var(--gold);}
+.intro-body{max-width:640px;margin:0 auto 3rem;font-size:.97rem;line-height:1.85;color:var(--text-dark);position:relative;z-index:1;}
+.intro-stats{display:flex;justify-content:center;gap:0;border:1px solid rgba(255,255,255,.07);max-width:900px;margin:0 auto;position:relative;z-index:1;}
+.stat{flex:1;padding:2rem 1.5rem;border-right:1px solid rgba(255,255,255,.07);text-align:center;transition:background .3s;}
+.stat:last-child{border-right:none;}
+.stat:hover{background:rgba(255,255,255,.03);}
+.stat-n{font-family:'Cormorant Garamond',serif;font-size:2.8rem;font-weight:300;color:var(--gold);line-height:1;margin-bottom:.3rem;}
+.stat-l{font-size:.68rem;letter-spacing:.08em;color:var(--text-dark);line-height:1.4;}
+
+/* ─── SYSTEM CARDS GRID ─── */
+.systems-section{background:var(--white);padding:7rem 3rem;border-top:1px solid var(--border);}
+.systems-header{max-width:1360px;margin:0 auto 3.5rem;display:flex;align-items:flex-end;justify-content:space-between;gap:2rem;flex-wrap:wrap;}
+.systems-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--border);max-width:1360px;margin:0 auto 1px;}
+.systems-row2{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--border);max-width:1360px;margin:0 auto;}
+
+.sys-card{
+  background:var(--white);
+  padding:2.6rem 2rem 2.2rem;
+  text-decoration:none;
+  display:block;
+  position:relative;
+  transition:background .35s, box-shadow .35s;
+  overflow:hidden;
+}
+/* colour tint overlay on hover */
+.sys-card::before{
+  content:'';
+  position:absolute;
+  inset:0;
+  opacity:0;
+  transition:opacity .4s;
+  pointer-events:none;
+}
+.sys-card.energy::before { background:radial-gradient(ellipse 80% 60% at 0% 0%,rgba(255,198,29,.07),transparent); }
+.sys-card.water::before  { background:radial-gradient(ellipse 80% 60% at 0% 0%,rgba(35,193,196,.07),transparent); }
+.sys-card.food::before   { background:radial-gradient(ellipse 80% 60% at 0% 0%,rgba(90,170,90,.07),transparent); }
+.sys-card.waste::before  { background:radial-gradient(ellipse 80% 60% at 0% 0%,rgba(139,111,196,.07),transparent); }
+.sys-card.comms::before  { background:radial-gradient(ellipse 80% 60% at 0% 0%,rgba(35,193,196,.07),transparent); }
+.sys-card.ai::before     { background:radial-gradient(ellipse 80% 60% at 0% 0%,rgba(254,83,55,.07),transparent); }
+.sys-card.civic::before  { background:radial-gradient(ellipse 80% 60% at 0% 0%,rgba(255,198,29,.07),transparent); }
+.sys-card.treasury::before{background:radial-gradient(ellipse 80% 60% at 0% 0%,rgba(247,147,26,.07),transparent); }
+
+.sys-card::after{
+  content:'';
+  position:absolute;
+  bottom:0; left:0; right:0;
+  height:3px;
+  transform:scaleX(0);
+  transform-origin:left;
+  transition:transform .4s var(--ease);
+}
+.sys-card:hover { background:#fdfbf7; box-shadow:0 -4px 24px rgba(0,43,75,.06); }
+.sys-card:hover::before { opacity:1; }
+.sys-card:hover::after  { transform:scaleX(1); }
+
+.sys-card.energy::after  { background:var(--gold); }
+.sys-card.water::after   { background:var(--teal); }
+.sys-card.food::after    { background:#5aaa5a; }
+.sys-card.waste::after   { background:#8B6FC4; }
+.sys-card.comms::after   { background:var(--teal); }
+.sys-card.ai::after      { background:var(--coral); }
+.sys-card.civic::after   { background:var(--gold); }
+.sys-card.treasury::after{ background:#f7931a; }
+
+/* Number watermark */
+.sys-num{
+  font-family:'Cormorant Garamond',serif;
+  font-size:4.5rem;
+  font-weight:300;
+  color:rgba(0,43,75,.04);
+  position:absolute;
+  top:.6rem; right:.8rem;
+  line-height:1;
+  pointer-events:none;
+  transition:color .3s, transform .4s var(--ease);
+}
+.sys-card:hover .sys-num{ color:rgba(0,43,75,.08); transform:scale(1.05) translateY(-2px); }
+
+/* Icon container — coloured pill */
+.sys-icon-wrap{
+  width:52px; height:52px;
+  border-radius:12px;
+  display:flex; align-items:center; justify-content:center;
+  margin-bottom:1.6rem;
+  transition:transform .3s var(--ease);
+}
+.sys-card:hover .sys-icon-wrap { transform:scale(1.08); }
+.sys-card.energy  .sys-icon-wrap { background:rgba(255,198,29,.12); }
+.sys-card.water   .sys-icon-wrap { background:rgba(35,193,196,.12); }
+.sys-card.food    .sys-icon-wrap { background:rgba(90,170,90,.12); }
+.sys-card.waste   .sys-icon-wrap { background:rgba(139,111,196,.12); }
+.sys-card.comms   .sys-icon-wrap { background:rgba(35,193,196,.12); }
+.sys-card.ai      .sys-icon-wrap { background:rgba(254,83,55,.12); }
+.sys-card.civic   .sys-icon-wrap { background:rgba(255,198,29,.12); }
+.sys-card.treasury.sys-icon-wrap { background:rgba(247,147,26,.12); }
+
+.sys-icon{width:28px;height:28px;}
+.sys-icon svg{width:28px;height:28px;fill:none;stroke-linecap:round;stroke-linejoin:round;stroke-width:1.4;}
+
+.sys-tuvaluan{font-family:'Questrial',sans-serif;font-size:.58rem;letter-spacing:.16em;text-transform:uppercase;color:var(--teal);margin-bottom:.35rem;}
+.sys-name{font-family:'Cormorant Garamond',serif;font-size:1.4rem;font-weight:400;color:var(--navy);margin-bottom:.6rem;line-height:1.15;}
+
+/* Key metric pill under name */
+.sys-metric{
+  display:inline-flex;
+  align-items:center;
+  gap:.35rem;
+  font-family:'Questrial',sans-serif;
+  font-size:.6rem;
+  letter-spacing:.1em;
+  text-transform:uppercase;
+  padding:.22rem .65rem;
+  border-radius:100px;
+  margin-bottom:.9rem;
+}
+.sys-card.energy  .sys-metric { background:rgba(255,198,29,.12); color:var(--gold-dim); }
+.sys-card.water   .sys-metric { background:rgba(35,193,196,.12);  color:var(--teal-dim); }
+.sys-card.food    .sys-metric { background:rgba(90,170,90,.12);   color:#3d8a3d; }
+.sys-card.waste   .sys-metric { background:rgba(139,111,196,.12); color:#6a50a0; }
+.sys-card.comms   .sys-metric { background:rgba(35,193,196,.12);  color:var(--teal-dim); }
+.sys-card.ai      .sys-metric { background:rgba(254,83,55,.10);   color:var(--coral-dim); }
+.sys-card.civic   .sys-metric { background:rgba(255,198,29,.12);  color:var(--gold-dim); }
+.sys-card.treasury.sys-metric { background:rgba(247,147,26,.12);  color:#c4650a; }
+
+.sys-desc{font-size:.78rem;color:var(--stone);line-height:1.7;}
+.sys-link{
+  display:inline-flex;
+  align-items:center;
+  gap:.4rem;
+  margin-top:1.4rem;
+  font-size:.66rem;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+  color:var(--coral);
+  font-family:'Questrial',sans-serif;
+  transition:gap .25s;
+}
+.sys-card:hover .sys-link{gap:.8rem;}
+
+/* ─── INTERDEPENDENCY DIAGRAM ─── */
+.interdep-section{background:var(--navy-deep);padding:7rem 3rem;position:relative;overflow:hidden;}
+.interdep-section::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 60% 70% at 50% 50%,rgba(35,193,196,.05) 0%,transparent 60%);pointer-events:none;}
+.interdep-inner{max-width:1360px;margin:0 auto;}
+.interdep-header{display:grid;grid-template-columns:1fr 1.4fr;gap:4rem;align-items:end;margin-bottom:4rem;}
+.interdep-pull{font-family:'Cormorant Garamond',serif;font-size:clamp(1.1rem,1.8vw,1.5rem);font-weight:300;font-style:italic;color:rgba(255,255,255,.75);line-height:1.6;border-left:2px solid var(--teal);padding-left:1.4rem;}
+.diagram-wrap{width:100%;max-width:880px;margin:0 auto;}
+.interdep-svg{width:100%;display:block;}
+
+/* ─── HOW IT WORKS BAND ─── */
+.how-section{background:var(--navy);padding:7rem 3rem;position:relative;overflow:hidden;}
+.how-section::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 60% 70% at 80% 50%,rgba(35,193,196,.06) 0%,transparent 60%);pointer-events:none;}
+.how-inner{max-width:1360px;margin:0 auto;}
+.how-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:rgba(255,255,255,.06);margin-top:4rem;}
+.how-card{
+  background:transparent;
+  padding:3rem 2.4rem;
+  transition:background .3s;
+  position:relative;
+  overflow:hidden;
+}
+.how-card::before{
+  content:'';
+  position:absolute;
+  top:0; left:0; bottom:0;
+  width:3px;
+  opacity:0;
+  transition:opacity .35s;
+}
+.how-card:nth-child(1)::before { background:var(--teal); }
+.how-card:nth-child(2)::before { background:var(--gold); }
+.how-card:nth-child(3)::before { background:var(--coral); }
+.how-card:hover { background:rgba(255,255,255,.03); }
+.how-card:hover::before { opacity:1; }
+
+.how-icon{
+  width:44px; height:44px;
+  border-radius:10px;
+  display:flex; align-items:center; justify-content:center;
+  margin-bottom:1.6rem;
+}
+.how-card:nth-child(1) .how-icon { background:rgba(35,193,196,.12); }
+.how-card:nth-child(2) .how-icon { background:rgba(255,198,29,.10); }
+.how-card:nth-child(3) .how-icon { background:rgba(254,83,55,.10); }
+.how-icon svg { width:22px; height:22px; fill:none; stroke-linecap:round; stroke-linejoin:round; stroke-width:1.4; }
+.how-card:nth-child(1) .how-icon svg { stroke:var(--teal); }
+.how-card:nth-child(2) .how-icon svg { stroke:var(--gold); }
+.how-card:nth-child(3) .how-icon svg { stroke:var(--coral); }
+
+.how-n{font-family:'Cormorant Garamond',serif;font-size:2.8rem;font-weight:300;color:rgba(255,198,29,.12);line-height:1;margin-bottom:.6rem;}
+.how-title{font-family:'Cormorant Garamond',serif;font-size:1.6rem;font-weight:300;color:var(--white);margin-bottom:.9rem;line-height:1.2;}
+.how-desc{font-size:.83rem;color:var(--text-dark);line-height:1.8;}
+
+/* ─── PHASE TIMELINE ─── */
+.phases-section{background:var(--cream-mid);padding:7rem 3rem;border-top:1px solid var(--border);border-bottom:1px solid var(--border);}
+.phases-inner{max-width:1360px;margin:0 auto;}
+.phases-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--border);margin-top:3.5rem;}
+.phase-card{
+  background:var(--white);
+  padding:2.4rem 1.8rem;
+  position:relative;
+  overflow:hidden;
+  transition:background .3s, transform .3s var(--ease);
+}
+.phase-card:hover { background:#fffdf9; }
+/* top colour bar per phase */
+.phase-card::before{
+  content:'';
+  position:absolute;
+  top:0; left:0; right:0;
+  height:3px;
+}
+.phase-card:nth-child(1)::before { background:var(--teal); }
+.phase-card:nth-child(2)::before { background:var(--gold); }
+.phase-card:nth-child(3)::before { background:var(--coral); }
+.phase-card:nth-child(4)::before { background:linear-gradient(90deg,var(--teal),var(--gold)); }
+
+.phase-card::after{content:'';position:absolute;bottom:0;left:0;right:0;height:3px;background:var(--coral);transform:scaleX(0);transform-origin:left;transition:transform .35s var(--ease);}
+.phase-card:hover::after{transform:scaleX(1);}
+
+.phase-n{
+  font-family:'Cormorant Garamond',serif;
+  font-size:4rem;
+  font-weight:300;
+  line-height:1;
+  margin-bottom:.6rem;
+}
+.phase-card:nth-child(1) .phase-n { color:rgba(35,193,196,.18); }
+.phase-card:nth-child(2) .phase-n { color:rgba(255,198,29,.18); }
+.phase-card:nth-child(3) .phase-n { color:rgba(254,83,55,.18); }
+.phase-card:nth-child(4) .phase-n { color:rgba(35,193,196,.14); }
+
+.phase-label{font-family:'Questrial',sans-serif;font-size:.6rem;letter-spacing:.2em;text-transform:uppercase;margin-bottom:.4rem;}
+.phase-card:nth-child(1) .phase-label { color:var(--teal-dim); }
+.phase-card:nth-child(2) .phase-label { color:var(--gold-dim); }
+.phase-card:nth-child(3) .phase-label { color:var(--coral-dim); }
+.phase-card:nth-child(4) .phase-label { color:var(--teal-dim); }
+
+.phase-title{font-family:'Cormorant Garamond',serif;font-size:1.25rem;font-weight:400;color:var(--navy);margin-bottom:.8rem;line-height:1.2;}
+.phase-list{list-style:none;margin-top:.6rem;}
+.phase-list li{display:flex;align-items:flex-start;gap:.5rem;font-size:.78rem;color:var(--stone);padding:.28rem 0;border-bottom:1px solid rgba(0,43,75,.05);}
+.phase-list li:last-child{border-bottom:none;}
+.phase-list li::before{content:'';width:4px;height:4px;border-radius:50%;flex-shrink:0;margin-top:.48rem;}
+.phase-card:nth-child(1) .phase-list li::before { background:var(--teal); }
+.phase-card:nth-child(2) .phase-list li::before { background:var(--gold); }
+.phase-card:nth-child(3) .phase-list li::before { background:var(--coral); }
+.phase-card:nth-child(4) .phase-list li::before { background:var(--teal); }
+
+/* ─── GUARDIAN INTEGRATION ─── */
+.guardian-section{background:var(--cream);padding:7rem 3rem;border-top:1px solid var(--border);border-bottom:1px solid var(--border);}
+.guardian-inner{display:grid;grid-template-columns:1fr 1fr;gap:6rem;max-width:1360px;margin:0 auto;align-items:center;}
+.guardian-visual{position:relative;width:100%;padding-bottom:90%;max-width:480px;}
+.guardian-vis-inner{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;}
+.g-ring{position:absolute;border-radius:50%;border:1px solid;animation:gSpin linear infinite;}
+.g-ring-1{inset:0;border-color:rgba(35,193,196,.18);animation-duration:44s;}
+.g-ring-2{inset:13%;border-color:rgba(255,198,29,.12);animation-duration:31s;animation-direction:reverse;}
+.g-ring-3{inset:26%;border-color:rgba(254,83,55,.09);animation-duration:20s;}
+.g-core{position:absolute;inset:40%;border-radius:50%;background:radial-gradient(circle at 38% 38%,var(--navy-light),var(--teal-dim));box-shadow:0 0 28px rgba(35,193,196,.2),0 0 56px rgba(35,193,196,.07);display:flex;align-items:center;justify-content:center;}
+@keyframes gSpin{from{transform:rotate(0deg);}to{transform:rotate(360deg);}}
+.g-orbit-dot-wrap{position:absolute;inset:0;border-radius:50%;pointer-events:none;}
+
+/* Orbit labels */
+.g-orbit-label{position:absolute;font-size:.5rem;font-family:'Questrial',sans-serif;letter-spacing:.12em;text-transform:uppercase;white-space:nowrap;display:flex;align-items:center;gap:.3rem;}
+
+.guardian-features{display:grid;grid-template-columns:1fr 1fr;gap:.8rem 1.2rem;margin:1.8rem 0 2.2rem;}
+.g-feat{display:flex;align-items:flex-start;gap:.6rem;font-size:.8rem;color:var(--stone);line-height:1.5;}
+.g-feat::before{content:'';width:5px;height:5px;background:var(--teal);border-radius:50%;margin-top:.45rem;flex-shrink:0;}
+
+/* ─── REPLICATION ─── */
+.rep-section{background:var(--cream-mid);padding:7rem 3rem;border-top:1px solid var(--border);}
+.rep-inner{display:grid;grid-template-columns:1.2fr 1fr;gap:6rem;max-width:1360px;margin:0 auto;align-items:center;}
+.rep-tag-grid{display:grid;grid-template-columns:1fr 1fr;gap:.6rem;margin-top:2rem;}
+.rep-tag{display:flex;align-items:center;gap:.5rem;font-size:.74rem;color:var(--stone);background:var(--white);border:1px solid var(--border);padding:.65rem .9rem;transition:border-color .25s,color .25s;text-decoration:none;}
+.rep-tag:hover{border-color:var(--teal);color:var(--navy);}
+.rep-tag-dot{width:5px;height:5px;background:var(--teal);border-radius:50%;flex-shrink:0;}
+.licence-box{background:var(--navy);padding:2.5rem;margin-top:0;}
+.licence-box-tag{font-family:'Questrial',sans-serif;font-size:.6rem;letter-spacing:.18em;text-transform:uppercase;color:var(--teal);margin-bottom:.8rem;}
+.licence-box-title{font-family:'Cormorant Garamond',serif;font-size:1.6rem;font-weight:300;color:var(--white);margin-bottom:.7rem;line-height:1.2;}
+.licence-box-body{font-size:.8rem;color:var(--text-dark);line-height:1.7;margin-bottom:1.4rem;}
+
+/* ─── JOIN CTA ─── */
+.join-section{background:var(--coral);padding:6rem 3rem;text-align:center;position:relative;overflow:hidden;}
+.join-section::before{content:'';position:absolute;inset:-30%;background:radial-gradient(ellipse at 50% 50%,rgba(255,255,255,.08) 0%,transparent 55%);pointer-events:none;}
+.join-inner{position:relative;z-index:1;max-width:680px;margin:0 auto;}
+.join-h2{font-family:'Cormorant Garamond',serif;font-size:clamp(2.2rem,4.5vw,4.5rem);font-weight:300;color:var(--white);line-height:1.1;margin-bottom:1.2rem;}
+.join-h2 em{font-style:italic;opacity:.85;}
+.join-body{font-size:.97rem;color:rgba(255,255,255,.8);line-height:1.75;margin-bottom:2.5rem;}
+.join-actions{display:flex;gap:.9rem;justify-content:center;flex-wrap:wrap;}
+
+/* ─── TRUST STRIP ─── */
+.trust-strip{background:var(--cream-dark);padding:2.4rem 3rem;border-bottom:1px solid var(--border);}
+.trust-strip-inner{max-width:1360px;margin:0 auto;display:flex;align-items:center;justify-content:center;gap:2.5rem;flex-wrap:wrap;}
+.trust-item{display:flex;align-items:center;gap:.7rem;}
+.trust-item-icon{width:20px;height:20px;}
+.trust-item-icon svg{width:20px;height:20px;stroke:var(--stone);stroke-width:1.4;fill:none;stroke-linecap:round;stroke-linejoin:round;}
+.trust-item-text{font-size:.72rem;color:var(--stone);line-height:1.3;}
+.trust-item-text strong{display:block;color:var(--navy);font-size:.64rem;letter-spacing:.12em;text-transform:uppercase;margin-bottom:.1rem;font-weight:400;font-family:'Questrial',sans-serif;}
+.trust-div{width:1px;height:28px;background:var(--border);}
+
+/* ─── FOOTER ─── */
+footer{background:var(--navy-deep);padding:4rem 3rem 2.5rem;}
+.footer-top{max-width:1360px;margin:0 auto;display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:3rem;padding-bottom:3rem;border-bottom:1px solid rgba(255,255,255,.06);}
+.footer-logo-wrap{display:flex;align-items:center;gap:.7rem;margin-bottom:1rem;text-decoration:none;}
+.footer-logo-wrap img{width:38px;height:38px;object-fit:contain;}
+.footer-logo-name{font-family:'Questrial',sans-serif;font-size:.78rem;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);}
+.footer-desc{font-size:.78rem;color:var(--text-dimmer);line-height:1.72;max-width:280px;margin-bottom:1.4rem;}
+.footer-email{font-size:.72rem;color:var(--teal);text-decoration:none;letter-spacing:.04em;transition:color .25s;}
+.footer-email:hover{color:#aad0e0;}
+.footer-col-h{font-family:'Questrial',sans-serif;font-size:.6rem;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.35);margin-bottom:1.2rem;}
+.footer-links{list-style:none;display:flex;flex-direction:column;gap:.6rem;}
+.footer-links a{font-size:.77rem;color:var(--text-dimmer);text-decoration:none;transition:color .25s;}
+.footer-links a:hover{color:var(--white);}
+.footer-bottom{max-width:1360px;margin:2rem auto 0;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem;}
+.footer-copy{font-size:.66rem;color:var(--text-dimmer);letter-spacing:.05em;}
+.footer-socials{display:flex;gap:1rem;align-items:center;}
+.footer-socials a{font-size:.66rem;letter-spacing:.12em;text-transform:uppercase;color:var(--text-dimmer);text-decoration:none;font-family:'Questrial',sans-serif;transition:color .25s;}
+.footer-socials a:hover{color:var(--white);}
+
+/* ─── ANIMATIONS ─── */
+@keyframes fadeUp{from{opacity:0;transform:translateY(20px);}to{opacity:1;transform:translateY(0);}}
+@keyframes fadeIn{from{opacity:0;}to{opacity:.7;}}
+
+/* ─── RESPONSIVE ─── */
+@media(max-width:1100px){
+  .systems-grid,.systems-row2{grid-template-columns:repeat(2,1fr);}
+  .how-grid{grid-template-columns:1fr;}
+  .phases-grid{grid-template-columns:repeat(2,1fr);}
+  .guardian-inner,.rep-inner,.interdep-header{grid-template-columns:1fr;gap:3.5rem;}
+  .footer-top{grid-template-columns:1fr 1fr;gap:2.5rem;}
+  .guardian-section::before,.rep-section::before{display:none;}
+}
+@media(max-width:768px){
+  nav{padding:0 1.5rem;}
+  .nav-links,.nav-cta{display:none;}
+  .hamburger{display:flex;}
+  .mobile-menu{display:flex;}
+  .page-hero{padding:120px 1.5rem 70px;}
+  .hero-meta{right:1.5rem;bottom:1.5rem;}
+  section,footer,.trust-strip,.intro-section{padding-left:1.5rem;padding-right:1.5rem;}
+  .systems-grid,.systems-row2,.phases-grid{grid-template-columns:1fr;}
+  .how-grid{grid-template-columns:1fr;}
+  .intro-stats{flex-direction:column;}
+  .stat{border-right:none;border-bottom:1px solid rgba(255,255,255,.07);}
+  .stat:last-child{border-bottom:none;}
+  .footer-top{grid-template-columns:1fr;}
+  .trust-strip-inner{flex-direction:column;align-items:flex-start;}
+  .trust-div{display:none;}
+  .rep-tag-grid{grid-template-columns:1fr;}
+  .guardian-features{grid-template-columns:1fr;}
+  .systems-header{flex-direction:column;align-items:flex-start;}
+}
+</style>
+</head>
+<body>
+
+<!-- ─── NAV ─── -->
+<nav id="nav">
+  <a href="/" class="nav-logo">
+    <img src="images/logo-trans.png" alt="Sovereign Vision">
+    <div class="nav-logo-text">Sovereign Vision<span>Te Fale o Te Mātāmua · Tuvalu</span></div>
+  </a>
+  <ul class="nav-links">
+    <li class="nav-dropdown">
+      <a href="/core-systems">Core Systems</a>
+      <div class="dropdown-menu">
+        <a href="/ai-overview">Civic Stewardship System</a>
+        <a href="/communications">Communications</a>
+        <a href="/food">Food Sovereignty</a>
+        <a href="/energy">Power Generation</a>
+        <a href="/treasury">Sovereign Treasury</a>
+        <a href="/civic-infrastructure">Civic Infrastructure</a>
+        <a href="/water-systems">Water Systems</a>
+        <a href="/waste-systems">Resource Recovery</a>
+      </div>
+    </li>
+    <li><a href="/how-it-works">How It Works</a></li>
+    <li class="nav-dropdown">
+      <a href="/legal-licensing">Legal</a>
+      <div class="dropdown-menu">
+        <a href="/digitalarchipelago">Digital Archipelago Accord</a>
+        <a href="/civic-commons-license">Civic Commons License</a>
+        <a href="/trust-formation-status">Trust Formation Status</a>
+        <a href="/terms">Terms of Use</a>
+        <a href="/privacy-policy">Privacy Policy</a>
+      </div>
+    </li>
+    <li><a href="/faq">FAQ</a></li>
+    <li class="nav-dropdown">
+      <a href="/about-us">About</a>
+      <div class="dropdown-menu">
+        <a href="/about-us">About Us</a>
+        <a href="/continuity-vs-reinvention">Continuity vs Reinvention</a>
+        <a href="/elders-council">Elders Council</a>
+        <a href="/youth-voice">Youth Voice</a>
+      </div>
+    </li>
+  </ul>
+  <a href="/contact" class="nav-cta">Contact</a>
+  <div class="hamburger" id="hamburger" aria-label="Menu" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+<div class="mobile-menu" id="mobile-menu">
+  <a href="/core-systems" onclick="closeMobile()">Core Systems</a>
+  <a href="/how-it-works" onclick="closeMobile()">How It Works</a>
+  <a href="/legal-licensing" onclick="closeMobile()">Legal</a>
+  <a href="/faq" onclick="closeMobile()">FAQ</a>
+  <a href="/about-us" onclick="closeMobile()">About</a>
+  <a href="/contact" onclick="closeMobile()" class="m-cta">Contact Us</a>
+</div>
+
+<!-- ─── HERO ─── -->
+<section class="page-hero">
+  <canvas id="wave-canvas"></canvas>
+  <canvas id="wave-canvas-2"></canvas>
+  <div class="page-hero-inner">
+    <div class="hero-tag">The 8 Pillars of Regeneration</div>
+    <h1>Core Systems.<br><em>Infrastructure</em><br>for what endures.</h1>
+    <p class="page-hero-sub">Energy. Water. Food. Waste. Communications. AI Governance. Civic Infrastructure. Sovereign Treasury. Each system rebuilt from the ground up — modular, sovereign, and rooted in Tuvaluan values.</p>
+    <div class="hero-actions">
+      <a href="#systems" class="btn-coral">Explore All Systems</a>
+      <a href="#how" class="btn-ghost">How They Connect</a>
+    </div>
+  </div>
+  <div class="hero-meta">
+    <div class="hero-loc"><div class="pulse-dot"></div>Funafuti · Tuvalu · Pacific</div>
+  </div>
+</section>
+
+<!-- ─── INTRO BAND ─── -->
+<section class="intro-section">
+  <p class="intro-tagline reveal">These are the systems every nation depends on.<br><strong>We are rebuilding all of them.</strong></p>
+  <p class="intro-body reveal">If we can deliver abundant clean energy — if the people want this future and are committed to building it — then no obstacle is too great. What matters most is will. With energy and unity, anything becomes possible.</p>
+  <div class="intro-stats">
+    <div class="stat reveal"><div class="stat-n">8</div><div class="stat-l">Interconnected<br>Core Systems</div></div>
+    <div class="stat reveal"><div class="stat-n">9</div><div class="stat-l">Published<br>White Papers</div></div>
+    <div class="stat reveal"><div class="stat-n">100%</div><div class="stat-l">Open-Source<br>Blueprint</div></div>
+    <div class="stat reveal"><div class="stat-n">20yr</div><div class="stat-l">Baseload Energy<br>Design Life</div></div>
+    <div class="stat reveal"><div class="stat-n">0</div><div class="stat-l">Foreign Cloud<br>Dependencies</div></div>
+  </div>
+</section>
+
+<!-- ─── 8 SYSTEMS GRID ─── -->
+<section class="systems-section" id="systems">
+  <div class="systems-header">
+    <div>
+      <div class="section-tag teal reveal-left">Core Infrastructure</div>
+      <h2 class="h2 reveal">Eight systems.<br>One <em>sovereign</em> future.</h2>
+    </div>
+    <p class="body-text reveal" style="max-width:380px;">Each system is independently deployable, Guardian-monitored, and designed for replication by other island nations and climate-vulnerable communities.</p>
+  </div>
+
+  <!-- Row 1 -->
+  <div class="systems-grid">
+
+    <a href="/energy" class="sys-card energy reveal">
+      <span class="sys-num">01</span>
+      <div class="sys-icon-wrap">
+        <div class="sys-icon">
+          <svg viewBox="0 0 28 28" stroke="#d4a400" stroke-width="1.3" fill="none" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="1" y="1" width="11" height="8" rx="1"/>
+            <rect x="14" y="1" width="11" height="8" rx="1"/>
+            <line x1="6" y1="1" x2="6" y2="9" stroke-width=".6" opacity=".5"/>
+            <line x1="1" y1="5" x2="12" y2="5" stroke-width=".6" opacity=".5"/>
+            <line x1="19" y1="1" x2="19" y2="9" stroke-width=".6" opacity=".5"/>
+            <line x1="14" y1="5" x2="25" y2="5" stroke-width=".6" opacity=".5"/>
+            <polygon points="15,11 11,18 13.5,18 12.5,24 17,17 14.5,17" fill="#ffc61d" stroke="none"/>
+            <circle cx="5" cy="22" r="4.5" stroke-width="1.1"/>
+            <circle cx="5" cy="22" r="2" stroke-width=".8" stroke-dasharray="1.5 1.5"/>
+          </svg>
+        </div>
+      </div>
+      <div class="sys-tuvaluan">Te Fatu o te Ahi · Te Lā o te Namo</div>
+      <div class="sys-name">Power Generation</div>
+      <span class="sys-metric">10 MW thermal baseload</span>
+      <p class="sys-desc">Kronos micro modular reactor anchored on a storm-raised islet, paired with 1 MW floating solar array. ArborMesh smart grid distributes clean power island-wide with Guardian load management.</p>
+      <span class="sys-link">Explore Energy →</span>
+    </a>
+
+    <a href="/water-systems" class="sys-card water reveal">
+      <span class="sys-num">02</span>
+      <div class="sys-icon-wrap">
+        <div class="sys-icon">
+          <svg viewBox="0 0 28 28" stroke="#0096b9" stroke-width="1.3" fill="none" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M14 2 Q20 11 20 15 a6 6 0 0 1-12 0 Q8 11 14 2z"/>
+            <path d="M11 17 Q12.5 15 14 16" stroke-width=".9" opacity=".5"/>
+            <line x1="2" y1="26" x2="26" y2="26" stroke-width="1.5"/>
+            <circle cx="7" cy="26" r="1.2" fill="#23c1c4" stroke="none"/>
+            <circle cx="14" cy="26" r="1.2" fill="#23c1c4" stroke="none"/>
+            <circle cx="21" cy="26" r="1.2" fill="#23c1c4" stroke="none"/>
+            <ellipse cx="22" cy="22" rx="4" ry="2.2" stroke-dasharray="2 1.5" stroke-width=".9"/>
+          </svg>
+        </div>
+      </div>
+      <div class="sys-tuvaluan">Vai Tapu · Vai Koko</div>
+      <div class="sys-name">Water Systems</div>
+      <span class="sys-metric">60,000 L/day capacity</span>
+      <p class="sys-desc">Vai Tapu desalination nodes at 20,000 L/day each, backed by Vai Koko coral-crowned lagoon tanks at up to 20,000 L per unit. Brine recovery yields magnesium and halophyte irrigation.</p>
+      <span class="sys-link">Explore Water →</span>
+    </a>
+
+    <a href="/food" class="sys-card food reveal">
+      <span class="sys-num">03</span>
+      <div class="sys-icon-wrap">
+        <div class="sys-icon">
+          <svg viewBox="0 0 28 28" stroke="#5aaa5a" stroke-width="1.3" fill="none" stroke-linecap="round" stroke-linejoin="round">
+            <polygon points="14,2 22,7 22,17 14,22 6,17 6,7"/>
+            <line x1="14" y1="22" x2="14" y2="13" stroke-width="1.2"/>
+            <path d="M14 17 Q10 14 8 10 Q11 10 14 14"/>
+            <path d="M14 15 Q18 12 20 8 Q17 8 14 12"/>
+            <path d="M3 25 Q6 23 9 25 Q12 27 15 25 Q18 23 21 25 Q24 27 27 25" stroke-width=".9" opacity=".5"/>
+          </svg>
+        </div>
+      </div>
+      <div class="sys-tuvaluan">Te Kai o te Ola · Floating Farm MK1</div>
+      <div class="sys-name">Food Sovereignty</div>
+      <span class="sys-metric">50–75 people per cluster</span>
+      <p class="sys-desc">Modular floating farm clusters — one hex node plus five pods — growing nutrient-dense and culturally relevant crops. Aquaponics integration and Guardian nutrient monitoring.</p>
+      <span class="sys-link">Explore Food →</span>
+    </a>
+
+    <a href="/waste-systems" class="sys-card waste reveal">
+      <span class="sys-num">04</span>
+      <div class="sys-icon-wrap">
+        <div class="sys-icon">
+          <svg viewBox="0 0 28 28" stroke="#8B6FC4" stroke-width="1.3" fill="none" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M14 4 L19 4 L16 7" stroke-width="1.2"/>
+            <path d="M22 10 Q25 14 22 19" stroke-width="1.2"/>
+            <path d="M19 23 L14 23 L16 20" stroke-width="1.2"/>
+            <path d="M10 20 Q6 16 9 11" stroke-width="1.2"/>
+            <path d="M9 7 L12 4" stroke-width="1.2"/>
+            <circle cx="14" cy="14" r="5" stroke-width=".9" stroke-dasharray="2 1.5"/>
+            <circle cx="14" cy="14" r="2" fill="#8B6FC4" stroke="none"/>
+          </svg>
+        </div>
+      </div>
+      <div class="sys-tuvaluan">Te Fenua Fakafoou · The Land Renewed</div>
+      <div class="sys-name">Resource Recovery</div>
+      <span class="sys-metric">Zero-waste design</span>
+      <p class="sys-desc">Decentralised Resource Recovery Nodes transform waste into building materials, biochar, and civic artifacts. Whispering Bin sensor stations, Guardian-linked sorting, community reuse pavilions.</p>
+      <span class="sys-link">Explore Recovery →</span>
+    </a>
+  </div>
+
+  <!-- Row 2 -->
+  <div class="systems-row2">
+
+    <a href="/communications" class="sys-card comms reveal">
+      <span class="sys-num">05</span>
+      <div class="sys-icon-wrap">
+        <div class="sys-icon">
+          <svg viewBox="0 0 28 28" stroke="#23c1c4" stroke-width="1.3" fill="none" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M7 14 a9 9 0 0 1 0-9" stroke-width="1.2"/>
+            <path d="M10 14 a5 5 0 0 1 0-5.5" stroke-width="1.1"/>
+            <path d="M21 14 a9 9 0 0 0 0-9" stroke-width="1.2"/>
+            <path d="M18 14 a5 5 0 0 0 0-5.5" stroke-width="1.1"/>
+            <line x1="14" y1="5" x2="14" y2="26" stroke-width="1.6"/>
+            <line x1="14" y1="9" x2="8" y2="20" stroke-width=".7" opacity=".4"/>
+            <line x1="14" y1="9" x2="20" y2="20" stroke-width=".7" opacity=".4"/>
+            <rect x="10" y="24" width="8" height="3" rx=".8" stroke-width=".9"/>
+          </svg>
+        </div>
+      </div>
+      <div class="sys-tuvaluan">Te Puka Loloa · The Long Shell</div>
+      <div class="sys-name">Communications</div>
+      <span class="sys-metric">4-tier sovereign network</span>
+      <p class="sys-desc">Private mobile core, satellite uplink, community mesh, and emergency radio fallback. Solar-powered nodes, storm-rated to 150 mph, fiber-ready for the Vaka undersea cable.</p>
+      <span class="sys-link">Explore Comms →</span>
+    </a>
+
+    <a href="/ai-overview" class="sys-card ai reveal">
+      <span class="sys-num">06</span>
+      <div class="sys-icon-wrap">
+        <div class="sys-icon">
+          <svg viewBox="0 0 28 28" stroke="#fe5337" stroke-width="1.3" fill="none" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M14 2L4 6.5v7.5c0 6.5 4.3 12.5 10 14 5.7-1.5 10-7.5 10-14V6.5z" stroke-linejoin="round"/>
+            <path d="M10 14l3 3 5-5" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            <line x1="14" y1="2" x2="14" y2="0" stroke-width=".8" opacity=".4"/>
+            <circle cx="14" cy="0" r="1.2" fill="#fe5337" stroke="none" opacity=".5"/>
+          </svg>
+        </div>
+      </div>
+      <div class="sys-tuvaluan">Guardian · Arbor</div>
+      <div class="sys-name">Civic Stewardship AI</div>
+      <span class="sys-metric">On-island · open-source</span>
+      <p class="sys-desc">Guardian monitors all infrastructure in real time. Arbor translates data into Tuvaluan guidance for stewards — privacy-first, auditable by the community council at any time.</p>
+      <span class="sys-link">Explore AI Systems →</span>
+    </a>
+
+    <a href="/civic-infrastructure" class="sys-card civic reveal">
+      <span class="sys-num">07</span>
+      <div class="sys-icon-wrap">
+        <div class="sys-icon">
+          <svg viewBox="0 0 28 28" stroke="#d4a400" stroke-width="1.3" fill="none" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="1" y="16" width="26" height="5" rx="1.2"/>
+            <line x1="1" y1="18.5" x2="27" y2="18.5" stroke-width=".5" opacity=".4"/>
+            <circle cx="7" cy="16" r="1.5" fill="#ffc61d" stroke="none" opacity=".7"/>
+            <circle cx="14" cy="16" r="1.5" fill="#ffc61d" stroke="none" opacity=".7"/>
+            <circle cx="21" cy="16" r="1.5" fill="#ffc61d" stroke="none" opacity=".7"/>
+            <rect x="4" y="8" width="7" height="8" rx=".8"/>
+            <path d="M4 8 L7.5 4 L11 8"/>
+            <rect x="17" y="10" width="7" height="6" rx=".8"/>
+            <path d="M17 10 L20.5 6 L24 10"/>
+            <path d="M1 23 Q4 22 7 23 Q10 24 13 23 Q16 22 19 23 Q22 24 25 23 Q27 23 27 22" stroke-width=".9" opacity=".4"/>
+          </svg>
+        </div>
+      </div>
+      <div class="sys-tuvaluan">Te Ara Kaiga · Civic Conduit Spine</div>
+      <div class="sys-name">Civic Infrastructure</div>
+      <span class="sys-metric">2 km flood-rated spine</span>
+      <p class="sys-desc">Flood-rated conduit spine through Funafuti's core, housing power, water, fibre, and civic services in one integrated trench. Living Seawall with coral nursery integration and smart lighting.</p>
+      <span class="sys-link">Explore Civic Infra →</span>
+    </a>
+
+    <a href="/treasury" class="sys-card treasury reveal">
+      <span class="sys-num">08</span>
+      <div class="sys-icon-wrap">
+        <div class="sys-icon">
+          <svg viewBox="0 0 28 28" stroke="#f7931a" stroke-width="1.3" fill="none" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M9 6h7c2.2 0 3.8 1.1 3.8 3s-1.5 2.6-1.5 2.6 2.2.8 2.2 3.4-1.9 3.8-4.5 3.8H9z"/>
+            <line x1="7" y1="6" x2="7" y2="19" stroke-width="1.4"/>
+            <line x1="9" y1="12" x2="18" y2="12" stroke-width=".8" opacity=".5"/>
+            <line x1="11" y1="3" x2="11" y2="6" stroke-width="1.2"/>
+            <line x1="15" y1="3" x2="15" y2="6" stroke-width="1.2"/>
+            <line x1="11" y1="19" x2="11" y2="22" stroke-width="1.2"/>
+            <line x1="15" y1="19" x2="15" y2="22" stroke-width="1.2"/>
+            <circle cx="14" cy="12.5" r="10" stroke-width=".8" opacity=".2"/>
+            <rect x="20" y="21" width="7" height="5.5" rx=".8" stroke-width="1"/>
+            <path d="M22 21v-1.5a2 2 0 0 1 4 0V21" stroke-width="1" fill="none"/>
+          </svg>
+        </div>
+      </div>
+      <div class="sys-tuvaluan">Te Kete Moni Tāpui · Bitcoin Sovereign Trust</div>
+      <div class="sys-name">Sovereign Treasury</div>
+      <span class="sys-metric">Multi-sig governance</span>
+      <p class="sys-desc">Bitcoin-denominated sovereign reserve with multi-signature governance. Surplus clean energy monetised through civic-owned mining. All transactions publicly visible on-chain.</p>
+      <span class="sys-link">Explore Treasury →</span>
+    </a>
+  </div>
+</section>
+          <!-- Bitcoin B symbol -->
+<!-- ─── INTERDEPENDENCY DIAGRAM ─── -->
+<section class="interdep-section">
+  <div class="interdep-inner">
+    <div class="interdep-header">
+      <div>
+        <div class="section-tag white reveal-left">Systems Integration</div>
+        <h2 class="h2 h2-white reveal">Nothing operates<br><em>in isolation.</em></h2>
+      </div>
+      <p class="interdep-pull reveal">Every system feeds every other. Energy enables water. Water enables food. Food reduces waste. Waste generates energy. Guardian watches all of it — and Arbor tells the people what it sees.</p>
+    </div>
+
+    <div class="diagram-wrap reveal">
+      <svg class="interdep-svg" viewBox="0 0 880 480" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <radialGradient id="bg2" cx="50%" cy="50%" r="50%">
+            <stop offset="0%" stop-color="#00203a"/>
+            <stop offset="100%" stop-color="#00152a"/>
+          </radialGradient>
+          <filter id="glow2" x="-30%" y="-30%" width="160%" height="160%">
+            <feGaussianBlur stdDeviation="2" result="b"/>
+            <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+          </filter>
+          <marker id="arr" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto">
+            <path d="M0,0 L6,3 L0,6 Z" fill="rgba(35,193,196,.5)"/>
+          </marker>
+          <marker id="arr-g2" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto">
+            <path d="M0,0 L6,3 L0,6 Z" fill="rgba(255,198,29,.5)"/>
+          </marker>
+        </defs>
+        <rect width="880" height="480" fill="url(#bg2)" rx="4"/>
+
+        <!-- ── GUARDIAN CENTRE ── -->
+        <circle cx="440" cy="240" r="52" fill="none" stroke="rgba(254,83,55,.2)" stroke-width="1" stroke-dasharray="4 4">
+          <animateTransform attributeName="transform" type="rotate" values="0 440 240;360 440 240" dur="30s" repeatCount="indefinite"/>
+        </circle>
+        <circle cx="440" cy="240" r="38" fill="rgba(13,64,112,.6)" stroke="rgba(35,193,196,.4)" stroke-width="1"/>
+        <circle cx="440" cy="240" r="26" fill="rgba(13,64,112,.8)" stroke="rgba(35,193,196,.25)" stroke-width="1"/>
+        <!-- Guardian shield icon -->
+        <path d="M440 212 l-14 5.5v11c0 8 5.5 15 14 17 8.5-2 14-9 14-17v-11z" fill="none" stroke="rgba(255,255,255,.8)" stroke-width="1.5" stroke-linejoin="round"/>
+        <path d="M434 229l3.5 3.5 7-7" stroke="rgba(255,255,255,.9)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+        <text x="440" y="258" font-family="Questrial,sans-serif" font-size="7.5" letter-spacing="2" fill="rgba(35,193,196,.8)" text-anchor="middle">GUARDIAN</text>
+
+        <!-- ── SYSTEM NODES ── -->
+        <!-- Energy — top -->
+        <g transform="translate(440,60)">
+          <circle cx="0" cy="0" r="30" fill="rgba(13,64,112,.8)" stroke="rgba(255,198,29,.5)" stroke-width="1.2"/>
+          <path d="M0,-16 L-8,4 L-2,4 L-4,16 L8,0 L2,0 Z" fill="#ffc61d" stroke="none" opacity=".9"/>
+          <text x="0" y="44" font-family="Questrial,sans-serif" font-size="7.5" letter-spacing="1.5" fill="rgba(255,198,29,.7)" text-anchor="middle">ENERGY</text>
+        </g>
+
+        <!-- Water — top-right -->
+        <g transform="translate(620,110)">
+          <circle cx="0" cy="0" r="28" fill="rgba(13,64,112,.8)" stroke="rgba(35,193,196,.5)" stroke-width="1.2"/>
+          <path d="M0,-14 Q10,0 10,7 a10 10 0 0 1-20 0 Q-10,0 0,-14z" fill="none" stroke="#23c1c4" stroke-width="1.5"/>
+          <text x="0" y="42" font-family="Questrial,sans-serif" font-size="7.5" letter-spacing="1.5" fill="rgba(35,193,196,.7)" text-anchor="middle">WATER</text>
+        </g>
+
+        <!-- Food — right -->
+        <g transform="translate(700,240)">
+          <circle cx="0" cy="0" r="28" fill="rgba(13,64,112,.8)" stroke="rgba(90,170,90,.5)" stroke-width="1.2"/>
+          <line x1="0" y1="12" x2="0" y2="-4" stroke="#5aaa5a" stroke-width="1.5"/>
+          <path d="M0 2 Q-8,-4 -10,-10 Q-4,-8 0,-4"/>
+          <path d="M0 0 Q8,-6 10,-12 Q4,-10 0,-4" stroke="#5aaa5a" stroke-width="1.3" fill="none"/>
+          <text x="0" y="42" font-family="Questrial,sans-serif" font-size="7.5" letter-spacing="1.5" fill="rgba(90,170,90,.7)" text-anchor="middle">FOOD</text>
+        </g>
+
+        <!-- Waste — bottom-right -->
+        <g transform="translate(620,370)">
+          <circle cx="0" cy="0" r="28" fill="rgba(13,64,112,.8)" stroke="rgba(139,111,196,.5)" stroke-width="1.2"/>
+          <path d="M0,-12 L12,-6 L12,8 L0,14 L-12,8 L-12,-6z" fill="none" stroke="#8B6FC4" stroke-width="1.2"/>
+          <circle cx="0" cy="0" r="4" fill="#8B6FC4" stroke="none" opacity=".7"/>
+          <text x="0" y="42" font-family="Questrial,sans-serif" font-size="7.5" letter-spacing="1.5" fill="rgba(139,111,196,.7)" text-anchor="middle">WASTE</text>
+        </g>
+
+        <!-- Comms — bottom -->
+        <g transform="translate(440,415)">
+          <circle cx="0" cy="0" r="28" fill="rgba(13,64,112,.8)" stroke="rgba(35,193,196,.4)" stroke-width="1.2"/>
+          <path d="M0,-14 a12,12 0 0,1 0,12" fill="none" stroke="#23c1c4" stroke-width="1.3"/>
+          <path d="M0,-14 a7,7 0 0,0 0,8" fill="none" stroke="#23c1c4" stroke-width="1"/>
+          <line x1="0" y1="-2" x2="0" y2="12" stroke="#23c1c4" stroke-width="1.5" stroke-linecap="round"/>
+          <text x="0" y="42" font-family="Questrial,sans-serif" font-size="7.5" letter-spacing="1.5" fill="rgba(35,193,196,.7)" text-anchor="middle">COMMS</text>
+        </g>
+
+        <!-- Civic — bottom-left -->
+        <g transform="translate(260,370)">
+          <circle cx="0" cy="0" r="28" fill="rgba(13,64,112,.8)" stroke="rgba(255,198,29,.4)" stroke-width="1.2"/>
+          <rect x="-12" y="-2" width="24" height="8" rx="1" stroke="#ffc61d" stroke-width="1" fill="none"/>
+          <rect x="-6" y="-10" width="12" height="8" rx="1" stroke="#ffc61d" stroke-width="1" fill="none"/>
+          <line x1="-14" y1="6" x2="14" y2="6" stroke="#ffc61d" stroke-width="1.5" stroke-linecap="round"/>
+          <text x="0" y="42" font-family="Questrial,sans-serif" font-size="7.5" letter-spacing="1.5" fill="rgba(255,198,29,.7)" text-anchor="middle">CIVIC</text>
+        </g>
+
+        <!-- Treasury — left -->
+        <g transform="translate(180,240)">
+          <circle cx="0" cy="0" r="28" fill="rgba(13,64,112,.8)" stroke="rgba(247,147,26,.45)" stroke-width="1.2"/>
+          <text x="0" y="5" font-family="Cormorant Garamond,serif" font-size="22" font-weight="300" fill="rgba(247,147,26,.8)" text-anchor="middle">₿</text>
+          <text x="0" y="42" font-family="Questrial,sans-serif" font-size="7.5" letter-spacing="1.5" fill="rgba(247,147,26,.6)" text-anchor="middle">TREASURY</text>
+        </g>
+
+        <!-- Arbor — top-left -->
+        <g transform="translate(260,110)">
+          <circle cx="0" cy="0" r="28" fill="rgba(13,64,112,.8)" stroke="rgba(35,193,196,.35)" stroke-width="1.2"/>
+          <!-- Tree branches -->
+          <line x1="0" y1="12" x2="0" y2="-2" stroke="#23c1c4" stroke-width="1.5" stroke-linecap="round"/>
+          <line x1="0" y1="4" x2="-8" y2="-4" stroke="#23c1c4" stroke-width="1.2" stroke-linecap="round"/>
+          <line x1="0" y1="0" x2="8" y2="-8" stroke="#23c1c4" stroke-width="1.2" stroke-linecap="round"/>
+          <line x1="-8" y1="-4" x2="-12" y2="-10" stroke="#23c1c4" stroke-width=".9" stroke-linecap="round"/>
+          <line x1="8" y1="-8" x2="12" y2="-14" stroke="#23c1c4" stroke-width=".9" stroke-linecap="round"/>
+          <text x="0" y="42" font-family="Questrial,sans-serif" font-size="7.5" letter-spacing="1.5" fill="rgba(35,193,196,.7)" text-anchor="middle">ARBOR</text>
+        </g>
+
+        <!-- ── CONNECTION LINES ── -->
+        <!-- Energy → Guardian -->
+        <line x1="440" y1="90" x2="440" y2="188" stroke="rgba(255,198,29,.4)" stroke-width="1.5" marker-end="url(#arr-g2)"/>
+        <!-- Guardian → Water -->
+        <line x1="476" y1="218" x2="593" y2="130" stroke="rgba(35,193,196,.35)" stroke-width="1" stroke-dasharray="5 3" marker-end="url(#arr)"/>
+        <!-- Guardian → Food -->
+        <line x1="481" y1="240" x2="672" y2="240" stroke="rgba(90,170,90,.3)" stroke-width="1" stroke-dasharray="5 3"/>
+        <!-- Guardian → Waste -->
+        <line x1="476" y1="262" x2="593" y2="350" stroke="rgba(139,111,196,.3)" stroke-width="1" stroke-dasharray="5 3"/>
+        <!-- Guardian → Comms -->
+        <line x1="440" y1="292" x2="440" y2="387" stroke="rgba(35,193,196,.35)" stroke-width="1.5" marker-end="url(#arr)"/>
+        <!-- Guardian → Civic -->
+        <line x1="404" y1="262" x2="287" y2="350" stroke="rgba(255,198,29,.3)" stroke-width="1" stroke-dasharray="5 3"/>
+        <!-- Guardian → Treasury -->
+        <line x1="399" y1="240" x2="208" y2="240" stroke="rgba(247,147,26,.3)" stroke-width="1" stroke-dasharray="5 3"/>
+        <!-- Guardian → Arbor -->
+        <line x1="404" y1="218" x2="287" y2="130" stroke="rgba(35,193,196,.3)" stroke-width="1" stroke-dasharray="5 3" marker-end="url(#arr)"/>
+        <!-- Energy → Water -->
+        <line x1="468" y1="72" x2="593" y2="97" stroke="rgba(255,198,29,.25)" stroke-width="1"/>
+        <!-- Water → Food -->
+        <line x1="648" y1="118" x2="676" y2="213" stroke="rgba(35,193,196,.25)" stroke-width="1"/>
+        <!-- Food → Waste -->
+        <line x1="700" y1="268" x2="648" y2="342" stroke="rgba(90,170,90,.25)" stroke-width="1"/>
+        <!-- Waste → Civic -->
+        <line x1="593" y1="374" x2="287" y2="374" stroke="rgba(139,111,196,.2)" stroke-width="1"/>
+        <!-- Civic → Treasury -->
+        <line x1="233" y1="360" x2="197" y2="268" stroke="rgba(255,198,29,.2)" stroke-width="1"/>
+        <!-- Comms → Arbor (mesh connects all) -->
+        <line x1="413" y1="415" x2="279" y2="135" stroke="rgba(35,193,196,.15)" stroke-width="1" stroke-dasharray="3 5"/>
+
+        <!-- Animated data packets: Energy → Guardian -->
+        <circle r="3" fill="#ffc61d" opacity="0">
+          <animateMotion dur="1.8s" repeatCount="indefinite" begin="0s" path="M440,90 L440,188"/>
+          <animate attributeName="opacity" values="0;.9;.9;0" dur="1.8s" repeatCount="indefinite"/>
+        </circle>
+
+        <!-- Packet: Guardian → Comms -->
+        <circle r="2.5" fill="#23c1c4" opacity="0" filter="url(#glow2)">
+          <animateMotion dur="1.4s" repeatCount="indefinite" begin="0.5s" path="M440,292 L440,387"/>
+          <animate attributeName="opacity" values="0;1;1;0" dur="1.4s" repeatCount="indefinite" begin="0.5s"/>
+        </circle>
+
+        <!-- Packet: Guardian → Water -->
+        <circle r="2" fill="#23c1c4" opacity="0">
+          <animateMotion dur="1.6s" repeatCount="indefinite" begin="0.3s" path="M476,218 L593,130"/>
+          <animate attributeName="opacity" values="0;.8;.8;0" dur="1.6s" repeatCount="indefinite" begin="0.3s"/>
+        </circle>
+
+        <!-- Packet: Energy → Water -->
+        <circle r="2" fill="#ffc61d" opacity="0">
+          <animateMotion dur="2s" repeatCount="indefinite" begin="1s" path="M468,72 L593,97"/>
+          <animate attributeName="opacity" values="0;.7;.7;0" dur="2s" repeatCount="indefinite" begin="1s"/>
+        </circle>
+
+        <!-- Packet: Guardian → Treasury -->
+        <circle r="2" fill="rgba(247,147,26,.8)" opacity="0">
+          <animateMotion dur="2.2s" repeatCount="indefinite" begin="0.8s" path="M399,240 L208,240"/>
+          <animate attributeName="opacity" values="0;.8;.8;0" dur="2.2s" repeatCount="indefinite" begin="0.8s"/>
+        </circle>
+
+        <!-- Pulsing Guardian ring -->
+        <circle cx="440" cy="240" r="52" fill="none" stroke="rgba(35,193,196,.15)" stroke-width="1" opacity="0">
+          <animate attributeName="r" values="52;80;52" dur="3s" repeatCount="indefinite"/>
+          <animate attributeName="opacity" values="0;.4;0" dur="3s" repeatCount="indefinite"/>
+        </circle>
+
+        <!-- Node status blips -->
+        <circle cx="440" cy="60" r="3" fill="#ffc61d" opacity=".6">
+          <animate attributeName="opacity" values=".6;.1;.6" dur="2.5s" repeatCount="indefinite"/>
+        </circle>
+        <circle cx="620" cy="110" r="3" fill="#23c1c4" opacity=".6">
+          <animate attributeName="opacity" values=".6;.1;.6" dur="2.5s" begin="0.5s" repeatCount="indefinite"/>
+        </circle>
+        <circle cx="700" cy="240" r="3" fill="#5aaa5a" opacity=".6">
+          <animate attributeName="opacity" values=".6;.1;.6" dur="2.5s" begin="1s" repeatCount="indefinite"/>
+        </circle>
+        <circle cx="620" cy="370" r="3" fill="#8B6FC4" opacity=".6">
+          <animate attributeName="opacity" values=".6;.1;.6" dur="2.5s" begin="1.5s" repeatCount="indefinite"/>
+        </circle>
+        <circle cx="440" cy="415" r="3" fill="#23c1c4" opacity=".6">
+          <animate attributeName="opacity" values=".6;.1;.6" dur="2.5s" begin="2s" repeatCount="indefinite"/>
+        </circle>
+        <circle cx="260" cy="370" r="3" fill="#ffc61d" opacity=".6">
+          <animate attributeName="opacity" values=".6;.1;.6" dur="2.5s" begin="0.8s" repeatCount="indefinite"/>
+        </circle>
+        <circle cx="180" cy="240" r="3" fill="rgba(247,147,26,.8)" opacity=".6">
+          <animate attributeName="opacity" values=".6;.1;.6" dur="2.5s" begin="1.2s" repeatCount="indefinite"/>
+        </circle>
+        <circle cx="260" cy="110" r="3" fill="#23c1c4" opacity=".5">
+          <animate attributeName="opacity" values=".5;.1;.5" dur="2.5s" begin="1.7s" repeatCount="indefinite"/>
+        </circle>
+
+        <!-- Caption -->
+        <text x="440" y="472" font-family="Questrial,sans-serif" font-size="7" letter-spacing="2" fill="rgba(255,255,255,.2)" text-anchor="middle">SYSTEM INTERDEPENDENCY MAP · Guardian at centre · all systems interconnected</text>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<!-- ─── HOW IT WORKS ─── -->
+<section class="how-section" id="how">
+  <div class="how-inner">
+    <div class="section-tag white reveal-left">Design Principles</div>
+    <h2 class="h2 h2-white reveal">Built different.<br><em>By design.</em></h2>
+    <div class="how-grid">
+      <div class="how-card reveal">
+        <div class="how-icon">
+          <svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
+        </div>
+        <div class="how-n">01</div>
+        <div class="how-title">Modular by nature</div>
+        <p class="how-desc">Every system is independently deployable. A village can start with a single desalination node and a solar array. The rest can follow when resources allow. Nothing requires the whole stack to function — but everything is designed to integrate when the time comes.</p>
+      </div>
+      <div class="how-card reveal">
+        <div class="how-icon">
+          <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg>
+        </div>
+        <div class="how-n">02</div>
+        <div class="how-title">Sovereign by default</div>
+        <p class="how-desc">No foreign cloud. No external carrier contract. No proprietary lock-in. Every system runs on open-source software, locally-held hardware, and community-controlled governance. Guardian's audit trail belongs to Tuvalu — not to any vendor or platform.</p>
+      </div>
+      <div class="how-card reveal">
+        <div class="how-icon">
+          <svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+        </div>
+        <div class="how-n">03</div>
+        <div class="how-title">Culturally load-bearing</div>
+        <p class="how-desc">Tuvaluan naming, ritual integration, blessing ceremonies, and Arbor interfaces in Te Gana Tuvalu are not decorative. They are the adoption mechanism. A system the community does not recognize as their own will not be maintained, defended, or improved by them.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── PHASED DEPLOYMENT ─── -->
+<section class="phases-section">
+  <div class="phases-inner">
+    <div class="section-tag reveal-left">Deployment Roadmap</div>
+    <h2 class="h2 reveal">Staged across<br>the <em>full stack.</em></h2>
+    <div class="phases-grid">
+      <div class="phase-card reveal">
+        <div class="phase-n">01</div>
+        <div class="phase-label">Phase 1 · Funafuti Core</div>
+        <div class="phase-title">Foundation Nodes</div>
+        <ul class="phase-list">
+          <li>1 MW floating solar array deployed</li>
+          <li>Grid-scale battery storage online</li>
+          <li>3 Vai Tapu desalination units</li>
+          <li>Te Puka Loloa comms node × 10</li>
+          <li>Floating farm cluster Phase 1</li>
+          <li>2 km Energy Spine construction</li>
+          <li>Guardian monitoring-only mode</li>
+        </ul>
+      </div>
+      <div class="phase-card reveal">
+        <div class="phase-n">02</div>
+        <div class="phase-label">Phase 2 · Integration</div>
+        <div class="phase-title">Civic Systems Online</div>
+        <ul class="phase-list">
+          <li>Resource Recovery Node deployed</li>
+          <li>Civic Kiosks and Arbor terminals</li>
+          <li>Vai Koko lagoon tank network</li>
+          <li>Living Seawall coral integration</li>
+          <li>Guardian civic recommendations active</li>
+          <li>Youth steward training programme</li>
+          <li>Bitcoin treasury operations begin</li>
+        </ul>
+      </div>
+      <div class="phase-card reveal">
+        <div class="phase-n">03</div>
+        <div class="phase-label">Phase 3 · Outer Islands</div>
+        <div class="phase-title">Archipelago Expansion</div>
+        <ul class="phase-list">
+          <li>Outer island comms nodes deployed</li>
+          <li>Satellite uplink on maritime docks</li>
+          <li>Distributed farm clusters scaled</li>
+          <li>Vaka undersea cable integration</li>
+          <li>Guardian automation with consent</li>
+          <li>Inter-island data mesh active</li>
+          <li>Surplus energy monetisation scaled</li>
+        </ul>
+      </div>
+      <div class="phase-card reveal">
+        <div class="phase-n">04</div>
+        <div class="phase-label">Phase 4 · Full Sovereignty</div>
+        <div class="phase-title">Mature &amp; Replicable</div>
+        <ul class="phase-list">
+          <li>Kronos MMR regulatory pathway</li>
+          <li>20-year baseload energy secured</li>
+          <li>Full Guardian adaptive maturity</li>
+          <li>Digital Archipelago Accord active</li>
+          <li>Open-source blueprint published</li>
+          <li>Allied nations begin replication</li>
+          <li>Tuvalu as a model for SIDS globally</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── GUARDIAN INTEGRATION ─── -->
+<section class="guardian-section">
+  <div class="guardian-inner">
+    <div>
+      <div class="section-tag teal reveal-left">AI Stewardship</div>
+      <h2 class="h2 reveal">Guardian watches<br>over <em>all of it.</em></h2>
+      <p class="body-text reveal" style="margin-top:1rem;">Guardian is not a product. It is a civic covenant — an AI framework embedded directly into Tuvalu's infrastructure, governed by the community, and answerable to the people it serves.</p>
+
+      <div class="guardian-features">
+        <div class="g-feat reveal">Monitors energy, water, food, comms, and waste simultaneously</div>
+        <div class="g-feat reveal">Issues predictive alerts before failures occur</div>
+        <div class="g-feat reveal">Triggers storm protocols automatically across all systems</div>
+        <div class="g-feat reveal">Manages VLAN isolation for network sovereignty</div>
+        <div class="g-feat reveal">Full audit trail — every decision is locally logged</div>
+        <div class="g-feat reveal">Governed by the community council, not a vendor</div>
+        <div class="g-feat reveal">Arbor translates all data into Tuvaluan for stewards</div>
+        <div class="g-feat reveal">Offline-first — functions without internet connectivity</div>
+      </div>
+      <a href="/ai-overview" class="btn-outline-navy reveal">Explore the AI Systems</a>
+    </div>
+
+    <div class="guardian-visual reveal">
+      <div class="guardian-vis-inner">
+        <div class="g-ring g-ring-1"></div>
+        <div class="g-ring g-ring-2"></div>
+        <div class="g-ring g-ring-3"></div>
+        <div class="g-core">
+          <svg width="48" height="48" viewBox="0 0 48 48" fill="none">
+            <path d="M24 4L8 11v13c0 10.5 6.9 20.3 16 23 9.1-2.7 16-12.5 16-23V11L24 4z" stroke="rgba(255,255,255,.9)" stroke-width="1.5" stroke-linejoin="round"/>
+            <path d="M18 24l4 4 8-8" stroke="rgba(255,255,255,.9)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+            <circle cx="24" cy="24" r="3" fill="rgba(35,193,196,.4)"/>
+          </svg>
+        </div>
+        <!-- Orbit particles -->
+        <div style="position:absolute;inset:13%;border-radius:50%;animation:gSpin 31s linear infinite reverse;pointer-events:none;">
+          <div style="position:absolute;top:-4px;left:50%;transform:translateX(-50%);width:8px;height:8px;border-radius:50%;background:var(--gold);box-shadow:0 0 6px rgba(255,198,29,.6);"></div>
+        </div>
+        <div style="position:absolute;inset:0;border-radius:50%;animation:gSpin 44s linear infinite;pointer-events:none;">
+          <div style="position:absolute;top:-3.5px;left:50%;transform:translateX(-50%);width:7px;height:7px;border-radius:50%;background:var(--teal);box-shadow:0 0 6px rgba(35,193,196,.6);"></div>
+        </div>
+        <div style="position:absolute;inset:26%;border-radius:50%;animation:gSpin 20s linear infinite reverse;pointer-events:none;">
+          <div style="position:absolute;top:-3px;left:50%;transform:translateX(-50%);width:6px;height:6px;border-radius:50%;background:var(--coral);box-shadow:0 0 5px rgba(254,83,55,.5);"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── REPLICATION ─── -->
+<section class="rep-section">
+  <div class="rep-inner">
+    <div>
+      <div class="section-tag reveal-left">Open Replication</div>
+      <h2 class="h2 reveal">Tuvalu first.<br>Then <em>every island.</em></h2>
+      <p class="body-text reveal" style="margin-top:1rem;">The Sovereign Vision is designed to be replicable. Not copied — adapted. Every community has its own values, language, and ecology. The architecture accommodates that. The Civic Commons License makes it freely available to any aligned community, anywhere.</p>
+
+      <div class="rep-tag-grid">
+        <div class="rep-tag reveal"><div class="rep-tag-dot"></div>Pacific Island Nations</div>
+        <div class="rep-tag reveal"><div class="rep-tag-dot"></div>Maldives &amp; Indian Ocean</div>
+        <div class="rep-tag reveal"><div class="rep-tag-dot"></div>Caribbean Communities</div>
+        <div class="rep-tag reveal"><div class="rep-tag-dot"></div>Coastal Bangladesh</div>
+        <div class="rep-tag reveal"><div class="rep-tag-dot"></div>Marshall Islands</div>
+        <div class="rep-tag reveal"><div class="rep-tag-dot"></div>Kiribati &amp; Micronesia</div>
+      </div>
+    </div>
+
+    <div>
+      <div class="licence-box reveal">
+        <div class="licence-box-tag">Civic Commons License v1.0</div>
+        <div class="licence-box-title">Open replication.<br>No restrictions.</div>
+        <div class="licence-box-body">All technical documentation, white papers, system designs, and governance frameworks are freely available for adaptation and replication by aligned communities worldwide. Attribution required. No commercial enclosure permitted.</div>
+        <a href="/civic-commons-license" class="btn-coral" style="display:inline-block;">Read the License</a>
+      </div>
+      <div style="margin-top:1.5rem;" class="reveal">
+        <a href="/digitalarchipelago" class="btn-outline-navy" style="display:block;text-align:center;">Digital Archipelago Accord</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── TRUST STRIP ─── -->
+<div class="trust-strip">
+  <div class="trust-strip-inner">
+    <div class="trust-item">
+      <div class="trust-item-icon">
+        <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg>
+      </div>
+      <div class="trust-item-text"><strong>Guardian-Managed</strong>All systems AI-monitored</div>
+    </div>
+    <div class="trust-div"></div>
+    <div class="trust-item">
+      <div class="trust-item-icon">
+        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
+      </div>
+      <div class="trust-item-text"><strong>Phase 1 Active</strong>Deployment underway</div>
+    </div>
+    <div class="trust-div"></div>
+    <div class="trust-item">
+      <div class="trust-item-icon">
+        <svg viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
+      </div>
+      <div class="trust-item-text"><strong>Data Sovereignty</strong>Zero foreign cloud</div>
+    </div>
+    <div class="trust-div"></div>
+    <div class="trust-item">
+      <div class="trust-item-icon">
+        <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+      </div>
+      <div class="trust-item-text"><strong>9 White Papers</strong>Full technical documentation</div>
+    </div>
+    <div class="trust-div"></div>
+    <div class="trust-item">
+      <div class="trust-item-icon">
+        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 010 20M12 2a15.3 15.3 0 000 20"/></svg>
+      </div>
+      <div class="trust-item-text"><strong>Open License</strong>Civic Commons v1.0</div>
+    </div>
+  </div>
+</div>
+
+<!-- ─── JOIN CTA ─── -->
+<section class="join-section">
+  <div class="join-inner">
+    <div class="section-tag white reveal" style="justify-content:center;">Join the Circle</div>
+    <h2 class="join-h2 reveal">There is a place<br>in this work <em>for you.</em></h2>
+    <p class="join-body reveal">We invite engineers, climate advocates, island governments, and aligned institutions to join us. Whether you bring technical expertise, policy access, cultural knowledge, or funding — we want to hear from you.</p>
+    <div class="join-actions reveal">
+      <a href="/contact" class="btn-white">Contact the Trust</a>
+      <a href="/who-we-are-looking-for" class="btn-ghost-white">Who We're Looking For</a>
+    </div>
+  </div>
+</section>
+
+<!-- ─── FOOTER ─── -->
+<footer>
+  <div class="footer-top">
+    <div>
+      <a href="/" class="footer-logo-wrap">
+        <img src="images/logo-trans.png" alt="Sovereign Vision">
+        <span class="footer-logo-name">Sovereign Vision</span>
+      </a>
+      <p class="footer-desc">A comprehensive sovereign civilization infrastructure stack for Tuvalu — and an open-source blueprint for climate-vulnerable communities worldwide.</p>
+      <a href="mailto:trust@sovereignvision.org" class="footer-email">trust@sovereignvision.org</a>
+    </div>
+    <div>
+      <div class="footer-col-h">Core Systems</div>
+      <ul class="footer-links">
+        <li><a href="/energy">Power Generation</a></li>
+        <li><a href="/water-systems">Water Systems</a></li>
+        <li><a href="/food">Food Sovereignty</a></li>
+        <li><a href="/communications">Communications</a></li>
+        <li><a href="/waste-systems">Resource Recovery</a></li>
+        <li><a href="/civic-infrastructure">Civic Infrastructure</a></li>
+        <li><a href="/treasury">Sovereign Treasury</a></li>
+        <li><a href="/ai-overview">Civic Stewardship</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-col-h">About &amp; Governance</div>
+      <ul class="footer-links">
+        <li><a href="/about-us">About Us</a></li>
+        <li><a href="/continuity-vs-reinvention">Continuity vs Reinvention</a></li>
+        <li><a href="/elders-council">Elders Council</a></li>
+        <li><a href="/youth-voice">Youth Voice</a></li>
+        <li><a href="/how-it-works">How It Works</a></li>
+        <li><a href="/faq">FAQ</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-col-h">Legal &amp; Project</div>
+      <ul class="footer-links">
+        <li><a href="/legal-licensing">Legal &amp; Licensing</a></li>
+        <li><a href="/civic-commons-license">Civic Commons License</a></li>
+        <li><a href="/digitalarchipelago">Digital Archipelago Accord</a></li>
+        <li><a href="/trust-formation-status">Trust Formation Status</a></li>
+        <li><a href="/terms">Terms of Use</a></li>
+        <li><a href="/privacy-policy">Privacy Policy</a></li>
+        <li><a href="/copyright-notice">Copyright Notice</a></li>
+        <li><a href="/contact">Contact</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div class="footer-copy">© 2026 Tuvalu Sovereign Vision Stewardship Trust · All content protected under the Civic Commons License v1.0 · sovereignvision.org</div>
+    <div class="footer-socials">
+      <a href="https://github.com/sovereign-vision-org" target="_blank" rel="noopener">GitHub</a>
+      <a href="http://linkedin.com/company/sovereign-vision-project" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="https://www.instagram.com/tuvalu_vision_project" target="_blank" rel="noopener">Instagram</a>
+    </div>
+  </div>
+</footer>
+
+<!-- ─── JS ─── -->
+<script>
+/* Nav */
+const nav = document.getElementById('nav');
+window.addEventListener('scroll', () => { nav.classList.toggle('scrolled', window.scrollY > 60); }, { passive: true });
+
+/* Mobile menu */
+const hamburger = document.getElementById('hamburger');
+const mobileMenu = document.getElementById('mobile-menu');
+let menuOpen = false;
+function closeMobile() {
+  menuOpen = false;
+  hamburger.classList.remove('open');
+  mobileMenu.classList.remove('open');
+  document.body.style.overflow = '';
+  hamburger.setAttribute('aria-expanded', 'false');
+}
+hamburger.addEventListener('click', () => {
+  menuOpen ? closeMobile() : (() => {
+    menuOpen = true;
+    hamburger.classList.add('open');
+    mobileMenu.classList.add('open');
+    document.body.style.overflow = 'hidden';
+    hamburger.setAttribute('aria-expanded', 'true');
+  })();
+});
+document.addEventListener('keydown', e => { if (e.key === 'Escape' && menuOpen) closeMobile(); });
+
+/* Wave canvas — dual layer */
+const canvas = document.getElementById('wave-canvas');
+const ctx = canvas.getContext('2d');
+const canvas2 = document.getElementById('wave-canvas-2');
+const ctx2 = canvas2.getContext('2d');
+let W = 0, H = 0, t = 0;
+const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+function resizeCanvas() {
+  const hero = canvas.parentElement;
+  W = hero.offsetWidth; H = hero.offsetHeight;
+  canvas.width = W; canvas.height = H;
+  canvas2.width = W; canvas2.height = H;
+}
+resizeCanvas();
+new ResizeObserver(resizeCanvas).observe(document.querySelector('.page-hero'));
+const waves1 = [
+  { amp: 26, freq: .006,  speed: .22, yF: .52, color: 'rgba(35,193,196,.55)', lw: 1.8 },
+  { amp: 16, freq: .010,  speed: .38, yF: .62, color: 'rgba(35,193,196,.35)', lw: 1.2 },
+  { amp: 32, freq: .004,  speed: .15, yF: .72, color: 'rgba(35,193,196,.22)', lw: 1.4 },
+  { amp: 18, freq: .008,  speed: .30, yF: .44, color: 'rgba(255,198,29,.22)', lw: 0.8 },
+];
+const waves2 = [
+  { amp: 40, freq: .0035, speed: .12, yF: .38, color: 'rgba(35,193,196,.18)', lw: 1.6 },
+  { amp: 22, freq: .007,  speed: .28, yF: .58, color: 'rgba(254,83,55,.14)',  lw: 1.0 },
+  { amp: 14, freq: .013,  speed: .50, yF: .68, color: 'rgba(35,193,196,.28)', lw: 0.9 },
+];
+(function draw() {
+  ctx.clearRect(0, 0, W, H);
+  ctx2.clearRect(0, 0, W, H);
+  if (!reduced) {
+    waves1.forEach(w => {
+      ctx.beginPath(); ctx.lineWidth = w.lw; ctx.strokeStyle = w.color;
+      for (let x = 0; x <= W; x += 3) {
+        const y = H * w.yF + Math.sin(x * w.freq + t * w.speed) * w.amp + Math.sin(x * w.freq * 1.7 + t * w.speed * .6) * (w.amp * .42);
+        x === 0 ? ctx.moveTo(x, y) : ctx.lineTo(x, y);
+      }
+      ctx.stroke();
+    });
+    waves2.forEach(w => {
+      ctx2.beginPath(); ctx2.lineWidth = w.lw; ctx2.strokeStyle = w.color;
+      for (let x = 0; x <= W; x += 3) {
+        const y = H * w.yF + Math.sin(x * w.freq + t * w.speed + 1.2) * w.amp + Math.sin(x * w.freq * 2.1 + t * w.speed * .8) * (w.amp * .35);
+        x === 0 ? ctx2.moveTo(x, y) : ctx2.lineTo(x, y);
+      }
+      ctx2.stroke();
+    });
+    t += .85;
+  }
+  requestAnimationFrame(draw);
+})();
+
+/* Stagger reveal delays */
+[
+  ['.systems-grid .sys-card',  i => `${(i % 4) * .1}s`],
+  ['.systems-row2 .sys-card', i => `${(i % 4) * .1}s`],
+  ['.how-grid .how-card',     i => `${i * .12}s`],
+  ['.phases-grid .phase-card',i => `${i * .1}s`],
+  ['.guardian-features .g-feat', i => `${i * .05}s`],
+  ['.intro-stats .stat',      i => `${i * .08}s`],
+  ['.rep-tag-grid .rep-tag',  i => `${i * .06}s`],
+].forEach(([sel, fn]) => {
+  document.querySelectorAll(sel).forEach((el, i) => { el.style.transitionDelay = fn(i); });
+});
+
+const io = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); } });
+}, { threshold: 0.12 });
+document.querySelectorAll('.reveal, .reveal-left').forEach(el => io.observe(el));
+</script>
+
+</body>
+</html>
