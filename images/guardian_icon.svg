@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg data-bbox="30 20 40 70" xmlns="http://www.w3.org/2000/svg" width="100" height="100" data-type="ugc">
+    <g>
+        <path stroke-width="2" stroke="#e76f51" fill="#f4a261" d="m50 20 20 20-20 50-20-50z"/>
+        <path fill="#e76f51" d="M54 45a4 4 0 1 1-8 0 4 4 0 0 1 8 0"/>
+    </g>
+</svg>
