@@ -1,0 +1,1504 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Te Puka Loloa — Tuvalu's sovereign hybrid communications network. A four-tier, storm-hardened, solar-powered backbone. Tuvalu Sovereign Vision.">
+<title>Communications — Te Puka Loloa · Sovereign Vision</title>
+<link rel="icon" type="image/png" href="images/favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Questrial&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet">
+
+<style>
+/* ═══════════════════════════════════════════════
+   DESIGN TOKENS
+   Coral #fe5337  Gold #ffc61d  Teal #23c1c4  Navy #002b4b
+═══════════════════════════════════════════════ */
+:root {
+  --coral:        #fe5337;
+  --coral-dim:    #c9402a;
+  --coral-pale:   rgba(254,83,55,0.08);
+  --gold:         #ffc61d;
+  --gold-dim:     #d4a400;
+  --gold-pale:    rgba(255,198,29,0.10);
+  --teal:         #23c1c4;
+  --teal-dim:     #0096b9;
+  --teal-pale:    rgba(35,193,196,0.09);
+  --navy:         #002b4b;
+  --navy-mid:     #00203a;
+  --navy-deep:    #00152a;
+  --navy-light:   #0d4070;
+  --cream:        #faf6ee;
+  --cream-mid:    #f2ead8;
+  --cream-dark:   #e8ddc8;
+  --stone:        #4a5568;
+  --stone-light:  #718096;
+  --white:        #ffffff;
+  --text-on-dark: rgba(250,246,238,0.70);
+  --text-dimmer:  rgba(250,246,238,0.40);
+  --border-light: rgba(0,43,75,0.10);
+  --border-gold:  rgba(255,198,29,0.18);
+  --border-teal:  rgba(35,193,196,0.20);
+  --ease:         cubic-bezier(0.22,1,0.36,1);
+}
+@media (prefers-reduced-motion: reduce) {
+  *,*::before,*::after { animation-duration:.01ms!important; transition-duration:.01ms!important; }
+  .reveal { opacity:1!important; transform:none!important; }
+}
+*,*::before,*::after { box-sizing:border-box; margin:0; padding:0; }
+html { scroll-behavior:smooth; }
+body {
+  background: var(--cream);
+  color: var(--navy);
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 300;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ═══ NAV ═══════════════════════════════════════ */
+nav {
+  position: fixed; top:0; left:0; right:0; z-index:200;
+  padding: 0 3rem; height: 72px;
+  display: flex; align-items: center; justify-content: space-between;
+  transition: background .4s, box-shadow .4s;
+}
+nav.scrolled {
+  background: rgba(255,255,255,.96);
+  box-shadow: 0 1px 0 var(--border-light), 0 4px 24px rgba(0,43,75,.06);
+  backdrop-filter: blur(12px);
+}
+.nav-logo { display:flex; align-items:center; gap:.7rem; text-decoration:none; flex-shrink:0; }
+.nav-logo img { width:42px; height:42px; object-fit:contain; display:block; }
+.nav-logo-text { font-family:'Questrial',sans-serif; font-size:.78rem; letter-spacing:.14em; text-transform:uppercase; color:var(--navy); line-height:1.25; }
+.nav-logo-text span { display:block; font-size:.58rem; letter-spacing:.12em; color:var(--stone-light); font-family:'DM Sans',sans-serif; }
+nav:not(.scrolled) .nav-logo-text { color:var(--white); }
+nav:not(.scrolled) .nav-logo-text span { color:rgba(255,255,255,.55); }
+.nav-links { display:flex; align-items:center; gap:2rem; list-style:none; }
+.nav-links a { font-size:.72rem; letter-spacing:.1em; text-transform:uppercase; color:rgba(255,255,255,.8); text-decoration:none; font-weight:400; transition:color .25s; white-space:nowrap; }
+nav.scrolled .nav-links a { color:var(--stone); }
+.nav-links a:hover { color:var(--coral)!important; }
+.nav-dropdown { position:relative; }
+.nav-dropdown > a { display:flex; align-items:center; gap:.3rem; }
+.nav-dropdown > a::after { content:'▾'; font-size:.6rem; opacity:.6; transition:transform .25s; }
+.nav-dropdown:hover > a::after { transform:rotate(180deg); }
+.dropdown-menu { position:absolute; top:calc(100% + 8px); left:50%; transform:translateX(-50%) translateY(-4px); background:var(--white); border:1px solid var(--border-light); box-shadow:0 12px 40px rgba(0,43,75,.12); min-width:210px; padding:.5rem 0; opacity:0; pointer-events:none; transition:opacity .2s,transform .2s; }
+.nav-dropdown:hover .dropdown-menu { opacity:1; pointer-events:all; transform:translateX(-50%) translateY(0); }
+.dropdown-menu a { display:block; padding:.55rem 1.2rem; font-size:.72rem; letter-spacing:.07em; text-transform:uppercase; color:var(--navy)!important; text-decoration:none; transition:background .2s,color .2s; }
+.dropdown-menu a:hover { background:var(--coral-pale); color:var(--coral)!important; }
+.nav-cta { background:var(--coral); color:var(--white)!important; padding:.5rem 1.4rem; font-size:.7rem; letter-spacing:.14em; text-transform:uppercase; font-family:'Questrial',sans-serif; text-decoration:none; transition:background .25s,transform .2s; white-space:nowrap; flex-shrink:0; }
+.nav-cta:hover { background:var(--coral-dim); transform:translateY(-1px); }
+.hamburger { display:none; flex-direction:column; gap:5px; cursor:pointer; padding:4px; }
+.hamburger span { width:22px; height:1.5px; background:var(--white); display:block; transition:all .3s var(--ease); }
+nav.scrolled .hamburger span { background:var(--navy); }
+.hamburger.open span:nth-child(1) { transform:rotate(45deg) translate(4.7px,4.7px); }
+.hamburger.open span:nth-child(2) { opacity:0; }
+.hamburger.open span:nth-child(3) { transform:rotate(-45deg) translate(4.7px,-4.7px); }
+.mobile-menu { display:none; position:fixed; inset:0; z-index:199; background:var(--navy-deep); flex-direction:column; align-items:center; justify-content:center; gap:1.8rem; opacity:0; pointer-events:none; transition:opacity .35s; }
+.mobile-menu.open { opacity:1; pointer-events:all; }
+.mobile-menu a { font-family:'Cormorant Garamond',serif; font-size:2rem; font-weight:300; color:var(--white); text-decoration:none; letter-spacing:.04em; transition:color .25s; }
+.mobile-menu a:hover { color:var(--gold); }
+.mobile-menu .m-cta { font-family:'Questrial',sans-serif; font-size:.76rem; letter-spacing:.16em; text-transform:uppercase; color:var(--coral); border:1px solid var(--coral); padding:.65rem 2rem; margin-top:.5rem; }
+
+/* ═══ BUTTONS ═══════════════════════════════════ */
+.btn-coral { background:var(--coral); color:var(--white); border:1.5px solid var(--coral); padding:.8rem 2rem; font-family:'Questrial',sans-serif; font-size:.74rem; letter-spacing:.14em; text-transform:uppercase; text-decoration:none; display:inline-block; transition:background .25s,transform .2s; }
+.btn-coral:hover { background:var(--coral-dim); border-color:var(--coral-dim); transform:translateY(-2px); }
+.btn-ghost { background:transparent; color:rgba(255,255,255,.85); border:1.5px solid rgba(255,255,255,.3); padding:.8rem 2rem; font-family:'Questrial',sans-serif; font-size:.74rem; letter-spacing:.14em; text-transform:uppercase; text-decoration:none; display:inline-block; transition:all .25s; }
+.btn-ghost:hover { border-color:var(--white); color:var(--white); transform:translateY(-2px); }
+.btn-white { background:var(--white); color:var(--coral); border:1.5px solid var(--white); padding:.8rem 2rem; font-family:'Questrial',sans-serif; font-size:.74rem; letter-spacing:.14em; text-transform:uppercase; text-decoration:none; display:inline-block; transition:all .25s; }
+.btn-white:hover { background:transparent; color:var(--white); }
+.btn-ghost-white { background:transparent; color:rgba(255,255,255,.9); border:1.5px solid rgba(255,255,255,.4); padding:.8rem 2rem; font-family:'Questrial',sans-serif; font-size:.74rem; letter-spacing:.14em; text-transform:uppercase; text-decoration:none; display:inline-block; transition:all .25s; }
+.btn-ghost-white:hover { border-color:var(--white); color:var(--white); }
+.btn-outline-navy { background:transparent; color:var(--navy); border:1.5px solid rgba(0,43,75,.3); padding:.8rem 2rem; font-family:'Questrial',sans-serif; font-size:.74rem; letter-spacing:.14em; text-transform:uppercase; text-decoration:none; display:inline-block; transition:all .25s; }
+.btn-outline-navy:hover { border-color:var(--navy); background:var(--navy); color:var(--white); transform:translateY(-2px); }
+
+/* ═══ SHARED LAYOUT ═════════════════════════════ */
+.section-tag { font-family:'Questrial',sans-serif; font-size:.62rem; letter-spacing:.22em; text-transform:uppercase; color:var(--coral); margin-bottom:.9rem; display:flex; align-items:center; gap:.7rem; }
+.section-tag::before { content:''; width:20px; height:1.5px; background:var(--coral); flex-shrink:0; }
+.section-tag.teal { color:var(--teal-dim); }
+.section-tag.teal::before { background:var(--teal-dim); }
+.section-tag.gold { color:var(--gold-dim); }
+.section-tag.gold::before { background:var(--gold-dim); }
+.section-tag.white { color:rgba(255,255,255,.7); }
+.section-tag.white::before { background:rgba(255,255,255,.5); }
+.h2 { font-family:'Cormorant Garamond',serif; font-size:clamp(2.2rem,4vw,4rem); font-weight:300; line-height:1.1; color:var(--navy); }
+.h2 em { font-style:italic; color:var(--coral); }
+.h2-white { color:var(--white); }
+.h2-white em { color:var(--gold); }
+.body-text { font-size:.95rem; line-height:1.85; color:var(--stone); }
+.reveal { opacity:0; transform:translateY(22px); transition:opacity .8s var(--ease),transform .8s var(--ease); }
+.reveal.visible { opacity:1; transform:none; }
+.reveal-left { opacity:0; transform:translateX(-24px); transition:opacity .8s var(--ease),transform .8s var(--ease); }
+.reveal-left.visible { opacity:1; transform:none; }
+
+/* ═══ HERO ═══════════════════════════════════════ */
+.page-hero {
+  background: linear-gradient(155deg, var(--navy-deep) 0%, #003d5c 40%, #005060 70%, var(--navy-mid) 100%);
+  padding: 140px 3rem 100px;
+  position: relative;
+  overflow: hidden;
+}
+.page-hero::before {
+  content:''; position:absolute; inset:0;
+  background:
+    radial-gradient(ellipse 65% 55% at 25% 60%, rgba(35,193,196,.14) 0%, transparent 60%),
+    radial-gradient(ellipse 40% 40% at 75% 25%, rgba(255,198,29,.06) 0%, transparent 55%);
+  pointer-events:none;
+}
+#wave-canvas { position:absolute; inset:0; z-index:1; pointer-events:none; opacity:.55; }
+#wave-canvas-2 { position:absolute; inset:0; z-index:1; pointer-events:none; opacity:.28; }
+.page-hero-inner { position:relative; z-index:2; max-width:1360px; margin:0 auto; }
+.hero-tag { display:inline-flex; align-items:center; gap:.7rem; font-family:'Questrial',sans-serif; font-size:.64rem; letter-spacing:.22em; text-transform:uppercase; color:var(--teal); margin-bottom:1.6rem; opacity:0; animation:fadeUp .8s .4s var(--ease) forwards; }
+.hero-tag::before { content:''; width:24px; height:1px; background:var(--teal); flex-shrink:0; }
+.page-hero h1 { font-family:'Cormorant Garamond',serif; font-size:clamp(3rem,7vw,7rem); font-weight:300; line-height:.93; color:var(--white); max-width:820px; letter-spacing:-.02em; margin-bottom:1.8rem; opacity:0; animation:fadeUp .9s .6s var(--ease) forwards; }
+.page-hero h1 em { font-style:italic; color:var(--gold); }
+.page-hero-sub { font-size:clamp(.9rem,1.4vw,1.05rem); color:rgba(255,255,255,.72); max-width:500px; line-height:1.75; margin-bottom:2.4rem; opacity:0; animation:fadeUp .9s .8s var(--ease) forwards; }
+.hero-actions { display:flex; gap:1rem; flex-wrap:wrap; opacity:0; animation:fadeUp .9s 1s var(--ease) forwards; }
+.hero-meta { position:absolute; bottom:2.5rem; right:3rem; z-index:2; display:flex; align-items:center; gap:1.5rem; opacity:0; animation:fadeIn .8s 1.8s forwards; }
+.hero-loc { display:flex; align-items:center; gap:.5rem; font-size:.6rem; letter-spacing:.18em; text-transform:uppercase; color:rgba(255,255,255,.4); font-family:'Questrial',sans-serif; }
+.pulse-dot { width:6px; height:6px; background:var(--teal); border-radius:50%; animation:pulseDot 2.5s 2s infinite; }
+@keyframes pulseDot { 0%,100%{box-shadow:0 0 0 0 rgba(35,193,196,.5);}50%{box-shadow:0 0 0 6px rgba(35,193,196,0);} }
+
+/* ═══ INTRO STATS ════════════════════════════════ */
+.intro-section { background:var(--navy); padding:6rem 3rem; text-align:center; position:relative; overflow:hidden; }
+.intro-section::before { content:''; position:absolute; inset:0; background:radial-gradient(ellipse 60% 80% at 50% 50%,rgba(35,193,196,.06) 0%,transparent 65%); pointer-events:none; }
+.intro-tagline { font-family:'Cormorant Garamond',serif; font-size:clamp(1.6rem,3vw,3rem); font-weight:300; font-style:italic; color:var(--white); max-width:820px; margin:0 auto 1.5rem; line-height:1.4; position:relative; z-index:1; }
+.intro-tagline strong { font-style:normal; font-weight:300; color:var(--gold); }
+.intro-body { max-width:620px; margin:0 auto 3rem; font-size:.97rem; line-height:1.85; color:var(--text-on-dark); position:relative; z-index:1; }
+.intro-stats { display:flex; justify-content:center; gap:0; border:1px solid rgba(255,255,255,.07); max-width:860px; margin:0 auto; position:relative; z-index:1; }
+.stat { flex:1; padding:2rem 1.5rem; border-right:1px solid rgba(255,255,255,.07); text-align:center; transition:background .3s; }
+.stat:last-child { border-right:none; }
+.stat:hover { background:rgba(255,255,255,.03); }
+.stat-n { font-family:'Cormorant Garamond',serif; font-size:2.8rem; font-weight:300; color:var(--gold); line-height:1; margin-bottom:.3rem; }
+.stat-l { font-size:.68rem; letter-spacing:.08em; color:var(--text-on-dark); line-height:1.4; }
+
+/* ═══ LIVE NODE STATUS — interactive ════════════ */
+.node-status-section { background:var(--cream); padding:7rem 3rem; border-top:1px solid var(--border-light); }
+.node-status-inner { max-width:1360px; margin:0 auto; }
+.node-status-intro { display:grid; grid-template-columns:1fr 1.4fr; gap:4rem; align-items:end; margin-bottom:3rem; }
+
+/* Topology diagram */
+.topo-wrap { background:var(--navy-deep); border:1px solid rgba(255,255,255,.06); padding:1.6rem; }
+.topo-header { font-family:'Questrial',sans-serif; font-size:.6rem; letter-spacing:.2em; text-transform:uppercase; color:rgba(255,255,255,.35); margin-bottom:1.2rem; display:flex; align-items:center; justify-content:space-between; }
+.topo-live { display:flex; align-items:center; gap:.4rem; font-size:.56rem; color:var(--teal); }
+.topo-live-dot { width:5px; height:5px; background:var(--teal); border-radius:50%; animation:pulseDot 2s infinite; }
+.signal-diagram { width:100%; display:block; }
+
+/* Node status panel */
+.node-panel { background:var(--white); border:1px solid var(--border-light); }
+.node-panel-header { display:flex; align-items:center; justify-content:space-between; padding:1.2rem 1.6rem; border-bottom:1px solid var(--border-light); }
+.node-panel-title { font-family:'Questrial',sans-serif; font-size:.66rem; letter-spacing:.18em; text-transform:uppercase; color:var(--navy); display:flex; align-items:center; gap:.6rem; }
+.live-badge { display:inline-flex; align-items:center; gap:.35rem; font-family:'Questrial',sans-serif; font-size:.56rem; letter-spacing:.14em; text-transform:uppercase; color:var(--teal); }
+.live-dot { width:5px; height:5px; background:var(--teal); border-radius:50%; animation:pulseDot 2s infinite; }
+.node-rows { }
+.node-row { display:grid; grid-template-columns:1.6rem 1fr auto auto; align-items:center; gap:1rem; padding:.85rem 1.6rem; border-bottom:1px solid var(--border-light); transition:background .2s; }
+.node-row:last-child { border-bottom:none; }
+.node-row:hover { background:rgba(0,43,75,.02); }
+.node-row-icon { width:1.6rem; height:1.6rem; display:flex; align-items:center; justify-content:center; }
+.node-row-icon svg { width:16px; height:16px; stroke:var(--stone-light); stroke-width:1.5; fill:none; stroke-linecap:round; stroke-linejoin:round; }
+.node-row-name { font-size:.8rem; color:var(--navy); }
+.node-row-sub { font-size:.68rem; color:var(--stone-light); }
+.node-bar-wrap { width:80px; height:3px; background:rgba(0,43,75,.08); position:relative; }
+.node-bar { height:100%; transition:width 1.2s var(--ease); position:relative; }
+.node-bar::after { content:''; position:absolute; right:0; top:-2px; width:7px; height:7px; border-radius:50%; background:inherit; }
+.bar-teal { background:var(--teal); }
+.bar-gold { background:var(--gold); }
+.bar-coral { background:var(--coral); }
+.bar-stone { background:var(--stone-light); }
+.node-status-pill { font-family:'Questrial',sans-serif; font-size:.56rem; letter-spacing:.1em; text-transform:uppercase; padding:.2rem .55rem; border-radius:100px; white-space:nowrap; }
+.pill-green { background:rgba(35,193,196,.1); color:var(--teal); }
+.pill-gold  { background:rgba(255,198,29,.12); color:var(--gold-dim); }
+.pill-red   { background:rgba(254,83,55,.1); color:var(--coral-dim); }
+.pill-off   { background:rgba(0,43,75,.06); color:var(--stone-light); }
+
+/* Two-column layout for diagram+panel */
+.node-diagram-panel { display:grid; grid-template-columns:1fr 1fr; gap:1px; background:var(--border-light); }
+
+/* ═══ FOUR-TIER STACK ════════════════════════════ */
+.stack-section { background:var(--white); padding:7rem 3rem; border-top:1px solid var(--border-light); }
+.stack-header { max-width:1360px; margin:0 auto 4rem; display:grid; grid-template-columns:1fr 1.4fr; gap:4rem; align-items:end; }
+.stack-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:1px; background:var(--border-light); max-width:1360px; margin:0 auto; }
+.tier-card { background:var(--white); padding:2.4rem 2rem; display:block; position:relative; transition:background .3s; overflow:hidden; }
+.tier-card::after { content:''; position:absolute; bottom:0; left:0; right:0; height:3px; transform:scaleX(0); transform-origin:left; transition:transform .35s var(--ease); }
+.tier-card:hover { background:#fefcf9; }
+.tier-card:hover::after { transform:scaleX(1); }
+.tier-1::after { background:var(--teal); }
+.tier-2::after { background:var(--gold); }
+.tier-3::after { background:var(--coral); }
+.tier-4::after { background:var(--stone-light); }
+.tier-card-icon { width:36px; height:36px; margin-bottom:1.4rem; }
+.tier-card-icon svg { width:36px; height:36px; stroke-width:1.2; fill:none; stroke-linecap:round; stroke-linejoin:round; }
+.tier-1 .tier-card-icon svg { stroke:var(--teal); }
+.tier-2 .tier-card-icon svg { stroke:var(--gold-dim); }
+.tier-3 .tier-card-icon svg { stroke:var(--coral); }
+.tier-4 .tier-card-icon svg { stroke:var(--stone-light); }
+.tier-num { font-family:'Cormorant Garamond',serif; font-size:4rem; font-weight:300; line-height:1; margin-bottom:.4rem; opacity:.1; position:absolute; top:1.4rem; right:1.6rem; }
+.tier-1 .tier-num { color:var(--teal); }
+.tier-2 .tier-num { color:var(--gold); }
+.tier-3 .tier-num { color:var(--coral); }
+.tier-4 .tier-num { color:var(--stone); }
+.tier-tuvaluan { font-family:'Questrial',sans-serif; font-size:.58rem; letter-spacing:.16em; text-transform:uppercase; margin-bottom:.3rem; }
+.tier-1 .tier-tuvaluan { color:var(--teal); }
+.tier-2 .tier-tuvaluan { color:var(--gold-dim); }
+.tier-3 .tier-tuvaluan { color:var(--coral); }
+.tier-4 .tier-tuvaluan { color:var(--stone-light); }
+.tier-name { font-family:'Cormorant Garamond',serif; font-size:1.5rem; font-weight:400; color:var(--navy); margin-bottom:.75rem; line-height:1.2; }
+.tier-desc { font-size:.82rem; color:var(--stone); line-height:1.72; }
+.tier-status { display:inline-flex; align-items:center; gap:.45rem; margin-top:1.2rem; font-family:'Questrial',sans-serif; font-size:.62rem; letter-spacing:.16em; text-transform:uppercase; }
+.status-dot { width:6px; height:6px; border-radius:50%; flex-shrink:0; }
+.tier-1 .tier-status { color:var(--teal); }
+.tier-1 .status-dot { background:var(--teal); box-shadow:0 0 6px rgba(35,193,196,.5); animation:pulseDot 2.5s infinite; }
+.tier-2 .tier-status { color:var(--gold-dim); }
+.tier-2 .status-dot { background:var(--gold); }
+.tier-3 .tier-status { color:var(--coral); }
+.tier-3 .status-dot { background:var(--coral); }
+.tier-4 .tier-status { color:var(--stone-light); }
+.tier-4 .status-dot { background:var(--stone-light); }
+
+/* ═══ NODE SPEC — dark ═══════════════════════════ */
+.spec-section { background:var(--navy-deep); padding:7rem 3rem; position:relative; overflow:hidden; }
+.spec-section::before { content:''; position:absolute; inset:0; background:radial-gradient(ellipse 70% 60% at 20% 50%,rgba(35,193,196,.06) 0%,transparent 60%); pointer-events:none; }
+.spec-header { display:grid; grid-template-columns:1fr 1.5fr; gap:4rem; align-items:end; max-width:1360px; margin:0 auto 4rem; }
+.spec-pull { font-family:'Cormorant Garamond',serif; font-size:clamp(1.1rem,1.8vw,1.5rem); font-weight:300; font-style:italic; color:rgba(255,255,255,.75); line-height:1.6; border-left:2px solid var(--teal); padding-left:1.4rem; }
+.spec-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:rgba(255,255,255,.06); max-width:1360px; margin:0 auto; }
+.spec-card { background:var(--navy-deep); padding:2.2rem 1.8rem; transition:background .3s; }
+.spec-card:hover { background:rgba(255,255,255,.03); }
+.spec-card-icon { width:28px; height:28px; margin-bottom:1rem; }
+.spec-card-icon svg { width:28px; height:28px; stroke:var(--teal); stroke-width:1.2; fill:none; stroke-linecap:round; stroke-linejoin:round; }
+.spec-card-n { font-family:'Cormorant Garamond',serif; font-size:1.6rem; font-weight:300; color:var(--gold); line-height:1; margin-bottom:.3rem; }
+.spec-card-title { font-family:'Questrial',sans-serif; font-size:.64rem; letter-spacing:.18em; text-transform:uppercase; color:rgba(255,255,255,.55); margin-bottom:1.2rem; }
+.spec-list { list-style:none; }
+.spec-list li { display:flex; justify-content:space-between; align-items:baseline; padding:.45rem 0; border-bottom:1px solid rgba(255,255,255,.06); font-size:.78rem; gap:.8rem; }
+.spec-list li:last-child { border-bottom:none; }
+.spec-key { color:rgba(255,255,255,.4); flex-shrink:0; }
+.spec-val { color:rgba(255,255,255,.8); font-weight:400; text-align:right; }
+
+/* ═══ STORM MODE — interactive ═══════════════════ */
+.storm-section { background:var(--cream); padding:7rem 3rem; border-top:1px solid var(--border-light); border-bottom:1px solid var(--border-light); }
+.storm-inner { max-width:1360px; margin:0 auto; display:grid; grid-template-columns:1fr 1fr; gap:6rem; align-items:start; }
+.storm-content { padding-top:.5rem; }
+.storm-pull { font-family:'Cormorant Garamond',serif; font-size:clamp(1.3rem,2vw,1.75rem); font-weight:300; font-style:italic; color:var(--navy); border-left:3px solid var(--gold); padding-left:1.4rem; margin:1.8rem 0; line-height:1.5; }
+.storm-interactive { }
+
+/* Tab switcher */
+.storm-tabs { display:flex; gap:0; border:1px solid var(--border-light); background:var(--white); margin-bottom:0; }
+.storm-tab { flex:1; padding:.7rem .5rem; font-family:'Questrial',sans-serif; font-size:.6rem; letter-spacing:.14em; text-transform:uppercase; text-align:center; cursor:pointer; transition:all .25s; border:none; background:transparent; color:var(--stone-light); border-right:1px solid var(--border-light); }
+.storm-tab:last-child { border-right:none; }
+.storm-tab.active { background:var(--navy); color:var(--white); }
+.storm-tab-content { display:none; border:1px solid var(--border-light); border-top:none; background:var(--white); padding:1.6rem; }
+.storm-tab-content.active { display:block; }
+.storm-tab-label { display:flex; align-items:center; gap:.6rem; margin-bottom:1rem; }
+.storm-tab-label .st-dot { width:7px; height:7px; border-radius:50%; flex-shrink:0; }
+.storm-tab-label h4 { font-family:'Cormorant Garamond',serif; font-size:1.15rem; font-weight:300; color:var(--navy); }
+.storm-tab-label .st-badge { font-family:'Questrial',sans-serif; font-size:.58rem; letter-spacing:.14em; text-transform:uppercase; margin-left:auto; }
+.st-1-color { color:var(--teal); }
+.st-2-color { color:var(--gold-dim); }
+.st-3-color { color:var(--stone-light); }
+.storm-items-list { list-style:none; }
+.storm-items-list li { display:flex; align-items:center; gap:.6rem; font-size:.8rem; color:var(--stone); padding:.3rem 0; border-bottom:1px solid rgba(0,43,75,.05); }
+.storm-items-list li:last-child { border-bottom:none; }
+.storm-items-list li svg { width:14px; height:14px; flex-shrink:0; stroke-width:1.5; fill:none; stroke-linecap:round; stroke-linejoin:round; }
+.storm-items-list .on svg { stroke:var(--teal); }
+.storm-items-list .amber svg { stroke:var(--gold-dim); }
+.storm-items-list .off svg { stroke:var(--stone-light); opacity:.5; }
+.storm-recovery { margin-top:1rem; padding:.8rem 1rem; background:var(--teal-pale); border-left:2px solid var(--teal); font-size:.78rem; color:var(--stone); line-height:1.6; }
+
+/* ═══ GUARDIAN / ARBOR — dark editorial ══════════ */
+.ga-section { background:var(--navy-deep); padding:7rem 3rem; position:relative; overflow:hidden; }
+.ga-section::before { content:''; position:absolute; top:0; left:0; bottom:0; width:40%; background:rgba(0,43,75,.3); border-right:1px solid rgba(255,255,255,.04); }
+.ga-inner { display:grid; grid-template-columns:1fr 1.6fr; gap:6rem; max-width:1360px; margin:0 auto; align-items:start; position:relative; z-index:1; }
+.ga-left .section-tag { margin-bottom:1.4rem; }
+
+/* Guardian visual — orbital rings */
+.ga-visual { position:relative; width:100%; padding-bottom:100%; max-width:340px; margin-bottom:2rem; }
+.ga-vis-inner { position:absolute; inset:0; display:flex; align-items:center; justify-content:center; }
+.g-ring { position:absolute; border-radius:50%; border:1px solid; animation:gSpin linear infinite; }
+.g-ring-1 { inset:0;   border-color:rgba(35,193,196,.18); animation-duration:44s; }
+.g-ring-2 { inset:14%; border-color:rgba(255,198,29,.12); animation-duration:31s; animation-direction:reverse; }
+.g-ring-3 { inset:28%; border-color:rgba(254,83,55,.09);  animation-duration:20s; }
+.g-core { position:absolute; inset:40%; border-radius:50%; background:radial-gradient(circle at 38% 38%,var(--navy-light),var(--teal-dim)); box-shadow:0 0 28px rgba(35,193,196,.2),0 0 56px rgba(35,193,196,.07); display:flex; align-items:center; justify-content:center; }
+
+/* Guardian icon inside core */
+.g-core-svg { width:36px; height:36px; }
+
+@keyframes gSpin { from{transform:rotate(0deg);}to{transform:rotate(360deg);} }
+
+.ga-right-name { font-family:'Cormorant Garamond',serif; font-size:2.2rem; font-weight:300; color:var(--white); line-height:1.1; margin-bottom:.4rem; }
+.ga-right-sub { font-size:.8rem; color:var(--text-on-dark); line-height:1.7; margin-top:.8rem; }
+.ga-badge { display:inline-flex; align-items:center; gap:.55rem; border:1px solid var(--border-teal); padding:.4rem .85rem; font-family:'Questrial',sans-serif; font-size:.58rem; letter-spacing:.14em; text-transform:uppercase; color:var(--teal); margin-top:1.4rem; }
+.ga-badge-dot { width:5px; height:5px; background:var(--teal); border-radius:50%; }
+.ga-blockquote { font-family:'Cormorant Garamond',serif; font-size:clamp(1.2rem,2vw,1.7rem); font-weight:300; font-style:italic; color:var(--white); line-height:1.55; border-left:2px solid var(--coral); padding-left:1.8rem; margin-bottom:2.2rem; }
+
+/* Arbor card */
+.arbor-card { border:1px solid rgba(255,255,255,.08); padding:1.6rem; margin-top:2rem; display:grid; grid-template-columns:auto 1fr; gap:1.2rem; align-items:start; }
+.arbor-icon-wrap { width:44px; height:44px; border-radius:50%; background:rgba(35,193,196,.1); border:1px solid rgba(35,193,196,.2); display:flex; align-items:center; justify-content:center; flex-shrink:0; }
+.arbor-icon-wrap svg { width:24px; height:24px; }
+.arbor-title { font-family:'Questrial',sans-serif; font-size:.66rem; letter-spacing:.16em; text-transform:uppercase; color:var(--teal); margin-bottom:.4rem; }
+.arbor-body { font-size:.8rem; color:var(--text-on-dark); line-height:1.65; }
+
+.sov-points { display:flex; flex-direction:column; gap:.8rem; margin-top:2rem; }
+.sov-point { display:flex; align-items:flex-start; gap:.6rem; font-size:.82rem; color:var(--text-on-dark); line-height:1.6; }
+.sov-point svg { width:14px; height:14px; stroke:var(--teal); stroke-width:1.5; fill:none; stroke-linecap:round; stroke-linejoin:round; flex-shrink:0; margin-top:.25rem; }
+
+/* ═══ PHASES ═════════════════════════════════════ */
+.phases-section { background:var(--cream-mid); padding:7rem 3rem; border-top:1px solid var(--border-light); border-bottom:1px solid var(--border-light); }
+.phases-inner { max-width:1360px; margin:0 auto; }
+.phases-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:var(--border-light); margin-top:3.5rem; }
+.phase-card { background:var(--white); padding:2.2rem 1.8rem; position:relative; transition:background .3s; overflow:hidden; }
+.phase-card:hover { background:#fffdf9; }
+.phase-card::after { content:''; position:absolute; bottom:0; left:0; right:0; height:3px; background:var(--coral); transform:scaleX(0); transform-origin:left; transition:transform .35s var(--ease); }
+.phase-card:hover::after { transform:scaleX(1); }
+.phase-n { font-family:'Cormorant Garamond',serif; font-size:3.5rem; font-weight:300; color:rgba(0,43,75,.18); line-height:1; margin-bottom:1rem; }
+.phase-label { font-family:'Questrial',sans-serif; font-size:.6rem; letter-spacing:.2em; text-transform:uppercase; color:var(--teal-dim); margin-bottom:.4rem; }
+.phase-title { font-family:'Cormorant Garamond',serif; font-size:1.35rem; font-weight:400; color:var(--navy); margin-bottom:.7rem; line-height:1.2; }
+.phase-desc { font-size:.8rem; color:var(--stone); line-height:1.7; }
+
+/* ═══ INTEGRATIONS ═══════════════════════════════ */
+.integration-section { background:var(--white); padding:7rem 3rem; border-top:1px solid var(--border-light); }
+.int-header { display:flex; align-items:flex-end; justify-content:space-between; gap:2rem; margin-bottom:3.5rem; flex-wrap:wrap; }
+.int-grid { display:grid; grid-template-columns:repeat(5,1fr); gap:1px; background:var(--border-light); max-width:1360px; margin:0 auto; }
+.int-card { background:var(--white); padding:2rem 1.6rem 1.8rem; display:block; position:relative; transition:background .3s; overflow:hidden; }
+.int-card::after { content:''; position:absolute; bottom:0; left:0; right:0; height:3px; background:var(--teal); transform:scaleX(0); transform-origin:left; transition:transform .35s var(--ease); }
+.int-card:hover { background:#fefcf9; }
+.int-card:hover::after { transform:scaleX(1); }
+.int-icon { width:32px; height:32px; margin-bottom:1rem; }
+.int-icon svg { width:32px; height:32px; stroke-width:1.2; fill:none; stroke-linecap:round; stroke-linejoin:round; stroke:var(--teal-dim); }
+.int-name { font-family:'Cormorant Garamond',serif; font-size:1.15rem; font-weight:400; color:var(--navy); margin-bottom:.5rem; line-height:1.2; }
+.int-desc { font-size:.76rem; color:var(--stone); line-height:1.65; }
+
+/* ═══ JOIN CTA ═══════════════════════════════════ */
+.join-section { background:var(--coral); padding:6rem 3rem; text-align:center; position:relative; overflow:hidden; }
+.join-section::before { content:''; position:absolute; inset:-30%; background:radial-gradient(ellipse at 50% 50%,rgba(255,255,255,.08) 0%,transparent 55%); pointer-events:none; }
+.join-inner { position:relative; z-index:1; max-width:680px; margin:0 auto; }
+.join-h2 { font-family:'Cormorant Garamond',serif; font-size:clamp(2.2rem,4.5vw,4.5rem); font-weight:300; color:var(--white); line-height:1.1; margin-bottom:1.2rem; }
+.join-h2 em { font-style:italic; opacity:.85; }
+.join-body { font-size:.97rem; color:rgba(255,255,255,.8); line-height:1.75; margin-bottom:2.5rem; }
+.join-actions { display:flex; gap:.9rem; justify-content:center; flex-wrap:wrap; }
+
+/* ═══ TRUST STRIP ════════════════════════════════ */
+.trust-strip { background:var(--cream-dark); padding:2.4rem 3rem; border-bottom:1px solid var(--border-light); }
+.trust-strip-inner { max-width:1360px; margin:0 auto; display:flex; align-items:center; justify-content:center; gap:2.5rem; flex-wrap:wrap; }
+.trust-item { display:flex; align-items:center; gap:.7rem; }
+.trust-item-icon { width:20px; height:20px; }
+.trust-item-icon svg { width:20px; height:20px; stroke:var(--stone); stroke-width:1.4; fill:none; stroke-linecap:round; stroke-linejoin:round; }
+.trust-item-text { font-size:.72rem; color:var(--stone); line-height:1.3; }
+.trust-item-text strong { display:block; color:var(--navy); font-size:.64rem; letter-spacing:.12em; text-transform:uppercase; margin-bottom:.1rem; font-weight:400; font-family:'Questrial',sans-serif; }
+.trust-div { width:1px; height:28px; background:var(--border-light); }
+
+/* ═══ FOOTER ═════════════════════════════════════ */
+footer { background:var(--navy-deep); padding:4rem 3rem 2.5rem; }
+.footer-top { max-width:1360px; margin:0 auto; display:grid; grid-template-columns:2fr 1fr 1fr 1fr; gap:3rem; padding-bottom:3rem; border-bottom:1px solid rgba(255,255,255,.06); }
+.footer-logo-wrap { display:flex; align-items:center; gap:.7rem; margin-bottom:1rem; text-decoration:none; }
+.footer-logo-wrap img { width:38px; height:38px; object-fit:contain; }
+.footer-logo-name { font-family:'Questrial',sans-serif; font-size:.78rem; letter-spacing:.12em; text-transform:uppercase; color:var(--gold); }
+.footer-desc { font-size:.78rem; color:var(--text-dimmer); line-height:1.72; max-width:280px; margin-bottom:1.4rem; }
+.footer-email { font-size:.72rem; color:var(--teal); text-decoration:none; letter-spacing:.04em; transition:color .25s; }
+.footer-email:hover { color:#aad0e0; }
+.footer-col-h { font-family:'Questrial',sans-serif; font-size:.6rem; letter-spacing:.2em; text-transform:uppercase; color:rgba(255,255,255,.35); margin-bottom:1.2rem; }
+.footer-links { list-style:none; display:flex; flex-direction:column; gap:.6rem; }
+.footer-links a { font-size:.77rem; color:var(--text-dimmer); text-decoration:none; transition:color .25s; }
+.footer-links a:hover { color:var(--white); }
+.footer-bottom { max-width:1360px; margin:2rem auto 0; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:1rem; }
+.footer-copy { font-size:.66rem; color:var(--text-dimmer); letter-spacing:.05em; }
+.footer-socials { display:flex; gap:1rem; align-items:center; }
+.footer-socials a { font-size:.66rem; letter-spacing:.12em; text-transform:uppercase; color:var(--text-dimmer); text-decoration:none; font-family:'Questrial',sans-serif; transition:color .25s; }
+.footer-socials a:hover { color:var(--white); }
+
+/* ═══ ANIMATIONS ═════════════════════════════════ */
+@keyframes fadeUp { from{opacity:0;transform:translateY(20px);}to{opacity:1;transform:translateY(0);} }
+@keyframes fadeIn { from{opacity:0;}to{opacity:.7;} }
+@keyframes gSpin { from{transform:rotate(0deg);}to{transform:rotate(360deg);} }
+
+/* ═══ RESPONSIVE ══════════════════════════════════ */
+@media(max-width:1100px){
+  .stack-header,.spec-header,.storm-inner,.ga-inner { grid-template-columns:1fr; gap:3rem; }
+  .stack-grid,.spec-grid,.int-grid { grid-template-columns:repeat(2,1fr); }
+  .phases-grid { grid-template-columns:1fr; }
+  .node-status-intro { grid-template-columns:1fr; }
+  .node-diagram-panel { grid-template-columns:1fr; }
+  .footer-top { grid-template-columns:1fr 1fr; gap:2.5rem; }
+  .ga-section::before { display:none; }
+}
+@media(max-width:768px){
+  nav { padding:0 1.5rem; }
+  .nav-links,.nav-cta { display:none; }
+  .hamburger { display:flex; }
+  .mobile-menu { display:flex; }
+  .page-hero { padding:120px 1.5rem 70px; }
+  .hero-meta { right:1.5rem; bottom:1.5rem; }
+  .intro-section,.stack-section,.spec-section,.storm-section,.ga-section,
+  .phases-section,.integration-section,.join-section,.trust-strip,
+  .node-status-section,footer { padding-left:1.5rem; padding-right:1.5rem; }
+  .stack-grid,.spec-grid,.phases-grid,.int-grid { grid-template-columns:1fr; }
+  .intro-stats { flex-direction:column; }
+  .stat { border-right:none; border-bottom:1px solid rgba(255,255,255,.07); }
+  .stat:last-child { border-bottom:none; }
+  .footer-top { grid-template-columns:1fr; }
+  .trust-strip-inner { flex-direction:column; align-items:flex-start; }
+  .trust-div { display:none; }
+}
+</style>
+</head>
+<body>
+
+<!-- ═══ NAV ═══════════════════════════════════════════════════════ -->
+<nav id="nav">
+  <a href="/" class="nav-logo">
+    <img src="images/logo-trans.png" alt="Sovereign Vision">
+    <div class="nav-logo-text">Sovereign Vision<span>Te Fale o Te Mātāmua · Tuvalu</span></div>
+  </a>
+  <ul class="nav-links">
+    <li class="nav-dropdown">
+      <a href="/core-systems">Core Systems</a>
+      <div class="dropdown-menu">
+        <a href="/ai-overview">Civic Stewardship System</a>
+        <a href="/communications" style="color:var(--coral)!important;">Communications</a>
+        <a href="/food">Food Sovereignty</a>
+        <a href="/energy">Power Generation</a>
+        <a href="/treasury">Sovereign Treasury</a>
+        <a href="/civic-infrastructure">Civic Infrastructure</a>
+        <a href="/water-systems">Water Systems</a>
+        <a href="/waste-systems">Resource Recovery</a>
+      </div>
+    </li>
+    <li><a href="/how-it-works">How It Works</a></li>
+    <li class="nav-dropdown">
+      <a href="/legal-licensing">Legal</a>
+      <div class="dropdown-menu">
+        <a href="/digitalarchipelago">Digital Archipelago Accord</a>
+        <a href="/civic-commons-license">Civic Commons License</a>
+        <a href="/trust-formation-status">Trust Formation Status</a>
+        <a href="/terms">Terms of Use</a>
+        <a href="/privacy-policy">Privacy Policy</a>
+      </div>
+    </li>
+    <li><a href="/faq">FAQ</a></li>
+    <li class="nav-dropdown">
+      <a href="/about-us">About</a>
+      <div class="dropdown-menu">
+        <a href="/about-us">About Us</a>
+        <a href="/continuity-vs-reinvention">Continuity vs Reinvention</a>
+        <a href="/elders-council">Elders Council</a>
+        <a href="/youth-voice">Youth Voice</a>
+      </div>
+    </li>
+  </ul>
+  <a href="/contact" class="nav-cta">Contact</a>
+  <div class="hamburger" id="hamburger" aria-label="Menu" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+<div class="mobile-menu" id="mobile-menu">
+  <a href="/core-systems" onclick="closeMobile()">Core Systems</a>
+  <a href="/how-it-works" onclick="closeMobile()">How It Works</a>
+  <a href="/legal-licensing" onclick="closeMobile()">Legal</a>
+  <a href="/faq" onclick="closeMobile()">FAQ</a>
+  <a href="/about-us" onclick="closeMobile()">About</a>
+  <a href="/contact" onclick="closeMobile()" class="m-cta">Contact Us</a>
+</div>
+
+<!-- ═══ HERO ════════════════════════════════════════════════════════ -->
+<section class="page-hero">
+  <canvas id="wave-canvas"></canvas>
+  <canvas id="wave-canvas-2"></canvas>
+  <div class="page-hero-inner">
+    <div class="hero-tag">Communications Infrastructure</div>
+    <h1>Te Puka Loloa<br><em>The Long Shell.</em></h1>
+    <p class="page-hero-sub">A sovereign, solar-powered hybrid communications backbone — designed to survive storms, self-heal outages, and connect the nation on its own terms.</p>
+    <div class="hero-actions">
+      <a href="#stack" class="btn-coral">Explore the Stack</a>
+      <a href="#whitepaper" class="btn-ghost">Download White Paper</a>
+    </div>
+  </div>
+  <div class="hero-meta">
+    <div class="hero-loc"><div class="pulse-dot"></div>Funafuti · Tuvalu · Pacific</div>
+  </div>
+</section>
+
+<!-- ═══ INTRO STATS ══════════════════════════════════════════════════ -->
+<section class="intro-section">
+  <p class="intro-tagline reveal">No foreign core. No carrier contract.<br><strong>No single point of failure.</strong></p>
+  <p class="intro-body reveal">Tuvalu's remote geography and vulnerability to storms have long blocked reliable digital communications. Te Puka Loloa is a decentralised, solar-powered hybrid node network designed to be owned, operated, and maintained entirely by Tuvaluans.</p>
+  <div class="intro-stats">
+    <div class="stat reveal"><div class="stat-n">4</div><div class="stat-l">Independent<br>Communication Tiers</div></div>
+    <div class="stat reveal"><div class="stat-n">10+</div><div class="stat-l">Nodes in<br>Phase 1 Deployment</div></div>
+    <div class="stat reveal"><div class="stat-n">6.4kW</div><div class="stat-l">Solar Array<br>Per Node</div></div>
+    <div class="stat reveal"><div class="stat-n">120kph</div><div class="stat-l">Rated Storm<br>Wind Speed</div></div>
+    <div class="stat reveal"><div class="stat-n">100%</div><div class="stat-l">Open-Source<br>Software Stack</div></div>
+  </div>
+</section>
+
+<!-- ═══ LIVE NODE STATUS — interactive ══════════════════════════════ -->
+<section class="node-status-section">
+  <div class="node-status-inner">
+
+    <div class="node-status-intro">
+      <div>
+        <div class="section-tag teal reveal-left">Network Architecture</div>
+        <h2 class="h2 reveal">How a node<br><em>actually works.</em></h2>
+        <p class="body-text reveal" style="margin-top:1rem; max-width:420px;">Each Te Puka Loloa node is a self-contained communications hub — solar-powered, Guardian-managed, and capable of operating across four independent signal tiers simultaneously. The diagram shows the live signal flow inside a single node.</p>
+      </div>
+      <div class="reveal" style="display:flex; flex-direction:column; gap:.8rem;">
+        <div style="display:flex; align-items:center; gap:.8rem; font-size:.78rem; color:var(--stone);">
+          <svg width="28" height="8" viewBox="0 0 28 8"><line x1="0" y1="4" x2="28" y2="4" stroke="#23c1c4" stroke-width="2" stroke-linecap="round"/></svg>
+          Tier 1 · Mobile Core — always on
+        </div>
+        <div style="display:flex; align-items:center; gap:.8rem; font-size:.78rem; color:var(--stone);">
+          <svg width="28" height="8" viewBox="0 0 28 8"><line x1="0" y1="4" x2="28" y2="4" stroke="#ffc61d" stroke-width="1.5" stroke-dasharray="6 3" stroke-linecap="round"/></svg>
+          Tier 2 · Satellite uplink
+        </div>
+        <div style="display:flex; align-items:center; gap:.8rem; font-size:.78rem; color:var(--stone);">
+          <svg width="28" height="8" viewBox="0 0 28 8"><line x1="0" y1="4" x2="28" y2="4" stroke="#fe5337" stroke-width="1.5" stroke-linecap="round"/></svg>
+          Tier 3 · Community mesh
+        </div>
+        <div style="display:flex; align-items:center; gap:.8rem; font-size:.78rem; color:var(--stone);">
+          <svg width="28" height="8" viewBox="0 0 28 8"><line x1="0" y1="4" x2="28" y2="4" stroke="#718096" stroke-width="1.5" stroke-dasharray="3 5" stroke-linecap="round"/></svg>
+          Tier 4 · Emergency radio
+        </div>
+        <div style="display:flex; align-items:center; gap:.8rem; font-size:.78rem; color:var(--stone);">
+          <svg width="28" height="8" viewBox="0 0 28 8"><line x1="0" y1="4" x2="28" y2="4" stroke="#d4a400" stroke-width="1.5" stroke-linecap="round"/></svg>
+          Power distribution
+        </div>
+      </div>
+    </div>
+
+    <div class="node-diagram-panel">
+
+      <!-- LEFT: Topology diagram drawn from the schematic -->
+      <div class="topo-wrap">
+        <div class="topo-header">
+          Node Internal Architecture · v1.05
+          <div class="topo-live"><div class="topo-live-dot"></div>Animated</div>
+        </div>
+
+        <svg class="signal-diagram" viewBox="0 0 580 640" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <radialGradient id="tg1" cx="30%" cy="30%" r="70%">
+              <stop offset="0%" stop-color="#00203a"/>
+              <stop offset="100%" stop-color="#00152a"/>
+            </radialGradient>
+            <filter id="gl" x="-30%" y="-30%" width="160%" height="160%">
+              <feGaussianBlur stdDeviation="2.5" result="b"/>
+              <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+            </filter>
+            <marker id="arr-t" markerWidth="6" markerHeight="6" refX="3" refY="3" orient="auto">
+              <path d="M0,0 L6,3 L0,6 Z" fill="#23c1c4" opacity=".7"/>
+            </marker>
+            <marker id="arr-g" markerWidth="6" markerHeight="6" refX="3" refY="3" orient="auto">
+              <path d="M0,0 L6,3 L0,6 Z" fill="#ffc61d" opacity=".7"/>
+            </marker>
+            <marker id="arr-p" markerWidth="6" markerHeight="6" refX="3" refY="3" orient="auto">
+              <path d="M0,0 L6,3 L0,6 Z" fill="#fe5337" opacity=".6"/>
+            </marker>
+          </defs>
+
+          <rect width="580" height="640" fill="url(#tg1)"/>
+
+          <!-- ── SOLAR / POWER LAYER (top) ── -->
+          <!-- Solar array box -->
+          <rect x="200" y="18" width="180" height="44" rx="3" fill="none" stroke="rgba(255,198,29,.4)" stroke-width="1"/>
+          <text x="290" y="35" font-family="Questrial,sans-serif" font-size="8" letter-spacing="1.5" fill="rgba(255,198,29,.7)" text-anchor="middle">SOLAR ARRAY</text>
+          <text x="290" y="50" font-family="DM Sans,sans-serif" font-size="7.5" fill="rgba(255,198,29,.45)" text-anchor="middle">6.4 kW · 16 × 400W panels</text>
+
+          <!-- MPPT controllers -->
+          <rect x="110" y="90" width="90" height="32" rx="2" fill="none" stroke="rgba(255,198,29,.3)" stroke-width="1"/>
+          <text x="155" y="109" font-family="Questrial,sans-serif" font-size="7.5" letter-spacing="1" fill="rgba(255,198,29,.6)" text-anchor="middle">MPPT ×2</text>
+
+          <!-- Inverter -->
+          <rect x="215" y="90" width="90" height="32" rx="2" fill="none" stroke="rgba(255,198,29,.3)" stroke-width="1"/>
+          <text x="260" y="109" font-family="Questrial,sans-serif" font-size="7.5" letter-spacing="1" fill="rgba(255,198,29,.6)" text-anchor="middle">INVERTER</text>
+
+          <!-- Battery bank -->
+          <rect x="320" y="90" width="100" height="32" rx="2" fill="none" stroke="rgba(255,198,29,.35)" stroke-width="1"/>
+          <text x="370" y="103" font-family="Questrial,sans-serif" font-size="7.5" letter-spacing="1" fill="rgba(255,198,29,.6)" text-anchor="middle">BATTERY BANK</text>
+          <text x="370" y="116" font-family="DM Sans,sans-serif" font-size="7" fill="rgba(255,198,29,.4)" text-anchor="middle">28–30 kWh LFP</text>
+
+          <!-- Power lines: solar → MPPT, MPPT → inverter, inverter → battery -->
+          <line x1="290" y1="62" x2="155" y2="90" stroke="rgba(255,198,29,.5)" stroke-width="1" stroke-dasharray="4 3"/>
+          <line x1="290" y1="62" x2="260" y2="90" stroke="rgba(255,198,29,.5)" stroke-width="1" stroke-dasharray="4 3"/>
+          <line x1="290" y1="62" x2="370" y2="90" stroke="rgba(255,198,29,.5)" stroke-width="1" stroke-dasharray="4 3"/>
+
+          <!-- Emergency gen -->
+          <rect x="20" y="90" width="72" height="32" rx="2" fill="none" stroke="rgba(255,198,29,.2)" stroke-width="1" stroke-dasharray="3 3"/>
+          <text x="56" y="109" font-family="Questrial,sans-serif" font-size="7" letter-spacing="1" fill="rgba(255,198,29,.35)" text-anchor="middle">EMRG GEN</text>
+
+          <!-- PDU -->
+          <rect x="228" y="152" width="124" height="28" rx="2" fill="rgba(255,198,29,.06)" stroke="rgba(255,198,29,.25)" stroke-width="1"/>
+          <text x="290" y="170" font-family="Questrial,sans-serif" font-size="8" letter-spacing="1.5" fill="rgba(255,198,29,.6)" text-anchor="middle">PDU — POWER DIST.</text>
+
+          <!-- Power → PDU -->
+          <line x1="260" y1="122" x2="260" y2="152" stroke="rgba(255,198,29,.4)" stroke-width="1.2" marker-end="url(#arr-g)"/>
+
+          <!-- ── CERBO / GUARDIAN CONTROL ── -->
+          <rect x="440" y="90" width="100" height="48" rx="3" fill="rgba(35,193,196,.06)" stroke="rgba(35,193,196,.3)" stroke-width="1"/>
+          <text x="490" y="110" font-family="Questrial,sans-serif" font-size="8" letter-spacing="1" fill="rgba(35,193,196,.8)" text-anchor="middle">GUARDIAN</text>
+          <text x="490" y="124" font-family="DM Sans,sans-serif" font-size="7" fill="rgba(35,193,196,.45)" text-anchor="middle">Central Control</text>
+          <!-- Guardian shield icon inside box -->
+          <path d="M490 98 l-6 2.5v5.5a8 8 0 006 7.5 8 8 0 006-7.5v-5.5z" fill="none" stroke="rgba(35,193,196,.6)" stroke-width="1.2"/>
+          <path d="M487 104l2 2 4-4" stroke="rgba(35,193,196,.7)" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+
+          <!-- Guardian controls PDU -->
+          <line x1="440" y1="110" x2="352" y2="166" stroke="rgba(35,193,196,.3)" stroke-width="1" stroke-dasharray="3 3"/>
+
+          <!-- ── NETWORK CORE LAYER ── -->
+          <!-- Firewall HA pair -->
+          <rect x="50" y="210" width="110" height="30" rx="2" fill="rgba(254,83,55,.05)" stroke="rgba(254,83,55,.35)" stroke-width="1"/>
+          <text x="105" y="224" font-family="Questrial,sans-serif" font-size="7.5" letter-spacing="1" fill="rgba(254,83,55,.7)" text-anchor="middle">FIREWALL HA PAIR</text>
+          <text x="105" y="235" font-family="DM Sans,sans-serif" font-size="6.5" fill="rgba(254,83,55,.4)" text-anchor="middle">Active / Passive</text>
+
+          <!-- Primary switch -->
+          <rect x="185" y="210" width="125" height="30" rx="2" fill="rgba(35,193,196,.05)" stroke="rgba(35,193,196,.35)" stroke-width="1"/>
+          <text x="248" y="224" font-family="Questrial,sans-serif" font-size="7.5" letter-spacing="1" fill="rgba(35,193,196,.7)" text-anchor="middle">CORE SWITCH A</text>
+          <text x="248" y="235" font-family="DM Sans,sans-serif" font-size="6.5" fill="rgba(35,193,196,.4)" text-anchor="middle">24-port PoE</text>
+
+          <!-- Secondary switch -->
+          <rect x="330" y="210" width="125" height="30" rx="2" fill="rgba(35,193,196,.05)" stroke="rgba(35,193,196,.25)" stroke-width="1"/>
+          <text x="393" y="224" font-family="Questrial,sans-serif" font-size="7.5" letter-spacing="1" fill="rgba(35,193,196,.5)" text-anchor="middle">CORE SWITCH B</text>
+          <text x="393" y="235" font-family="DM Sans,sans-serif" font-size="6.5" fill="rgba(35,193,196,.35)" text-anchor="middle">24-port PoE</text>
+
+          <!-- Flex switch -->
+          <rect x="470" y="210" width="80" height="30" rx="2" fill="none" stroke="rgba(35,193,196,.2)" stroke-width="1"/>
+          <text x="510" y="228" font-family="Questrial,sans-serif" font-size="7" letter-spacing="1" fill="rgba(35,193,196,.4)" text-anchor="middle">FLEX SWITCH</text>
+
+          <!-- PDU → firewall, switches -->
+          <line x1="250" y1="180" x2="105" y2="210" stroke="rgba(255,198,29,.3)" stroke-width="1" marker-end="url(#arr-g)"/>
+          <line x1="270" y1="180" x2="248" y2="210" stroke="rgba(255,198,29,.3)" stroke-width="1" marker-end="url(#arr-g)"/>
+          <line x1="310" y1="180" x2="393" y2="210" stroke="rgba(255,198,29,.3)" stroke-width="1" marker-end="url(#arr-g)"/>
+
+          <!-- Firewall → switch connection -->
+          <line x1="160" y1="225" x2="185" y2="225" stroke="#23c1c4" stroke-width="1.2" stroke-dasharray="4 2" opacity=".6" marker-end="url(#arr-t)"/>
+
+          <!-- ── EDGE COMPUTE LAYER ── -->
+          <!-- 4 edge servers -->
+          <rect x="50" y="278" width="110" height="24" rx="2" fill="rgba(35,193,196,.06)" stroke="rgba(35,193,196,.3)" stroke-width="1"/>
+          <text x="105" y="294" font-family="Questrial,sans-serif" font-size="7" letter-spacing="1" fill="rgba(35,193,196,.7)" text-anchor="middle">EDGE SERVER 1 · LTE</text>
+
+          <rect x="175" y="278" width="110" height="24" rx="2" fill="rgba(35,193,196,.06)" stroke="rgba(35,193,196,.3)" stroke-width="1"/>
+          <text x="230" y="294" font-family="Questrial,sans-serif" font-size="7" letter-spacing="1" fill="rgba(35,193,196,.7)" text-anchor="middle">EDGE SERVER 2 · VOIP</text>
+
+          <rect x="300" y="278" width="110" height="24" rx="2" fill="rgba(35,193,196,.06)" stroke="rgba(35,193,196,.3)" stroke-width="1"/>
+          <text x="355" y="294" font-family="Questrial,sans-serif" font-size="7" letter-spacing="1" fill="rgba(35,193,196,.7)" text-anchor="middle">EDGE SERVER 3 · LOG</text>
+
+          <rect x="425" y="278" width="110" height="24" rx="2" fill="rgba(35,193,196,.04)" stroke="rgba(35,193,196,.18)" stroke-width="1"/>
+          <text x="480" y="294" font-family="Questrial,sans-serif" font-size="7" letter-spacing="1" fill="rgba(35,193,196,.45)" text-anchor="middle">EDGE SERVER 4 · AI</text>
+
+          <!-- Servers ← switch connections -->
+          <line x1="200" y1="240" x2="105" y2="278" stroke="#23c1c4" stroke-width="1" opacity=".4" marker-end="url(#arr-t)"/>
+          <line x1="230" y1="240" x2="230" y2="278" stroke="#23c1c4" stroke-width="1" opacity=".4" marker-end="url(#arr-t)"/>
+          <line x1="280" y1="240" x2="355" y2="278" stroke="#23c1c4" stroke-width="1" opacity=".4" marker-end="url(#arr-t)"/>
+          <line x1="393" y1="240" x2="480" y2="278" stroke="#23c1c4" stroke-width="1" opacity=".3" marker-end="url(#arr-t)"/>
+
+          <!-- ── ANTENNA / UPLINK LAYER ── -->
+          <!-- Satellite dish -->
+          <g transform="translate(42,360)">
+            <path d="M20,30 Q10,12 28,6 Q44,0 38,20" fill="none" stroke="rgba(255,198,29,.55)" stroke-width="1.5"/>
+            <line x1="28" y1="6" x2="28" y2="30" stroke="rgba(255,198,29,.35)" stroke-width="1"/>
+            <circle cx="28" cy="30" r="3" fill="rgba(255,198,29,.3)" stroke="rgba(255,198,29,.6)" stroke-width="1"/>
+            <text x="28" y="50" font-family="Questrial,sans-serif" font-size="7" letter-spacing="1" fill="rgba(255,198,29,.55)" text-anchor="middle">SATELLITE</text>
+          </g>
+
+          <!-- Point-to-point microwave -->
+          <g transform="translate(140,355)">
+            <circle cx="22" cy="22" r="18" fill="none" stroke="rgba(35,193,196,.4)" stroke-width="1.2"/>
+            <line x1="22" y1="4" x2="22" y2="40" stroke="rgba(35,193,196,.3)" stroke-width="1"/>
+            <line x1="4" y1="22" x2="40" y2="22" stroke="rgba(35,193,196,.3)" stroke-width="1"/>
+            <text x="22" y="58" font-family="Questrial,sans-serif" font-size="7" letter-spacing="1" fill="rgba(35,193,196,.55)" text-anchor="middle">MICROWAVE</text>
+            <text x="22" y="68" font-family="DM Sans,sans-serif" font-size="6.5" fill="rgba(35,193,196,.35)" text-anchor="middle">P2P LINK</text>
+          </g>
+
+          <!-- LTE antennas (3× omni) -->
+          <g transform="translate(240,348)">
+            <rect x="14" y="0" width="8" height="40" rx="4" fill="none" stroke="rgba(35,193,196,.5)" stroke-width="1.2"/>
+            <rect x="28" y="0" width="8" height="40" rx="4" fill="none" stroke="rgba(35,193,196,.5)" stroke-width="1.2"/>
+            <rect x="42" y="0" width="8" height="40" rx="4" fill="none" stroke="rgba(35,193,196,.5)" stroke-width="1.2"/>
+            <text x="32" y="56" font-family="Questrial,sans-serif" font-size="7" letter-spacing="1" fill="rgba(35,193,196,.6)" text-anchor="middle">LTE ANTENNAS</text>
+            <text x="32" y="67" font-family="DM Sans,sans-serif" font-size="6.5" fill="rgba(35,193,196,.35)" text-anchor="middle">120° coverage ×3</text>
+          </g>
+
+          <!-- Mesh AP (outdoor) -->
+          <g transform="translate(360,354)">
+            <path d="M22,36 a22,22 0 0,1 0,-30" fill="none" stroke="rgba(254,83,55,.45)" stroke-width="1.2"/>
+            <path d="M22,36 a15,15 0 0,1 0,-20" fill="none" stroke="rgba(254,83,55,.45)" stroke-width="1.2"/>
+            <path d="M22,36 a8,8 0 0,1 0,-10" fill="none" stroke="rgba(254,83,55,.55)" stroke-width="1.5"/>
+            <circle cx="22" cy="36" r="2.5" fill="#fe5337" opacity=".6"/>
+            <text x="22" y="56" font-family="Questrial,sans-serif" font-size="7" letter-spacing="1" fill="rgba(254,83,55,.6)" text-anchor="middle">MESH AP</text>
+            <text x="22" y="66" font-family="DM Sans,sans-serif" font-size="6.5" fill="rgba(254,83,55,.35)" text-anchor="middle">Outdoor</text>
+          </g>
+
+          <!-- VHF/UHF antenna -->
+          <g transform="translate(458,352)">
+            <line x1="16" y1="0" x2="16" y2="44" stroke="rgba(113,128,150,.55)" stroke-width="1.5" stroke-linecap="round"/>
+            <line x1="8" y1="14" x2="24" y2="14" stroke="rgba(113,128,150,.4)" stroke-width="1"/>
+            <line x1="6" y1="22" x2="26" y2="22" stroke="rgba(113,128,150,.35)" stroke-width="1"/>
+            <text x="16" y="58" font-family="Questrial,sans-serif" font-size="7" letter-spacing="1" fill="rgba(113,128,150,.55)" text-anchor="middle">VHF/UHF</text>
+            <text x="16" y="68" font-family="DM Sans,sans-serif" font-size="6.5" fill="rgba(113,128,150,.35)" text-anchor="middle">Civic Radio</text>
+          </g>
+
+          <!-- Connections: servers → antennas -->
+          <line x1="105" y1="302" x2="70" y2="360" stroke="#23c1c4" stroke-width="1" opacity=".4" marker-end="url(#arr-t)"/>
+          <line x1="105" y1="302" x2="162" y2="355" stroke="#23c1c4" stroke-width="1" opacity=".35"/>
+          <line x1="230" y1="302" x2="270" y2="348" stroke="#23c1c4" stroke-width="1" opacity=".5" filter="url(#gl)" marker-end="url(#arr-t)"/>
+          <line x1="105" y1="302" x2="382" y2="354" stroke="rgba(254,83,55,.4)" stroke-width="1" marker-end="url(#arr-p)"/>
+          <line x1="355" y1="302" x2="474" y2="352" stroke="rgba(113,128,150,.4)" stroke-width="1" stroke-dasharray="3 3"/>
+
+          <!-- Satellite uplink connection -->
+          <line x1="56" y1="210" x2="56" y2="302" stroke="rgba(255,198,29,.4)" stroke-width="1" stroke-dasharray="5 3" marker-end="url(#arr-g)"/>
+          <line x1="56" y1="302" x2="70" y2="360" stroke="rgba(255,198,29,.4)" stroke-width="1" stroke-dasharray="5 3"/>
+
+          <!-- ── END DEVICES ── -->
+          <g transform="translate(0,460)">
+            <!-- Labels for downstream devices -->
+            <rect x="18" y="0" width="68" height="22" rx="2" fill="none" stroke="rgba(255,255,255,.08)" stroke-width="1"/>
+            <text x="52" y="15" font-family="Questrial,sans-serif" font-size="6.5" letter-spacing="1" fill="rgba(255,255,255,.3)" text-anchor="middle">INDOOR AP</text>
+
+            <rect x="104" y="0" width="68" height="22" rx="2" fill="none" stroke="rgba(255,255,255,.08)" stroke-width="1"/>
+            <text x="138" y="15" font-family="Questrial,sans-serif" font-size="6.5" letter-spacing="1" fill="rgba(255,255,255,.3)" text-anchor="middle">ACCESS CTRL</text>
+
+            <rect x="190" y="0" width="68" height="22" rx="2" fill="none" stroke="rgba(255,255,255,.08)" stroke-width="1"/>
+            <text x="224" y="15" font-family="Questrial,sans-serif" font-size="6.5" letter-spacing="1" fill="rgba(255,255,255,.3)" text-anchor="middle">CAMERAS</text>
+
+            <rect x="276" y="0" width="68" height="22" rx="2" fill="none" stroke="rgba(255,255,255,.08)" stroke-width="1"/>
+            <text x="310" y="15" font-family="Questrial,sans-serif" font-size="6.5" letter-spacing="1" fill="rgba(255,255,255,.3)" text-anchor="middle">ENV SENSORS</text>
+
+            <rect x="362" y="0" width="68" height="22" rx="2" fill="none" stroke="rgba(255,198,29,.12)" stroke-width="1"/>
+            <text x="396" y="9" font-family="Questrial,sans-serif" font-size="6.5" letter-spacing="1" fill="rgba(255,198,29,.45)" text-anchor="middle">CIVIC</text>
+            <text x="396" y="19" font-family="Questrial,sans-serif" font-size="6.5" letter-spacing="1" fill="rgba(255,198,29,.45)" text-anchor="middle">KIOSK</text>
+
+            <rect x="448" y="0" width="68" height="22" rx="2" fill="none" stroke="rgba(35,193,196,.12)" stroke-width="1"/>
+            <text x="482" y="9" font-family="Questrial,sans-serif" font-size="6.5" letter-spacing="1" fill="rgba(35,193,196,.45)" text-anchor="middle">WEATHER</text>
+            <text x="482" y="19" font-family="Questrial,sans-serif" font-size="6.5" letter-spacing="1" fill="rgba(35,193,196,.45)" text-anchor="middle">STATION</text>
+          </g>
+
+          <!-- Switch → end devices -->
+          <line x1="248" y1="240" x2="52" y2="460" stroke="rgba(35,193,196,.2)" stroke-width="1"/>
+          <line x1="248" y1="240" x2="138" y2="460" stroke="rgba(35,193,196,.2)" stroke-width="1"/>
+          <line x1="393" y1="240" x2="224" y2="460" stroke="rgba(35,193,196,.2)" stroke-width="1"/>
+          <line x1="393" y1="240" x2="310" y2="460" stroke="rgba(35,193,196,.2)" stroke-width="1"/>
+          <line x1="393" y1="240" x2="396" y2="460" stroke="rgba(255,198,29,.25)" stroke-width="1"/>
+          <line x1="510" y1="240" x2="482" y2="460" stroke="rgba(35,193,196,.25)" stroke-width="1"/>
+
+          <!-- Animated LTE signal pulses on antenna group -->
+          <circle cx="271" cy="348" r="0" fill="none" stroke="#23c1c4" stroke-width="1" opacity="0">
+            <animate attributeName="r" values="0;28;0" dur="2.4s" repeatCount="indefinite"/>
+            <animate attributeName="opacity" values=".7;0;.7" dur="2.4s" repeatCount="indefinite"/>
+          </circle>
+          <circle cx="271" cy="348" r="0" fill="none" stroke="#23c1c4" stroke-width="1" opacity="0">
+            <animate attributeName="r" values="0;28;0" dur="2.4s" begin="0.8s" repeatCount="indefinite"/>
+            <animate attributeName="opacity" values=".7;0;.7" dur="2.4s" begin="0.8s" repeatCount="indefinite"/>
+          </circle>
+          <circle cx="271" cy="348" r="0" fill="none" stroke="#23c1c4" stroke-width="1" opacity="0">
+            <animate attributeName="r" values="0;28;0" dur="2.4s" begin="1.6s" repeatCount="indefinite"/>
+            <animate attributeName="opacity" values=".7;0;.7" dur="2.4s" begin="1.6s" repeatCount="indefinite"/>
+          </circle>
+
+          <!-- Version label -->
+          <text x="290" y="630" font-family="Questrial,sans-serif" font-size="6.5" letter-spacing="2" fill="rgba(255,255,255,.18)" text-anchor="middle">HYBRID COMMUNICATIONS NODE · v1.05 · sovereignvision.org</text>
+        </svg>
+      </div>
+
+      <!-- RIGHT: Live status panel -->
+      <div class="node-panel">
+        <div class="node-panel-header">
+          <div class="node-panel-title">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
+            Node Status · Funafuti Cluster
+          </div>
+          <div class="live-badge"><div class="live-dot"></div>Live Simulation</div>
+        </div>
+        <div class="node-rows" id="node-rows">
+          <!-- rows injected by JS -->
+        </div>
+      </div>
+
+    </div><!-- end node-diagram-panel -->
+  </div>
+</section>
+
+<!-- ═══ FOUR-TIER STACK ══════════════════════════════════════════════ -->
+<section class="stack-section" id="stack">
+  <div class="stack-header">
+    <div class="reveal-left">
+      <div class="section-tag teal">Network Architecture</div>
+      <h2 class="h2">Four tiers.<br>One <em>sovereign</em> backbone.</h2>
+    </div>
+    <p class="body-text reveal">Each node runs four independent communication layers simultaneously. When one layer is degraded by weather, power loss, or hardware failure, the others carry the load — automatically, without human intervention.</p>
+  </div>
+
+  <div class="stack-grid">
+
+    <div class="tier-card tier-1 reveal">
+      <span class="tier-num">01</span>
+      <div class="tier-card-icon">
+        <svg viewBox="0 0 24 24"><rect x="2" y="6" width="20" height="12" rx="2"/><path d="M6 12h12M8 9l-2 3 2 3M16 9l2 3-2 3"/><circle cx="12" cy="12" r="1.5"/></svg>
+      </div>
+      <div class="tier-tuvaluan">Pule Loto · Private Core</div>
+      <div class="tier-name">Private Mobile Network</div>
+      <p class="tier-desc">Island-owned mobile connectivity. SIM-based devices connect through a locally operated core that no external carrier controls. Includes civic voice-over-IP for island-wide calling. All traffic processed on-island — zero foreign telco dependency.</p>
+      <div class="tier-status"><div class="status-dot"></div>Always On · Tier 1 Critical</div>
+    </div>
+
+    <div class="tier-card tier-2 reveal">
+      <span class="tier-num">02</span>
+      <div class="tier-card-icon">
+        <svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+      </div>
+      <div class="tier-tuvaluan">Ara Lagi · Sky Path</div>
+      <div class="tier-name">Satellite Uplink</div>
+      <p class="tier-desc">Off-island internet access via low-earth-orbit satellite with automatic weather-adaptive realignment. Acts as the primary global link until the Vaka undersea cable reaches Tuvalu. Fibre uplink ports are provisioned and ready on every node.</p>
+      <div class="tier-status"><div class="status-dot"></div>Global Bridge · Tier 2</div>
+    </div>
+
+    <div class="tier-card tier-3 reveal">
+      <span class="tier-num">03</span>
+      <div class="tier-card-icon">
+        <svg viewBox="0 0 24 24"><path d="M5 12.55a11 11 0 0114.08 0"/><path d="M1.42 9a16 16 0 0121.16 0"/><path d="M8.53 16.11a6 6 0 016.95 0"/><circle cx="12" cy="20" r="1"/></svg>
+      </div>
+      <div class="tier-tuvaluan">Kapua Loloa · Long Cloud</div>
+      <div class="tier-name">Community Mesh Network</div>
+      <p class="tier-desc">Multi-band mesh coverage across homes, schools, clinics, and desalination nodes. Integrates with the ArborMesh grid for power-aware load balancing — automatically scaling bandwidth as battery levels drop. Public and visitor devices connect here.</p>
+      <div class="tier-status"><div class="status-dot"></div>Community Access · Tier 3</div>
+    </div>
+
+    <div class="tier-card tier-4 reveal">
+      <span class="tier-num">04</span>
+      <div class="tier-card-icon">
+        <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81a19.79 19.79 0 01-3.07-8.65 2 2 0 012-2.18h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 5.06a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 12z"/></svg>
+      </div>
+      <div class="tier-tuvaluan">Leo Fakafotu · Voice of the Sky</div>
+      <div class="tier-name">Emergency Radio Repeater</div>
+      <p class="tier-desc">Backup voice and emergency alert broadcasting. Guardian-triggered alerts auto-broadcast on storm alert. Radio-over-IP bridges let mobile users reach radio receivers island-wide through civic voice routing. Functions when all other tiers are down.</p>
+      <div class="tier-status"><div class="status-dot"></div>Emergency Fallback · Tier 4</div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ═══ NODE SPEC — dark ═════════════════════════════════════════════ -->
+<section class="spec-section">
+  <div class="spec-header">
+    <div class="reveal-left">
+      <div class="section-tag white">Hardware Platform</div>
+      <h2 class="h2 h2-white">Built to<br><em>last a generation.</em></h2>
+    </div>
+    <p class="spec-pull reveal">Each node is a storm-rated enclosure with a retractable mast, solar canopy, and hot-swap internal racks — engineered for local maintenance by trained stewards. No specialist contractor required.</p>
+  </div>
+
+  <div class="spec-grid">
+
+    <div class="spec-card reveal">
+      <div class="spec-card-icon">
+        <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+      </div>
+      <div class="spec-card-n">Shelter</div>
+      <div class="spec-card-title">Physical Enclosure</div>
+      <ul class="spec-list">
+        <li><span class="spec-key">Footprint</span><span class="spec-val">10 × 20 ft</span></li>
+        <li><span class="spec-key">Construction</span><span class="spec-val">Fiberglass, cyclone-rated</span></li>
+        <li><span class="spec-key">Design wind</span><span class="spec-val">150 mph sustained</span></li>
+        <li><span class="spec-key">Insulation</span><span class="spec-val">R-19+ floor, walls, ceiling</span></li>
+        <li><span class="spec-key">Cooling</span><span class="spec-val">Mini-split + passive convection</span></li>
+      </ul>
+    </div>
+
+    <div class="spec-card reveal">
+      <div class="spec-card-icon">
+        <svg viewBox="0 0 24 24"><line x1="12" y1="2" x2="12" y2="22"/><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg>
+      </div>
+      <div class="spec-card-n">Mast</div>
+      <div class="spec-card-title">Retractable Storm Mast</div>
+      <ul class="spec-list">
+        <li><span class="spec-key">Extended height</span><span class="spec-val">9 m or 12 m</span></li>
+        <li><span class="spec-key">Retracted height</span><span class="spec-val">2.3 m / 2.9 m</span></li>
+        <li><span class="spec-key">Wind rated (guyed)</span><span class="spec-val">120 kph</span></li>
+        <li><span class="spec-key">Storm action</span><span class="spec-val">Guardian-triggered retract</span></li>
+        <li><span class="spec-key">Operation</span><span class="spec-val">Manual winch, storm-rated</span></li>
+      </ul>
+    </div>
+
+    <div class="spec-card reveal">
+      <div class="spec-card-icon">
+        <svg viewBox="0 0 24 24"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+      </div>
+      <div class="spec-card-n">Power</div>
+      <div class="spec-card-title">Integrated Microgrid</div>
+      <ul class="spec-list">
+        <li><span class="spec-key">Solar array</span><span class="spec-val">6.4 kW · 16 × 400W panels</span></li>
+        <li><span class="spec-key">Panel rating</span><span class="spec-val">Salt &amp; cyclone-rated, 21%+ eff.</span></li>
+        <li><span class="spec-key">Battery bank</span><span class="spec-val">28–30 kWh LFP</span></li>
+        <li><span class="spec-key">Inverter</span><span class="spec-val">3–5 kW hybrid inverter</span></li>
+        <li><span class="spec-key">Critical autonomy</span><span class="spec-val">6+ hrs on Tier 1 load</span></li>
+      </ul>
+    </div>
+
+    <div class="spec-card reveal">
+      <div class="spec-card-icon">
+        <svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+      </div>
+      <div class="spec-card-n">Rack</div>
+      <div class="spec-card-title">42U Core Rack System</div>
+      <ul class="spec-list">
+        <li><span class="spec-key">Network switch</span><span class="spec-val">PoE, SFP uplinks included</span></li>
+        <li><span class="spec-key">Firewall</span><span class="spec-val">Open-source, SIP-compatible</span></li>
+        <li><span class="spec-key">UPS</span><span class="spec-val">Inline battery backup</span></li>
+        <li><span class="spec-key">Fiber ports</span><span class="spec-val">SFP, Vaka cable-ready</span></li>
+        <li><span class="spec-key">Salt protection</span><span class="spec-val">IP65, conformal coated</span></li>
+      </ul>
+    </div>
+
+    <div class="spec-card reveal">
+      <div class="spec-card-icon">
+        <svg viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="2"/><rect x="9" y="9" width="6" height="6"/><line x1="9" y1="1" x2="9" y2="4"/><line x1="15" y1="1" x2="15" y2="4"/><line x1="9" y1="20" x2="9" y2="23"/><line x1="15" y1="20" x2="15" y2="23"/><line x1="20" y1="9" x2="23" y2="9"/><line x1="20" y1="14" x2="23" y2="14"/><line x1="1" y1="9" x2="4" y2="9"/><line x1="1" y1="14" x2="4" y2="14"/></svg>
+      </div>
+      <div class="spec-card-n">Compute</div>
+      <div class="spec-card-title">Edge Server — 3 Nodes</div>
+      <ul class="spec-list">
+        <li><span class="spec-key">RAM</span><span class="spec-val">32 GB per server node</span></li>
+        <li><span class="spec-key">Storage</span><span class="spec-val">1 TB SSD</span></li>
+        <li><span class="spec-key">Node 1</span><span class="spec-val">LTE core + routing + NTP</span></li>
+        <li><span class="spec-key">Node 2</span><span class="spec-val">Civic VoIP + Guardian AI</span></li>
+        <li><span class="spec-key">Node 3</span><span class="spec-val">Logging + sync + dev tools</span></li>
+      </ul>
+    </div>
+
+    <div class="spec-card reveal">
+      <div class="spec-card-icon">
+        <!-- Guardian icon — simplified -->
+        <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4" stroke-width="1.5"/></svg>
+      </div>
+      <div class="spec-card-n">Guardian</div>
+      <div class="spec-card-title">AI Management Layer</div>
+      <ul class="spec-list">
+        <li><span class="spec-key">Diagnostics</span><span class="spec-val">Live fault detection + logging</span></li>
+        <li><span class="spec-key">Firmware</span><span class="spec-val">OTA updates + rollback</span></li>
+        <li><span class="spec-key">Storm protocol</span><span class="spec-val">Auto mast retract on alert</span></li>
+        <li><span class="spec-key">Sensor mesh</span><span class="spec-val">MQTT heartbeat routing</span></li>
+        <li><span class="spec-key">Interface</span><span class="spec-val">Arbor · Tuvaluan guidance</span></li>
+      </ul>
+    </div>
+
+  </div>
+</section>
+
+<!-- ═══ STORM MODE — interactive tabs ═══════════════════════════════ -->
+<section class="storm-section">
+  <div class="storm-inner">
+    <div class="storm-content">
+      <div class="section-tag reveal-left">Guardian Power Protocol</div>
+      <h2 class="h2 reveal">Storm Mode.<br><em>Tiered load triage.</em></h2>
+      <p class="storm-pull reveal">When battery drops below 35%, solar is lost, or Guardian issues a storm alert — the node automatically sheds non-essential load in priority order.</p>
+      <p class="body-text reveal">Once solar is restored and battery exceeds 60%, Tier 2 resumes gradually. Arbor displays current load status and allows stewards to veto or request manual override on any tier.</p>
+    </div>
+    <div class="storm-interactive reveal">
+      <div class="storm-tabs">
+        <button class="storm-tab active" data-tab="t1">Tier 1 · Critical</button>
+        <button class="storm-tab" data-tab="t2">Tier 2 · Priority</button>
+        <button class="storm-tab" data-tab="t3">Tier 3 · Non-Essential</button>
+      </div>
+
+      <div class="storm-tab-content active" id="tab-t1">
+        <div class="storm-tab-label">
+          <div class="st-dot" style="background:var(--teal);box-shadow:0 0 6px rgba(35,193,196,.6);"></div>
+          <h4>Critical Communications</h4>
+          <span class="st-badge st-1-color">Always On</span>
+        </div>
+        <ul class="storm-items-list">
+          <li class="on"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Mobile Network Repeater + Relay</li>
+          <li class="on"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Guardian AI Edge Server</li>
+          <li class="on"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Network Firewall — Security &amp; Routing</li>
+          <li class="on"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Satellite Uplink</li>
+          <li class="on"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Inter-Node Mesh Relay Link</li>
+          <li class="on"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Primary Cooling (throttled)</li>
+        </ul>
+        <div class="storm-recovery">Guardian holds Tier 1 operational until battery reaches absolute minimum threshold — approximately 6+ hours of critical autonomy from a full charge.</div>
+      </div>
+
+      <div class="storm-tab-content" id="tab-t2">
+        <div class="storm-tab-label">
+          <div class="st-dot" style="background:var(--gold);"></div>
+          <h4>Priority Services</h4>
+          <span class="st-badge st-2-color">Solar-Dependent</span>
+        </div>
+        <ul class="storm-items-list">
+          <li class="amber"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>Fibre Uplink (if cable available)</li>
+          <li class="amber"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>Admin Mesh (responders only)</li>
+          <li class="amber"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>Emergency Radio Broadcast (push only)</li>
+          <li class="amber"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>Environmental Sensors (log only)</li>
+          <li class="amber"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>Interior Cameras (motion-triggered)</li>
+        </ul>
+        <div class="storm-recovery" style="border-color:var(--gold);background:rgba(255,198,29,.06);">Tier 2 resumes once solar input is restored and battery state-of-charge exceeds 60%. Arbor notifies stewards before restoring each service.</div>
+      </div>
+
+      <div class="storm-tab-content" id="tab-t3">
+        <div class="storm-tab-label">
+          <div class="st-dot" style="background:rgba(0,43,75,.2);"></div>
+          <h4>Non-Essential Load</h4>
+          <span class="st-badge st-3-color">Cut First</span>
+        </div>
+        <ul class="storm-items-list">
+          <li class="off"><svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>Public Mesh Network</li>
+          <li class="off"><svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>Secondary Cooling Unit</li>
+          <li class="off"><svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>Community Projector Feed</li>
+          <li class="off"><svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>Non-Critical Camera Feeds</li>
+          <li class="off"><svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>Ambient LED Lighting</li>
+        </ul>
+        <div class="storm-recovery" style="border-color:var(--stone-light);background:rgba(0,43,75,.04);">Tier 3 remains offline until battery is fully recovered and Tier 2 has been stable for 30 minutes. Stewards may manually override through Arbor.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ GUARDIAN + ARBOR — dark editorial ═══════════════════════════ -->
+<section class="ga-section">
+  <div class="ga-inner">
+    <div class="ga-left">
+      <div class="section-tag white">AI Civic Systems</div>
+
+      <!-- Guardian orbital visual -->
+      <div class="ga-visual">
+        <div class="ga-vis-inner">
+          <div class="g-ring g-ring-1"></div>
+          <div class="g-ring g-ring-2"></div>
+          <div class="g-ring g-ring-3"></div>
+          <div class="g-core">
+            <!-- Guardian SVG icon -->
+            <svg class="g-core-svg" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M24 4L8 11v13c0 10.5 6.9 20.3 16 23 9.1-2.7 16-12.5 16-23V11L24 4z" stroke="rgba(255,255,255,.9)" stroke-width="1.5" stroke-linejoin="round"/>
+              <path d="M18 24l4 4 8-8" stroke="rgba(255,255,255,.9)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+              <circle cx="24" cy="24" r="3" fill="rgba(35,193,196,.4)"/>
+            </svg>
+          </div>
+          <!-- Orbit dots -->
+          <div style="position:absolute;inset:13%;border-radius:50%;animation:gSpin 31s linear infinite reverse;pointer-events:none;">
+            <div style="position:absolute;top:-3.5px;left:50%;transform:translateX(-50%);width:7px;height:7px;border-radius:50%;background:var(--gold);"></div>
+          </div>
+          <div style="position:absolute;inset:0;border-radius:50%;animation:gSpin 44s linear infinite;pointer-events:none;">
+            <div style="position:absolute;top:-3px;left:50%;transform:translateX(-50%);width:6px;height:6px;border-radius:50%;background:var(--teal);"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="ga-right-name">Guardian<br>&amp; Arbor</div>
+      <p class="ga-right-sub">The civic intelligence layer that monitors, manages, and communicates — in Tuvaluan.</p>
+      <div class="ga-badge"><div class="ga-badge-dot"></div>On-Island · Open-Source · Auditable</div>
+    </div>
+
+    <div class="ga-right">
+      <blockquote class="ga-blockquote reveal">
+        "The network does not belong to a company. It belongs to the people — and Guardian is their steward."
+      </blockquote>
+
+      <div class="sov-points">
+        <div class="sov-point reveal">
+          <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+          <span><strong style="color:rgba(255,255,255,.85);">Real-time node monitoring.</strong> Guardian polls every comms node continuously — detecting hardware faults, signal degradation, power anomalies, and temperature spikes before they cause outages. Predictive alerts trigger before failure, not after.</span>
+        </div>
+        <div class="sov-point reveal">
+          <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+          <span><strong style="color:rgba(255,255,255,.85);">Storm protocol automation.</strong> On cyclone alert, Guardian automatically retracts the mast, switches to storm power mode, sheds Tier 3 load, and broadcasts an emergency alert via the civic radio repeater — no human action required.</span>
+        </div>
+        <div class="sov-point reveal">
+          <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+          <span><strong style="color:rgba(255,255,255,.85);">VLAN isolation and firewall logic.</strong> Guardian manages network segmentation — separating the mobile core, satellite uplink, public mesh, IoT sensors, civic kiosks, and surveillance into isolated VLANs with enforced traffic policies. No cross-contamination.</span>
+        </div>
+        <div class="sov-point reveal">
+          <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+          <span><strong style="color:rgba(255,255,255,.85);">Firmware and update sovereignty.</strong> Over-the-air firmware updates deploy with rollback safeguards. All updates are staged locally from an on-island mirror vault — no dependency on external servers or internet connectivity during the update process.</span>
+        </div>
+        <div class="sov-point reveal">
+          <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+          <span><strong style="color:rgba(255,255,255,.85);">Full audit trail.</strong> Every automated decision Guardian makes — load shed, storm trigger, firmware push, VLAN change — is logged locally as a timestamped record, readable by the community council at any time.</span>
+        </div>
+      </div>
+
+      <!-- Arbor card -->
+      <div class="arbor-card reveal">
+        <div class="arbor-icon-wrap">
+          <!-- Arbor SVG icon — branching tree form -->
+          <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <line x1="24" y1="40" x2="24" y2="24" stroke="#23c1c4" stroke-width="1.8" stroke-linecap="round"/>
+            <line x1="24" y1="30" x2="14" y2="20" stroke="#23c1c4" stroke-width="1.5" stroke-linecap="round"/>
+            <line x1="24" y1="26" x2="34" y2="16" stroke="#23c1c4" stroke-width="1.5" stroke-linecap="round"/>
+            <line x1="14" y1="20" x2="8" y2="14" stroke="#23c1c4" stroke-width="1.2" stroke-linecap="round"/>
+            <line x1="14" y1="20" x2="18" y2="12" stroke="#23c1c4" stroke-width="1.2" stroke-linecap="round"/>
+            <line x1="34" y1="16" x2="30" y2="10" stroke="#23c1c4" stroke-width="1.2" stroke-linecap="round"/>
+            <line x1="34" y1="16" x2="40" y2="10" stroke="#23c1c4" stroke-width="1.2" stroke-linecap="round"/>
+            <circle cx="24" cy="24" r="2.5" fill="#23c1c4" opacity=".7"/>
+            <circle cx="14" cy="20" r="2" fill="#23c1c4" opacity=".5"/>
+            <circle cx="34" cy="16" r="2" fill="#23c1c4" opacity=".5"/>
+            <circle cx="8" cy="14" r="1.5" fill="#23c1c4" opacity=".35"/>
+            <circle cx="18" cy="12" r="1.5" fill="#23c1c4" opacity=".35"/>
+            <circle cx="30" cy="10" r="1.5" fill="#23c1c4" opacity=".35"/>
+            <circle cx="40" cy="10" r="1.5" fill="#23c1c4" opacity=".35"/>
+          </svg>
+        </div>
+        <div>
+          <div class="arbor-title">Arbor — The Civic Interface</div>
+          <p class="arbor-body">Arbor translates Guardian's data into plain-language guidance for stewards — in Tuvaluan. Step-by-step maintenance instructions, live system status, storm alerts, and load override controls are all accessible through Arbor terminals installed at each civic node.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ DEPLOYMENT PHASES ════════════════════════════════════════════ -->
+<section class="phases-section">
+  <div class="phases-inner">
+    <div class="section-tag reveal-left">Deployment Roadmap</div>
+    <h2 class="h2 reveal">Phased across<br>the <em>archipelago.</em></h2>
+    <div class="phases-grid">
+      <div class="phase-card reveal">
+        <div class="phase-n">01</div>
+        <div class="phase-label">Phase 1 · Funafuti Core</div>
+        <div class="phase-title">10 Nodes — Civic &amp; Critical Sites</div>
+        <p class="phase-desc">Deploy 10 nodes across Funafuti covering desalination sites, schools, clinics, and the Civic Conduit Spine. Establish private mobile core and Guardian integration. Launch steward training and youth workforce certification programme.</p>
+      </div>
+      <div class="phase-card reveal">
+        <div class="phase-n">02</div>
+        <div class="phase-label">Phase 2 · Outer Islands</div>
+        <div class="phase-title">Archipelago-Wide Expansion</div>
+        <p class="phase-desc">Extend the mesh to outer islands and maritime docks. Each island cluster receives a satellite-enabled node for off-island uplink. Youth stewards certified in Phase 1 assume primary inspection and maintenance roles, guided by Arbor in Tuvaluan.</p>
+      </div>
+      <div class="phase-card reveal">
+        <div class="phase-n">03</div>
+        <div class="phase-label">Phase 3 · Fibre Integration</div>
+        <div class="phase-title">Undersea Cable Connection</div>
+        <p class="phase-desc">Seamless integration with the Vaka undersea cable network. Pre-provisioned fibre ports on existing nodes activate with no hardware replacement required. The satellite tier transitions to a resilience-redundancy role only.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ SYSTEM INTEGRATIONS ══════════════════════════════════════════ -->
+<section class="integration-section">
+  <div style="max-width:1360px;margin:0 auto;">
+    <div class="int-header">
+      <div>
+        <div class="section-tag teal reveal-left">System Integrations</div>
+        <h2 class="h2 reveal">The nervous system<br>of the <em>Vision stack.</em></h2>
+      </div>
+      <p class="body-text reveal" style="max-width:420px;">Te Puka Loloa links every pillar — energy, water, governance, and civic AI — into one coherent, observable network.</p>
+    </div>
+    <div class="int-grid">
+
+      <div class="int-card reveal">
+        <div class="int-icon">
+          <svg viewBox="0 0 24 24"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+        </div>
+        <div class="int-name">ArborMesh Grid</div>
+        <p class="int-desc">Power-aware transmission scaling. Nodes reduce broadcast footprint as battery state-of-charge drops, keeping critical comms live longest.</p>
+      </div>
+
+      <div class="int-card reveal">
+        <div class="int-icon">
+          <svg viewBox="0 0 24 24"><path d="M12 2a5 5 0 015 5v3a5 5 0 01-10 0V7a5 5 0 015-5z"/><path d="M5 19a9 9 0 0014 0"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+        </div>
+        <div class="int-name">Vai Tapu &amp; Vai Koko</div>
+        <p class="int-desc">Desalination nodes and lagoon tanks publish live sensor data over the mesh to Guardian's monitoring and alert system.</p>
+      </div>
+
+      <div class="int-card reveal">
+        <div class="int-icon">
+          <!-- Guardian icon -->
+          <svg viewBox="0 0 24 24"><path d="M12 2L4 6v6c0 5.25 3.5 10.15 8 11.5C16.5 22.15 20 17.25 20 12V6L12 2z"/><path d="M9 12l2 2 4-4"/></svg>
+        </div>
+        <div class="int-name">Guardian AI</div>
+        <p class="int-desc">Live diagnostics, predictive fault detection, storm protocol triggering, VLAN management, and over-the-air firmware rollout.</p>
+      </div>
+
+      <div class="int-card reveal">
+        <div class="int-icon">
+          <!-- Arbor icon -->
+          <svg viewBox="0 0 24 24"><line x1="12" y1="22" x2="12" y2="13"/><line x1="12" y1="16" x2="7" y2="11"/><line x1="12" y1="14" x2="17" y2="9"/><line x1="7" y1="11" x2="4" y2="8"/><line x1="7" y1="11" x2="9" y2="7"/><line x1="17" y1="9" x2="15" y2="6"/><line x1="17" y1="9" x2="20" y2="6"/></svg>
+        </div>
+        <div class="int-name">Arbor Interface</div>
+        <p class="int-desc">Stewards receive plain-language alerts and step-by-step maintenance guidance in Tuvaluan through Arbor civic terminals.</p>
+      </div>
+
+      <div class="int-card reveal">
+        <div class="int-icon">
+          <svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+        </div>
+        <div class="int-name">Civic Conduit Spine</div>
+        <p class="int-desc">The 2km underground conduit provides protected fibre and power pathways between all civic nodes across Funafuti.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══ TRUST STRIP ════════════════════════════════════════════════ -->
+<div class="trust-strip">
+  <div class="trust-strip-inner">
+    <div class="trust-item">
+      <div class="trust-item-icon">
+        <svg viewBox="0 0 24 24"><path d="M5 12.55a11 11 0 0114.08 0"/><path d="M1.42 9a16 16 0 0121.16 0"/><path d="M8.53 16.11a6 6 0 016.95 0"/><circle cx="12" cy="20" r="1" fill="currentColor"/></svg>
+      </div>
+      <div class="trust-item-text"><strong>4-Tier Stack</strong>Mesh · Mobile · Satellite · Radio</div>
+    </div>
+    <div class="trust-div"></div>
+    <div class="trust-item">
+      <div class="trust-item-icon">
+        <svg viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
+      </div>
+      <div class="trust-item-text"><strong>Sovereign Core</strong>No foreign carrier dependency</div>
+    </div>
+    <div class="trust-div"></div>
+    <div class="trust-item">
+      <div class="trust-item-icon">
+        <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+      </div>
+      <div class="trust-item-text"><strong>Storm-Hardened</strong>150 mph shelter · Retractable mast</div>
+    </div>
+    <div class="trust-div"></div>
+    <div class="trust-item">
+      <div class="trust-item-icon">
+        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+      </div>
+      <div class="trust-item-text"><strong>Solar-Autonomous</strong>6.4 kW array · 28–30 kWh battery</div>
+    </div>
+    <div class="trust-div"></div>
+    <div class="trust-item">
+      <div class="trust-item-icon">
+        <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+      </div>
+      <div class="trust-item-text"><strong>White Paper v1.1</strong>Full technical specification published</div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ JOIN CTA ══════════════════════════════════════════════════ -->
+<section class="join-section" id="whitepaper">
+  <div class="join-inner">
+    <div class="section-tag white reveal" style="justify-content:center;">Technical Documentation</div>
+    <h2 class="join-h2 reveal">Read the full<br>specification <em>paper.</em></h2>
+    <p class="join-body reveal">White Paper: Hybrid Communications "Te Puka Loloa" · Version 1.1 · April 2025 · Civic Commons License v1.0 · Open for replication by aligned communities worldwide.</p>
+    <div class="join-actions reveal">
+      <a href="/white-papers/te-puka-loloa" class="btn-white">Download White Paper</a>
+      <a href="/contact" class="btn-ghost-white">Contact the Trust</a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ FOOTER ════════════════════════════════════════════════════ -->
+<footer>
+  <div class="footer-top">
+    <div>
+      <a href="/" class="footer-logo-wrap">
+        <img src="images/logo-trans.png" alt="Sovereign Vision">
+        <span class="footer-logo-name">Sovereign Vision</span>
+      </a>
+      <p class="footer-desc">A comprehensive sovereign civilization infrastructure stack for Tuvalu — and an open-source blueprint for climate-vulnerable communities worldwide.</p>
+      <a href="/cdn-cgi/l/email-protection#ed999f989e99ad9e829b889f88848a839b849e848283c3829f8a" class="footer-email"><span class="__cf_email__" data-cfemail="d9adabacaaad99aab6afbcabbcb0beb7afb0aab0b6b7f7b6abbe">[email&#160;protected]</span></a>
+    </div>
+    <div>
+      <div class="footer-col-h">Core Systems</div>
+      <ul class="footer-links">
+        <li><a href="/energy">Power Generation</a></li>
+        <li><a href="/water-systems">Water Systems</a></li>
+        <li><a href="/food">Food Sovereignty</a></li>
+        <li><a href="/communications">Communications</a></li>
+        <li><a href="/waste-systems">Resource Recovery</a></li>
+        <li><a href="/civic-infrastructure">Civic Infrastructure</a></li>
+        <li><a href="/treasury">Sovereign Treasury</a></li>
+        <li><a href="/ai-overview">Civic Stewardship</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-col-h">About &amp; Governance</div>
+      <ul class="footer-links">
+        <li><a href="/about-us">About Us</a></li>
+        <li><a href="/continuity-vs-reinvention">Continuity vs Reinvention</a></li>
+        <li><a href="/elders-council">Elders Council</a></li>
+        <li><a href="/youth-voice">Youth Voice</a></li>
+        <li><a href="/how-it-works">How It Works</a></li>
+        <li><a href="/faq">FAQ</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-col-h">Legal &amp; Project</div>
+      <ul class="footer-links">
+        <li><a href="/legal-licensing">Legal &amp; Licensing</a></li>
+        <li><a href="/civic-commons-license">Civic Commons License</a></li>
+        <li><a href="/digitalarchipelago">Digital Archipelago Accord</a></li>
+        <li><a href="/trust-formation-status">Trust Formation Status</a></li>
+        <li><a href="/terms">Terms of Use</a></li>
+        <li><a href="/privacy-policy">Privacy Policy</a></li>
+        <li><a href="/copyright-notice">Copyright Notice</a></li>
+        <li><a href="/contact">Contact</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div class="footer-copy">© 2026 Tuvalu Sovereign Vision Stewardship Trust · All content protected under the Civic Commons License v1.0 · sovereignvision.org</div>
+    <div class="footer-socials">
+      <a href="https://github.com/sovereign-vision-org" target="_blank" rel="noopener">GitHub</a>
+      <a href="http://linkedin.com/company/sovereign-vision-project" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="https://www.instagram.com/tuvalu_vision_project" target="_blank" rel="noopener">Instagram</a>
+    </div>
+  </div>
+</footer>
+
+<!-- ═══ JS ═════════════════════════════════════════════════════════ -->
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+/* Nav scroll */
+const nav = document.getElementById('nav');
+window.addEventListener('scroll', () => { nav.classList.toggle('scrolled', window.scrollY > 60); }, { passive:true });
+
+/* Mobile menu */
+const hamburger = document.getElementById('hamburger');
+const mobileMenu = document.getElementById('mobile-menu');
+let menuOpen = false;
+function closeMobile() {
+  menuOpen = false;
+  hamburger.classList.remove('open');
+  mobileMenu.classList.remove('open');
+  document.body.style.overflow = '';
+  hamburger.setAttribute('aria-expanded','false');
+}
+hamburger.addEventListener('click', () => {
+  menuOpen ? closeMobile() : (() => {
+    menuOpen = true;
+    hamburger.classList.add('open');
+    mobileMenu.classList.add('open');
+    document.body.style.overflow = 'hidden';
+    hamburger.setAttribute('aria-expanded','true');
+  })();
+});
+document.addEventListener('keydown', e => { if (e.key==='Escape' && menuOpen) closeMobile(); });
+
+/* Wave canvas — primary (hero) */
+const canvas = document.getElementById('wave-canvas');
+const ctx = canvas.getContext('2d');
+const canvas2 = document.getElementById('wave-canvas-2');
+const ctx2 = canvas2.getContext('2d');
+let W=0, H=0, t=0;
+const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+function resizeCanvas() {
+  const hero = canvas.parentElement;
+  W = hero.offsetWidth; H = hero.offsetHeight;
+  canvas.width = W; canvas.height = H;
+  canvas2.width = W; canvas2.height = H;
+}
+resizeCanvas();
+new ResizeObserver(resizeCanvas).observe(document.querySelector('.page-hero'));
+
+/* Primary waves — teal, visible and bold */
+const waveData = [
+  { amp:26, freq:.006,  speed:.22, yF:.52, color:'rgba(35,193,196,.55)', lw:1.8 },
+  { amp:16, freq:.010,  speed:.38, yF:.62, color:'rgba(35,193,196,.35)', lw:1.2 },
+  { amp:32, freq:.004,  speed:.15, yF:.72, color:'rgba(35,193,196,.22)', lw:1.4 },
+  { amp:18, freq:.008,  speed:.30, yF:.44, color:'rgba(255,198,29,.22)', lw:0.8 },
+];
+/* Secondary waves — larger amplitude, different phase */
+const waveData2 = [
+  { amp:40, freq:.0035, speed:.12, yF:.38, color:'rgba(35,193,196,.18)', lw:1.6 },
+  { amp:22, freq:.007,  speed:.28, yF:.58, color:'rgba(254,83,55,.14)',  lw:1.0 },
+  { amp:14, freq:.013,  speed:.50, yF:.68, color:'rgba(35,193,196,.28)', lw:0.9 },
+];
+
+(function draw() {
+  ctx.clearRect(0,0,W,H);
+  ctx2.clearRect(0,0,W,H);
+  if (!reduced) {
+    waveData.forEach(w => {
+      ctx.beginPath(); ctx.lineWidth=w.lw; ctx.strokeStyle=w.color;
+      for (let x=0; x<=W; x+=3) {
+        const y = H*w.yF + Math.sin(x*w.freq + t*w.speed)*w.amp + Math.sin(x*w.freq*1.7+t*w.speed*.6)*(w.amp*.42);
+        x===0 ? ctx.moveTo(x,y) : ctx.lineTo(x,y);
+      }
+      ctx.stroke();
+    });
+    waveData2.forEach(w => {
+      ctx2.beginPath(); ctx2.lineWidth=w.lw; ctx2.strokeStyle=w.color;
+      for (let x=0; x<=W; x+=3) {
+        const y = H*w.yF + Math.sin(x*w.freq + t*w.speed + 1.2)*w.amp + Math.sin(x*w.freq*2.1+t*w.speed*.8)*(w.amp*.35);
+        x===0 ? ctx2.moveTo(x,y) : ctx2.lineTo(x,y);
+      }
+      ctx2.stroke();
+    });
+    t += .85;
+  }
+  requestAnimationFrame(draw);
+})();
+
+/* Storm mode tabs */
+document.querySelectorAll('.storm-tab').forEach(tab => {
+  tab.addEventListener('click', () => {
+    const id = tab.dataset.tab;
+    document.querySelectorAll('.storm-tab').forEach(t => t.classList.remove('active'));
+    document.querySelectorAll('.storm-tab-content').forEach(c => c.classList.remove('active'));
+    tab.classList.add('active');
+    document.getElementById('tab-' + id).classList.add('active');
+  });
+});
+
+/* Live node status panel */
+const nodeData = [
+  { name:'Mobile Core — Server 1', sub:'LTE core · always on · Tier 1 critical', bar:96, barClass:'bar-teal', status:'Active', pill:'pill-green', icon:'<rect x="2" y="6" width="20" height="12" rx="2"/><path d="M6 12h12"/><circle cx="12" cy="12" r="1.5"/>' },
+  { name:'Civic VoIP — Server 2', sub:'Voice routing · SIP gateway · Tier 1', bar:91, barClass:'bar-teal', status:'Active', pill:'pill-green', icon:'<path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 2 2 0 015 7.72h3a2 2 0 012 1.72c.127.96.361 1.9.7 2.81a2 2 0 01-.45 2.11L9.09 15.91a16 16 0 006 6z"/>' },
+  { name:'Firewall — Active Node', sub:'HA pair · security &amp; routing · always on', bar:100, barClass:'bar-teal', status:'Active', pill:'pill-green', icon:'<path d="M12 2L4 6v6c0 5.25 3.5 10.15 8 11.5C16.5 22.15 20 17.25 20 12V6L12 2z"/><path d="M9 12l2 2 4-4"/>' },
+  { name:'Satellite Uplink', sub:'LEO satellite · global bridge · Tier 2', bar:84, barClass:'bar-gold', status:'Active', pill:'pill-green', icon:'<path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/>' },
+  { name:'Microwave P2P Link', sub:'Inter-node relay · mesh backbone', bar:79, barClass:'bar-teal', status:'Active', pill:'pill-green', icon:'<circle cx="12" cy="12" r="3"/><path d="M6.3 6.3a8 8 0 000 11.4"/><path d="M17.7 6.3a8 8 0 010 11.4"/><path d="M3.5 3.5a14 14 0 000 17"/><path d="M20.5 3.5a14 14 0 010 17"/>' },
+  { name:'Community Mesh', sub:'Outdoor APs · public access · Tier 3', bar:72, barClass:'bar-coral', status:'Active', pill:'pill-green', icon:'<path d="M5 12.55a11 11 0 0114.08 0"/><path d="M1.42 9a16 16 0 0121.16 0"/><path d="M8.53 16.11a6 6 0 016.95 0"/><circle cx="12" cy="20" r="1" fill="currentColor"/>' },
+  { name:'Emergency Radio', sub:'VHF/UHF civic repeater · Tier 4 fallback', bar:28, barClass:'bar-stone', status:'Standby', pill:'pill-gold', icon:'<line x1="12" y1="2" x2="12" y2="22"/><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/>' },
+  { name:'Guardian AI', sub:'Central control · monitoring · audit log', bar:100, barClass:'bar-teal', status:'Monitoring', pill:'pill-green', icon:'<path d="M12 2L4 6v6c0 5.25 3.5 10.15 8 11.5C16.5 22.15 20 17.25 20 12V6L12 2z"/><path d="M9 12l2 2 4-4"/>' },
+  { name:'Solar + Battery', sub:'6.4 kW array · 28–30 kWh LFP · 88% SOC', bar:88, barClass:'bar-gold', status:'Charging', pill:'pill-green', icon:'<circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/>' },
+];
+
+const rowsEl = document.getElementById('node-rows');
+nodeData.forEach(n => {
+  const row = document.createElement('div');
+  row.className = 'node-row';
+  row.innerHTML = `
+    <div class="node-row-icon"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">${n.icon}</svg></div>
+    <div>
+      <div class="node-row-name">${n.name}</div>
+      <div class="node-row-sub">${n.sub}</div>
+    </div>
+    <div class="node-bar-wrap"><div class="node-bar ${n.barClass}" style="width:0%" data-w="${n.bar}%"></div></div>
+    <span class="node-status-pill ${n.pill}">${n.status}</span>
+  `;
+  rowsEl.appendChild(row);
+});
+
+/* Animate bars when section scrolls into view */
+const barObserver = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.querySelectorAll('.node-bar').forEach(b => { b.style.width = b.dataset.w; });
+      barObserver.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.3 });
+barObserver.observe(document.querySelector('.node-panel'));
+
+/* Simulate live fluctuation */
+setInterval(() => {
+  document.querySelectorAll('.node-bar').forEach(b => {
+    const base = parseInt(b.dataset.w);
+    const jitter = (Math.random() * 6 - 3);
+    b.style.width = Math.max(10, Math.min(100, base + jitter)) + '%';
+  });
+}, 3000);
+
+/* Scroll reveal — stagger */
+[
+  ['.stack-grid .tier-card',   i => `${(i%4)*.1}s`],
+  ['.spec-grid .spec-card',    i => `${(i%3)*.1}s`],
+  ['.sov-points .sov-point',   i => `${i*.08}s`],
+  ['.phases-grid .phase-card', i => `${i*.1}s`],
+  ['.int-grid .int-card',      i => `${i*.08}s`],
+  ['.intro-stats .stat',       i => `${i*.08}s`],
+].forEach(([sel, fn]) => {
+  document.querySelectorAll(sel).forEach((el, i) => { el.style.transitionDelay = fn(i); });
+});
+
+const io = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); } });
+}, { threshold: 0.12 });
+document.querySelectorAll('.reveal, .reveal-left').forEach(el => io.observe(el));
+</script>
+
+</body>
+</html>

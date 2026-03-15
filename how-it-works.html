@@ -1,0 +1,1684 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="How It Works — Sovereign Vision. A modular, consent-driven, culturally grounded blueprint for island sovereignty. Learn how the nine systems integrate and deploy.">
+<meta property="og:title" content="How It Works — Sovereign Vision">
+<meta property="og:description" content="A modular, consent-driven, open-source blueprint for island sovereignty. Nine integrated systems. Five deployment phases. One coherent stack.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://www.sovereignvision.org/how-it-works">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="How It Works — Sovereign Vision">
+<title>How It Works — Sovereign Vision</title>
+<link rel="icon" type="image/png" href="images/favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Questrial&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet">
+
+<style>
+/* ═══════════════════════════════════════════════
+   TOKENS — identical to homepage v3
+═══════════════════════════════════════════════ */
+:root {
+  --coral:        #fe5337;
+  --coral-dim:    #c9402a;
+  --coral-pale:   rgba(254,83,55,0.08);
+  --gold:         #ffc61d;
+  --gold-dim:     #d4a400;
+  --gold-pale:    rgba(255,198,29,0.10);
+  --teal:         #23c1c4;
+  --teal-dim:     #0096b9;
+  --teal-pale:    rgba(35,193,196,0.09);
+  --navy:         #002b4b;
+  --navy-mid:     #00203a;
+  --navy-deep:    #00152a;
+  --navy-light:   #0d4070;
+  --cream:        #faf6ee;
+  --cream-mid:    #f2ead8;
+  --cream-dark:   #e8ddc8;
+  --stone:        #4a5568;
+  --stone-light:  #718096;
+  --white:        #ffffff;
+  --text-on-dark: rgba(250,246,238,0.70);
+  --text-dimmer:  rgba(250,246,238,0.40);
+  --border-light: rgba(0,43,75,0.10);
+  --border-gold:  rgba(255,198,29,0.18);
+  --border-teal:  rgba(35,193,196,0.20);
+  --ease:         cubic-bezier(0.22,1,0.36,1);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,*::before,*::after { animation-duration:.01ms!important; transition-duration:.01ms!important; }
+  .reveal,.reveal-left,.reveal-right { opacity:1!important; transform:none!important; }
+}
+*,*::before,*::after { box-sizing:border-box; margin:0; padding:0; }
+html { scroll-behavior:smooth; }
+body {
+  background: var(--cream);
+  color: var(--navy);
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 300;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ═══════════════════════════════════════════════
+   NAV — identical to v3
+═══════════════════════════════════════════════ */
+nav {
+  position: fixed;
+  top:0; left:0; right:0;
+  z-index: 200;
+  padding: 0 3rem;
+  height: 72px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: rgba(255,255,255,0.96);
+  box-shadow: 0 1px 0 var(--border-light), 0 4px 24px rgba(0,43,75,0.06);
+  backdrop-filter: blur(12px);
+}
+.nav-logo {
+  display: flex; align-items: center; gap: .7rem;
+  text-decoration: none; flex-shrink: 0;
+}
+.nav-logo img { width:42px; height:42px; object-fit:contain; display:block; }
+.nav-logo-text {
+  font-family: 'Questrial', sans-serif;
+  font-size: .78rem; letter-spacing: .14em;
+  text-transform: uppercase; color: var(--navy); line-height: 1.25;
+}
+.nav-logo-text span {
+  display: block; font-size: .58rem; letter-spacing: .12em;
+  color: var(--stone-light); font-family: 'DM Sans', sans-serif;
+}
+.nav-links { display:flex; align-items:center; gap:2rem; list-style:none; }
+.nav-links a {
+  font-size: .72rem; letter-spacing: .1em; text-transform: uppercase;
+  color: var(--stone); text-decoration: none; font-weight: 400;
+  transition: color .25s; white-space: nowrap;
+}
+.nav-links a:hover,
+.nav-links a.current { color: var(--coral); }
+.nav-dropdown { position: relative; }
+.nav-dropdown > a { display:flex; align-items:center; gap:.3rem; }
+.nav-dropdown > a::after { content:'▾'; font-size:.6rem; opacity:.6; transition:transform .25s; }
+.nav-dropdown.active > a::after { transform:rotate(180deg); }
+.nav-dropdown::after {
+  content:''; position:absolute; top:100%; left:-20px; right:-20px;
+  height:16px; background:transparent; display:none;
+}
+.nav-dropdown.active::after { display:block; }
+.dropdown-menu {
+  position: absolute; top:calc(100% + 8px); left:50%;
+  min-width: 220px; background: var(--white);
+  border: 1px solid var(--border-light);
+  box-shadow: 0 12px 40px rgba(0,43,75,0.12);
+  padding: .5rem 0; opacity:0; pointer-events:none;
+  transform: translateX(-50%) translateY(-6px);
+  transition: opacity .2s var(--ease), transform .2s var(--ease);
+}
+.nav-dropdown.active .dropdown-menu { opacity:1; pointer-events:all; transform:translateX(-50%) translateY(0); }
+.dropdown-menu a {
+  display:block; padding:.6rem 1.2rem; font-size:.72rem;
+  letter-spacing:.07em; text-transform:uppercase;
+  color:var(--navy)!important; text-decoration:none;
+  transition:background .18s, color .18s; white-space:nowrap;
+}
+.dropdown-menu a:hover { background:var(--coral-pale); color:var(--coral)!important; }
+.nav-cta {
+  background:var(--coral); color:var(--white)!important;
+  padding:.5rem 1.4rem; font-size:.7rem; letter-spacing:.14em;
+  text-transform:uppercase; font-family:'Questrial',sans-serif;
+  text-decoration:none; transition:background .25s, transform .2s;
+  white-space:nowrap; flex-shrink:0;
+}
+.nav-cta:hover { background:var(--coral-dim); transform:translateY(-1px); }
+.hamburger { display:none; flex-direction:column; gap:5px; cursor:pointer; padding:4px; }
+.hamburger span { width:22px; height:1.5px; background:var(--navy); display:block; transition:all .3s var(--ease); }
+.hamburger.open span:nth-child(1) { transform:rotate(45deg) translate(4.7px,4.7px); }
+.hamburger.open span:nth-child(2) { opacity:0; }
+.hamburger.open span:nth-child(3) { transform:rotate(-45deg) translate(4.7px,-4.7px); }
+.mobile-menu {
+  display:none; position:fixed; inset:0; z-index:199;
+  background:var(--navy-deep); flex-direction:column;
+  align-items:center; justify-content:center; gap:1.8rem;
+  opacity:0; pointer-events:none; transition:opacity .35s;
+}
+.mobile-menu.open { opacity:1; pointer-events:all; }
+.mobile-menu a {
+  font-family:'Cormorant Garamond',serif; font-size:2rem;
+  font-weight:300; color:var(--white); text-decoration:none;
+  letter-spacing:.04em; transition:color .25s;
+}
+.mobile-menu a:hover { color:var(--gold); }
+.mobile-menu .m-cta {
+  font-family:'Questrial',sans-serif; font-size:.76rem;
+  letter-spacing:.16em; text-transform:uppercase;
+  color:var(--coral); border:1px solid var(--coral);
+  padding:.65rem 2rem; margin-top:.5rem;
+}
+
+/* ═══════════════════════════════════════════════
+   SHARED UTILITIES
+═══════════════════════════════════════════════ */
+.section-tag {
+  font-family: 'Questrial', sans-serif;
+  font-size: .62rem; letter-spacing: .22em; text-transform: uppercase;
+  color: var(--coral); margin-bottom: .9rem;
+  display: flex; align-items: center; gap: .7rem;
+}
+.section-tag::before { content:''; width:20px; height:1.5px; background:var(--coral); flex-shrink:0; }
+.section-tag.teal { color:var(--teal-dim); }
+.section-tag.teal::before { background:var(--teal-dim); }
+.section-tag.white { color:rgba(255,255,255,.7); }
+.section-tag.white::before { background:rgba(255,255,255,.5); }
+.section-tag.gold { color:var(--gold-dim); }
+.section-tag.gold::before { background:var(--gold); }
+
+.h2 {
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(2.2rem,4vw,3.8rem);
+  font-weight:300; line-height:1.1; color:var(--navy);
+}
+.h2 em { font-style:italic; color:var(--coral); }
+.h2-white { color:var(--white); }
+.h2-white em { color:var(--gold); }
+.body-text { font-size:.96rem; line-height:1.85; color:var(--stone); }
+.body-text-white { font-size:.96rem; line-height:1.85; color:var(--text-on-dark); }
+
+.btn-coral {
+  background:var(--coral); color:var(--white); border:1.5px solid var(--coral);
+  padding:.8rem 2rem; font-family:'Questrial',sans-serif; font-size:.74rem;
+  letter-spacing:.14em; text-transform:uppercase; text-decoration:none;
+  display:inline-block; transition:background .25s, transform .2s;
+}
+.btn-coral:hover { background:var(--coral-dim); border-color:var(--coral-dim); transform:translateY(-2px); }
+.btn-navy {
+  background:var(--navy); color:var(--white); border:1.5px solid var(--navy);
+  padding:.8rem 2rem; font-family:'Questrial',sans-serif; font-size:.74rem;
+  letter-spacing:.14em; text-transform:uppercase; text-decoration:none;
+  display:inline-block; transition:all .25s;
+}
+.btn-navy:hover { background:var(--navy-mid); transform:translateY(-2px); }
+.btn-outline-navy {
+  background:transparent; color:var(--navy); border:1.5px solid rgba(0,43,75,.3);
+  padding:.8rem 2rem; font-family:'Questrial',sans-serif; font-size:.74rem;
+  letter-spacing:.14em; text-transform:uppercase; text-decoration:none;
+  display:inline-block; transition:all .25s;
+}
+.btn-outline-navy:hover { border-color:var(--navy); background:var(--navy); color:var(--white); transform:translateY(-2px); }
+.btn-white {
+  background:var(--white); color:var(--coral); border:1.5px solid var(--white);
+  padding:.8rem 2rem; font-family:'Questrial',sans-serif; font-size:.74rem;
+  letter-spacing:.14em; text-transform:uppercase; text-decoration:none;
+  display:inline-block; transition:all .25s;
+}
+.btn-white:hover { background:transparent; color:var(--white); }
+.btn-ghost-white {
+  background:transparent; color:rgba(255,255,255,.9); border:1.5px solid rgba(255,255,255,.4);
+  padding:.8rem 2rem; font-family:'Questrial',sans-serif; font-size:.74rem;
+  letter-spacing:.14em; text-transform:uppercase; text-decoration:none;
+  display:inline-block; transition:all .25s;
+}
+.btn-ghost-white:hover { border-color:var(--white); color:var(--white); }
+
+.reveal {
+  opacity:0; transform:translateY(22px);
+  transition:opacity .8s var(--ease), transform .8s var(--ease);
+}
+.reveal-left {
+  opacity:0; transform:translateX(-24px);
+  transition:opacity .8s var(--ease), transform .8s var(--ease);
+}
+.reveal-right {
+  opacity:0; transform:translateX(24px);
+  transition:opacity .8s var(--ease), transform .8s var(--ease);
+}
+.reveal.visible,.reveal-left.visible,.reveal-right.visible { opacity:1; transform:none; }
+
+/* ═══════════════════════════════════════════════
+   PAGE HERO — compact, no video, navy bg
+═══════════════════════════════════════════════ */
+.page-hero {
+  background: var(--navy);
+  padding: 160px 3rem 7rem;
+  position: relative;
+  overflow: hidden;
+}
+.page-hero::before {
+  content:'';
+  position:absolute; inset:0;
+  background:
+    radial-gradient(ellipse 70% 80% at 15% 60%, rgba(35,193,196,.08) 0%, transparent 55%),
+    radial-gradient(ellipse 50% 60% at 85% 20%, rgba(255,198,29,.05) 0%, transparent 55%);
+  pointer-events:none;
+}
+/* Diagonal accent stripe */
+.page-hero::after {
+  content:'';
+  position:absolute;
+  top:0; right:0;
+  width:40%; height:100%;
+  background: linear-gradient(135deg, transparent 40%, rgba(254,83,55,.04) 100%);
+  pointer-events:none;
+}
+.page-hero-inner {
+  max-width:1360px; margin:0 auto;
+  display:grid; grid-template-columns:1fr 1fr;
+  gap:5rem; align-items:end;
+  position:relative; z-index:1;
+}
+.page-hero-right { min-width:0; }
+.page-hero-h1 {
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(3rem,6vw,6rem);
+  font-weight:300; line-height:.95;
+  color:var(--white); letter-spacing:-.02em;
+  opacity:0; animation:fadeUp .9s .3s var(--ease) forwards;
+}
+.page-hero-h1 em { font-style:italic; color:var(--gold); }
+.page-hero-right {
+  opacity:0; animation:fadeUp .9s .5s var(--ease) forwards;
+}
+.page-hero-sub {
+  font-size:clamp(1rem,1.5vw,1.1rem);
+  color:var(--text-on-dark); line-height:1.75; margin-bottom:2rem;
+}
+.page-hero-breadcrumb {
+  font-family:'Questrial',sans-serif; font-size:.62rem;
+  letter-spacing:.2em; text-transform:uppercase;
+  color:var(--text-dimmer); margin-bottom:2rem;
+  display:flex; align-items:center; gap:.6rem;
+  opacity:0; animation:fadeUp .7s .2s var(--ease) forwards;
+}
+.page-hero-breadcrumb a { color:var(--text-dimmer); text-decoration:none; transition:color .25s; }
+.page-hero-breadcrumb a:hover { color:var(--teal); }
+.breadcrumb-sep { opacity:.4; }
+
+/* ═══════════════════════════════════════════════
+   PRINCIPLES — cream bg, 3 columns
+═══════════════════════════════════════════════ */
+.principles-section {
+  background:var(--cream);
+  padding:7rem 3rem;
+  border-bottom:1px solid var(--border-light);
+}
+.principles-inner { max-width:1360px; margin:0 auto; }
+.principles-intro {
+  display:grid; grid-template-columns:1fr 1.4fr;
+  gap:5rem; align-items:start; margin-bottom:5rem;
+}
+.principles-pull {
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(1.4rem,2.2vw,2rem);
+  font-weight:300; font-style:italic;
+  color:var(--navy); line-height:1.5;
+  border-left:3px solid var(--gold);
+  padding-left:1.6rem; margin-top:1.5rem;
+}
+.principles-grid {
+  display:grid; grid-template-columns:repeat(3,1fr);
+  gap:1px; background:var(--border-light);
+}
+.principle-card {
+  background:var(--white); padding:2.4rem 2rem;
+  transition:background .3s;
+  position:relative; overflow:hidden;
+}
+.principle-card::after {
+  content:'';
+  position:absolute;
+  top:0; left:0; right:0; height:2px;
+  background:var(--coral);
+  transform:scaleX(0); transform-origin:left;
+  transition:transform .35s var(--ease);
+}
+.principle-card:hover { background:#fefcf9; }
+.principle-card:hover::after { transform:scaleX(1); }
+.principle-n {
+  font-family:'Cormorant Garamond',serif;
+  font-size:4rem; font-weight:300;
+  color:rgba(254,83,55,.07); line-height:1;
+  margin-bottom:1.2rem; transition:color .3s;
+}
+.principle-card:hover .principle-n { color:rgba(254,83,55,.13); }
+.principle-icon {
+  width:36px; height:36px; margin-bottom:1.2rem; opacity:.7;
+}
+.principle-title {
+  font-family:'Cormorant Garamond',serif;
+  font-size:1.4rem; font-weight:400;
+  color:var(--navy); margin-bottom:.8rem; line-height:1.2;
+}
+.principle-body { font-size:.82rem; color:var(--stone); line-height:1.72; }
+
+/* ═══════════════════════════════════════════════
+   SYSTEM INTEGRATION — navy, full-width diagram
+═══════════════════════════════════════════════ */
+.integration-section {
+  background:var(--navy-deep);
+  padding:7rem 3rem;
+  position:relative; overflow:hidden;
+}
+.integration-section::before {
+  content:''; position:absolute; inset:0;
+  background:radial-gradient(ellipse 60% 70% at 50% 50%, rgba(35,193,196,.05) 0%, transparent 60%);
+  pointer-events:none;
+}
+.integration-inner { max-width:1360px; margin:0 auto; }
+.integration-header {
+  display:grid; grid-template-columns:1fr 1fr;
+  gap:4rem; align-items:end; margin-bottom:5rem;
+}
+.integration-body { font-size:.96rem; line-height:1.85; color:var(--text-on-dark); }
+
+/* SVG system map */
+.sys-map {
+  width:100%; max-width:1000px; margin:0 auto;
+  display:block; position:relative; z-index:1;
+}
+
+/* Integration pillars below map */
+.integration-pillars {
+  display:grid; grid-template-columns:repeat(3,1fr);
+  gap:1px; background:rgba(255,255,255,.06);
+  margin-top:3.5rem;
+}
+.int-pillar {
+  padding:2rem 1.8rem;
+  background:var(--navy-deep);
+  transition:background .3s;
+}
+.int-pillar:hover { background:rgba(255,255,255,.03); }
+.int-pillar-icon {
+  font-size:1.3rem; margin-bottom:.9rem; display:block;
+}
+.int-pillar-title {
+  font-family:'Questrial',sans-serif; font-size:.68rem;
+  letter-spacing:.16em; text-transform:uppercase;
+  color:rgba(255,255,255,.6); margin-bottom:.6rem;
+}
+.int-pillar-body { font-size:.8rem; color:var(--text-on-dark); line-height:1.65; }
+
+/* ═══════════════════════════════════════════════
+   DESIGN PRINCIPLES — cream-mid, alternating rows
+═══════════════════════════════════════════════ */
+.design-section {
+  background:var(--cream-mid);
+  padding:7rem 3rem;
+  border-top:1px solid var(--border-light);
+  border-bottom:1px solid var(--border-light);
+}
+.design-inner { max-width:1360px; margin:0 auto; }
+.design-row {
+  display:grid; grid-template-columns:1fr 1fr;
+  gap:5rem; align-items:center;
+  padding:4rem 0;
+  border-bottom:1px solid var(--border-light);
+}
+.design-row:first-of-type { padding-top:4rem; }
+.design-row:last-of-type { border-bottom:none; padding-bottom:0; }
+/* Safe reverse — no RTL, just grid order swap */
+.design-row.reverse .design-visual { order: 2; }
+.design-row.reverse .design-text-col { order: 1; }
+.design-visual {
+  aspect-ratio:4/3;
+  position:relative; overflow:hidden;
+}
+.design-visual-inner {
+  position:absolute; inset:0;
+  display:flex; align-items:center; justify-content:center;
+}
+/* Colour-coded bg per principle */
+.dv-sovereignty { background:linear-gradient(135deg,var(--navy) 0%,var(--navy-light) 100%); }
+.dv-culture     { background:linear-gradient(135deg,#3a1a00 0%,#7a3800 100%); }
+.dv-resilience  { background:linear-gradient(135deg,#002020 0%,var(--teal-dim) 100%); }
+.dv-open        { background:linear-gradient(135deg,var(--navy-mid) 0%,#004060 100%); }
+.design-num {
+  position:absolute; top:1.2rem; right:1.5rem;
+  font-family:'Cormorant Garamond',serif; font-size:5rem;
+  font-weight:300; color:rgba(255,255,255,.07); line-height:1;
+  pointer-events:none;
+}
+.design-label {
+  font-family:'Questrial',sans-serif; font-size:.6rem;
+  letter-spacing:.18em; text-transform:uppercase;
+  color:var(--coral); margin-bottom:.6rem;
+}
+.design-title {
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(1.8rem,3vw,2.6rem);
+  font-weight:300; color:var(--navy);
+  line-height:1.15; margin-bottom:1.2rem;
+}
+.design-title em { font-style:italic; color:var(--coral); }
+.design-body { font-size:.9rem; color:var(--stone); line-height:1.82; margin-bottom:1.2rem; }
+.design-tags {
+  display:flex; flex-wrap:wrap; gap:.5rem; margin-top:1.4rem;
+}
+.design-tag {
+  font-family:'Questrial',sans-serif; font-size:.58rem;
+  letter-spacing:.14em; text-transform:uppercase;
+  border:1px solid var(--border-light);
+  padding:.25rem .7rem; color:var(--stone);
+  background:rgba(0,43,75,.04);
+}
+
+/* ═══════════════════════════════════════════════
+   DEPLOYMENT PHASES — white bg, timeline
+═══════════════════════════════════════════════ */
+.phases-section {
+  background:var(--white);
+  padding:7rem 3rem;
+}
+.phases-inner { max-width:1360px; margin:0 auto; }
+.phases-intro {
+  max-width:680px; margin-bottom:5rem;
+}
+.phases-intro .body-text { margin-top:1.2rem; }
+
+/* Timeline layout */
+.timeline {
+  position:relative;
+}
+/* Vertical rule */
+.timeline::before {
+  content:'';
+  position:absolute;
+  left:calc(1.2rem - .5px);
+  top:0; bottom:0;
+  width:1px;
+  background:linear-gradient(to bottom, var(--coral), var(--teal), rgba(35,193,196,.2));
+}
+.phase-item {
+  display:grid;
+  grid-template-columns:2.4rem 1fr;
+  gap:2rem;
+  padding-bottom:3.5rem;
+  position:relative;
+}
+.phase-item:last-child { padding-bottom:0; }
+.phase-dot-col { position:relative; display:flex; flex-direction:column; align-items:center; }
+.phase-dot {
+  width:2.4rem; height:2.4rem;
+  border-radius:50%;
+  background:var(--white);
+  border:2px solid var(--border-light);
+  display:flex; align-items:center; justify-content:center;
+  flex-shrink:0; z-index:1;
+  transition:border-color .3s, background .3s;
+}
+.phase-dot.active {
+  border-color:var(--coral);
+  background:var(--coral-pale);
+  box-shadow:0 0 0 4px rgba(254,83,55,.1);
+}
+.phase-dot.done {
+  border-color:var(--teal);
+  background:var(--teal-pale);
+}
+.phase-dot-n {
+  font-family:'Cormorant Garamond',serif;
+  font-size:.95rem; font-weight:400;
+  color:var(--stone-light);
+  line-height:1;
+}
+.phase-dot.active .phase-dot-n { color:var(--coral); }
+.phase-dot.done .phase-dot-n { color:var(--teal-dim); }
+
+.phase-content {
+  padding-top:.3rem;
+}
+.phase-meta {
+  display:flex; align-items:center; gap:1rem;
+  margin-bottom:.8rem; flex-wrap:wrap;
+}
+.phase-badge {
+  font-family:'Questrial',sans-serif; font-size:.58rem;
+  letter-spacing:.16em; text-transform:uppercase;
+  padding:.2rem .7rem; border:1px solid;
+}
+.phase-badge.active { color:var(--coral); border-color:rgba(254,83,55,.3); background:var(--coral-pale); }
+.phase-badge.done   { color:var(--teal-dim); border-color:var(--border-teal); background:var(--teal-pale); }
+.phase-badge.future { color:var(--stone-light); border-color:var(--border-light); }
+.phase-timeframe {
+  font-size:.68rem; letter-spacing:.1em;
+  color:var(--stone-light); font-family:'Questrial',sans-serif;
+}
+.phase-title {
+  font-family:'Cormorant Garamond',serif;
+  font-size:1.65rem; font-weight:400;
+  color:var(--navy); margin-bottom:.7rem; line-height:1.15;
+}
+.phase-body { font-size:.86rem; color:var(--stone); line-height:1.75; margin-bottom:1rem; }
+.phase-items {
+  display:grid; grid-template-columns:1fr 1fr;
+  gap:.4rem .8rem; margin-top:1rem;
+}
+.phase-item-tag {
+  display:flex; align-items:flex-start; gap:.5rem;
+  font-size:.78rem; color:var(--stone); line-height:1.45;
+}
+.phase-item-tag::before {
+  content:'';
+  width:5px; height:5px; border-radius:50%;
+  flex-shrink:0; margin-top:.42rem;
+}
+.phase-item-tag.coral::before { background:var(--coral); }
+.phase-item-tag.teal::before { background:var(--teal); }
+.phase-item-tag.gold::before { background:var(--gold-dim); }
+
+/* ═══════════════════════════════════════════════
+   GOVERNANCE MODEL — navy, how decisions work
+═══════════════════════════════════════════════ */
+.governance-section {
+  background:var(--navy);
+  padding:7rem 3rem;
+  position:relative; overflow:hidden;
+}
+.governance-section::before {
+  content:''; position:absolute; inset:0;
+  background:radial-gradient(ellipse 55% 70% at 80% 50%, rgba(35,193,196,.06) 0%, transparent 60%);
+  pointer-events:none;
+}
+.governance-inner { max-width:1360px; margin:0 auto; }
+.governance-grid {
+  display:grid; grid-template-columns:1fr 1fr;
+  gap:5rem; align-items:start; margin-top:4rem;
+}
+.gov-card {
+  background:rgba(255,255,255,.04);
+  border:1px solid rgba(255,255,255,.07);
+  padding:2.4rem 2rem;
+  transition:background .3s;
+}
+.gov-card + .gov-card { border-top:none; }
+.gov-card:hover { background:rgba(255,255,255,.06); }
+.gov-card-icon {
+  width:52px; height:52px;
+  margin-bottom:1.2rem; display:block;
+  flex-shrink:0;
+}
+.gov-card-icon svg,
+.gov-card-icon img { width:100%; height:100%; }
+.gov-card-title {
+  font-family:'Cormorant Garamond',serif;
+  font-size:1.5rem; font-weight:300;
+  color:var(--white); margin-bottom:.7rem; line-height:1.2;
+}
+.gov-card-body { font-size:.82rem; color:var(--text-on-dark); line-height:1.72; }
+.gov-card-list {
+  margin-top:1.2rem; display:flex; flex-direction:column; gap:.55rem;
+}
+.gov-list-item {
+  display:flex; align-items:flex-start; gap:.65rem;
+  font-size:.8rem; color:var(--text-on-dark); line-height:1.5;
+}
+.gov-list-dot {
+  width:5px; height:5px; border-radius:50%;
+  background:var(--teal); flex-shrink:0; margin-top:.45rem;
+}
+.gov-list-dot.coral { background:var(--coral); }
+.gov-list-dot.gold  { background:var(--gold); }
+
+/* Consent ladder */
+.consent-ladder {
+  margin-top:2rem;
+  border:1px solid rgba(255,255,255,.08);
+  border-radius:2px;
+}
+.consent-rung {
+  display:grid; grid-template-columns:3rem 1fr;
+  gap:1rem; padding:1.3rem 1.5rem;
+  border-bottom:1px solid rgba(255,255,255,.06);
+  align-items:start; transition:background .3s;
+  cursor:default;
+}
+.consent-rung:last-child { border-bottom:none; }
+.consent-rung:hover { background:rgba(255,255,255,.04); }
+/* colour-coded rung numbers by position */
+.consent-rung:nth-child(1) .consent-rung-n { color:var(--teal); }
+.consent-rung:nth-child(2) .consent-rung-n { color:var(--teal); }
+.consent-rung:nth-child(3) .consent-rung-n { color:var(--gold); }
+.consent-rung:nth-child(4) .consent-rung-n { color:var(--coral); }
+.consent-rung:nth-child(5) .consent-rung-n { color:var(--coral); }
+.consent-rung-n {
+  font-family:'Cormorant Garamond',serif;
+  font-size:1.6rem; font-weight:300;
+  line-height:1; text-align:center; padding-top:.1rem;
+}
+.consent-rung-title {
+  font-family:'Questrial',sans-serif; font-size:.64rem;
+  letter-spacing:.16em; text-transform:uppercase;
+  color:rgba(255,255,255,.65); margin-bottom:.3rem;
+}
+.consent-rung-body { font-size:.78rem; color:var(--text-on-dark); line-height:1.6; }
+
+/* ═══════════════════════════════════════════════
+   REPLICATION — cream, open model
+═══════════════════════════════════════════════ */
+.replication-section {
+  background:var(--cream);
+  padding:7rem 3rem;
+  border-top:1px solid var(--border-light);
+}
+.replication-inner {
+  max-width:1360px; margin:0 auto;
+  display:grid; grid-template-columns:1.1fr 1fr;
+  gap:6rem; align-items:center;
+}
+.rep-steps {
+  display:flex; flex-direction:column; gap:0;
+  margin-top:2.5rem;
+  border-left:2px solid var(--border-light);
+}
+.rep-step {
+  padding:1.6rem 0 1.6rem 2rem;
+  position:relative; border-bottom:1px solid var(--border-light);
+  transition:border-left-color .3s;
+}
+.rep-step:last-child { border-bottom:none; }
+.rep-step::before {
+  content:'';
+  position:absolute;
+  left:-6px; top:1.8rem;
+  width:10px; height:10px;
+  border-radius:50%;
+  background:var(--cream);
+  border:2px solid var(--border-light);
+  transition:border-color .3s, background .3s;
+}
+.rep-step:hover::before { border-color:var(--coral); background:var(--coral-pale); }
+.rep-step-n {
+  font-family:'Questrial',sans-serif; font-size:.6rem;
+  letter-spacing:.2em; text-transform:uppercase;
+  color:var(--coral); margin-bottom:.4rem;
+}
+.rep-step-title {
+  font-family:'Cormorant Garamond',serif;
+  font-size:1.25rem; font-weight:400;
+  color:var(--navy); margin-bottom:.5rem; line-height:1.2;
+}
+.rep-step-body { font-size:.8rem; color:var(--stone); line-height:1.65; }
+.licence-panel {
+  background:var(--navy); padding:2.8rem 2.4rem;
+}
+.licence-panel-tag {
+  font-family:'Questrial',sans-serif; font-size:.6rem;
+  letter-spacing:.18em; text-transform:uppercase;
+  color:var(--teal); margin-bottom:.8rem;
+}
+.licence-panel-title {
+  font-family:'Cormorant Garamond',serif;
+  font-size:2rem; font-weight:300;
+  color:var(--white); line-height:1.15; margin-bottom:.8rem;
+}
+.licence-panel-body {
+  font-size:.82rem; color:var(--text-on-dark);
+  line-height:1.72; margin-bottom:1.8rem;
+}
+.licence-features {
+  display:flex; flex-direction:column; gap:.6rem; margin-bottom:2rem;
+}
+.licence-feat {
+  display:flex; align-items:flex-start; gap:.65rem;
+  font-size:.8rem; color:var(--text-on-dark); line-height:1.4;
+}
+.licence-feat::before {
+  content:''; width:5px; height:5px; border-radius:50%;
+  background:var(--teal); flex-shrink:0; margin-top:.42rem;
+}
+
+/* ═══════════════════════════════════════════════
+   JOIN CTA — coral bg, identical to homepage
+═══════════════════════════════════════════════ */
+.join-section {
+  background:var(--coral); padding:6rem 3rem;
+  text-align:center; position:relative; overflow:hidden;
+}
+.join-section::before {
+  content:''; position:absolute; inset:-30%;
+  background:radial-gradient(ellipse at 50% 50%, rgba(255,255,255,.08) 0%, transparent 55%);
+  pointer-events:none;
+}
+.join-inner { position:relative; z-index:1; max-width:680px; margin:0 auto; }
+.join-h2 {
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(2.2rem,4.5vw,4.5rem);
+  font-weight:300; color:var(--white); line-height:1.1; margin-bottom:1.2rem;
+}
+.join-h2 em { font-style:italic; opacity:.85; }
+.join-body { font-size:.97rem; color:rgba(255,255,255,.8); line-height:1.75; margin-bottom:2.5rem; }
+.join-actions { display:flex; gap:.9rem; justify-content:center; flex-wrap:wrap; }
+
+/* ═══════════════════════════════════════════════
+   FOOTER — identical to homepage v3
+═══════════════════════════════════════════════ */
+footer {
+  background:var(--navy-deep);
+  padding:4rem 3rem 2.5rem;
+}
+.footer-top {
+  max-width:1360px; margin:0 auto;
+  display:grid; grid-template-columns:2fr 1fr 1fr 1fr;
+  gap:3rem; padding-bottom:3rem;
+  border-bottom:1px solid rgba(255,255,255,.06);
+}
+.footer-logo-wrap {
+  display:flex; align-items:center; gap:.7rem;
+  margin-bottom:1rem; text-decoration:none;
+}
+.footer-logo-wrap img { width:38px; height:38px; object-fit:contain; }
+.footer-logo-name {
+  font-family:'Questrial',sans-serif; font-size:.78rem;
+  letter-spacing:.12em; text-transform:uppercase; color:var(--gold);
+}
+.footer-desc { font-size:.78rem; color:var(--text-dimmer); line-height:1.72; max-width:280px; margin-bottom:1.4rem; }
+.footer-email { font-size:.72rem; color:var(--teal); text-decoration:none; letter-spacing:.04em; transition:color .25s; }
+.footer-email:hover { color:#aad0e0; }
+.footer-col-h {
+  font-family:'Questrial',sans-serif; font-size:.6rem;
+  letter-spacing:.2em; text-transform:uppercase;
+  color:rgba(255,255,255,.35); margin-bottom:1.2rem;
+}
+.footer-links { list-style:none; display:flex; flex-direction:column; gap:.6rem; }
+.footer-links a { font-size:.77rem; color:var(--text-dimmer); text-decoration:none; transition:color .25s; }
+.footer-links a:hover { color:var(--white); }
+.footer-bottom {
+  max-width:1360px; margin:2rem auto 0;
+  display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:1rem;
+}
+.footer-copy { font-size:.66rem; color:var(--text-dimmer); letter-spacing:.05em; }
+.footer-socials { display:flex; gap:1rem; align-items:center; }
+.footer-socials a {
+  font-size:.66rem; letter-spacing:.12em; text-transform:uppercase;
+  color:var(--text-dimmer); text-decoration:none;
+  font-family:'Questrial',sans-serif; transition:color .25s;
+}
+.footer-socials a:hover { color:var(--white); }
+
+/* ═══════════════════════════════════════════════
+   ANIMATIONS
+═══════════════════════════════════════════════ */
+@keyframes fadeUp {
+  from { opacity:0; transform:translateY(20px); }
+  to   { opacity:1; transform:translateY(0); }
+}
+
+/* ═══════════════════════════════════════════════
+   RESPONSIVE
+═══════════════════════════════════════════════ */
+@media (max-width:1100px) {
+  .page-hero-inner,
+  .principles-intro,
+  .integration-header,
+  .governance-grid,
+  .replication-inner { grid-template-columns:1fr; gap:3rem; }
+  .principles-grid,
+  .integration-pillars { grid-template-columns:1fr 1fr; }
+  .design-row { grid-template-columns:1fr; gap:2.5rem; }
+  .design-row.reverse .design-visual { order:unset; }
+  .design-row.reverse .design-text-col { order:unset; }
+  .footer-top { grid-template-columns:1fr 1fr; gap:2.5rem; }
+  .phase-items { grid-template-columns:1fr; }
+  .governance-grid { gap:3rem; }
+}
+@media (max-width:768px) {
+  nav { padding:0 1.5rem; }
+  .nav-links,.nav-cta { display:none; }
+  .hamburger { display:flex; }
+  .mobile-menu { display:flex; }
+  .page-hero,
+  .principles-section,
+  .integration-section,
+  .design-section,
+  .phases-section,
+  .governance-section,
+  .replication-section,
+  .join-section,
+  footer { padding-left:1.5rem; padding-right:1.5rem; }
+  .page-hero { padding-top:120px; padding-bottom:4rem; }
+  .principles-grid,
+  .integration-pillars { grid-template-columns:1fr; }
+  .footer-top { grid-template-columns:1fr; }
+  /* Timeline mobile — hide dot column and vertical line */
+  .timeline::before { display:none; }
+  .phase-item { grid-template-columns:1fr; gap:0; }
+  .phase-dot-col { display:none; }
+  .phase-content { padding-top:0; }
+}
+</style>
+</head>
+<body>
+
+<!-- ═══ NAV ═══════════════════════════════════════════════════════ -->
+<nav id="nav">
+  <a href="/" class="nav-logo">
+    <img src="images/logo-trans.png" alt="Sovereign Vision">
+    <div class="nav-logo-text">
+      Sovereign Vision
+      <span>Te Fale o Te Mātāmua · Tuvalu</span>
+    </div>
+  </a>
+  <ul class="nav-links">
+    <li class="nav-dropdown">
+      <a href="/core-systems">Core Systems</a>
+      <div class="dropdown-menu">
+        <a href="/ai-overview">Civic Stewardship System</a>
+        <a href="/communications">Communications</a>
+        <a href="/food">Food Sovereignty</a>
+        <a href="/energy">Power Generation</a>
+        <a href="/treasury">Sovereign Treasury</a>
+        <a href="/civic-infrastructure">Civic Infrastructure</a>
+        <a href="/water-systems">Water Systems</a>
+        <a href="/waste-systems">Resource Recovery</a>
+      </div>
+    </li>
+    <li><a href="/how-it-works" class="current">How It Works</a></li>
+    <li class="nav-dropdown">
+      <a href="/legal-licensing">Legal</a>
+      <div class="dropdown-menu">
+        <a href="/digitalarchipelago">Digital Archipelago Accord</a>
+        <a href="/civic-commons-license">Civic Commons License</a>
+        <a href="/trust-formation-status">Trust Formation Status</a>
+        <a href="/terms">Terms of Use</a>
+        <a href="/privacy-policy">Privacy Policy</a>
+        <a href="/copyright-notice">Copyright Notice</a>
+      </div>
+    </li>
+    <li><a href="/faq">FAQ</a></li>
+    <li class="nav-dropdown">
+      <a href="/about-us">About</a>
+      <div class="dropdown-menu">
+        <a href="/about-us">About Us</a>
+        <a href="/continuity-vs-reinvention">Continuity vs Reinvention</a>
+        <a href="/elders-council">Elders Council</a>
+        <a href="/youth-voice">Youth Voice</a>
+      </div>
+    </li>
+  </ul>
+  <a href="/contact" class="nav-cta">Contact</a>
+  <div class="hamburger" id="hamburger" aria-label="Menu" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<!-- Mobile menu -->
+<div class="mobile-menu" id="mobile-menu">
+  <a href="/core-systems" onclick="closeMobile()">Core Systems</a>
+  <a href="/how-it-works" onclick="closeMobile()">How It Works</a>
+  <a href="/legal-licensing" onclick="closeMobile()">Legal</a>
+  <a href="/faq" onclick="closeMobile()">FAQ</a>
+  <a href="/about-us" onclick="closeMobile()">About</a>
+  <a href="/contact" onclick="closeMobile()" class="m-cta">Contact Us</a>
+</div>
+
+<!-- ═══ PAGE HERO ══════════════════════════════════════════════════ -->
+<section class="page-hero">
+  <div class="page-hero-inner">
+    <div>
+      <div class="page-hero-breadcrumb">
+        <a href="/">Home</a>
+        <span class="breadcrumb-sep">›</span>
+        How It Works
+      </div>
+      <h1 class="page-hero-h1">
+        A blueprint,<br>not a <em>mandate.</em><br>
+        A vision, not<br>yet <em>reality.</em>
+      </h1>
+    </div>
+    <div class="page-hero-right">
+      <div class="section-tag white" style="margin-bottom:1.4rem;">How It Works</div>
+      <p class="page-hero-sub">
+        Sovereign Vision is a modular, open-source infrastructure stack built on four interlocking principles: local sovereignty, cultural integration, technical resilience, and open replication. This page explains how each part connects — and how the whole becomes more than the sum of its systems.
+      </p>
+      <div style="display:flex;gap:1rem;flex-wrap:wrap;">
+        <a href="/core-systems" class="btn-coral">Explore the Systems</a>
+        <a href="/contact" class="btn-ghost-white">Partner With Us</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ CORE PRINCIPLES ════════════════════════════════════════════ -->
+<section class="principles-section">
+  <div class="principles-inner">
+    <div class="principles-intro">
+      <div>
+        <div class="section-tag reveal">The Foundation</div>
+        <h2 class="h2 reveal">Three constraints.<br><em>Everything flows from here.</em></h2>
+      </div>
+      <div>
+        <p class="body-text reveal">Every design decision in the Sovereign Vision — from energy infrastructure to AI governance — is made against the same three constraints: Does this preserve local sovereignty? Does it honour culture as load-bearing, not decorative? Does it fail gracefully when stressed?</p>
+        <blockquote class="principles-pull reveal">
+          "Sovereignty is not an outcome. It is the design constraint from which every other decision follows."
+        </blockquote>
+      </div>
+    </div>
+
+    <div class="principles-grid">
+      <div class="principle-card reveal">
+        <div class="principle-n">01</div>
+        <svg class="principle-icon" viewBox="0 0 36 36" fill="none">
+          <circle cx="18" cy="18" r="14" stroke="#23c1c4" stroke-width="1" fill="none"/>
+          <circle cx="18" cy="18" r="7" stroke="#ffc61d" stroke-width=".8" fill="none" opacity=".5"/>
+          <circle cx="18" cy="18" r="2.5" fill="#23c1c4" opacity=".7"/>
+        </svg>
+        <div class="principle-title">Sovereignty First</div>
+        <div class="principle-body">No foreign cloud. No external dependency. Every system — energy, water, communications, AI — is locally owned, locally operated, and locally maintained. The private LTE core, the on-island AI models, the multisig treasury keys: each is a values declaration about self-determination, not just a technical choice.</div>
+      </div>
+      <div class="principle-card reveal">
+        <div class="principle-n">02</div>
+        <svg class="principle-icon" viewBox="0 0 36 36" fill="none">
+          <path d="M18 5C18 5 7 17 7 23a11 11 0 0 0 22 0C29 17 18 5 18 5Z" stroke="#ffc61d" stroke-width="1" fill="rgba(255,198,29,.1)"/>
+          <path d="M12 27q6-4 12 0" stroke="#fe5337" stroke-width=".9" fill="none" stroke-linecap="round" opacity=".8"/>
+        </svg>
+        <div class="principle-title">Culture is Load-Bearing</div>
+        <div class="principle-body">Tuvaluan language, naming rituals, elder blessing ceremonies, and ancestral memory are embedded into every system — not as a gesture, but as the adoption and legitimacy mechanism. A system that isn't accepted by the community it serves has already failed, regardless of its technical specifications.</div>
+      </div>
+      <div class="principle-card reveal">
+        <div class="principle-n">03</div>
+        <svg class="principle-icon" viewBox="0 0 36 36" fill="none">
+          <rect x="5" y="22" width="26" height="8" stroke="#23c1c4" stroke-width="1" fill="none"/>
+          <path d="M5 22l7-10h14l7 10" stroke="#ffc61d" stroke-width=".9" fill="none" opacity=".6"/>
+          <line x1="18" y1="12" x2="18" y2="22" stroke="#23c1c4" stroke-width=".9"/>
+          <line x1="5" y1="30" x2="31" y2="30" stroke="#fe5337" stroke-width="1.2"/>
+        </svg>
+        <div class="principle-title">Resilience over Optimisation</div>
+        <div class="principle-body">Redundancy, modularity, and graceful failure are primary design constraints — not secondary trade-offs made after performance is satisfied. A desalination system that survives a Category 4 cyclone at 60% capacity is more valuable than one that operates at 100% until it doesn't. Sequencing matters: floating solar deploys first; MMR runs in parallel through regulatory process.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ SYSTEM INTEGRATION ════════════════════════════════════════ -->
+<section class="integration-section">
+  <div class="integration-inner">
+    <div class="integration-header">
+      <div class="reveal">
+        <div class="section-tag white">System Architecture</div>
+        <h2 class="h2 h2-white">Nine systems.<br><em>One integrated stack.</em></h2>
+      </div>
+      <p class="integration-body reveal">
+        Each system is independently deployable — but the power of the Sovereign Vision emerges from integration. Energy powers desalination. Desalination enables food production. Communications connects Guardian to every node. The Bitcoin treasury funds the whole. Guardian monitors all of it. No single failure cascades — every system has a fallback, and every fallback has a manual override.
+      </p>
+    </div>
+
+    <!-- SVG integration diagram -->
+    <svg class="sys-map reveal" viewBox="0 0 900 440" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <!-- Background grid -->
+      <defs>
+        <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+          <path d="M 40 0 L 0 0 0 40" fill="none" stroke="rgba(255,255,255,.04)" stroke-width="1"/>
+        </pattern>
+      </defs>
+      <rect width="900" height="440" fill="url(#grid)"/>
+
+      <!-- Central node: Guardian -->
+      <circle cx="450" cy="220" r="52" fill="rgba(35,193,196,.12)" stroke="#23c1c4" stroke-width="1.2"/>
+      <circle cx="450" cy="220" r="34" fill="rgba(35,193,196,.18)" stroke="#23c1c4" stroke-width=".8"/>
+      <text x="450" y="215" text-anchor="middle" font-family="Questrial, sans-serif" font-size="8" fill="rgba(255,255,255,.7)" letter-spacing="2" text-transform="uppercase">GUARDIAN</text>
+      <text x="450" y="228" text-anchor="middle" font-family="Questrial, sans-serif" font-size="8" fill="rgba(255,255,255,.5)" letter-spacing="2">ARBOR</text>
+
+      <!-- Connector lines — dashed from Guardian to each node -->
+      <!-- Energy -->
+      <line x1="406" y1="183" x2="178" y2="90" stroke="#ffc61d" stroke-width=".8" stroke-dasharray="4 3" opacity=".4"/>
+      <!-- Water -->
+      <line x1="398" y1="220" x2="100" y2="220" stroke="#23c1c4" stroke-width=".8" stroke-dasharray="4 3" opacity=".4"/>
+      <!-- Food -->
+      <line x1="406" y1="257" x2="178" y2="350" stroke="#ffc61d" stroke-width=".8" stroke-dasharray="4 3" opacity=".4"/>
+      <!-- Comms -->
+      <line x1="450" y1="168" x2="450" y2="60" stroke="#23c1c4" stroke-width=".8" stroke-dasharray="4 3" opacity=".4"/>
+      <!-- Treasury -->
+      <line x1="494" y1="183" x2="722" y2="90" stroke="#ffc61d" stroke-width=".8" stroke-dasharray="4 3" opacity=".4"/>
+      <!-- Waste -->
+      <line x1="502" y1="220" x2="800" y2="220" stroke="#23c1c4" stroke-width=".8" stroke-dasharray="4 3" opacity=".4"/>
+      <!-- Civic Infra -->
+      <line x1="494" y1="257" x2="722" y2="350" stroke="#fe5337" stroke-width=".8" stroke-dasharray="4 3" opacity=".4"/>
+      <!-- Democracy -->
+      <line x1="450" y1="272" x2="450" y2="380" stroke="#fe5337" stroke-width=".8" stroke-dasharray="4 3" opacity=".4"/>
+
+      <!-- Node: Energy -->
+      <rect x="100" y="54" width="156" height="72" rx="2" fill="rgba(0,21,42,.9)" stroke="rgba(255,198,29,.35)" stroke-width="1"/>
+      <text x="178" y="82" text-anchor="middle" font-family="Questrial,sans-serif" font-size="7.5" fill="#ffc61d" letter-spacing="1.5">POWER GENERATION</text>
+      <text x="178" y="97" text-anchor="middle" font-family="DM Sans,sans-serif" font-size="7" fill="rgba(255,255,255,.45)">Kronos MMR · Floating Solar</text>
+      <text x="178" y="110" text-anchor="middle" font-family="DM Sans,sans-serif" font-size="7" fill="rgba(255,255,255,.45)">BYD Haohan · ArborMesh Grid</text>
+
+      <!-- Node: Water -->
+      <rect x="20" y="184" width="156" height="72" rx="2" fill="rgba(0,21,42,.9)" stroke="rgba(35,193,196,.35)" stroke-width="1"/>
+      <text x="98" y="212" text-anchor="middle" font-family="Questrial,sans-serif" font-size="7.5" fill="#23c1c4" letter-spacing="1.5">WATER SECURITY</text>
+      <text x="98" y="227" text-anchor="middle" font-family="DM Sans,sans-serif" font-size="7" fill="rgba(255,255,255,.45)">Vai Tapu · Vai Koko</text>
+      <text x="98" y="240" text-anchor="middle" font-family="DM Sans,sans-serif" font-size="7" fill="rgba(255,255,255,.45)">60,000 L/day desalination</text>
+
+      <!-- Node: Food -->
+      <rect x="100" y="314" width="156" height="72" rx="2" fill="rgba(0,21,42,.9)" stroke="rgba(255,198,29,.35)" stroke-width="1"/>
+      <text x="178" y="342" text-anchor="middle" font-family="Questrial,sans-serif" font-size="7.5" fill="#ffc61d" letter-spacing="1.5">FOOD SOVEREIGNTY</text>
+      <text x="178" y="357" text-anchor="middle" font-family="DM Sans,sans-serif" font-size="7" fill="rgba(255,255,255,.45)">Te Kai o te Ola</text>
+      <text x="178" y="370" text-anchor="middle" font-family="DM Sans,sans-serif" font-size="7" fill="rgba(255,255,255,.45)">Floating Farm MK1</text>
+
+      <!-- Node: Comms -->
+      <rect x="372" y="14" width="156" height="72" rx="2" fill="rgba(0,21,42,.9)" stroke="rgba(35,193,196,.35)" stroke-width="1"/>
+      <text x="450" y="42" text-anchor="middle" font-family="Questrial,sans-serif" font-size="7.5" fill="#23c1c4" letter-spacing="1.5">COMMUNICATIONS</text>
+      <text x="450" y="57" text-anchor="middle" font-family="DM Sans,sans-serif" font-size="7" fill="rgba(255,255,255,.45)">Te Puka Loloa · Open5GS LTE</text>
+      <text x="450" y="70" text-anchor="middle" font-family="DM Sans,sans-serif" font-size="7" fill="rgba(255,255,255,.45)">Starlink · airMAX · VHF/UHF</text>
+
+      <!-- Node: Treasury -->
+      <rect x="644" y="54" width="156" height="72" rx="2" fill="rgba(0,21,42,.9)" stroke="rgba(255,198,29,.35)" stroke-width="1"/>
+      <text x="722" y="82" text-anchor="middle" font-family="Questrial,sans-serif" font-size="7.5" fill="#ffc61d" letter-spacing="1.5">SOVEREIGN TREASURY</text>
+      <text x="722" y="97" text-anchor="middle" font-family="DM Sans,sans-serif" font-size="7" fill="rgba(255,255,255,.45)">Bitcoin Multisig Trust</text>
+      <text x="722" y="110" text-anchor="middle" font-family="DM Sans,sans-serif" font-size="7" fill="rgba(255,255,255,.45)">Te Fale o Te Mātāmua</text>
+
+      <!-- Node: Resource Recovery -->
+      <rect x="724" y="184" width="156" height="72" rx="2" fill="rgba(0,21,42,.9)" stroke="rgba(35,193,196,.35)" stroke-width="1"/>
+      <text x="802" y="212" text-anchor="middle" font-family="Questrial,sans-serif" font-size="7.5" fill="#23c1c4" letter-spacing="1.5">RESOURCE RECOVERY</text>
+      <text x="802" y="227" text-anchor="middle" font-family="DM Sans,sans-serif" font-size="7" fill="rgba(255,255,255,.45)">Te Fenua Fakafoou</text>
+      <text x="802" y="240" text-anchor="middle" font-family="DM Sans,sans-serif" font-size="7" fill="rgba(255,255,255,.45)">Circular Economy Hub</text>
+
+      <!-- Node: Civic Infra -->
+      <rect x="644" y="314" width="156" height="72" rx="2" fill="rgba(0,21,42,.9)" stroke="rgba(254,83,55,.3)" stroke-width="1"/>
+      <text x="722" y="342" text-anchor="middle" font-family="Questrial,sans-serif" font-size="7.5" fill="#fe5337" letter-spacing="1.5">CIVIC INFRASTRUCTURE</text>
+      <text x="722" y="357" text-anchor="middle" font-family="DM Sans,sans-serif" font-size="7" fill="rgba(255,255,255,.45)">2km Conduit Spine</text>
+      <text x="722" y="370" text-anchor="middle" font-family="DM Sans,sans-serif" font-size="7" fill="rgba(255,255,255,.45)">Living Seawall · EV Network</text>
+
+      <!-- Node: Democracy -->
+      <rect x="372" y="354" width="156" height="72" rx="2" fill="rgba(0,21,42,.9)" stroke="rgba(254,83,55,.3)" stroke-width="1"/>
+      <text x="450" y="382" text-anchor="middle" font-family="Questrial,sans-serif" font-size="7.5" fill="#fe5337" letter-spacing="1.5">CIVIC GOVERNANCE</text>
+      <text x="450" y="397" text-anchor="middle" font-family="DM Sans,sans-serif" font-size="7" fill="rgba(255,255,255,.45)">Informed Democracy</text>
+      <text x="450" y="410" text-anchor="middle" font-family="DM Sans,sans-serif" font-size="7" fill="rgba(255,255,255,.45)">Youth Voice · Elder Council</text>
+    </svg>
+
+    <div class="integration-pillars reveal">
+      <div class="int-pillar">
+        <span class="int-pillar-icon">⚡</span>
+        <div class="int-pillar-title">Energy Powers Everything</div>
+        <div class="int-pillar-body">Floating solar deploys first. It powers desalination, farms, communications, and the Guardian terminals. The Kronos MMR runs in parallel through regulatory process, providing dispatchable baseload once approved.</div>
+      </div>
+      <div class="int-pillar">
+        <span class="int-pillar-icon"><🧠></span>
+        <div class="int-pillar-title">Guardian Watches All</div>
+        <div class="int-pillar-body">Guardian monitors every node in real time — energy flows, water quality, food production, waste processing, communications health. It issues alerts, recommendations, and eventually automated responses — always with override pathways available.</div>
+      </div>
+      <div class="int-pillar">
+        <span class="int-pillar-icon">🔗</span>
+        <div class="int-pillar-title">No Single Point of Failure</div>
+        <div class="int-pillar-body">Each system has a fallback. Communications has a four-tier failover hierarchy. Water has both desalination and rainwater catchment. Energy has battery storage across multiple timeframes. Every fallback has a manual override protocol.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ DESIGN PRINCIPLES ══════════════════════════════════════════ -->
+<section class="design-section">
+  <div class="design-inner">
+    <div class="reveal" style="margin-bottom:1rem;">
+      <div class="section-tag">Design Philosophy</div>
+      <h2 class="h2">Four principles that <em>shape every decision.</em></h2>
+    </div>
+
+    <div class="design-row">
+      <div class="design-text-col">
+        <div class="design-label reveal">Principle 01</div>
+        <h3 class="design-title reveal">Modular by design.<br><em>No cascading failures.</em></h3>
+        <p class="design-body reveal">Every system is independently deployable and independently maintainable. A community that can only afford floating solar and basic communications this year can add desalination next year, without redesigning what came before. The Civic Conduit Spine runs beneath the road precisely so that adding a new utility line doesn't require tearing up the old ones.</p>
+        <p class="design-body reveal">Modularity also means graceful degradation. When the grid is stressed during a cyclone, non-critical loads shed first. Guardian manages this automatically — or community stewards can override manually. The system fails in known, manageable ways rather than catastrophic ones.</p>
+        <div class="design-tags reveal">
+          <span class="design-tag">Independent deployment</span>
+          <span class="design-tag">Graceful degradation</span>
+          <span class="design-tag">Manual override</span>
+          <span class="design-tag">Incremental adoption</span>
+        </div>
+      </div>
+      <div class="design-visual dv-sovereignty reveal-right">
+        <div class="design-num">01</div>
+        <div class="design-visual-inner">
+          <svg width="200" height="200" viewBox="0 0 200 200" fill="none">
+            <!-- Modular hex grid motif -->
+            <g opacity=".6">
+              <polygon points="100,30 128,46 128,78 100,94 72,78 72,46" stroke="#23c1c4" stroke-width="1" fill="rgba(35,193,196,.08)"/>
+              <polygon points="140,78 168,94 168,126 140,142 112,126 112,94" stroke="#ffc61d" stroke-width=".8" fill="rgba(255,198,29,.06)" opacity=".7"/>
+              <polygon points="60,78 88,94 88,126 60,142 32,126 32,94" stroke="#ffc61d" stroke-width=".8" fill="rgba(255,198,29,.06)" opacity=".7"/>
+              <polygon points="100,126 128,142 128,174 100,190 72,174 72,142" stroke="#23c1c4" stroke-width=".8" fill="rgba(35,193,196,.06)" opacity=".6"/>
+              <line x1="100" y1="94" x2="112" y2="94" stroke="#23c1c4" stroke-width=".7" opacity=".5"/>
+              <line x1="100" y1="94" x2="88" y2="94" stroke="#23c1c4" stroke-width=".7" opacity=".5"/>
+              <line x1="100" y1="94" x2="100" y2="126" stroke="#23c1c4" stroke-width=".7" opacity=".5"/>
+            </g>
+          </svg>
+        </div>
+      </div>
+    </div>
+
+    <div class="design-row reverse">
+      <div class="design-visual dv-culture reveal-left">
+        <div class="design-num">02</div>
+        <div class="design-visual-inner">
+          <svg width="200" height="200" viewBox="0 0 200 200" fill="none">
+            <circle cx="100" cy="100" r="65" stroke="#ffc61d" stroke-width=".8" fill="none" opacity=".3"/>
+            <circle cx="100" cy="100" r="40" stroke="#fe5337" stroke-width="1" fill="rgba(254,83,55,.08)"/>
+            <path d="M70 115 Q100 90 130 115" stroke="#ffc61d" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+            <path d="M85 130 Q100 120 115 130" stroke="#ffc61d" stroke-width="1" fill="none" stroke-linecap="round" opacity=".6"/>
+            <circle cx="100" cy="82" r="8" fill="#fe5337" opacity=".5"/>
+            <path d="M60 65 Q100 45 140 65" stroke="rgba(255,198,29,.3)" stroke-width=".8" fill="none"/>
+          </svg>
+        </div>
+      </div>
+      <div class="design-text-col">
+        <div class="design-label reveal">Principle 02</div>
+        <h3 class="design-title reveal">Culture is not<br>an afterthought.<br><em>It is the adoption mechanism.</em></h3>
+        <p class="design-body reveal">Every system in the Sovereign Vision has a Tuvaluan name, a blessing ceremony, and a community role. The desalination nodes are Vai Tapu — sacred water. The floating solar array is Te Lā o te Namo — the sun of the lagoon. The AI companion speaks Tuvaluan first.</p>
+        <p class="design-body reveal">This is not decoration. It is how a community comes to own and maintain a system rather than merely tolerate it. Infrastructure adopted through cultural belonging survives leadership changes, funding gaps, and climate events that would destroy externally-imposed systems.</p>
+        <div class="design-tags reveal">
+          <span class="design-tag">Tuvaluan naming</span>
+          <span class="design-tag">Ritual integration</span>
+          <span class="design-tag">Elder blessing ceremonies</span>
+          <span class="design-tag">Language-first AI interface</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="design-row">
+      <div class="design-text-col">
+        <div class="design-label reveal">Principle 03</div>
+        <h3 class="design-title reveal">Consent at every<br>threshold.<br><em>No automation without agreement.</em></h3>
+        <p class="design-body reveal">The Guardian AI system never assumes permission. It begins in monitoring-only mode — observing, logging, and reporting — without any automated action. Non-binding recommendations come next, issued through Arbor terminals and public dashboards. Automation only begins when the community explicitly consents at each new level of capability.</p>
+        <p class="design-body reveal">This isn't just ethics policy — it's the adoption mechanism for AI governance. A community that feels surveilled and automated will resist. A community that watches the system prove itself for two years before it acts will trust it enough to let it help.</p>
+        <div class="design-tags reveal">
+          <span class="design-tag">Monitoring-only phase</span>
+          <span class="design-tag">Non-binding recommendations</span>
+          <span class="design-tag">Community opt-in</span>
+          <span class="design-tag">Override at all times</span>
+        </div>
+      </div>
+      <div class="design-visual dv-resilience reveal-right">
+        <div class="design-num">03</div>
+        <div class="design-visual-inner">
+          <svg width="200" height="200" viewBox="0 0 200 200" fill="none">
+            <circle cx="100" cy="100" r="70" stroke="#23c1c4" stroke-width=".7" fill="none" opacity=".2"/>
+            <circle cx="100" cy="100" r="50" stroke="#23c1c4" stroke-width=".9" fill="none" opacity=".3"/>
+            <circle cx="100" cy="100" r="30" stroke="#23c1c4" stroke-width="1" fill="rgba(35,193,196,.1)"/>
+            <circle cx="100" cy="100" r="8" fill="#23c1c4" opacity=".6"/>
+            <!-- Dots at ring intersections -->
+            <circle cx="100" cy="30" r="3.5" fill="#ffc61d" opacity=".6"/>
+            <circle cx="100" cy="170" r="3.5" fill="#ffc61d" opacity=".5"/>
+            <circle cx="160" cy="85" r="3" fill="#fe5337" opacity=".5"/>
+            <circle cx="40" cy="115" r="3" fill="#fe5337" opacity=".5"/>
+            <line x1="100" y1="30" x2="100" y2="70" stroke="rgba(255,198,29,.3)" stroke-width=".8" stroke-dasharray="3 2"/>
+            <line x1="160" y1="85" x2="130" y2="90" stroke="rgba(254,83,55,.3)" stroke-width=".8" stroke-dasharray="3 2"/>
+          </svg>
+        </div>
+      </div>
+    </div>
+
+    <div class="design-row reverse">
+      <div class="design-visual dv-open reveal-left">
+        <div class="design-num">04</div>
+        <div class="design-visual-inner">
+          <svg width="200" height="200" viewBox="0 0 200 200" fill="none">
+            <rect x="30" y="60" width="60" height="60" rx="2" stroke="#23c1c4" stroke-width="1" fill="rgba(35,193,196,.08)"/>
+            <rect x="110" y="60" width="60" height="60" rx="2" stroke="#ffc61d" stroke-width="1" fill="rgba(255,198,29,.08)"/>
+            <rect x="70" y="130" width="60" height="60" rx="2" stroke="#fe5337" stroke-width="1" fill="rgba(254,83,55,.08)"/>
+            <!-- Arrows between boxes -->
+            <path d="M90 90 L110 90" stroke="rgba(255,255,255,.2)" stroke-width=".8" marker-end="url(#arrow)"/>
+            <path d="M60 120 L85 130" stroke="rgba(255,255,255,.2)" stroke-width=".8"/>
+            <path d="M140 120 L115 130" stroke="rgba(255,255,255,.2)" stroke-width=".8"/>
+            <text x="60" y="93" text-anchor="middle" font-family="Questrial,sans-serif" font-size="7" fill="rgba(255,255,255,.4)" letter-spacing="1">TUVALU</text>
+            <text x="140" y="93" text-anchor="middle" font-family="Questrial,sans-serif" font-size="7" fill="rgba(255,255,255,.4)" letter-spacing="1">ADAPT</text>
+            <text x="100" y="163" text-anchor="middle" font-family="Questrial,sans-serif" font-size="7" fill="rgba(255,255,255,.4)" letter-spacing="1">REPLICATE</text>
+          </svg>
+        </div>
+      </div>
+      <div>
+        <div class="design-label reveal">Principle 04</div>
+        <h3 class="design-title reveal">Open by default.<br><em>A gift to the future.</em></h3>
+        <p class="design-body reveal">The Civic Commons License v1.0 means any community on earth can take this blueprint, adapt it to their context, and deploy it — without permission and without fees. The documentation, white papers, system designs, and governance frameworks are all freely available.</p>
+        <p class="design-body reveal">This is infrastructure as a gift. What Tuvalu proves can help the Maldives, the Caribbean, coastal Bangladesh, Arctic communities, and any people facing the same combination of climate pressure and colonial infrastructure dependency. Tuvalu is the first. It will not be the last.</p>
+        <div class="design-tags reveal">
+          <span class="design-tag">Civic Commons License v1.0</span>
+          <span class="design-tag">Open-source code &amp; docs</span>
+          <span class="design-tag">No permission required</span>
+          <span class="design-tag">No licensing fees</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ DEPLOYMENT PHASES ══════════════════════════════════════════ -->
+<section class="phases-section">
+  <div class="phases-inner">
+    <div class="phases-intro">
+      <div class="section-tag reveal">Deployment Roadmap</div>
+      <h2 class="h2 reveal"><em>Phased. Consent-driven.</em><br>Community-paced.</h2>
+      <p class="body-text reveal" style="margin-top:1.2rem;">The rollout follows a human-centred approach — prioritising learning, adaptation, and ritual alignment over speed. Each stage allows for meaningful feedback and trust-building before advancing.</p>
+    </div>
+
+    <div class="timeline">
+
+      <div class="phase-item reveal">
+        <div class="phase-dot-col">
+          <div class="phase-dot done"><div class="phase-dot-n">0</div></div>
+        </div>
+        <div class="phase-content">
+          <div class="phase-meta">
+            <span class="phase-badge done">Active</span>
+            <span class="phase-timeframe">Pre-Year 1</span>
+          </div>
+          <div class="phase-title">Software Development &amp; Ritual Design</div>
+          <p class="phase-body">Co-developing Guardian and Arbor software with open-source models. Designing cultural onboarding pathways, interface rituals, and public feedback protocols. Conducting threat modelling, code audits, and offline testing with ceremonial review teams. Finalising the Guardian Code of Ethics and Arbor terminal UI.</p>
+          <div class="phase-items">
+            <div class="phase-item-tag teal">Guardian &amp; Arbor software co-development</div>
+            <div class="phase-item-tag teal">Tuvaluan language corpus building</div>
+            <div class="phase-item-tag teal">Cultural onboarding pathway design</div>
+            <div class="phase-item-tag teal">Multisig wallet setup &amp; ethics codification</div>
+            <div class="phase-item-tag teal">Threat modelling &amp; code audits</div>
+            <div class="phase-item-tag teal">Trust formation &amp; ceremonial review</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="phase-item reveal">
+        <div class="phase-dot-col">
+          <div class="phase-dot active"><div class="phase-dot-n">1</div></div>
+        </div>
+        <div class="phase-content">
+          <div class="phase-meta">
+            <span class="phase-badge active">Active</span>
+            <span class="phase-timeframe">Year 1 — Months 6–12</span>
+          </div>
+          <div class="phase-title">Foundation Nodes — Observation &amp; Trust</div>
+          <p class="phase-body">Establishing the foundational infrastructure nodes: floating solar, desalination, communications, floating farm, waste recovery pilot, and the 2km conduit spine. Guardian and Arbor operate in monitoring-only mode with no automation — observing, learning, and building community trust.</p>
+          <div class="phase-items">
+            <div class="phase-item-tag coral">Floating Solar Array (Te Lā o te Namo) — 1 MW</div>
+            <div class="phase-item-tag coral">BYD Haohan battery storage — 3,916 kWh</div>
+            <div class="phase-item-tag coral">Vai Tapu desalination — 3 × 20,000 L/day</div>
+            <div class="phase-item-tag coral">Te Puka Loloa hybrid comms node</div>
+            <div class="phase-item-tag coral">Floating Farm MK1 cluster — feeds 50–75 people</div>
+            <div class="phase-item-tag coral">Te Fenua Fakafoou resource recovery pilot</div>
+            <div class="phase-item-tag coral">2km Civic Conduit Spine + sidewalk</div>
+            <div class="phase-item-tag coral">Guardian monitoring-only deployment</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="phase-item reveal">
+        <div class="phase-dot-col">
+          <div class="phase-dot future"><div class="phase-dot-n">2</div></div>
+        </div>
+        <div class="phase-content">
+          <div class="phase-meta">
+            <span class="phase-badge future">Upcoming</span>
+            <span class="phase-timeframe">Years 2–3</span>
+          </div>
+          <div class="phase-title">Recommendation &amp; Ritual</div>
+          <p class="phase-body">Guardian begins issuing non-binding recommendations — energy flow optimisation, planting time alerts, anomaly warnings — through Arbor terminals and civic dashboards. Seasonal ritual review ceremonies anchor each new capability in community consent. The Arbor is piloted as an educational and family memory companion.</p>
+          <div class="phase-items">
+            <div class="phase-item-tag gold">Non-binding Guardian recommendations</div>
+            <div class="phase-item-tag gold">Civic dashboards &amp; public terminals</div>
+            <div class="phase-item-tag gold">Seasonal ritual review ceremonies</div>
+            <div class="phase-item-tag gold">Arbor companion rollout</div>
+            <div class="phase-item-tag gold">Citizen ethics portal launch</div>
+            <div class="phase-item-tag gold">Youth steward training programme</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="phase-item reveal">
+        <div class="phase-dot-col">
+          <div class="phase-dot future"><div class="phase-dot-n">3</div></div>
+        </div>
+        <div class="phase-content">
+          <div class="phase-meta">
+            <span class="phase-badge future">Upcoming</span>
+            <span class="phase-timeframe">Years 3–5</span>
+          </div>
+          <div class="phase-title">Automation with Consent</div>
+          <p class="phase-body">Guardian automation activates selectively and with explicit community opt-in at each threshold. The Kronos MMR baseload comes online, replacing interim reliance on diesel backup. Bitcoin treasury governance activates through Arbor. Full override and appeal protocols are operational at every level.</p>
+          <div class="phase-items">
+            <div class="phase-item-tag coral">Partial Guardian automation — opt-in</div>
+            <div class="phase-item-tag coral">Kronos MMR baseload activation</div>
+            <div class="phase-item-tag coral">Bitcoin treasury governance via Arbor</div>
+            <div class="phase-item-tag coral">Guardian override &amp; appeal protocols</div>
+            <div class="phase-item-tag coral">Smart waste processing integration</div>
+            <div class="phase-item-tag coral">Full civic stack operational</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="phase-item reveal">
+        <div class="phase-dot-col">
+          <div class="phase-dot future"><div class="phase-dot-n">4</div></div>
+        </div>
+        <div class="phase-content">
+          <div class="phase-meta">
+            <span class="phase-badge future">Long-Term</span>
+            <span class="phase-timeframe">Year 5+</span>
+          </div>
+          <div class="phase-title">Adaptive Maturity &amp; Global Replication</div>
+          <p class="phase-body">Full adaptive civic governance. The system learns from five years of operation and begins adjusting its own parameters — always within bounds set by community consent. Replication documentation is complete. The open invitation is extended formally to allied island nations, with Tuvalu as the reference deployment and mentor community.</p>
+          <div class="phase-items">
+            <div class="phase-item-tag teal">Full adaptive governance active</div>
+            <div class="phase-item-tag teal">Replication documentation published</div>
+            <div class="phase-item-tag teal">Allied island nation partnerships</div>
+            <div class="phase-item-tag teal">Tuvalu as reference deployment</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══ GOVERNANCE MODEL ══════════════════════════════════════════ -->
+<section class="governance-section">
+  <div class="governance-inner">
+    <div class="reveal">
+      <div class="section-tag white">How Decisions Are Made</div>
+      <h2 class="h2 h2-white" style="max-width:600px;">Guardian does not govern.<br><em>The community governs.</em><br>Guardian assists.</h2>
+    </div>
+
+    <div class="governance-grid">
+      <div>
+        <div class="gov-card reveal">
+          <div class="gov-card-icon">
+            <!-- Guardian icon — shield/diamond form, recoloured to brand coral -->
+            <svg viewBox="30 20 40 70" xmlns="images/gaurdian_icon.svg" width="52" height="52">
+              <path stroke-width="1.8" stroke="var(--coral-dim)" fill="var(--coral)" d="m50 20 20 20-20 50-20-50z" opacity=".85"/>
+              <path fill="var(--coral-dim)" d="M54 45a4 4 0 1 1-8 0 4 4 0 0 1 8 0"/>
+            </svg>
+          </div>
+          <div class="gov-card-title">The Guardian System</div>
+          <div class="gov-card-body">A decentralised AI regulatory and monitoring framework embedded directly into Tuvalu's infrastructure. Guardian ensures all systems adhere to the Guardian Code of Ethics — an evolving, values-driven constitution codified by the community itself.</div>
+          <div class="gov-card-list">
+            <div class="gov-list-item"><div class="gov-list-dot"></div>Real-time monitoring of all nine systems</div>
+            <div class="gov-list-item"><div class="gov-list-dot"></div>Immutable audit trails — publicly viewable</div>
+            <div class="gov-list-item"><div class="gov-list-dot"></div>Non-directive guidance and anomaly alerts</div>
+            <div class="gov-list-item"><div class="gov-list-dot"></div>Runs fully offline on island-hosted hardware</div>
+            <div class="gov-list-item"><div class="gov-list-dot"></div>Open-source models — fully auditable</div>
+          </div>
+        </div>
+
+        <div class="gov-card reveal" style="margin-top:1px;">
+          <div class="gov-card-icon">
+            <!-- Arbor icon — branching tree form, recoloured to brand teal -->
+            <svg viewBox="32 27 36 59" xmlns="http://www.w3.org/2000/svg" width="52" height="52">
+              <path fill="var(--teal)" d="M56 80a6 6 0 1 1-12 0 6 6 0 0 1 12 0"/>
+              <path stroke-width="1.8" stroke="var(--teal)" d="M50 80V50"/>
+              <path fill="var(--teal)" d="M54 50a4 4 0 1 1-8 0 4 4 0 0 1 8 0"/>
+              <path stroke-width="1.8" stroke="var(--teal)" d="M50 50 35 30"/>
+              <path stroke-width="1.8" stroke="var(--teal)" d="m50 50 15-20"/>
+              <path fill="var(--teal)" d="M38 30a3 3 0 1 1-6 0 3 3 0 0 1 6 0"/>
+              <path fill="var(--teal)" d="M68 30a3 3 0 1 1-6 0 3 3 0 0 1 6 0"/>
+            </svg>
+          </div>
+          <div class="gov-card-title">The Arbor Companion</div>
+          <div class="gov-card-body">A lifelong personal civic companion for every Tuvaluan citizen. Arbor guides participation in governance, transmits ancestral knowledge, supports stewardship roles, and provides non-directive ethics counsel — always in Tuvaluan, always offline.</div>
+          <div class="gov-card-list">
+            <div class="gov-list-item"><div class="gov-list-dot coral"></div>Civic companion and voting guide</div>
+            <div class="gov-list-item"><div class="gov-list-dot coral"></div>Ethics advisor — non-directive</div>
+            <div class="gov-list-item"><div class="gov-list-dot coral"></div>Intergenerational knowledge transmission</div>
+            <div class="gov-list-item"><div class="gov-list-dot coral"></div>Youth stewardship task routing</div>
+            <div class="gov-list-item"><div class="gov-list-dot coral"></div>Family memory and oral history preservation</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="reveal">
+        <div style="font-family:'Questrial',sans-serif;font-size:.62rem;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.4);margin-bottom:1.2rem;">The Consent Ladder</div>
+        <p style="font-size:.82rem;color:var(--text-on-dark);line-height:1.72;margin-bottom:1.5rem;">Every capability Guardian gains must pass through this sequence. No stage is skipped. Each level requires community validation before the next begins.</p>
+        <div class="consent-ladder">
+          <div class="consent-rung">
+            <div class="consent-rung-n">0</div>
+            <div>
+              <div class="consent-rung-title">Observe</div>
+              <div class="consent-rung-body">Guardian watches and logs. No recommendations, no actions. Community observes the system observing them.</div>
+            </div>
+          </div>
+          <div class="consent-rung">
+            <div class="consent-rung-n">1</div>
+            <div>
+              <div class="consent-rung-title">Recommend</div>
+              <div class="consent-rung-body">Non-binding suggestions through Arbor and dashboards. Community can accept, ignore, or challenge any recommendation.</div>
+            </div>
+          </div>
+          <div class="consent-rung">
+            <div class="consent-rung-n">2</div>
+            <div>
+              <div class="consent-rung-title">Assist</div>
+              <div class="consent-rung-body">Guardian takes minor automated actions only in domains where community has explicitly opted in through civic ceremony.</div>
+            </div>
+          </div>
+          <div class="consent-rung">
+            <div class="consent-rung-n">3</div>
+            <div>
+              <div class="consent-rung-title">Automate</div>
+              <div class="consent-rung-body">Full automation in consented domains. Override remains available at all times through community stewards and elder council.</div>
+            </div>
+          </div>
+          <div class="consent-rung">
+            <div class="consent-rung-n">4</div>
+            <div>
+              <div class="consent-rung-title">Adapt</div>
+              <div class="consent-rung-body">Guardian adjusts its own operating parameters — within bounds set by community-approved ethics constitution.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ REPLICATION ════════════════════════════════════════════════ -->
+<section class="replication-section">
+  <div class="replication-inner">
+    <div>
+      <div class="section-tag reveal">Open Replication</div>
+      <h2 class="h2 reveal">Designed to be<br>taken and <em>adapted.</em></h2>
+      <p class="body-text reveal" style="margin-top:1.2rem;">The Sovereign Vision is not a product. It is a blueprint. Every technical document, white paper, system design, and governance framework is freely available under the Civic Commons License v1.0. Take it. Adapt it. Deploy it. No permission required.</p>
+
+      <div class="rep-steps reveal">
+        <div class="rep-step">
+          <div class="rep-step-n">Step 01</div>
+          <div class="rep-step-title">Read the white papers</div>
+          <div class="rep-step-body">Nine published technical documents cover every system in detail — engineering specs, cultural integration requirements, Guardian ethics architecture, and governance frameworks.</div>
+        </div>
+        <div class="rep-step">
+          <div class="rep-step-n">Step 02</div>
+          <div class="rep-step-title">Adapt to your context</div>
+          <div class="rep-step-body">Climate conditions, cultural priorities, regulatory environment, and available resources differ. The modular architecture means you can deploy the systems most relevant to your community first.</div>
+        </div>
+        <div class="rep-step">
+          <div class="rep-step-n">Step 03</div>
+          <div class="rep-step-title">Contact us to collaborate</div>
+          <div class="rep-step-body">We are actively looking for aligned communities, engineers, governments, and institutions who want to be part of building and refining this model together. Reach out.</div>
+        </div>
+        <div class="rep-step">
+          <div class="rep-step-n">Step 04</div>
+          <div class="rep-step-title">Give back to the commons</div>
+          <div class="rep-step-body">If you improve the blueprint, we ask only that you contribute those improvements back. That is the compact that makes this model sustainable across generations.</div>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <div class="licence-panel reveal">
+        <div class="licence-panel-tag">Civic Commons License v1.0</div>
+        <div class="licence-panel-title">Open replication.<br>No restrictions.<br>No fees.</div>
+        <div class="licence-panel-body">All Sovereign Vision technical documentation, white papers, system designs, AI governance frameworks, and cultural integration protocols are freely available for adaptation and replication by any aligned community worldwide.</div>
+        <div class="licence-features">
+          <div class="licence-feat">Use, adapt, and deploy without permission</div>
+          <div class="licence-feat">No licensing fees or royalties</div>
+          <div class="licence-feat">Commercial and non-commercial use permitted</div>
+          <div class="licence-feat">Attribution required — give credit to the source</div>
+          <div class="licence-feat">Improvements shared back to the commons</div>
+        </div>
+        <a href="/civic-commons-license" class="btn-coral" style="display:inline-block;margin-bottom:1rem;">Read the Full License</a><br>
+        <a href="/digitalarchipelago" class="btn-outline-navy" style="display:inline-block;background:transparent;border-color:rgba(255,255,255,.2);color:rgba(255,255,255,.7);">Digital Archipelago Accord</a>
+      </div>
+
+      <div style="margin-top:1.5rem;padding:1.6rem;background:var(--cream-dark);border:1px solid var(--border-light);" class="reveal">
+        <div style="font-family:'Questrial',sans-serif;font-size:.6rem;letter-spacing:.18em;text-transform:uppercase;color:var(--coral);margin-bottom:.7rem;">Potential contexts for replication</div>
+        <div style="display:flex;flex-wrap:wrap;gap:.5rem;">
+          <span style="font-size:.75rem;color:var(--stone);background:var(--white);border:1px solid var(--border-light);padding:.3rem .7rem;">Pacific Island Nations</span>
+          <span style="font-size:.75rem;color:var(--stone);background:var(--white);border:1px solid var(--border-light);padding:.3rem .7rem;">Maldives Atolls</span>
+          <span style="font-size:.75rem;color:var(--stone);background:var(--white);border:1px solid var(--border-light);padding:.3rem .7rem;">Caribbean SIDS</span>
+          <span style="font-size:.75rem;color:var(--stone);background:var(--white);border:1px solid var(--border-light);padding:.3rem .7rem;">Indian Ocean Islands</span>
+          <span style="font-size:.75rem;color:var(--stone);background:var(--white);border:1px solid var(--border-light);padding:.3rem .7rem;">Coastal Bangladesh</span>
+          <span style="font-size:.75rem;color:var(--stone);background:var(--white);border:1px solid var(--border-light);padding:.3rem .7rem;">Arctic Communities</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ JOIN CTA ═══════════════════════════════════════════════════ -->
+<section class="join-section">
+  <div class="join-inner">
+    <div class="section-tag white reveal" style="justify-content:center;">Get Involved</div>
+    <h2 class="join-h2 reveal">
+      Ready to go deeper?<br><em>We want to hear from you.</em>
+    </h2>
+    <p class="join-body reveal">
+      Read the white papers, explore each system, or reach out directly. Whether you are an engineer, a policymaker, a community leader, or a funder — there is a place in this work for you.
+    </p>
+    <div class="join-actions reveal">
+      <a href="/contact" class="btn-white">Contact the Trust</a>
+      <a href="/core-systems" class="btn-ghost-white">Explore Core Systems</a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ FOOTER ════════════════════════════════════════════════════ -->
+<footer>
+  <div class="footer-top">
+    <div>
+      <a href="/" class="footer-logo-wrap">
+        <img src="images/logo-trans.png" alt="Sovereign Vision">
+        <span class="footer-logo-name">Sovereign Vision</span>
+      </a>
+      <p class="footer-desc">A comprehensive sovereign civilization infrastructure stack for Tuvalu — and an open-source blueprint for climate-vulnerable communities worldwide.</p>
+      <a href="/cdn-cgi/l/email-protection#b1d8dfd7def1c2dec7d4c3d4d8d6dfc7d8c2d8dedf9fdec3d6" class="footer-email"><span class="__cf_email__" data-cfemail="f49d9a929bb4879b829186919d939a829d879d9b9ada9b8693">[email&#160;protected]</span></a>
+    </div>
+    <div>
+      <div class="footer-col-h">Core Systems</div>
+      <ul class="footer-links">
+        <li><a href="/energy">Power Generation</a></li>
+        <li><a href="/water-systems">Water Systems</a></li>
+        <li><a href="/food">Food Sovereignty</a></li>
+        <li><a href="/communications">Communications</a></li>
+        <li><a href="/waste-systems">Resource Recovery</a></li>
+        <li><a href="/civic-infrastructure">Civic Infrastructure</a></li>
+        <li><a href="/treasury">Sovereign Treasury</a></li>
+        <li><a href="/ai-overview">Civic Stewardship</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-col-h">About & Governance</div>
+      <ul class="footer-links">
+        <li><a href="/about-us">About Us</a></li>
+        <li><a href="/continuity-vs-reinvention">Continuity vs Reinvention</a></li>
+        <li><a href="/elders-council">Elders Council</a></li>
+        <li><a href="/youth-voice">Youth Voice</a></li>
+        <li><a href="/how-it-works">How It Works</a></li>
+        <li><a href="/faq">FAQ</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-col-h">Legal & Project</div>
+      <ul class="footer-links">
+        <li><a href="/legal-licensing">Legal & Licensing</a></li>
+        <li><a href="/civic-commons-license">Civic Commons License</a></li>
+        <li><a href="/digitalarchipelago">Digital Archipelago Accord</a></li>
+        <li><a href="/trust-formation-status">Trust Formation Status</a></li>
+        <li><a href="/terms">Terms of Use</a></li>
+        <li><a href="/privacy-policy">Privacy Policy</a></li>
+        <li><a href="/copyright-notice">Copyright Notice</a></li>
+        <li><a href="/contact">Contact</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div class="footer-copy">© 2026 Tuvalu Sovereign Vision Stewardship Trust · All content protected under the Civic Commons License v1.0 · sovereignvision.org</div>
+    <div class="footer-socials">
+      <a href="https://github.com/sovereign-vision-org" target="_blank" rel="noopener">GitHub</a>
+      <a href="http://linkedin.com/company/sovereign-vision-project" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="https://www.instagram.com/tuvalu_vision_project" target="_blank" rel="noopener">Instagram</a>
+    </div>
+  </div>
+</footer>
+
+<!-- ═══ JS ════════════════════════════════════════════════════════ -->
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+/* Mobile menu */
+const hamburger = document.getElementById('hamburger');
+const mobileMenu = document.getElementById('mobile-menu');
+let menuOpen = false;
+function closeMobile() {
+  menuOpen = false;
+  hamburger.classList.remove('open');
+  mobileMenu.classList.remove('open');
+  document.body.style.overflow = '';
+  hamburger.setAttribute('aria-expanded','false');
+}
+hamburger.addEventListener('click', () => {
+  if (menuOpen) { closeMobile(); return; }
+  menuOpen = true;
+  hamburger.classList.add('open');
+  mobileMenu.classList.add('open');
+  document.body.style.overflow = 'hidden';
+  hamburger.setAttribute('aria-expanded','true');
+});
+document.addEventListener('keydown', e => { if (e.key === 'Escape' && menuOpen) closeMobile(); });
+
+/* Dropdown — same JS-driven approach as homepage v3 */
+const dropdowns = document.querySelectorAll('.nav-dropdown');
+dropdowns.forEach(dd => {
+  let closeTimer = null;
+  function openDd() {
+    clearTimeout(closeTimer);
+    dropdowns.forEach(o => { if (o !== dd) o.classList.remove('active'); });
+    dd.classList.add('active');
+  }
+  function scheduledClose() { closeTimer = setTimeout(() => dd.classList.remove('active'), 120); }
+  function cancelClose() { clearTimeout(closeTimer); }
+  dd.addEventListener('mouseenter', openDd);
+  dd.addEventListener('mouseleave', scheduledClose);
+  const menu = dd.querySelector('.dropdown-menu');
+  if (menu) {
+    menu.addEventListener('mouseenter', cancelClose);
+    menu.addEventListener('mouseleave', scheduledClose);
+  }
+  dd.querySelector('a').addEventListener('click', e => {
+    if (window.innerWidth > 768) {
+      e.preventDefault();
+      dd.classList.contains('active') ? dd.classList.remove('active') : openDd();
+    }
+  });
+});
+document.addEventListener('click', e => {
+  if (!e.target.closest('.nav-dropdown')) dropdowns.forEach(dd => dd.classList.remove('active'));
+});
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape') dropdowns.forEach(dd => dd.classList.remove('active'));
+});
+
+/* Scroll reveal with stagger */
+[
+  ['.principles-grid .principle-card', i => `${i * .1}s`],
+  ['.integration-pillars .int-pillar', i => `${i * .1}s`],
+  ['.governance-grid .gov-card',       i => `${i * .1}s`],
+  ['.consent-ladder .consent-rung',    i => `${i * .06}s`],
+  ['.phase-item',                      i => `${i * .08}s`],
+].forEach(([sel, fn]) => {
+  document.querySelectorAll(sel).forEach((el, i) => { el.style.transitionDelay = fn(i); });
+});
+
+const io = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); }
+  });
+}, { threshold: .07, rootMargin: '0px 0px -28px 0px' });
+document.querySelectorAll('.reveal,.reveal-left,.reveal-right').forEach(el => io.observe(el));
+</script>
+</body>
+</html>
