@@ -1,0 +1,2250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Sovereign Vision — A regenerative future for island nations. An open-source blueprint for sovereignty, applied first in Tuvalu.">
+<title>Sovereign Vision – A Regenerative Future for Island Nations</title>
+<link rel="icon" type="image/png" href="images/favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Questrial&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet">
+
+<style>
+/* ═══════════════════════════════════════════════
+   DESIGN TOKENS — Logo-accurate colours
+   Coral   #fe5337  Gold    #ffc61d
+   Teal    #23c1c4  Navy    #002b4b
+═══════════════════════════════════════════════ */
+:root {
+  --coral:        #fe5337;
+  --coral-dim:    #c9402a;
+  --coral-pale:   rgba(254,83,55,0.08);
+  --gold:         #ffc61d;
+  --gold-dim:     #d4a400;
+  --gold-pale:    rgba(255,198,29,0.10);
+  --teal:         #23c1c4;
+  --teal-dim:     #0096b9;
+  --teal-pale:    rgba(35,193,196,0.09);
+  --navy:         #002b4b;
+  --navy-mid:     #00203a;
+  --navy-deep:    #00152a;
+  --navy-light:   #0d4070;
+  --cream:        #faf6ee;
+  --cream-mid:    #f2ead8;
+  --cream-dark:   #e8ddc8;
+  --stone:        #4a5568;
+  --stone-light:  #718096;
+  --white:        #ffffff;
+  --text-on-dark: rgba(250,246,238,0.70);
+  --text-dimmer:  rgba(250,246,238,0.40);
+  --border-light: rgba(0,43,75,0.10);
+  --border-gold:  rgba(255,198,29,0.18);
+  --border-teal:  rgba(35,193,196,0.20);
+  --ease:         cubic-bezier(0.22,1,0.36,1);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,*::before,*::after { animation-duration:.01ms!important; transition-duration:.01ms!important; }
+  .reveal { opacity:1!important; transform:none!important; }
+}
+*,*::before,*::after { box-sizing:border-box; margin:0; padding:0; }
+html { scroll-behavior:smooth; }
+body {
+  background: var(--cream);
+  color: var(--navy);
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 300;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ═══════════════════════════════════════════════
+   NAV
+═══════════════════════════════════════════════ */
+nav {
+  position: fixed;
+  top:0; left:0; right:0;
+  z-index: 200;
+  padding: 0 3rem;
+  height: 72px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  transition: background .4s, box-shadow .4s;
+}
+nav.scrolled {
+  background: rgba(255,255,255,0.96);
+  box-shadow: 0 1px 0 var(--border-light), 0 4px 24px rgba(0,43,75,0.06);
+  backdrop-filter: blur(12px);
+}
+.nav-logo {
+  display: flex;
+  align-items: center;
+  gap: .7rem;
+  text-decoration: none;
+  flex-shrink: 0;
+}
+.nav-logo img {
+  width: 42px; height: 42px;
+  object-fit: contain;
+  display: block;
+}
+.nav-logo-text {
+  font-family: 'Questrial', sans-serif;
+  font-size: .78rem;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--navy);
+  line-height: 1.25;
+}
+.nav-logo-text span {
+  display: block;
+  font-size: .58rem;
+  letter-spacing: .12em;
+  color: var(--stone-light);
+  font-family: 'DM Sans', sans-serif;
+}
+/* hero state — logo text white */
+nav:not(.scrolled) .nav-logo-text { color: var(--white); }
+nav:not(.scrolled) .nav-logo-text span { color: rgba(255,255,255,.55); }
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  list-style: none;
+}
+.nav-links a {
+  font-size: .72rem;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,.8);
+  text-decoration: none;
+  font-weight: 400;
+  transition: color .25s;
+  white-space: nowrap;
+}
+nav.scrolled .nav-links a { color: var(--stone); }
+.nav-links a:hover { color: var(--coral) !important; }
+
+/* Dropdown */
+.nav-dropdown { position: relative; }
+.nav-dropdown > a { display: flex; align-items: center; gap: .3rem; }
+.nav-dropdown > a::after {
+  content: '▾';
+  font-size: .6rem;
+  opacity: .6;
+  transition: transform .25s;
+}
+.nav-dropdown.active > a::after { transform: rotate(180deg); }
+
+/* Bridge: invisible pseudo-element fills gap between trigger and menu
+   so mouse travel from link → menu never leaves the hover zone */
+.nav-dropdown::after {
+  content: '';
+  position: absolute;
+  top: 100%;
+  left: -20px;
+  right: -20px;
+  height: 16px; /* covers the gap */
+  background: transparent;
+  display: none;
+}
+.nav-dropdown.active::after { display: block; }
+
+.dropdown-menu {
+  position: absolute;
+  top: calc(100% + 8px); /* 8px visual gap — bridged by ::after pseudo */
+  left: 50%;
+  min-width: 220px;
+  background: var(--white);
+  border: 1px solid var(--border-light);
+  box-shadow: 0 12px 40px rgba(0,43,75,0.12);
+  padding: .5rem 0;
+  /* Collapsed state */
+  opacity: 0;
+  pointer-events: none;
+  transform: translateX(-50%) translateY(-6px);
+  transition: opacity .2s var(--ease), transform .2s var(--ease);
+}
+.nav-dropdown.active .dropdown-menu {
+  opacity: 1;
+  pointer-events: all;
+  transform: translateX(-50%) translateY(0);
+}
+.dropdown-menu a {
+  display: block;
+  padding: .6rem 1.2rem;
+  font-size: .72rem;
+  letter-spacing: .07em;
+  text-transform: uppercase;
+  color: var(--navy) !important;
+  text-decoration: none;
+  transition: background .18s, color .18s;
+  white-space: nowrap;
+}
+.dropdown-menu a:hover {
+  background: var(--coral-pale);
+  color: var(--coral) !important;
+}
+
+.nav-cta {
+  background: var(--coral);
+  color: var(--white) !important;
+  padding: .5rem 1.4rem;
+  font-size: .7rem;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  font-family: 'Questrial', sans-serif;
+  text-decoration: none;
+  transition: background .25s, transform .2s;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.nav-cta:hover { background: var(--coral-dim); transform: translateY(-1px); }
+
+.hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  cursor: pointer;
+  padding: 4px;
+}
+.hamburger span {
+  width: 22px; height: 1.5px;
+  background: var(--white);
+  display: block;
+  transition: all .3s var(--ease);
+}
+nav.scrolled .hamburger span { background: var(--navy); }
+.hamburger.open span:nth-child(1) { transform: rotate(45deg) translate(4.7px,4.7px); }
+.hamburger.open span:nth-child(2) { opacity:0; }
+.hamburger.open span:nth-child(3) { transform: rotate(-45deg) translate(4.7px,-4.7px); }
+
+.mobile-menu {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 199;
+  background: var(--navy-deep);
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1.8rem;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity .35s;
+}
+.mobile-menu.open { opacity:1; pointer-events:all; }
+.mobile-menu a {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 2rem;
+  font-weight: 300;
+  color: var(--white);
+  text-decoration: none;
+  letter-spacing: .04em;
+  transition: color .25s;
+}
+.mobile-menu a:hover { color: var(--gold); }
+.mobile-menu .m-cta {
+  font-family: 'Questrial', sans-serif;
+  font-size: .76rem;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  color: var(--coral);
+  border: 1px solid var(--coral);
+  padding: .65rem 2rem;
+  margin-top: .5rem;
+}
+
+/* ═══════════════════════════════════════════════
+   HERO — video background, full viewport
+═══════════════════════════════════════════════ */
+.hero {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  min-height: 600px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+.hero-video-wrap {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+.hero-video-wrap video {
+  width:100%; height:100%;
+  object-fit: cover;
+  filter: brightness(.48) saturate(.75);
+}
+.hero-fallback {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(155deg, var(--navy-deep) 0%, #004060 40%, #005870 70%, #003850 100%);
+}
+.hero-fallback-orb {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 70% 55% at 30% 55%, rgba(35,193,196,.15) 0%, transparent 60%),
+    radial-gradient(ellipse 40% 35% at 72% 30%, rgba(255,198,29,.07) 0%, transparent 55%),
+    radial-gradient(ellipse 50% 40% at 55% 80%, rgba(254,83,55,.06) 0%, transparent 50%);
+}
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(to top, rgba(0,21,42,.95) 0%, rgba(0,21,42,.6) 35%, rgba(0,21,42,.1) 70%, transparent 100%),
+    linear-gradient(100deg, rgba(0,21,42,.5) 0%, transparent 55%);
+  z-index: 1;
+}
+#wave-canvas {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+  opacity: .15;
+}
+
+.hero-inner {
+  position: relative;
+  z-index: 3;
+  max-width: 1360px;
+  margin: 0 auto;
+  width: 100%;
+  padding: 0 3rem 6rem;
+}
+.hero-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: .7rem;
+  font-family: 'Questrial', sans-serif;
+  font-size: .64rem;
+  letter-spacing: .22em;
+  text-transform: uppercase;
+  color: var(--teal);
+  margin-bottom: 1.6rem;
+  opacity: 0;
+  animation: fadeUp .8s .4s var(--ease) forwards;
+}
+.hero-tag::before {
+  content: '';
+  width: 24px; height: 1px;
+  background: var(--teal);
+  flex-shrink: 0;
+}
+.hero-h1 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(3rem, 7.5vw, 8rem);
+  font-weight: 300;
+  line-height: .93;
+  color: var(--white);
+  max-width: 820px;
+  letter-spacing: -.02em;
+  margin-bottom: 1.8rem;
+  opacity: 0;
+  animation: fadeUp .9s .6s var(--ease) forwards;
+}
+.hero-h1 em { font-style: italic; color: var(--gold); }
+.hero-sub {
+  font-size: clamp(.9rem,1.4vw,1.05rem);
+  color: rgba(255,255,255,.72);
+  max-width: 480px;
+  line-height: 1.75;
+  margin-bottom: 2.4rem;
+  opacity: 0;
+  animation: fadeUp .9s .8s var(--ease) forwards;
+}
+.hero-actions {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  opacity: 0;
+  animation: fadeUp .9s 1s var(--ease) forwards;
+}
+.btn-coral {
+  background: var(--coral);
+  color: var(--white);
+  border: 1.5px solid var(--coral);
+  padding: .8rem 2rem;
+  font-family: 'Questrial', sans-serif;
+  font-size: .74rem;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  text-decoration: none;
+  display: inline-block;
+  transition: background .25s, transform .2s;
+}
+.btn-coral:hover { background: var(--coral-dim); border-color: var(--coral-dim); transform: translateY(-2px); }
+.btn-ghost {
+  background: transparent;
+  color: rgba(255,255,255,.85);
+  border: 1.5px solid rgba(255,255,255,.3);
+  padding: .8rem 2rem;
+  font-family: 'Questrial', sans-serif;
+  font-size: .74rem;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  text-decoration: none;
+  display: inline-block;
+  transition: all .25s;
+}
+.btn-ghost:hover { border-color: var(--white); color: var(--white); transform: translateY(-2px); }
+.btn-navy {
+  background: var(--navy);
+  color: var(--white);
+  border: 1.5px solid var(--navy);
+  padding: .8rem 2rem;
+  font-family: 'Questrial', sans-serif;
+  font-size: .74rem;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  text-decoration: none;
+  display: inline-block;
+  transition: all .25s;
+}
+.btn-navy:hover { background: var(--navy-mid); transform: translateY(-2px); }
+.btn-outline-navy {
+  background: transparent;
+  color: var(--navy);
+  border: 1.5px solid rgba(0,43,75,.3);
+  padding: .8rem 2rem;
+  font-family: 'Questrial', sans-serif;
+  font-size: .74rem;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  text-decoration: none;
+  display: inline-block;
+  transition: all .25s;
+}
+.btn-outline-navy:hover { border-color: var(--navy); background: var(--navy); color: var(--white); transform: translateY(-2px); }
+
+/* hero bottom bar */
+.hero-meta {
+  position: absolute;
+  bottom: 2rem;
+  right: 3rem;
+  z-index: 3;
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  opacity: 0;
+  animation: fadeIn .8s 1.8s forwards;
+}
+.hero-loc {
+  display: flex;
+  align-items: center;
+  gap: .5rem;
+  font-size: .6rem;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,.4);
+  font-family: 'Questrial', sans-serif;
+}
+.pulse-dot {
+  width: 6px; height: 6px;
+  background: var(--teal);
+  border-radius: 50%;
+  animation: pulseDot 2.5s 2s infinite;
+}
+@keyframes pulseDot {
+  0%,100% { box-shadow: 0 0 0 0 rgba(35,193,196,.5); }
+  50% { box-shadow: 0 0 0 6px rgba(35,193,196,0); }
+}
+.scroll-hint {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: .4rem;
+}
+.scroll-hint span {
+  font-size: .55rem;
+  letter-spacing: .2em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,.3);
+  writing-mode: vertical-rl;
+}
+.scroll-bar {
+  width: 1px; height: 40px;
+  background: linear-gradient(to bottom, rgba(255,198,29,.7), transparent);
+  animation: scrollAnim 2.4s 2s infinite;
+}
+@keyframes scrollAnim {
+  0%,100% { opacity:.3; }
+  50% { opacity:.9; }
+}
+
+/* ═══════════════════════════════════════════════
+   SHARED LAYOUT
+═══════════════════════════════════════════════ */
+.container {
+  max-width: 1360px;
+  margin: 0 auto;
+  padding: 0 3rem;
+}
+.section-tag {
+  font-family: 'Questrial', sans-serif;
+  font-size: .62rem;
+  letter-spacing: .22em;
+  text-transform: uppercase;
+  color: var(--coral);
+  margin-bottom: .9rem;
+  display: flex;
+  align-items: center;
+  gap: .7rem;
+}
+.section-tag::before {
+  content: '';
+  width: 20px; height: 1.5px;
+  background: var(--coral);
+  flex-shrink: 0;
+}
+.section-tag.teal { color: var(--teal-dim); }
+.section-tag.teal::before { background: var(--teal-dim); }
+.section-tag.gold { color: var(--gold-dim); }
+.section-tag.gold::before { background: var(--gold-dim); }
+.section-tag.white { color: rgba(255,255,255,.7); }
+.section-tag.white::before { background: rgba(255,255,255,.5); }
+
+.h2 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(2.2rem,4vw,4rem);
+  font-weight: 300;
+  line-height: 1.1;
+  color: var(--navy);
+}
+.h2 em { font-style: italic; color: var(--coral); }
+.h2-white { color: var(--white); }
+.h2-white em { color: var(--gold); }
+.h3 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(1.5rem,2.5vw,2rem);
+  font-weight: 300;
+  line-height: 1.2;
+  color: var(--navy);
+}
+.body-text {
+  font-size: .95rem;
+  line-height: 1.85;
+  color: var(--stone);
+}
+.body-text-white {
+  font-size: .95rem;
+  line-height: 1.85;
+  color: var(--text-on-dark);
+}
+
+/* Scroll reveal */
+.reveal {
+  opacity: 0;
+  transform: translateY(22px);
+  transition: opacity .8s var(--ease), transform .8s var(--ease);
+}
+.reveal.visible { opacity:1; transform:none; }
+.reveal-left {
+  opacity: 0;
+  transform: translateX(-24px);
+  transition: opacity .8s var(--ease), transform .8s var(--ease);
+}
+.reveal-left.visible { opacity:1; transform:none; }
+
+/* ═══════════════════════════════════════════════
+   INTRO — dark navy, centered statement
+═══════════════════════════════════════════════ */
+.intro-section {
+  background: var(--navy);
+  padding: 7rem 3rem;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.intro-section::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 60% 80% at 50% 50%, rgba(35,193,196,.06) 0%, transparent 65%);
+  pointer-events: none;
+}
+.intro-tagline {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(1.6rem,3vw,3rem);
+  font-weight: 300;
+  font-style: italic;
+  color: var(--white);
+  max-width: 820px;
+  margin: 0 auto 1.5rem;
+  line-height: 1.4;
+  position: relative;
+  z-index: 1;
+}
+.intro-tagline strong { font-style: normal; font-weight: 300; color: var(--gold); }
+.intro-body {
+  max-width: 620px;
+  margin: 0 auto 3rem;
+  font-size: .97rem;
+  line-height: 1.85;
+  color: var(--text-on-dark);
+  position: relative;
+  z-index: 1;
+}
+.intro-stats {
+  display: flex;
+  justify-content: center;
+  gap: 0;
+  border: 1px solid rgba(255,255,255,.07);
+  max-width: 780px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
+.stat {
+  flex: 1;
+  padding: 2rem 1.5rem;
+  border-right: 1px solid rgba(255,255,255,.07);
+  text-align: center;
+  transition: background .3s;
+}
+.stat:last-child { border-right: none; }
+.stat:hover { background: rgba(255,255,255,.03); }
+.stat-n {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 2.8rem;
+  font-weight: 300;
+  color: var(--gold);
+  line-height: 1;
+  margin-bottom: .3rem;
+}
+.stat-l {
+  font-size: .68rem;
+  letter-spacing: .08em;
+  color: var(--text-on-dark);
+  line-height: 1.4;
+}
+
+/* ═══════════════════════════════════════════════
+   WHY TUVALU — light cream, two col
+═══════════════════════════════════════════════ */
+.why-section {
+  background: var(--cream);
+  padding: 7rem 3rem;
+  border-bottom: 1px solid var(--border-light);
+}
+.why-inner {
+  max-width: 1360px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6rem;
+  align-items: start;
+}
+.why-image-block {
+  position: relative;
+}
+.why-image-box {
+  width: 100%;
+  aspect-ratio: 4/3;
+  background: linear-gradient(135deg, var(--navy-mid) 0%, var(--teal-dim) 60%, #006080 100%);
+  position: relative;
+  overflow: hidden;
+}
+.why-image-box::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at 35% 60%, rgba(35,193,196,.2) 0%, transparent 60%);
+}
+.why-image-caption {
+  margin-top: 1rem;
+  font-size: .7rem;
+  color: var(--stone-light);
+  letter-spacing: .08em;
+  font-style: italic;
+}
+.why-stat-pill {
+  position: absolute;
+  bottom: -1.2rem;
+  right: -1.2rem;
+  background: var(--coral);
+  color: var(--white);
+  padding: 1.2rem 1.6rem;
+  text-align: center;
+}
+.why-stat-pill .n {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 2.4rem;
+  font-weight: 300;
+  line-height: 1;
+  display: block;
+}
+.why-stat-pill .l {
+  font-size: .6rem;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  opacity: .85;
+}
+.why-content { padding-top: .5rem; }
+.why-pull {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(1.3rem,2vw,1.75rem);
+  font-weight: 300;
+  font-style: italic;
+  color: var(--navy);
+  border-left: 3px solid var(--gold);
+  padding-left: 1.4rem;
+  margin: 1.8rem 0;
+  line-height: 1.5;
+}
+
+/* ═══════════════════════════════════════════════
+   PERIL — dark band, stats grid
+═══════════════════════════════════════════════ */
+.peril-section {
+  background: var(--navy-deep);
+  padding: 7rem 3rem;
+  position: relative;
+  overflow: hidden;
+}
+.peril-section::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse 80% 60% at 50% 100%, rgba(254,83,55,.05) 0%, transparent 60%);
+  pointer-events: none;
+}
+.peril-header {
+  display: grid;
+  grid-template-columns: 1fr 1.5fr;
+  gap: 4rem;
+  align-items: end;
+  max-width: 1360px;
+  margin: 0 auto 4rem;
+}
+.peril-blockquote {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(1.1rem,1.8vw,1.5rem);
+  font-weight: 300;
+  font-style: italic;
+  color: rgba(255,255,255,.75);
+  line-height: 1.6;
+  border-left: 2px solid var(--coral);
+  padding-left: 1.4rem;
+}
+.peril-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  background: rgba(255,255,255,.06);
+  max-width: 1360px;
+  margin: 0 auto;
+}
+.peril-card {
+  background: var(--navy-deep);
+  padding: 2rem 1.8rem;
+  transition: background .3s;
+  text-decoration: none;
+  display: block;
+}
+.peril-card:hover { background: rgba(255,255,255,.03); }
+.peril-card-n {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 2.6rem;
+  font-weight: 300;
+  color: var(--coral);
+  line-height: 1;
+  margin-bottom: .4rem;
+}
+.peril-card-title {
+  font-family: 'Questrial', sans-serif;
+  font-size: .66rem;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,.6);
+  margin-bottom: .7rem;
+}
+.peril-card-text {
+  font-size: .8rem;
+  color: rgba(255,255,255,.4);
+  line-height: 1.65;
+}
+
+/* ═══════════════════════════════════════════════
+   SYSTEMS GRID — cream bg, link cards
+═══════════════════════════════════════════════ */
+.systems-section {
+  background: var(--white);
+  padding: 7rem 3rem;
+  border-top: 1px solid var(--border-light);
+}
+.systems-header {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 2rem;
+  margin-bottom: 3.5rem;
+  flex-wrap: wrap;
+  max-width: 1360px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.systems-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1px;
+  background: var(--border-light);
+  max-width: 1360px;
+  margin: 0 auto 3rem;
+}
+.sys-card {
+  background: var(--white);
+  padding: 2rem 1.6rem 1.8rem;
+  text-decoration: none;
+  display: block;
+  position: relative;
+  transition: background .3s;
+  overflow: hidden;
+}
+.sys-card::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 3px;
+  background: var(--coral);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform .35s var(--ease);
+}
+.sys-card:hover { background: #fefcf9; }
+.sys-card:hover::after { transform: scaleX(1); }
+.sys-icon {
+  width: 40px; height: 40px;
+  margin-bottom: 1.4rem;
+  opacity: .75;
+  transition: opacity .3s;
+}
+.sys-card:hover .sys-icon { opacity: 1; }
+.sys-tuvaluan {
+  font-family: 'Questrial', sans-serif;
+  font-size: .58rem;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  color: var(--teal);
+  margin-bottom: .3rem;
+}
+.sys-name {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.35rem;
+  font-weight: 400;
+  color: var(--navy);
+  margin-bottom: .75rem;
+  line-height: 1.15;
+}
+.sys-desc {
+  font-size: .78rem;
+  color: var(--stone);
+  line-height: 1.68;
+}
+.sys-link {
+  display: inline-flex;
+  align-items: center;
+  gap: .4rem;
+  margin-top: 1.2rem;
+  font-size: .66rem;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--coral);
+  font-family: 'Questrial', sans-serif;
+  transition: gap .25s;
+}
+.sys-card:hover .sys-link { gap: .7rem; }
+.sys-num {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 3.5rem;
+  font-weight: 300;
+  color: rgba(0,43,75,.05);
+  position: absolute;
+  top: .8rem; right: 1rem;
+  line-height: 1;
+  pointer-events: none;
+  transition: color .3s;
+}
+.sys-card:hover .sys-num { color: rgba(254,83,55,.07); }
+
+/* Systems row 2 — wider cards for remaining items */
+.systems-row2 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  background: var(--border-light);
+  gap: 1px;
+  max-width: 1360px;
+  margin: 0 auto;
+}
+
+/* ═══════════════════════════════════════════════
+   HOW IT WORKS — navy bg, 3 column
+═══════════════════════════════════════════════ */
+.how-section {
+  background: var(--navy);
+  padding: 7rem 3rem;
+  position: relative;
+  overflow: hidden;
+}
+.how-section::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse 60% 70% at 80% 50%, rgba(35,193,196,.06) 0%, transparent 60%);
+  pointer-events: none;
+}
+.how-inner {
+  max-width: 1360px;
+  margin: 0 auto;
+}
+.how-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  background: rgba(255,255,255,.06);
+  margin-top: 4rem;
+}
+.how-card {
+  background: transparent;
+  padding: 2.5rem 2rem;
+  transition: background .3s;
+}
+.how-card:hover { background: rgba(255,255,255,.03); }
+.how-n {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 3.5rem;
+  font-weight: 300;
+  color: rgba(255,198,29,.15);
+  line-height: 1;
+  margin-bottom: 1.2rem;
+}
+.how-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.5rem;
+  font-weight: 300;
+  color: var(--white);
+  margin-bottom: .8rem;
+  line-height: 1.2;
+}
+.how-desc {
+  font-size: .82rem;
+  color: var(--text-on-dark);
+  line-height: 1.72;
+}
+.how-cta {
+  text-align: center;
+  margin-top: 4rem;
+}
+
+/* ═══════════════════════════════════════════════
+   GUARDIAN + ARBOR — split, cream
+═══════════════════════════════════════════════ */
+.guardian-section {
+  background: var(--cream);
+  padding: 7rem 3rem;
+  border-top: 1px solid var(--border-light);
+  border-bottom: 1px solid var(--border-light);
+}
+.guardian-inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6rem;
+  max-width: 1360px;
+  margin: 0 auto;
+  align-items: center;
+}
+.guardian-visual {
+  position: relative;
+  width: 100%;
+  padding-bottom: 100%;
+  max-width: 460px;
+}
+.guardian-vis-inner {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.g-ring {
+  position: absolute;
+  border-radius: 50%;
+  border: 1px solid;
+  animation: gSpin linear infinite;
+}
+.g-ring-1 { inset:0;   border-color: rgba(35,193,196,.14); animation-duration:44s; }
+.g-ring-2 { inset:13%; border-color: rgba(255,198,29,.12); animation-duration:31s; animation-direction:reverse; }
+.g-ring-3 { inset:26%; border-color: rgba(254,83,55,.10);  animation-duration:20s; }
+.g-core {
+  position: absolute;
+  inset: 38%;
+  border-radius: 50%;
+  background: radial-gradient(circle at 38% 38%, var(--navy-light), var(--teal-dim));
+  box-shadow: 0 0 28px rgba(35,193,196,.2), 0 0 56px rgba(35,193,196,.07);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.g-core-label {
+  font-family: 'Questrial', sans-serif;
+  font-size: .5rem;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,.8);
+  text-align: center;
+  line-height: 1.7;
+}
+.g-orbit-dot {
+  position: absolute;
+  width: 7px; height: 7px;
+  border-radius: 50%;
+}
+.g-orbit-label {
+  position: absolute;
+  font-size: .52rem;
+  font-family: 'Questrial', sans-serif;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  display: flex;
+  align-items: center;
+  gap: .35rem;
+}
+@keyframes gSpin {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+.guardian-features {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: .8rem 1.2rem;
+  margin: 1.8rem 0 2.2rem;
+}
+.g-feat {
+  display: flex;
+  align-items: flex-start;
+  gap: .6rem;
+  font-size: .8rem;
+  color: var(--stone);
+  line-height: 1.5;
+}
+.g-feat::before {
+  content: '';
+  width: 5px; height: 5px;
+  background: var(--teal);
+  border-radius: 50%;
+  margin-top: .45rem;
+  flex-shrink: 0;
+}
+
+/* ═══════════════════════════════════════════════
+   FOUNDER — dark, editorial split
+═══════════════════════════════════════════════ */
+.founder-section {
+  background: var(--navy-deep);
+  padding: 7rem 3rem;
+  position: relative;
+  overflow: hidden;
+}
+.founder-section::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; bottom: 0;
+  width: 45%;
+  background: rgba(0,43,75,.4);
+  border-right: 1px solid rgba(255,255,255,.05);
+}
+.founder-inner {
+  display: grid;
+  grid-template-columns: 1fr 1.6fr;
+  gap: 6rem;
+  max-width: 1360px;
+  margin: 0 auto;
+  align-items: start;
+  position: relative;
+  z-index: 1;
+}
+.founder-left .section-tag { margin-bottom: 1.4rem; }
+.founder-name {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 2.4rem;
+  font-weight: 300;
+  color: var(--white);
+  line-height: 1;
+  margin-bottom: .4rem;
+}
+.founder-role {
+  font-size: .76rem;
+  color: var(--text-on-dark);
+  line-height: 1.5;
+  margin-bottom: 1.6rem;
+  letter-spacing: .04em;
+}
+.founder-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: .55rem;
+  border: 1px solid var(--border-teal);
+  padding: .4rem .85rem;
+  font-family: 'Questrial', sans-serif;
+  font-size: .58rem;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--teal);
+}
+.founder-badge-dot {
+  width: 5px; height: 5px;
+  background: var(--teal);
+  border-radius: 50%;
+}
+.founder-blockquote {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(1.2rem,2vw,1.7rem);
+  font-weight: 300;
+  font-style: italic;
+  color: var(--white);
+  line-height: 1.55;
+  border-left: 2px solid var(--coral);
+  padding-left: 1.8rem;
+  margin-bottom: 2rem;
+}
+.founder-body {
+  font-size: .93rem;
+  line-height: 1.9;
+  color: var(--text-on-dark);
+  margin-bottom: 1.3rem;
+}
+.founder-links {
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+  flex-wrap: wrap;
+  margin-top: 2.2rem;
+}
+.founder-link {
+  color: var(--teal);
+  font-size: .74rem;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  text-decoration: none;
+  font-family: 'Questrial', sans-serif;
+  display: inline-flex;
+  align-items: center;
+  gap: .4rem;
+  transition: gap .25s;
+}
+.founder-link:hover { gap: .7rem; }
+.founder-link-div {
+  width: 1px; height: 16px;
+  background: rgba(255,255,255,.12);
+}
+
+/* ═══════════════════════════════════════════════
+   REPLICATION — cream, open licence
+═══════════════════════════════════════════════ */
+.replication-section {
+  background: var(--cream-mid);
+  padding: 7rem 3rem;
+  border-top: 1px solid var(--border-light);
+  border-bottom: 1px solid var(--border-light);
+}
+.replication-inner {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 6rem;
+  max-width: 1360px;
+  margin: 0 auto;
+  align-items: center;
+}
+.rep-tag-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: .6rem;
+  margin-top: 2rem;
+}
+.rep-tag {
+  display: flex;
+  align-items: center;
+  gap: .5rem;
+  font-size: .74rem;
+  color: var(--stone);
+  background: var(--white);
+  border: 1px solid var(--border-light);
+  padding: .65rem .9rem;
+  transition: border-color .25s, color .25s;
+  text-decoration: none;
+}
+.rep-tag:hover { border-color: var(--teal); color: var(--navy); }
+.rep-tag-dot {
+  width: 5px; height: 5px;
+  background: var(--teal);
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+.licence-box {
+  background: var(--navy);
+  padding: 2.5rem;
+  margin-top: 2rem;
+}
+.licence-box-tag {
+  font-family: 'Questrial', sans-serif;
+  font-size: .6rem;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: var(--teal);
+  margin-bottom: .8rem;
+}
+.licence-box-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.6rem;
+  font-weight: 300;
+  color: var(--white);
+  margin-bottom: .7rem;
+  line-height: 1.2;
+}
+.licence-box-body {
+  font-size: .8rem;
+  color: var(--text-on-dark);
+  line-height: 1.7;
+  margin-bottom: 1.4rem;
+}
+
+/* ═══════════════════════════════════════════════
+   JOIN CIRCLE CTA — coral bg
+═══════════════════════════════════════════════ */
+.join-section {
+  background: var(--coral);
+  padding: 6rem 3rem;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.join-section::before {
+  content: '';
+  position: absolute;
+  inset: -30%;
+  background: radial-gradient(ellipse at 50% 50%, rgba(255,255,255,.08) 0%, transparent 55%);
+  pointer-events: none;
+}
+.join-inner { position: relative; z-index: 1; max-width: 680px; margin: 0 auto; }
+.join-h2 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(2.2rem,4.5vw,4.5rem);
+  font-weight: 300;
+  color: var(--white);
+  line-height: 1.1;
+  margin-bottom: 1.2rem;
+}
+.join-h2 em { font-style: italic; opacity: .85; }
+.join-body {
+  font-size: .97rem;
+  color: rgba(255,255,255,.8);
+  line-height: 1.75;
+  margin-bottom: 2.5rem;
+}
+.join-actions { display:flex; gap:.9rem; justify-content:center; flex-wrap:wrap; }
+.btn-white {
+  background: var(--white);
+  color: var(--coral);
+  border: 1.5px solid var(--white);
+  padding: .8rem 2rem;
+  font-family: 'Questrial', sans-serif;
+  font-size: .74rem;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  text-decoration: none;
+  display: inline-block;
+  transition: all .25s;
+}
+.btn-white:hover { background: transparent; color: var(--white); }
+.btn-ghost-white {
+  background: transparent;
+  color: rgba(255,255,255,.9);
+  border: 1.5px solid rgba(255,255,255,.4);
+  padding: .8rem 2rem;
+  font-family: 'Questrial', sans-serif;
+  font-size: .74rem;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  text-decoration: none;
+  display: inline-block;
+  transition: all .25s;
+}
+.btn-ghost-white:hover { border-color: var(--white); color: var(--white); }
+
+/* ═══════════════════════════════════════════════
+   TRUST STRIP
+═══════════════════════════════════════════════ */
+.trust-strip {
+  background: var(--cream-dark);
+  padding: 2.4rem 3rem;
+  border-bottom: 1px solid var(--border-light);
+}
+.trust-strip-inner {
+  max-width: 1360px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+.trust-item {
+  display: flex;
+  align-items: center;
+  gap: .7rem;
+}
+.trust-item-icon { font-size: 1.1rem; }
+.trust-item-text { font-size: .72rem; color: var(--stone); line-height: 1.3; }
+.trust-item-text strong {
+  display: block;
+  color: var(--navy);
+  font-size: .64rem;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  margin-bottom: .1rem;
+  font-weight: 400;
+  font-family: 'Questrial', sans-serif;
+}
+.trust-div { width:1px; height:28px; background: var(--border-light); }
+
+/* ═══════════════════════════════════════════════
+   SITE FOOTER
+═══════════════════════════════════════════════ */
+footer {
+  background: var(--navy-deep);
+  padding: 4rem 3rem 2.5rem;
+}
+.footer-top {
+  max-width: 1360px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr;
+  gap: 3rem;
+  padding-bottom: 3rem;
+  border-bottom: 1px solid rgba(255,255,255,.06);
+}
+.footer-logo-wrap {
+  display: flex;
+  align-items: center;
+  gap: .7rem;
+  margin-bottom: 1rem;
+  text-decoration: none;
+}
+.footer-logo-wrap img {
+  width: 38px; height: 38px;
+  object-fit: contain;
+}
+.footer-logo-name {
+  font-family: 'Questrial', sans-serif;
+  font-size: .78rem;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+.footer-desc {
+  font-size: .78rem;
+  color: var(--text-dimmer);
+  line-height: 1.72;
+  max-width: 280px;
+  margin-bottom: 1.4rem;
+}
+.footer-email {
+  font-size: .72rem;
+  color: var(--teal);
+  text-decoration: none;
+  letter-spacing: .04em;
+  transition: color .25s;
+}
+.footer-email:hover { color: var(--mist-light, #aad0e0); }
+.footer-col-h {
+  font-family: 'Questrial', sans-serif;
+  font-size: .6rem;
+  letter-spacing: .2em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,.35);
+  margin-bottom: 1.2rem;
+}
+.footer-links { list-style:none; display:flex; flex-direction:column; gap:.6rem; }
+.footer-links a {
+  font-size: .77rem;
+  color: var(--text-dimmer);
+  text-decoration: none;
+  transition: color .25s;
+}
+.footer-links a:hover { color: var(--white); }
+.footer-bottom {
+  max-width: 1360px;
+  margin: 2rem auto 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+.footer-copy {
+  font-size: .66rem;
+  color: var(--text-dimmer);
+  letter-spacing: .05em;
+}
+.footer-socials {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+.footer-socials a {
+  font-size: .66rem;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--text-dimmer);
+  text-decoration: none;
+  font-family: 'Questrial', sans-serif;
+  transition: color .25s;
+}
+.footer-socials a:hover { color: var(--white); }
+
+/* ═══════════════════════════════════════════════
+   ANIMATIONS
+═══════════════════════════════════════════════ */
+@keyframes fadeUp {
+  from { opacity:0; transform:translateY(20px); }
+  to   { opacity:1; transform:translateY(0); }
+}
+@keyframes fadeIn {
+  from { opacity:0; }
+  to   { opacity:.7; }
+}
+
+/* ═══════════════════════════════════════════════
+   RESPONSIVE
+═══════════════════════════════════════════════ */
+@media (max-width: 1100px) {
+  .systems-grid { grid-template-columns: repeat(2, 1fr); }
+  .systems-row2 { grid-template-columns: repeat(3, 1fr); }
+  .why-inner, .guardian-inner, .founder-inner, .replication-inner { grid-template-columns:1fr; gap:3.5rem; }
+  .why-stat-pill { right:0; bottom:-1rem; }
+  .founder-section::before { display:none; }
+  .how-grid { grid-template-columns:1fr; }
+  .peril-header { grid-template-columns:1fr; gap:2rem; }
+  .peril-grid { grid-template-columns:repeat(2,1fr); }
+  .footer-top { grid-template-columns:1fr 1fr; gap:2.5rem; }
+  .guardian-visual { max-width:360px; }
+}
+@media (max-width: 768px) {
+  nav { padding:0 1.5rem; }
+  .nav-links,.nav-cta { display:none; }
+  .hamburger { display:flex; }
+  .mobile-menu { display:flex; }
+  .container,.intro-section,.why-section,.peril-section,.systems-section,
+  .how-section,.guardian-section,.founder-section,.replication-section,
+  .join-section,.trust-strip,footer { padding-left:1.5rem; padding-right:1.5rem; }
+  .hero-inner { padding:0 1.5rem 5rem; }
+  .hero-meta { right:1.5rem; }
+  .systems-grid,.systems-row2 { grid-template-columns:1fr; }
+  .peril-grid { grid-template-columns:1fr; }
+  .intro-stats { flex-direction:column; }
+  .stat { border-right:none; border-bottom:1px solid rgba(255,255,255,.07); }
+  .stat:last-child { border-bottom:none; }
+  .footer-top { grid-template-columns:1fr; }
+  .trust-strip-inner { flex-direction:column; align-items:flex-start; }
+  .trust-div { display:none; }
+  .rep-tag-grid { grid-template-columns:1fr; }
+  .guardian-features { grid-template-columns:1fr; }
+}
+</style>
+</head>
+<body>
+
+<!-- ═══ NAV ═══════════════════════════════════════════════════════ -->
+<nav id="nav">
+  <a href="/" class="nav-logo">
+    <img src="images/logo-trans.png" alt="Sovereign Vision">
+    <div class="nav-logo-text">
+      Sovereign Vision
+      <span>Te Fale o Te Mātāmua · Tuvalu</span>
+    </div>
+  </a>
+
+  <ul class="nav-links">
+    <li class="nav-dropdown">
+      <a href="/core-systems">Core Systems ▾</a>
+      <div class="dropdown-menu">
+        <a href="/ai-overview">Civic Stewardship System</a>
+        <a href="/communications">Communications</a>
+        <a href="/food">Food Sovereignty</a>
+        <a href="/energy">Power Generation</a>
+        <a href="/treasury">Sovereign Treasury</a>
+        <a href="/civic-infrastructure">Civic Infrastructure</a>
+        <a href="/water-systems">Water Systems</a>
+        <a href="/waste-systems">Resource Recovery</a>
+      </div>
+    </li>
+    <li><a href="/how-it-works">How It Works</a></li>
+    <li class="nav-dropdown">
+      <a href="/legal-licensing">Legal ▾</a>
+      <div class="dropdown-menu">
+        <a href="/digitalarchipelago">Digital Archipelago Accord</a>
+        <a href="/civic-commons-license">Civic Commons License</a>
+        <a href="/trust-formation-status">Trust Formation Status</a>
+        <a href="/terms">Terms of Use</a>
+        <a href="/privacy-policy">Privacy Policy</a>
+        <a href="/copyright-notice">Copyright Notice</a>
+      </div>
+    </li>
+    <li><a href="/faq">FAQ</a></li>
+    <li class="nav-dropdown">
+      <a href="/about-us">About ▾</a>
+      <div class="dropdown-menu">
+        <a href="/about-us">About Us</a>
+        <a href="/continuity-vs-reinvention">Continuity vs Reinvention</a>
+        <a href="/elders-council">Elders Council</a>
+        <a href="/youth-voice">Youth Voice</a>
+      </div>
+    </li>
+  </ul>
+
+  <a href="/contact" class="nav-cta">Contact</a>
+
+  <div class="hamburger" id="hamburger" aria-label="Menu" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<!-- Mobile menu -->
+<div class="mobile-menu" id="mobile-menu">
+  <a href="/core-systems" onclick="closeMobile()">Core Systems</a>
+  <a href="/how-it-works" onclick="closeMobile()">How It Works</a>
+  <a href="/legal-licensing" onclick="closeMobile()">Legal</a>
+  <a href="/faq" onclick="closeMobile()">FAQ</a>
+  <a href="/about-us" onclick="closeMobile()">About</a>
+  <a href="/contact" onclick="closeMobile()" class="m-cta">Contact Us</a>
+</div>
+
+<!-- ═══ HERO ═══════════════════════════════════════════════════════ -->
+<section class="hero">
+  <div class="hero-video-wrap" id="video-wrap">
+    <video id="hero-video" autoplay muted loop playsinline preload="metadata">
+      <source src="videos/hero-ocean.mp4" type="video/mp4">
+    </video>
+  </div>
+  <div class="hero-fallback" id="hero-fallback">
+    <div class="hero-fallback-orb"></div>
+  </div>
+  <div class="hero-overlay"></div>
+  <canvas id="wave-canvas"></canvas>
+
+  <div class="hero-inner">
+    <div class="hero-tag">From Coral to Code</div>
+    <h1 class="hero-h1">
+      Technology<br>with <em>soul.</em><br>
+      A future worth<br><em>staying for.</em>
+    </h1>
+    <p class="hero-sub">
+      An open-source blueprint for sovereignty, resilience, and cultural continuity — applied first in Tuvalu.
+    </p>
+    <div class="hero-actions">
+      <a href="/core-systems" class="btn-coral">Explore the Systems</a>
+      <a href="/how-it-works" class="btn-ghost">How It Works</a>
+    </div>
+  </div>
+
+  <div class="hero-meta">
+    <div class="hero-loc">
+      <div class="pulse-dot"></div>
+      Funafuti · Tuvalu · Pacific
+    </div>
+    <div class="scroll-hint">
+      <div class="scroll-bar"></div>
+      <span>Scroll</span>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ INTRO ══════════════════════════════════════════════════════ -->
+<section class="intro-section">
+  <div class="section-tag white reveal" style="justify-content:center;">Sovereign Vision Project</div>
+  <p class="intro-tagline reveal">
+    This is not a plan for escape.<br>
+    It is a plan for <strong>staying with dignity.</strong>
+  </p>
+  <p class="intro-body reveal">
+    The Sovereign Vision Project reimagines what it means to live, thrive, and endure on an atoll. We are building a network of regenerative systems — water, food, energy, waste, and communication — designed to float, adapt, and honour both ancestral wisdom and planetary innovation.
+  </p>
+  <div class="intro-stats reveal">
+    <div class="stat">
+      <div class="stat-n">9</div>
+      <div class="stat-l">Integrated sovereign systems across energy, water, food, comms, AI, and governance</div>
+    </div>
+    <div class="stat">
+      <div class="stat-n">11k</div>
+      <div class="stat-l">People across nine coral atolls — the community this system is built with</div>
+    </div>
+    <div class="stat">
+      <div class="stat-n">v1.0</div>
+      <div class="stat-l">Civic Commons License — open replication for any aligned community worldwide</div>
+    </div>
+    <div class="stat">
+      <div class="stat-n">4</div>
+      <div class="stat-l">Consent-driven deployment phases from monitoring through full civic automation</div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ WHY TUVALU ════════════════════════════════════════════════ -->
+<section class="why-section">
+  <div class="why-inner">
+    <div class="why-image-block reveal-left">
+      <div class="why-image-box">
+        <!-- Replace with actual Tuvalu image -->
+        <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;">
+          <svg width="80" height="80" viewBox="0 0 80 80" fill="none" opacity=".3">
+            <circle cx="40" cy="40" r="36" stroke="#23c1c4" stroke-width="1"/>
+            <path d="M14 50 Q27 34 40 41 Q53 48 66 32" stroke="#ffc61d" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+            <circle cx="40" cy="40" r="6" fill="#23c1c4" opacity=".5"/>
+          </svg>
+        </div>
+      </div>
+      <div class="why-stat-pill">
+        <span class="n">4.6m</span>
+        <span class="l">Highest point<br>above sea level</span>
+      </div>
+      <p class="why-image-caption">Funafuti Atoll, Tuvalu — the most vulnerable nation on earth, and the most compelling test case for sovereign resilience.</p>
+    </div>
+    <div class="why-content">
+      <div class="section-tag reveal">Why Tuvalu?</div>
+      <h2 class="h2 reveal">Not to <em>save</em> it.<br>But to begin <em>with</em> it.</h2>
+      <blockquote class="why-pull reveal">
+        "If resilience can be proven here, it can be proven anywhere."
+      </blockquote>
+      <p class="body-text reveal">
+        Tuvalu is not just at risk — it is the world in miniature, and the right place to begin. This island nation stands at the frontlines of the climate crisis and the forefront of sovereign possibility. With rising seas threatening its very soil, Tuvalu shows what is at stake for all coastal and vulnerable communities. But Tuvalu is not a victim. It is a teacher.
+      </p>
+      <p class="body-text reveal" style="margin-top:1rem;">
+        Tuvalu has unique strengths that make it the perfect seedbed for regenerative living: peaceful, educated, Commonwealth-connected, open to innovation, and uncorrupted by over-industrialisation. Its small scale and trust-based communities mean every system deployed here can be tested, refined, and stewarded directly by the people.
+      </p>
+      <div style="margin-top:2rem;" class="reveal">
+        <a href="/about-us" class="btn-outline-navy">About the Project</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ PERIL / CRISIS STATS ══════════════════════════════════════ -->
+<section class="peril-section">
+  <div class="peril-header">
+    <div class="reveal">
+      <div class="section-tag white">A Future in Peril</div>
+      <h2 class="h2 h2-white">Rising tides.<br><em>Fractured systems.</em></h2>
+    </div>
+    <blockquote class="peril-blockquote reveal">
+      "The climate crisis is not theoretical for small island nations — it is existential. Rising sea levels, saltwater intrusion, unreliable power, and imported food dependency are not distant threats; they are daily realities."
+    </blockquote>
+  </div>
+  <div class="peril-grid reveal">
+    <a href="https://en.wikipedia.org/wiki/Funafuti" target="_blank" rel="noopener" class="peril-card">
+      <div class="peril-card-n">11k</div>
+      <div class="peril-card-title">Population</div>
+      <div class="peril-card-text">Among the world's smallest national populations, spread across nine atolls in the central Pacific.</div>
+    </a>
+    <a href="https://earthobservatory.nasa.gov/images/153047/funafuti-atoll-tuvalu" target="_blank" rel="noopener" class="peril-card">
+      <div class="peril-card-n">4.6m</div>
+      <div class="peril-card-title">Low Elevation</div>
+      <div class="peril-card-text">Tuvalu's highest point. Much of Funafuti lies below 1m elevation, leaving it extremely susceptible to flooding.</div>
+    </a>
+    <a href="https://reliefweb.int/report/tuvalu/tuvalu-impending-drought-emergency-plan-action-epoa-dref-operation-n-mdrtv002" target="_blank" rel="noopener" class="peril-card">
+      <div class="peril-card-n">0</div>
+      <div class="peril-card-title">Rivers or Aquifers</div>
+      <div class="peril-card-text">Tuvalu depends entirely on rainwater catchment. A 2011 drought forced a national state of emergency.</div>
+    </a>
+    <a href="https://www.undp.org/sites/g/files/zskgke326/files/2022-11/climate-security-risk-assessment-tuvalu-profile.pdf" target="_blank" rel="noopener" class="peril-card">
+      <div class="peril-card-n">2.8km²</div>
+      <div class="peril-card-title">Capital Land Area</div>
+      <div class="peril-card-text">Funafuti packs 6,600 residents — over half the nation's population — into just 2.8 square kilometres.</div>
+    </a>
+    <a href="https://www.abc.net.au/news/2024-04-07/tuvalu-weighs-falepili-union-treaty-king-tides/103669542" target="_blank" rel="noopener" class="peril-card">
+      <div class="peril-card-n">3.41m</div>
+      <div class="peril-card-title">2024 King Tide</div>
+      <div class="peril-card-text">In April 2024, an exceptional king tide inundated homes, crops, and the main roadway on Funafuti.</div>
+    </a>
+    <a href="https://en.wikipedia.org/wiki/Climate_change_in_Tuvalu" target="_blank" rel="noopener" class="peril-card">
+      <div class="peril-card-n">3.9mm</div>
+      <div class="peril-card-title">Sea Rise Per Year</div>
+      <div class="peril-card-text">Roughly twice the global average rate — relentlessly eating away at the narrow, low-lying atolls.</div>
+    </a>
+  </div>
+</section>
+
+<!-- ═══ CORE SYSTEMS ══════════════════════════════════════════════ -->
+<section class="systems-section">
+  <div class="systems-header reveal">
+    <div>
+      <div class="section-tag">Core Systems</div>
+      <h2 class="h2">Every layer sovereign.<br><em>Every system integrated.</em></h2>
+    </div>
+    <a href="/core-systems" class="btn-outline-navy">View All Systems</a>
+  </div>
+
+  <!-- Row 1: 4 cards -->
+  <div class="systems-grid">
+
+    <a href="/energy" class="sys-card reveal">
+      <div class="sys-num">01</div>
+      <svg class="sys-icon" viewBox="0 0 40 40" fill="none">
+        <circle cx="20" cy="20" r="13" stroke="#23c1c4" stroke-width="1.2" fill="none"/>
+        <path d="M20 6 L24 17 L20 14.5 L16 17Z" fill="#23c1c4" opacity=".7"/>
+        <path d="M20 34 L16 23 L20 25.5 L24 23Z" fill="#ffc61d" opacity=".5"/>
+        <circle cx="20" cy="20" r="3" fill="#23c1c4" opacity=".4"/>
+      </svg>
+      <div class="sys-tuvaluan">Te Fatu o te Ahi · Te Lā o te Namo</div>
+      <div class="sys-name">Power Generation</div>
+      <div class="sys-desc">Floating solar, Kronos MMR baseload (3.5–15 MWe), BYD Haohan battery storage, and the ArborMesh smart grid.</div>
+      <div class="sys-link">Explore ›</div>
+    </a>
+
+    <a href="/water-systems" class="sys-card reveal">
+      <div class="sys-num">02</div>
+      <svg class="sys-icon" viewBox="0 0 40 40" fill="none">
+        <path d="M20 5C20 5 8 20 8 27a12 12 0 0 0 24 0C32 20 20 5 20 5Z" stroke="#23c1c4" stroke-width="1.2" fill="rgba(35,193,196,.1)"/>
+        <path d="M14 29 Q20 25 26 29" stroke="#ffc61d" stroke-width="1" fill="none" stroke-linecap="round" opacity=".7"/>
+      </svg>
+      <div class="sys-tuvaluan">Vai Tapu · Vai Koko</div>
+      <div class="sys-name">Water Systems</div>
+      <div class="sys-desc">Solar desalination producing 60,000 L/day across three Vai Tapu nodes, with Vai Koko submerged lagoon tanks.</div>
+      <div class="sys-link">Explore ›</div>
+    </a>
+
+    <a href="/food" class="sys-card reveal">
+      <div class="sys-num">03</div>
+      <svg class="sys-icon" viewBox="0 0 40 40" fill="none">
+        <line x1="20" y1="8" x2="20" y2="32" stroke="#23c1c4" stroke-width="1.2" stroke-linecap="round"/>
+        <path d="M13 16 Q20 11 27 16" stroke="#ffc61d" stroke-width="1" fill="none" stroke-linecap="round"/>
+        <path d="M11 23 Q20 17 29 23" stroke="#23c1c4" stroke-width="1" fill="none" stroke-linecap="round" opacity=".5"/>
+        <circle cx="20" cy="8" r="2.5" fill="#ffc61d" opacity=".8"/>
+      </svg>
+      <div class="sys-tuvaluan">Te Kai o te Ola</div>
+      <div class="sys-name">Food Sovereignty</div>
+      <div class="sys-desc">Modular floating farm clusters growing culturally relevant crops. Each cluster feeds 50–75 people, guided by ancestral food memory.</div>
+      <div class="sys-link">Explore ›</div>
+    </a>
+
+    <a href="/communications" class="sys-card reveal">
+      <div class="sys-num">04</div>
+      <svg class="sys-icon" viewBox="0 0 40 40" fill="none">
+        <circle cx="20" cy="20" r="4" stroke="#23c1c4" stroke-width="1.2" fill="none"/>
+        <circle cx="20" cy="20" r="10" stroke="#23c1c4" stroke-width=".8" fill="none" opacity=".4"/>
+        <circle cx="20" cy="20" r="16" stroke="#ffc61d" stroke-width=".6" fill="none" opacity=".25"/>
+        <path d="M20 4v5M20 31v5M4 20h5M31 20h5" stroke="#23c1c4" stroke-width="1" stroke-linecap="round"/>
+      </svg>
+      <div class="sys-tuvaluan">Te Puka Loloa</div>
+      <div class="sys-name">Communications</div>
+      <div class="sys-desc">Four-tier hybrid stack: private LTE via Open5GS, Starlink uplink, airMAX mesh, VHF/UHF. Storm Mode cyclone failover.</div>
+      <div class="sys-link">Explore ›</div>
+    </a>
+  </div>
+
+  <!-- Row 2: remaining 5 across 3+2 or equal 5 grid but use row of 3 for clean layout -->
+  <div class="systems-row2">
+
+    <a href="/ai-overview" class="sys-card reveal">
+      <div class="sys-num">05</div>
+      <svg class="sys-icon" viewBox="0 0 40 40" fill="none">
+        <circle cx="20" cy="20" r="8" stroke="#23c1c4" stroke-width="1.2" fill="none"/>
+        <circle cx="20" cy="20" r="3" fill="#23c1c4" opacity=".7"/>
+        <path d="M20 4v8M20 28v8M4 20h8M28 20h8" stroke="#23c1c4" stroke-width=".8" opacity=".4" stroke-linecap="round"/>
+        <path d="M8.9 8.9l5.7 5.7M25.4 25.4l5.7 5.7M31.1 8.9l-5.7 5.7M14.6 25.4l-5.7 5.7" stroke="#ffc61d" stroke-width=".7" opacity=".4"/>
+      </svg>
+      <div class="sys-tuvaluan">Guardian · Arbor</div>
+      <div class="sys-name">Civic Stewardship</div>
+      <div class="sys-desc">Offline-first AI governance — Guardian monitors infrastructure; Arbor is every citizen's lifelong civic companion, in Tuvaluan.</div>
+      <div class="sys-link">Explore ›</div>
+    </a>
+
+    <a href="/waste-systems" class="sys-card reveal">
+      <div class="sys-num">06</div>
+      <svg class="sys-icon" viewBox="0 0 40 40" fill="none">
+        <path d="M11 32L20 9l9 23" stroke="#23c1c4" stroke-width="1.2" fill="none" stroke-linejoin="round"/>
+        <path d="M15 25h10" stroke="#ffc61d" stroke-width="1" stroke-linecap="round" opacity=".7"/>
+        <circle cx="20" cy="32" r="3" stroke="#23c1c4" stroke-width="1" fill="none"/>
+      </svg>
+      <div class="sys-tuvaluan">Te Fenua Fakafoou</div>
+      <div class="sys-name">Resource Recovery</div>
+      <div class="sys-desc">The Land Renewed — circular economy hub converting all waste streams into civic materials with ritual participation.</div>
+      <div class="sys-link">Explore ›</div>
+    </a>
+
+    <a href="/civic-infrastructure" class="sys-card reveal">
+      <div class="sys-num">07</div>
+      <svg class="sys-icon" viewBox="0 0 40 40" fill="none">
+        <rect x="6" y="23" width="28" height="10" stroke="#23c1c4" stroke-width="1.2" fill="none"/>
+        <path d="M6 23l7-10h14l7 10" stroke="#ffc61d" stroke-width="1" fill="none" opacity=".7"/>
+        <line x1="20" y1="13" x2="20" y2="23" stroke="#23c1c4" stroke-width="1"/>
+        <line x1="6" y1="33" x2="34" y2="33" stroke="#23c1c4" stroke-width="1.5"/>
+      </svg>
+      <div class="sys-tuvaluan">Civic Conduit Spine</div>
+      <div class="sys-name">Civic Infrastructure</div>
+      <div class="sys-desc">2km underground conduit backbone running power, water, data, and civic services under a flood-rated sidewalk with Guardian terminals.</div>
+      <div class="sys-link">Explore ›</div>
+    </a>
+
+    <a href="/treasury" class="sys-card reveal">
+      <div class="sys-num">08</div>
+      <svg class="sys-icon" viewBox="0 0 40 40" fill="none">
+        <rect x="8" y="11" width="24" height="18" rx="2" stroke="#ffc61d" stroke-width="1.2" fill="none"/>
+        <path d="M15 11V8M25 11V8" stroke="#ffc61d" stroke-width="1" opacity=".5"/>
+        <path d="M15 19q5-4 10 0q-5 4-10 0Z" stroke="#ffc61d" stroke-width=".8" fill="rgba(255,198,29,.12)"/>
+        <line x1="13" y1="26" x2="27" y2="26" stroke="#23c1c4" stroke-width="1" stroke-linecap="round" opacity=".6"/>
+      </svg>
+      <div class="sys-tuvaluan">Bitcoin Sovereign Trust</div>
+      <div class="sys-name">Sovereign Treasury</div>
+      <div class="sys-desc">Multisig Bitcoin reserve anchoring fiscal independence. Transparent on-chain governance; Te Fale o Te Mātāmua holds the keys.</div>
+      <div class="sys-link">Explore ›</div>
+    </a>
+
+    <a href="/youth-voice" class="sys-card reveal">
+      <div class="sys-num">09</div>
+      <svg class="sys-icon" viewBox="0 0 40 40" fill="none">
+        <circle cx="15" cy="15" r="6" stroke="#23c1c4" stroke-width="1.2" fill="none"/>
+        <circle cx="27" cy="25" r="6" stroke="#ffc61d" stroke-width="1.2" fill="none"/>
+        <path d="M20 15.5L22 25" stroke="rgba(0,43,75,.2)" stroke-width=".8" stroke-dasharray="2"/>
+      </svg>
+      <div class="sys-tuvaluan">Informed Democracy</div>
+      <div class="sys-name">Youth Voice & Governance</div>
+      <div class="sys-desc">Elder council consensus paired with structured youth voice. Arbor guides participation; Guardian verifies civic deliberation.</div>
+      <div class="sys-link">Explore ›</div>
+    </a>
+
+  </div>
+</section>
+
+<!-- ═══ HOW IT WORKS ══════════════════════════════════════════════ -->
+<section class="how-section">
+  <div class="how-inner">
+    <div class="reveal">
+      <div class="section-tag white">How It Works</div>
+      <h2 class="h2 h2-white" style="max-width:580px;">A blueprint, not a mandate.<br><em>A vision, not yet reality.</em></h2>
+    </div>
+    <div class="how-grid">
+      <div class="how-card reveal">
+        <div class="how-n">01</div>
+        <div class="how-title">Modular by Design</div>
+        <div class="how-desc">Every system — energy, water, food, waste, comms, AI — is independently deployable. No single point of failure. Each module strengthens the whole.</div>
+      </div>
+      <div class="how-card reveal">
+        <div class="how-n">02</div>
+        <div class="how-title">Culturally Grounded</div>
+        <div class="how-desc">Tuvaluan language, ritual, and ceremony are embedded in every system. Culture is not an afterthought — it is the adoption and legitimacy mechanism.</div>
+      </div>
+      <div class="how-card reveal">
+        <div class="how-n">03</div>
+        <div class="how-title">Consent-Driven Deployment</div>
+        <div class="how-desc">Four phased stages from monitoring-only through full civic automation. No automation proceeds without explicit community consent at each threshold.</div>
+      </div>
+    </div>
+    <div class="how-cta reveal">
+      <a href="/how-it-works" class="btn-ghost">Read How It Works</a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ GUARDIAN + ARBOR ══════════════════════════════════════════ -->
+<section class="guardian-section">
+  <div class="guardian-inner">
+    <div class="guardian-visual reveal-left">
+      <div class="guardian-vis-inner">
+        <div class="g-ring g-ring-1"></div>
+        <div class="g-ring g-ring-2"></div>
+        <div class="g-ring g-ring-3"></div>
+        <div class="g-core">
+          <div class="g-core-label">Guardian<br>·<br>Arbor</div>
+        </div>
+        <div class="g-orbit-label" style="top:3%;left:46%;color:var(--teal);">
+          <div class="g-orbit-dot" style="background:var(--teal);"></div>Energy
+        </div>
+        <div class="g-orbit-label" style="right:-2%;top:42%;color:var(--gold-dim);">
+          <div class="g-orbit-dot" style="background:var(--gold);"></div>Water
+        </div>
+        <div class="g-orbit-label" style="bottom:3%;left:16%;color:var(--teal);">
+          <div class="g-orbit-dot" style="background:var(--teal);"></div>Civic Ethics
+        </div>
+        <div class="g-orbit-label" style="top:40%;left:-8%;color:var(--gold-dim);">
+          <div class="g-orbit-dot" style="background:var(--gold);"></div>Food
+        </div>
+      </div>
+    </div>
+    <div>
+      <div class="section-tag reveal">The Ethical Nervous System</div>
+      <h2 class="h2 reveal">AI that <em>serves</em> the island,<br>not the other way around.</h2>
+      <p class="body-text reveal" style="margin:1.5rem 0;">
+        The Guardian is a decentralised civic AI oversight framework — monitoring energy, water, food, and communications in real time, enforcing community ethics, and maintaining transparent audit trails every citizen can query. The Arbor is every Tuvaluan's lifelong civic companion. Both run fully offline, on-island, on open-source models. No data leaves the island.
+      </p>
+      <div class="guardian-features reveal">
+        <div class="g-feat">Fully offline, on-island deployment</div>
+        <div class="g-feat">Interface in Tuvaluan language</div>
+        <div class="g-feat">Community override protocols</div>
+        <div class="g-feat">Ritual and ceremony integration</div>
+        <div class="g-feat">Elder council ethics alignment</div>
+        <div class="g-feat">Open-source, auditable models</div>
+      </div>
+      <a href="/ai-overview" class="btn-navy reveal">Read the Guardian & Arbor White Paper</a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ FOUNDER'S NOTE ════════════════════════════════════════════ -->
+<section class="founder-section">
+  <div class="founder-inner">
+    <div class="founder-left">
+      <div class="section-tag white reveal">Founder's Perspective</div>
+      <div class="founder-name reveal">Kyle Silvera</div>
+      <div class="founder-role reveal">Founder & Principal Systems Architect<br>Chair, Te Fale o Te Mātāmua</div>
+      <div class="founder-badge reveal">
+        <div class="founder-badge-dot"></div>
+        Portimão, Portugal · 2026
+      </div>
+    </div>
+    <div>
+      <blockquote class="founder-blockquote reveal">
+        "I have worked on reconstruction at a national scale after major wars — Iraq, Afghanistan. I saw billions spent on power plants and schools with no cultural respect and no long-term plan. Within months, those systems failed."
+      </blockquote>
+      <p class="founder-body reveal">
+        Sovereign Vision was born to avoid those mistakes. Here, technology is simple, open, and locally maintained. Culture and ritual are not afterthoughts — they are the foundation. Guardian and Arbor act as training partners, helping people preserve what is sacred while managing systems they fully control.
+      </p>
+      <p class="founder-body reveal">
+        The goal is sovereignty, not dependency. Continuity, not collapse. No one built this before because the gap between technical skill and cultural patience is rarely bridged — and the specific combination of background and circumstances to build something like this at Tuvalu's scale almost never exists in one project team. This project is open. That is a deliberate values statement.
+      </p>
+      <div class="founder-links reveal">
+        <a href="/about-us" class="founder-link">About the Trust →</a>
+        <div class="founder-link-div"></div>
+        <a href="/contact" class="founder-link">Partner With Us →</a>
+        <div class="founder-link-div"></div>
+        <a href="/cdn-cgi/l/email-protection#dbb2b5bdb49ba8b4adbea9beb2bcb5adb2a8b2b4b5f5b4a9bc" class="founder-link">Email Kyle →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ REPLICATION ═════════════════════════════════════════════════ -->
+<section class="replication-section">
+  <div class="replication-inner">
+    <div>
+      <div class="section-tag reveal">Built to be Replicated</div>
+      <h2 class="h2 reveal">What Tuvalu builds today may define how <em>civilization endures</em> tomorrow.</h2>
+      <p class="body-text reveal" style="margin:1.5rem 0;">
+        Every system in the Sovereign Vision is modular, documented, and released under the Civic Commons License v1.0. Any climate-vulnerable nation can take this blueprint, adapt it to their context, and deploy it — without permission, without licensing fees, and without dependency on the original project team.
+      </p>
+      <div class="rep-tag-grid reveal">
+        <div class="rep-tag"><div class="rep-tag-dot"></div>Pacific Island Nations</div>
+        <div class="rep-tag"><div class="rep-tag-dot"></div>Maldives Atolls</div>
+        <div class="rep-tag"><div class="rep-tag-dot"></div>Caribbean SIDS</div>
+        <div class="rep-tag"><div class="rep-tag-dot"></div>Indian Ocean Islands</div>
+        <div class="rep-tag"><div class="rep-tag-dot"></div>Coastal Bangladesh</div>
+        <div class="rep-tag"><div class="rep-tag-dot"></div>Arctic Communities</div>
+      </div>
+    </div>
+    <div>
+      <div class="licence-box reveal">
+        <div class="licence-box-tag">Civic Commons License v1.0</div>
+        <div class="licence-box-title">Open replication.<br>No restrictions.</div>
+        <div class="licence-box-body">All technical documentation, white papers, system designs, and governance frameworks are freely available for adaptation and replication by aligned communities worldwide.</div>
+        <a href="/civic-commons-license" class="btn-coral" style="display:inline-block;">Read the License</a>
+      </div>
+      <div style="margin-top:1.5rem;" class="reveal">
+        <a href="/digitalarchipelago" class="btn-outline-navy" style="display:block;text-align:center;">Digital Archipelago Accord</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ TRUST STRIP ════════════════════════════════════════════════ -->
+<div class="trust-strip">
+  <div class="trust-strip-inner">
+    <div class="trust-item">
+      <span class="trust-item-icon">📄</span>
+      <div class="trust-item-text">
+        <strong>9 White Papers</strong>Published technical documents
+      </div>
+    </div>
+    <div class="trust-div"></div>
+    <div class="trust-item">
+      <span class="trust-item-icon">⚖️</span>
+      <div class="trust-item-text">
+        <strong>Civic Commons License v1.0</strong>Open replication, no restrictions
+      </div>
+    </div>
+    <div class="trust-div"></div>
+    <div class="trust-item">
+      <span class="trust-item-icon">🔒</span>
+      <div class="trust-item-text">
+        <strong>Privacy-First Architecture</strong>No data leaves the island
+      </div>
+    </div>
+    <div class="trust-div"></div>
+    <div class="trust-item">
+      <span class="trust-item-icon">🌊</span>
+      <div class="trust-item-text">
+        <strong>Pacific-Led Design</strong>Co-designed with Tuvaluan communities
+      </div>
+    </div>
+    <div class="trust-div"></div>
+    <div class="trust-item">
+      <span class="trust-item-icon">📡</span>
+      <div class="trust-item-text">
+        <strong>Offline-First Systems</strong>Functions without internet
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ JOIN / CTA ════════════════════════════════════════════════ -->
+<section class="join-section" id="join">
+  <div class="join-inner">
+    <div class="section-tag white reveal" style="justify-content:center;">Join the Circle</div>
+    <h2 class="join-h2 reveal">
+      There is a place<br>in this work <em>for you.</em>
+    </h2>
+    <p class="join-body reveal">
+      We invite engineers, climate advocates, island governments, and aligned institutions to join us. Whether you bring technical expertise, policy access, cultural knowledge, or funding — we want to hear from you.
+    </p>
+    <div class="join-actions reveal">
+      <a href="/contact" class="btn-white">Contact the Trust</a>
+      <a href="/who-we-are-looking-for" class="btn-ghost-white">Who We're Looking For</a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ FOOTER ════════════════════════════════════════════════════ -->
+<footer>
+  <div class="footer-top">
+    <div>
+      <a href="/" class="footer-logo-wrap">
+        <img src="images/logo-trans.png" alt="Sovereign Vision">
+        <span class="footer-logo-name">Sovereign Vision</span>
+      </a>
+      <p class="footer-desc">
+        A comprehensive sovereign civilization infrastructure stack for Tuvalu — and an open-source blueprint for climate-vulnerable communities worldwide.
+      </p>
+      <a href="/cdn-cgi/l/email-protection#442d2a222b04372b322136212d232a322d372d2b2a6a2b3623" class="footer-email"><span class="__cf_email__" data-cfemail="0a63646c654a79657c6f786f636d647c63796365642465786d">[email&#160;protected]</span></a>
+    </div>
+    <div>
+      <div class="footer-col-h">Core Systems</div>
+      <ul class="footer-links">
+        <li><a href="/energy">Power Generation</a></li>
+        <li><a href="/water-systems">Water Systems</a></li>
+        <li><a href="/food">Food Sovereignty</a></li>
+        <li><a href="/communications">Communications</a></li>
+        <li><a href="/waste-systems">Resource Recovery</a></li>
+        <li><a href="/civic-infrastructure">Civic Infrastructure</a></li>
+        <li><a href="/treasury">Sovereign Treasury</a></li>
+        <li><a href="/ai-overview">Civic Stewardship</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-col-h">About & Governance</div>
+      <ul class="footer-links">
+        <li><a href="/about-us">About Us</a></li>
+        <li><a href="/continuity-vs-reinvention">Continuity vs Reinvention</a></li>
+        <li><a href="/elders-council">Elders Council</a></li>
+        <li><a href="/youth-voice">Youth Voice</a></li>
+        <li><a href="/how-it-works">How It Works</a></li>
+        <li><a href="/faq">FAQ</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-col-h">Legal & Project</div>
+      <ul class="footer-links">
+        <li><a href="/legal-licensing">Legal & Licensing</a></li>
+        <li><a href="/civic-commons-license">Civic Commons License</a></li>
+        <li><a href="/digitalarchipelago">Digital Archipelago Accord</a></li>
+        <li><a href="/trust-formation-status">Trust Formation Status</a></li>
+        <li><a href="/terms">Terms of Use</a></li>
+        <li><a href="/privacy-policy">Privacy Policy</a></li>
+        <li><a href="/copyright-notice">Copyright Notice</a></li>
+        <li><a href="/contact">Contact</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div class="footer-copy">
+      © 2026 Tuvalu Sovereign Vision Stewardship Trust · All content protected under the Civic Commons License v1.0 · sovereignvision.org
+    </div>
+    <div class="footer-socials">
+      <a href="https://github.com/sovereign-vision-org" target="_blank" rel="noopener">GitHub</a>
+      <a href="http://linkedin.com/company/sovereign-vision-project" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="https://www.instagram.com/tuvalu_vision_project" target="_blank" rel="noopener">Instagram</a>
+    </div>
+  </div>
+</footer>
+
+<!-- ═══ JS ════════════════════════════════════════════════════════ -->
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+/* Nav scroll */
+const nav = document.getElementById('nav');
+window.addEventListener('scroll', () => {
+  nav.classList.toggle('scrolled', window.scrollY > 60);
+}, { passive: true });
+
+/* ── Dropdown management ────────────────────────────────
+   Pure JS approach: avoids CSS hover gap entirely.
+   Each dropdown opens on mouseenter (with tiny safety
+   delay) and stays open while mouse is inside the
+   trigger OR the menu. Closes on mouseleave with a
+   small delay so diagonal mouse movement still works.
+──────────────────────────────────────────────────────── */
+const dropdowns = document.querySelectorAll('.nav-dropdown');
+
+dropdowns.forEach(dd => {
+  let closeTimer = null;
+
+  function openDd() {
+    clearTimeout(closeTimer);
+    // Close all others first
+    dropdowns.forEach(other => {
+      if (other !== dd) other.classList.remove('active');
+    });
+    dd.classList.add('active');
+  }
+
+  function scheduledClose() {
+    closeTimer = setTimeout(() => {
+      dd.classList.remove('active');
+    }, 120); // 120ms grace period — enough for diagonal moves
+  }
+
+  function cancelClose() {
+    clearTimeout(closeTimer);
+  }
+
+  // Trigger: hovering the <li> itself (covers link + gap + menu)
+  dd.addEventListener('mouseenter', openDd);
+  dd.addEventListener('mouseleave', scheduledClose);
+
+  // Keep open while inside the menu
+  const menu = dd.querySelector('.dropdown-menu');
+  if (menu) {
+    menu.addEventListener('mouseenter', cancelClose);
+    menu.addEventListener('mouseleave', scheduledClose);
+  }
+
+  // Also support click toggle (touch devices, keyboard users)
+  const trigger = dd.querySelector('a');
+  trigger.addEventListener('click', e => {
+    if (window.innerWidth > 768) {
+      e.preventDefault();
+      dd.classList.contains('active') ? dd.classList.remove('active') : openDd();
+    }
+  });
+});
+
+// Close all dropdowns on outside click
+document.addEventListener('click', e => {
+  if (!e.target.closest('.nav-dropdown')) {
+    dropdowns.forEach(dd => dd.classList.remove('active'));
+  }
+});
+
+// Close on Escape
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape') {
+    dropdowns.forEach(dd => dd.classList.remove('active'));
+  }
+});
+
+/* Mobile menu */
+const hamburger = document.getElementById('hamburger');
+const mobileMenu = document.getElementById('mobile-menu');
+let open = false;
+function closeMobile() {
+  open = false;
+  hamburger.classList.remove('open');
+  mobileMenu.classList.remove('open');
+  document.body.style.overflow = '';
+  hamburger.setAttribute('aria-expanded', 'false');
+}
+hamburger.addEventListener('click', () => {
+  open ? closeMobile() : (() => {
+    open = true;
+    hamburger.classList.add('open');
+    mobileMenu.classList.add('open');
+    document.body.style.overflow = 'hidden';
+    hamburger.setAttribute('aria-expanded', 'true');
+  })();
+});
+document.addEventListener('keydown', e => { if (e.key === 'Escape' && open) closeMobile(); });
+
+/* Video fallback */
+const video = document.getElementById('hero-video');
+const fallback = document.getElementById('hero-fallback');
+fallback.style.display = 'block';
+if (video) {
+  video.addEventListener('loadeddata', () => { fallback.style.display = 'none'; });
+  video.addEventListener('error', () => { fallback.style.display = 'block'; });
+  setTimeout(() => { if (video.readyState >= 2) fallback.style.display = 'none'; }, 3000);
+}
+
+/* Wave canvas */
+const canvas = document.getElementById('wave-canvas');
+const ctx = canvas.getContext('2d');
+let W = 0, H = 0, t = 0;
+const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+function resizeCanvas() {
+  const hero = canvas.parentElement;
+  W = canvas.width  = hero.offsetWidth;
+  H = canvas.height = hero.offsetHeight;
+}
+resizeCanvas();
+new ResizeObserver(resizeCanvas).observe(document.querySelector('.hero'));
+const waveData = [
+  { amp:18, freq:.007, speed:.26, yF:.57, color:'rgba(35,193,196,.35)', lw:1.2 },
+  { amp:11, freq:.011, speed:.44, yF:.64, color:'rgba(255,198,29,.18)',  lw:.8 },
+  { amp:24, freq:.005, speed:.17, yF:.72, color:'rgba(35,193,196,.16)', lw:1 },
+];
+(function draw() {
+  ctx.clearRect(0,0,W,H);
+  if (!reduced) {
+    waveData.forEach(w => {
+      ctx.beginPath();
+      ctx.lineWidth = w.lw;
+      ctx.strokeStyle = w.color;
+      for (let x=0; x<=W; x+=3) {
+        const y = H*w.yF + Math.sin(x*w.freq + t*w.speed)*w.amp + Math.sin(x*w.freq*1.8 + t*w.speed*.7)*(w.amp*.38);
+        x===0 ? ctx.moveTo(x,y) : ctx.lineTo(x,y);
+      }
+      ctx.stroke();
+    });
+    t += .85;
+  }
+  requestAnimationFrame(draw);
+})();
+
+/* Scroll reveal — pre-assign stagger delays */
+[
+  ['.systems-grid .sys-card',     i => `${(i%4)*.1}s`],
+  ['.systems-row2 .sys-card',    i => `${(i%3)*.1}s`],
+  ['.peril-grid .peril-card',    i => `${(i%3)*.08}s`],
+  ['.how-grid .how-card',        i => `${i*.12}s`],
+  ['.guardian-features .g-feat', i => `${i*.06}s`],
+  ['.intro-stats .stat',         i => `${i*.1}s`],
+  ['.rep-tag-grid .rep-tag',     i => `${i*.06}s`],
+].forEach(([sel, fn]) => {
+  document.querySelectorAll(sel).forEach((el, i) => { el.style.transitionDelay = fn(i); });
+});
+
+const io = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.classList.add('visible');
+      io.unobserve(e.target);
+    }
+  });
+}, { threshold: .07, rootMargin: '0px 0px -28px 0px' });
+document.querySelectorAll('.reveal,.reveal-left').forEach(el => io.observe(el));
+</script>
+</body>
+</html>
