@@ -1340,6 +1340,29 @@ document.addEventListener('keydown', e => {
   if (e.key === 'Escape') dropdowns.forEach(dd => dd.classList.remove('active'));
 });
 
+
+/* Mobile menu */
+const hamburger = document.getElementById('hamburger');
+const mobileMenu = document.getElementById('mobile-menu');
+let menuOpen = false;
+function closeMobile() {
+  menuOpen = false;
+  hamburger.classList.remove('open');
+  mobileMenu.classList.remove('open');
+  document.body.style.overflow = '';
+  hamburger.setAttribute('aria-expanded', 'false');
+}
+hamburger.addEventListener('click', () => {
+  menuOpen ? closeMobile() : (() => {
+    menuOpen = true;
+    hamburger.classList.add('open');
+    mobileMenu.classList.add('open');
+    document.body.style.overflow = 'hidden';
+    hamburger.setAttribute('aria-expanded', 'true');
+  })();
+});
+document.addEventListener('keydown', e => { if (e.key === 'Escape' && menuOpen) closeMobile(); });
+
 /* Wave canvas — dual layer */
 const canvas = document.getElementById('wave-canvas');
 const ctx = canvas.getContext('2d');
