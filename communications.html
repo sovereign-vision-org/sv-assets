@@ -188,7 +188,25 @@ nav.scrolled .hamburger span { background:var(--navy); }
 /* ═══ LIVE NODE STATUS — interactive ════════════ */
 .node-status-section { background:var(--cream); padding:7rem 3rem; border-top:1px solid var(--border-light); }
 .node-status-inner { max-width:1360px; margin:0 auto; }
-.node-status-intro { display:grid; grid-template-columns:1fr 1.4fr; gap:4rem; align-items:end; margin-bottom:3rem; }
+.node-status-intro { margin-bottom:3rem; }
+
+/* Node callout cards */
+.node-callout-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:1px; background:var(--border); margin:2.5rem 0 2rem; }
+.node-callout { background:var(--white); padding:1.8rem 1.5rem; transition:background .3s; position:relative; overflow:hidden; }
+.node-callout:hover { background:#fdfbf7; }
+.nc-icon { width:32px; height:32px; color:var(--gold-dim); margin-bottom:1.2rem; }
+.nc-icon svg { width:32px; height:32px; }
+.nc-label { font-family:'Questrial',sans-serif; font-size:.58rem; letter-spacing:.16em; text-transform:uppercase; color:var(--gold-dim); margin-bottom:.25rem; }
+.nc-title { font-family:'Cormorant Garamond',serif; font-size:1.2rem; font-weight:400; color:var(--navy); margin-bottom:.7rem; line-height:1.2; }
+.nc-desc { font-size:.76rem; color:var(--stone); line-height:1.72; margin-bottom:1rem; }
+.nc-stat { display:flex; align-items:baseline; gap:.4rem; font-size:.72rem; color:var(--stone); padding:.2rem 0; border-top:1px solid var(--border); }
+.nc-stat span { font-family:'Cormorant Garamond',serif; font-size:1.15rem; font-weight:300; color:var(--navy); }
+
+/* Signal tier legend */
+.node-tier-legend { display:flex; flex-wrap:wrap; gap:.6rem 2rem; margin-top:1.5rem; }
+.ntl-item { display:flex; align-items:center; gap:.6rem; font-size:.73rem; color:var(--stone); }
+.ntl-line { display:inline-block; width:24px; height:2px; border-radius:2px; flex-shrink:0; }
+.ntl-dash { background:repeating-linear-gradient(90deg,currentColor 0,currentColor 5px,transparent 5px,transparent 9px) !important; }
 
 /* Topology diagram */
 .topo-wrap { background:var(--navy-deep); border:1px solid rgba(255,255,255,.06); padding:1.6rem; }
@@ -285,6 +303,15 @@ nav.scrolled .hamburger span { background:var(--navy); }
 .spec-list li:last-child { border-bottom:none; }
 .spec-key { color:rgba(255,255,255,.4); flex-shrink:0; }
 .spec-val { color:rgba(255,255,255,.8); font-weight:400; text-align:right; }
+
+/* ═══ POWER FLOW DIAGRAM ══════════════════════════ */
+.powerflow-section { background:var(--navy-deep); padding:7rem 3rem; border-top:1px solid rgba(255,255,255,.06); position:relative; overflow:hidden; }
+.powerflow-section::before { content:''; position:absolute; inset:0; background:radial-gradient(ellipse 55% 60% at 70% 50%,rgba(35,193,196,.05) 0%,transparent 60%); pointer-events:none; }
+.powerflow-inner { max-width:1360px; margin:0 auto; }
+.powerflow-header { display:grid; grid-template-columns:1fr 1.5fr; gap:4rem; align-items:end; margin-bottom:4rem; }
+.powerflow-pull { font-family:'Cormorant Garamond',serif; font-size:clamp(1rem,1.8vw,1.45rem); font-weight:300; font-style:italic; color:rgba(255,255,255,.7); line-height:1.65; border-left:2px solid var(--gold); padding-left:1.4rem; }
+.powerflow-svg-wrap { width:100%; }
+.powerflow-svg { width:100%; display:block; }
 
 /* ═══ STORM MODE — interactive ═══════════════════ */
 .storm-section { background:var(--cream); padding:7rem 3rem; border-top:1px solid var(--border-light); border-bottom:1px solid var(--border-light); }
@@ -417,6 +444,62 @@ footer { background:var(--navy-deep); padding:4rem 3rem 2.5rem; }
 .footer-socials a { font-size:.66rem; letter-spacing:.12em; text-transform:uppercase; color:var(--text-dimmer); text-decoration:none; font-family:'Questrial',sans-serif; transition:color .25s; }
 .footer-socials a:hover { color:var(--white); }
 
+/* ═══ VLAN ARCHITECTURE ══════════════════════════ */
+.vlan-section { background:var(--navy); padding:7rem 3rem; border-top:1px solid rgba(255,255,255,.06); }
+.vlan-inner { max-width:1360px; margin:0 auto; }
+.vlan-header { display:grid; grid-template-columns:1fr 1.4fr; gap:4rem; align-items:end; margin-bottom:3rem; }
+.vlan-pull { font-family:'Cormorant Garamond',serif; font-size:clamp(1rem,1.6vw,1.35rem); font-weight:300; font-style:italic; color:rgba(255,255,255,.7); line-height:1.65; border-left:2px solid var(--teal); padding-left:1.4rem; }
+.vlan-grid { width:100%; border:1px solid rgba(255,255,255,.07); overflow:hidden; }
+.vlan-row { display:grid; grid-template-columns:44px 1fr 2fr 80px 1fr; border-bottom:1px solid rgba(255,255,255,.05); transition:background .2s; }
+.vlan-row:last-child { border-bottom:none; }
+.vlan-row:hover { background:rgba(255,255,255,.02); }
+.vlan-header-row { background:rgba(255,255,255,.04); }
+.vlan-header-row span { font-family:'Questrial',sans-serif; font-size:.62rem; letter-spacing:.18em; text-transform:uppercase; color:rgba(255,255,255,.35); padding:.9rem 1rem; }
+.vlan-row span { padding:.85rem 1rem; font-size:.76rem; display:flex; align-items:center; border-right:1px solid rgba(255,255,255,.04); }
+.vlan-row span:last-child { border-right:none; }
+.vlan-id { font-family:'Cormorant Garamond',serif; font-size:1.1rem; font-weight:300; color:rgba(255,255,255,.4); justify-content:center; }
+.vlan-id-warn { color:rgba(254,83,55,.6); }
+.vlan-name { font-weight:500; color:rgba(255,255,255,.8); }
+.vlan-devices { color:rgba(255,255,255,.5); font-size:.72rem; line-height:1.5; }
+.vlan-note { color:rgba(255,255,255,.35); font-size:.7rem; }
+.vlan-pill { border-radius:100px; padding:.15rem .55rem; font-family:'Questrial',sans-serif; font-size:.58rem; letter-spacing:.1em; text-transform:uppercase; justify-content:center; }
+.vlan-high { background:rgba(35,193,196,.12); color:var(--teal); }
+.vlan-med  { background:rgba(255,198,29,.10); color:var(--gold-dim); }
+.vlan-low  { background:rgba(113,128,150,.12); color:var(--stone-light); }
+.vlan-none { background:rgba(254,83,55,.10); color:var(--coral-dim); }
+.vlan-last { opacity:.7; }
+.vlan-footer { margin-top:1.5rem; font-size:.8rem; color:rgba(255,255,255,.4); line-height:1.7; border-left:2px solid rgba(35,193,196,.2); padding-left:1.2rem; max-width:820px; }
+
+/* ═══ NATIONAL ARCHITECTURE ══════════════════════ */
+.national-section { background:var(--navy-deep); padding:7rem 3rem; border-top:1px solid rgba(255,255,255,.06); position:relative; overflow:hidden; }
+.national-section::before { content:''; position:absolute; inset:0; background:radial-gradient(ellipse 50% 60% at 50% 30%,rgba(35,193,196,.05) 0%,transparent 60%); pointer-events:none; }
+.national-inner { max-width:1360px; margin:0 auto; position:relative; z-index:1; }
+.national-header { display:grid; grid-template-columns:1fr 1.4fr; gap:4rem; align-items:end; margin-bottom:4rem; }
+.national-pull { font-family:'Cormorant Garamond',serif; font-size:clamp(1rem,1.6vw,1.35rem); font-weight:300; font-style:italic; color:rgba(255,255,255,.7); line-height:1.65; border-left:2px solid var(--coral); padding-left:1.4rem; }
+.national-layers { display:flex; flex-direction:column; }
+.nat-layer { border:1px solid rgba(255,255,255,.07); border-top:none; padding:1.4rem 1.8rem; transition:background .3s; }
+.nat-layer:first-child { border-top:1px solid rgba(255,255,255,.07); }
+.nat-layer:hover { background:rgba(255,255,255,.02); }
+.nat-active { border-color:var(--teal) !important; border-top-color:var(--teal) !important; background:rgba(35,193,196,.04); }
+.nat-citizen  { border-color:rgba(255,198,29,.2); border-top-color:rgba(255,198,29,.2); }
+.nat-infra    { border-color:rgba(90,170,90,.15); border-top-color:rgba(90,170,90,.15); }
+.nat-guardian { border-color:rgba(254,83,55,.15); border-top-color:rgba(254,83,55,.15); }
+.nat-dc       { border-color:rgba(107,70,193,.2); border-top-color:rgba(107,70,193,.2); }
+.nat-knowledge{ border-color:rgba(255,255,255,.06); }
+.nat-layer-label { font-family:'Questrial',sans-serif; font-size:.64rem; letter-spacing:.18em; text-transform:uppercase; color:rgba(255,255,255,.35); margin-bottom:.9rem; display:flex; align-items:center; gap:.8rem; }
+.nat-active-label { color:var(--teal) !important; }
+.nat-here-tag { background:rgba(35,193,196,.15); color:var(--teal); border-radius:100px; padding:.15rem .6rem; font-size:.56rem; letter-spacing:.12em; }
+.nat-layer-nodes { display:flex; gap:1px; background:rgba(255,255,255,.04); }
+.nat-node { flex:1; background:var(--navy-deep); padding:1rem .8rem; display:flex; flex-direction:column; align-items:center; gap:.5rem; text-align:center; transition:background .2s; }
+.nat-node:hover { background:rgba(255,255,255,.02); }
+.nat-node-icon { width:26px; height:26px; }
+.nat-node-icon svg { width:26px; height:26px; stroke:rgba(255,255,255,.4); }
+.nat-active .nat-node-icon svg { stroke:var(--teal); }
+.nat-node span { font-size:.68rem; color:rgba(255,255,255,.45); line-height:1.4; }
+.nat-active .nat-node span { color:rgba(255,255,255,.75); }
+.nat-arrow { text-align:center; font-size:1.1rem; color:rgba(255,255,255,.12); padding:.15rem 0; line-height:1; }
+.national-footer { margin-top:2.5rem; font-size:.84rem; color:rgba(255,255,255,.45); line-height:1.8; border-left:2px solid rgba(255,255,255,.08); padding-left:1.4rem; max-width:860px; font-style:italic; }
+
 /* ═══ ANIMATIONS ═════════════════════════════════ */
 @keyframes fadeUp { from{opacity:0;transform:translateY(20px);}to{opacity:1;transform:translateY(0);} }
 @keyframes fadeIn { from{opacity:0;}to{opacity:.7;} }
@@ -424,11 +507,14 @@ footer { background:var(--navy-deep); padding:4rem 3rem 2.5rem; }
 
 /* ═══ RESPONSIVE ══════════════════════════════════ */
 @media(max-width:1100px){
-  .stack-header,.spec-header,.storm-inner,.ga-inner { grid-template-columns:1fr; gap:3rem; }
+
+  .stack-header,.spec-header,.storm-inner,.ga-inner,.vlan-header,.national-header { grid-template-columns:1fr; gap:3rem; }
   .stack-grid,.spec-grid,.int-grid { grid-template-columns:repeat(2,1fr); }
   .phases-grid { grid-template-columns:1fr; }
   .node-status-intro { grid-template-columns:1fr; }
   .node-diagram-panel { grid-template-columns:1fr; }
+  .node-callout-grid { grid-template-columns:1fr 1fr; }
+  .powerflow-header { grid-template-columns:1fr; gap:2rem; }
   .footer-top { grid-template-columns:1fr 1fr; gap:2.5rem; }
   .ga-section::before { display:none; }
 }
@@ -444,6 +530,12 @@ footer { background:var(--navy-deep); padding:4rem 3rem 2.5rem; }
   .phases-section,.integration-section,.join-section,.trust-strip,
   .node-status-section,footer { padding-left:1.5rem; padding-right:1.5rem; }
   .stack-grid,.spec-grid,.phases-grid,.int-grid { grid-template-columns:1fr; }
+  .vlan-row,.vlan-header-row { grid-template-columns:36px 1fr 1fr; }
+  .vlan-row span:nth-child(4),.vlan-row span:nth-child(5),
+  .vlan-header-row span:nth-child(4),.vlan-header-row span:nth-child(5) { display:none; }
+  .nat-layer-nodes { flex-wrap:wrap; }
+  .nat-node { min-width:calc(50% - 1px); }
+  .node-callout-grid { grid-template-columns:1fr; }
   .intro-stats { flex-direction:column; }
   .stat { border-right:none; border-bottom:1px solid rgba(255,255,255,.07); }
   .stat:last-child { border-bottom:none; }
@@ -536,9 +628,9 @@ footer { background:var(--navy-deep); padding:4rem 3rem 2.5rem; }
   <p class="intro-body reveal">Tuvalu's remote geography and vulnerability to storms have long blocked reliable digital communications. Te Puka Loloa is a decentralised, solar-powered hybrid node network designed to be owned, operated, and maintained entirely by Tuvaluans.</p>
   <div class="intro-stats">
     <div class="stat reveal"><div class="stat-n">4</div><div class="stat-l">Independent<br>Communication Tiers</div></div>
-    <div class="stat reveal"><div class="stat-n">10+</div><div class="stat-l">Nodes in<br>Phase 1 Deployment</div></div>
+    <div class="stat reveal"><div class="stat-n">3</div><div class="stat-l">Nodes in<br>Phase 1 Deployment</div></div>
     <div class="stat reveal"><div class="stat-n">6.4kW</div><div class="stat-l">Solar Array<br>Per Node</div></div>
-    <div class="stat reveal"><div class="stat-n">120kph</div><div class="stat-l">Rated Storm<br>Wind Speed</div></div>
+    <div class="stat reveal"><div class="stat-n">120kph</div><div class="stat-l">Mast wind rating<br>guyed · stows to 2.3m</div></div>
     <div class="stat reveal"><div class="stat-n">100%</div><div class="stat-l">Open-Source<br>Software Stack</div></div>
   </div>
 </section>
@@ -551,29 +643,84 @@ footer { background:var(--navy-deep); padding:4rem 3rem 2.5rem; }
       <div>
         <div class="section-tag teal reveal-left">Network Architecture</div>
         <h2 class="h2 reveal">How a node<br><em>actually works.</em></h2>
-        <p class="body-text reveal" style="margin-top:1rem; max-width:420px;">Each Te Puka Loloa node is a self-contained communications hub — solar-powered, Guardian-managed, and capable of operating across four independent signal tiers simultaneously. The diagram shows the live signal flow inside a single node.</p>
+        <p class="body-text reveal" style="margin-top:1rem; max-width:440px;">Each node is a self-contained communications hub — and connects via three-tier backhaul to the central Guardian datacenter when available. Solar energy feeds a local microgrid. An edge compute cluster runs the mobile core, voice services, and civic applications. Four independent radio tiers broadcast simultaneously, and fall back gracefully when conditions demand it. If the datacenter is unreachable, the node continues Tier 1 and Tier 2 services locally without interruption.</p>
       </div>
-      <div class="reveal" style="display:flex; flex-direction:column; gap:.8rem;">
-        <div style="display:flex; align-items:center; gap:.8rem; font-size:.78rem; color:var(--stone);">
-          <svg width="28" height="8" viewBox="0 0 28 8"><line x1="0" y1="4" x2="28" y2="4" stroke="#23c1c4" stroke-width="2" stroke-linecap="round"/></svg>
-          Tier 1 · Mobile Core — always on
+
+      <!-- Sub-system callout cards -->
+      <div class="node-callout-grid reveal">
+        <div class="node-callout">
+          <div class="nc-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="1" y="2" width="9" height="7" rx="1"/><rect x="13" y="2" width="9" height="7" rx="1"/>
+              <line x1="5" y1="2" x2="5" y2="9" stroke-width=".7" opacity=".5"/><line x1="1" y1="5.5" x2="10" y2="5.5" stroke-width=".7" opacity=".5"/>
+              <line x1="17" y1="2" x2="17" y2="9" stroke-width=".7" opacity=".5"/><line x1="13" y1="5.5" x2="22" y2="5.5" stroke-width=".7" opacity=".5"/>
+              <polygon points="12,11 9,16 11,16 10.5,20 14,14.5 12,14.5" fill="#ffc61d" stroke="none"/>
+              <circle cx="4" cy="21" r="3" stroke-width="1.1"/><circle cx="4" cy="21" r="1.2" stroke-width=".8" stroke-dasharray="1.5 1.5"/>
+            </svg>
+          </div>
+          <div class="nc-label">Power Layer</div>
+          <div class="nc-title">Off-grid microgrid</div>
+          <p class="nc-desc">6.4 kW rooftop solar array charges a 28–30 kWh lithium iron phosphate battery bank via dual charge controllers. An inverter-charger delivers conditioned AC throughout the shelter. Guardian monitors state-of-charge every 30 seconds and enforces three-tier load shedding when solar input is interrupted.</p>
+          <div class="nc-stat"><span>6.4 kW</span> peak solar generation</div>
+          <div class="nc-stat"><span>6+ hrs</span> critical autonomy at Tier 1 load</div>
         </div>
-        <div style="display:flex; align-items:center; gap:.8rem; font-size:.78rem; color:var(--stone);">
-          <svg width="28" height="8" viewBox="0 0 28 8"><line x1="0" y1="4" x2="28" y2="4" stroke="#ffc61d" stroke-width="1.5" stroke-dasharray="6 3" stroke-linecap="round"/></svg>
-          Tier 2 · Satellite uplink
+
+        <div class="node-callout">
+          <div class="nc-icon" style="color:var(--teal);">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="4" y="4" width="16" height="16" rx="1.5"/>
+              <rect x="7" y="7" width="10" height="10" rx=".5" stroke-width="1"/>
+              <line x1="7" y1="1" x2="7" y2="4" stroke-width="1.1"/><line x1="12" y1="1" x2="12" y2="4" stroke-width="1.1"/><line x1="17" y1="1" x2="17" y2="4" stroke-width="1.1"/>
+              <line x1="7" y1="20" x2="7" y2="23" stroke-width="1.1"/><line x1="12" y1="20" x2="12" y2="23" stroke-width="1.1"/><line x1="17" y1="20" x2="17" y2="23" stroke-width="1.1"/>
+              <line x1="1" y1="8" x2="4" y2="8" stroke-width="1.1"/><line x1="1" y1="12" x2="4" y2="12" stroke-width="1.1"/><line x1="1" y1="16" x2="4" y2="16" stroke-width="1.1"/>
+              <line x1="20" y1="8" x2="23" y2="8" stroke-width="1.1"/><line x1="20" y1="12" x2="23" y2="12" stroke-width="1.1"/><line x1="20" y1="16" x2="23" y2="16" stroke-width="1.1"/>
+            </svg>
+          </div>
+          <div class="nc-label" style="color:var(--teal);">Compute Layer</div>
+          <div class="nc-title">Edge intelligence</div>
+          <p class="nc-desc">Four industrial edge computers run the mobile LTE core, VoIP gateway, system logging, and civic applications respectively. A dedicated AI inference module handles vision, voice, and environmental analysis at the edge — no cloud dependency, no latency overhead, no foreign data exposure.</p>
+          <div class="nc-stat"><span>4</span> edge compute nodes</div>
+          <div class="nc-stat"><span>2×</span> AI inference modules</div>
         </div>
-        <div style="display:flex; align-items:center; gap:.8rem; font-size:.78rem; color:var(--stone);">
-          <svg width="28" height="8" viewBox="0 0 28 8"><line x1="0" y1="4" x2="28" y2="4" stroke="#fe5337" stroke-width="1.5" stroke-linecap="round"/></svg>
-          Tier 3 · Community mesh
+
+        <div class="node-callout">
+          <div class="nc-icon" style="color:var(--coral);">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M5 12.55a11 11 0 0114.08 0"/><path d="M1.42 9a16 16 0 0121.16 0"/>
+              <path d="M8.53 16.11a6 6 0 016.95 0"/><circle cx="12" cy="20" r="1" fill="currentColor"/>
+              <line x1="12" y1="4" x2="12" y2="9" stroke-width="1.2"/><rect x="9" y="1" width="6" height="3" rx=".8" stroke-width="1"/>
+            </svg>
+          </div>
+          <div class="nc-label" style="color:var(--coral);">Radio Layer</div>
+          <div class="nc-title">Four-tier signal</div>
+          <p class="nc-desc">The mast carries three LTE antennas at 120° spacing for island-wide mobile coverage, a satellite dish for LEO uplink, a community mesh access point for public Wi-Fi, and a VHF/UHF antenna for civic emergency broadcast. Each tier is independently operable — losing one does not affect the others.</p>
+          <div class="nc-stat"><span>4</span> independent signal tiers</div>
+          <div class="nc-stat"><span>120°</span> LTE coverage spacing</div>
         </div>
-        <div style="display:flex; align-items:center; gap:.8rem; font-size:.78rem; color:var(--stone);">
-          <svg width="28" height="8" viewBox="0 0 28 8"><line x1="0" y1="4" x2="28" y2="4" stroke="#718096" stroke-width="1.5" stroke-dasharray="3 5" stroke-linecap="round"/></svg>
-          Tier 4 · Emergency radio
+
+        <div class="node-callout">
+          <div class="nc-icon" style="color:var(--gold);">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" stroke-width="1.4" stroke-linejoin="round"/>
+              <path d="M9 12l2 2 4-4" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              <circle cx="12" cy="12" r="3" stroke-width=".7" stroke-dasharray="2 2" opacity=".5"/>
+            </svg>
+          </div>
+          <div class="nc-label" style="color:var(--gold-dim);">Governance Layer</div>
+          <div class="nc-title">Guardian — edge &amp; datacenter</div>
+          <p class="nc-desc"><strong style="color:var(--navy);font-weight:500;">Guardian Edge</strong> runs locally on the node: monitoring power, temperature, signal, and battery every 30 seconds; triggering storm protocols; managing VLANs; and logging every decision. <strong style="color:var(--navy);font-weight:500;">Guardian Core</strong> runs in the sovereign datacenter: full AI orchestration, Arbor voice services, telemetry analysis, and Mirror Vault synchronisation. The edge operates fully independently if the datacenter is unreachable.</p>
+          <div class="nc-stat"><span>60s</span> edge heartbeat interval</div>
+          <div class="nc-stat"><span>100%</span> locally auditable at node level</div>
         </div>
-        <div style="display:flex; align-items:center; gap:.8rem; font-size:.78rem; color:var(--stone);">
-          <svg width="28" height="8" viewBox="0 0 28 8"><line x1="0" y1="4" x2="28" y2="4" stroke="#d4a400" stroke-width="1.5" stroke-linecap="round"/></svg>
-          Power distribution
-        </div>
+      </div>
+
+      <!-- Signal tier legend -->
+      <div class="node-tier-legend reveal">
+        <div class="ntl-item"><span class="ntl-line" style="background:var(--teal);"></span><span>Tier 1 · Mobile core — always on</span></div>
+        <div class="ntl-item"><span class="ntl-line ntl-dash" style="background:var(--gold);"></span><span>Tier 2 · Satellite uplink</span></div>
+        <div class="ntl-item"><span class="ntl-line" style="background:var(--coral);"></span><span>Tier 3 · Community mesh</span></div>
+        <div class="ntl-item"><span class="ntl-line ntl-dash" style="background:var(--stone-light);"></span><span>Tier 4 · Emergency radio</span></div>
+        <div class="ntl-item"><span class="ntl-line" style="background:var(--gold-dim);"></span><span>Power distribution</span></div>
       </div>
     </div>
 
@@ -582,11 +729,11 @@ footer { background:var(--navy-deep); padding:4rem 3rem 2.5rem; }
       <!-- LEFT: Topology diagram drawn from the schematic -->
       <div class="topo-wrap">
         <div class="topo-header">
-          Node Internal Architecture · v1.05
+          Node Internal Architecture
           <div class="topo-live"><div class="topo-live-dot"></div>Animated</div>
         </div>
 
-        <svg class="signal-diagram" viewBox="0 0 580 640" xmlns="http://www.w3.org/2000/svg">
+        <svg class="signal-diagram" viewBox="0 0 580 580" xmlns="http://www.w3.org/2000/svg">
           <defs>
             <radialGradient id="tg1" cx="30%" cy="30%" r="70%">
               <stop offset="0%" stop-color="#00203a"/>
@@ -607,390 +754,291 @@ footer { background:var(--navy-deep); padding:4rem 3rem 2.5rem; }
             </marker>
           </defs>
 
-          <rect width="580" height="640" fill="url(#tg1)"/>
+          <rect width="580" height="580" fill="url(#tg1)"/>
 
-          <!-- ── SOLAR / POWER LAYER (top) ── -->
-          <!-- Solar array box -->
-          <rect x="200" y="18" width="180" height="44" rx="3" fill="none" stroke="rgba(255,198,29,.4)" stroke-width="1"/>
-          <text x="290" y="35" font-family="Questrial,sans-serif" font-size="8" letter-spacing="1.5" fill="rgba(255,198,29,.7)" text-anchor="middle">SOLAR ARRAY</text>
-          <text x="290" y="50" font-family="DM Sans,sans-serif" font-size="7.5" fill="rgba(255,198,29,.45)" text-anchor="middle">6.4 kW · 16 × 400W panels</text>
+          <!-- ══ LAYER 1: POWER ══ -->
+          <!-- Solar array -->
+          <rect x="190" y="16" width="200" height="40" rx="3" fill="none" stroke="rgba(255,198,29,.4)" stroke-width="1"/>
+          <text x="290" y="31" font-family="Questrial,sans-serif" font-size="8" letter-spacing="1.5" fill="rgba(255,198,29,.7)" text-anchor="middle">SOLAR ARRAY</text>
+          <text x="290" y="46" font-family="DM Sans,sans-serif" font-size="7" fill="rgba(255,198,29,.45)" text-anchor="middle">6.4 kW · 16 × 400W panels</text>
 
-          <!-- MPPT controllers -->
-          <rect x="110" y="90" width="90" height="32" rx="2" fill="none" stroke="rgba(255,198,29,.3)" stroke-width="1"/>
-          <text x="155" y="109" font-family="Questrial,sans-serif" font-size="7.5" letter-spacing="1" fill="rgba(255,198,29,.6)" text-anchor="middle">MPPT ×2</text>
+          <!-- MPPT -->
+          <rect x="100" y="82" width="90" height="28" rx="2" fill="none" stroke="rgba(255,198,29,.3)" stroke-width="1"/>
+          <text x="145" y="100" font-family="Questrial,sans-serif" font-size="7.5" letter-spacing="1" fill="rgba(255,198,29,.6)" text-anchor="middle">MPPT ×2</text>
 
           <!-- Inverter -->
-          <rect x="215" y="90" width="90" height="32" rx="2" fill="none" stroke="rgba(255,198,29,.3)" stroke-width="1"/>
-          <text x="260" y="109" font-family="Questrial,sans-serif" font-size="7.5" letter-spacing="1" fill="rgba(255,198,29,.6)" text-anchor="middle">INVERTER</text>
+          <rect x="210" y="82" width="90" height="28" rx="2" fill="none" stroke="rgba(255,198,29,.3)" stroke-width="1"/>
+          <text x="255" y="100" font-family="Questrial,sans-serif" font-size="7.5" letter-spacing="1" fill="rgba(255,198,29,.6)" text-anchor="middle">INVERTER</text>
 
           <!-- Battery bank -->
-          <rect x="320" y="90" width="100" height="32" rx="2" fill="none" stroke="rgba(255,198,29,.35)" stroke-width="1"/>
-          <text x="370" y="103" font-family="Questrial,sans-serif" font-size="7.5" letter-spacing="1" fill="rgba(255,198,29,.6)" text-anchor="middle">BATTERY BANK</text>
-          <text x="370" y="116" font-family="DM Sans,sans-serif" font-size="7" fill="rgba(255,198,29,.4)" text-anchor="middle">28–30 kWh LFP</text>
+          <rect x="320" y="82" width="110" height="28" rx="2" fill="none" stroke="rgba(255,198,29,.35)" stroke-width="1"/>
+          <text x="375" y="95" font-family="Questrial,sans-serif" font-size="7.5" letter-spacing="1" fill="rgba(255,198,29,.6)" text-anchor="middle">BATTERY BANK</text>
+          <text x="375" y="106" font-family="DM Sans,sans-serif" font-size="6.5" fill="rgba(255,198,29,.4)" text-anchor="middle">28–30 kWh LFP</text>
 
-          <!-- Power lines: solar → MPPT, MPPT → inverter, inverter → battery -->
-          <line x1="290" y1="62" x2="155" y2="90" stroke="rgba(255,198,29,.5)" stroke-width="1" stroke-dasharray="4 3"/>
-          <line x1="290" y1="62" x2="260" y2="90" stroke="rgba(255,198,29,.5)" stroke-width="1" stroke-dasharray="4 3"/>
-          <line x1="290" y1="62" x2="370" y2="90" stroke="rgba(255,198,29,.5)" stroke-width="1" stroke-dasharray="4 3"/>
+          <!-- Solar → components lines -->
+          <line x1="290" y1="56" x2="145" y2="82" stroke="rgba(255,198,29,.45)" stroke-width="1" stroke-dasharray="4 3"/>
+          <line x1="290" y1="56" x2="255" y2="82" stroke="rgba(255,198,29,.45)" stroke-width="1" stroke-dasharray="4 3"/>
+          <line x1="290" y1="56" x2="375" y2="82" stroke="rgba(255,198,29,.45)" stroke-width="1" stroke-dasharray="4 3"/>
 
-          <!-- Emergency gen -->
-          <rect x="20" y="90" width="72" height="32" rx="2" fill="none" stroke="rgba(255,198,29,.2)" stroke-width="1" stroke-dasharray="3 3"/>
-          <text x="56" y="109" font-family="Questrial,sans-serif" font-size="7" letter-spacing="1" fill="rgba(255,198,29,.35)" text-anchor="middle">EMRG GEN</text>
+          <!-- Guardian control box -->
+          <rect x="452" y="82" width="106" height="46" rx="3" fill="rgba(35,193,196,.06)" stroke="rgba(35,193,196,.35)" stroke-width="1"/>
+          <path d="M490 93 l-8 3.5v7c0 5 3.5 9.5 8 11 4.5-1.5 8-6 8-11v-7z" fill="none" stroke="rgba(35,193,196,.7)" stroke-width="1.2" stroke-linejoin="round"/>
+          <path d="M486.5 104l2.5 2.5 5-5" stroke="rgba(35,193,196,.9)" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+          <text x="505" y="100" font-family="Questrial,sans-serif" font-size="8" letter-spacing="1" fill="rgba(35,193,196,.8)" text-anchor="middle">GUARDIAN</text>
+          <text x="505" y="114" font-family="DM Sans,sans-serif" font-size="6.5" fill="rgba(35,193,196,.45)" text-anchor="middle">AI Control</text>
 
           <!-- PDU -->
-          <rect x="228" y="152" width="124" height="28" rx="2" fill="rgba(255,198,29,.06)" stroke="rgba(255,198,29,.25)" stroke-width="1"/>
-          <text x="290" y="170" font-family="Questrial,sans-serif" font-size="8" letter-spacing="1.5" fill="rgba(255,198,29,.6)" text-anchor="middle">PDU — POWER DIST.</text>
+          <rect x="215" y="136" width="150" height="26" rx="2" fill="rgba(255,198,29,.06)" stroke="rgba(255,198,29,.28)" stroke-width="1"/>
+          <text x="290" y="153" font-family="Questrial,sans-serif" font-size="8" letter-spacing="1.5" fill="rgba(255,198,29,.65)" text-anchor="middle">PDU — POWER DIST.</text>
 
-          <!-- Power → PDU -->
-          <line x1="260" y1="122" x2="260" y2="152" stroke="rgba(255,198,29,.4)" stroke-width="1.2" marker-end="url(#arr-g)"/>
+          <!-- Power converge → PDU -->
+          <line x1="255" y1="110" x2="255" y2="136" stroke="rgba(255,198,29,.4)" stroke-width="1.2" marker-end="url(#arr-g)"/>
+          <!-- Guardian monitors PDU -->
+          <line x1="452" y1="108" x2="365" y2="149" stroke="rgba(35,193,196,.25)" stroke-width="1" stroke-dasharray="3 3"/>
 
-          <!-- ── CERBO / GUARDIAN CONTROL ── -->
-          <rect x="440" y="90" width="100" height="48" rx="3" fill="rgba(35,193,196,.06)" stroke="rgba(35,193,196,.3)" stroke-width="1"/>
-          <text x="490" y="110" font-family="Questrial,sans-serif" font-size="8" letter-spacing="1" fill="rgba(35,193,196,.8)" text-anchor="middle">GUARDIAN</text>
-          <text x="490" y="124" font-family="DM Sans,sans-serif" font-size="7" fill="rgba(35,193,196,.45)" text-anchor="middle">Central Control</text>
-          <!-- Guardian shield icon inside box -->
-          <path d="M490 98 l-6 2.5v5.5a8 8 0 006 7.5 8 8 0 006-7.5v-5.5z" fill="none" stroke="rgba(35,193,196,.6)" stroke-width="1.2"/>
-          <path d="M487 104l2 2 4-4" stroke="rgba(35,193,196,.7)" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+          <!-- ══ LAYER 2: NETWORK CORE ══ -->
+          <!-- Single firewall -->
+          <rect x="60" y="194" width="120" height="28" rx="2" fill="rgba(254,83,55,.06)" stroke="rgba(254,83,55,.4)" stroke-width="1"/>
+          <text x="120" y="208" font-family="Questrial,sans-serif" font-size="7.5" letter-spacing="1" fill="rgba(254,83,55,.75)" text-anchor="middle">FIREWALL</text>
+          <text x="120" y="218" font-family="DM Sans,sans-serif" font-size="6.5" fill="rgba(254,83,55,.4)" text-anchor="middle">Open-source firewall</text>
 
-          <!-- Guardian controls PDU -->
-          <line x1="440" y1="110" x2="352" y2="166" stroke="rgba(35,193,196,.3)" stroke-width="1" stroke-dasharray="3 3"/>
+          <!-- Core switch -->
+          <rect x="210" y="194" width="160" height="28" rx="2" fill="rgba(35,193,196,.06)" stroke="rgba(35,193,196,.4)" stroke-width="1"/>
+          <text x="290" y="208" font-family="Questrial,sans-serif" font-size="7.5" letter-spacing="1" fill="rgba(35,193,196,.75)" text-anchor="middle">CORE SWITCH</text>
+          <text x="290" y="218" font-family="DM Sans,sans-serif" font-size="6.5" fill="rgba(35,193,196,.4)" text-anchor="middle">24-port PoE · SFP uplinks</text>
 
-          <!-- ── NETWORK CORE LAYER ── -->
-          <!-- Firewall HA pair -->
-          <rect x="50" y="210" width="110" height="30" rx="2" fill="rgba(254,83,55,.05)" stroke="rgba(254,83,55,.35)" stroke-width="1"/>
-          <text x="105" y="224" font-family="Questrial,sans-serif" font-size="7.5" letter-spacing="1" fill="rgba(254,83,55,.7)" text-anchor="middle">FIREWALL HA PAIR</text>
-          <text x="105" y="235" font-family="DM Sans,sans-serif" font-size="6.5" fill="rgba(254,83,55,.4)" text-anchor="middle">Active / Passive</text>
+          <!-- UPS -->
+          <rect x="400" y="194" width="100" height="28" rx="2" fill="rgba(255,198,29,.04)" stroke="rgba(255,198,29,.22)" stroke-width="1" stroke-dasharray="3 2"/>
+          <text x="450" y="208" font-family="Questrial,sans-serif" font-size="7.5" letter-spacing="1" fill="rgba(255,198,29,.5)" text-anchor="middle">UPS</text>
+          <text x="450" y="218" font-family="DM Sans,sans-serif" font-size="6.5" fill="rgba(255,198,29,.35)" text-anchor="middle">Inline battery backup</text>
 
-          <!-- Primary switch -->
-          <rect x="185" y="210" width="125" height="30" rx="2" fill="rgba(35,193,196,.05)" stroke="rgba(35,193,196,.35)" stroke-width="1"/>
-          <text x="248" y="224" font-family="Questrial,sans-serif" font-size="7.5" letter-spacing="1" fill="rgba(35,193,196,.7)" text-anchor="middle">CORE SWITCH A</text>
-          <text x="248" y="235" font-family="DM Sans,sans-serif" font-size="6.5" fill="rgba(35,193,196,.4)" text-anchor="middle">24-port PoE</text>
+          <!-- PDU → firewall, switch, UPS -->
+          <line x1="255" y1="162" x2="120" y2="194" stroke="rgba(255,198,29,.3)" stroke-width="1" marker-end="url(#arr-g)"/>
+          <line x1="280" y1="162" x2="280" y2="194" stroke="rgba(255,198,29,.3)" stroke-width="1" marker-end="url(#arr-g)"/>
+          <line x1="320" y1="162" x2="420" y2="194" stroke="rgba(255,198,29,.3)" stroke-width="1" marker-end="url(#arr-g)"/>
+          <!-- Firewall → switch -->
+          <line x1="180" y1="208" x2="210" y2="208" stroke="#23c1c4" stroke-width="1.2" opacity=".6" marker-end="url(#arr-t)"/>
 
-          <!-- Secondary switch -->
-          <rect x="330" y="210" width="125" height="30" rx="2" fill="rgba(35,193,196,.05)" stroke="rgba(35,193,196,.25)" stroke-width="1"/>
-          <text x="393" y="224" font-family="Questrial,sans-serif" font-size="7.5" letter-spacing="1" fill="rgba(35,193,196,.5)" text-anchor="middle">CORE SWITCH B</text>
-          <text x="393" y="235" font-family="DM Sans,sans-serif" font-size="6.5" fill="rgba(35,193,196,.35)" text-anchor="middle">24-port PoE</text>
+          <!-- ══ LAYER 3: EDGE COMPUTE (3 servers) ══ -->
+          <rect x="60" y="256" width="130" height="24" rx="2" fill="rgba(35,193,196,.07)" stroke="rgba(35,193,196,.35)" stroke-width="1"/>
+          <text x="125" y="272" font-family="Questrial,sans-serif" font-size="7" letter-spacing="1" fill="rgba(35,193,196,.75)" text-anchor="middle">HELIX 1 · GUARDIAN</text>
 
-          <!-- Flex switch -->
-          <rect x="470" y="210" width="80" height="30" rx="2" fill="none" stroke="rgba(35,193,196,.2)" stroke-width="1"/>
-          <text x="510" y="228" font-family="Questrial,sans-serif" font-size="7" letter-spacing="1" fill="rgba(35,193,196,.4)" text-anchor="middle">FLEX SWITCH</text>
+          <rect x="215" y="256" width="150" height="24" rx="2" fill="rgba(35,193,196,.07)" stroke="rgba(35,193,196,.35)" stroke-width="1"/>
+          <text x="290" y="272" font-family="Questrial,sans-serif" font-size="7" letter-spacing="1" fill="rgba(35,193,196,.75)" text-anchor="middle">HELIX 2 · TELECOM</text>
 
-          <!-- PDU → firewall, switches -->
-          <line x1="250" y1="180" x2="105" y2="210" stroke="rgba(255,198,29,.3)" stroke-width="1" marker-end="url(#arr-g)"/>
-          <line x1="270" y1="180" x2="248" y2="210" stroke="rgba(255,198,29,.3)" stroke-width="1" marker-end="url(#arr-g)"/>
-          <line x1="310" y1="180" x2="393" y2="210" stroke="rgba(255,198,29,.3)" stroke-width="1" marker-end="url(#arr-g)"/>
+          <rect x="390" y="256" width="130" height="24" rx="2" fill="rgba(35,193,196,.07)" stroke="rgba(35,193,196,.35)" stroke-width="1"/>
+          <text x="455" y="272" font-family="Questrial,sans-serif" font-size="7" letter-spacing="1" fill="rgba(35,193,196,.75)" text-anchor="middle">HELIX 3–4 · LOG + CIVIC</text>
 
-          <!-- Firewall → switch connection -->
-          <line x1="160" y1="225" x2="185" y2="225" stroke="#23c1c4" stroke-width="1.2" stroke-dasharray="4 2" opacity=".6" marker-end="url(#arr-t)"/>
+          <!-- Switch → servers -->
+          <line x1="240" y1="222" x2="125" y2="256" stroke="#23c1c4" stroke-width="1" opacity=".4" marker-end="url(#arr-t)"/>
+          <line x1="290" y1="222" x2="290" y2="256" stroke="#23c1c4" stroke-width="1" opacity=".4" marker-end="url(#arr-t)"/>
+          <line x1="340" y1="222" x2="455" y2="256" stroke="#23c1c4" stroke-width="1" opacity=".4" marker-end="url(#arr-t)"/>
 
-          <!-- ── EDGE COMPUTE LAYER ── -->
-          <!-- 4 edge servers -->
-          <rect x="50" y="278" width="110" height="24" rx="2" fill="rgba(35,193,196,.06)" stroke="rgba(35,193,196,.3)" stroke-width="1"/>
-          <text x="105" y="294" font-family="Questrial,sans-serif" font-size="7" letter-spacing="1" fill="rgba(35,193,196,.7)" text-anchor="middle">EDGE SERVER 1 · LTE</text>
-
-          <rect x="175" y="278" width="110" height="24" rx="2" fill="rgba(35,193,196,.06)" stroke="rgba(35,193,196,.3)" stroke-width="1"/>
-          <text x="230" y="294" font-family="Questrial,sans-serif" font-size="7" letter-spacing="1" fill="rgba(35,193,196,.7)" text-anchor="middle">EDGE SERVER 2 · VOIP</text>
-
-          <rect x="300" y="278" width="110" height="24" rx="2" fill="rgba(35,193,196,.06)" stroke="rgba(35,193,196,.3)" stroke-width="1"/>
-          <text x="355" y="294" font-family="Questrial,sans-serif" font-size="7" letter-spacing="1" fill="rgba(35,193,196,.7)" text-anchor="middle">EDGE SERVER 3 · LOG</text>
-
-          <rect x="425" y="278" width="110" height="24" rx="2" fill="rgba(35,193,196,.04)" stroke="rgba(35,193,196,.18)" stroke-width="1"/>
-          <text x="480" y="294" font-family="Questrial,sans-serif" font-size="7" letter-spacing="1" fill="rgba(35,193,196,.45)" text-anchor="middle">EDGE SERVER 4 · AI</text>
-
-          <!-- Servers ← switch connections -->
-          <line x1="200" y1="240" x2="105" y2="278" stroke="#23c1c4" stroke-width="1" opacity=".4" marker-end="url(#arr-t)"/>
-          <line x1="230" y1="240" x2="230" y2="278" stroke="#23c1c4" stroke-width="1" opacity=".4" marker-end="url(#arr-t)"/>
-          <line x1="280" y1="240" x2="355" y2="278" stroke="#23c1c4" stroke-width="1" opacity=".4" marker-end="url(#arr-t)"/>
-          <line x1="393" y1="240" x2="480" y2="278" stroke="#23c1c4" stroke-width="1" opacity=".3" marker-end="url(#arr-t)"/>
-
-          <!-- ── ANTENNA / UPLINK LAYER ── -->
+          <!-- ══ LAYER 4: ANTENNA / RF TIER ══ -->
           <!-- Satellite dish -->
-          <g transform="translate(42,360)">
-            <path d="M20,30 Q10,12 28,6 Q44,0 38,20" fill="none" stroke="rgba(255,198,29,.55)" stroke-width="1.5"/>
-            <line x1="28" y1="6" x2="28" y2="30" stroke="rgba(255,198,29,.35)" stroke-width="1"/>
-            <circle cx="28" cy="30" r="3" fill="rgba(255,198,29,.3)" stroke="rgba(255,198,29,.6)" stroke-width="1"/>
-            <text x="28" y="50" font-family="Questrial,sans-serif" font-size="7" letter-spacing="1" fill="rgba(255,198,29,.55)" text-anchor="middle">SATELLITE</text>
+          <g transform="translate(46,328)">
+            <path d="M0,28 a28,28 0 0,1 28,-28" fill="none" stroke="rgba(255,198,29,.5)" stroke-width="1.5" stroke-linecap="round"/>
+            <path d="M0,28 a18,18 0 0,1 18,-18" fill="none" stroke="rgba(255,198,29,.4)" stroke-width="1.2"/>
+            <path d="M0,28 a9,9 0 0,1 9,-9" fill="none" stroke="rgba(255,198,29,.5)" stroke-width="1.5"/>
+            <circle cx="4" cy="24" r="2.5" fill="none" stroke="rgba(255,198,29,.6)" stroke-width="1"/>
+            <text x="14" y="48" font-family="Questrial,sans-serif" font-size="7" letter-spacing="1" fill="rgba(255,198,29,.6)" text-anchor="middle">SATELLITE</text>
           </g>
 
-          <!-- Point-to-point microwave -->
-          <g transform="translate(140,355)">
-            <circle cx="22" cy="22" r="18" fill="none" stroke="rgba(35,193,196,.4)" stroke-width="1.2"/>
-            <line x1="22" y1="4" x2="22" y2="40" stroke="rgba(35,193,196,.3)" stroke-width="1"/>
-            <line x1="4" y1="22" x2="40" y2="22" stroke="rgba(35,193,196,.3)" stroke-width="1"/>
-            <text x="22" y="58" font-family="Questrial,sans-serif" font-size="7" letter-spacing="1" fill="rgba(35,193,196,.55)" text-anchor="middle">MICROWAVE</text>
-            <text x="22" y="68" font-family="DM Sans,sans-serif" font-size="6.5" fill="rgba(35,193,196,.35)" text-anchor="middle">P2P LINK</text>
+          <!-- LTE antennas -->
+          <g transform="translate(195,322)">
+            <rect x="0"  y="0" width="8" height="36" rx="4" fill="none" stroke="rgba(35,193,196,.55)" stroke-width="1.2"/>
+            <rect x="14" y="0" width="8" height="36" rx="4" fill="none" stroke="rgba(35,193,196,.55)" stroke-width="1.2"/>
+            <rect x="28" y="0" width="8" height="36" rx="4" fill="none" stroke="rgba(35,193,196,.55)" stroke-width="1.2"/>
+            <text x="18" y="50" font-family="Questrial,sans-serif" font-size="7" letter-spacing="1" fill="rgba(35,193,196,.65)" text-anchor="middle">LTE ANTENNAS</text>
+            <text x="18" y="60" font-family="DM Sans,sans-serif" font-size="6.5" fill="rgba(35,193,196,.35)" text-anchor="middle">120° coverage ×3</text>
           </g>
 
-          <!-- LTE antennas (3× omni) -->
-          <g transform="translate(240,348)">
-            <rect x="14" y="0" width="8" height="40" rx="4" fill="none" stroke="rgba(35,193,196,.5)" stroke-width="1.2"/>
-            <rect x="28" y="0" width="8" height="40" rx="4" fill="none" stroke="rgba(35,193,196,.5)" stroke-width="1.2"/>
-            <rect x="42" y="0" width="8" height="40" rx="4" fill="none" stroke="rgba(35,193,196,.5)" stroke-width="1.2"/>
-            <text x="32" y="56" font-family="Questrial,sans-serif" font-size="7" letter-spacing="1" fill="rgba(35,193,196,.6)" text-anchor="middle">LTE ANTENNAS</text>
-            <text x="32" y="67" font-family="DM Sans,sans-serif" font-size="6.5" fill="rgba(35,193,196,.35)" text-anchor="middle">120° coverage ×3</text>
+          <!-- Mesh AP -->
+          <g transform="translate(336,330)">
+            <path d="M20,28 a22,22 0 0,1 0,-26" fill="none" stroke="rgba(254,83,55,.45)" stroke-width="1.2"/>
+            <path d="M20,28 a14,14 0 0,1 0,-17" fill="none" stroke="rgba(254,83,55,.45)" stroke-width="1.2"/>
+            <path d="M20,28 a7,7 0 0,1 0,-8" fill="none" stroke="rgba(254,83,55,.55)" stroke-width="1.5"/>
+            <circle cx="20" cy="28" r="2.5" fill="#fe5337" opacity=".65"/>
+            <text x="20" y="46" font-family="Questrial,sans-serif" font-size="7" letter-spacing="1" fill="rgba(254,83,55,.65)" text-anchor="middle">MESH AP</text>
           </g>
 
-          <!-- Mesh AP (outdoor) -->
-          <g transform="translate(360,354)">
-            <path d="M22,36 a22,22 0 0,1 0,-30" fill="none" stroke="rgba(254,83,55,.45)" stroke-width="1.2"/>
-            <path d="M22,36 a15,15 0 0,1 0,-20" fill="none" stroke="rgba(254,83,55,.45)" stroke-width="1.2"/>
-            <path d="M22,36 a8,8 0 0,1 0,-10" fill="none" stroke="rgba(254,83,55,.55)" stroke-width="1.5"/>
-            <circle cx="22" cy="36" r="2.5" fill="#fe5337" opacity=".6"/>
-            <text x="22" y="56" font-family="Questrial,sans-serif" font-size="7" letter-spacing="1" fill="rgba(254,83,55,.6)" text-anchor="middle">MESH AP</text>
-            <text x="22" y="66" font-family="DM Sans,sans-serif" font-size="6.5" fill="rgba(254,83,55,.35)" text-anchor="middle">Outdoor</text>
+          <!-- VHF/UHF -->
+          <g transform="translate(468,326)">
+            <line x1="12" y1="0" x2="12" y2="38" stroke="rgba(113,128,150,.6)" stroke-width="1.5" stroke-linecap="round"/>
+            <line x1="5"  y1="10" x2="19" y2="10" stroke="rgba(113,128,150,.4)" stroke-width="1"/>
+            <line x1="3"  y1="18" x2="21" y2="18" stroke="rgba(113,128,150,.35)" stroke-width="1"/>
+            <text x="12" y="52" font-family="Questrial,sans-serif" font-size="7" letter-spacing="1" fill="rgba(113,128,150,.6)" text-anchor="middle">VHF/UHF</text>
           </g>
 
-          <!-- VHF/UHF antenna -->
-          <g transform="translate(458,352)">
-            <line x1="16" y1="0" x2="16" y2="44" stroke="rgba(113,128,150,.55)" stroke-width="1.5" stroke-linecap="round"/>
-            <line x1="8" y1="14" x2="24" y2="14" stroke="rgba(113,128,150,.4)" stroke-width="1"/>
-            <line x1="6" y1="22" x2="26" y2="22" stroke="rgba(113,128,150,.35)" stroke-width="1"/>
-            <text x="16" y="58" font-family="Questrial,sans-serif" font-size="7" letter-spacing="1" fill="rgba(113,128,150,.55)" text-anchor="middle">VHF/UHF</text>
-            <text x="16" y="68" font-family="DM Sans,sans-serif" font-size="6.5" fill="rgba(113,128,150,.35)" text-anchor="middle">Civic Radio</text>
-          </g>
+          <!-- Servers → antennas -->
+          <line x1="125" y1="280" x2="74"  y2="328" stroke="rgba(255,198,29,.4)" stroke-width="1" stroke-dasharray="4 3" marker-end="url(#arr-g)"/>
+          <line x1="125" y1="280" x2="213" y2="322" stroke="rgba(35,193,196,.5)" stroke-width="1" marker-end="url(#arr-t)" filter="url(#gl)"/>
+          <line x1="290" y1="280" x2="356" y2="330" stroke="rgba(254,83,55,.4)" stroke-width="1" marker-end="url(#arr-p)"/>
+          <line x1="455" y1="280" x2="480" y2="326" stroke="rgba(113,128,150,.4)" stroke-width="1" stroke-dasharray="3 3"/>
 
-          <!-- Connections: servers → antennas -->
-          <line x1="105" y1="302" x2="70" y2="360" stroke="#23c1c4" stroke-width="1" opacity=".4" marker-end="url(#arr-t)"/>
-          <line x1="105" y1="302" x2="162" y2="355" stroke="#23c1c4" stroke-width="1" opacity=".35"/>
-          <line x1="230" y1="302" x2="270" y2="348" stroke="#23c1c4" stroke-width="1" opacity=".5" filter="url(#gl)" marker-end="url(#arr-t)"/>
-          <line x1="105" y1="302" x2="382" y2="354" stroke="rgba(254,83,55,.4)" stroke-width="1" marker-end="url(#arr-p)"/>
-          <line x1="355" y1="302" x2="474" y2="352" stroke="rgba(113,128,150,.4)" stroke-width="1" stroke-dasharray="3 3"/>
+          <!-- ══ END DEVICES ══ -->
+          <g transform="translate(0,420)">
+            <rect x="18"  y="0" width="72" height="20" rx="2" fill="none" stroke="rgba(255,255,255,.07)" stroke-width="1"/>
+            <text x="54" y="14" font-family="Questrial,sans-serif" font-size="6.5" letter-spacing="1" fill="rgba(255,255,255,.3)" text-anchor="middle">INDOOR AP</text>
 
-          <!-- Satellite uplink connection -->
-          <line x1="56" y1="210" x2="56" y2="302" stroke="rgba(255,198,29,.4)" stroke-width="1" stroke-dasharray="5 3" marker-end="url(#arr-g)"/>
-          <line x1="56" y1="302" x2="70" y2="360" stroke="rgba(255,198,29,.4)" stroke-width="1" stroke-dasharray="5 3"/>
+            <rect x="106" y="0" width="72" height="20" rx="2" fill="none" stroke="rgba(255,255,255,.07)" stroke-width="1"/>
+            <text x="142" y="14" font-family="Questrial,sans-serif" font-size="6.5" letter-spacing="1" fill="rgba(255,255,255,.3)" text-anchor="middle">ACCESS CTRL</text>
 
-          <!-- ── END DEVICES ── -->
-          <g transform="translate(0,460)">
-            <!-- Labels for downstream devices -->
-            <rect x="18" y="0" width="68" height="22" rx="2" fill="none" stroke="rgba(255,255,255,.08)" stroke-width="1"/>
-            <text x="52" y="15" font-family="Questrial,sans-serif" font-size="6.5" letter-spacing="1" fill="rgba(255,255,255,.3)" text-anchor="middle">INDOOR AP</text>
+            <rect x="194" y="0" width="72" height="20" rx="2" fill="none" stroke="rgba(255,255,255,.07)" stroke-width="1"/>
+            <text x="230" y="14" font-family="Questrial,sans-serif" font-size="6.5" letter-spacing="1" fill="rgba(255,255,255,.3)" text-anchor="middle">CAMERAS</text>
 
-            <rect x="104" y="0" width="68" height="22" rx="2" fill="none" stroke="rgba(255,255,255,.08)" stroke-width="1"/>
-            <text x="138" y="15" font-family="Questrial,sans-serif" font-size="6.5" letter-spacing="1" fill="rgba(255,255,255,.3)" text-anchor="middle">ACCESS CTRL</text>
+            <rect x="282" y="0" width="72" height="20" rx="2" fill="none" stroke="rgba(255,255,255,.07)" stroke-width="1"/>
+            <text x="318" y="14" font-family="Questrial,sans-serif" font-size="6.5" letter-spacing="1" fill="rgba(255,255,255,.3)" text-anchor="middle">ENV SENSORS</text>
 
-            <rect x="190" y="0" width="68" height="22" rx="2" fill="none" stroke="rgba(255,255,255,.08)" stroke-width="1"/>
-            <text x="224" y="15" font-family="Questrial,sans-serif" font-size="6.5" letter-spacing="1" fill="rgba(255,255,255,.3)" text-anchor="middle">CAMERAS</text>
+            <rect x="370" y="0" width="68" height="20" rx="2" fill="none" stroke="rgba(255,198,29,.12)" stroke-width="1"/>
+            <text x="404" y="9"  font-family="Questrial,sans-serif" font-size="6.5" letter-spacing="1" fill="rgba(255,198,29,.45)" text-anchor="middle">CIVIC</text>
+            <text x="404" y="18" font-family="Questrial,sans-serif" font-size="6.5" letter-spacing="1" fill="rgba(255,198,29,.45)" text-anchor="middle">KIOSK</text>
 
-            <rect x="276" y="0" width="68" height="22" rx="2" fill="none" stroke="rgba(255,255,255,.08)" stroke-width="1"/>
-            <text x="310" y="15" font-family="Questrial,sans-serif" font-size="6.5" letter-spacing="1" fill="rgba(255,255,255,.3)" text-anchor="middle">ENV SENSORS</text>
-
-            <rect x="362" y="0" width="68" height="22" rx="2" fill="none" stroke="rgba(255,198,29,.12)" stroke-width="1"/>
-            <text x="396" y="9" font-family="Questrial,sans-serif" font-size="6.5" letter-spacing="1" fill="rgba(255,198,29,.45)" text-anchor="middle">CIVIC</text>
-            <text x="396" y="19" font-family="Questrial,sans-serif" font-size="6.5" letter-spacing="1" fill="rgba(255,198,29,.45)" text-anchor="middle">KIOSK</text>
-
-            <rect x="448" y="0" width="68" height="22" rx="2" fill="none" stroke="rgba(35,193,196,.12)" stroke-width="1"/>
-            <text x="482" y="9" font-family="Questrial,sans-serif" font-size="6.5" letter-spacing="1" fill="rgba(35,193,196,.45)" text-anchor="middle">WEATHER</text>
-            <text x="482" y="19" font-family="Questrial,sans-serif" font-size="6.5" letter-spacing="1" fill="rgba(35,193,196,.45)" text-anchor="middle">STATION</text>
+            <rect x="450" y="0" width="80" height="20" rx="2" fill="none" stroke="rgba(35,193,196,.12)" stroke-width="1"/>
+            <text x="490" y="9"  font-family="Questrial,sans-serif" font-size="6.5" letter-spacing="1" fill="rgba(35,193,196,.45)" text-anchor="middle">WEATHER</text>
+            <text x="490" y="18" font-family="Questrial,sans-serif" font-size="6.5" letter-spacing="1" fill="rgba(35,193,196,.45)" text-anchor="middle">STATION</text>
           </g>
 
           <!-- Switch → end devices -->
-          <line x1="248" y1="240" x2="52" y2="460" stroke="rgba(35,193,196,.2)" stroke-width="1"/>
-          <line x1="248" y1="240" x2="138" y2="460" stroke="rgba(35,193,196,.2)" stroke-width="1"/>
-          <line x1="393" y1="240" x2="224" y2="460" stroke="rgba(35,193,196,.2)" stroke-width="1"/>
-          <line x1="393" y1="240" x2="310" y2="460" stroke="rgba(35,193,196,.2)" stroke-width="1"/>
-          <line x1="393" y1="240" x2="396" y2="460" stroke="rgba(255,198,29,.25)" stroke-width="1"/>
-          <line x1="510" y1="240" x2="482" y2="460" stroke="rgba(35,193,196,.25)" stroke-width="1"/>
+          <line x1="250" y1="222" x2="54"  y2="420" stroke="rgba(35,193,196,.18)" stroke-width="1"/>
+          <line x1="265" y1="222" x2="142" y2="420" stroke="rgba(35,193,196,.18)" stroke-width="1"/>
+          <line x1="290" y1="222" x2="230" y2="420" stroke="rgba(35,193,196,.18)" stroke-width="1"/>
+          <line x1="310" y1="222" x2="318" y2="420" stroke="rgba(35,193,196,.18)" stroke-width="1"/>
+          <line x1="330" y1="222" x2="404" y2="420" stroke="rgba(255,198,29,.22)" stroke-width="1"/>
+          <line x1="360" y1="222" x2="490" y2="420" stroke="rgba(35,193,196,.22)" stroke-width="1"/>
 
-          <!-- ═══ ANIMATIONS ═══ -->
+          <!-- ══ ANIMATIONS ══ -->
 
-          <!-- 1. POWER FLOW: animated dots along power lines (solar→PDU) -->
-          <!-- dot travelling solar→MPPT -->
+          <!-- Power flow dots: solar → MPPT -->
           <circle r="2.5" fill="#ffc61d" opacity="0">
-            <animateMotion dur="2s" repeatCount="indefinite" begin="0s">
-              <mpath href="#path-solar-mppt"/>
-            </animateMotion>
-            <animate attributeName="opacity" values="0;.9;.9;0" dur="2s" repeatCount="indefinite" begin="0s"/>
+            <animateMotion dur="1.8s" repeatCount="indefinite" begin="0s" path="M290,56 L145,82"/>
+            <animate attributeName="opacity" values="0;.9;.9;0" dur="1.8s" repeatCount="indefinite"/>
           </circle>
-          <path id="path-solar-mppt" d="M290,62 L155,90" fill="none" stroke="none"/>
-
-          <!-- dot travelling solar→inverter -->
+          <!-- solar → inverter -->
           <circle r="2.5" fill="#ffc61d" opacity="0">
-            <animateMotion dur="2.4s" repeatCount="indefinite" begin="0.6s">
-              <mpath href="#path-solar-inv"/>
-            </animateMotion>
-            <animate attributeName="opacity" values="0;.9;.9;0" dur="2.4s" repeatCount="indefinite" begin="0.6s"/>
+            <animateMotion dur="2.1s" repeatCount="indefinite" begin="0.5s" path="M290,56 L255,82"/>
+            <animate attributeName="opacity" values="0;.9;.9;0" dur="2.1s" repeatCount="indefinite" begin="0.5s"/>
           </circle>
-          <path id="path-solar-inv" d="M290,62 L260,90" fill="none" stroke="none"/>
-
-          <!-- dot travelling inverter→PDU -->
+          <!-- inverter → PDU -->
           <circle r="2.5" fill="#ffc61d" opacity="0">
-            <animateMotion dur="1.8s" repeatCount="indefinite" begin="0.3s">
-              <mpath href="#path-inv-pdu"/>
-            </animateMotion>
-            <animate attributeName="opacity" values="0;.9;.9;0" dur="1.8s" repeatCount="indefinite" begin="0.3s"/>
+            <animateMotion dur="1.5s" repeatCount="indefinite" begin="0.3s" path="M255,110 L255,136"/>
+            <animate attributeName="opacity" values="0;.9;.9;0" dur="1.5s" repeatCount="indefinite" begin="0.3s"/>
           </circle>
-          <path id="path-inv-pdu" d="M260,122 L260,152" fill="none" stroke="none"/>
 
-          <!-- 2. DATA FLOW: animated packets from PDU→firewall (teal) -->
+          <!-- Data: PDU → firewall -->
+          <circle r="2" fill="#fe5337" opacity="0">
+            <animateMotion dur="1.4s" repeatCount="indefinite" begin="0.2s" path="M255,162 L120,194"/>
+            <animate attributeName="opacity" values="0;.8;.8;0" dur="1.4s" repeatCount="indefinite" begin="0.2s"/>
+          </circle>
+          <!-- PDU → switch -->
           <circle r="2" fill="#23c1c4" opacity="0">
-            <animateMotion dur="1.6s" repeatCount="indefinite" begin="0s">
-              <mpath href="#path-pdu-fw"/>
-            </animateMotion>
-            <animate attributeName="opacity" values="0;1;1;0" dur="1.6s" repeatCount="indefinite" begin="0s"/>
+            <animateMotion dur="1.3s" repeatCount="indefinite" begin="0.6s" path="M280,162 L280,194"/>
+            <animate attributeName="opacity" values="0;1;1;0" dur="1.3s" repeatCount="indefinite" begin="0.6s"/>
           </circle>
-          <path id="path-pdu-fw" d="M250,180 L105,210" fill="none" stroke="none"/>
 
-          <!-- packet PDU→switch-A -->
-          <circle r="2" fill="#23c1c4" opacity="0">
-            <animateMotion dur="1.4s" repeatCount="indefinite" begin="0.4s">
-              <mpath href="#path-pdu-swa"/>
-            </animateMotion>
-            <animate attributeName="opacity" values="0;1;1;0" dur="1.4s" repeatCount="indefinite" begin="0.4s"/>
-          </circle>
-          <path id="path-pdu-swa" d="M270,180 L248,210" fill="none" stroke="none"/>
-
-          <!-- packet PDU→switch-B -->
-          <circle r="2" fill="#23c1c4" opacity="0">
-            <animateMotion dur="1.5s" repeatCount="indefinite" begin="0.8s">
-              <mpath href="#path-pdu-swb"/>
-            </animateMotion>
-            <animate attributeName="opacity" values="0;1;1;0" dur="1.5s" repeatCount="indefinite" begin="0.8s"/>
-          </circle>
-          <path id="path-pdu-swb" d="M310,180 L393,210" fill="none" stroke="none"/>
-
-          <!-- 3. DATA FLOW: switch-A → server 1 -->
+          <!-- Switch → Server 1 -->
           <circle r="1.8" fill="#23c1c4" opacity="0">
-            <animateMotion dur="1.2s" repeatCount="indefinite" begin="0.2s">
-              <mpath href="#path-swa-s1"/>
-            </animateMotion>
-            <animate attributeName="opacity" values="0;1;1;0" dur="1.2s" repeatCount="indefinite" begin="0.2s"/>
+            <animateMotion dur="1.1s" repeatCount="indefinite" begin="0s" path="M240,222 L125,256"/>
+            <animate attributeName="opacity" values="0;1;1;0" dur="1.1s" repeatCount="indefinite"/>
           </circle>
-          <path id="path-swa-s1" d="M200,240 L105,278" fill="none" stroke="none"/>
-
-          <!-- switch-A → server 2 -->
+          <!-- Switch → Server 2 -->
           <circle r="1.8" fill="#23c1c4" opacity="0">
-            <animateMotion dur="1.2s" repeatCount="indefinite" begin="0.6s">
-              <mpath href="#path-swa-s2"/>
-            </animateMotion>
-            <animate attributeName="opacity" values="0;1;1;0" dur="1.2s" repeatCount="indefinite" begin="0.6s"/>
+            <animateMotion dur="1.0s" repeatCount="indefinite" begin="0.4s" path="M290,222 L290,256"/>
+            <animate attributeName="opacity" values="0;1;1;0" dur="1.0s" repeatCount="indefinite" begin="0.4s"/>
           </circle>
-          <path id="path-swa-s2" d="M230,240 L230,278" fill="none" stroke="none"/>
-
-          <!-- switch-B → server 3 -->
+          <!-- Switch → Server 3 -->
           <circle r="1.8" fill="#23c1c4" opacity="0">
-            <animateMotion dur="1.3s" repeatCount="indefinite" begin="1s">
-              <mpath href="#path-swb-s3"/>
-            </animateMotion>
-            <animate attributeName="opacity" values="0;1;1;0" dur="1.3s" repeatCount="indefinite" begin="1s"/>
+            <animateMotion dur="1.2s" repeatCount="indefinite" begin="0.8s" path="M340,222 L455,256"/>
+            <animate attributeName="opacity" values="0;1;1;0" dur="1.2s" repeatCount="indefinite" begin="0.8s"/>
           </circle>
-          <path id="path-swb-s3" d="M280,240 L355,278" fill="none" stroke="none"/>
 
-          <!-- 4. server 1 (LTE) → LTE antennas — faster, teal glow -->
+          <!-- Server 1 → LTE antennas (fast, double stagger) -->
           <circle r="2.2" fill="#23c1c4" opacity="0" filter="url(#gl)">
-            <animateMotion dur="0.9s" repeatCount="indefinite" begin="0s">
-              <mpath href="#path-s1-ant"/>
-            </animateMotion>
-            <animate attributeName="opacity" values="0;1;1;0" dur="0.9s" repeatCount="indefinite" begin="0s"/>
+            <animateMotion dur="0.9s" repeatCount="indefinite" begin="0s" path="M125,280 L213,322"/>
+            <animate attributeName="opacity" values="0;1;1;0" dur="0.9s" repeatCount="indefinite"/>
           </circle>
-          <path id="path-s1-ant" d="M230,302 L271,348" fill="none" stroke="none"/>
-
-          <!-- second packet on same path staggered -->
           <circle r="2.2" fill="#23c1c4" opacity="0" filter="url(#gl)">
-            <animateMotion dur="0.9s" repeatCount="indefinite" begin="0.45s">
-              <mpath href="#path-s1-ant"/>
-            </animateMotion>
+            <animateMotion dur="0.9s" repeatCount="indefinite" begin="0.45s" path="M125,280 L213,322"/>
             <animate attributeName="opacity" values="0;1;1;0" dur="0.9s" repeatCount="indefinite" begin="0.45s"/>
           </circle>
 
-          <!-- 5. server 1 → mesh AP (coral) -->
-          <circle r="2" fill="#fe5337" opacity="0">
-            <animateMotion dur="1.1s" repeatCount="indefinite" begin="0.3s">
-              <mpath href="#path-s1-mesh"/>
-            </animateMotion>
-            <animate attributeName="opacity" values="0;.8;.8;0" dur="1.1s" repeatCount="indefinite" begin="0.3s"/>
-          </circle>
-          <path id="path-s1-mesh" d="M105,302 L382,354" fill="none" stroke="none"/>
-
-          <!-- 6. satellite uplink packet (gold, slow) -->
+          <!-- Server 1 → satellite (gold, slow) -->
           <circle r="2.5" fill="#ffc61d" opacity="0">
-            <animateMotion dur="3s" repeatCount="indefinite" begin="0s">
-              <mpath href="#path-sat-up"/>
-            </animateMotion>
-            <animate attributeName="opacity" values="0;.8;.8;0" dur="3s" repeatCount="indefinite" begin="0s"/>
+            <animateMotion dur="2.8s" repeatCount="indefinite" begin="0.1s" path="M125,280 L74,328"/>
+            <animate attributeName="opacity" values="0;.8;.8;0" dur="2.8s" repeatCount="indefinite" begin="0.1s"/>
           </circle>
-          <path id="path-sat-up" d="M56,302 L70,360" fill="none" stroke="none"/>
 
-          <!-- 7. GUARDIAN SCANNER SWEEP — rotating scan line around Guardian box -->
-          <g transform="translate(490,114)" opacity=".5">
-            <line x1="0" y1="0" x2="28" y2="0" stroke="rgba(35,193,196,.6)" stroke-width="1">
+          <!-- Server 2 → mesh AP -->
+          <circle r="2" fill="#fe5337" opacity="0">
+            <animateMotion dur="1.0s" repeatCount="indefinite" begin="0.3s" path="M290,280 L356,330"/>
+            <animate attributeName="opacity" values="0;.8;.8;0" dur="1.0s" repeatCount="indefinite" begin="0.3s"/>
+          </circle>
+
+          <!-- Guardian scan ring -->
+          <g transform="translate(505,105)" opacity=".55">
+            <line x1="0" y1="0" x2="22" y2="0" stroke="rgba(35,193,196,.65)" stroke-width="1">
               <animateTransform attributeName="transform" type="rotate" values="0;360" dur="4s" repeatCount="indefinite"/>
             </line>
-            <circle cx="0" cy="0" r="28" fill="none" stroke="rgba(35,193,196,.1)" stroke-width="1"/>
+            <circle cx="0" cy="0" r="22" fill="none" stroke="rgba(35,193,196,.12)" stroke-width="1"/>
           </g>
 
-          <!-- 8. EDGE SERVER STATUS LIGHTS — blinking dots on each server -->
-          <!-- Server 1 LTE blink -->
-          <circle cx="90" cy="282" r="2" fill="#23c1c4">
-            <animate attributeName="opacity" values="1;.2;1" dur="1.8s" repeatCount="indefinite"/>
+          <!-- Server status blinks -->
+          <circle cx="80"  cy="260" r="2" fill="#23c1c4">
+            <animate attributeName="opacity" values="1;.15;1" dur="1.8s" repeatCount="indefinite"/>
           </circle>
-          <!-- Server 2 VoIP blink (offset) -->
-          <circle cx="215" cy="282" r="2" fill="#23c1c4">
-            <animate attributeName="opacity" values="1;.2;1" dur="1.8s" begin="0.6s" repeatCount="indefinite"/>
+          <circle cx="230" cy="260" r="2" fill="#23c1c4">
+            <animate attributeName="opacity" values="1;.15;1" dur="1.8s" begin="0.6s" repeatCount="indefinite"/>
           </circle>
-          <!-- Server 3 Log blink -->
-          <circle cx="340" cy="282" r="2" fill="#23c1c4">
-            <animate attributeName="opacity" values="1;.2;1" dur="1.8s" begin="1.2s" repeatCount="indefinite"/>
-          </circle>
-          <!-- Server 4 AI dim blink -->
-          <circle cx="465" cy="282" r="2" fill="#23c1c4" opacity=".4">
-            <animate attributeName="opacity" values=".4;.1;.4" dur="2.4s" begin="0.9s" repeatCount="indefinite"/>
+          <circle cx="405" cy="260" r="2" fill="#23c1c4">
+            <animate attributeName="opacity" values="1;.15;1" dur="1.8s" begin="1.2s" repeatCount="indefinite"/>
           </circle>
 
-          <!-- 9. FIREWALL HA heartbeat — small pulse between active/passive boxes -->
-          <circle cx="160" cy="225" r="1.5" fill="#fe5337" opacity="0">
-            <animate attributeName="cx" values="160;160" dur="1.2s" repeatCount="indefinite"/>
-            <animate attributeName="opacity" values="0;1;1;0" dur="1.2s" repeatCount="indefinite"/>
-          </circle>
-
-          <!-- 10. SATELLITE DISH ARC SWEEP -->
-          <g transform="translate(42,360)" opacity=".6">
-            <path d="M28,30 Q10,10 28,6" fill="none" stroke="rgba(255,198,29,.7)" stroke-width="1.5" stroke-linecap="round">
-              <animate attributeName="opacity" values=".7;.1;.7" dur="2.8s" repeatCount="indefinite"/>
-            </path>
-          </g>
-
-          <!-- 11. MESH AP expanding beacon rings (coral, layered) -->
-          <circle cx="382" cy="390" r="4" fill="none" stroke="#fe5337" stroke-width="1" opacity="0">
-            <animate attributeName="r" values="4;22;4" dur="2s" repeatCount="indefinite"/>
-            <animate attributeName="opacity" values=".7;0;.7" dur="2s" repeatCount="indefinite"/>
-          </circle>
-          <circle cx="382" cy="390" r="4" fill="none" stroke="#fe5337" stroke-width="1" opacity="0">
-            <animate attributeName="r" values="4;22;4" dur="2s" begin="0.66s" repeatCount="indefinite"/>
-            <animate attributeName="opacity" values=".7;0;.7" dur="2s" begin="0.66s" repeatCount="indefinite"/>
-          </circle>
-          <circle cx="382" cy="390" r="4" fill="none" stroke="#fe5337" stroke-width="1" opacity="0">
-            <animate attributeName="r" values="4;22;4" dur="2s" begin="1.33s" repeatCount="indefinite"/>
-            <animate attributeName="opacity" values=".7;0;.7" dur="2s" begin="1.33s" repeatCount="indefinite"/>
-          </circle>
-
-          <!-- Animated LTE signal pulses on antenna group (kept and improved) -->
-          <circle cx="271" cy="368" r="0" fill="none" stroke="#23c1c4" stroke-width="1.2" opacity="0">
-            <animate attributeName="r" values="0;32;0" dur="2.2s" repeatCount="indefinite"/>
+          <!-- LTE antenna rings -->
+          <circle cx="213" cy="340" r="0" fill="none" stroke="#23c1c4" stroke-width="1.2" opacity="0">
+            <animate attributeName="r" values="0;30;0" dur="2.2s" repeatCount="indefinite"/>
             <animate attributeName="opacity" values=".8;0;.8" dur="2.2s" repeatCount="indefinite"/>
           </circle>
-          <circle cx="271" cy="368" r="0" fill="none" stroke="#23c1c4" stroke-width="1.2" opacity="0">
-            <animate attributeName="r" values="0;32;0" dur="2.2s" begin="0.73s" repeatCount="indefinite"/>
+          <circle cx="213" cy="340" r="0" fill="none" stroke="#23c1c4" stroke-width="1.2" opacity="0">
+            <animate attributeName="r" values="0;30;0" dur="2.2s" begin="0.73s" repeatCount="indefinite"/>
             <animate attributeName="opacity" values=".8;0;.8" dur="2.2s" begin="0.73s" repeatCount="indefinite"/>
           </circle>
-          <circle cx="271" cy="368" r="0" fill="none" stroke="#23c1c4" stroke-width="1.2" opacity="0">
-            <animate attributeName="r" values="0;32;0" dur="2.2s" begin="1.46s" repeatCount="indefinite"/>
+          <circle cx="213" cy="340" r="0" fill="none" stroke="#23c1c4" stroke-width="1.2" opacity="0">
+            <animate attributeName="r" values="0;30;0" dur="2.2s" begin="1.46s" repeatCount="indefinite"/>
             <animate attributeName="opacity" values=".8;0;.8" dur="2.2s" begin="1.46s" repeatCount="indefinite"/>
           </circle>
 
-          <!-- VHF/UHF slow pulse (stone) -->
-          <circle cx="474" cy="374" r="0" fill="none" stroke="rgba(113,128,150,.7)" stroke-width="1" opacity="0">
-            <animate attributeName="r" values="0;18;0" dur="3.5s" repeatCount="indefinite"/>
-            <animate attributeName="opacity" values=".6;0;.6" dur="3.5s" repeatCount="indefinite"/>
+          <!-- Mesh AP beacon rings -->
+          <circle cx="356" cy="358" r="4" fill="none" stroke="#fe5337" stroke-width="1" opacity="0">
+            <animate attributeName="r" values="4;20;4" dur="2s" repeatCount="indefinite"/>
+            <animate attributeName="opacity" values=".7;0;.7" dur="2s" repeatCount="indefinite"/>
           </circle>
-          <circle cx="474" cy="374" r="0" fill="none" stroke="rgba(113,128,150,.7)" stroke-width="1" opacity="0">
-            <animate attributeName="r" values="0;18;0" dur="3.5s" begin="1.75s" repeatCount="indefinite"/>
-            <animate attributeName="opacity" values=".6;0;.6" dur="3.5s" begin="1.75s" repeatCount="indefinite"/>
+          <circle cx="356" cy="358" r="4" fill="none" stroke="#fe5337" stroke-width="1" opacity="0">
+            <animate attributeName="r" values="4;20;4" dur="2s" begin="0.66s" repeatCount="indefinite"/>
+            <animate attributeName="opacity" values=".7;0;.7" dur="2s" begin="0.66s" repeatCount="indefinite"/>
           </circle>
 
-          <!-- Version label -->
-          <text x="290" y="630" font-family="Questrial,sans-serif" font-size="6.5" letter-spacing="2" fill="rgba(255,255,255,.18)" text-anchor="middle">HYBRID COMMUNICATIONS NODE · v1.05 · sovereignvision.org</text>
+          <!-- Satellite dish pulse -->
+          <g transform="translate(52,330)" opacity=".65">
+            <path d="M26,26 Q8,8 26,4" fill="none" stroke="rgba(255,198,29,.8)" stroke-width="1.4" stroke-linecap="round">
+              <animate attributeName="opacity" values=".8;.15;.8" dur="2.8s" repeatCount="indefinite"/>
+            </path>
+          </g>
+
+          <!-- VHF slow pulse -->
+          <circle cx="480" cy="344" r="0" fill="none" stroke="rgba(113,128,150,.6)" stroke-width="1" opacity="0">
+            <animate attributeName="r" values="0;16;0" dur="3.5s" repeatCount="indefinite"/>
+            <animate attributeName="opacity" values=".55;0;.55" dur="3.5s" repeatCount="indefinite"/>
+          </circle>
+          <circle cx="480" cy="344" r="0" fill="none" stroke="rgba(113,128,150,.6)" stroke-width="1" opacity="0">
+            <animate attributeName="r" values="0;16;0" dur="3.5s" begin="1.75s" repeatCount="indefinite"/>
+            <animate attributeName="opacity" values=".55;0;.55" dur="3.5s" begin="1.75s" repeatCount="indefinite"/>
+          </circle>
+
+          <!-- Footer label -->
+          <text x="290" y="572" font-family="Questrial,sans-serif" font-size="6.5" letter-spacing="2" fill="rgba(255,255,255,.16)" text-anchor="middle">COMMUNICATIONS NODE INTERNAL ARCHITECTURE · sovereignvision.org</text>
         </svg>
+
+          
       </div>
 
       <!-- RIGHT: Live status panel -->
@@ -1180,12 +1228,12 @@ footer { background:var(--navy-deep); padding:4rem 3rem 2.5rem; }
         </svg>
       </div>
       <div class="spec-card-n">Rack</div>
-      <div class="spec-card-title">42U Core Rack System</div>
+      <div class="spec-card-title">42U Main Rack</div>
       <ul class="spec-list">
-        <li><span class="spec-key">Network switch</span><span class="spec-val">PoE, SFP uplinks included</span></li>
-        <li><span class="spec-key">Firewall</span><span class="spec-val">Open-source, SIP-compatible</span></li>
-        <li><span class="spec-key">UPS</span><span class="spec-val">Inline battery backup</span></li>
-        <li><span class="spec-key">Fiber ports</span><span class="spec-val">SFP, Vaka cable-ready</span></li>
+        <li><span class="spec-key">Firewall</span><span class="spec-val">2× Netgate 6100 MAX pfSense</span></li>
+        <li><span class="spec-key">Switching</span><span class="spec-val">Dual UniFi 24-port PoE</span></li>
+        <li><span class="spec-key">Power mgmt</span><span class="spec-val">Cerbo GX + managed PDU</span></li>
+        <li><span class="spec-key">Controller/NVR</span><span class="spec-val">Dream Machine Pro Max</span></li>
         <li><span class="spec-key">Salt protection</span><span class="spec-val">IP65, conformal coated</span></li>
       </ul>
     </div>
@@ -1211,13 +1259,14 @@ footer { background:var(--navy-deep); padding:4rem 3rem 2.5rem; }
         </svg>
       </div>
       <div class="spec-card-n">Compute</div>
-      <div class="spec-card-title">Edge Server — 3 Nodes</div>
+      <div class="spec-card-title">Edge Compute — 4× Helix 330 + Jetson</div>
       <ul class="spec-list">
-        <li><span class="spec-key">RAM</span><span class="spec-val">32 GB per server node</span></li>
-        <li><span class="spec-key">Storage</span><span class="spec-val">1 TB SSD</span></li>
-        <li><span class="spec-key">Node 1</span><span class="spec-val">LTE core + routing + NTP</span></li>
-        <li><span class="spec-key">Node 2</span><span class="spec-val">Civic VoIP + Guardian AI</span></li>
-        <li><span class="spec-key">Node 3</span><span class="spec-val">Logging + sync + dev tools</span></li>
+        <li><span class="spec-key">Helix 330 ×4</span><span class="spec-val">32 GB RAM · 1 TB SSD each</span></li>
+        <li><span class="spec-key">Node 1</span><span class="spec-val">Guardian Node Controller</span></li>
+        <li><span class="spec-key">Node 2</span><span class="spec-val">Telecom Services · VoIP</span></li>
+        <li><span class="spec-key">Node 3</span><span class="spec-val">Monitoring + Logging</span></li>
+        <li><span class="spec-key">Node 4</span><span class="spec-val">Civic Apps + Kiosk Services</span></li>
+        <li><span class="spec-key">Jetson Orin NX ×2</span><span class="spec-val">AI · Vision · Voice inference</span></li>
       </ul>
     </div>
 
@@ -1246,6 +1295,357 @@ footer { background:var(--navy-deep); padding:4rem 3rem 2.5rem; }
   </div>
 </section>
 
+<!-- ═══ NODE POWER FLOW ══════════════════════════════════════════════ -->
+<section class="powerflow-section">
+  <div class="powerflow-inner">
+    <div class="powerflow-header reveal-left">
+      <div>
+        <div class="section-tag gold">Energy Architecture</div>
+        <h2 class="h2 h2-white">From sunlight<br><em>to signal.</em></h2>
+      </div>
+      <p class="powerflow-pull">The full energy lifecycle of a node — from photon to data packet. Every watt is tracked, prioritised, and governed. The moment solar drops, Guardian automatically cascades load shedding to protect the critical core.</p>
+    </div>
+
+    <div class="powerflow-svg-wrap reveal">
+      <svg class="powerflow-svg" viewBox="0 0 1100 540" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <radialGradient id="pfbg" cx="50%" cy="50%" r="50%">
+            <stop offset="0%" stop-color="#001e35"/>
+            <stop offset="100%" stop-color="#00121f"/>
+          </radialGradient>
+          <filter id="pfglow" x="-30%" y="-30%" width="160%" height="160%">
+            <feGaussianBlur stdDeviation="2" result="b"/>
+            <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+          </filter>
+          <!-- arrow markers -->
+          <marker id="pf-gold" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto">
+            <path d="M0,0 L8,4 L0,8 Z" fill="rgba(255,198,29,.7)"/>
+          </marker>
+          <marker id="pf-teal" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto">
+            <path d="M0,0 L8,4 L0,8 Z" fill="rgba(35,193,196,.7)"/>
+          </marker>
+          <marker id="pf-coral" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto">
+            <path d="M0,0 L8,4 L0,8 Z" fill="rgba(254,83,55,.65)"/>
+          </marker>
+          <marker id="pf-stone" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto">
+            <path d="M0,0 L8,4 L0,8 Z" fill="rgba(113,128,150,.6)"/>
+          </marker>
+        </defs>
+
+        <rect width="1100" height="540" fill="url(#pfbg)"/>
+
+        <!-- ═══ LAYER LABELS (left rail) ══════════════════════════ -->
+        <text x="18" y="110" font-family="Questrial,sans-serif" font-size="7" letter-spacing="1.5" fill="rgba(255,198,29,.4)" transform="rotate(-90,18,110)" text-anchor="middle">GENERATION</text>
+        <text x="18" y="230" font-family="Questrial,sans-serif" font-size="7" letter-spacing="1.5" fill="rgba(255,198,29,.35)" transform="rotate(-90,18,230)" text-anchor="middle">STORAGE</text>
+        <text x="18" y="340" font-family="Questrial,sans-serif" font-size="7" letter-spacing="1.5" fill="rgba(35,193,196,.35)" transform="rotate(-90,18,340)" text-anchor="middle">COMPUTE</text>
+        <text x="18" y="460" font-family="Questrial,sans-serif" font-size="7" letter-spacing="1.5" fill="rgba(254,83,55,.35)" transform="rotate(-90,18,460)" text-anchor="middle">BROADCAST</text>
+        <line x1="30" y1="0" x2="30" y2="540" stroke="rgba(255,255,255,.04)" stroke-width="1"/>
+
+        <!-- ═══ GENERATION LAYER ═══════════════════════════════════ -->
+        <!-- Solar array -->
+        <rect x="44" y="22" width="240" height="58" rx="3" fill="rgba(255,198,29,.07)" stroke="rgba(255,198,29,.35)" stroke-width="1"/>
+        <!-- 4x4 panel grid -->
+        <g transform="translate(54,30)" stroke="rgba(255,198,29,.5)" stroke-width=".8" fill="rgba(255,198,29,.04)">
+          <rect x="0"  y="0" width="26" height="18" rx=".5"/><line x1="13" y1="0" x2="13" y2="18" stroke-width=".5" opacity=".4"/><line x1="0" y1="9" x2="26" y2="9" stroke-width=".5" opacity=".4"/>
+          <rect x="30" y="0" width="26" height="18" rx=".5"/><line x1="43" y1="0" x2="43" y2="18" stroke-width=".5" opacity=".4"/><line x1="30" y1="9" x2="56" y2="9" stroke-width=".5" opacity=".4"/>
+          <rect x="60" y="0" width="26" height="18" rx=".5"/><line x1="73" y1="0" x2="73" y2="18" stroke-width=".5" opacity=".4"/><line x1="60" y1="9" x2="86" y2="9" stroke-width=".5" opacity=".4"/>
+          <rect x="90" y="0" width="26" height="18" rx=".5"/><line x1="103" y1="0" x2="103" y2="18" stroke-width=".5" opacity=".4"/><line x1="90" y1="9" x2="116" y2="9" stroke-width=".5" opacity=".4"/>
+          <rect x="0"  y="22" width="26" height="18" rx=".5"/><rect x="30" y="22" width="26" height="18" rx=".5"/><rect x="60" y="22" width="26" height="18" rx=".5"/><rect x="90" y="22" width="26" height="18" rx=".5"/>
+        </g>
+        <text x="166" y="42" font-family="Questrial,sans-serif" font-size="7.5" letter-spacing="1.5" fill="rgba(255,198,29,.75)" text-anchor="middle">SOLAR ARRAY</text>
+        <text x="166" y="55" font-family="DM Sans,sans-serif" font-size="7" fill="rgba(255,198,29,.45)" text-anchor="middle">6.4 kW · 16 × 400W panels</text>
+        <text x="166" y="70" font-family="DM Sans,sans-serif" font-size="7" fill="rgba(255,198,29,.35)" text-anchor="middle">Salt-rated · cyclone canopy · 15–20° pitch</text>
+
+        <!-- Charge controllers -->
+        <rect x="44" y="24" width="0" height="0"/><!-- spacer -->
+        <rect x="320" y="22" width="110" height="28" rx="2" fill="rgba(255,198,29,.06)" stroke="rgba(255,198,29,.28)" stroke-width="1"/>
+        <text x="375" y="40" font-family="Questrial,sans-serif" font-size="7.5" letter-spacing="1" fill="rgba(255,198,29,.65)" text-anchor="middle">CHARGE CTRL ×2</text>
+        <text x="375" y="43" font-family="DM Sans,sans-serif" font-size="0" fill="none"/>
+
+        <!-- Inverter-charger -->
+        <rect x="468" y="22" width="110" height="28" rx="2" fill="rgba(255,198,29,.06)" stroke="rgba(255,198,29,.28)" stroke-width="1"/>
+        <text x="523" y="40" font-family="Questrial,sans-serif" font-size="7.5" letter-spacing="1" fill="rgba(255,198,29,.65)" text-anchor="middle">INVERTER-CHARGER</text>
+
+        <!-- Emergency Gen (dashed) -->
+        <rect x="616" y="22" width="110" height="28" rx="2" fill="none" stroke="rgba(255,198,29,.18)" stroke-width="1" stroke-dasharray="4 3"/>
+        <text x="671" y="37" font-family="Questrial,sans-serif" font-size="7" letter-spacing="1" fill="rgba(255,198,29,.3)" text-anchor="middle">EMERGENCY GEN</text>
+        <text x="671" y="46" font-family="DM Sans,sans-serif" font-size="6.5" fill="rgba(255,198,29,.2)" text-anchor="middle">Standby only</text>
+
+        <!-- Guardian monitor (top right) -->
+        <rect x="850" y="22" width="110" height="60" rx="3" fill="rgba(35,193,196,.07)" stroke="rgba(35,193,196,.35)" stroke-width="1"/>
+        <path d="M905 38 l-10 4v8a14 14 0 0010 13 14 14 0 0010-13v-8z" fill="none" stroke="rgba(35,193,196,.75)" stroke-width="1.4" stroke-linejoin="round"/>
+        <path d="M900 50l3.5 3.5 6-6" stroke="rgba(35,193,196,.9)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        <text x="905" y="72" font-family="Questrial,sans-serif" font-size="8" letter-spacing="1" fill="rgba(35,193,196,.8)" text-anchor="middle">GUARDIAN</text>
+        <!-- Guardian scan ring animation -->
+        <g transform="translate(905,44)" opacity=".4">
+          <line x1="0" y1="0" x2="18" y2="0" stroke="rgba(35,193,196,.7)" stroke-width=".8">
+            <animateTransform attributeName="transform" type="rotate" values="0;360" dur="4s" repeatCount="indefinite"/>
+          </line>
+          <circle cx="0" cy="0" r="18" fill="none" stroke="rgba(35,193,196,.12)" stroke-width=".8"/>
+        </g>
+
+        <!-- Power connections: solar → charge ctrl → inverter -->
+        <line x1="284" y1="51" x2="320" y2="36" stroke="rgba(255,198,29,.45)" stroke-width="1.5" marker-end="url(#pf-gold)"/>
+        <line x1="430" y1="36" x2="468" y2="36" stroke="rgba(255,198,29,.45)" stroke-width="1.5" marker-end="url(#pf-gold)"/>
+        <line x1="578" y1="36" x2="616" y2="36" stroke="rgba(255,198,29,.18)" stroke-width="1" stroke-dasharray="4 3"/>
+
+        <!-- Power flow dots generation layer -->
+        <circle r="3" fill="#ffc61d" opacity="0">
+          <animateMotion dur="1.6s" repeatCount="indefinite" path="M284,51 L320,36"/>
+          <animate attributeName="opacity" values="0;.9;.9;0" dur="1.6s" repeatCount="indefinite"/>
+        </circle>
+        <circle r="3" fill="#ffc61d" opacity="0">
+          <animateMotion dur="1.2s" repeatCount="indefinite" begin=".4s" path="M430,36 L468,36"/>
+          <animate attributeName="opacity" values="0;.9;.9;0" dur="1.2s" repeatCount="indefinite" begin=".4s"/>
+        </circle>
+
+        <!-- ═══ STORAGE LAYER ══════════════════════════════════════ -->
+        <rect x="44" y="130" width="240" height="58" rx="3" fill="rgba(255,198,29,.06)" stroke="rgba(255,198,29,.28)" stroke-width="1"/>
+        <text x="164" y="153" font-family="Questrial,sans-serif" font-size="8" letter-spacing="1.5" fill="rgba(255,198,29,.7)" text-anchor="middle">BATTERY BANK</text>
+        <text x="164" y="166" font-family="DM Sans,sans-serif" font-size="7" fill="rgba(255,198,29,.45)" text-anchor="middle">28–30 kWh LFP · cell-level BMS</text>
+        <!-- Battery level bar -->
+        <rect x="64" y="174" width="200" height="5" rx="2" fill="rgba(255,255,255,.06)"/>
+        <rect x="64" y="174" width="168" height="5" rx="2" fill="rgba(255,198,29,.55)">
+          <animate attributeName="width" values="168;172;166;168" dur="6s" repeatCount="indefinite"/>
+        </rect>
+        <text x="264" y="180" font-family="DM Sans,sans-serif" font-size="6" fill="rgba(255,198,29,.4)">84%</text>
+
+        <!-- PDU -->
+        <rect x="320" y="136" width="110" height="46" rx="2" fill="rgba(255,198,29,.07)" stroke="rgba(255,198,29,.28)" stroke-width="1"/>
+        <text x="375" y="155" font-family="Questrial,sans-serif" font-size="7.5" letter-spacing="1" fill="rgba(255,198,29,.65)" text-anchor="middle">PDU</text>
+        <text x="375" y="167" font-family="DM Sans,sans-serif" font-size="6.5" fill="rgba(255,255,255,.4)" text-anchor="middle">Managed power dist.</text>
+        <text x="375" y="177" font-family="DM Sans,sans-serif" font-size="6.5" fill="rgba(255,255,255,.3)" text-anchor="middle">Guardian-controlled</text>
+
+        <!-- Inverter → battery and battery → PDU -->
+        <line x1="523" y1="50" x2="523" y2="110" stroke="rgba(255,198,29,.4)" stroke-width="1.5"/>
+        <line x1="523" y1="110" x2="164" y2="130" stroke="rgba(255,198,29,.4)" stroke-width="1.5" marker-end="url(#pf-gold)"/>
+        <line x1="284" y1="159" x2="320" y2="159" stroke="rgba(255,198,29,.45)" stroke-width="1.5" marker-end="url(#pf-gold)"/>
+
+        <!-- Animated dots storage layer -->
+        <circle r="3" fill="#ffc61d" opacity="0">
+          <animateMotion dur="2s" repeatCount="indefinite" begin=".2s" path="M523,50 L523,110 L164,130"/>
+          <animate attributeName="opacity" values="0;.9;.9;0" dur="2s" repeatCount="indefinite" begin=".2s"/>
+        </circle>
+        <circle r="3" fill="#ffc61d" opacity="0">
+          <animateMotion dur="1.1s" repeatCount="indefinite" begin=".6s" path="M284,159 L320,159"/>
+          <animate attributeName="opacity" values="0;.9;.9;0" dur="1.1s" repeatCount="indefinite" begin=".6s"/>
+        </circle>
+
+        <!-- Guardian → PDU monitoring line -->
+        <line x1="850" y1="52" x2="770" y2="52" stroke="rgba(35,193,196,.2)" stroke-width="1" stroke-dasharray="3 4"/>
+        <line x1="770" y1="52" x2="430" y2="159" stroke="rgba(35,193,196,.2)" stroke-width="1" stroke-dasharray="3 4"/>
+
+        <!-- ═══ COMPUTE LAYER ══════════════════════════════════════ -->
+        <!-- Firewall -->
+        <rect x="44" y="260" width="100" height="46" rx="2" fill="rgba(254,83,55,.08)" stroke="rgba(254,83,55,.4)" stroke-width="1"/>
+        <text x="94" y="279" font-family="Questrial,sans-serif" font-size="7.5" letter-spacing="1" fill="rgba(254,83,55,.75)" text-anchor="middle">FIREWALL</text>
+        <text x="94" y="291" font-family="DM Sans,sans-serif" font-size="6.5" fill="rgba(255,255,255,.4)" text-anchor="middle">Open-source · HA pair</text>
+        <text x="94" y="301" font-family="DM Sans,sans-serif" font-size="6.5" fill="rgba(255,255,255,.28)" text-anchor="middle">VLAN isolation</text>
+        <!-- FW LED -->
+        <circle cx="136" cy="266" r="2.5" fill="#23c1c4" filter="url(#pfglow)">
+          <animate attributeName="opacity" values="1;.2;1" dur="2s" repeatCount="indefinite"/>
+        </circle>
+
+        <!-- Core switch -->
+        <rect x="164" y="260" width="100" height="46" rx="2" fill="rgba(35,193,196,.07)" stroke="rgba(35,193,196,.35)" stroke-width="1"/>
+        <text x="214" y="279" font-family="Questrial,sans-serif" font-size="7.5" letter-spacing="1" fill="rgba(35,193,196,.7)" text-anchor="middle">CORE SWITCH</text>
+        <text x="214" y="291" font-family="DM Sans,sans-serif" font-size="6.5" fill="rgba(255,255,255,.4)" text-anchor="middle">24-port PoE · dual</text>
+        <text x="214" y="301" font-family="DM Sans,sans-serif" font-size="6.5" fill="rgba(255,255,255,.28)" text-anchor="middle">SFP uplinks</text>
+        <g opacity=".65">
+          <circle cx="175" cy="266" r="1.5" fill="#23c1c4"><animate attributeName="opacity" values="1;.2;1" dur=".9s" repeatCount="indefinite"/></circle>
+          <circle cx="181" cy="266" r="1.5" fill="#23c1c4"><animate attributeName="opacity" values="1;.2;1" dur="1.2s" begin=".3s" repeatCount="indefinite"/></circle>
+          <circle cx="187" cy="266" r="1.5" fill="#23c1c4"><animate attributeName="opacity" values="1;.2;1" dur=".7s" begin=".6s" repeatCount="indefinite"/></circle>
+          <circle cx="193" cy="266" r="1.5" fill="#23c1c4"><animate attributeName="opacity" values="1;.2;1" dur="1.1s" begin=".9s" repeatCount="indefinite"/></circle>
+        </g>
+
+        <!-- Edge compute 1 -->
+        <rect x="284" y="260" width="96" height="46" rx="2" fill="rgba(13,64,112,.55)" stroke="rgba(35,193,196,.45)" stroke-width="1"/>
+        <text x="332" y="278" font-family="Questrial,sans-serif" font-size="7" letter-spacing=".8" fill="rgba(35,193,196,.7)" text-anchor="middle">NODE 1</text>
+        <text x="332" y="290" font-family="DM Sans,sans-serif" font-size="6.5" fill="rgba(255,255,255,.75)" text-anchor="middle">Mobile LTE Core</text>
+        <text x="332" y="300" font-family="DM Sans,sans-serif" font-size="6.5" fill="rgba(255,255,255,.4)" text-anchor="middle">Open5GS · FreeSWITCH</text>
+        <circle cx="372" cy="266" r="2.5" fill="#23c1c4" filter="url(#pfglow)"><animate attributeName="opacity" values="1;.2;1" dur="1.8s" repeatCount="indefinite"/></circle>
+
+        <!-- Edge compute 2 -->
+        <rect x="394" y="260" width="96" height="46" rx="2" fill="rgba(13,64,112,.48)" stroke="rgba(35,193,196,.38)" stroke-width="1"/>
+        <text x="442" y="278" font-family="Questrial,sans-serif" font-size="7" letter-spacing=".8" fill="rgba(35,193,196,.65)" text-anchor="middle">NODE 2</text>
+        <text x="442" y="290" font-family="DM Sans,sans-serif" font-size="6.5" fill="rgba(255,255,255,.7)" text-anchor="middle">Telecom · VoIP</text>
+        <text x="442" y="300" font-family="DM Sans,sans-serif" font-size="6.5" fill="rgba(255,255,255,.35)" text-anchor="middle">Civic gateway</text>
+        <circle cx="482" cy="266" r="2.5" fill="#23c1c4" filter="url(#pfglow)"><animate attributeName="opacity" values="1;.2;1" dur="1.8s" begin=".45s" repeatCount="indefinite"/></circle>
+
+        <!-- Edge compute 3 -->
+        <rect x="504" y="260" width="96" height="46" rx="2" fill="rgba(13,64,112,.42)" stroke="rgba(35,193,196,.3)" stroke-width="1"/>
+        <text x="552" y="278" font-family="Questrial,sans-serif" font-size="7" letter-spacing=".8" fill="rgba(35,193,196,.58)" text-anchor="middle">NODE 3</text>
+        <text x="552" y="290" font-family="DM Sans,sans-serif" font-size="6.5" fill="rgba(255,255,255,.65)" text-anchor="middle">Monitoring · Log</text>
+        <text x="552" y="300" font-family="DM Sans,sans-serif" font-size="6.5" fill="rgba(255,255,255,.3)" text-anchor="middle">Audit · sync</text>
+        <circle cx="592" cy="266" r="2.5" fill="#23c1c4" filter="url(#pfglow)"><animate attributeName="opacity" values="1;.2;1" dur="1.8s" begin=".9s" repeatCount="indefinite"/></circle>
+
+        <!-- Edge compute 4 -->
+        <rect x="614" y="260" width="96" height="46" rx="2" fill="rgba(13,64,112,.38)" stroke="rgba(35,193,196,.24)" stroke-width="1"/>
+        <text x="662" y="278" font-family="Questrial,sans-serif" font-size="7" letter-spacing=".8" fill="rgba(35,193,196,.5)" text-anchor="middle">NODE 4</text>
+        <text x="662" y="290" font-family="DM Sans,sans-serif" font-size="6.5" fill="rgba(255,255,255,.6)" text-anchor="middle">Civic · Kiosk</text>
+        <text x="662" y="300" font-family="DM Sans,sans-serif" font-size="6.5" fill="rgba(255,255,255,.28)" text-anchor="middle">Arbor apps</text>
+        <circle cx="702" cy="266" r="2.5" fill="#23c1c4" filter="url(#pfglow)"><animate attributeName="opacity" values="1;.2;1" dur="1.8s" begin="1.35s" repeatCount="indefinite"/></circle>
+
+        <!-- AI inference module -->
+        <rect x="724" y="260" width="96" height="46" rx="2" fill="rgba(107,33,168,.22)" stroke="rgba(139,92,246,.5)" stroke-width="1"/>
+        <text x="772" y="278" font-family="Questrial,sans-serif" font-size="7" letter-spacing=".8" fill="rgba(139,92,246,.7)" text-anchor="middle">AI MODULE</text>
+        <text x="772" y="290" font-family="DM Sans,sans-serif" font-size="6.5" fill="rgba(255,255,255,.7)" text-anchor="middle">Vision · Voice</text>
+        <text x="772" y="300" font-family="DM Sans,sans-serif" font-size="6.5" fill="rgba(255,255,255,.3)" text-anchor="middle">Edge inference</text>
+        <circle cx="812" cy="266" r="2.5" fill="rgba(139,92,246,.9)" filter="url(#pfglow)"><animate attributeName="r" values="2.5;3.2;2.5" dur="2s" repeatCount="indefinite"/></circle>
+
+        <!-- PDU → firewall, switch (power lines) -->
+        <line x1="375" y1="182" x2="375" y2="240" stroke="rgba(255,198,29,.35)" stroke-width="1.2"/>
+        <line x1="375" y1="240" x2="94"  y2="260" stroke="rgba(255,198,29,.3)" stroke-width="1.2" marker-end="url(#pf-gold)"/>
+        <line x1="375" y1="240" x2="214" y2="260" stroke="rgba(255,198,29,.3)" stroke-width="1.2" marker-end="url(#pf-gold)"/>
+        <!-- power to compute nodes -->
+        <line x1="375" y1="240" x2="332" y2="260" stroke="rgba(255,198,29,.22)" stroke-width="1" stroke-dasharray="4 3"/>
+        <line x1="375" y1="240" x2="442" y2="260" stroke="rgba(255,198,29,.22)" stroke-width="1" stroke-dasharray="4 3"/>
+        <line x1="375" y1="240" x2="552" y2="260" stroke="rgba(255,198,29,.18)" stroke-width="1" stroke-dasharray="4 3"/>
+        <line x1="375" y1="240" x2="662" y2="260" stroke="rgba(255,198,29,.15)" stroke-width="1" stroke-dasharray="4 3"/>
+        <line x1="375" y1="240" x2="772" y2="260" stroke="rgba(255,198,29,.15)" stroke-width="1" stroke-dasharray="4 3"/>
+
+        <!-- Firewall → switch data line -->
+        <line x1="144" y1="283" x2="164" y2="283" stroke="#23c1c4" stroke-width="1.4" opacity=".65" marker-end="url(#pf-teal)"/>
+        <!-- Switch → compute nodes data lines -->
+        <line x1="264" y1="283" x2="284" y2="283" stroke="#23c1c4" stroke-width="1.2" opacity=".6" marker-end="url(#pf-teal)"/>
+        <line x1="264" y1="283" x2="394" y2="283" stroke="#23c1c4" stroke-width="1.2" opacity=".5" marker-end="url(#pf-teal)"/>
+        <line x1="264" y1="283" x2="504" y2="283" stroke="#23c1c4" stroke-width="1" opacity=".4" marker-end="url(#pf-teal)"/>
+        <line x1="264" y1="283" x2="614" y2="283" stroke="#23c1c4" stroke-width="1" opacity=".35" marker-end="url(#pf-teal)"/>
+        <line x1="264" y1="283" x2="724" y2="283" stroke="#23c1c4" stroke-width=".9" opacity=".3" marker-end="url(#pf-teal)"/>
+
+        <!-- Animated data packets compute layer -->
+        <circle r="2.5" fill="#23c1c4" opacity="0" filter="url(#pfglow)">
+          <animateMotion dur=".9s" repeatCount="indefinite" begin="0s" path="M264,283 L284,283"/>
+          <animate attributeName="opacity" values="0;1;1;0" dur=".9s" repeatCount="indefinite"/>
+        </circle>
+        <circle r="2.5" fill="#23c1c4" opacity="0" filter="url(#pfglow)">
+          <animateMotion dur="1.1s" repeatCount="indefinite" begin=".4s" path="M264,283 L394,283"/>
+          <animate attributeName="opacity" values="0;1;1;0" dur="1.1s" repeatCount="indefinite" begin=".4s"/>
+        </circle>
+        <circle r="2" fill="rgba(255,198,29,.8)" opacity="0">
+          <animateMotion dur="1.6s" repeatCount="indefinite" begin=".2s" path="M375,182 L375,240 L332,260"/>
+          <animate attributeName="opacity" values="0;.85;.85;0" dur="1.6s" repeatCount="indefinite" begin=".2s"/>
+        </circle>
+
+        <!-- ═══ BROADCAST LAYER ════════════════════════════════════ -->
+        <!-- Satellite -->
+        <g transform="translate(44,400)">
+          <path d="M0,50 a50,50 0 0,1 50,-50" fill="none" stroke="rgba(255,198,29,.5)" stroke-width="1.4" stroke-linecap="round"/>
+          <path d="M0,50 a34,34 0 0,1 34,-34" fill="none" stroke="rgba(255,198,29,.42)" stroke-width="1.2"/>
+          <path d="M0,50 a18,18 0 0,1 18,-18" fill="none" stroke="rgba(255,198,29,.55)" stroke-width="1.6"/>
+          <circle cx="5" cy="45" r="3" fill="none" stroke="rgba(255,198,29,.55)" stroke-width="1.1"/>
+          <text x="30" y="68" font-family="Questrial,sans-serif" font-size="7" letter-spacing="1" fill="rgba(255,198,29,.6)" text-anchor="middle">SATELLITE</text>
+          <text x="30" y="78" font-family="DM Sans,sans-serif" font-size="6.5" fill="rgba(255,198,29,.35)" text-anchor="middle">LEO · auto-tracking</text>
+          <!-- pulse -->
+          <circle cx="5" cy="45" r="0" fill="none" stroke="rgba(255,198,29,.5)" stroke-width="1">
+            <animate attributeName="r" values="0;22;0" dur="3s" repeatCount="indefinite"/>
+            <animate attributeName="opacity" values=".7;0;.7" dur="3s" repeatCount="indefinite"/>
+          </circle>
+        </g>
+
+        <!-- LTE antennas -->
+        <g transform="translate(200,396)">
+          <rect x="0"  y="0" width="10" height="46" rx="5" fill="none" stroke="rgba(35,193,196,.55)" stroke-width="1.3"/>
+          <rect x="16" y="0" width="10" height="46" rx="5" fill="none" stroke="rgba(35,193,196,.55)" stroke-width="1.3"/>
+          <rect x="32" y="0" width="10" height="46" rx="5" fill="none" stroke="rgba(35,193,196,.55)" stroke-width="1.3"/>
+          <text x="21" y="58" font-family="Questrial,sans-serif" font-size="7" letter-spacing="1" fill="rgba(35,193,196,.65)" text-anchor="middle">LTE ×3</text>
+          <text x="21" y="68" font-family="DM Sans,sans-serif" font-size="6.5" fill="rgba(35,193,196,.35)" text-anchor="middle">120° spacing</text>
+          <!-- LTE rings -->
+          <circle cx="21" cy="46" r="0" fill="none" stroke="#23c1c4" stroke-width="1.2" opacity="0">
+            <animate attributeName="r" values="0;36;0" dur="2.2s" repeatCount="indefinite"/>
+            <animate attributeName="opacity" values=".8;0;.8" dur="2.2s" repeatCount="indefinite"/>
+          </circle>
+          <circle cx="21" cy="46" r="0" fill="none" stroke="#23c1c4" stroke-width="1.2" opacity="0">
+            <animate attributeName="r" values="0;36;0" dur="2.2s" begin=".73s" repeatCount="indefinite"/>
+            <animate attributeName="opacity" values=".8;0;.8" dur="2.2s" begin=".73s" repeatCount="indefinite"/>
+          </circle>
+        </g>
+
+        <!-- Mesh AP -->
+        <g transform="translate(380,400)">
+          <path d="M26,46 a30,30 0 0,1 0,-36" fill="none" stroke="rgba(254,83,55,.45)" stroke-width="1.3"/>
+          <path d="M26,46 a20,20 0 0,1 0,-24" fill="none" stroke="rgba(254,83,55,.45)" stroke-width="1.3"/>
+          <path d="M26,46 a10,10 0 0,1 0,-12" fill="none" stroke="rgba(254,83,55,.6)" stroke-width="1.6"/>
+          <circle cx="26" cy="46" r="3.5" fill="#fe5337" opacity=".65"/>
+          <text x="26" y="62" font-family="Questrial,sans-serif" font-size="7" letter-spacing="1" fill="rgba(254,83,55,.65)" text-anchor="middle">MESH AP</text>
+          <text x="26" y="72" font-family="DM Sans,sans-serif" font-size="6.5" fill="rgba(254,83,55,.35)" text-anchor="middle">Public Wi-Fi</text>
+          <!-- Mesh beacon rings -->
+          <circle cx="26" cy="46" r="4" fill="none" stroke="#fe5337" stroke-width="1" opacity="0">
+            <animate attributeName="r" values="4;28;4" dur="2s" repeatCount="indefinite"/>
+            <animate attributeName="opacity" values=".7;0;.7" dur="2s" repeatCount="indefinite"/>
+          </circle>
+          <circle cx="26" cy="46" r="4" fill="none" stroke="#fe5337" stroke-width="1" opacity="0">
+            <animate attributeName="r" values="4;28;4" dur="2s" begin=".66s" repeatCount="indefinite"/>
+            <animate attributeName="opacity" values=".7;0;.7" dur="2s" begin=".66s" repeatCount="indefinite"/>
+          </circle>
+        </g>
+
+        <!-- VHF/UHF -->
+        <g transform="translate(570,394)">
+          <line x1="16" y1="0" x2="16" y2="50" stroke="rgba(113,128,150,.65)" stroke-width="2" stroke-linecap="round"/>
+          <line x1="8"  y1="14" x2="24" y2="14" stroke="rgba(113,128,150,.45)" stroke-width="1.1"/>
+          <line x1="5"  y1="24" x2="27" y2="24" stroke="rgba(113,128,150,.38)" stroke-width="1.1"/>
+          <line x1="10" y1="34" x2="22" y2="34" stroke="rgba(113,128,150,.3)" stroke-width="1"/>
+          <text x="16" y="62" font-family="Questrial,sans-serif" font-size="7" letter-spacing="1" fill="rgba(113,128,150,.6)" text-anchor="middle">VHF/UHF</text>
+          <text x="16" y="72" font-family="DM Sans,sans-serif" font-size="6.5" fill="rgba(113,128,150,.35)" text-anchor="middle">Emergency</text>
+          <!-- VHF pulse -->
+          <circle cx="16" cy="50" r="0" fill="none" stroke="rgba(113,128,150,.55)" stroke-width="1" opacity="0">
+            <animate attributeName="r" values="0;20;0" dur="3.5s" repeatCount="indefinite"/>
+            <animate attributeName="opacity" values=".55;0;.55" dur="3.5s" repeatCount="indefinite"/>
+          </circle>
+        </g>
+
+        <!-- Node 1 → LTE (Tier 1 - teal) -->
+        <line x1="332" y1="306" x2="221" y2="400" stroke="rgba(35,193,196,.55)" stroke-width="1.5" marker-end="url(#pf-teal)" filter="url(#pfglow)"/>
+        <!-- Node 1 → Satellite (Tier 2 - gold, dashed) -->
+        <line x1="332" y1="306" x2="74"  y2="400" stroke="rgba(255,198,29,.4)" stroke-width="1.2" stroke-dasharray="6 4" marker-end="url(#pf-gold)"/>
+        <!-- Node 2 → Mesh AP (Tier 3 - coral) -->
+        <line x1="442" y1="306" x2="406" y2="400" stroke="rgba(254,83,55,.5)" stroke-width="1.4" marker-end="url(#pf-coral)"/>
+        <!-- Node 3 → VHF/UHF (Tier 4 - stone, dashed) -->
+        <line x1="552" y1="306" x2="586" y2="394" stroke="rgba(113,128,150,.45)" stroke-width="1.2" stroke-dasharray="4 4" marker-end="url(#pf-stone)"/>
+
+        <!-- Animated signal packets broadcast layer -->
+        <circle r="2.5" fill="#23c1c4" opacity="0" filter="url(#pfglow)">
+          <animateMotion dur=".85s" repeatCount="indefinite" path="M332,306 L221,400"/>
+          <animate attributeName="opacity" values="0;1;1;0" dur=".85s" repeatCount="indefinite"/>
+        </circle>
+        <circle r="2.5" fill="#23c1c4" opacity="0" filter="url(#pfglow)">
+          <animateMotion dur=".85s" repeatCount="indefinite" begin=".42s" path="M332,306 L221,400"/>
+          <animate attributeName="opacity" values="0;1;1;0" dur=".85s" repeatCount="indefinite" begin=".42s"/>
+        </circle>
+        <circle r="2.5" fill="rgba(255,198,29,.8)" opacity="0">
+          <animateMotion dur="2.5s" repeatCount="indefinite" begin=".3s" path="M332,306 L74,400"/>
+          <animate attributeName="opacity" values="0;.8;.8;0" dur="2.5s" repeatCount="indefinite" begin=".3s"/>
+        </circle>
+        <circle r="2.2" fill="#fe5337" opacity="0">
+          <animateMotion dur="1.1s" repeatCount="indefinite" begin=".5s" path="M442,306 L406,400"/>
+          <animate attributeName="opacity" values="0;.8;.8;0" dur="1.1s" repeatCount="indefinite" begin=".5s"/>
+        </circle>
+
+        <!-- ═══ LEGEND ══════════════════════════════════════════════ -->
+        <g transform="translate(730,400)">
+          <text x="0" y="0" font-family="Questrial,sans-serif" font-size="6.5" letter-spacing="1.5" fill="rgba(255,255,255,.3)">SIGNAL FLOW</text>
+          <line x1="0" y1="12" x2="30" y2="12" stroke="#23c1c4" stroke-width="2" stroke-linecap="round"/>
+          <text x="36" y="16" font-family="DM Sans,sans-serif" font-size="7" fill="rgba(255,255,255,.5)">Tier 1 · Mobile core</text>
+          <line x1="0" y1="28" x2="30" y2="28" stroke="#ffc61d" stroke-width="1.5" stroke-dasharray="6 3" stroke-linecap="round"/>
+          <text x="36" y="32" font-family="DM Sans,sans-serif" font-size="7" fill="rgba(255,255,255,.5)">Tier 2 · Satellite</text>
+          <line x1="0" y1="44" x2="30" y2="44" stroke="#fe5337" stroke-width="1.5" stroke-linecap="round"/>
+          <text x="36" y="48" font-family="DM Sans,sans-serif" font-size="7" fill="rgba(255,255,255,.5)">Tier 3 · Mesh</text>
+          <line x1="0" y1="60" x2="30" y2="60" stroke="#718096" stroke-width="1.5" stroke-dasharray="3 4" stroke-linecap="round"/>
+          <text x="36" y="64" font-family="DM Sans,sans-serif" font-size="7" fill="rgba(255,255,255,.5)">Tier 4 · Emergency radio</text>
+          <line x1="0" y1="76" x2="30" y2="76" stroke="rgba(255,198,29,.6)" stroke-width="1.5" stroke-linecap="round"/>
+          <text x="36" y="80" font-family="DM Sans,sans-serif" font-size="7" fill="rgba(255,255,255,.4)">DC power flow</text>
+          <line x1="0" y1="92" x2="30" y2="92" stroke="rgba(35,193,196,.5)" stroke-width="1.5" stroke-dasharray="3 4"/>
+          <text x="36" y="96" font-family="DM Sans,sans-serif" font-size="7" fill="rgba(255,255,255,.4)">Guardian monitoring</text>
+        </g>
+
+        <!-- Footer -->
+        <text x="550" y="530" font-family="Questrial,sans-serif" font-size="6.5" letter-spacing="2" fill="rgba(255,255,255,.12)" text-anchor="middle">COMMUNICATIONS NODE · POWER &amp; SIGNAL FLOW · sovereignvision.org</text>
+      </svg>
+    </div>
+  </div>
+</section>
+
 <!-- ═══ STORM MODE — interactive tabs ═══════════════════════════════ -->
 <section class="storm-section">
   <div class="storm-inner">
@@ -1260,6 +1660,7 @@ footer { background:var(--navy-deep); padding:4rem 3rem 2.5rem; }
         <button class="storm-tab active" data-tab="t1">Tier 1 · Critical</button>
         <button class="storm-tab" data-tab="t2">Tier 2 · Priority</button>
         <button class="storm-tab" data-tab="t3">Tier 3 · Non-Essential</button>
+        <button class="storm-tab" data-tab="t4">Datacenter Offline</button>
       </div>
 
       <div class="storm-tab-content active" id="tab-t1">
@@ -1310,7 +1711,117 @@ footer { background:var(--navy-deep); padding:4rem 3rem 2.5rem; }
         </ul>
         <div class="storm-recovery" style="border-color:var(--stone-light);background:rgba(0,43,75,.04);">Tier 3 remains offline until battery is fully recovered and Tier 2 has been stable for 30 minutes. Stewards may manually override through Arbor.</div>
       </div>
+
+      <div class="storm-tab-content" id="tab-t4">
+        <div class="storm-tab-label">
+          <div class="st-dot" style="background:#6b46c1;box-shadow:0 0 6px rgba(107,70,193,.5);"></div>
+          <h4>Edge Degradation Mode</h4>
+          <span class="st-badge" style="color:#6b46c1;">Datacenter Offline</span>
+        </div>
+        <ul class="storm-items-list">
+          <li class="on"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Mobile LTE Core — continues locally on edge node</li>
+          <li class="on"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Satellite Uplink — active, reroutes to backup path</li>
+          <li class="on"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Guardian Edge — local monitoring and storm protocol</li>
+          <li class="on"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Civic VoIP — continues via local FreeSWITCH gateway</li>
+          <li class="amber"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>Arbor Interface — limited mode, no AI inference</li>
+          <li class="amber"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>Sensor telemetry — buffered locally, syncs on reconnect</li>
+          <li class="off"><svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>Guardian Core AI services — unavailable until datacenter restored</li>
+          <li class="off"><svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>Mirror Vault sync — queued, resumes automatically</li>
+        </ul>
+        <div class="storm-recovery" style="border-color:#6b46c1;background:rgba(107,70,193,.05);">Edge Degradation Mode is not a failure state — it is a designed operational mode. Nodes were built to sustain core communications services indefinitely without the datacenter. When the datacenter reconnects, buffered telemetry syncs automatically and full Guardian Core services resume without manual intervention.</div>
+      </div>
     </div>
+  </div>
+</section>
+
+<!-- ═══ VLAN ARCHITECTURE ════════════════════════════════════════════ -->
+<section class="vlan-section">
+  <div class="vlan-inner">
+    <div class="vlan-header">
+      <div>
+        <div class="section-tag teal reveal-left">Network Sovereignty</div>
+        <h2 class="h2 reveal">Ten isolated<br><em>network zones.</em></h2>
+      </div>
+      <p class="vlan-pull reveal">Sovereignty is not just about who owns the hardware. It is about who controls the traffic. Every device on the network is assigned to a dedicated VLAN with enforced isolation — citizens never share a data path with infrastructure systems.</p>
+    </div>
+
+    <div class="vlan-grid reveal">
+      <div class="vlan-row vlan-header-row">
+        <span>VLAN</span><span>Zone</span><span>Devices &amp; Systems</span><span>Priority</span><span>Key Rule</span>
+      </div>
+      <div class="vlan-row">
+        <span class="vlan-id">1</span>
+        <span class="vlan-name">Management</span>
+        <span class="vlan-devices">Switches, firewalls, servers, Guardian terminals</span>
+        <span class="vlan-pill vlan-high">High</span>
+        <span class="vlan-note">MAC-locked · port-controlled</span>
+      </div>
+      <div class="vlan-row">
+        <span class="vlan-id">20</span>
+        <span class="vlan-name">Edge Compute</span>
+        <span class="vlan-devices">Edge servers, AI inference modules, Guardian Edge</span>
+        <span class="vlan-pill vlan-high">High</span>
+        <span class="vlan-note">Guardian AI coordination</span>
+      </div>
+      <div class="vlan-row">
+        <span class="vlan-id">30</span>
+        <span class="vlan-name">LTE Core</span>
+        <span class="vlan-devices">Mobile core server, SIM routing, FreeSWITCH</span>
+        <span class="vlan-pill vlan-high">Med–High</span>
+        <span class="vlan-note">NAT policies enforced</span>
+      </div>
+      <div class="vlan-row">
+        <span class="vlan-id">40</span>
+        <span class="vlan-name">Satellite</span>
+        <span class="vlan-devices">Satellite terminal, WAN router uplink</span>
+        <span class="vlan-pill vlan-high">High</span>
+        <span class="vlan-note">Isolated WAN interface</span>
+      </div>
+      <div class="vlan-row">
+        <span class="vlan-id">50</span>
+        <span class="vlan-name">Fibre Uplink</span>
+        <span class="vlan-devices">SFP ports, backbone switch, router uplink</span>
+        <span class="vlan-pill vlan-high">High</span>
+        <span class="vlan-note">Enables Vaka cable peering</span>
+      </div>
+      <div class="vlan-row">
+        <span class="vlan-id">60</span>
+        <span class="vlan-name">Public Wi-Fi</span>
+        <span class="vlan-devices">Mesh APs, phones, tablets, visitor devices</span>
+        <span class="vlan-pill vlan-low">Low</span>
+        <span class="vlan-note">Rate-limited · Guardian-capped</span>
+      </div>
+      <div class="vlan-row">
+        <span class="vlan-id">70</span>
+        <span class="vlan-name">Surveillance</span>
+        <span class="vlan-devices">Cameras, access readers, NVR streams</span>
+        <span class="vlan-pill vlan-med">Medium</span>
+        <span class="vlan-note">VLAN tagging on PoE ports</span>
+      </div>
+      <div class="vlan-row">
+        <span class="vlan-id">80</span>
+        <span class="vlan-name">IoT / Environmental</span>
+        <span class="vlan-devices">PM2.5 sensors, rain gauge, CO₂, ultrasonic units</span>
+        <span class="vlan-pill vlan-med">Medium</span>
+        <span class="vlan-note">Guardian logs &amp; alerts only</span>
+      </div>
+      <div class="vlan-row">
+        <span class="vlan-id">90</span>
+        <span class="vlan-name">Guardian Civic</span>
+        <span class="vlan-devices">Arbor terminals, projector, flow controller</span>
+        <span class="vlan-pill vlan-med">Medium</span>
+        <span class="vlan-note">Edge control for kiosks</span>
+      </div>
+      <div class="vlan-row vlan-last">
+        <span class="vlan-id vlan-id-warn">99</span>
+        <span class="vlan-name">Quarantine</span>
+        <span class="vlan-devices">Unknown or unapproved devices pending Guardian review</span>
+        <span class="vlan-pill vlan-none">None</span>
+        <span class="vlan-note">Drops all external traffic</span>
+      </div>
+    </div>
+
+    <p class="vlan-footer reveal">Guardian enforces VLAN policy continuously. Any device that drifts from its assigned zone triggers an alert and is automatically migrated to VLAN 99 pending steward review. No manual firewall management required.</p>
   </div>
 </section>
 
@@ -1375,6 +1886,14 @@ footer { background:var(--navy-deep); padding:4rem 3rem 2.5rem; }
           <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
           <span><strong style="color:rgba(255,255,255,.85);">Full audit trail.</strong> Every automated decision Guardian makes — load shed, storm trigger, firmware push, VLAN change — is logged locally as a timestamped record, readable by the community council at any time.</span>
         </div>
+        <div class="sov-point reveal">
+          <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+          <span><strong style="color:rgba(255,255,255,.85);">Mirror Vault continuity.</strong> All audit logs, configuration snapshots, AI model states, and system telemetry replicate continuously to geographically distributed Guardian Mirror Vaults — including future oil-rig archive locations. Sovereignty is preserved even if the primary datacenter is destroyed.</span>
+        </div>
+        <div class="sov-point reveal">
+          <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+          <span><strong style="color:rgba(255,255,255,.85);">Sovereign datacenter backbone.</strong> Full Guardian intelligence — Arbor voice AI, telemetry processing, predictive analytics, MQTT message bus, and knowledge retrieval — runs on a sovereign GPU compute cluster. No foreign cloud. No subscription dependency. All AI services are co-located with the network they govern.</span>
+        </div>
       </div>
 
       <!-- Arbor card -->
@@ -1417,7 +1936,7 @@ footer { background:var(--navy-deep); padding:4rem 3rem 2.5rem; }
         <div class="phase-n">01</div>
         <div class="phase-label">Phase 1 · Funafuti Core</div>
         <div class="phase-title">10 Nodes — Civic &amp; Critical Sites</div>
-        <p class="phase-desc">Deploy 10 nodes across Funafuti covering desalination sites, schools, clinics, and the Civic Conduit Spine. Establish private mobile core and Guardian integration. Launch steward training and youth workforce certification programme.</p>
+        <p class="phase-desc">Deploy 3 nodes across Funafuti — covering Vai Tapu desalination, the school cluster, and the main civic hub. Establish private mobile core and Guardian integration. Launch steward training and youth workforce certification programme.</p>
       </div>
       <div class="phase-card reveal">
         <div class="phase-n">02</div>
@@ -1493,6 +2012,127 @@ footer { background:var(--navy-deep); padding:4rem 3rem 2.5rem; }
   </div>
 </section>
 
+<!-- ═══ NATIONAL ARCHITECTURE ══════════════════════════════════════ -->
+<section class="national-section">
+  <div class="national-inner">
+    <div class="national-header">
+      <div>
+        <div class="section-tag white reveal-left">Where This Fits</div>
+        <h2 class="h2 h2-white reveal">The nodes are<br>the <em>nervous system.</em></h2>
+      </div>
+      <p class="national-pull reveal">The communications network is one layer in a six-layer national digital architecture. Every node that broadcasts a signal connects citizens to infrastructure, infrastructure to Guardian, and Guardian to the sovereign datacenter that holds Tuvalu's collective intelligence.</p>
+    </div>
+
+    <div class="national-layers reveal">
+
+      <div class="nat-layer nat-citizen">
+        <div class="nat-layer-label">Citizen &amp; Civic Layer</div>
+        <div class="nat-layer-nodes">
+          <div class="nat-node">
+            <div class="nat-node-icon">
+              <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><circle cx="10" cy="6" r="3"/><path d="M3 18a7 7 0 0114 0"/></svg>
+            </div>
+            <span>Arbor Interface</span>
+          </div>
+          <div class="nat-node">
+            <div class="nat-node-icon">
+              <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="16" height="12" rx="1.5"/><line x1="6" y1="19" x2="14" y2="19"/><line x1="10" y1="15" x2="10" y2="19"/></svg>
+            </div>
+            <span>Public Dashboards</span>
+          </div>
+          <div class="nat-node">
+            <div class="nat-node-icon">
+              <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="7" width="14" height="10" rx="1"/><path d="M3 10h14"/><path d="M7 7V5a3 3 0 016 0v2"/></svg>
+            </div>
+            <span>Civic Kiosks</span>
+          </div>
+          <div class="nat-node">
+            <div class="nat-node-icon">
+              <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="10" height="16" rx="2"/><circle cx="10" cy="15" r="1" fill="currentColor"/></svg>
+            </div>
+            <span>Mobile Devices</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="nat-arrow">↓</div>
+
+      <div class="nat-layer nat-comms nat-active">
+        <div class="nat-layer-label nat-active-label">Communications Layer <span class="nat-here-tag">← This page</span></div>
+        <div class="nat-layer-nodes">
+          <div class="nat-node">
+            <div class="nat-node-icon">
+              <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><line x1="10" y1="3" x2="10" y2="17"/><path d="M5 6a6 6 0 010 8"/><path d="M15 6a6 6 0 010 8"/></svg>
+            </div>
+            <span>Hybrid Comms Nodes</span>
+          </div>
+          <div class="nat-node">
+            <div class="nat-node-icon">
+              <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><polyline points="2,10 6,10 8,4 12,16 14,10 18,10"/></svg>
+            </div>
+            <span>Fibre · 60GHz · Satellite</span>
+          </div>
+          <div class="nat-node">
+            <div class="nat-node-icon">
+              <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="6" width="16" height="10" rx="1.5"/><path d="M6 6V5a4 4 0 018 0v1"/><line x1="10" y1="10" x2="10" y2="13"/></svg>
+            </div>
+            <span>LTE + Mobile Core</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="nat-arrow">↓</div>
+
+      <div class="nat-layer nat-infra">
+        <div class="nat-layer-label">Infrastructure Systems Layer</div>
+        <div class="nat-layer-nodes">
+          <div class="nat-node"><div class="nat-node-icon"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"><path d="M10 2L3 7v9a8 8 0 0014 0V7z"/><path d="M7 12l2 2 4-4"/></svg></div><span>Water Systems</span></div>
+          <div class="nat-node"><div class="nat-node-icon"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"><polygon points="10,2 4,14 10,14 9,19 16,8 10,8"/></svg></div><span>Energy Systems</span></div>
+          <div class="nat-node"><div class="nat-node-icon"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"><polygon points="10,2 14,6 14,12 10,15 6,12 6,6"/><line x1="10" y1="15" x2="10" y2="10"/></svg></div><span>Food Systems</span></div>
+          <div class="nat-node"><div class="nat-node-icon"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"><path d="M4 14l3-6 3 3 3-5 3 8"/></svg></div><span>Waste &amp; Recovery</span></div>
+        </div>
+      </div>
+
+      <div class="nat-arrow">↓</div>
+
+      <div class="nat-layer nat-guardian">
+        <div class="nat-layer-label">Guardian Control Layer</div>
+        <div class="nat-layer-nodes">
+          <div class="nat-node"><div class="nat-node-icon"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><path d="M10 2L3 5.5v6c0 4.5 3 8 7 9 4-1 7-4.5 7-9v-6z"/><path d="M7.5 10l2 2 3.5-3.5"/></svg></div><span>Guardian Orchestration</span></div>
+          <div class="nat-node"><div class="nat-node-icon"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"><circle cx="10" cy="10" r="7"/><polyline points="10,6 10,10 13,12"/></svg></div><span>Telemetry Platform</span></div>
+          <div class="nat-node"><div class="nat-node-icon"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"><rect x="3" y="3" width="14" height="14" rx="1.5"/><line x1="3" y1="8" x2="17" y2="8"/><line x1="8" y1="8" x2="8" y2="17"/></svg></div><span>Operator Dashboards</span></div>
+        </div>
+      </div>
+
+      <div class="nat-arrow">↓</div>
+
+      <div class="nat-layer nat-dc">
+        <div class="nat-layer-label">Sovereign Datacenter Core</div>
+        <div class="nat-layer-nodes">
+          <div class="nat-node"><div class="nat-node-icon"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"><rect x="2" y="4" width="16" height="5" rx="1"/><rect x="2" y="11" width="16" height="5" rx="1"/><circle cx="16.5" cy="6.5" r="1" fill="currentColor"/><circle cx="16.5" cy="13.5" r="1" fill="currentColor"/></svg></div><span>AI Compute Cluster</span></div>
+          <div class="nat-node"><div class="nat-node-icon"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"><ellipse cx="10" cy="6" rx="7" ry="2.5"/><path d="M3 6v4c0 1.4 3.1 2.5 7 2.5s7-1.1 7-2.5V6"/><path d="M3 10v4c0 1.4 3.1 2.5 7 2.5s7-1.1 7-2.5v-4"/></svg></div><span>Storage Systems</span></div>
+          <div class="nat-node"><div class="nat-node-icon"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"><path d="M17 8l-5-5-9 9v5h5z"/><line x1="9.5" y1="14.5" x2="14.5" y2="9.5"/></svg></div><span>Platform Services</span></div>
+          <div class="nat-node"><div class="nat-node-icon"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"><path d="M4 16V8l6-5 6 5v8"/><rect x="7" y="11" width="6" height="5"/></svg></div><span>Mirror Vaults</span></div>
+        </div>
+      </div>
+
+      <div class="nat-arrow">↓</div>
+
+      <div class="nat-layer nat-knowledge">
+        <div class="nat-layer-label">National Knowledge Layer</div>
+        <div class="nat-layer-nodes">
+          <div class="nat-node"><div class="nat-node-icon"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"><path d="M4 3h9l3 3v11H4z"/><line x1="8" y1="8" x2="14" y2="8"/><line x1="8" y1="11" x2="14" y2="11"/><line x1="8" y1="14" x2="12" y2="14"/></svg></div><span>Knowledge Archive</span></div>
+          <div class="nat-node"><div class="nat-node-icon"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"><path d="M10 3C6 3 3 6 3 10c0 2 .8 3.8 2.1 5.1L5 18h10l-.9-2.9A7 7 0 0017 10c0-4-3-7-7-7z"/></svg></div><span>Cultural Memory</span></div>
+          <div class="nat-node"><div class="nat-node-icon"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"><circle cx="10" cy="10" r="7"/><line x1="10" y1="7" x2="10" y2="10"/><line x1="10" y1="10" x2="13" y2="13"/></svg></div><span>AI Knowledge Retrieval</span></div>
+        </div>
+      </div>
+
+    </div>
+
+    <p class="national-footer reveal">The mental model: hybrid nodes are the island's nervous system — collecting sensation and broadcasting signal. The datacenter is the brain — holding memory, running cognition, and coordinating response. Each functions independently. Together they constitute Tuvalu's sovereign digital infrastructure.</p>
+  </div>
+</section>
+
 <!-- ═══ TRUST STRIP ════════════════════════════════════════════════ -->
 <div class="trust-strip">
   <div class="trust-strip-inner">
@@ -1514,7 +2154,7 @@ footer { background:var(--navy-deep); padding:4rem 3rem 2.5rem; }
       <div class="trust-item-icon">
         <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
       </div>
-      <div class="trust-item-text"><strong>Storm-Hardened</strong>150 mph shelter · Retractable mast</div>
+      <div class="trust-item-text"><strong>Storm-Hardened</strong>Shelter 150 mph · Mast 120 kph guyed</div>
     </div>
     <div class="trust-div"></div>
     <div class="trust-item">
@@ -1802,13 +2442,13 @@ document.querySelectorAll('.storm-tab').forEach(tab => {
 const nodeData = [
   { name:'Mobile Core — Server 1', sub:'LTE core · always on · Tier 1 critical', bar:96, barClass:'bar-teal', status:'Active', pill:'pill-green', icon:'<rect x="2" y="6" width="20" height="12" rx="2"/><path d="M6 12h12"/><circle cx="12" cy="12" r="1.5"/>' },
   { name:'Civic VoIP — Server 2', sub:'Voice routing · SIP gateway · Tier 1', bar:91, barClass:'bar-teal', status:'Active', pill:'pill-green', icon:'<path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 2 2 0 015 7.72h3a2 2 0 012 1.72c.127.96.361 1.9.7 2.81a2 2 0 01-.45 2.11L9.09 15.91a16 16 0 006 6z"/>' },
-  { name:'Firewall — Active Node', sub:'HA pair · security &amp; routing · always on', bar:100, barClass:'bar-teal', status:'Active', pill:'pill-green', icon:'<path d="M12 2L4 6v6c0 5.25 3.5 10.15 8 11.5C16.5 22.15 20 17.25 20 12V6L12 2z"/><path d="M9 12l2 2 4-4"/>' },
+  { name:'Network Firewall', sub:'Open-source · security &amp; routing · always on', bar:100, barClass:'bar-teal', status:'Active', pill:'pill-green', icon:'<path d="M12 2L4 6v6c0 5.25 3.5 10.15 8 11.5C16.5 22.15 20 17.25 20 12V6L12 2z"/><path d="M9 12l2 2 4-4"/>' },
   { name:'Satellite Uplink', sub:'LEO satellite · global bridge · Tier 2', bar:84, barClass:'bar-gold', status:'Active', pill:'pill-green', icon:'<path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/>' },
   { name:'Microwave P2P Link', sub:'Inter-node relay · mesh backbone', bar:79, barClass:'bar-teal', status:'Active', pill:'pill-green', icon:'<circle cx="12" cy="12" r="3"/><path d="M6.3 6.3a8 8 0 000 11.4"/><path d="M17.7 6.3a8 8 0 010 11.4"/><path d="M3.5 3.5a14 14 0 000 17"/><path d="M20.5 3.5a14 14 0 010 17"/>' },
   { name:'Community Mesh', sub:'Outdoor APs · public access · Tier 3', bar:72, barClass:'bar-coral', status:'Active', pill:'pill-green', icon:'<path d="M5 12.55a11 11 0 0114.08 0"/><path d="M1.42 9a16 16 0 0121.16 0"/><path d="M8.53 16.11a6 6 0 016.95 0"/><circle cx="12" cy="20" r="1" fill="currentColor"/>' },
   { name:'Emergency Radio', sub:'VHF/UHF civic repeater · Tier 4 fallback', bar:28, barClass:'bar-stone', status:'Standby', pill:'pill-gold', icon:'<line x1="12" y1="2" x2="12" y2="22"/><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/>' },
-  { name:'Guardian AI', sub:'Central control · monitoring · audit log', bar:100, barClass:'bar-teal', status:'Monitoring', pill:'pill-green', icon:'<path d="M12 2L4 6v6c0 5.25 3.5 10.15 8 11.5C16.5 22.15 20 17.25 20 12V6L12 2z"/><path d="M9 12l2 2 4-4"/>' },
-  { name:'Solar + Battery', sub:'6.4 kW array · 28–30 kWh LFP · 88% SOC', bar:88, barClass:'bar-gold', status:'Charging', pill:'pill-green', icon:'<circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/>' },
+  { name:'Guardian Edge', sub:'Local monitoring · storm protocol · audit log', bar:100, barClass:'bar-teal', status:'Monitoring', pill:'pill-green', icon:'<path d="M12 2L4 6v6c0 5.25 3.5 10.15 8 11.5C16.5 22.15 20 17.25 20 12V6L12 2z"/><path d="M9 12l2 2 4-4"/>' },
+  { name:'Solar + Battery Bank', sub:'6.4 kW array · 28–30 kWh LFP · 88% SOC', bar:88, barClass:'bar-gold', status:'Charging', pill:'pill-green', icon:'<circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/>' },
 ];
 
 const rowsEl = document.getElementById('node-rows');
