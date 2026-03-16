@@ -142,9 +142,13 @@ nav.scrolled .hamburger span { background:var(--navy); }
 /* ═══ HERO ═══════════════════════════════════════ */
 .page-hero {
   background: linear-gradient(155deg, var(--navy-deep) 0%, #003d5c 40%, #005060 70%, var(--navy-mid) 100%);
-  padding: 140px 3rem 100px;
+  min-height: 100svh;
+  min-height: 100vh; /* fallback for older browsers */
+  padding: 0 3rem;
   position: relative;
   overflow: hidden;
+  display: flex;
+  align-items: center;
 }
 .page-hero::before {
   content:''; position:absolute; inset:0;
@@ -156,7 +160,7 @@ nav.scrolled .hamburger span { background:var(--navy); }
 #wave-canvas { position:absolute; inset:0; z-index:1; pointer-events:none; opacity:.55; }
 #wave-canvas-2 { position:absolute; inset:0; z-index:1; pointer-events:none; opacity:.28; }
 #wifi-canvas { position:absolute; inset:0; z-index:1; pointer-events:none; opacity:1; }
-.page-hero-inner { position:relative; z-index:2; max-width:1360px; margin:0 auto; }
+.page-hero-inner { position:relative; z-index:2; max-width:1360px; margin:0 auto; width:100%; padding: 120px 0 100px; }
 .hero-tag { display:inline-flex; align-items:center; gap:.7rem; font-family:'Questrial',sans-serif; font-size:.64rem; letter-spacing:.22em; text-transform:uppercase; color:var(--teal); margin-bottom:1.6rem; opacity:0; animation:fadeUp .8s .4s var(--ease) forwards; }
 .hero-tag::before { content:''; width:24px; height:1px; background:var(--teal); flex-shrink:0; }
 .page-hero h1 { font-family:'Cormorant Garamond',serif; font-size:clamp(3rem,7vw,7rem); font-weight:300; line-height:.93; color:var(--white); max-width:820px; letter-spacing:-.02em; margin-bottom:1.8rem; opacity:0; animation:fadeUp .9s .6s var(--ease) forwards; }
@@ -433,7 +437,8 @@ footer { background:var(--navy-deep); padding:4rem 3rem 2.5rem; }
   .nav-links,.nav-cta { display:none; }
   .hamburger { display:flex; }
   .mobile-menu { display:flex; }
-  .page-hero { padding:120px 1.5rem 70px; }
+  .page-hero { padding:0 1.5rem; }
+  .page-hero-inner { padding:100px 0 80px; }
   .hero-meta { right:1.5rem; bottom:1.5rem; }
   .intro-section,.stack-section,.spec-section,.storm-section,.ga-section,
   .phases-section,.integration-section,.join-section,.trust-strip,
