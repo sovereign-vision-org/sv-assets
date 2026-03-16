@@ -1,0 +1,1429 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="The Sovereign Datacenter — Tuvalu's on-island AI compute core. Guardian intelligence, Arbor voice services, national knowledge retrieval, and Mirror Vault continuity. Tuvalu Sovereign Vision.">
+<title>Sovereign Datacenter — Te Fale Mohokoi · Sovereign Vision</title>
+<link rel="icon" type="image/png" href="images/favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Questrial&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet">
+<style>
+/* ═══════════════════════════════════════════════
+   DESIGN TOKENS
+═══════════════════════════════════════════════ */
+:root {
+  --coral:        #fe5337;
+  --coral-dim:    #c9402a;
+  --coral-pale:   rgba(254,83,55,0.08);
+  --gold:         #ffc61d;
+  --gold-dim:     #d4a400;
+  --gold-pale:    rgba(255,198,29,0.10);
+  --teal:         #23c1c4;
+  --teal-dim:     #0096b9;
+  --teal-pale:    rgba(35,193,196,0.09);
+  --navy:         #002b4b;
+  --navy-mid:     #00203a;
+  --navy-deep:    #00152a;
+  --navy-light:   #0d4070;
+  --purple:       #6b21a8;
+  --purple-mid:   #7c3aed;
+  --cream:        #faf6ee;
+  --cream-mid:    #f2ead8;
+  --cream-dark:   #e8ddc8;
+  --stone:        #4a5568;
+  --stone-light:  #718096;
+  --white:        #ffffff;
+  --text-on-dark: rgba(250,246,238,0.70);
+  --text-dimmer:  rgba(250,246,238,0.40);
+  --border-light: rgba(0,43,75,0.10);
+  --ease:         cubic-bezier(0.22,1,0.36,1);
+}
+@media (prefers-reduced-motion: reduce) {
+  *,*::before,*::after { animation-duration:.01ms!important; transition-duration:.01ms!important; }
+  .reveal { opacity:1!important; transform:none!important; }
+}
+*,*::before,*::after { box-sizing:border-box; margin:0; padding:0; }
+html { scroll-behavior:smooth; }
+body { background:var(--cream); color:var(--navy); font-family:'DM Sans',sans-serif; font-weight:300; overflow-x:hidden; -webkit-font-smoothing:antialiased; }
+
+/* ═══ NAV ═══════════════════════════════════════ */
+nav { position:fixed; top:0; left:0; right:0; z-index:200; padding:0 3rem; height:72px; display:flex; align-items:center; justify-content:space-between; transition:background .4s,box-shadow .4s; }
+nav.scrolled { background:rgba(255,255,255,0.96); box-shadow:0 1px 0 var(--border-light),0 4px 24px rgba(0,43,75,0.06); backdrop-filter:blur(12px); }
+.nav-logo { display:flex; align-items:center; gap:.7rem; text-decoration:none; flex-shrink:0; }
+.nav-logo img { width:42px; height:42px; object-fit:contain; display:block; }
+.nav-logo-text { font-family:'Questrial',sans-serif; font-size:.78rem; letter-spacing:.14em; text-transform:uppercase; color:var(--navy); line-height:1.25; }
+.nav-logo-text span { display:block; font-size:.58rem; letter-spacing:.12em; color:var(--stone-light); font-family:'DM Sans',sans-serif; }
+nav:not(.scrolled) .nav-logo-text { color:var(--white); }
+nav:not(.scrolled) .nav-logo-text span { color:rgba(255,255,255,.55); }
+.nav-links { display:flex; align-items:center; gap:2rem; list-style:none; }
+.nav-links a { font-size:.72rem; letter-spacing:.1em; text-transform:uppercase; color:rgba(255,255,255,.8); text-decoration:none; font-weight:400; transition:color .25s; white-space:nowrap; }
+nav.scrolled .nav-links a { color:var(--stone); }
+.nav-links a:hover { color:var(--coral)!important; }
+.nav-dropdown { position:relative; }
+.nav-dropdown > a { display:flex; align-items:center; gap:.3rem; }
+.nav-dropdown > a::after { content:'▾'; font-size:.6rem; opacity:.6; transition:transform .25s; }
+.nav-dropdown.active > a::after { transform:rotate(180deg); }
+.nav-dropdown::after { content:''; position:absolute; top:100%; left:-20px; right:-20px; height:16px; background:transparent; display:none; }
+.nav-dropdown.active::after { display:block; }
+.dropdown-menu { position:absolute; top:calc(100% + 8px); left:50%; min-width:220px; background:var(--white); border:1px solid var(--border-light); box-shadow:0 12px 40px rgba(0,43,75,0.12); padding:.5rem 0; opacity:0; pointer-events:none; transform:translateX(-50%) translateY(-6px); transition:opacity .2s var(--ease),transform .2s var(--ease); }
+.nav-dropdown.active .dropdown-menu { opacity:1; pointer-events:all; transform:translateX(-50%) translateY(0); }
+.dropdown-menu a { display:block; padding:.6rem 1.2rem; font-size:.72rem; letter-spacing:.07em; text-transform:uppercase; color:var(--navy)!important; text-decoration:none; transition:background .18s,color .18s; white-space:nowrap; }
+.dropdown-menu a:hover { background:var(--coral-pale); color:var(--coral)!important; }
+.nav-cta { background:var(--coral); color:var(--white)!important; padding:.5rem 1.4rem; font-size:.7rem; letter-spacing:.14em; text-transform:uppercase; font-family:'Questrial',sans-serif; text-decoration:none; transition:background .25s,transform .2s; white-space:nowrap; flex-shrink:0; }
+.nav-cta:hover { background:var(--coral-dim); transform:translateY(-1px); }
+.hamburger { display:none; flex-direction:column; gap:5px; cursor:pointer; padding:4px; }
+.hamburger span { width:22px; height:1.5px; background:var(--white); display:block; transition:all .3s var(--ease); }
+nav.scrolled .hamburger span { background:var(--navy); }
+.hamburger.open span:nth-child(1) { transform:rotate(45deg) translate(4.7px,4.7px); }
+.hamburger.open span:nth-child(2) { opacity:0; }
+.hamburger.open span:nth-child(3) { transform:rotate(-45deg) translate(4.7px,-4.7px); }
+.mobile-menu { display:none; position:fixed; inset:0; z-index:199; background:var(--navy-deep); flex-direction:column; align-items:center; justify-content:center; gap:1.8rem; opacity:0; pointer-events:none; transition:opacity .35s; }
+.mobile-menu.open { opacity:1; pointer-events:all; }
+.mobile-menu a { font-family:'Cormorant Garamond',serif; font-size:2rem; font-weight:300; color:var(--white); text-decoration:none; letter-spacing:.04em; transition:color .25s; }
+.mobile-menu a:hover { color:var(--gold); }
+.mobile-menu .m-cta { font-family:'Questrial',sans-serif; font-size:.76rem; letter-spacing:.16em; text-transform:uppercase; color:var(--coral); border:1px solid var(--coral); padding:.65rem 2rem; margin-top:.5rem; }
+
+/* ═══ BUTTONS ════════════════════════════════════ */
+.btn-coral { background:var(--coral); color:var(--white); border:1.5px solid var(--coral); padding:.8rem 2rem; font-family:'Questrial',sans-serif; font-size:.74rem; letter-spacing:.14em; text-transform:uppercase; text-decoration:none; display:inline-block; transition:background .25s,transform .2s; }
+.btn-coral:hover { background:var(--coral-dim); border-color:var(--coral-dim); transform:translateY(-2px); }
+.btn-ghost { background:transparent; color:rgba(255,255,255,.85); border:1.5px solid rgba(255,255,255,.3); padding:.8rem 2rem; font-family:'Questrial',sans-serif; font-size:.74rem; letter-spacing:.14em; text-transform:uppercase; text-decoration:none; display:inline-block; transition:all .25s; }
+.btn-ghost:hover { border-color:var(--white); color:var(--white); transform:translateY(-2px); }
+
+/* ═══ TYPOGRAPHY ═════════════════════════════════ */
+.h2 { font-family:'Cormorant Garamond',serif; font-size:clamp(2.4rem,4.5vw,4.2rem); font-weight:300; color:var(--navy); line-height:1.1; }
+.h2 em { font-style:italic; color:var(--coral); }
+.h2-white { color:var(--white); }
+.h2-white em { color:var(--gold); }
+.body-text { font-size:.88rem; color:var(--stone); line-height:1.8; }
+.section-tag { font-family:'Questrial',sans-serif; font-size:.62rem; letter-spacing:.22em; text-transform:uppercase; color:var(--coral); margin-bottom:.9rem; display:flex; align-items:center; gap:.7rem; }
+.section-tag::before { content:''; width:20px; height:1.5px; background:var(--coral); flex-shrink:0; }
+.section-tag.teal { color:var(--teal-dim); }
+.section-tag.teal::before { background:var(--teal-dim); }
+.section-tag.gold { color:var(--gold-dim); }
+.section-tag.gold::before { background:var(--gold-dim); }
+.section-tag.white { color:rgba(255,255,255,.7); }
+.section-tag.white::before { background:rgba(255,255,255,.5); }
+.section-tag.purple { color:rgba(139,92,246,.8); }
+.section-tag.purple::before { background:rgba(139,92,246,.7); }
+
+/* ═══ REVEAL ANIMATIONS ══════════════════════════ */
+.reveal { opacity:0; transform:translateY(22px); transition:opacity .7s var(--ease),transform .7s var(--ease); }
+.reveal.visible { opacity:1; transform:none; }
+.reveal-left { opacity:0; transform:translateX(-22px); transition:opacity .65s var(--ease),transform .65s var(--ease); }
+.reveal-left.visible { opacity:1; transform:none; }
+
+/* ═══ HERO ═══════════════════════════════════════ */
+.page-hero { position:relative; min-height:100svh; display:flex; align-items:center; background:var(--navy-deep); overflow:hidden; }
+#hero-canvas { position:absolute; inset:0; width:100%; height:100%; }
+.hero-overlay { position:absolute; inset:0; background:linear-gradient(135deg,rgba(0,21,42,.85) 0%,rgba(0,21,42,.3) 60%,rgba(0,21,42,.6) 100%); pointer-events:none; }
+.page-hero-inner { position:relative; z-index:2; max-width:1360px; width:100%; margin:0 auto; padding:160px 3rem 120px; }
+.hero-eyebrow { font-family:'Questrial',sans-serif; font-size:.62rem; letter-spacing:.28em; text-transform:uppercase; color:rgba(139,92,246,.8); margin-bottom:1.2rem; display:flex; align-items:center; gap:.7rem; }
+.hero-eyebrow::before { content:''; width:28px; height:1.5px; background:rgba(139,92,246,.7); flex-shrink:0; }
+.hero-h1 { font-family:'Cormorant Garamond',serif; font-size:clamp(3.2rem,7vw,7.5rem); font-weight:300; color:var(--white); line-height:1.0; margin-bottom:1rem; }
+.hero-h1 em { font-style:italic; color:var(--gold); }
+.hero-sub { font-size:clamp(.9rem,1.4vw,1.1rem); color:rgba(255,255,255,.65); line-height:1.75; max-width:560px; margin-bottom:2.8rem; }
+.hero-actions { display:flex; gap:1rem; flex-wrap:wrap; }
+.hero-stats { display:flex; gap:0; margin-top:5rem; border-top:1px solid rgba(255,255,255,.08); padding-top:2.5rem; max-width:700px; }
+.hstat { flex:1; padding-right:2rem; border-right:1px solid rgba(255,255,255,.07); }
+.hstat:last-child { border-right:none; }
+.hstat-n { font-family:'Cormorant Garamond',serif; font-size:2.6rem; font-weight:300; color:var(--gold); line-height:1; margin-bottom:.3rem; }
+.hstat-l { font-size:.65rem; letter-spacing:.1em; color:var(--text-on-dark); line-height:1.45; }
+.hero-meta { position:absolute; bottom:2rem; right:3rem; font-family:'Questrial',sans-serif; font-size:.56rem; letter-spacing:.16em; text-transform:uppercase; color:rgba(255,255,255,.25); display:flex; align-items:center; gap:.5rem; }
+.hero-meta::before { content:''; width:5px; height:5px; border-radius:50%; background:var(--teal); animation:pulseDot 2.5s infinite; }
+@keyframes pulseDot { 0%,100%{box-shadow:0 0 0 0 rgba(35,193,196,.5);}50%{box-shadow:0 0 0 6px rgba(35,193,196,0);} }
+
+/* ═══ INTRO BAND ═════════════════════════════════ */
+.intro-section { background:var(--navy-mid); padding:0; border-bottom:1px solid rgba(255,255,255,.06); }
+.intro-stats { display:flex; max-width:1360px; margin:0 auto; }
+.stat { flex:1; padding:2.4rem 2.2rem; border-right:1px solid rgba(255,255,255,.07); }
+.stat:last-child { border-right:none; }
+.stat-n { font-family:'Cormorant Garamond',serif; font-size:2.8rem; font-weight:300; color:var(--gold); line-height:1; margin-bottom:.3rem; }
+.stat-l { font-size:.68rem; letter-spacing:.08em; color:var(--text-on-dark); line-height:1.4; }
+
+/* ═══ WHAT IS THE DATACENTER ════════════════════ */
+.what-section { background:var(--cream); padding:8rem 3rem; }
+.what-inner { max-width:1360px; margin:0 auto; display:grid; grid-template-columns:1fr 1.6fr; gap:6rem; align-items:start; }
+.what-left { position:sticky; top:96px; }
+.what-pull { font-family:'Cormorant Garamond',serif; font-size:clamp(1.15rem,2vw,1.65rem); font-weight:300; font-style:italic; color:var(--navy); line-height:1.6; border-left:3px solid var(--gold); padding-left:1.4rem; margin-top:1.5rem; }
+.what-right { display:flex; flex-direction:column; gap:2.4rem; }
+.what-card { background:var(--white); border:1px solid var(--border-light); padding:2rem 1.8rem; border-left:3px solid var(--teal); transition:box-shadow .3s; }
+.what-card:hover { box-shadow:0 8px 32px rgba(0,43,75,.08); }
+.what-card-label { font-family:'Questrial',sans-serif; font-size:.6rem; letter-spacing:.18em; text-transform:uppercase; color:var(--teal-dim); margin-bottom:.4rem; }
+.what-card-title { font-family:'Cormorant Garamond',serif; font-size:1.35rem; font-weight:400; color:var(--navy); margin-bottom:.7rem; }
+.what-card p { font-size:.82rem; color:var(--stone); line-height:1.75; }
+.what-card.gold-accent { border-left-color:var(--gold); }
+.what-card.gold-accent .what-card-label { color:var(--gold-dim); }
+.what-card.coral-accent { border-left-color:var(--coral); }
+.what-card.coral-accent .what-card-label { color:var(--coral-dim); }
+.what-card.purple-accent { border-left-color:var(--purple-mid); }
+.what-card.purple-accent .what-card-label { color:var(--purple-mid); }
+
+/* ═══ GPU COMPUTE SECTION ════════════════════════ */
+.compute-section { background:var(--navy-deep); padding:8rem 3rem; position:relative; overflow:hidden; }
+.compute-section::before { content:''; position:absolute; inset:0; background:radial-gradient(ellipse 60% 50% at 80% 50%,rgba(107,33,168,.12) 0%,transparent 60%); pointer-events:none; }
+.compute-inner { max-width:1360px; margin:0 auto; position:relative; z-index:1; }
+.compute-header { display:grid; grid-template-columns:1fr 1.4fr; gap:4rem; align-items:end; margin-bottom:5rem; }
+.compute-pull { font-family:'Cormorant Garamond',serif; font-size:clamp(1rem,1.6vw,1.35rem); font-weight:300; font-style:italic; color:rgba(255,255,255,.7); line-height:1.65; border-left:2px solid rgba(107,33,168,.6); padding-left:1.4rem; }
+
+/* GPU spec cards */
+.gpu-grid { display:grid; grid-template-columns:1fr 1fr; gap:1px; background:rgba(255,255,255,.06); margin-bottom:3rem; }
+.gpu-card { background:var(--navy-deep); padding:2.2rem 1.8rem; }
+.gpu-card-header { display:flex; align-items:center; gap:1rem; margin-bottom:1.4rem; }
+.gpu-badge { font-family:'Questrial',sans-serif; font-size:.58rem; letter-spacing:.14em; text-transform:uppercase; padding:.25rem .65rem; border-radius:100px; }
+.gpu-badge-a { background:rgba(107,33,168,.2); color:rgba(167,139,250,.9); border:1px solid rgba(107,33,168,.4); }
+.gpu-badge-b { background:rgba(35,193,196,.12); color:var(--teal); border:1px solid rgba(35,193,196,.3); }
+.gpu-card-name { font-family:'Cormorant Garamond',serif; font-size:1.4rem; font-weight:300; color:var(--white); margin-bottom:.3rem; }
+.gpu-card-sub { font-size:.68rem; color:rgba(255,255,255,.4); letter-spacing:.05em; }
+.gpu-spec-list { list-style:none; display:flex; flex-direction:column; gap:0; }
+.gpu-spec-list li { display:flex; justify-content:space-between; align-items:baseline; padding:.5rem 0; border-bottom:1px solid rgba(255,255,255,.05); font-size:.76rem; gap:.8rem; }
+.gpu-spec-list li:last-child { border-bottom:none; }
+.gpu-key { color:rgba(255,255,255,.38); flex-shrink:0; }
+.gpu-val { color:rgba(255,255,255,.82); text-align:right; font-weight:400; }
+.gpu-val.highlight { color:var(--gold); }
+
+/* GPU utilisation chart */
+.gpu-chart-wrap { background:rgba(255,255,255,.02); border:1px solid rgba(255,255,255,.06); padding:1.8rem; }
+.gpu-chart-header { display:flex; align-items:center; justify-content:space-between; margin-bottom:1.4rem; }
+.gpu-chart-title { font-family:'Questrial',sans-serif; font-size:.64rem; letter-spacing:.18em; text-transform:uppercase; color:rgba(255,255,255,.45); }
+.gpu-live-badge { display:flex; align-items:center; gap:.4rem; font-family:'Questrial',sans-serif; font-size:.56rem; letter-spacing:.12em; text-transform:uppercase; color:var(--teal); }
+.gpu-live-dot { width:5px; height:5px; border-radius:50%; background:var(--teal); animation:pulseDot 2s infinite; }
+.gpu-bars { display:flex; flex-direction:column; gap:.8rem; }
+.gpu-bar-row { display:grid; grid-template-columns:110px 1fr 42px; align-items:center; gap:.8rem; }
+.gpu-bar-label { font-size:.72rem; color:rgba(255,255,255,.55); white-space:nowrap; }
+.gpu-bar-track { height:6px; background:rgba(255,255,255,.06); border-radius:3px; overflow:hidden; }
+.gpu-bar-fill { height:100%; border-radius:3px; transition:width 1.4s var(--ease); }
+.gpu-bar-pct { font-size:.68rem; color:rgba(255,255,255,.4); text-align:right; font-family:'Questrial',sans-serif; }
+
+/* ═══ PLATFORM SERVICES ══════════════════════════ */
+.platform-section { background:var(--white); padding:8rem 3rem; border-top:1px solid var(--border-light); }
+.platform-inner { max-width:1360px; margin:0 auto; }
+.platform-header { display:grid; grid-template-columns:1fr 1.4fr; gap:4rem; align-items:end; margin-bottom:4rem; }
+.platform-pull { font-family:'Cormorant Garamond',serif; font-size:clamp(1rem,1.6vw,1.35rem); font-weight:300; font-style:italic; color:var(--navy); line-height:1.65; border-left:2px solid var(--teal); padding-left:1.4rem; }
+.platform-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:1px; background:var(--border-light); }
+.platform-card { background:var(--white); padding:2rem 1.6rem; transition:background .25s; position:relative; overflow:hidden; }
+.platform-card:hover { background:#fdfbf7; }
+.platform-card::after { content:''; position:absolute; bottom:0; left:0; right:0; height:2px; transform:scaleX(0); transform-origin:left; transition:transform .35s var(--ease); }
+.platform-card:hover::after { transform:scaleX(1); }
+.pc-teal::after { background:var(--teal); }
+.pc-gold::after { background:var(--gold); }
+.pc-coral::after { background:var(--coral); }
+.pc-purple::after { background:var(--purple-mid); }
+.platform-icon { width:30px; height:30px; margin-bottom:1.1rem; }
+.platform-icon svg { width:30px; height:30px; stroke-width:1.2; fill:none; stroke-linecap:round; stroke-linejoin:round; }
+.pc-teal .platform-icon svg { stroke:var(--teal); }
+.pc-gold .platform-icon svg { stroke:var(--gold-dim); }
+.pc-coral .platform-icon svg { stroke:var(--coral); }
+.pc-purple .platform-icon svg { stroke:var(--purple-mid); }
+.platform-label { font-family:'Questrial',sans-serif; font-size:.58rem; letter-spacing:.16em; text-transform:uppercase; margin-bottom:.25rem; }
+.pc-teal .platform-label { color:var(--teal-dim); }
+.pc-gold .platform-label { color:var(--gold-dim); }
+.pc-coral .platform-label { color:var(--coral-dim); }
+.pc-purple .platform-label { color:var(--purple-mid); }
+.platform-name { font-family:'Cormorant Garamond',serif; font-size:1.2rem; font-weight:400; color:var(--navy); margin-bottom:.6rem; line-height:1.2; }
+.platform-desc { font-size:.76rem; color:var(--stone); line-height:1.7; }
+.platform-stack { margin-top:1rem; display:flex; flex-wrap:wrap; gap:.3rem; }
+.stack-tag { font-family:'Questrial',sans-serif; font-size:.58rem; letter-spacing:.1em; background:rgba(0,43,75,.05); color:var(--stone-light); padding:.18rem .5rem; border-radius:2px; }
+
+/* ═══ STORAGE & CONTINUITY ═══════════════════════ */
+.storage-section { background:var(--cream); padding:8rem 3rem; border-top:1px solid var(--border-light); }
+.storage-inner { max-width:1360px; margin:0 auto; display:grid; grid-template-columns:1fr 1fr; gap:5rem; align-items:start; }
+.storage-left h2 { margin-bottom:1rem; }
+.storage-pull { font-family:'Cormorant Garamond',serif; font-size:clamp(1rem,1.5vw,1.2rem); font-weight:300; font-style:italic; color:var(--navy); line-height:1.65; border-left:2px solid var(--coral); padding-left:1.2rem; margin:1.2rem 0 2rem; }
+.storage-items { display:flex; flex-direction:column; gap:1.2rem; }
+.storage-item { background:var(--white); border:1px solid var(--border-light); padding:1.6rem 1.5rem; display:flex; gap:1rem; align-items:flex-start; transition:box-shadow .25s; }
+.storage-item:hover { box-shadow:0 4px 18px rgba(0,43,75,.07); }
+.si-icon { width:28px; height:28px; flex-shrink:0; margin-top:.1rem; }
+.si-icon svg { width:28px; height:28px; stroke:var(--stone-light); stroke-width:1.2; fill:none; stroke-linecap:round; stroke-linejoin:round; }
+.si-name { font-family:'Questrial',sans-serif; font-size:.64rem; letter-spacing:.14em; text-transform:uppercase; color:var(--navy); margin-bottom:.3rem; }
+.si-desc { font-size:.76rem; color:var(--stone); line-height:1.65; }
+
+/* Storage capacity chart */
+.storage-chart { background:var(--navy-deep); padding:2rem; border:1px solid rgba(255,255,255,.06); }
+.sc-title { font-family:'Questrial',sans-serif; font-size:.64rem; letter-spacing:.18em; text-transform:uppercase; color:rgba(255,255,255,.4); margin-bottom:1.6rem; }
+.sc-bars { display:flex; flex-direction:column; gap:1.4rem; }
+.sc-row { }
+.sc-row-header { display:flex; justify-content:space-between; margin-bottom:.45rem; }
+.sc-label { font-size:.74rem; color:rgba(255,255,255,.6); }
+.sc-val { font-size:.7rem; color:rgba(255,255,255,.4); font-family:'Questrial',sans-serif; }
+.sc-track { height:8px; background:rgba(255,255,255,.06); border-radius:4px; overflow:hidden; }
+.sc-fill { height:100%; border-radius:4px; transition:width 1.6s var(--ease); }
+.sc-teal { background:linear-gradient(90deg,var(--teal),rgba(35,193,196,.5)); }
+.sc-gold { background:linear-gradient(90deg,var(--gold),rgba(255,198,29,.5)); }
+.sc-purple { background:linear-gradient(90deg,var(--purple-mid),rgba(124,58,237,.5)); }
+.sc-coral { background:linear-gradient(90deg,var(--coral),rgba(254,83,55,.5)); }
+.sc-divider { height:1px; background:rgba(255,255,255,.05); margin:1rem 0; }
+.sc-total { display:flex; justify-content:space-between; align-items:center; }
+.sc-total-label { font-size:.72rem; color:rgba(255,255,255,.35); }
+.sc-total-val { font-family:'Cormorant Garamond',serif; font-size:1.6rem; font-weight:300; color:var(--gold); }
+
+/* ═══ KNOWLEDGE LAYER ════════════════════════════ */
+.knowledge-section { background:var(--navy); padding:8rem 3rem; }
+.knowledge-inner { max-width:1360px; margin:0 auto; }
+.knowledge-header { display:grid; grid-template-columns:1fr 1.4fr; gap:4rem; align-items:end; margin-bottom:4rem; }
+.knowledge-pull { font-family:'Cormorant Garamond',serif; font-size:clamp(1rem,1.6vw,1.35rem); font-weight:300; font-style:italic; color:rgba(255,255,255,.7); line-height:1.65; border-left:2px solid var(--gold); padding-left:1.4rem; }
+.knowledge-cards { display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:rgba(255,255,255,.06); }
+.kc { background:var(--navy); padding:2.2rem 1.8rem; }
+.kc-num { font-family:'Cormorant Garamond',serif; font-size:3.5rem; font-weight:300; line-height:1; opacity:.08; margin-bottom:.8rem; }
+.kc-label { font-family:'Questrial',sans-serif; font-size:.6rem; letter-spacing:.18em; text-transform:uppercase; margin-bottom:.3rem; }
+.kc-title { font-family:'Cormorant Garamond',serif; font-size:1.35rem; font-weight:400; color:var(--white); margin-bottom:.7rem; line-height:1.2; }
+.kc-desc { font-size:.78rem; color:rgba(255,255,255,.5); line-height:1.75; }
+.kc-1 .kc-num,.kc-1 .kc-label { color:var(--teal); }
+.kc-2 .kc-num,.kc-2 .kc-label { color:var(--gold-dim); }
+.kc-3 .kc-num,.kc-3 .kc-label { color:rgba(167,139,250,.8); }
+
+/* ═══ TE PUKA LOLOA CONNECTION ═══════════════════ */
+.puka-section { background:var(--cream); padding:8rem 3rem; border-top:1px solid var(--border-light); }
+.puka-inner { max-width:1360px; margin:0 auto; display:grid; grid-template-columns:1fr 1fr; gap:6rem; align-items:center; }
+.puka-right h2 { margin-bottom:1rem; }
+.puka-body { font-size:.85rem; color:var(--stone); line-height:1.8; margin:1.2rem 0 2rem; }
+.backhaul-tiers { display:flex; flex-direction:column; gap:.8rem; margin-bottom:2rem; }
+.bt { display:flex; align-items:flex-start; gap:1rem; padding:1rem 1.2rem; background:var(--white); border:1px solid var(--border-light); border-left:3px solid var(--teal); }
+.bt.bt-gold { border-left-color:var(--gold); }
+.bt.bt-stone { border-left-color:var(--stone-light); }
+.bt-label { font-family:'Questrial',sans-serif; font-size:.58rem; letter-spacing:.14em; text-transform:uppercase; color:var(--teal-dim); margin-bottom:.25rem; }
+.bt-gold .bt-label { color:var(--gold-dim); }
+.bt-stone .bt-label { color:var(--stone-light); }
+.bt-name { font-size:.78rem; color:var(--navy); font-weight:500; margin-bottom:.2rem; }
+.bt-desc { font-size:.73rem; color:var(--stone); }
+
+/* Backhaul SVG diagram */
+.puka-diagram { }
+.puka-diagram svg { width:100%; display:block; }
+
+/* ═══ DEGRADATION MODE ═══════════════════════════ */
+.degrade-section { background:var(--navy-deep); padding:7rem 3rem; border-top:1px solid rgba(255,255,255,.06); }
+.degrade-inner { max-width:1360px; margin:0 auto; display:grid; grid-template-columns:1fr 1.5fr; gap:5rem; align-items:start; }
+.degrade-left h2 { margin-bottom:1rem; }
+.degrade-pull { font-family:'Cormorant Garamond',serif; font-size:clamp(1rem,1.5vw,1.2rem); font-weight:300; font-style:italic; color:rgba(255,255,255,.65); line-height:1.65; border-left:2px solid rgba(107,33,168,.6); padding-left:1.2rem; margin:1.2rem 0 0; }
+.degrade-grid { display:flex; flex-direction:column; gap:1px; background:rgba(255,255,255,.04); }
+.dg-row { display:grid; grid-template-columns:1fr auto; align-items:center; gap:1.5rem; background:var(--navy-deep); padding:1.2rem 1.6rem; border-bottom:1px solid rgba(255,255,255,.04); transition:background .2s; }
+.dg-row:last-child { border-bottom:none; }
+.dg-row:hover { background:rgba(255,255,255,.02); }
+.dg-name { font-size:.8rem; color:rgba(255,255,255,.75); margin-bottom:.2rem; }
+.dg-sub { font-size:.7rem; color:rgba(255,255,255,.35); }
+.dg-pill { font-family:'Questrial',sans-serif; font-size:.58rem; letter-spacing:.1em; text-transform:uppercase; padding:.2rem .6rem; border-radius:100px; white-space:nowrap; }
+.dg-on { background:rgba(35,193,196,.12); color:var(--teal); }
+.dg-limited { background:rgba(255,198,29,.1); color:var(--gold-dim); }
+.dg-off { background:rgba(254,83,55,.08); color:var(--coral-dim); }
+.degrade-note { margin-top:1.5rem; font-size:.78rem; color:rgba(255,255,255,.35); line-height:1.7; border-left:2px solid rgba(107,33,168,.3); padding-left:1rem; font-style:italic; }
+
+/* ═══ MIRROR VAULT ════════════════════════════════ */
+.vault-section { background:var(--navy-mid); padding:8rem 3rem; border-top:1px solid rgba(255,255,255,.06); }
+.vault-inner { max-width:1360px; margin:0 auto; }
+.vault-header { display:grid; grid-template-columns:1fr 1.4fr; gap:4rem; align-items:end; margin-bottom:4rem; }
+.vault-pull { font-family:'Cormorant Garamond',serif; font-size:clamp(1rem,1.6vw,1.35rem); font-weight:300; font-style:italic; color:rgba(255,255,255,.7); line-height:1.65; border-left:2px solid var(--coral); padding-left:1.4rem; }
+.vault-points { display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:rgba(255,255,255,.05); }
+.vp { background:var(--navy-mid); padding:2rem 1.6rem; }
+.vp-icon { width:28px; height:28px; margin-bottom:1rem; }
+.vp-icon svg { width:28px; height:28px; stroke:var(--coral); stroke-width:1.2; fill:none; stroke-linecap:round; stroke-linejoin:round; }
+.vp-title { font-family:'Cormorant Garamond',serif; font-size:1.2rem; font-weight:400; color:var(--white); margin-bottom:.6rem; }
+.vp-desc { font-size:.76rem; color:rgba(255,255,255,.5); line-height:1.7; }
+
+/* ═══ PHYSICAL RACKS ═════════════════════════════ */
+.racks-section { background:var(--white); padding:8rem 3rem; border-top:1px solid var(--border-light); }
+.racks-inner { max-width:1360px; margin:0 auto; }
+.racks-header { display:grid; grid-template-columns:1fr 1.4fr; gap:4rem; align-items:end; margin-bottom:4rem; }
+.racks-pull { font-family:'Cormorant Garamond',serif; font-size:clamp(1rem,1.6vw,1.35rem); font-weight:300; font-style:italic; color:var(--navy); line-height:1.65; border-left:2px solid var(--teal); padding-left:1.4rem; }
+.racks-grid { display:grid; grid-template-columns:1fr 1fr; gap:1px; background:var(--border-light); }
+.rack-col { background:var(--white); padding:2.4rem 2rem; }
+.rack-col-header { margin-bottom:1.8rem; }
+.rack-col-num { font-family:'Cormorant Garamond',serif; font-size:4rem; font-weight:300; line-height:1; color:rgba(0,43,75,.07); margin-bottom:.3rem; }
+.rack-col-name { font-family:'Questrial',sans-serif; font-size:.64rem; letter-spacing:.18em; text-transform:uppercase; color:var(--teal-dim); margin-bottom:.2rem; }
+.rack-col-title { font-family:'Cormorant Garamond',serif; font-size:1.4rem; font-weight:400; color:var(--navy); }
+.rack-items { list-style:none; display:flex; flex-direction:column; gap:0; }
+.rack-items li { display:flex; align-items:center; gap:.8rem; padding:.55rem 0; border-bottom:1px solid var(--border-light); font-size:.78rem; color:var(--stone); }
+.rack-items li:last-child { border-bottom:none; }
+.rack-items li::before { content:''; width:4px; height:4px; border-radius:50%; background:var(--teal); flex-shrink:0; }
+
+/* ═══ CTA ════════════════════════════════════════ */
+.join-section { background:var(--coral); padding:6rem 3rem; text-align:center; position:relative; overflow:hidden; }
+.join-section::before { content:''; position:absolute; inset:-30%; background:radial-gradient(ellipse at 50% 50%,rgba(255,255,255,.08) 0%,transparent 55%); pointer-events:none; }
+.join-inner { position:relative; z-index:1; max-width:680px; margin:0 auto; }
+.join-h2 { font-family:'Cormorant Garamond',serif; font-size:clamp(2.2rem,4.5vw,4.5rem); font-weight:300; color:var(--white); line-height:1.1; margin-bottom:1.2rem; }
+.join-h2 em { font-style:italic; opacity:.85; }
+.join-body { font-size:.97rem; color:rgba(255,255,255,.8); line-height:1.75; margin-bottom:2.5rem; }
+.join-actions { display:flex; gap:.9rem; justify-content:center; flex-wrap:wrap; }
+
+/* ═══ TRUST STRIP ════════════════════════════════ */
+.trust-strip { background:var(--cream-dark); padding:2.4rem 3rem; border-bottom:1px solid var(--border-light); }
+.trust-strip-inner { max-width:1360px; margin:0 auto; display:flex; align-items:center; justify-content:center; gap:2.5rem; flex-wrap:wrap; }
+.trust-item { display:flex; align-items:center; gap:.7rem; }
+.trust-item-icon { width:20px; height:20px; }
+.trust-item-icon svg { width:20px; height:20px; stroke:var(--stone); stroke-width:1.4; fill:none; stroke-linecap:round; stroke-linejoin:round; }
+.trust-item-text { font-size:.72rem; color:var(--stone); line-height:1.3; }
+.trust-item-text strong { display:block; color:var(--navy); font-size:.64rem; letter-spacing:.12em; text-transform:uppercase; margin-bottom:.1rem; font-weight:400; font-family:'Questrial',sans-serif; }
+.trust-div { width:1px; height:28px; background:var(--border-light); }
+
+/* ═══ FOOTER ═════════════════════════════════════ */
+footer { background:var(--navy-deep); padding:4rem 3rem 2.5rem; }
+.footer-top { max-width:1360px; margin:0 auto; display:grid; grid-template-columns:2fr 1fr 1fr 1fr; gap:3rem; padding-bottom:3rem; border-bottom:1px solid rgba(255,255,255,.06); }
+.footer-logo-wrap { display:flex; align-items:center; gap:.7rem; margin-bottom:1rem; text-decoration:none; }
+.footer-logo-wrap img { width:38px; height:38px; object-fit:contain; }
+.footer-logo-name { font-family:'Questrial',sans-serif; font-size:.78rem; letter-spacing:.12em; text-transform:uppercase; color:var(--gold); }
+.footer-desc { font-size:.78rem; color:var(--text-dimmer); line-height:1.72; max-width:280px; margin-bottom:1.4rem; }
+.footer-email { font-size:.72rem; color:var(--teal); text-decoration:none; transition:color .25s; }
+.footer-email:hover { color:#aad0e0; }
+.footer-col-h { font-family:'Questrial',sans-serif; font-size:.6rem; letter-spacing:.2em; text-transform:uppercase; color:rgba(255,255,255,.35); margin-bottom:1.2rem; }
+.footer-links { list-style:none; display:flex; flex-direction:column; gap:.6rem; }
+.footer-links a { font-size:.77rem; color:var(--text-dimmer); text-decoration:none; transition:color .25s; }
+.footer-links a:hover { color:var(--white); }
+.footer-bottom { max-width:1360px; margin:2rem auto 0; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:1rem; }
+.footer-copy { font-size:.66rem; color:var(--text-dimmer); letter-spacing:.05em; }
+.footer-socials { display:flex; gap:1rem; align-items:center; }
+.footer-socials a { font-size:.66rem; letter-spacing:.12em; text-transform:uppercase; color:var(--text-dimmer); text-decoration:none; font-family:'Questrial',sans-serif; transition:color .25s; }
+.footer-socials a:hover { color:var(--white); }
+
+/* ═══ ANIMATIONS ═════════════════════════════════ */
+@keyframes fadeUp { from{opacity:0;transform:translateY(20px);}to{opacity:1;transform:translateY(0);} }
+@keyframes gSpin { from{transform:rotate(0deg);}to{transform:rotate(360deg);} }
+
+/* ═══ RESPONSIVE ══════════════════════════════════ */
+@media(max-width:1100px){
+  .what-inner,.storage-inner,.puka-inner,.degrade-inner { grid-template-columns:1fr; gap:3rem; }
+  .what-left { position:static; }
+  .compute-header,.platform-header,.knowledge-header,.vault-header,.racks-header { grid-template-columns:1fr; gap:3rem; }
+  .platform-grid { grid-template-columns:repeat(2,1fr); }
+  .knowledge-cards { grid-template-columns:1fr 1fr; }
+  .vault-points { grid-template-columns:1fr 1fr; }
+  .footer-top { grid-template-columns:1fr 1fr; gap:2.5rem; }
+}
+@media(max-width:768px){
+  nav { padding:0 1.5rem; }
+  .nav-links,.nav-cta { display:none; }
+  .hamburger { display:flex; }
+  .mobile-menu { display:flex; }
+  .page-hero-inner { padding:120px 0 80px; }
+  .hero-stats { flex-direction:column; gap:1.5rem; border-top:none; padding-top:2rem; }
+  .hstat { border-right:none; padding-right:0; }
+  .what-section,.compute-section,.platform-section,.storage-section,.knowledge-section,
+  .puka-section,.degrade-section,.vault-section,.racks-section,
+  .join-section,.trust-strip { padding-left:1.5rem; padding-right:1.5rem; }
+  .platform-grid,.knowledge-cards,.vault-points { grid-template-columns:1fr; }
+  .gpu-grid,.racks-grid { grid-template-columns:1fr; }
+  .intro-stats { flex-direction:column; }
+  .stat { border-right:none; border-bottom:1px solid rgba(255,255,255,.07); }
+  .footer-top { grid-template-columns:1fr; }
+  .trust-strip-inner { flex-direction:column; align-items:flex-start; }
+  .trust-div { display:none; }
+}
+</style>
+</head>
+<body>
+
+<!-- ═══ NAV ═══════════════════════════════════════════════════════ -->
+<nav id="nav">
+  <a href="/" class="nav-logo">
+    <img src="images/logo-trans.png" alt="Sovereign Vision">
+    <div class="nav-logo-text">Sovereign Vision<span>Te Fale o Te Mātāmua · Tuvalu</span></div>
+  </a>
+  <ul class="nav-links">
+    <li class="nav-dropdown">
+      <a href="/core-systems">Core Systems</a>
+      <div class="dropdown-menu">
+        <a href="/ai-overview">Civic Stewardship System</a>
+        <a href="/communications">Communications</a>
+        <a href="/food">Food Sovereignty</a>
+        <a href="/energy">Power Generation</a>
+        <a href="/treasury">Sovereign Treasury</a>
+        <a href="/civic-infrastructure">Civic Infrastructure</a>
+        <a href="/water-systems">Water Systems</a>
+        <a href="/waste-systems">Resource Recovery</a>
+      </div>
+    </li>
+    <li><a href="/how-it-works">How It Works</a></li>
+    <li class="nav-dropdown">
+      <a href="/legal-licensing">Legal</a>
+      <div class="dropdown-menu">
+        <a href="/digitalarchipelago">Digital Archipelago Accord</a>
+        <a href="/civic-commons-license">Civic Commons License</a>
+        <a href="/trust-formation-status">Trust Formation Status</a>
+        <a href="/terms">Terms of Use</a>
+        <a href="/privacy-policy">Privacy Policy</a>
+      </div>
+    </li>
+    <li><a href="/faq">FAQ</a></li>
+    <li class="nav-dropdown">
+      <a href="/about-us">About</a>
+      <div class="dropdown-menu">
+        <a href="/about-us">About Us</a>
+        <a href="/continuity-vs-reinvention">Continuity vs Reinvention</a>
+        <a href="/elders-council">Elders Council</a>
+        <a href="/youth-voice">Youth Voice</a>
+      </div>
+    </li>
+  </ul>
+  <a href="/contact" class="nav-cta">Contact</a>
+  <div class="hamburger" id="hamburger" aria-label="Menu" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+<div class="mobile-menu" id="mobile-menu">
+  <a href="/core-systems" onclick="closeMobile()">Core Systems</a>
+  <a href="/how-it-works" onclick="closeMobile()">How It Works</a>
+  <a href="/legal-licensing" onclick="closeMobile()">Legal</a>
+  <a href="/faq" onclick="closeMobile()">FAQ</a>
+  <a href="/about-us" onclick="closeMobile()">About</a>
+  <a href="/contact" class="m-cta" onclick="closeMobile()">Contact</a>
+</div>
+
+<!-- ═══ HERO ════════════════════════════════════════════════════════ -->
+<section class="page-hero">
+  <canvas id="hero-canvas"></canvas>
+  <div class="hero-overlay"></div>
+  <div class="page-hero-inner">
+    <div class="hero-eyebrow">Sovereign Compute Infrastructure</div>
+    <h1 class="hero-h1">Te Fale Mohokoi<br><em>The Brain.</em></h1>
+    <p class="hero-sub">Tuvalu's on-island AI compute core. No foreign cloud. No subscription dependency. Every model, every decision, every memory — held inside the nation's own jurisdiction.</p>
+    <div class="hero-actions">
+      <a href="#compute" class="btn-coral">GPU Architecture</a>
+      <a href="/communications" class="btn-ghost">Te Puka Loloa Nodes</a>
+    </div>
+    <div class="hero-stats">
+      <div class="hstat"><div class="hstat-n">8×</div><div class="hstat-l">RTX PRO 6000<br>Blackwell GPUs</div></div>
+      <div class="hstat"><div class="hstat-n">2 TB</div><div class="hstat-l">Total RAM across<br>GPU cluster</div></div>
+      <div class="hstat"><div class="hstat-n">30+</div><div class="hstat-l">Terabytes NVMe<br>high-speed storage</div></div>
+      <div class="hstat"><div class="hstat-n">100%</div><div class="hstat-l">On-island · Open-source<br>Sovereign jurisdiction</div></div>
+    </div>
+  </div>
+  <div class="hero-meta">Funafuti · Tuvalu · Pacific</div>
+</section>
+
+<!-- ═══ INTRO STATS ═══════════════════════════════════════════════ -->
+<section class="intro-section">
+  <div class="intro-stats">
+    <div class="stat"><div class="stat-n">2</div><div class="stat-l">GPU server nodes<br>HA failover pair</div></div>
+    <div class="stat"><div class="stat-n">96GB</div><div class="stat-l">VRAM per GPU —<br>largest AI context window</div></div>
+    <div class="stat"><div class="stat-n">25GbE</div><div class="stat-l">Internal network<br>fabric speed</div></div>
+    <div class="stat"><div class="stat-n">6</div><div class="stat-l">Platform service<br>stacks running</div></div>
+    <div class="stat"><div class="stat-n">0</div><div class="stat-l">Foreign cloud<br>dependencies</div></div>
+  </div>
+</section>
+
+<!-- ═══ WHAT IS THE DATACENTER ══════════════════════════════════════ -->
+<section class="what-section">
+  <div class="what-inner">
+    <div class="what-left">
+      <div class="section-tag teal reveal-left">The Brain</div>
+      <h2 class="h2 reveal">What the<br><em>datacenter does.</em></h2>
+      <p class="what-pull reveal">The hybrid nodes are Tuvalu's nervous system — collecting signal, broadcasting voice, relaying data. The datacenter is the brain — holding memory, running intelligence, and coordinating response. Each operates independently. Together they constitute a sovereign digital nation.</p>
+    </div>
+    <div class="what-right">
+      <div class="what-card reveal">
+        <div class="what-card-label">Guardian Core</div>
+        <div class="what-card-title">Full AI orchestration</div>
+        <p>The datacenter runs Guardian's full intelligence — far beyond what the edge nodes carry locally. Predictive maintenance modelling, cross-system anomaly detection, telemetry pattern analysis, and national infrastructure dashboards all live here. Guardian Core receives heartbeats from every node every 60 seconds and maintains a continuous picture of the entire national infrastructure stack.</p>
+      </div>
+      <div class="what-card gold-accent reveal">
+        <div class="what-card-label">Arbor Voice Services</div>
+        <div class="what-card-title">Civic AI in Tuvaluan</div>
+        <p>Arbor — the civic voice companion — runs its language model inference on the datacenter's GPU cluster. Citizens asking questions at kiosk terminals, operators accessing system status, youth stewards following maintenance guidance: all of these interactions route through the datacenter's AI layer. No foreign API. No data leaves the island.</p>
+      </div>
+      <div class="what-card coral-accent reveal">
+        <div class="what-card-label">Telemetry Platform</div>
+        <div class="what-card-title">All sensors. One view.</div>
+        <p>Every sensor across the island — water quality, soil moisture, air quality, energy production, battery state-of-charge, tidal level, and communications signal strength — feeds into the datacenter's telemetry stack. Prometheus ingests, Grafana visualises, Loki indexes logs, Alertmanager routes alerts. The national infrastructure becomes visible, measurable, and governable.</p>
+      </div>
+      <div class="what-card purple-accent reveal">
+        <div class="what-card-label">National Knowledge</div>
+        <div class="what-card-title">Memory as sovereignty</div>
+        <p>Engineering documentation, maintenance manuals, policy records, cultural heritage archives, language preservation data, and civic history all reside in the datacenter's knowledge layer. A vector database makes this retrievable by Guardian and Arbor. When a steward asks Arbor how to service a desalination node, the answer comes from Tuvalu's own knowledge — not the internet.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ GPU COMPUTE ═══════════════════════════════════════════════ -->
+<section class="compute-section" id="compute">
+  <div class="compute-inner">
+    <div class="compute-header">
+      <div>
+        <div class="section-tag purple reveal-left">Hardware Platform</div>
+        <h2 class="h2 h2-white reveal">Sovereign<br><em>compute cluster.</em></h2>
+      </div>
+      <p class="compute-pull reveal">Two GPU servers, each carrying four RTX PRO 6000 Blackwell GPUs with 96 GB VRAM apiece. Dual AMD EPYC processors. One terabyte of RAM per node. This is the compute substrate that runs Guardian Core, Arbor AI services, and the entire national knowledge retrieval system — without a single external API call.</p>
+    </div>
+
+    <div class="gpu-grid reveal">
+      <div class="gpu-card">
+        <div class="gpu-card-header">
+          <span class="gpu-badge gpu-badge-a">Node A</span>
+        </div>
+        <div class="gpu-card-name">GPU Server — Primary</div>
+        <div class="gpu-card-sub">Guardian Core · Arbor AI · Inference primary</div>
+        <ul class="gpu-spec-list" style="margin-top:1.4rem;">
+          <li><span class="gpu-key">CPU</span><span class="gpu-val">Dual AMD EPYC</span></li>
+          <li><span class="gpu-key">RAM</span><span class="gpu-val highlight">1 TB DDR5</span></li>
+          <li><span class="gpu-key">GPU</span><span class="gpu-val highlight">4× RTX PRO 6000 Blackwell</span></li>
+          <li><span class="gpu-key">VRAM total</span><span class="gpu-val highlight">384 GB</span></li>
+          <li><span class="gpu-key">NVMe storage</span><span class="gpu-val">2× 7.68 TB enterprise</span></li>
+          <li><span class="gpu-key">Networking</span><span class="gpu-val">25GbE dual-port</span></li>
+          <li><span class="gpu-key">Power</span><span class="gpu-val">Redundant PSU</span></li>
+          <li><span class="gpu-key">Primary role</span><span class="gpu-val">Guardian Core · Arbor · Models</span></li>
+        </ul>
+      </div>
+      <div class="gpu-card">
+        <div class="gpu-card-header">
+          <span class="gpu-badge gpu-badge-b">Node B</span>
+        </div>
+        <div class="gpu-card-name">GPU Server — Secondary</div>
+        <div class="gpu-card-sub">Load balance · Failover · Knowledge retrieval</div>
+        <ul class="gpu-spec-list" style="margin-top:1.4rem;">
+          <li><span class="gpu-key">CPU</span><span class="gpu-val">Dual AMD EPYC</span></li>
+          <li><span class="gpu-key">RAM</span><span class="gpu-val highlight">1 TB DDR5</span></li>
+          <li><span class="gpu-key">GPU</span><span class="gpu-val highlight">4× RTX PRO 6000 Blackwell</span></li>
+          <li><span class="gpu-key">VRAM total</span><span class="gpu-val highlight">384 GB</span></li>
+          <li><span class="gpu-key">NVMe storage</span><span class="gpu-val">2× 7.68 TB enterprise</span></li>
+          <li><span class="gpu-key">Networking</span><span class="gpu-val">25GbE dual-port</span></li>
+          <li><span class="gpu-key">Power</span><span class="gpu-val">Redundant PSU</span></li>
+          <li><span class="gpu-key">Primary role</span><span class="gpu-val">Load balance · Failover · Vector DB</span></li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- GPU utilisation chart -->
+    <div class="gpu-chart-wrap reveal">
+      <div class="gpu-chart-header">
+        <span class="gpu-chart-title">GPU Cluster — Simulated Load Distribution</span>
+        <span class="gpu-live-badge"><span class="gpu-live-dot"></span>Live simulation</span>
+      </div>
+      <div class="gpu-bars" id="gpu-bars">
+        <div class="gpu-bar-row">
+          <span class="gpu-bar-label">Guardian Core</span>
+          <div class="gpu-bar-track"><div class="gpu-bar-fill sc-purple" style="width:0%" data-target="72"></div></div>
+          <span class="gpu-bar-pct" data-pct="72">72%</span>
+        </div>
+        <div class="gpu-bar-row">
+          <span class="gpu-bar-label">Arbor Inference</span>
+          <div class="gpu-bar-track"><div class="gpu-bar-fill sc-teal" style="width:0%" data-target="58"></div></div>
+          <span class="gpu-bar-pct" data-pct="58">58%</span>
+        </div>
+        <div class="gpu-bar-row">
+          <span class="gpu-bar-label">Knowledge Retrieval</span>
+          <div class="gpu-bar-track"><div class="gpu-bar-fill sc-gold" style="width:0%" data-target="34"></div></div>
+          <span class="gpu-bar-pct" data-pct="34">34%</span>
+        </div>
+        <div class="gpu-bar-row">
+          <span class="gpu-bar-label">Telemetry Analysis</span>
+          <div class="gpu-bar-track"><div class="gpu-bar-fill sc-coral" style="width:0%" data-target="41"></div></div>
+          <span class="gpu-bar-pct" data-pct="41">41%</span>
+        </div>
+        <div class="gpu-bar-row">
+          <span class="gpu-bar-label">Node B Standby</span>
+          <div class="gpu-bar-track"><div class="gpu-bar-fill" style="width:0%;background:rgba(255,255,255,.2);" data-target="12"></div></div>
+          <span class="gpu-bar-pct" data-pct="12">12%</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ PLATFORM SERVICES ════════════════════════════════════════ -->
+<section class="platform-section">
+  <div class="platform-inner">
+    <div class="platform-header">
+      <div>
+        <div class="section-tag teal reveal-left">Platform Services</div>
+        <h2 class="h2 reveal">The services<br><em>that hold it together.</em></h2>
+      </div>
+      <p class="platform-pull reveal">Six service stacks run continuously on the datacenter, co-ordinating data flow between every Te Puka Loloa node, every sensor, every civic terminal, and both GPU server nodes. All open-source. All on-island. All auditable by the community council.</p>
+    </div>
+    <div class="platform-grid">
+      <div class="platform-card pc-teal reveal">
+        <div class="platform-icon">
+          <svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+        </div>
+        <div class="platform-label">Observability</div>
+        <div class="platform-name">Monitoring Stack</div>
+        <p class="platform-desc">Continuous health visibility across every node, service, and sensor. Alerting routed to Guardian and operator dashboards the moment thresholds are crossed.</p>
+        <div class="platform-stack">
+          <span class="stack-tag">Prometheus</span>
+          <span class="stack-tag">Grafana</span>
+          <span class="stack-tag">Loki</span>
+          <span class="stack-tag">Alertmanager</span>
+        </div>
+      </div>
+      <div class="platform-card pc-gold reveal">
+        <div class="platform-icon">
+          <svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+        </div>
+        <div class="platform-label">Message Bus</div>
+        <div class="platform-name">MQTT Broker</div>
+        <p class="platform-desc">All sensor telemetry, system alerts, command dispatch, and event routing passes through the MQTT message bus — the connective tissue between field systems and the datacenter.</p>
+        <div class="platform-stack">
+          <span class="stack-tag">Mosquitto MQTT</span>
+          <span class="stack-tag">Topic routing</span>
+          <span class="stack-tag">QoS tiers</span>
+        </div>
+      </div>
+      <div class="platform-card pc-coral reveal">
+        <div class="platform-icon">
+          <svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+        </div>
+        <div class="platform-label">Traffic Management</div>
+        <div class="platform-name">Load Balancer</div>
+        <p class="platform-desc">Routes Guardian API calls, Arbor voice requests, internal dashboards, and operator interfaces across both GPU nodes. Automatic failover to Node B if Node A degrades.</p>
+        <div class="platform-stack">
+          <span class="stack-tag">HAProxy</span>
+          <span class="stack-tag">NGINX</span>
+          <span class="stack-tag">Auto-failover</span>
+        </div>
+      </div>
+      <div class="platform-card pc-purple reveal">
+        <div class="platform-icon">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.07 4.93a10 10 0 010 14.14M4.93 4.93a10 10 0 000 14.14"/><path d="M15.54 8.46a5 5 0 010 7.07M8.46 8.46a5 5 0 000 7.07"/></svg>
+        </div>
+        <div class="platform-label">Civic Voice</div>
+        <div class="platform-name">LTE Core + VoIP</div>
+        <p class="platform-desc">Open-source LTE core and VoIP gateway service runs from the datacenter, providing mobile voice and data services to all registered SIM cards across the island and outer islands.</p>
+        <div class="platform-stack">
+          <span class="stack-tag">Open5GS</span>
+          <span class="stack-tag">FreeSWITCH</span>
+          <span class="stack-tag">SIP gateway</span>
+        </div>
+      </div>
+      <div class="platform-card pc-teal reveal">
+        <div class="platform-icon">
+          <svg viewBox="0 0 24 24"><path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"/></svg>
+        </div>
+        <div class="platform-label">Automation</div>
+        <div class="platform-name">Workflow Engine</div>
+        <p class="platform-desc">Scheduled maintenance workflows, automated system checks, configuration management, DNS, secrets rotation, and service orchestration. All defined as code and version-controlled.</p>
+        <div class="platform-stack">
+          <span class="stack-tag">Node-RED</span>
+          <span class="stack-tag">Bind9 DNS</span>
+          <span class="stack-tag">Config mgmt</span>
+        </div>
+      </div>
+      <div class="platform-card pc-gold reveal">
+        <div class="platform-icon">
+          <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg>
+        </div>
+        <div class="platform-label">Network Security</div>
+        <div class="platform-name">Firewall + Routing</div>
+        <p class="platform-desc">Open-source firewall manages VLAN segmentation, routing policy, NAT, and access control across the datacenter fabric. Guardian monitors policy compliance continuously.</p>
+        <div class="platform-stack">
+          <span class="stack-tag">Open-source FW</span>
+          <span class="stack-tag">VLAN policy</span>
+          <span class="stack-tag">25GbE fabric</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ STORAGE & CONTINUITY ════════════════════════════════════ -->
+<section class="storage-section">
+  <div class="storage-inner">
+    <div class="storage-left">
+      <div class="section-tag reveal-left">Data Sovereignty</div>
+      <h2 class="h2 reveal">Nothing leaves<br><em>the island.</em></h2>
+      <p class="storage-pull reveal">Every record Tuvalu generates — sensor readings, civic decisions, system logs, cultural heritage data, language models, AI model weights — lives in storage infrastructure owned and operated by Tuvaluans, on Tuvaluan soil.</p>
+      <div class="storage-items">
+        <div class="storage-item reveal">
+          <div class="si-icon"><svg viewBox="0 0 24 24"><ellipse cx="12" cy="6" rx="8" ry="3"/><path d="M4 6v4c0 1.66 3.58 3 8 3s8-1.34 8-3V6"/><path d="M4 10v4c0 1.66 3.58 3 8 3s8-1.34 8-3v-4"/></svg></div>
+          <div><div class="si-name">Distributed Storage Pool</div><div class="si-desc">Replicated storage cluster for AI model weights, telemetry archives, civic records, media, and infrastructure documentation. Controlled replication with integrity verification.</div></div>
+        </div>
+        <div class="storage-item reveal">
+          <div class="si-icon"><svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8"/><path d="M12 17v4"/></svg></div>
+          <div><div class="si-name">VM Image Backup Target</div><div class="si-desc">Central repository for full VM snapshots, configuration backups, database exports, and service recovery packages. Guardian schedules incremental backups every 6 hours.</div></div>
+        </div>
+        <div class="storage-item reveal">
+          <div class="si-icon"><svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></div>
+          <div><div class="si-name">NVMe High-Speed Tier</div><div class="si-desc">15.36 TB total across both GPU nodes for fast model loading, inference caching, and active dataset access. Average read latency under 100 microseconds.</div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Storage capacity visual -->
+    <div class="reveal">
+      <div class="storage-chart">
+        <div class="sc-title">Storage allocation — active distribution</div>
+        <div class="sc-bars" id="sc-bars">
+          <div class="sc-row">
+            <div class="sc-row-header"><span class="sc-label">AI Models + Weights</span><span class="sc-val">~8.2 TB</span></div>
+            <div class="sc-track"><div class="sc-fill sc-purple" style="width:0%" data-target="54"></div></div>
+          </div>
+          <div class="sc-row">
+            <div class="sc-row-header"><span class="sc-label">Telemetry + Sensor Archives</span><span class="sc-val">~4.1 TB</span></div>
+            <div class="sc-track"><div class="sc-fill sc-teal" style="width:0%" data-target="27"></div></div>
+          </div>
+          <div class="sc-row">
+            <div class="sc-row-header"><span class="sc-label">Cultural + Knowledge Archive</span><span class="sc-val">~1.8 TB</span></div>
+            <div class="sc-track"><div class="sc-fill sc-gold" style="width:0%" data-target="12"></div></div>
+          </div>
+          <div class="sc-row">
+            <div class="sc-row-header"><span class="sc-label">VM Backups + Snapshots</span><span class="sc-val">~1.1 TB</span></div>
+            <div class="sc-track"><div class="sc-fill sc-coral" style="width:0%" data-target="7"></div></div>
+          </div>
+        </div>
+        <div class="sc-divider"></div>
+        <div class="sc-total">
+          <span class="sc-total-label">Total allocated (est.)</span>
+          <span class="sc-total-val">~15.2 TB</span>
+        </div>
+      </div>
+
+      <!-- Telemetry live simulation panel -->
+      <div style="margin-top:1px; background:var(--navy-deep); border:1px solid rgba(255,255,255,.06); padding:1.6rem;">
+        <div style="font-family:'Questrial',sans-serif;font-size:.62rem;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.35);margin-bottom:1.2rem;display:flex;align-items:center;justify-content:space-between;">
+          <span>Incoming telemetry rate</span>
+          <span style="display:flex;align-items:center;gap:.4rem;color:var(--teal);"><span style="width:5px;height:5px;border-radius:50%;background:var(--teal);animation:pulseDot 2s infinite;display:inline-block;"></span>Live sim</span>
+        </div>
+        <canvas id="telemetry-canvas" height="80" style="width:100%;display:block;"></canvas>
+        <div style="display:flex;justify-content:space-between;margin-top:.6rem;">
+          <span style="font-size:.64rem;color:rgba(255,255,255,.25);">Guardian heartbeats</span>
+          <span style="font-size:.64rem;color:rgba(255,255,255,.25);">Sensor feeds</span>
+          <span style="font-size:.64rem;color:rgba(255,255,255,.25);">Arbor requests</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ NATIONAL KNOWLEDGE LAYER ══════════════════════════════════ -->
+<section class="knowledge-section">
+  <div class="knowledge-inner">
+    <div class="knowledge-header">
+      <div>
+        <div class="section-tag gold reveal-left">National Knowledge</div>
+        <h2 class="h2 h2-white reveal">Memory as<br><em>sovereignty.</em></h2>
+      </div>
+      <p class="knowledge-pull reveal">The datacenter holds Tuvalu's collective intelligence — not just infrastructure data, but language, culture, history, and civic memory. When that knowledge is retrievable by Guardian and Arbor, sovereignty becomes operational, not symbolic.</p>
+    </div>
+    <div class="knowledge-cards">
+      <div class="kc kc-1 reveal">
+        <div class="kc-num">01</div>
+        <div class="kc-label">Knowledge Archive</div>
+        <div class="kc-title">Engineering &amp; Operations</div>
+        <p class="kc-desc">Full technical documentation for every system in the Sovereign Vision stack — desalination, energy, waste recovery, communications, and civic infrastructure. Maintenance manuals, component specifications, commissioning records, and fault history. Indexed and retrievable by Guardian and Arbor when stewards need guidance.</p>
+      </div>
+      <div class="kc kc-2 reveal">
+        <div class="kc-num">02</div>
+        <div class="kc-label">Cultural Memory</div>
+        <div class="kc-title">Language &amp; Heritage</div>
+        <p class="kc-desc">Tuvaluan language corpus, oral history recordings, elder teaching archives, ceremonial records, and generational knowledge that predates written documentation. This layer ensures that Arbor speaks with cultural authenticity — not as a foreign assistant, but as a system trained on Tuvaluan ways of knowing.</p>
+      </div>
+      <div class="kc kc-3 reveal">
+        <div class="kc-num">03</div>
+        <div class="kc-label">AI Knowledge Retrieval</div>
+        <div class="kc-title">Vector Database</div>
+        <p class="kc-desc">A vector database enables semantic retrieval across all knowledge layers. Guardian and Arbor query by meaning, not keyword — finding the relevant maintenance procedure, the relevant cultural precedent, or the relevant policy record with a natural language request. The retrieval system operates entirely on-island, with no external dependency.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ TE PUKA LOLOA CONNECTION ══════════════════════════════════ -->
+<section class="puka-section">
+  <div class="puka-inner">
+    <div class="puka-diagram reveal">
+      <svg viewBox="0 0 480 440" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <linearGradient id="connbg" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="#001e35"/>
+            <stop offset="100%" stop-color="#00121f"/>
+          </linearGradient>
+          <marker id="arr-teal" markerWidth="7" markerHeight="7" refX="5" refY="3.5" orient="auto">
+            <path d="M0,0 L7,3.5 L0,7 Z" fill="rgba(35,193,196,.7)"/>
+          </marker>
+          <marker id="arr-gold" markerWidth="7" markerHeight="7" refX="5" refY="3.5" orient="auto">
+            <path d="M0,0 L7,3.5 L0,7 Z" fill="rgba(255,198,29,.6)"/>
+          </marker>
+          <marker id="arr-stone" markerWidth="7" markerHeight="7" refX="5" refY="3.5" orient="auto">
+            <path d="M0,0 L7,3.5 L0,7 Z" fill="rgba(113,128,150,.5)"/>
+          </marker>
+          <filter id="conn-glow" x="-20%" y="-20%" width="140%" height="140%">
+            <feGaussianBlur stdDeviation="2" result="b"/>
+            <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+          </filter>
+        </defs>
+        <rect width="480" height="440" fill="url(#connbg)" rx="4"/>
+
+        <!-- Nodes left column -->
+        <rect x="20" y="30" width="130" height="46" rx="2" fill="rgba(35,193,196,.08)" stroke="rgba(35,193,196,.4)" stroke-width="1"/>
+        <text x="85" y="50" font-family="Questrial,sans-serif" font-size="7.5" letter-spacing="1" fill="rgba(35,193,196,.7)" text-anchor="middle">NODE 01</text>
+        <text x="85" y="64" font-family="DM Sans,sans-serif" font-size="7" fill="rgba(255,255,255,.5)" text-anchor="middle">Te Puka Loloa · Funafuti</text>
+        <circle cx="142" cy="53" r="2.5" fill="#23c1c4" filter="url(#conn-glow)"><animate attributeName="opacity" values="1;.2;1" dur="1.8s" repeatCount="indefinite"/></circle>
+
+        <rect x="20" y="110" width="130" height="46" rx="2" fill="rgba(35,193,196,.06)" stroke="rgba(35,193,196,.3)" stroke-width="1"/>
+        <text x="85" y="130" font-family="Questrial,sans-serif" font-size="7.5" letter-spacing="1" fill="rgba(35,193,196,.6)" text-anchor="middle">NODE 02</text>
+        <text x="85" y="144" font-family="DM Sans,sans-serif" font-size="7" fill="rgba(255,255,255,.45)" text-anchor="middle">Vai Tapu · Desalination</text>
+        <circle cx="142" cy="133" r="2.5" fill="#23c1c4" filter="url(#conn-glow)"><animate attributeName="opacity" values="1;.2;1" dur="1.8s" begin=".6s" repeatCount="indefinite"/></circle>
+
+        <rect x="20" y="190" width="130" height="46" rx="2" fill="rgba(35,193,196,.05)" stroke="rgba(35,193,196,.22)" stroke-width="1"/>
+        <text x="85" y="210" font-family="Questrial,sans-serif" font-size="7.5" letter-spacing="1" fill="rgba(35,193,196,.5)" text-anchor="middle">NODE 03</text>
+        <text x="85" y="224" font-family="DM Sans,sans-serif" font-size="7" fill="rgba(255,255,255,.4)" text-anchor="middle">Civic Hub · Schools</text>
+        <circle cx="142" cy="213" r="2.5" fill="#23c1c4" filter="url(#conn-glow)"><animate attributeName="opacity" values="1;.2;1" dur="1.8s" begin="1.2s" repeatCount="indefinite"/></circle>
+
+        <rect x="20" y="270" width="130" height="46" rx="2" fill="rgba(113,128,150,.05)" stroke="rgba(113,128,150,.2)" stroke-width="1" stroke-dasharray="4 3"/>
+        <text x="85" y="290" font-family="Questrial,sans-serif" font-size="7.5" letter-spacing="1" fill="rgba(113,128,150,.45)" text-anchor="middle">OUTER ISLANDS</text>
+        <text x="85" y="304" font-family="DM Sans,sans-serif" font-size="7" fill="rgba(255,255,255,.3)" text-anchor="middle">Phase 2 expansion</text>
+
+        <!-- Backhaul labels -->
+        <text x="240" y="22" font-family="Questrial,sans-serif" font-size="6.5" letter-spacing="1.5" fill="rgba(255,255,255,.2)" text-anchor="middle">BACKHAUL PATHS</text>
+        <!-- Fiber primary -->
+        <line x1="150" y1="53" x2="330" y2="185" stroke="rgba(35,193,196,.55)" stroke-width="1.8" marker-end="url(#arr-teal)"/>
+        <text x="220" y="108" font-family="DM Sans,sans-serif" font-size="7" fill="rgba(35,193,196,.5)" transform="rotate(-30,220,108)">Fibre primary</text>
+        <!-- 60GHz secondary -->
+        <line x1="150" y1="133" x2="330" y2="195" stroke="rgba(255,198,29,.45)" stroke-width="1.4" stroke-dasharray="6 4" marker-end="url(#arr-gold)"/>
+        <text x="218" y="156" font-family="DM Sans,sans-serif" font-size="7" fill="rgba(255,198,29,.4)" transform="rotate(-5,218,156)">60GHz secondary</text>
+        <!-- Satellite tertiary -->
+        <line x1="150" y1="213" x2="330" y2="205" stroke="rgba(113,128,150,.4)" stroke-width="1.2" stroke-dasharray="3 5" marker-end="url(#arr-stone)"/>
+        <text x="218" y="220" font-family="DM Sans,sans-serif" font-size="7" fill="rgba(113,128,150,.4)">Satellite tertiary</text>
+
+        <!-- Animated packets -->
+        <circle r="3" fill="#23c1c4" opacity="0" filter="url(#conn-glow)">
+          <animateMotion dur="1.4s" repeatCount="indefinite" path="M150,53 L330,185"/>
+          <animate attributeName="opacity" values="0;1;1;0" dur="1.4s" repeatCount="indefinite"/>
+        </circle>
+        <circle r="3" fill="#23c1c4" opacity="0" filter="url(#conn-glow)">
+          <animateMotion dur="1.4s" repeatCount="indefinite" begin=".7s" path="M150,53 L330,185"/>
+          <animate attributeName="opacity" values="0;1;1;0" dur="1.4s" repeatCount="indefinite" begin=".7s"/>
+        </circle>
+        <circle r="2.5" fill="rgba(255,198,29,.8)" opacity="0">
+          <animateMotion dur="1.8s" repeatCount="indefinite" begin=".3s" path="M150,133 L330,195"/>
+          <animate attributeName="opacity" values="0;.85;.85;0" dur="1.8s" repeatCount="indefinite" begin=".3s"/>
+        </circle>
+
+        <!-- Datacenter box right -->
+        <rect x="330" y="140" width="130" height="120" rx="3" fill="rgba(107,33,168,.12)" stroke="rgba(139,92,246,.45)" stroke-width="1.5"/>
+        <text x="395" y="168" font-family="Questrial,sans-serif" font-size="7.5" letter-spacing="1.5" fill="rgba(167,139,250,.75)" text-anchor="middle">DATACENTER</text>
+        <text x="395" y="183" font-family="DM Sans,sans-serif" font-size="7" fill="rgba(255,255,255,.55)" text-anchor="middle">Guardian Core</text>
+        <text x="395" y="196" font-family="DM Sans,sans-serif" font-size="7" fill="rgba(255,255,255,.45)" text-anchor="middle">Arbor AI · Vector DB</text>
+        <text x="395" y="209" font-family="DM Sans,sans-serif" font-size="7" fill="rgba(255,255,255,.35)" text-anchor="middle">MQTT · Monitoring</text>
+        <text x="395" y="222" font-family="DM Sans,sans-serif" font-size="7" fill="rgba(255,255,255,.3)" text-anchor="middle">Storage · Mirror Vault</text>
+        <circle cx="395" cy="245" r="3.5" fill="rgba(167,139,250,.9)" filter="url(#conn-glow)">
+          <animate attributeName="r" values="3.5;5;3.5" dur="2s" repeatCount="indefinite"/>
+          <animate attributeName="opacity" values="1;.4;1" dur="2s" repeatCount="indefinite"/>
+        </circle>
+
+        <!-- Mirror vault -->
+        <rect x="330" y="330" width="130" height="40" rx="2" fill="rgba(254,83,55,.06)" stroke="rgba(254,83,55,.25)" stroke-width="1" stroke-dasharray="4 3"/>
+        <text x="395" y="347" font-family="Questrial,sans-serif" font-size="7" letter-spacing="1" fill="rgba(254,83,55,.5)" text-anchor="middle">MIRROR VAULT</text>
+        <text x="395" y="360" font-family="DM Sans,sans-serif" font-size="7" fill="rgba(255,255,255,.3)" text-anchor="middle">Geographic replication</text>
+        <line x1="395" y1="260" x2="395" y2="330" stroke="rgba(254,83,55,.3)" stroke-width="1.2" stroke-dasharray="4 3"/>
+        <circle r="2" fill="rgba(254,83,55,.6)" opacity="0">
+          <animateMotion dur="2.5s" repeatCount="indefinite" begin="1s" path="M395,260 L395,330"/>
+          <animate attributeName="opacity" values="0;.8;.8;0" dur="2.5s" repeatCount="indefinite" begin="1s"/>
+        </circle>
+
+        <!-- Legend -->
+        <g transform="translate(20,360)">
+          <line x1="0" y1="6" x2="22" y2="6" stroke="rgba(35,193,196,.6)" stroke-width="1.6" stroke-linecap="round"/>
+          <text x="28" y="10" font-family="DM Sans,sans-serif" font-size="7" fill="rgba(255,255,255,.45)">Fibre primary</text>
+          <line x1="0" y1="22" x2="22" y2="22" stroke="rgba(255,198,29,.5)" stroke-width="1.4" stroke-dasharray="5 3" stroke-linecap="round"/>
+          <text x="28" y="26" font-family="DM Sans,sans-serif" font-size="7" fill="rgba(255,255,255,.45)">60GHz secondary</text>
+          <line x1="0" y1="38" x2="22" y2="38" stroke="rgba(113,128,150,.45)" stroke-width="1.2" stroke-dasharray="3 4" stroke-linecap="round"/>
+          <text x="28" y="42" font-family="DM Sans,sans-serif" font-size="7" fill="rgba(255,255,255,.4)">Satellite tertiary</text>
+          <line x1="0" y1="54" x2="22" y2="54" stroke="rgba(254,83,55,.4)" stroke-width="1.2" stroke-dasharray="4 3"/>
+          <text x="28" y="58" font-family="DM Sans,sans-serif" font-size="7" fill="rgba(255,255,255,.35)">Mirror Vault sync</text>
+        </g>
+      </svg>
+    </div>
+
+    <div class="puka-right">
+      <div class="section-tag teal reveal-left">Te Puka Loloa</div>
+      <h2 class="h2 reveal">Connected to<br><em>every node.</em></h2>
+      <p class="puka-body reveal">The sovereign datacenter and the Te Puka Loloa communications network are two halves of one system. The nodes are the island's nervous system — broadcasting signal, collecting sensation, relaying data. The datacenter is the brain — holding memory, running cognition, and coordinating response across every system simultaneously.</p>
+
+      <div class="backhaul-tiers">
+        <div class="bt reveal">
+          <div>
+            <div class="bt-label">Primary · Always preferred</div>
+            <div class="bt-name">Fibre through the civic conduit spine</div>
+            <div class="bt-desc">Highest capacity, lowest latency. Active when the 2km underground conduit backbone is operational. Guardian routes all heavy telemetry and model sync over this path.</div>
+          </div>
+        </div>
+        <div class="bt bt-gold reveal">
+          <div>
+            <div class="bt-label">Secondary · Automatic fallback</div>
+            <div class="bt-name">60 GHz point-to-point wireless bridges</div>
+            <div class="bt-desc">Short-range millimetre-wave links between strategic node sites. Activates automatically when fibre is unavailable. Near-fibre performance under clear line-of-sight conditions.</div>
+          </div>
+        </div>
+        <div class="bt bt-stone reveal">
+          <div>
+            <div class="bt-label">Tertiary · Emergency continuity</div>
+            <div class="bt-name">Satellite uplink path</div>
+            <div class="bt-desc">LEO satellite as the last-resort backhaul path. Lower bandwidth and higher latency, but sufficient to keep Guardian Core synchronised and mirror vault replication running.</div>
+          </div>
+        </div>
+      </div>
+
+      <a href="/communications" class="btn-coral reveal" style="margin-top:.5rem;">Explore Te Puka Loloa</a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ EDGE DEGRADATION MODE ═══════════════════════════════════ -->
+<section class="degrade-section">
+  <div class="degrade-inner">
+    <div class="degrade-left">
+      <div class="section-tag purple reveal-left">Resilience Design</div>
+      <h2 class="h2 h2-white reveal">If the datacenter<br><em>goes offline.</em></h2>
+      <p class="degrade-pull reveal">Edge Degradation Mode is not a failure state. It is a designed operational condition. The nodes were built to sustain core communications indefinitely without the datacenter. When the connection is restored, buffered data syncs automatically and Guardian Core resumes without manual intervention.</p>
+    </div>
+    <div class="reveal">
+      <div style="font-family:'Questrial',sans-serif;font-size:.62rem;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.3);margin-bottom:1rem;">Service continuity in edge degradation mode</div>
+      <div class="degrade-grid">
+        <div class="dg-row"><div><div class="dg-name">Mobile LTE Core</div><div class="dg-sub">Runs locally on node edge server</div></div><span class="dg-pill dg-on">Continues</span></div>
+        <div class="dg-row"><div><div class="dg-name">Satellite Uplink</div><div class="dg-sub">Reroutes to backup path automatically</div></div><span class="dg-pill dg-on">Continues</span></div>
+        <div class="dg-row"><div><div class="dg-name">Civic VoIP</div><div class="dg-sub">Local FreeSWITCH gateway active</div></div><span class="dg-pill dg-on">Continues</span></div>
+        <div class="dg-row"><div><div class="dg-name">Guardian Edge</div><div class="dg-sub">Local monitoring + storm protocol</div></div><span class="dg-pill dg-on">Continues</span></div>
+        <div class="dg-row"><div><div class="dg-name">Emergency Radio</div><div class="dg-sub">VHF/UHF civic broadcast</div></div><span class="dg-pill dg-on">Continues</span></div>
+        <div class="dg-row"><div><div class="dg-name">Arbor Interface</div><div class="dg-sub">Limited mode — no AI inference</div></div><span class="dg-pill dg-limited">Limited</span></div>
+        <div class="dg-row"><div><div class="dg-name">Sensor Telemetry</div><div class="dg-sub">Buffered locally — syncs on reconnect</div></div><span class="dg-pill dg-limited">Buffered</span></div>
+        <div class="dg-row"><div><div class="dg-name">Guardian Core AI</div><div class="dg-sub">Unavailable until datacenter restored</div></div><span class="dg-pill dg-off">Suspended</span></div>
+        <div class="dg-row"><div><div class="dg-name">Mirror Vault Sync</div><div class="dg-sub">Queued — resumes automatically</div></div><span class="dg-pill dg-off">Queued</span></div>
+      </div>
+      <p class="degrade-note">Reconnection is automatic. No steward intervention required for service restoration. All buffered telemetry syncs in order of timestamp. Guardian Core confirms node integrity before resuming full AI services.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ MIRROR VAULT ══════════════════════════════════════════════ -->
+<section class="vault-section">
+  <div class="vault-inner">
+    <div class="vault-header">
+      <div>
+        <div class="section-tag reveal-left">Continuity Architecture</div>
+        <h2 class="h2 h2-white reveal">Sovereignty<br><em>beyond the island.</em></h2>
+      </div>
+      <p class="vault-pull reveal">The datacenter is the brain — but brains can be lost. Mirror Vault architecture ensures that Tuvalu's knowledge, governance records, and system state survive even the total loss of the primary datacenter. Distributed replication to geographically separated vault locations — including future oil-rig anchor sites — means continuity is not contingent on any single location.</p>
+    </div>
+    <div class="vault-points">
+      <div class="vp reveal">
+        <div class="vp-icon"><svg viewBox="0 0 24 24"><path d="M4 16V8l8-5 8 5v8l-8 5z"/><path d="M12 3v18"/><path d="M4 8l8 5 8-5"/></svg></div>
+        <div class="vp-title">Continuous replication</div>
+        <p class="vp-desc">All audit logs, configuration snapshots, AI model states, Guardian rule sets, and cultural archive data replicate continuously to mirror vault locations. No manual backup required — replication is a constant background process.</p>
+      </div>
+      <div class="vp reveal">
+        <div class="vp-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg></div>
+        <div class="vp-title">Geographic distribution</div>
+        <p class="vp-desc">Mirror vaults are positioned at geographically separate locations — future sites include oil-rig anchor platforms and allied partner facilities. No single climate event or infrastructure failure can reach all vault locations simultaneously.</p>
+      </div>
+      <div class="vp reveal">
+        <div class="vp-icon"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg></div>
+        <div class="vp-title">Governance continuity</div>
+        <p class="vp-desc">Even in the event of a complete datacenter loss, the nation's governance records, civic decisions, cultural memory, and infrastructure knowledge remain intact and recoverable. Sovereignty is preserved independent of any single physical site.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ PHYSICAL RACK LAYOUT ══════════════════════════════════════ -->
+<section class="racks-section">
+  <div class="racks-inner">
+    <div class="racks-header">
+      <div>
+        <div class="section-tag teal reveal-left">Physical Hardware</div>
+        <h2 class="h2 reveal">Two racks.<br><em>One brain.</em></h2>
+      </div>
+      <p class="racks-pull reveal">The sovereign datacenter occupies two physical server racks. Rack 1 hosts all network, control, and platform service infrastructure. Rack 2 carries the GPU compute cluster and the full storage estate. Both racks are powered by the same on-island solar-battery grid that feeds the Te Puka Loloa nodes.</p>
+    </div>
+    <div class="racks-grid">
+      <div class="rack-col reveal">
+        <div class="rack-col-header">
+          <div class="rack-col-num">1</div>
+          <div class="rack-col-name">Network + Control</div>
+          <div class="rack-col-title">Security, routing, and platform services</div>
+        </div>
+        <ul class="rack-items">
+          <li>Open-source firewall and edge router</li>
+          <li>Core 25GbE switching fabric</li>
+          <li>Network controller and management host</li>
+          <li>Management and utility VM host</li>
+          <li>Load balancer — HAProxy and NGINX</li>
+          <li>Monitoring stack — Prometheus and Grafana</li>
+          <li>MQTT message bus — Mosquitto</li>
+          <li>LTE core and VoIP gateway — Open5GS + FreeSWITCH</li>
+        </ul>
+      </div>
+      <div class="rack-col reveal">
+        <div class="rack-col-header">
+          <div class="rack-col-num">2</div>
+          <div class="rack-col-name">Compute + Storage</div>
+          <div class="rack-col-title">GPU intelligence and data sovereignty</div>
+        </div>
+        <ul class="rack-items">
+          <li>GPU Server Node A — Guardian Core and Arbor workloads</li>
+          <li>GPU Server Node B — load balance and failover</li>
+          <li>Local NVMe high-speed storage tier — 15.36 TB</li>
+          <li>Shared storage pool — Ceph and TrueNAS cluster</li>
+          <li>Backup target and VM snapshot repository</li>
+          <li>Replication engine for Mirror Vault synchronisation</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ CTA ════════════════════════════════════════════════════════ -->
+<section class="join-section">
+  <div class="join-inner">
+    <h2 class="join-h2">The brain and the<br><em>nervous system.</em></h2>
+    <p class="join-body">The sovereign datacenter and Te Puka Loloa communications nodes are inseparable. Explore the full network architecture — or read the white paper for complete technical specification.</p>
+    <div class="join-actions">
+      <a href="/communications" class="btn-ghost">Te Puka Loloa Network</a>
+      <a href="/ai-overview" class="btn-coral" style="background:var(--white);color:var(--coral);border-color:var(--white);">Guardian &amp; Arbor</a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ TRUST STRIP ════════════════════════════════════════════════ -->
+<div class="trust-strip">
+  <div class="trust-strip-inner">
+    <div class="trust-item">
+      <div class="trust-item-icon"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+      <div class="trust-item-text"><strong>100% Sovereign</strong>No foreign cloud. No external dependency.</div>
+    </div>
+    <div class="trust-div"></div>
+    <div class="trust-item">
+      <div class="trust-item-icon"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+      <div class="trust-item-text"><strong>Open Source</strong>All platform software fully auditable.</div>
+    </div>
+    <div class="trust-div"></div>
+    <div class="trust-item">
+      <div class="trust-item-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10z"/></svg></div>
+      <div class="trust-item-text"><strong>Mirror Vault</strong>Geographic replication for continuity.</div>
+    </div>
+    <div class="trust-div"></div>
+    <div class="trust-item">
+      <div class="trust-item-icon"><svg viewBox="0 0 24 24"><path d="M4 19.5A2.5 2.5 0 016.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"/></svg></div>
+      <div class="trust-item-text"><strong>White Paper v1.2</strong>Full technical specification published.</div>
+    </div>
+    <div class="trust-div"></div>
+    <div class="trust-item">
+      <div class="trust-item-icon"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg></div>
+      <div class="trust-item-text"><strong>Civic Commons License v1.0</strong>Open for replication by aligned communities.</div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ FOOTER ═════════════════════════════════════════════════════ -->
+<footer>
+  <div class="footer-top">
+    <div>
+      <a href="/" class="footer-logo-wrap">
+        <img src="images/logo-trans.png" alt="Sovereign Vision">
+        <span class="footer-logo-name">Sovereign Vision</span>
+      </a>
+      <p class="footer-desc">A sovereign civilization infrastructure stack designed for Tuvalu and open for replication by climate-vulnerable communities worldwide.</p>
+      <a href="mailto:trust@tuvalusovereign.org" class="footer-email">trust@tuvalusovereign.org</a>
+    </div>
+    <div>
+      <div class="footer-col-h">Core Systems</div>
+      <ul class="footer-links">
+        <li><a href="/energy">Power Generation</a></li>
+        <li><a href="/water-systems">Water Systems</a></li>
+        <li><a href="/food">Food Sovereignty</a></li>
+        <li><a href="/communications">Communications</a></li>
+        <li><a href="/waste-systems">Resource Recovery</a></li>
+        <li><a href="/civic-infrastructure">Civic Infrastructure</a></li>
+        <li><a href="/treasury">Sovereign Treasury</a></li>
+        <li><a href="/ai-overview">Civic Stewardship</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-col-h">About &amp; Governance</div>
+      <ul class="footer-links">
+        <li><a href="/about-us">About Us</a></li>
+        <li><a href="/continuity-vs-reinvention">Continuity vs Reinvention</a></li>
+        <li><a href="/elders-council">Elders Council</a></li>
+        <li><a href="/youth-voice">Youth Voice</a></li>
+        <li><a href="/how-it-works">How It Works</a></li>
+        <li><a href="/faq">FAQ</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-col-h">Legal &amp; Project</div>
+      <ul class="footer-links">
+        <li><a href="/legal-licensing">Legal &amp; Licensing</a></li>
+        <li><a href="/civic-commons-license">Civic Commons License</a></li>
+        <li><a href="/digitalarchipelago">Digital Archipelago Accord</a></li>
+        <li><a href="/trust-formation-status">Trust Formation Status</a></li>
+        <li><a href="/terms">Terms of Use</a></li>
+        <li><a href="/privacy-policy">Privacy Policy</a></li>
+        <li><a href="/contact">Contact</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div class="footer-copy">© 2026 Tuvalu Sovereign Vision Stewardship Trust · All content protected under the Civic Commons License v1.0 · sovereignvision.org</div>
+    <div class="footer-socials">
+      <a href="https://github.com/sovereign-vision-org" target="_blank" rel="noopener">GitHub</a>
+      <a href="http://linkedin.com/company/sovereign-vision-project" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="https://www.instagram.com/tuvalu_vision_project" target="_blank" rel="noopener">Instagram</a>
+    </div>
+  </div>
+</footer>
+
+<!-- ═══ JS ═════════════════════════════════════════════════════════ -->
+<script>
+/* ── Nav ── */
+const nav = document.getElementById('nav');
+window.addEventListener('scroll', () => { nav.classList.toggle('scrolled', window.scrollY > 60); }, { passive:true });
+const dropdowns = document.querySelectorAll('.nav-dropdown');
+dropdowns.forEach(dd => {
+  let closeTimer = null;
+  const openDd = () => { clearTimeout(closeTimer); dropdowns.forEach(o => { if (o !== dd) o.classList.remove('active'); }); dd.classList.add('active'); };
+  const scheduledClose = () => { closeTimer = setTimeout(() => dd.classList.remove('active'), 120); };
+  const cancelClose = () => clearTimeout(closeTimer);
+  dd.addEventListener('mouseenter', openDd);
+  dd.addEventListener('mouseleave', scheduledClose);
+  const menu = dd.querySelector('.dropdown-menu');
+  if (menu) { menu.addEventListener('mouseenter', cancelClose); menu.addEventListener('mouseleave', scheduledClose); }
+  dd.querySelector('a').addEventListener('click', e => { if (window.innerWidth > 768) { e.preventDefault(); dd.classList.contains('active') ? dd.classList.remove('active') : openDd(); } });
+});
+document.addEventListener('click', e => { if (!e.target.closest('.nav-dropdown')) dropdowns.forEach(dd => dd.classList.remove('active')); });
+document.addEventListener('keydown', e => { if (e.key === 'Escape') dropdowns.forEach(dd => dd.classList.remove('active')); });
+
+/* ── Mobile menu ── */
+const hamburger = document.getElementById('hamburger');
+const mobileMenu = document.getElementById('mobile-menu');
+let menuOpen = false;
+function closeMobile() { menuOpen = false; hamburger.classList.remove('open'); mobileMenu.classList.remove('open'); document.body.style.overflow = ''; hamburger.setAttribute('aria-expanded','false'); }
+hamburger.addEventListener('click', () => {
+  menuOpen ? closeMobile() : (() => { menuOpen = true; hamburger.classList.add('open'); mobileMenu.classList.add('open'); document.body.style.overflow = 'hidden'; hamburger.setAttribute('aria-expanded','true'); })();
+});
+document.addEventListener('keydown', e => { if (e.key === 'Escape' && menuOpen) closeMobile(); });
+
+/* ── Hero: Neural Network GPU Matrix canvas ── */
+(function() {
+  const canvas = document.getElementById('hero-canvas');
+  const ctx = canvas.getContext('2d');
+  let W, H, nodes = [], edges = [], packets = [];
+
+  function resize() {
+    W = canvas.width  = canvas.offsetWidth;
+    H = canvas.height = canvas.offsetHeight;
+    buildGraph();
+  }
+
+  function buildGraph() {
+    nodes = [];
+    edges = [];
+    packets = [];
+    // Create a layered neural network structure
+    const layers = [5, 8, 10, 8, 10, 8, 6];
+    const layerX = layers.map((_, i) => 0.08 + (i / (layers.length - 1)) * 0.84);
+    layers.forEach((count, li) => {
+      for (let n = 0; n < count; n++) {
+        const yBase = (n + 1) / (count + 1);
+        const jitter = (Math.random() - 0.5) * 0.04;
+        nodes.push({
+          x: layerX[li] * W,
+          y: (yBase + jitter) * H,
+          r: 2 + Math.random() * 2.5,
+          layer: li,
+          pulse: Math.random(),
+          pulseSpeed: 0.008 + Math.random() * 0.012,
+          col: li === 3 ? 'purple' : (li % 2 === 0 ? 'teal' : 'gold'),
+          active: Math.random() > 0.3
+        });
+      }
+    });
+    // Connect adjacent layers
+    let nodesByLayer = layers.map((_, li) => nodes.filter(n => n.layer === li));
+    for (let li = 0; li < layers.length - 1; li++) {
+      const from = nodesByLayer[li];
+      const to   = nodesByLayer[li + 1];
+      from.forEach(fn => {
+        // connect to 2-4 nodes in next layer
+        const count = 2 + Math.floor(Math.random() * 3);
+        const shuffled = [...to].sort(() => Math.random() - 0.5).slice(0, count);
+        shuffled.forEach(tn => {
+          edges.push({ from: fn, to: tn, alpha: 0.06 + Math.random() * 0.12, active: Math.random() > 0.4 });
+        });
+      });
+    }
+    // Seed initial packets
+    for (let i = 0; i < 18; i++) spawnPacket();
+  }
+
+  function spawnPacket() {
+    const activeEdges = edges.filter(e => e.active);
+    if (!activeEdges.length) return;
+    const e = activeEdges[Math.floor(Math.random() * activeEdges.length)];
+    packets.push({ edge: e, t: Math.random(), speed: 0.003 + Math.random() * 0.005,
+      col: e.from.col, r: 1.5 + Math.random() * 1.5 });
+  }
+
+  const colMap = {
+    teal:   'rgba(35,193,196,',
+    gold:   'rgba(255,198,29,',
+    purple: 'rgba(139,92,246,'
+  };
+
+  let frame = 0;
+  function draw() {
+    ctx.clearRect(0, 0, W, H);
+
+    // Edges
+    edges.forEach(e => {
+      if (!e.active) return;
+      const col = colMap[e.from.col] || colMap.teal;
+      ctx.beginPath();
+      ctx.moveTo(e.from.x, e.from.y);
+      ctx.lineTo(e.to.x, e.to.y);
+      ctx.strokeStyle = col + e.alpha + ')';
+      ctx.lineWidth = 0.7;
+      ctx.stroke();
+    });
+
+    // Packets
+    packets.forEach((p, i) => {
+      p.t += p.speed;
+      if (p.t >= 1) { packets.splice(i, 1); spawnPacket(); return; }
+      const x = p.edge.from.x + (p.edge.to.x - p.edge.from.x) * p.t;
+      const y = p.edge.from.y + (p.edge.to.y - p.edge.from.y) * p.t;
+      const col = colMap[p.col] || colMap.teal;
+      const alpha = Math.sin(p.t * Math.PI) * 0.9;
+      ctx.beginPath();
+      ctx.arc(x, y, p.r, 0, Math.PI * 2);
+      ctx.fillStyle = col + alpha + ')';
+      ctx.fill();
+      // glow
+      ctx.beginPath();
+      ctx.arc(x, y, p.r * 2.5, 0, Math.PI * 2);
+      ctx.fillStyle = col + (alpha * 0.2) + ')';
+      ctx.fill();
+    });
+
+    // Nodes
+    nodes.forEach(n => {
+      if (!n.active) return;
+      n.pulse += n.pulseSpeed;
+      const a = 0.4 + Math.sin(n.pulse) * 0.4;
+      const col = colMap[n.col] || colMap.teal;
+      // outer glow
+      ctx.beginPath();
+      ctx.arc(n.x, n.y, n.r * 2.8, 0, Math.PI * 2);
+      ctx.fillStyle = col + (a * 0.12) + ')';
+      ctx.fill();
+      // core
+      ctx.beginPath();
+      ctx.arc(n.x, n.y, n.r, 0, Math.PI * 2);
+      ctx.fillStyle = col + a + ')';
+      ctx.fill();
+    });
+
+    // Occasional activation pulse across a random layer
+    if (frame % 80 === 0) {
+      const li = Math.floor(Math.random() * 7);
+      nodes.filter(n => n.layer === li).forEach(n => { n.pulse = 0; });
+    }
+
+    frame++;
+    requestAnimationFrame(draw);
+  }
+
+  window.addEventListener('resize', resize);
+  resize();
+  draw();
+})();
+
+/* ── GPU utilisation bars ── */
+const gpuObserver = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (!e.isIntersecting) return;
+    e.target.querySelectorAll('.gpu-bar-fill').forEach(bar => {
+      bar.style.width = bar.dataset.target + '%';
+    });
+    gpuObserver.unobserve(e.target);
+  });
+}, { threshold: 0.4 });
+const gpuSection = document.getElementById('compute');
+if (gpuSection) gpuObserver.observe(gpuSection);
+
+// Live jitter
+setInterval(() => {
+  document.querySelectorAll('.gpu-bar-fill').forEach(bar => {
+    const base = parseInt(bar.dataset.target);
+    const j = (Math.random() * 8 - 4);
+    const newVal = Math.max(5, Math.min(99, base + j));
+    bar.style.width = newVal + '%';
+    const pctEl = bar.closest('.gpu-bar-row')?.querySelector('.gpu-bar-pct');
+    if (pctEl) pctEl.textContent = Math.round(newVal) + '%';
+  });
+}, 2800);
+
+/* ── Storage capacity bars ── */
+const scObserver = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (!e.isIntersecting) return;
+    e.target.querySelectorAll('.sc-fill').forEach(bar => {
+      bar.style.width = bar.dataset.target + '%';
+    });
+    scObserver.unobserve(e.target);
+  });
+}, { threshold: 0.3 });
+const scEl = document.getElementById('sc-bars');
+if (scEl) scObserver.observe(scEl);
+
+/* ── Telemetry sparkline canvas ── */
+(function() {
+  const canvas = document.getElementById('telemetry-canvas');
+  if (!canvas) return;
+  const ctx = canvas.getContext('2d');
+  const W_POINTS = 80;
+  let streams = [
+    { data: Array.from({length:W_POINTS}, () => 0.3 + Math.random() * 0.5), col: 'rgba(35,193,196,', base: 0.55, variance: 0.3 },
+    { data: Array.from({length:W_POINTS}, () => 0.2 + Math.random() * 0.4), col: 'rgba(255,198,29,', base: 0.4,  variance: 0.25 },
+    { data: Array.from({length:W_POINTS}, () => 0.1 + Math.random() * 0.25), col: 'rgba(139,92,246,', base: 0.25, variance: 0.2 }
+  ];
+
+  function drawSparkline() {
+    const W = canvas.offsetWidth;
+    canvas.width = W;
+    ctx.clearRect(0, 0, W, 80);
+
+    // Push new data
+    streams.forEach(s => {
+      const last = s.data[s.data.length - 1];
+      const next = Math.max(0.05, Math.min(0.95, last + (Math.random() - 0.48) * s.variance));
+      s.data.shift();
+      s.data.push(next);
+    });
+
+    // Draw each stream
+    streams.forEach(s => {
+      ctx.beginPath();
+      s.data.forEach((v, i) => {
+        const x = (i / (W_POINTS - 1)) * W;
+        const y = 80 - v * 72 - 4;
+        i === 0 ? ctx.moveTo(x, y) : ctx.lineTo(x, y);
+      });
+      ctx.strokeStyle = s.col + '0.75)';
+      ctx.lineWidth = 1.5;
+      ctx.stroke();
+
+      // Fill area
+      ctx.beginPath();
+      s.data.forEach((v, i) => {
+        const x = (i / (W_POINTS - 1)) * W;
+        const y = 80 - v * 72 - 4;
+        i === 0 ? ctx.moveTo(x, y) : ctx.lineTo(x, y);
+      });
+      ctx.lineTo(W, 80);
+      ctx.lineTo(0, 80);
+      ctx.closePath();
+      ctx.fillStyle = s.col + '0.06)';
+      ctx.fill();
+    });
+
+    requestAnimationFrame(drawSparkline);
+  }
+  drawSparkline();
+})();
+
+/* ── Scroll reveal ── */
+const io = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); } });
+}, { threshold: 0.1 });
+document.querySelectorAll('.reveal, .reveal-left').forEach(el => io.observe(el));
+</script>
+</body>
+</html>
