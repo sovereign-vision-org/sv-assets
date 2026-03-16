@@ -1645,6 +1645,143 @@ document.addEventListener('keydown', e => {
   if (e.key === 'Escape') dropdowns.forEach(dd => dd.classList.remove('active'));
 });
 
+
+/* Mobile menu */
+const hamburger = document.getElementById('hamburger');
+const mobileMenu = document.getElementById('mobile-menu');
+let menuOpen = false;
+function closeMobile() {
+  menuOpen = false;
+  hamburger.classList.remove('open');
+  mobileMenu.classList.remove('open');
+  document.body.style.overflow = '';
+  hamburger.setAttribute('aria-expanded', 'false');
+}
+hamburger.addEventListener('click', () => {
+  menuOpen ? closeMobile() : (() => {
+    menuOpen = true;
+    hamburger.classList.add('open');
+    mobileMenu.classList.add('open');
+    document.body.style.overflow = 'hidden';
+    hamburger.setAttribute('aria-expanded', 'true');
+  })();
+});
+document.addEventListener('keydown', e => { if (e.key === 'Escape' && menuOpen) closeMobile(); });
+
+/* ── Hero canvas effects ── */
+const canvas  = document.getElementById('wave-canvas');
+const ctx     = canvas.getContext('2d');
+const canvas2 = document.getElementById('wave-canvas-2');
+const ctx2    = canvas2.getContext('2d');
+let W = 0, H = 0, t = 0;
+const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+function resizeCanvas() {
+  const hero = canvas.parentElement;
+  W = hero.offsetWidth; H = hero.offsetHeight;
+  canvas.width  = W; canvas.height  = H;
+  canvas2.width = W; canvas2.height = H;
+}
+resizeCanvas();
+new ResizeObserver(resizeCanvas).observe(document.querySelector('.page-hero'));
+
+const waveData = [
+  { amp:26, freq:.006,  speed:.22, yF:.52, color:'rgba(35,193,196,.55)', lw:1.8 },
+  { amp:16, freq:.010,  speed:.38, yF:.62, color:'rgba(35,193,196,.35)', lw:1.2 },
+  { amp:32, freq:.004,  speed:.15, yF:.72, color:'rgba(35,193,196,.22)', lw:1.4 },
+  { amp:18, freq:.008,  speed:.30, yF:.44, color:'rgba(255,198,29,.22)', lw:0.8 },
+];
+const waveData2 = [
+  { amp:40, freq:.0035, speed:.12, yF:.38, color:'rgba(35,193,196,.18)', lw:1.6 },
+  { amp:22, freq:.007,  speed:.28, yF:.58, color:'rgba(254,83,55,.14)',  lw:1.0 },
+  { amp:14, freq:.013,  speed:.50, yF:.68, color:'rgba(35,193,196,.28)', lw:0.9 },
+];
+
+(function drawWaves() {
+  ctx.clearRect(0,0,W,H);
+  ctx2.clearRect(0,0,W,H);
+  if (!reduced) {
+    waveData.forEach(w => {
+      ctx.beginPath(); ctx.lineWidth = w.lw; ctx.strokeStyle = w.color;
+      for (let x = 0; x <= W; x += 3) {
+        const y = H*w.yF + Math.sin(x*w.freq + t*w.speed)*w.amp + Math.sin(x*w.freq*1.7 + t*w.speed*.6)*(w.amp*.42);
+        x === 0 ? ctx.moveTo(x,y) : ctx.lineTo(x,y);
+      }
+      ctx.stroke();
+    });
+    waveData2.forEach(w => {
+      ctx2.beginPath(); ctx2.lineWidth = w.lw; ctx2.strokeStyle = w.color;
+      for (let x = 0; x <= W; x += 3) {
+        const y = H*w.yF + Math.sin(x*w.freq + t*w.speed + 1.2)*w.amp + Math.sin(x*w.freq*2.1 + t*w.speed*.8)*(w.amp*.35);
+        x === 0 ? ctx2.moveTo(x,y) : ctx2.lineTo(x,y);
+      }
+      ctx2.stroke();
+    });
+    t += .85;
+  }
+  requestAnimationFrame(drawWaves);
+})();
+
+/* ── WiFi arc emitters ── */
+const wifiCanvas = document.getElementById('wifi-canvas');
+const wctx = wifiCanvas.getContext('2d');
+
+function resizeWifi() {
+  const hero = wifiCanvas.parentElement;
+  wifiCanvas.width  = hero.offsetWidth;
+  wifiCanvas.height = hero.offsetHeight;
+}
+resizeWifi();
+new ResizeObserver(resizeWifi).observe(document.querySelector('.page-hero'));
+
+const emitters = [
+  { xf:.18, yf:.68, col:'rgba(35,193,196,', spd:1.1, mr:.30, ph:0.0, arc:Math.PI*1.2 },
+  { xf:.50, yf:.82, col:'rgba(35,193,196,', spd:0.85,mr:.24, ph:1.3, arc:Math.PI*1.4 },
+  { xf:.76, yf:.58, col:'rgba(255,198,29,', spd:1.3, mr:.20, ph:2.5, arc:Math.PI*0.9 },
+  { xf:.36, yf:.42, col:'rgba(35,193,196,', spd:0.7, mr:.22, ph:0.8, arc:Math.PI*1.6 },
+  { xf:.88, yf:.75, col:'rgba(254,83,55,',  spd:1.6, mr:.15, ph:1.9, arc:Math.PI*0.7 },
+  { xf:.06, yf:.78, col:'rgba(35,193,196,', spd:0.9, mr:.17, ph:3.2, arc:Math.PI*1.0 },
+  { xf:.62, yf:.30, col:'rgba(255,198,29,', spd:0.6, mr:.18, ph:2.0, arc:Math.PI*1.8 },
+];
+const RINGS = 3, RING_GAP = 0.33;
+let wt = 0;
+
+(function drawWifi() {
+  const WW = wifiCanvas.width, WH = wifiCanvas.height;
+  wctx.clearRect(0, 0, WW, WH);
+  if (!reduced) {
+    emitters.forEach(em => {
+      const cx = em.xf * WW;
+      const cy = em.yf * WH;
+      const maxR = em.mr * Math.min(WW, WH * 1.4);
+      for (let r = 0; r < RINGS; r++) {
+        const raw = ((wt * em.spd * 0.004) + em.ph + r * RING_GAP) % 1;
+        const radius = raw * maxR;
+        let alpha;
+        if      (raw < 0.12) alpha = (raw / 0.12) * 0.48;
+        else if (raw < 0.6)  alpha = 0.48;
+        else                 alpha = ((1 - raw) / 0.4) * 0.48;
+        const startAngle = -Math.PI * 0.5 - em.arc * 0.5;
+        const endAngle   = -Math.PI * 0.5 + em.arc * 0.5;
+        wctx.beginPath();
+        wctx.arc(cx, cy, Math.max(radius, 0.5), startAngle, endAngle);
+        wctx.strokeStyle = em.col + alpha.toFixed(3) + ')';
+        wctx.lineWidth   = r === 0 ? 1.4 : 1.0;
+        wctx.stroke();
+        if (r === 0) {
+          const dotA = Math.sin(raw * Math.PI) * 0.65;
+          wctx.beginPath();
+          wctx.arc(cx, cy, 2.2, 0, Math.PI * 2);
+          wctx.fillStyle = em.col + dotA.toFixed(3) + ')';
+          wctx.fill();
+        }
+      }
+    });
+  }
+  wt++;
+  requestAnimationFrame(drawWifi);
+})();
+
 /* Storm mode tabs */
 document.querySelectorAll('.storm-tab').forEach(tab => {
   tab.addEventListener('click', () => {
