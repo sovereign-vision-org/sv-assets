@@ -559,6 +559,7 @@ footer { background:var(--navy-deep); padding:4rem 3rem 2.5rem; }
       <div class="dropdown-menu">
         <a href="/ai-overview">Civic Stewardship System</a>
         <a href="/communications" style="color:var(--coral)!important;">Communications</a>
+        <a href="/datacenter">Sovereign Datacenter</a>
         <a href="/food">Food Sovereignty</a>
         <a href="/energy">Power Generation</a>
         <a href="/treasury">Sovereign Treasury</a>
@@ -711,6 +712,7 @@ footer { background:var(--navy-deep); padding:4rem 3rem 2.5rem; }
           <p class="nc-desc"><strong style="color:var(--navy);font-weight:500;">Guardian Edge</strong> runs locally on the node: monitoring power, temperature, signal, and battery every 30 seconds; triggering storm protocols; managing VLANs; and logging every decision. <strong style="color:var(--navy);font-weight:500;">Guardian Core</strong> runs in the sovereign datacenter: full AI orchestration, Arbor voice services, telemetry analysis, and Mirror Vault synchronisation. The edge operates fully independently if the datacenter is unreachable.</p>
           <div class="nc-stat"><span>60s</span> edge heartbeat interval</div>
           <div class="nc-stat"><span>100%</span> locally auditable at node level</div>
+          <a href="/datacenter" style="display:inline-flex;align-items:center;gap:.4rem;margin-top:.9rem;font-family:'Questrial',sans-serif;font-size:.6rem;letter-spacing:.14em;text-transform:uppercase;color:var(--gold-dim);text-decoration:none;border-bottom:1px solid rgba(212,164,0,.3);padding-bottom:.15rem;transition:color .2s;">Explore the datacenter <svg width="10" height="10" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M2 6h8M7 3l3 3-3 3"/></svg></a>
         </div>
       </div>
 
@@ -1892,7 +1894,7 @@ footer { background:var(--navy-deep); padding:4rem 3rem 2.5rem; }
         </div>
         <div class="sov-point reveal">
           <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
-          <span><strong style="color:rgba(255,255,255,.85);">Sovereign datacenter backbone.</strong> Full Guardian intelligence — Arbor voice AI, telemetry processing, predictive analytics, MQTT message bus, and knowledge retrieval — runs on a sovereign GPU compute cluster. No foreign cloud. No subscription dependency. All AI services are co-located with the network they govern.</span>
+          <span><strong style="color:rgba(255,255,255,.85);">Sovereign datacenter backbone.</strong> Full Guardian intelligence — Arbor voice AI, telemetry processing, predictive analytics, MQTT message bus, and knowledge retrieval — runs on a sovereign GPU compute cluster. No foreign cloud. No subscription dependency. All AI services are co-located with the network they govern. <a href="/datacenter" style="color:var(--teal);text-decoration:none;border-bottom:1px solid rgba(35,193,196,.3);padding-bottom:.1rem;font-size:.78rem;white-space:nowrap;">Explore the datacenter &rarr;</a></span>
         </div>
       </div>
 
@@ -2008,6 +2010,22 @@ footer { background:var(--navy-deep); padding:4rem 3rem 2.5rem; }
         <p class="int-desc">The 2km underground conduit provides protected fibre and power pathways between all civic nodes across Funafuti.</p>
       </div>
 
+      <div class="int-card reveal" style="position:relative;overflow:hidden;background:var(--navy-deep);">
+        <div style="position:absolute;inset:0;background:radial-gradient(ellipse 80% 80% at 20% 50%,rgba(107,70,193,.1) 0%,transparent 70%);pointer-events:none;"></div>
+        <div class="int-icon" style="position:relative;z-index:1;">
+          <svg viewBox="0 0 24 24" stroke="rgba(139,92,246,.8)">
+            <rect x="2" y="4" width="20" height="6" rx="1"/><rect x="2" y="14" width="20" height="6" rx="1"/>
+            <circle cx="19.5" cy="7" r="1" fill="rgba(139,92,246,.8)" stroke="none"/>
+            <circle cx="19.5" cy="17" r="1" fill="rgba(35,193,196,.9)" stroke="none">
+              <animate attributeName="opacity" values="1;.2;1" dur="1.8s" repeatCount="indefinite"/>
+            </circle>
+          </svg>
+        </div>
+        <div class="int-name" style="position:relative;z-index:1;color:rgba(255,255,255,.85);">Sovereign Datacenter</div>
+        <p class="int-desc" style="position:relative;z-index:1;color:rgba(255,255,255,.5);">Guardian Core, Arbor AI, national knowledge layer, and Mirror Vault continuity — the brain behind every node in the network.</p>
+        <a href="/datacenter" style="position:relative;z-index:1;display:inline-flex;align-items:center;gap:.4rem;margin-top:1rem;font-family:'Questrial',sans-serif;font-size:.6rem;letter-spacing:.14em;text-transform:uppercase;color:rgba(139,92,246,.85);text-decoration:none;border-bottom:1px solid rgba(139,92,246,.3);padding-bottom:.15rem;transition:color .2s;">Architecture &amp; specs <svg width="10" height="10" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M2 6h8M7 3l3 3-3 3"/></svg></a>
+      </div>
+
     </div>
   </div>
 </section>
@@ -2107,7 +2125,7 @@ footer { background:var(--navy-deep); padding:4rem 3rem 2.5rem; }
       <div class="nat-arrow">↓</div>
 
       <div class="nat-layer nat-dc">
-        <div class="nat-layer-label">Sovereign Datacenter Core</div>
+        <div class="nat-layer-label">Sovereign Datacenter Core <a href="/datacenter" style="margin-left:.6rem;background:rgba(254,83,55,.15);color:var(--coral);border-radius:100px;padding:.15rem .6rem;font-size:.56rem;letter-spacing:.12em;text-decoration:none;white-space:nowrap;">Explore &rarr;</a></div>
         <div class="nat-layer-nodes">
           <div class="nat-node"><div class="nat-node-icon"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"><rect x="2" y="4" width="16" height="5" rx="1"/><rect x="2" y="11" width="16" height="5" rx="1"/><circle cx="16.5" cy="6.5" r="1" fill="currentColor"/><circle cx="16.5" cy="13.5" r="1" fill="currentColor"/></svg></div><span>AI Compute Cluster</span></div>
           <div class="nat-node"><div class="nat-node-icon"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"><ellipse cx="10" cy="6" rx="7" ry="2.5"/><path d="M3 6v4c0 1.4 3.1 2.5 7 2.5s7-1.1 7-2.5V6"/><path d="M3 10v4c0 1.4 3.1 2.5 7 2.5s7-1.1 7-2.5v-4"/></svg></div><span>Storage Systems</span></div>
@@ -2129,7 +2147,7 @@ footer { background:var(--navy-deep); padding:4rem 3rem 2.5rem; }
 
     </div>
 
-    <p class="national-footer reveal">The mental model: hybrid nodes are the island's nervous system — collecting sensation and broadcasting signal. The datacenter is the brain — holding memory, running cognition, and coordinating response. Each functions independently. Together they constitute Tuvalu's sovereign digital infrastructure.</p>
+    <p class="national-footer reveal">The mental model: hybrid nodes are the island's nervous system — collecting sensation and broadcasting signal. The datacenter is the brain — holding memory, running cognition, and coordinating response. Each functions independently. Together they constitute Tuvalu's sovereign digital infrastructure. <a href="/datacenter" style="color:rgba(35,193,196,.75);text-decoration:none;font-style:normal;border-bottom:1px solid rgba(35,193,196,.25);padding-bottom:.1rem;">Read the datacenter architecture &rarr;</a></p>
   </div>
 </section>
 
