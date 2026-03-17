@@ -1,0 +1,1248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Guardian & Arbor — Tuvalu's dual civic intelligence architecture. Guardian monitors the island's infrastructure. Arbor serves each person. Together they form a governance philosophy encoded into technology.">
+<meta name="keywords" content="Guardian AI, Arbor civic companion, Tuvalu Sovereign Vision, civic AI, sovereign AI, island AI governance, ethical AI, offline AI, community AI, Te Fale o Te Mātāmua">
+<meta name="author" content="Tuvalu Sovereign Vision Stewardship Trust">
+<meta property="og:title" content="Guardian & Arbor — Civic Intelligence · Sovereign Vision">
+<meta property="og:description" content="Two systems. One philosophy. Guardian monitors the island. Arbor serves the person. Privacy by design. Sovereignty by structure.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://www.sovereignvision.org/guardian-arbor">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Guardian & Arbor — Civic Intelligence · Sovereign Vision">
+<meta name="twitter:description" content="Two systems. One philosophy. Guardian monitors the island. Arbor serves the person.">
+<title>Guardian & Arbor — Civic Intelligence · Sovereign Vision</title>
+<link rel="icon" type="image/png" href="images/favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Questrial&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet">
+<style>
+/* ═══════════════════════════════════════════════
+   DESIGN TOKENS — matches communications.html exactly
+═══════════════════════════════════════════════ */
+:root {
+  --coral:        #fe5337;
+  --coral-dim:    #c9402a;
+  --coral-pale:   rgba(254,83,55,0.08);
+  --gold:         #ffc61d;
+  --gold-dim:     #d4a400;
+  --gold-pale:    rgba(255,198,29,0.10);
+  --teal:         #23c1c4;
+  --teal-dim:     #0096b9;
+  --teal-pale:    rgba(35,193,196,0.09);
+  --navy:         #002b4b;
+  --navy-mid:     #00203a;
+  --navy-deep:    #00152a;
+  --navy-light:   #0d4070;
+  --cream:        #faf6ee;
+  --cream-mid:    #f2ead8;
+  --cream-dark:   #e8ddc8;
+  --stone:        #4a5568;
+  --stone-light:  #718096;
+  --white:        #ffffff;
+  --text-on-dark: rgba(250,246,238,0.70);
+  --text-dimmer:  rgba(250,246,238,0.40);
+  --border-light: rgba(0,43,75,0.10);
+  --border-gold:  rgba(255,198,29,0.18);
+  --border-teal:  rgba(35,193,196,0.20);
+  --ease:         cubic-bezier(0.22,1,0.36,1);
+}
+@media (prefers-reduced-motion: reduce) {
+  *,*::before,*::after { animation-duration:.01ms!important; transition-duration:.01ms!important; }
+  .reveal,.reveal-left { opacity:1!important; transform:none!important; }
+}
+*,*::before,*::after { box-sizing:border-box; margin:0; padding:0; }
+html { scroll-behavior:smooth; }
+body { background:var(--cream); color:var(--navy); font-family:'DM Sans',sans-serif; font-weight:300; overflow-x:hidden; -webkit-font-smoothing:antialiased; }
+
+/* ═══ NAV ══════════════════════════════════════ */
+nav { position:fixed; top:0; left:0; right:0; z-index:200; padding:0 3rem; height:72px; display:flex; align-items:center; justify-content:space-between; transition:background .4s,box-shadow .4s; }
+nav.scrolled { background:rgba(255,255,255,.96); box-shadow:0 1px 0 var(--border-light),0 4px 24px rgba(0,43,75,.06); backdrop-filter:blur(12px); }
+.nav-logo { display:flex; align-items:center; gap:.7rem; text-decoration:none; flex-shrink:0; }
+.nav-logo img { width:42px; height:42px; object-fit:contain; display:block; }
+.nav-logo-text { font-family:'Questrial',sans-serif; font-size:.78rem; letter-spacing:.14em; text-transform:uppercase; color:var(--navy); line-height:1.25; }
+.nav-logo-text span { display:block; font-size:.58rem; letter-spacing:.12em; color:var(--stone-light); font-family:'DM Sans',sans-serif; }
+nav:not(.scrolled) .nav-logo-text { color:var(--white); }
+nav:not(.scrolled) .nav-logo-text span { color:rgba(255,255,255,.55); }
+.nav-links { display:flex; align-items:center; gap:2rem; list-style:none; }
+.nav-links a { font-size:.72rem; letter-spacing:.1em; text-transform:uppercase; color:rgba(255,255,255,.8); text-decoration:none; font-weight:400; transition:color .25s; white-space:nowrap; }
+nav.scrolled .nav-links a { color:var(--stone); }
+.nav-links a:hover { color:var(--coral)!important; }
+.nav-dropdown { position:relative; }
+.nav-dropdown>a { display:flex; align-items:center; gap:.3rem; }
+.nav-dropdown>a::after { content:'▾'; font-size:.6rem; opacity:.6; transition:transform .25s; }
+.nav-dropdown.active>a::after { transform:rotate(180deg); }
+.nav-dropdown::after { content:''; position:absolute; top:100%; left:-20px; right:-20px; height:16px; background:transparent; display:none; }
+.nav-dropdown.active::after { display:block; }
+.dropdown-menu { position:absolute; top:calc(100% + 8px); left:50%; min-width:220px; background:var(--white); border:1px solid var(--border-light); box-shadow:0 12px 40px rgba(0,43,75,.12); padding:.5rem 0; opacity:0; pointer-events:none; transform:translateX(-50%) translateY(-6px); transition:opacity .2s var(--ease),transform .2s var(--ease); }
+.nav-dropdown.active .dropdown-menu { opacity:1; pointer-events:all; transform:translateX(-50%) translateY(0); }
+.dropdown-menu a { display:block; padding:.6rem 1.2rem; font-size:.72rem; letter-spacing:.07em; text-transform:uppercase; color:var(--navy)!important; text-decoration:none; transition:background .18s,color .18s; white-space:nowrap; }
+.dropdown-menu a:hover { background:var(--coral-pale); color:var(--coral)!important; }
+.nav-cta { background:var(--coral); color:var(--white)!important; padding:.5rem 1.4rem; font-size:.7rem; letter-spacing:.14em; text-transform:uppercase; font-family:'Questrial',sans-serif; text-decoration:none; transition:background .25s,transform .2s; white-space:nowrap; flex-shrink:0; }
+.nav-cta:hover { background:var(--coral-dim); transform:translateY(-1px); }
+.hamburger { display:none; flex-direction:column; gap:5px; cursor:pointer; padding:4px; }
+.hamburger span { width:22px; height:1.5px; background:var(--white); display:block; transition:all .3s var(--ease); }
+nav.scrolled .hamburger span { background:var(--navy); }
+.hamburger.open span:nth-child(1) { transform:rotate(45deg) translate(4.7px,4.7px); }
+.hamburger.open span:nth-child(2) { opacity:0; }
+.hamburger.open span:nth-child(3) { transform:rotate(-45deg) translate(4.7px,-4.7px); }
+.mobile-menu { display:none; position:fixed; inset:0; z-index:199; background:var(--navy-deep); flex-direction:column; align-items:center; justify-content:center; gap:1.8rem; opacity:0; pointer-events:none; transition:opacity .35s; }
+.mobile-menu.open { opacity:1; pointer-events:all; }
+.mobile-menu a { font-family:'Cormorant Garamond',serif; font-size:2rem; font-weight:300; color:var(--white); text-decoration:none; letter-spacing:.04em; transition:color .25s; }
+.mobile-menu a:hover { color:var(--gold); }
+.mobile-menu .m-cta { font-family:'Questrial',sans-serif; font-size:.76rem; letter-spacing:.16em; text-transform:uppercase; color:var(--coral); border:1px solid var(--coral); padding:.65rem 2rem; margin-top:.5rem; }
+
+/* ═══ BUTTONS ═══════════════════════════════════ */
+.btn-coral { background:var(--coral); color:var(--white); border:1.5px solid var(--coral); padding:.8rem 2rem; font-family:'Questrial',sans-serif; font-size:.74rem; letter-spacing:.14em; text-transform:uppercase; text-decoration:none; display:inline-block; transition:background .25s,transform .2s; }
+.btn-coral:hover { background:var(--coral-dim); border-color:var(--coral-dim); transform:translateY(-2px); }
+.btn-ghost { background:transparent; color:rgba(255,255,255,.85); border:1.5px solid rgba(255,255,255,.3); padding:.8rem 2rem; font-family:'Questrial',sans-serif; font-size:.74rem; letter-spacing:.14em; text-transform:uppercase; text-decoration:none; display:inline-block; transition:all .25s; }
+.btn-ghost:hover { border-color:var(--white); color:var(--white); transform:translateY(-2px); }
+
+/* ═══ TYPOGRAPHY ════════════════════════════════ */
+.h2 { font-family:'Cormorant Garamond',serif; font-size:clamp(2.4rem,4.5vw,4.2rem); font-weight:300; color:var(--navy); line-height:1.08; }
+.h2 em { font-style:italic; color:var(--coral); }
+.h2-white { color:var(--white); }
+.h2-white em { color:var(--gold); }
+.section-tag { font-family:'Questrial',sans-serif; font-size:.62rem; letter-spacing:.22em; text-transform:uppercase; color:var(--coral); margin-bottom:.9rem; display:flex; align-items:center; gap:.7rem; }
+.section-tag::before { content:''; width:20px; height:1.5px; background:var(--coral); flex-shrink:0; }
+.section-tag.teal { color:var(--teal-dim); }
+.section-tag.teal::before { background:var(--teal-dim); }
+.section-tag.gold { color:var(--gold-dim); }
+.section-tag.gold::before { background:var(--gold-dim); }
+.section-tag.white { color:rgba(255,255,255,.7); }
+.section-tag.white::before { background:rgba(255,255,255,.5); }
+
+/* ═══ REVEAL ════════════════════════════════════ */
+.reveal { opacity:0; transform:translateY(22px); transition:opacity .7s var(--ease),transform .7s var(--ease); }
+.reveal.visible { opacity:1; transform:none; }
+.reveal-left { opacity:0; transform:translateX(-22px); transition:opacity .65s var(--ease),transform .65s var(--ease); }
+.reveal-left.visible { opacity:1; transform:none; }
+
+/* ═══════════════════════════════════════════════
+   HERO — Neural network / synaptic node field
+   Unique to Guardian & Arbor page
+═══════════════════════════════════════════════ */
+.page-hero { position:relative; min-height:100svh; display:flex; align-items:center; background:var(--navy-deep); overflow:hidden; }
+#neural-canvas { position:absolute; inset:0; width:100%; height:100%; }
+.hero-gradient-overlay { position:absolute; inset:0; background: radial-gradient(ellipse 55% 65% at 15% 40%, rgba(35,193,196,0.07) 0%, transparent 60%), radial-gradient(ellipse 40% 50% at 85% 60%, rgba(255,198,29,0.05) 0%, transparent 55%); pointer-events:none; }
+.page-hero-inner { position:relative; z-index:2; max-width:1360px; width:100%; margin:0 auto; padding:140px 3rem 100px; }
+.hero-tag { font-family:'Questrial',sans-serif; font-size:.62rem; letter-spacing:.28em; text-transform:uppercase; color:rgba(35,193,196,.75); margin-bottom:1.4rem; display:flex; align-items:center; gap:.7rem; }
+.hero-tag::before { content:''; width:28px; height:1.5px; background:rgba(35,193,196,.7); flex-shrink:0; }
+.page-hero h1 { font-family:'Cormorant Garamond',serif; font-size:clamp(3.2rem,7vw,7.5rem); font-weight:300; color:var(--white); line-height:1.0; margin-bottom:1.2rem; }
+.page-hero h1 em { font-style:italic; color:var(--gold); }
+.page-hero-sub { font-size:clamp(.92rem,1.4vw,1.1rem); color:rgba(255,255,255,.65); line-height:1.8; max-width:560px; margin-bottom:1.4rem; }
+.hero-narrative { font-family:'Cormorant Garamond',serif; font-size:clamp(1.05rem,1.6vw,1.35rem); font-weight:300; font-style:italic; color:rgba(255,255,255,.5); max-width:640px; line-height:1.6; margin-bottom:2.8rem; border-left:2px solid rgba(255,198,29,.35); padding-left:1.2rem; }
+.hero-actions { display:flex; gap:1rem; flex-wrap:wrap; }
+.hero-meta { position:absolute; bottom:2rem; right:3rem; font-family:'Questrial',sans-serif; font-size:.56rem; letter-spacing:.16em; text-transform:uppercase; color:rgba(255,255,255,.25); display:flex; align-items:center; gap:.5rem; }
+.hero-meta::before { content:''; width:5px; height:5px; border-radius:50%; background:var(--teal); animation:pulseDot 2.5s infinite; }
+@keyframes pulseDot { 0%,100%{box-shadow:0 0 0 0 rgba(35,193,196,.5);}50%{box-shadow:0 0 0 6px rgba(35,193,196,0);} }
+
+/* Dual badges in hero */
+.hero-badges { display:flex; gap:1.2rem; margin-bottom:2rem; flex-wrap:wrap; }
+.hero-badge { display:flex; align-items:center; gap:.55rem; padding:.45rem 1rem .45rem .7rem; border:1px solid; font-family:'Questrial',sans-serif; font-size:.6rem; letter-spacing:.12em; text-transform:uppercase; }
+.hero-badge svg { width:14px; height:14px; flex-shrink:0; }
+.hb-guardian { border-color:rgba(35,193,196,.3); color:var(--teal); }
+.hb-guardian svg { stroke:var(--teal); }
+.hb-arbor { border-color:rgba(255,198,29,.3); color:var(--gold); }
+.hb-arbor svg { stroke:var(--gold); }
+
+/* ═══ VOICE STRIP ═══════════════════════════════ */
+.voice-strip { background:var(--navy-mid); padding:3.5rem 3rem; border-bottom:1px solid rgba(255,255,255,.06); }
+.voice-strip-inner { max-width:900px; margin:0 auto; text-align:center; }
+.voice-quote { font-family:'Cormorant Garamond',serif; font-size:clamp(1.4rem,2.8vw,2.4rem); font-weight:300; color:rgba(255,255,255,.9); line-height:1.45; }
+.voice-quote em { font-style:italic; color:var(--gold); }
+.voice-attr { margin-top:1rem; font-family:'Questrial',sans-serif; font-size:.62rem; letter-spacing:.18em; text-transform:uppercase; color:rgba(255,255,255,.3); }
+
+/* ═══ DUAL SYSTEM CARDS ═════════════════════════ */
+.dual-section { background:var(--cream); padding:8rem 3rem; }
+.dual-inner { max-width:1360px; margin:0 auto; }
+.dual-header { text-align:center; margin-bottom:5rem; }
+.dual-header .section-tag { justify-content:center; }
+.dual-header .section-tag::before { display:none; }
+.dual-header p { font-size:.9rem; color:var(--stone); line-height:1.8; margin-top:1.2rem; max-width:600px; margin-left:auto; margin-right:auto; }
+.dual-grid { display:grid; grid-template-columns:1fr 1fr; gap:2px; background:var(--border-light); }
+.sys-card { background:var(--white); padding:3.5rem 3rem 3rem; position:relative; overflow:hidden; }
+.sys-card::before { content:''; position:absolute; top:0; left:0; right:0; height:4px; }
+.sc-guardian::before { background:linear-gradient(90deg, var(--teal), var(--teal-dim)); }
+.sc-arbor::before { background:linear-gradient(90deg, var(--gold), var(--gold-dim)); }
+.sys-card-bg { position:absolute; top:0; right:0; bottom:0; width:55%; opacity:.028; pointer-events:none; }
+.sc-guardian .sys-card-bg svg { stroke:var(--teal); }
+.sc-arbor .sys-card-bg svg { stroke:var(--gold-dim); }
+.sys-eyebrow { font-family:'Questrial',sans-serif; font-size:.58rem; letter-spacing:.22em; text-transform:uppercase; margin-bottom:.5rem; }
+.sc-guardian .sys-eyebrow { color:var(--teal); }
+.sc-arbor .sys-eyebrow { color:var(--gold-dim); }
+.sys-title { font-family:'Cormorant Garamond',serif; font-size:clamp(2rem,3.5vw,3.2rem); font-weight:300; color:var(--navy); line-height:1.05; margin-bottom:.4rem; }
+.sys-analogy { font-family:'Questrial',sans-serif; font-size:.62rem; letter-spacing:.12em; text-transform:uppercase; color:var(--stone-light); margin-bottom:1.4rem; }
+.sys-role { font-size:.88rem; color:var(--stone); line-height:1.75; margin-bottom:2rem; max-width:440px; }
+.sys-principle { font-family:'Cormorant Garamond',serif; font-size:1.05rem; font-style:italic; font-weight:400; line-height:1.6; padding:1rem 1.2rem; border-left:3px solid; margin-bottom:2rem; }
+.sc-guardian .sys-principle { color:var(--navy); border-left-color:var(--teal); }
+.sc-arbor .sys-principle { color:var(--navy); border-left-color:var(--gold-dim); }
+.sys-oversees { margin-bottom:2rem; }
+.sys-oversees-label { font-family:'Questrial',sans-serif; font-size:.58rem; letter-spacing:.2em; text-transform:uppercase; color:var(--stone-light); margin-bottom:.9rem; }
+.sys-items { list-style:none; display:flex; flex-direction:column; gap:.4rem; }
+.sys-items li { display:flex; align-items:center; gap:.75rem; font-size:.8rem; color:var(--stone); padding:.45rem 0; border-bottom:1px solid var(--border-light); }
+.sys-items li:last-child { border-bottom:none; }
+.sys-items li svg { width:16px; height:16px; flex-shrink:0; stroke-width:1.3; fill:none; stroke-linecap:round; stroke-linejoin:round; }
+.sc-guardian .sys-items li svg { stroke:var(--teal); }
+.sc-arbor .sys-items li svg { stroke:var(--gold-dim); }
+.sys-verdict { display:inline-flex; align-items:center; gap:.6rem; margin-top:1.4rem; padding:.5rem 1rem; font-family:'Questrial',sans-serif; font-size:.62rem; letter-spacing:.14em; text-transform:uppercase; }
+.sc-guardian .sys-verdict { background:var(--teal-pale); color:var(--teal-dim); }
+.sc-arbor .sys-verdict { background:var(--gold-pale); color:var(--gold-dim); }
+.sys-verdict svg { width:12px; height:12px; stroke:currentColor; stroke-width:1.5; fill:none; }
+
+/* ═══ CONSOLE SECTION ═══════════════════════════ */
+.console-section { background:var(--navy-deep); padding:8rem 3rem; }
+.console-inner { max-width:1360px; margin:0 auto; }
+.console-header { display:grid; grid-template-columns:1fr 1.5fr; gap:5rem; align-items:start; margin-bottom:5rem; }
+.console-header h2 { margin-bottom:1rem; }
+.console-pull { font-family:'Cormorant Garamond',serif; font-size:clamp(1rem,1.6vw,1.3rem); font-weight:300; font-style:italic; color:rgba(255,255,255,.65); line-height:1.65; border-left:2px solid var(--teal); padding-left:1.4rem; margin-bottom:1.2rem; }
+.console-sub { font-size:.84rem; color:rgba(255,255,255,.45); line-height:1.75; }
+.console-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:rgba(255,255,255,.05); }
+.con-card { background:var(--navy-deep); padding:2.6rem 2rem; transition:background .3s; position:relative; overflow:hidden; }
+.con-card:hover { background:rgba(255,255,255,.02); }
+.con-card::after { content:''; position:absolute; bottom:0; left:0; right:0; height:2px; transform:scaleX(0); transform-origin:left; transition:transform .35s var(--ease); }
+.con-card:hover::after { transform:scaleX(1); }
+.cc-teal::after { background:var(--teal); }
+.cc-gold::after { background:var(--gold); }
+.cc-coral::after { background:var(--coral); }
+.con-icon { width:36px; height:36px; margin-bottom:1.5rem; }
+.con-icon svg { width:36px; height:36px; stroke-width:1.2; fill:none; stroke-linecap:round; stroke-linejoin:round; }
+.cc-teal .con-icon svg { stroke:var(--teal); }
+.cc-gold .con-icon svg { stroke:var(--gold); }
+.cc-coral .con-icon svg { stroke:var(--coral); }
+.con-label { font-family:'Questrial',sans-serif; font-size:.56rem; letter-spacing:.2em; text-transform:uppercase; margin-bottom:.3rem; }
+.cc-teal .con-label { color:var(--teal); }
+.cc-gold .con-label { color:var(--gold-dim); }
+.cc-coral .con-label { color:var(--coral-dim); }
+.con-title { font-family:'Cormorant Garamond',serif; font-size:1.35rem; font-weight:300; color:var(--white); margin-bottom:.8rem; line-height:1.2; }
+.con-body { font-size:.78rem; color:rgba(255,255,255,.5); line-height:1.7; margin-bottom:1.2rem; }
+.con-locs { display:flex; flex-direction:column; gap:.3rem; }
+.con-loc { display:flex; align-items:center; gap:.5rem; font-family:'Questrial',sans-serif; font-size:.6rem; letter-spacing:.08em; color:rgba(255,255,255,.35); }
+.con-loc::before { content:''; width:3px; height:3px; border-radius:50%; background:rgba(255,255,255,.25); flex-shrink:0; }
+
+/* ═══ INTERACTION MODEL — Flow diagram section ══ */
+.flow-section { background:var(--cream); padding:8rem 3rem; border-top:1px solid var(--border-light); }
+.flow-inner { max-width:1360px; margin:0 auto; }
+.flow-header { text-align:center; margin-bottom:5rem; }
+.flow-header .section-tag { justify-content:center; }
+.flow-header .section-tag::before { display:none; }
+.flow-header p { font-size:.88rem; color:var(--stone); line-height:1.8; margin-top:1rem; max-width:540px; margin-left:auto; margin-right:auto; }
+.flow-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:3rem; }
+.flow-card { position:relative; }
+.flow-card-num { font-family:'Cormorant Garamond',serif; font-size:4.5rem; font-weight:300; line-height:1; color:rgba(0,43,75,.05); margin-bottom:.2rem; }
+.flow-card-label { font-family:'Questrial',sans-serif; font-size:.58rem; letter-spacing:.2em; text-transform:uppercase; color:var(--teal-dim); margin-bottom:.5rem; }
+.flow-card h3 { font-family:'Cormorant Garamond',serif; font-size:1.5rem; font-weight:400; color:var(--navy); margin-bottom:1rem; line-height:1.2; }
+.flow-steps { display:flex; flex-direction:column; gap:0; }
+.flow-step { display:flex; align-items:flex-start; gap:.8rem; padding:.8rem 0; border-bottom:1px solid var(--border-light); }
+.flow-step:last-child { border-bottom:none; }
+.flow-step-icon { width:28px; height:28px; flex-shrink:0; border-radius:50%; display:flex; align-items:center; justify-content:center; margin-top:.1rem; }
+.flow-step-icon svg { width:13px; height:13px; stroke-width:1.5; fill:none; stroke-linecap:round; stroke-linejoin:round; }
+.fsi-teal { background:var(--teal-pale); }
+.fsi-teal svg { stroke:var(--teal); }
+.fsi-gold { background:var(--gold-pale); }
+.fsi-gold svg { stroke:var(--gold-dim); }
+.fsi-coral { background:var(--coral-pale); }
+.fsi-coral svg { stroke:var(--coral); }
+.fsi-stone { background:rgba(113,128,150,.08); }
+.fsi-stone svg { stroke:var(--stone-light); }
+.flow-step-text { font-size:.79rem; color:var(--stone); line-height:1.6; }
+.flow-step-text strong { color:var(--navy); font-weight:500; }
+
+/* ═══ DESIGN PRINCIPLES ═════════════════════════ */
+.principles-section { background:var(--navy-mid); padding:8rem 3rem; }
+.principles-inner { max-width:1360px; margin:0 auto; }
+.principles-header { text-align:center; margin-bottom:5rem; }
+.principles-header p { font-size:.88rem; color:rgba(255,255,255,.5); line-height:1.8; margin-top:1rem; max-width:560px; margin-left:auto; margin-right:auto; }
+.principles-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:1px; background:rgba(255,255,255,.05); }
+.prin-card { background:var(--navy-mid); padding:2.8rem 2.4rem; transition:background .25s; }
+.prin-card:hover { background:rgba(255,255,255,.015); }
+.prin-num { font-family:'Cormorant Garamond',serif; font-size:.72rem; letter-spacing:.18em; text-transform:uppercase; color:rgba(255,255,255,.2); margin-bottom:.8rem; }
+.prin-title { font-family:'Cormorant Garamond',serif; font-size:1.55rem; font-weight:300; color:var(--white); margin-bottom:.8rem; line-height:1.2; }
+.prin-body { font-size:.8rem; color:rgba(255,255,255,.5); line-height:1.75; margin-bottom:1rem; }
+.prin-effect { display:flex; gap:.6rem; align-items:flex-start; font-size:.75rem; color:rgba(255,255,255,.3); line-height:1.55; font-style:italic; padding-top:.8rem; border-top:1px solid rgba(255,255,255,.05); }
+.prin-effect::before { content:'→'; flex-shrink:0; color:var(--gold-dim); }
+
+/* ═══ LANGUAGE SECTION ══════════════════════════ */
+.language-section { background:var(--cream); padding:8rem 3rem; border-top:1px solid var(--border-light); }
+.language-inner { max-width:1360px; margin:0 auto; display:grid; grid-template-columns:1fr 1.6fr; gap:7rem; align-items:start; }
+.language-left h2 { margin-bottom:1rem; }
+.language-pull { font-family:'Cormorant Garamond',serif; font-size:clamp(1rem,1.6vw,1.3rem); font-weight:300; font-style:italic; color:var(--navy); line-height:1.65; border-left:3px solid var(--gold-dim); padding-left:1.4rem; margin:1.4rem 0 1.6rem; }
+.language-sub { font-size:.84rem; color:var(--stone); line-height:1.75; }
+.language-workstreams { display:flex; flex-direction:column; gap:0; }
+.ws-item { padding:2rem 0; border-bottom:1px solid var(--border-light); }
+.ws-item:last-child { border-bottom:none; }
+.ws-top { display:flex; align-items:center; gap:1rem; margin-bottom:.7rem; }
+.ws-num { font-family:'Cormorant Garamond',serif; font-size:2rem; font-weight:300; line-height:1; color:rgba(0,43,75,.15); width:44px; flex-shrink:0; }
+.ws-label { font-family:'Questrial',sans-serif; font-size:.58rem; letter-spacing:.18em; text-transform:uppercase; color:var(--teal-dim); }
+.ws-title { font-family:'Cormorant Garamond',serif; font-size:1.3rem; font-weight:400; color:var(--navy); margin-bottom:.5rem; }
+.ws-body { font-size:.8rem; color:var(--stone); line-height:1.72; padding-left:3.4rem; }
+
+/* ═══ DEPLOYMENT PHASES ═════════════════════════ */
+.phases-section { background:var(--navy-deep); padding:8rem 3rem; }
+.phases-inner { max-width:1360px; margin:0 auto; }
+.phases-header { text-align:center; margin-bottom:5rem; }
+.phases-header p { font-size:.88rem; color:rgba(255,255,255,.5); line-height:1.8; margin-top:1rem; max-width:560px; margin-left:auto; margin-right:auto; }
+.phases-track { display:flex; flex-direction:column; gap:1px; background:rgba(255,255,255,.05); }
+.phase-row { background:var(--navy-deep); padding:2.4rem 2.8rem; display:grid; grid-template-columns:180px 1fr 1fr; gap:2.5rem; align-items:start; transition:background .25s; }
+.phase-row:hover { background:rgba(255,255,255,.015); }
+.phase-row-left { }
+.phase-tag { font-family:'Questrial',sans-serif; font-size:.56rem; letter-spacing:.22em; text-transform:uppercase; margin-bottom:.3rem; }
+.ph0 .phase-tag { color:rgba(255,255,255,.3); }
+.ph1 .phase-tag { color:var(--teal); }
+.ph2 .phase-tag { color:var(--gold-dim); }
+.ph3 .phase-tag { color:var(--coral-dim); }
+.ph4 .phase-tag { color:rgba(107,170,193,.8); }
+.phase-name { font-family:'Cormorant Garamond',serif; font-size:1.2rem; font-weight:300; color:var(--white); line-height:1.2; margin-bottom:.3rem; }
+.phase-period { font-size:.72rem; color:rgba(255,255,255,.3); }
+.phase-guardian { }
+.phase-label-mini { font-family:'Questrial',sans-serif; font-size:.52rem; letter-spacing:.16em; text-transform:uppercase; color:var(--teal); margin-bottom:.5rem; }
+.phase-arbor .phase-label-mini { color:var(--gold-dim); }
+.phase-items { display:flex; flex-direction:column; gap:.35rem; }
+.phase-items li { display:flex; align-items:flex-start; gap:.5rem; font-size:.76rem; color:rgba(255,255,255,.5); line-height:1.55; list-style:none; }
+.phase-items li::before { content:''; width:3px; height:3px; border-radius:50%; background:rgba(255,255,255,.2); flex-shrink:0; margin-top:.55rem; }
+.ph1 .phase-guardian .phase-items li::before { background:rgba(35,193,196,.4); }
+.ph2 .phase-guardian .phase-items li::before { background:rgba(35,193,196,.4); }
+.ph3 .phase-guardian .phase-items li::before { background:rgba(35,193,196,.4); }
+.ph1 .phase-arbor .phase-items li::before { background:rgba(255,198,29,.4); }
+.ph2 .phase-arbor .phase-items li::before { background:rgba(255,198,29,.4); }
+.ph3 .phase-arbor .phase-items li::before { background:rgba(255,198,29,.4); }
+
+/* ═══ ARCHITECTURE CALLOUTS ═════════════════════ */
+.arch-section { background:var(--cream); padding:8rem 3rem; border-top:1px solid var(--border-light); }
+.arch-inner { max-width:1360px; margin:0 auto; }
+.arch-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:1px; background:var(--border-light); }
+.arch-card { background:var(--white); padding:2.2rem 1.8rem; transition:background .25s; position:relative; overflow:hidden; }
+.arch-card:hover { background:#fdfbf7; }
+.arch-card::after { content:''; position:absolute; bottom:0; left:0; right:0; height:2px; background:var(--teal); transform:scaleX(0); transform-origin:left; transition:transform .35s var(--ease); }
+.arch-card:hover::after { transform:scaleX(1); }
+.arch-card.ac-gold::after { background:var(--gold); }
+.arch-card.ac-coral::after { background:var(--coral); }
+.arch-card.ac-navy::after { background:var(--navy-light); }
+.arch-icon { width:28px; height:28px; margin-bottom:1.1rem; }
+.arch-icon svg { width:28px; height:28px; stroke-width:1.2; fill:none; stroke-linecap:round; stroke-linejoin:round; stroke:var(--teal); }
+.ac-gold .arch-icon svg { stroke:var(--gold-dim); }
+.ac-coral .arch-icon svg { stroke:var(--coral); }
+.ac-navy .arch-icon svg { stroke:var(--navy-light); }
+.arch-label { font-family:'Questrial',sans-serif; font-size:.56rem; letter-spacing:.18em; text-transform:uppercase; color:var(--teal-dim); margin-bottom:.3rem; }
+.ac-gold .arch-label { color:var(--gold-dim); }
+.ac-coral .arch-label { color:var(--coral-dim); }
+.ac-navy .arch-label { color:var(--navy-light); }
+.arch-title { font-family:'Cormorant Garamond',serif; font-size:1.2rem; font-weight:400; color:var(--navy); margin-bottom:.5rem; line-height:1.2; }
+.arch-body { font-size:.76rem; color:var(--stone); line-height:1.68; }
+.arch-header { margin-bottom:4rem; }
+
+/* ═══ CLOSING SOVEREIGN STATEMENT ═══════════════ */
+.sovereign-section { background:var(--navy-deep); padding:9rem 3rem; position:relative; overflow:hidden; }
+.sovereign-section::before { content:''; position:absolute; inset:0; background:radial-gradient(ellipse 60% 70% at 50% 50%,rgba(35,193,196,.05) 0%,transparent 65%); pointer-events:none; }
+.sovereign-inner { max-width:900px; margin:0 auto; text-align:center; position:relative; z-index:1; }
+.sovereign-inner .section-tag { justify-content:center; }
+.sovereign-inner .section-tag::before { display:none; }
+.sovereign-statement { font-family:'Cormorant Garamond',serif; font-size:clamp(1.8rem,3.8vw,3.4rem); font-weight:300; color:var(--white); line-height:1.35; margin:2rem 0 1.5rem; }
+.sovereign-statement em { color:var(--gold); font-style:italic; }
+.sovereign-sub { font-size:.88rem; color:rgba(255,255,255,.45); line-height:1.8; max-width:600px; margin:0 auto 3rem; }
+.sov-duality { display:flex; justify-content:center; gap:5rem; flex-wrap:wrap; margin-bottom:3rem; }
+.sov-half { text-align:center; }
+.sov-half-word { font-family:'Cormorant Garamond',serif; font-size:2.2rem; font-weight:300; line-height:1; margin-bottom:.3rem; }
+.sov-half-word.guardian-col { color:var(--teal); }
+.sov-half-word.arbor-col { color:var(--gold); }
+.sov-half-desc { font-family:'Questrial',sans-serif; font-size:.6rem; letter-spacing:.18em; text-transform:uppercase; color:rgba(255,255,255,.3); }
+.sov-divider { width:1px; background:rgba(255,255,255,.08); align-self:stretch; display:flex; }
+
+/* ═══ FOOTER ════════════════════════════════════ */
+footer { background:var(--navy-deep); border-top:1px solid rgba(255,255,255,.06); padding:3rem; text-align:center; }
+.footer-inner { max-width:1360px; margin:0 auto; }
+.footer-logo-text { font-family:'Questrial',sans-serif; font-size:.7rem; letter-spacing:.18em; text-transform:uppercase; color:rgba(255,255,255,.3); margin-bottom:.6rem; }
+.footer-copy { font-size:.72rem; color:rgba(255,255,255,.2); line-height:1.6; }
+.footer-copy a { color:rgba(35,193,196,.5); text-decoration:none; }
+.footer-copy a:hover { color:var(--teal); }
+
+/* ═══ RESPONSIVE ════════════════════════════════ */
+@media(max-width:1024px){
+  .dual-grid { grid-template-columns:1fr; }
+  .console-grid { grid-template-columns:1fr 1fr; }
+  .console-header { grid-template-columns:1fr; gap:2rem; }
+  .flow-grid { grid-template-columns:1fr 1fr; }
+  .principles-grid { grid-template-columns:1fr; }
+  .language-inner { grid-template-columns:1fr; gap:3rem; }
+  .phase-row { grid-template-columns:140px 1fr; }
+  .phase-arbor { grid-column:2; grid-row:2; }
+  .arch-grid { grid-template-columns:repeat(2,1fr); }
+}
+@media(max-width:768px){
+  nav { padding:0 1.5rem; }
+  .nav-links,.nav-cta { display:none; }
+  .hamburger { display:flex; }
+  .mobile-menu { display:flex; }
+  .page-hero-inner { padding:120px 1.5rem 80px; }
+  .dual-section,.console-section,.flow-section,.principles-section,.language-section,.phases-section,.arch-section,.sovereign-section,.voice-strip { padding:5rem 1.5rem; }
+  footer { padding:2rem 1.5rem; }
+  .console-grid { grid-template-columns:1fr; }
+  .flow-grid { grid-template-columns:1fr; }
+  .arch-grid { grid-template-columns:1fr; }
+  .phase-row { grid-template-columns:1fr; gap:1.5rem; }
+  .phase-row-left { display:flex; align-items:baseline; gap:1rem; flex-wrap:wrap; }
+  .sov-duality { gap:3rem; }
+  .hero-meta { display:none; }
+}
+</style>
+</head>
+<body>
+
+<!-- ══════════ NAV ══════════ -->
+<nav id="nav">
+  <a href="/" class="nav-logo">
+    <img src="images/logo.png" alt="Sovereign Vision">
+    <div class="nav-logo-text">Sovereign Vision<span>Tuvalu Infrastructure Project</span></div>
+  </a>
+  <ul class="nav-links">
+    <li class="nav-dropdown" id="dd-systems">
+      <a href="/core-systems">Core Systems</a>
+      <div class="dropdown-menu">
+        <a href="/ai-overview">Civic Intelligence</a>
+        <a href="/communications">Communications</a>
+        <a href="/food">Food Sovereignty</a>
+        <a href="/energy">Power Generation</a>
+        <a href="/treasury">Sovereign Treasury</a>
+        <a href="/civic-infrastructure">Civic Infrastructure</a>
+        <a href="/water-systems">Water Systems</a>
+        <a href="/waste-systems">Resource Recovery</a>
+      </div>
+    </li>
+    <li><a href="/how-it-works">How It Works</a></li>
+    <li class="nav-dropdown" id="dd-legal">
+      <a href="/legal-licensing">Legal</a>
+      <div class="dropdown-menu">
+        <a href="/digitalarchipelago">Digital Archipelago Accord</a>
+        <a href="/civic-commons-license">Civic Commons License</a>
+        <a href="/trust-formation-status">Trust Formation Status</a>
+      </div>
+    </li>
+    <li><a href="/faq">FAQ</a></li>
+    <li class="nav-dropdown" id="dd-about">
+      <a href="/about-us">About</a>
+      <div class="dropdown-menu">
+        <a href="/elders-council">Elders Council</a>
+        <a href="/youth-voice">Youth Voice</a>
+        <a href="/continuity-vs-reinvention">Continuity vs Reinvention</a>
+      </div>
+    </li>
+  </ul>
+  <a href="/contact" class="nav-cta">Contact</a>
+  <button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<div class="mobile-menu" id="mobile-menu">
+  <a href="/core-systems">Core Systems</a>
+  <a href="/how-it-works">How It Works</a>
+  <a href="/legal-licensing">Legal</a>
+  <a href="/about-us">About</a>
+  <a href="/faq">FAQ</a>
+  <a href="/contact" class="m-cta">Contact</a>
+</div>
+
+<!-- ══════════ HERO ══════════ -->
+<section class="page-hero">
+  <canvas id="neural-canvas"></canvas>
+  <div class="hero-gradient-overlay"></div>
+  <div class="page-hero-inner">
+    <div class="hero-tag">Civic Intelligence System</div>
+    <h1>Guardian<br><em>&amp; Arbor</em></h1>
+    <p class="page-hero-sub">Two systems. One philosophy. An architecture that keeps infrastructure intelligence separate from human intelligence — by design, not accident.</p>
+    <div class="hero-badges">
+      <div class="hero-badge hb-guardian">
+        <svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.4">
+          <path d="M12 2L3 7v5c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V7l-9-5z"/>
+        </svg>
+        Guardian — The Island Mind
+      </div>
+      <div class="hero-badge hb-arbor">
+        <svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.4">
+          <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/>
+        </svg>
+        Arbor — The Human Companion
+      </div>
+    </div>
+    <p class="hero-narrative">Systems serve the people. People are never reduced to systems. That separation is what most AI architectures get wrong.</p>
+    <div class="hero-actions">
+      <a href="#guardian-arbor" class="btn-coral">Explore the Architecture</a>
+      <a href="/how-it-works" class="btn-ghost">How It Works</a>
+    </div>
+  </div>
+  <div class="hero-meta">Civic AI · Privacy by Design · Offline-First</div>
+</section>
+
+<!-- ══════════ VOICE STRIP ══════════ -->
+<div class="voice-strip">
+  <div class="voice-strip-inner">
+    <p class="voice-quote reveal">What you have built is not just a UI model — it is a <em>governance philosophy encoded into technology.</em></p>
+    <p class="voice-attr">Tuvalu Sovereign Vision — Te Fale o Te Mātāmua</p>
+  </div>
+</div>
+
+<!-- ══════════ DUAL SYSTEM CARDS ══════════ -->
+<section class="dual-section" id="guardian-arbor">
+  <div class="dual-inner">
+    <div class="dual-header reveal">
+      <div class="section-tag">The Two Systems</div>
+      <h2 class="h2">A <em>dual-consciousness</em> architecture</h2>
+      <p>Guardian and Arbor are distinct by design. One watches the island. One walks with the person. Neither crosses into the other's domain without explicit consent.</p>
+    </div>
+    <div class="dual-grid">
+
+      <!-- GUARDIAN -->
+      <div class="sys-card sc-guardian reveal">
+        <div class="sys-card-bg">
+          <svg viewBox="0 0 200 300" fill="none" stroke="currentColor" stroke-width="0.5" xmlns="http://www.w3.org/2000/svg">
+            <path d="M100 20L20 60v80c0 60 30 110 80 130 50-20 80-70 80-130V60L100 20z"/>
+            <circle cx="100" cy="120" r="30" stroke-dasharray="4 4"/>
+            <line x1="100" y1="90" x2="100" y2="50"/>
+            <line x1="100" y1="150" x2="100" y2="230"/>
+            <line x1="70" y1="120" x2="30" y2="120"/>
+            <line x1="130" y1="120" x2="170" y2="120"/>
+          </svg>
+        </div>
+        <div class="sys-eyebrow">Infrastructure Intelligence</div>
+        <div class="sys-title">Guardian</div>
+        <div class="sys-analogy">The Island Mind — Star Trek Ship Computer</div>
+        <p class="sys-role">Guardian exists for the island, not the individual. It monitors, optimises, and coordinates every physical system — continuously, transparently, and without personal identity.</p>
+        <div class="sys-principle">Guardian never owns identity. Identity lives in Arbor. Guardian asks — Arbor answers — only if the citizen permits.</div>
+        <div class="sys-oversees">
+          <div class="sys-oversees-label">Systems Overseen</div>
+          <ul class="sys-items">
+            <li>
+              <svg viewBox="0 0 24 24"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+              Energy — Solar, MMR baseload, ArborMesh grid
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 0 1 0 20"/><path d="M2 12h10"/><path d="M12 2c-2.5 3-4 7-4 10s1.5 7 4 10"/></svg>
+              Water — Vai Tapu desalination, Vai Koko storage
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+              Food — Floating farms, aquafarms, land cultivation
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+              Waste — Resource Recovery Node (Te Fenua Fakafoou)
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2A19.79 19.79 0 0 1 11.37 17 19.5 19.5 0 0 1 7 12.63 19.79 19.79 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+              Communications — Te Puka Loloa network
+            </li>
+          </ul>
+        </div>
+        <div class="sys-verdict">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+          Non-personal · Neutral · System-first
+        </div>
+      </div>
+
+      <!-- ARBOR -->
+      <div class="sys-card sc-arbor reveal" style="transition-delay:.1s">
+        <div class="sys-card-bg">
+          <svg viewBox="0 0 200 300" fill="none" stroke="currentColor" stroke-width="0.5" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="100" cy="80" r="40"/>
+            <path d="M60 120 Q40 200 100 280 Q160 200 140 120"/>
+            <line x1="100" y1="280" x2="100" y2="300"/>
+            <circle cx="70" cy="180" r="8" stroke-dasharray="3 3"/>
+            <circle cx="130" cy="200" r="6" stroke-dasharray="3 3"/>
+          </svg>
+        </div>
+        <div class="sys-eyebrow">Personal Civic Companion</div>
+        <div class="sys-title">Arbor</div>
+        <div class="sys-analogy">The Human Companion — Civic-Aligned, Relational, Ethical</div>
+        <p class="sys-role">Arbor is assigned to a human. Private, encrypted, and identity-bound. It handles the personal dimensions of life — emotions, education, health, civic participation, family memory — and communicates with Guardian on behalf of its person, only when authorised.</p>
+        <div class="sys-principle">No one walks alone. Arbor carries each citizen's civic journey from youth to elderhood, rooted in local language and ancestral rhythm.</div>
+        <div class="sys-oversees">
+          <div class="sys-oversees-label">Personal Domains</div>
+          <ul class="sys-items">
+            <li>
+              <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 2.18L6.6 2a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L7.6 9.91a16 16 0 0 0 6 6"/></svg>
+              Civic participation — voting, tasks, governance rituals
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+              Education — civic learning, ritual pathways, ethics guidance
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+              Health, wellbeing, and personal financial guidance
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+              Family memory — oral histories, ancestry, encrypted records
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+              Privacy interface — consent, overrides, audit transparency
+            </li>
+          </ul>
+        </div>
+        <div class="sys-verdict">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+          Personal · Relational · Human-first
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ GUARDIAN CONSOLES ══════════ -->
+<section class="console-section">
+  <div class="console-inner">
+    <div class="console-header">
+      <div class="reveal-left">
+        <div class="section-tag white">Node Consoles</div>
+        <h2 class="h2 h2-white">Guardian<br><em>Consoles</em></h2>
+      </div>
+      <div class="reveal">
+        <p class="console-pull">These are not Arbor. They do not carry identity. They are fixed infrastructure terminals — the island's wall consoles, located at each critical node.</p>
+        <p class="console-sub">Guardian Consoles provide direct access to local infrastructure. A Vai Tapu desalination unit can be operated from its own console even with no internet, no central Guardian, and no identity linked — because the local brain is always present. When connectivity is available, the console syncs to Guardian Core.</p>
+      </div>
+    </div>
+    <div class="console-grid">
+      <div class="con-card cc-teal reveal">
+        <div class="con-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/>
+          </svg>
+        </div>
+        <div class="con-label">Infrastructure Terminals</div>
+        <div class="con-title">Local System Access</div>
+        <p class="con-body">Each console operates on its local system only. Status, controls, and alerts are always available offline. Guardian Core sync is optional — not required.</p>
+        <div class="con-locs">
+          <div class="con-loc">Vai Tapu desalination units</div>
+          <div class="con-loc">Te Puka Loloa comms nodes</div>
+          <div class="con-loc">Resource Recovery Node (Te Fenua Fakafoou)</div>
+          <div class="con-loc">Civic modules (Te Tafa o te Ola)</div>
+        </div>
+      </div>
+      <div class="con-card cc-gold reveal" style="transition-delay:.08s">
+        <div class="con-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+          </svg>
+        </div>
+        <div class="con-label">Access Modes</div>
+        <div class="con-title">Two User Classes</div>
+        <p class="con-body">Consoles serve two distinct access classes. Technicians receive full system controls and diagnostic tools. Public kiosk mode shows anonymised status and civic alerts — no identity required.</p>
+        <div class="con-locs">
+          <div class="con-loc">Technician mode — full controls and diagnostics</div>
+          <div class="con-loc">Public kiosk mode — anonymised status display</div>
+          <div class="con-loc">Identity linkage is optional and explicit</div>
+          <div class="con-loc">No personal data stored by default</div>
+        </div>
+      </div>
+      <div class="con-card cc-coral reveal" style="transition-delay:.16s">
+        <div class="con-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/>
+          </svg>
+        </div>
+        <div class="con-label">Resilience Design</div>
+        <div class="con-title">Offline-First Brain</div>
+        <p class="con-body">A console at a Vai Tapu unit still works without internet, without central Guardian, and without Arbor. The terminal is the local brain. Resilience is not a feature — it is the baseline.</p>
+        <div class="con-locs">
+          <div class="con-loc">Operates fully offline by design</div>
+          <div class="con-loc">Solar-powered with battery backup</div>
+          <div class="con-loc">Syncs to Guardian Core when available</div>
+          <div class="con-loc">No single point of failure</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ INTERACTION MODEL ══════════ -->
+<section class="flow-section">
+  <div class="flow-inner">
+    <div class="flow-header reveal">
+      <div class="section-tag">Interaction Model</div>
+      <h2 class="h2">How the three layers <em>communicate</em></h2>
+      <p>The breakthrough insight: Citizen-to-system communication flows through Arbor. Infrastructure access flows through Consoles. Guardian coordinates both — but owns neither the person nor the data.</p>
+    </div>
+    <div class="flow-grid">
+
+      <div class="flow-card reveal">
+        <div class="flow-card-num">01</div>
+        <div class="flow-card-label">Normal citizen flow</div>
+        <h3>Citizen Through Arbor</h3>
+        <div class="flow-steps">
+          <div class="flow-step">
+            <div class="flow-step-icon fsi-gold">
+              <svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+            </div>
+            <p class="flow-step-text"><strong>Citizen</strong> makes a request — vote, query, alert, health question.</p>
+          </div>
+          <div class="flow-step">
+            <div class="flow-step-icon fsi-gold">
+              <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4"/></svg>
+            </div>
+            <p class="flow-step-text"><strong>Arbor</strong> processes and holds the request within the citizen's private context.</p>
+          </div>
+          <div class="flow-step">
+            <div class="flow-step-icon fsi-teal">
+              <svg viewBox="0 0 24 24"><path d="M12 2L3 7v5c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V7l-9-5z"/></svg>
+            </div>
+            <p class="flow-step-text"><strong>Arbor → Guardian:</strong> Passes only what is needed, with citizen consent as the gate.</p>
+          </div>
+          <div class="flow-step">
+            <div class="flow-step-icon fsi-teal">
+              <svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+            </div>
+            <p class="flow-step-text"><strong>Guardian → Systems:</strong> Acts on infrastructure based on the authorised request.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="flow-card reveal" style="transition-delay:.1s">
+        <div class="flow-card-num">02</div>
+        <div class="flow-card-label">Technical access flow</div>
+        <h3>Technician Through Console</h3>
+        <div class="flow-steps">
+          <div class="flow-step">
+            <div class="flow-step-icon fsi-stone">
+              <svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+            </div>
+            <p class="flow-step-text"><strong>Technician</strong> approaches a Guardian Console at a system node.</p>
+          </div>
+          <div class="flow-step">
+            <div class="flow-step-icon fsi-teal">
+              <svg viewBox="0 0 24 24"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+            </div>
+            <p class="flow-step-text"><strong>Console → Local system</strong> directly. No internet required. Offline-first by design.</p>
+          </div>
+          <div class="flow-step">
+            <div class="flow-step-icon fsi-teal">
+              <svg viewBox="0 0 24 24"><path d="M12 2L3 7v5c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V7l-9-5z"/></svg>
+            </div>
+            <p class="flow-step-text"><strong>Optional sync</strong> to Guardian Core when connectivity is available. Not a dependency.</p>
+          </div>
+          <div class="flow-step">
+            <div class="flow-step-icon fsi-stone">
+              <svg viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+            </div>
+            <p class="flow-step-text"><strong>Identity</strong> is not linked unless explicitly and deliberately initiated by the technician.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="flow-card reveal" style="transition-delay:.2s">
+        <div class="flow-card-num">03</div>
+        <div class="flow-card-label">Context request protocol</div>
+        <h3>When Guardian Needs a Person</h3>
+        <div class="flow-steps">
+          <div class="flow-step">
+            <div class="flow-step-icon fsi-teal">
+              <svg viewBox="0 0 24 24"><path d="M12 2L3 7v5c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V7l-9-5z"/></svg>
+            </div>
+            <p class="flow-step-text"><strong>Guardian</strong> encounters a situation requiring citizen context — a personalised alert, a civic action request.</p>
+          </div>
+          <div class="flow-step">
+            <div class="flow-step-icon fsi-coral">
+              <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 8v4"/><path d="M12 16h.01"/></svg>
+            </div>
+            <p class="flow-step-text"><strong>Guardian asks Arbor</strong> — not the citizen directly. Arbor is the interface to the person, always.</p>
+          </div>
+          <div class="flow-step">
+            <div class="flow-step-icon fsi-gold">
+              <svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+            </div>
+            <p class="flow-step-text"><strong>Arbor checks consent</strong> — if the citizen permits, Arbor responds with the minimum necessary context.</p>
+          </div>
+          <div class="flow-step">
+            <div class="flow-step-icon fsi-stone">
+              <svg viewBox="0 0 24 24"><path d="M9 12l2 2 4-4m6 2a9 9 0 1 1-18 0 9 9 0 0 1 18 0z"/></svg>
+            </div>
+            <p class="flow-step-text"><strong>Privacy preserved.</strong> Guardian never reaches into Arbor without the request-consent cycle completing.</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ DESIGN PRINCIPLES ══════════ -->
+<section class="principles-section">
+  <div class="principles-inner">
+    <div class="principles-header reveal">
+      <div class="section-tag white">Why This Design Is Strong</div>
+      <h2 class="h2 h2-white">Four structural <em>guarantees</em></h2>
+      <p>These are not aspirations. They are properties that emerge from the architecture itself — second-order effects of separating system intelligence from human intelligence.</p>
+    </div>
+    <div class="principles-grid">
+
+      <div class="prin-card reveal">
+        <div class="prin-num">01 — Privacy by Design</div>
+        <div class="prin-title">Identity never lives in Guardian</div>
+        <p class="prin-body">Guardian monitors infrastructure and never holds personal data. Identity lives in Arbor — private, encrypted, and owned by the citizen. Guardian can only request context through Arbor, and only with consent as the gate.</p>
+        <div class="prin-effect">No surveillance infrastructure is possible by architectural constraint, not policy alone.</div>
+      </div>
+
+      <div class="prin-card reveal" style="transition-delay:.08s">
+        <div class="prin-num">02 — Offline Resilience</div>
+        <div class="prin-title">Every node is its own brain</div>
+        <p class="prin-body">A Vai Tapu desalination unit operates from its local Guardian Console without internet, without central Guardian, and without Arbor. Local intelligence is not a fallback — it is the primary design. Connectivity is a bonus, not a dependency.</p>
+        <div class="prin-effect">Infrastructure continues functioning during storms, outages, and disconnection events — with zero degradation to core operations.</div>
+      </div>
+
+      <div class="prin-card reveal" style="transition-delay:.16s">
+        <div class="prin-num">03 — Clear Role Boundaries</div>
+        <div class="prin-title">System intelligence vs human intelligence</div>
+        <p class="prin-body">There is no confusion between what Guardian is and what Arbor is. Guardian is collective, neutral, and system-facing. Arbor is individual, relational, and human-facing. The boundary is enforced at the architectural level — not by policy or convention.</p>
+        <div class="prin-effect">Citizens understand their relationship with each system intuitively. Civic trust grows from clarity, not obscurity.</div>
+      </div>
+
+      <div class="prin-card reveal" style="transition-delay:.24s">
+        <div class="prin-num">04 — Visitor Scalability</div>
+        <div class="prin-title">Temporary identity, guided experience</div>
+        <p class="prin-body">Visitors to Tuvalu receive a limited-mode Arbor — no deep system access, temporary identity, and a guided civic experience. The same architecture scales gracefully without requiring special cases or architectural exceptions.</p>
+        <div class="prin-effect">The model accommodates guests, researchers, NGO workers, and diaspora visitors without compromising sovereignty or citizen privacy.</div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ TUVALUAN LANGUAGE ══════════ -->
+<section class="language-section">
+  <div class="language-inner">
+    <div class="language-left reveal-left">
+      <div class="section-tag gold">Cultural Sovereignty</div>
+      <h2 class="h2">Building <em>Tuvaluan</em> into the systems</h2>
+      <p class="language-pull">The language model is not a translation tool. It is a sovereign cultural asset — co-owned by the community, validated by elders, and continuously improved by the citizens who use it.</p>
+      <p class="language-sub">Arbor speaks Tuvaluan natively for the domains that matter: water levels, civic alerts, voting guidance, health information, and stories for children. This is not general language fluency — it is precision language sovereignty for the functions that serve people's lives.</p>
+    </div>
+    <div class="language-workstreams reveal">
+      <div class="ws-item">
+        <div class="ws-top">
+          <div class="ws-num">1</div>
+          <div class="ws-label">Corpus Building</div>
+        </div>
+        <div class="ws-title">Recording the Living Language</div>
+        <p class="ws-body">Elders record stories, civic language, and technical vocabulary. Existing written Tuvaluan — government documents, church records, school materials — is transcribed. New vocabulary is co-created for concepts that have no Tuvaluan word yet: battery vault, solar array, Guardian console. This is cultural work, not translation.</p>
+      </div>
+      <div class="ws-item">
+        <div class="ws-top">
+          <div class="ws-num">2</div>
+          <div class="ws-label">Fine-Tuning</div>
+        </div>
+        <div class="ws-title">Training on Sovereign Ground</div>
+        <p class="ws-body">A base open-source model is fine-tuned using LoRA/QLoRA on the community corpus. Arbor doesn't need to discuss philosophy in Tuvaluan. It needs to explain water levels, confirm voting choices, read health alerts, and greet children by name. That is a much smaller and more achievable vocabulary target than general fluency.</p>
+      </div>
+      <div class="ws-item">
+        <div class="ws-top">
+          <div class="ws-num">3</div>
+          <div class="ws-label">Community Validation</div>
+        </div>
+        <div class="ws-title">Elders as Custodians of Quality</div>
+        <p class="ws-body">Every Arbor response in Tuvaluan is reviewed by community elders before deployment. This is not quality control — it is sovereignty. The language model becomes a community-owned cultural asset. Guardian logs all Tuvaluan interactions for ongoing improvement with community oversight.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ DEPLOYMENT PHASES ══════════ -->
+<section class="phases-section">
+  <div class="phases-inner">
+    <div class="phases-header reveal">
+      <div class="section-tag white">Deployment Roadmap</div>
+      <h2 class="h2 h2-white">Phased, <em>human-centred</em> rollout</h2>
+      <p>Learning, adaptation, and ritual alignment over speed. Each phase allows for trust-building and resilience testing before the next begins.</p>
+    </div>
+    <div class="phases-track">
+
+      <div class="phase-row ph0 reveal">
+        <div class="phase-row-left">
+          <div class="phase-tag">Phase 0</div>
+          <div class="phase-name">Software & Ritual Design</div>
+          <div class="phase-period">Pre-Year 1</div>
+        </div>
+        <div class="phase-guardian">
+          <div class="phase-label-mini">Guardian</div>
+          <ul class="phase-items">
+            <li>Co-develop using open-source models with local language emphasis</li>
+            <li>Conduct threat modelling and offline testing</li>
+            <li>Finalise Guardian Code of Ethics with community</li>
+          </ul>
+        </div>
+        <div class="phase-arbor">
+          <div class="phase-label-mini">Arbor</div>
+          <ul class="phase-items">
+            <li>Design cultural onboarding pathways and interface rituals</li>
+            <li>Finalise multisig wallet integration and terminal UI</li>
+            <li>Build Tuvaluan corpus with elder participation</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="phase-row ph1 reveal" style="transition-delay:.06s">
+        <div class="phase-row-left">
+          <div class="phase-tag">Phase 1</div>
+          <div class="phase-name">Observation & Trust</div>
+          <div class="phase-period">Year 1</div>
+        </div>
+        <div class="phase-guardian">
+          <div class="phase-label-mini">Guardian</div>
+          <ul class="phase-items">
+            <li>Deploy ArborMesh communications infrastructure</li>
+            <li>Begin passive monitoring — no automation</li>
+            <li>Collect community input for Guardian training data</li>
+          </ul>
+        </div>
+        <div class="phase-arbor">
+          <div class="phase-label-mini">Arbor</div>
+          <ul class="phase-items">
+            <li>Train local stewards on interface use and ethics scenarios</li>
+            <li>Pilot educational and family memory companion functions</li>
+            <li>Voice-first civic companion terminals activated</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="phase-row ph2 reveal" style="transition-delay:.12s">
+        <div class="phase-row-left">
+          <div class="phase-tag">Phase 2</div>
+          <div class="phase-name">Recommendation & Ritual</div>
+          <div class="phase-period">Years 2–3</div>
+        </div>
+        <div class="phase-guardian">
+          <div class="phase-label-mini">Guardian</div>
+          <ul class="phase-items">
+            <li>Issue non-binding recommendations (energy flow, alerts)</li>
+            <li>Launch civic dashboards — seasonal ritual review ceremonies</li>
+            <li>Open citizen ethics portal for community-submitted scenarios</li>
+          </ul>
+        </div>
+        <div class="phase-arbor">
+          <div class="phase-label-mini">Arbor</div>
+          <ul class="phase-items">
+            <li>Full civic companion and voting interface active</li>
+            <li>Ethics explainability tools — "Why was this recommended?"</li>
+            <li>Tuvaluan voice interaction via community-validated model</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="phase-row ph3 reveal" style="transition-delay:.18s">
+        <div class="phase-row-left">
+          <div class="phase-tag">Phase 3</div>
+          <div class="phase-name">Automation with Consent</div>
+          <div class="phase-period">Years 3–5</div>
+        </div>
+        <div class="phase-guardian">
+          <div class="phase-label-mini">Guardian</div>
+          <ul class="phase-items">
+            <li>Partial automated functions with civic opt-in</li>
+            <li>Guardian-supported override and appeal protocols live</li>
+            <li>Full infrastructure coordination across all nine systems</li>
+          </ul>
+        </div>
+        <div class="phase-arbor">
+          <div class="phase-label-mini">Arbor</div>
+          <ul class="phase-items">
+            <li>Full multisig Bitcoin treasury governance via Arbor</li>
+            <li>Arbor child mode with ethics-based games and ritual quests</li>
+            <li>BTC civic budget simulator and ceremonial quorum interface</li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ ARCHITECTURE CALLOUTS ══════════ -->
+<section class="arch-section">
+  <div class="arch-inner">
+    <div class="arch-header reveal">
+      <div class="section-tag">Technical Architecture</div>
+      <h2 class="h2">Built on <em>open, sovereign</em> foundations</h2>
+    </div>
+    <div class="arch-grid">
+
+      <div class="arch-card reveal">
+        <div class="arch-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/>
+          </svg>
+        </div>
+        <div class="arch-label">Inference</div>
+        <div class="arch-title">Open-Source Models</div>
+        <p class="arch-body">Model-agnostic inference architecture. Current reference implementation uses Llama / Mistral via DeepSeek. Community fine-tuning replaces any model as the landscape evolves. No vendor lock-in.</p>
+      </div>
+
+      <div class="arch-card ac-gold reveal" style="transition-delay:.07s">
+        <div class="arch-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="2" y="2" width="20" height="8" rx="2" ry="2"/><rect x="2" y="14" width="20" height="8" rx="2" ry="2"/><line x1="6" y1="6" x2="6.01" y2="6"/><line x1="6" y1="18" x2="6.01" y2="18"/>
+          </svg>
+        </div>
+        <div class="arch-label">Hosting</div>
+        <div class="arch-title">On-Island, Air-Gap Capable</div>
+        <p class="arch-body">All models run on rugged on-island servers within Tuvalu's jurisdiction. Critical inference nodes operate fully offline, solar-powered. No personal data ever leaves the island.</p>
+      </div>
+
+      <div class="arch-card ac-coral reveal" style="transition-delay:.14s">
+        <div class="arch-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+          </svg>
+        </div>
+        <div class="arch-label">Security</div>
+        <div class="arch-title">Zero Trust, Full Auditability</div>
+        <p class="arch-body">Data minimisation, certificate-pinned access, local-only ports, and UFW/fail2ban hardening. All system decisions are auditable. Citizen ethics portal surfaces the reasoning behind every Guardian recommendation.</p>
+      </div>
+
+      <div class="arch-card ac-navy reveal" style="transition-delay:.21s">
+        <div class="arch-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="3"/><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/>
+          </svg>
+        </div>
+        <div class="arch-label">Orchestration</div>
+        <div class="arch-title">Containerised Microservices</div>
+        <p class="arch-body">Docker, Podman, or Kubernetes-lite for microservice orchestration. Optional Starlink uplink, Guardian Mirror Vaults, and encrypted local data lakes for system resilience without cloud dependency.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ CLOSING STATEMENT ══════════ -->
+<section class="sovereign-section">
+  <div class="sovereign-inner">
+    <div class="section-tag white reveal">Governance Philosophy</div>
+    <p class="sovereign-statement reveal">
+      A <em>governance philosophy</em><br>encoded into technology.
+    </p>
+    <p class="sovereign-sub reveal">Most AI architectures collapse the distinction between collective intelligence and individual intelligence. Guardian and Arbor make that distinction permanent, architectural, and non-negotiable.</p>
+    <div class="sov-duality reveal">
+      <div class="sov-half">
+        <div class="sov-half-word guardian-col">Guardian</div>
+        <div class="sov-half-desc">Collective Intelligence</div>
+      </div>
+      <div class="sov-divider"></div>
+      <div class="sov-half">
+        <div class="sov-half-word arbor-col">Arbor</div>
+        <div class="sov-half-desc">Individual Intelligence</div>
+      </div>
+    </div>
+    <div class="reveal">
+      <a href="/core-systems" class="btn-ghost">Explore All Systems</a>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ FOOTER ══════════ -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-logo-text">Tuvalu Sovereign Vision Stewardship Trust — Te Fale o Te Mātāmua</div>
+    <p class="footer-copy">
+      All content protected under the <a href="/civic-commons-license">Civic Commons License v1.0</a> · sovereignvision.org<br>
+      Open to adaptation and replication for aligned communities worldwide.
+    </p>
+  </div>
+</footer>
+
+<script>
+/* ══════════ NAV SCROLL ══════════ */
+const nav = document.getElementById('nav');
+window.addEventListener('scroll', () => {
+  nav.classList.toggle('scrolled', window.scrollY > 40);
+}, { passive: true });
+
+/* ══════════ DROPDOWN ══════════ */
+const dropdowns = document.querySelectorAll('.nav-dropdown');
+dropdowns.forEach(dd => {
+  let closeTimer;
+  const menu = dd.querySelector('.dropdown-menu');
+  const openDd = () => { dropdowns.forEach(d => d !== dd && d.classList.remove('active')); dd.classList.add('active'); };
+  const scheduledClose = () => { closeTimer = setTimeout(() => dd.classList.remove('active'), 180); };
+  const cancelClose = () => clearTimeout(closeTimer);
+  dd.addEventListener('mouseenter', () => { if (window.innerWidth > 768) { cancelClose(); openDd(); } });
+  dd.addEventListener('mouseleave', () => { if (window.innerWidth > 768) scheduledClose(); });
+  if (menu) { menu.addEventListener('mouseenter', cancelClose); menu.addEventListener('mouseleave', scheduledClose); }
+  dd.querySelector('a').addEventListener('click', e => { if (window.innerWidth > 768) { e.preventDefault(); dd.classList.contains('active') ? dd.classList.remove('active') : openDd(); } });
+});
+document.addEventListener('click', e => { if (!e.target.closest('.nav-dropdown')) dropdowns.forEach(dd => dd.classList.remove('active')); });
+document.addEventListener('keydown', e => { if (e.key === 'Escape') dropdowns.forEach(dd => dd.classList.remove('active')); });
+
+/* ══════════ MOBILE MENU ══════════ */
+const hamburger = document.getElementById('hamburger');
+const mobileMenu = document.getElementById('mobile-menu');
+let menuOpen = false;
+function closeMobile() { menuOpen = false; hamburger.classList.remove('open'); mobileMenu.classList.remove('open'); document.body.style.overflow = ''; hamburger.setAttribute('aria-expanded', 'false'); }
+hamburger.addEventListener('click', () => {
+  menuOpen ? closeMobile() : (() => { menuOpen = true; hamburger.classList.add('open'); mobileMenu.classList.add('open'); document.body.style.overflow = 'hidden'; hamburger.setAttribute('aria-expanded', 'true'); })();
+});
+document.addEventListener('keydown', e => { if (e.key === 'Escape' && menuOpen) closeMobile(); });
+
+/* ══════════ NEURAL CANVAS — Hero background ══════════
+   Simulates a living neural/synaptic network:
+   - Two node populations (Guardian = teal, Arbor = gold)
+   - Edges drawn when nodes are within proximity
+   - Edge brightness pulses with a signal travelling along it
+   - Nodes drift slowly; edges form and dissolve naturally
+*/
+(function () {
+  const canvas = document.getElementById('neural-canvas');
+  if (!canvas) return;
+  const ctx = canvas.getContext('2d');
+  let W, H, nodes, t = 0;
+
+  const GUARDIAN_COLOR = 'rgba(35,193,196,';
+  const ARBOR_COLOR    = 'rgba(255,198,29,';
+  const NODE_COUNT     = 60;
+  const CONNECT_DIST   = 180;
+
+  function resize() {
+    W = canvas.offsetWidth;
+    H = canvas.offsetHeight;
+    canvas.width  = W;
+    canvas.height = H;
+  }
+
+  function makeNode(type) {
+    return {
+      x:   Math.random() * W,
+      y:   Math.random() * H,
+      vx:  (Math.random() - 0.5) * 0.25,
+      vy:  (Math.random() - 0.5) * 0.25,
+      r:   Math.random() * 2 + 1.2,
+      phase: Math.random() * Math.PI * 2,
+      type: type
+    };
+  }
+
+  function init() {
+    nodes = [];
+    for (let i = 0; i < NODE_COUNT; i++) {
+      nodes.push(makeNode(i < NODE_COUNT * 0.55 ? 'guardian' : 'arbor'));
+    }
+  }
+
+  function draw() {
+    ctx.clearRect(0, 0, W, H);
+    t++;
+
+    // Move nodes
+    nodes.forEach(n => {
+      n.x += n.vx;
+      n.y += n.vy;
+      // Soft boundary bounce
+      if (n.x < 0)  { n.x = 0;  n.vx *= -1; }
+      if (n.x > W)  { n.x = W;  n.vx *= -1; }
+      if (n.y < 0)  { n.y = 0;  n.vy *= -1; }
+      if (n.y > H)  { n.y = H;  n.vy *= -1; }
+    });
+
+    // Draw edges
+    for (let i = 0; i < nodes.length; i++) {
+      for (let j = i + 1; j < nodes.length; j++) {
+        const a = nodes[i], b = nodes[j];
+        const dx = b.x - a.x, dy = b.y - a.y;
+        const dist = Math.sqrt(dx * dx + dy * dy);
+        if (dist > CONNECT_DIST) continue;
+
+        const proximity = 1 - dist / CONNECT_DIST;
+        // Signal pulse travelling along edge
+        const pulse = (Math.sin(t * 0.022 + a.phase + b.phase) * 0.5 + 0.5);
+        const alpha = proximity * 0.22 * (0.5 + pulse * 0.5);
+
+        // Edge colour: mixed if crossing types, pure if same
+        let col;
+        if (a.type === b.type) {
+          col = a.type === 'guardian'
+            ? `rgba(35,193,196,${alpha.toFixed(3)})`
+            : `rgba(255,198,29,${alpha.toFixed(3)})`;
+        } else {
+          // Cross-type edge: midpoint blend → soft white-ish
+          col = `rgba(180,210,215,${(alpha * 0.7).toFixed(3)})`;
+        }
+
+        ctx.beginPath();
+        ctx.moveTo(a.x, a.y);
+        ctx.lineTo(b.x, b.y);
+        ctx.strokeStyle = col;
+        ctx.lineWidth = proximity * 0.9;
+        ctx.stroke();
+
+        // Travelling signal dot
+        if (pulse > 0.78) {
+          const tx = a.x + dx * pulse;
+          const ty = a.y + dy * pulse;
+          const dotAlpha = (pulse - 0.78) / 0.22 * 0.6;
+          ctx.beginPath();
+          ctx.arc(tx, ty, 1.4, 0, Math.PI * 2);
+          ctx.fillStyle = a.type === 'guardian'
+            ? `rgba(35,193,196,${dotAlpha.toFixed(3)})`
+            : `rgba(255,198,29,${dotAlpha.toFixed(3)})`;
+          ctx.fill();
+        }
+      }
+    }
+
+    // Draw nodes
+    nodes.forEach(n => {
+      const pulse = Math.sin(t * 0.018 + n.phase) * 0.5 + 0.5;
+      const alpha = 0.35 + pulse * 0.45;
+      const col = n.type === 'guardian' ? GUARDIAN_COLOR : ARBOR_COLOR;
+
+      ctx.beginPath();
+      ctx.arc(n.x, n.y, n.r, 0, Math.PI * 2);
+      ctx.fillStyle = col + alpha.toFixed(3) + ')';
+      ctx.fill();
+
+      // Outer glow ring on pulse peaks
+      if (pulse > 0.8) {
+        ctx.beginPath();
+        ctx.arc(n.x, n.y, n.r + 2 + (pulse - 0.8) * 8, 0, Math.PI * 2);
+        ctx.strokeStyle = col + ((pulse - 0.8) * 0.6).toFixed(3) + ')';
+        ctx.lineWidth = 0.7;
+        ctx.stroke();
+      }
+    });
+
+    requestAnimationFrame(draw);
+  }
+
+  window.addEventListener('resize', () => { resize(); init(); }, { passive: true });
+  resize();
+  init();
+  draw();
+})();
+
+/* ══════════ SCROLL REVEAL ══════════ */
+const io = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.classList.add('visible');
+      io.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.08 });
+document.querySelectorAll('.reveal, .reveal-left').forEach(el => io.observe(el));
+
+/* Stagger delays */
+[
+  ['.dual-grid .sys-card',    i => `${i * 0.1}s`],
+  ['.console-grid .con-card', i => `${i * 0.08}s`],
+  ['.flow-grid .flow-card',   i => `${i * 0.1}s`],
+  ['.principles-grid .prin-card', i => `${i * 0.08}s`],
+  ['.phases-track .phase-row', i => `${i * 0.06}s`],
+  ['.arch-grid .arch-card',   i => `${i * 0.07}s`],
+].forEach(([sel, fn]) => {
+  document.querySelectorAll(sel).forEach((el, i) => {
+    el.style.transitionDelay = fn(i);
+  });
+});
+</script>
+</body>
+</html>
