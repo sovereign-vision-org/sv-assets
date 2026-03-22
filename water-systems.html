@@ -270,6 +270,19 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;padding:0 var(--page-x);heig
 .vai-koko-section::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 70% 60% at 25% 55%,rgba(35,193,196,.08) 0%,transparent 55%),radial-gradient(ellipse 50% 40% at 80% 80%,rgba(255,198,29,.04) 0%,transparent 50%);pointer-events:none;}
 .vk-inner{max-width:var(--container-max);margin:0 auto;position:relative;z-index:1;}
 .vk-layout{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:start;margin-top:3rem;}
+/* ── Vai Koko hero image strip ── */
+.vk-hero-strip{position:relative;overflow:hidden;margin:3rem 0 0;border:1px solid rgba(35,193,196,.10);}
+.vk-hero-strip img{width:100%;height:420px;object-fit:cover;object-position:center 36%;display:block;transition:transform 9s cubic-bezier(0.22,1,0.36,1);}
+.vk-hero-strip:hover img{transform:scale(1.04);}
+.vk-hero-strip::after{content:'';position:absolute;inset:0;background:linear-gradient(to bottom,rgba(0,21,42,.08) 0%,transparent 40%,rgba(0,21,42,.75) 100%);pointer-events:none;}
+.vk-hero-strip-caption{position:absolute;bottom:0;left:0;right:0;z-index:2;padding:1.5rem 2rem;display:flex;align-items:flex-end;justify-content:space-between;gap:2rem;flex-wrap:wrap;}
+.vk-hero-strip-text{font-family:var(--font-serif);font-size:clamp(1.2rem,2.2vw,1.8rem);font-weight:300;color:var(--white);line-height:1.2;}
+.vk-hero-strip-text em{font-style:italic;color:var(--teal);}
+.vk-hero-strip-tag{font-family:var(--font-ui);font-size:.56rem;letter-spacing:.2em;text-transform:uppercase;color:var(--teal);margin-bottom:.4rem;}
+.vk-hero-strip-kpis{display:flex;gap:1.6rem;flex-shrink:0;}
+.vk-hero-kpi-n{font-family:var(--font-serif);font-size:1.45rem;font-weight:300;color:var(--teal);line-height:1;}
+.vk-hero-kpi-l{font-family:var(--font-ui);font-size:.5rem;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.36);margin-top:.2rem;}
+@media(max-width:768px){.vk-hero-strip img{height:260px;}.vk-hero-strip-kpis{display:none;}}
 /* #vk-canvas removed — replaced by reference image */
 .vk-label-row{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:1rem;}
 .vk-svg-wrap{position:relative;width:100%;background:transparent;line-height:0;}
@@ -783,8 +796,37 @@ footer{background:var(--navy-deep);}
       </div>
     </div>
 
+    <!-- ── Vai Koko hero image strip ── -->
+    <div class="vk-hero-strip reveal">
+      <img
+        src="images/water-vaikoko-dark-02.png"
+        alt="Multiple Vai Koko submerged water tanks with coral crowns in the shallow turquoise waters of Funafuti lagoon. Swimmers snorkel among the formation while a traditional outrigger canoe passes through. Natural reef growth visible on tank surfaces."
+        loading="eager"
+        decoding="async"
+      >
+      <div class="vk-hero-strip-caption">
+        <div>
+          <div class="vk-hero-strip-tag">Vai Koko · Funafuti Lagoon · cluster deployment</div>
+          <div class="vk-hero-strip-text">Water stored beneath the lagoon.<br><em>Protected by its weight.</em></div>
+        </div>
+        <div class="vk-hero-strip-kpis">
+          <div>
+            <div class="vk-hero-kpi-n">~15,000 L</div>
+            <div class="vk-hero-kpi-l">per tank · potable</div>
+          </div>
+          <div>
+            <div class="vk-hero-kpi-n">1.55×</div>
+            <div class="vk-hero-kpi-l">storm safety factor<br>v2.6 verified</div>
+          </div>
+          <div>
+            <div class="vk-hero-kpi-n">250</div>
+            <div class="vk-hero-kpi-l">tanks · phase 3<br>national target</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <div class="vk-layout">
-      <!-- Vai Koko reference image -->
       <div class="reveal-left">
         <div class="vt-diagram-label">Vai Koko Unit — Structural Cross Section · v2.6</div>
         <div class="vk-svg-wrap" id="vk-svg-wrap">
@@ -1528,9 +1570,40 @@ footer{background:var(--navy-deep);}
 
     <!-- Sanctuary render image -->
     <div class="sanctuary-render-wrap reveal" style="margin:2.5rem 0;position:relative;border:1px solid rgba(255,255,255,.07);overflow:hidden;">
-      <img src="images/sanctuary_cluster.png" alt="Vai Koko Reef Harbor — sixteen tanks arranged in a permeable crescent formation in a shallow tropical lagoon, viewed from above. Geobag foundations visible beneath clear turquoise water. Coral crowns with glowing teal LED rings. A floating dock extends from shore." style="width:100%;display:block;max-height:640px;object-fit:cover;object-position:center 30%;">
-      <div style="position:absolute;top:1.2rem;left:1.4rem;font-family:var(--font-ui);font-size:.6rem;letter-spacing:.16em;text-transform:uppercase;color:rgba(255,255,255,.55);background:rgba(0,21,42,.65);backdrop-filter:blur(6px);padding:.4rem .8rem;border:1px solid rgba(255,255,255,.12);">Vai Koko Reef Harbor — Lagoon Sanctuary System</div>
-      <div style="position:absolute;bottom:1.2rem;right:1.4rem;font-family:var(--font-ui);font-size:.58rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(35,193,196,.7);background:rgba(0,21,42,.65);backdrop-filter:blur(6px);padding:.35rem .75rem;border:1px solid rgba(35,193,196,.2);">Concept render · Phase 2 configuration</div>
+      <img
+        src="images/vai-koko-lagoon-cluster.png"
+        alt="Vai Koko lagoon cluster — multiple submerged coral-crowned water tanks in crescent formation in the shallow turquoise waters of Funafuti lagoon. Swimmers snorkel among the tanks while a traditional outrigger canoe passes through. Coral growth visible on tank surfaces and on the lagoon floor."
+        style="width:100%;display:block;max-height:640px;object-fit:cover;object-position:center 42%;transition:transform 10s cubic-bezier(0.22,1,0.36,1);"
+        onmouseover="this.style.transform='scale(1.03)'"
+        onmouseout="this.style.transform='scale(1)'"
+        loading="lazy"
+        decoding="async"
+      >
+      <!-- gradient overlay -->
+      <div style="position:absolute;inset:0;background:linear-gradient(to bottom,transparent 45%,rgba(0,21,42,.68) 100%),linear-gradient(to right,rgba(0,21,42,.22) 0%,transparent 25%,transparent 75%,rgba(0,21,42,.22) 100%);pointer-events:none;"></div>
+      <!-- top-left badge -->
+      <div style="position:absolute;top:1.2rem;left:1.4rem;font-family:var(--font-ui);font-size:.6rem;letter-spacing:.16em;text-transform:uppercase;color:rgba(255,255,255,.65);background:rgba(0,21,42,.72);backdrop-filter:blur(8px);padding:.4rem .9rem;border:1px solid rgba(255,255,255,.12);">Vai Koko Reef Harbor — Lagoon Sanctuary System</div>
+      <!-- bottom caption bar -->
+      <div style="position:absolute;bottom:0;left:0;right:0;padding:1.4rem 1.8rem;display:flex;align-items:flex-end;justify-content:space-between;gap:1.5rem;flex-wrap:wrap;">
+        <div>
+          <div style="font-family:var(--font-ui);font-size:.58rem;letter-spacing:.2em;text-transform:uppercase;color:var(--teal);margin-bottom:.35rem;">Phase 2 formation · Funafuti lagoon</div>
+          <div style="font-family:var(--font-serif);font-size:clamp(1.1rem,2vw,1.7rem);font-weight:300;color:var(--white);line-height:1.2;">Storage, reef, and gathering place —<br><em style="color:var(--teal);">one system.</em></div>
+        </div>
+        <div style="display:flex;gap:1.8rem;flex-shrink:0;">
+          <div style="text-align:right;">
+            <div style="font-family:var(--font-serif);font-size:1.5rem;font-weight:300;color:var(--teal);line-height:1;">~15,000 L</div>
+            <div style="font-family:var(--font-ui);font-size:.5rem;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.35);margin-top:.2rem;">per tank · potable</div>
+          </div>
+          <div style="text-align:right;">
+            <div style="font-family:var(--font-serif);font-size:1.5rem;font-weight:300;color:var(--teal);line-height:1;">1.55×</div>
+            <div style="font-family:var(--font-ui);font-size:.5rem;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.35);margin-top:.2rem;">storm safety factor</div>
+          </div>
+          <div style="text-align:right;">
+            <div style="font-family:var(--font-serif);font-size:1.5rem;font-weight:300;color:var(--teal);line-height:1;">250</div>
+            <div style="font-family:var(--font-ui);font-size:.5rem;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.35);margin-top:.2rem;">tanks · phase 3 target</div>
+          </div>
+        </div>
+      </div>
     </div>
 
     <!-- Two-col explainer -->
