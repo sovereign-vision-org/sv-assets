@@ -1,0 +1,171 @@
+/* ═══════════════════════════════════════════════════════════════════
+   SOVEREIGN VISION — DESIGN TOKENS
+   tokens.css · v1.0
+   All design decisions as CSS custom properties.
+   Import this file first in every page.
+   ═══════════════════════════════════════════════════════════════════ */
+
+:root {
+
+  /* ── COLOUR PALETTE ─────────────────────────────────────────────
+     Brand: Coral · Gold · Teal · Navy
+     Source of truth: logo colours
+  ─────────────────────────────────────────────────────────────────── */
+
+  /* Coral */
+  --coral:        #fe5337;
+  --coral-dim:    #c9402a;
+  --coral-pale:   rgba(254,83,55,0.08);
+  --coral-mid:    rgba(254,83,55,0.15);
+
+  /* Gold */
+  --gold:         #ffc61d;
+  --gold-dim:     #d4a400;
+  --gold-pale:    rgba(255,198,29,0.10);
+  --gold-mid:     rgba(255,198,29,0.20);
+
+  /* Teal */
+  --teal:         #23c1c4;
+  --teal-dim:     #0096b9;
+  --teal-pale:    rgba(35,193,196,0.09);
+  --teal-mid:     rgba(35,193,196,0.18);
+
+  /* Navy */
+  --navy:         #002b4b;
+  --navy-mid:     #00203a;
+  --navy-deep:    #00152a;
+  --navy-light:   #0d4070;
+
+  /* Cream / Stone */
+  --cream:        #faf6ee;
+  --cream-mid:    #f2ead8;
+  --cream-dark:   #e8ddc8;
+  --stone:        #4a5568;
+  --stone-light:  #718096;
+  --white:        #ffffff;
+
+  /* Semantic text on dark backgrounds */
+  --text-on-dark:   rgba(250,246,238,0.70);
+  --text-dimmer:    rgba(250,246,238,0.40);
+  --text-dimmest:   rgba(250,246,238,0.25);
+
+  /* ── BORDER TOKENS ──────────────────────────────────────────── */
+  --border-light:   rgba(0,43,75,0.10);
+  --border-mid:     rgba(0,43,75,0.16);
+  --border-gold:    rgba(255,198,29,0.18);
+  --border-teal:    rgba(35,193,196,0.20);
+  --border-dark:    rgba(255,255,255,0.07);
+  --border-dark-mid:rgba(255,255,255,0.12);
+
+  /* ── SHADOW TOKENS ──────────────────────────────────────────── */
+  --shadow-sm:   0 2px 8px  rgba(0,43,75,0.06);
+  --shadow-md:   0 4px 24px rgba(0,43,75,0.08);
+  --shadow-lg:   0 12px 40px rgba(0,43,75,0.12);
+  --shadow-xl:   0 24px 64px rgba(0,43,75,0.16);
+  --shadow-nav:  0 1px 0 var(--border-light), 0 4px 24px rgba(0,43,75,0.06);
+
+  /* ── TRANSITION TOKENS ──────────────────────────────────────── */
+  --ease:         cubic-bezier(0.22,1,0.36,1);
+  --ease-out:     cubic-bezier(0.16,1,0.3,1);
+  --ease-in:      cubic-bezier(0.4,0,1,1);
+  --dur-xs:       0.15s;
+  --dur-sm:       0.25s;
+  --dur-md:       0.40s;
+  --dur-lg:       0.80s;
+  --dur-xl:       1.00s;
+
+  /* ── TYPOGRAPHY ─────────────────────────────────────────────────
+     Cormorant Garamond — editorial / ceremonial headings
+     Questrial        — labels / UI / uppercase navigation
+     DM Sans          — body copy / data / UI text
+  ─────────────────────────────────────────────────────────────────── */
+  --font-serif:   'Cormorant Garamond', Georgia, serif;
+  --font-ui:      'Questrial', system-ui, sans-serif;
+  --font-body:    'DM Sans', system-ui, sans-serif;
+
+  /* Type scale */
+  --text-xs:    0.58rem;
+  --text-sm:    0.72rem;
+  --text-base:  0.90rem;
+  --text-md:    0.95rem;
+  --text-lg:    1.05rem;
+
+  /* Fluid heading sizes */
+  --h1-size:    clamp(3rem, 7.5vw, 8rem);
+  --h2-size:    clamp(2.2rem, 4vw, 4rem);
+  --h3-size:    clamp(1.5rem, 2.5vw, 2rem);
+  --h4-size:    clamp(1.2rem, 1.8vw, 1.6rem);
+
+  /* ── SPACING SCALE ──────────────────────────────────────────── */
+  --sp-1:   0.25rem;   /*  4px */
+  --sp-2:   0.50rem;   /*  8px */
+  --sp-3:   0.75rem;   /* 12px */
+  --sp-4:   1.00rem;   /* 16px */
+  --sp-5:   1.25rem;   /* 20px */
+  --sp-6:   1.50rem;   /* 24px */
+  --sp-8:   2.00rem;   /* 32px */
+  --sp-10:  2.50rem;   /* 40px */
+  --sp-12:  3.00rem;   /* 48px */
+  --sp-16:  4.00rem;   /* 64px */
+  --sp-20:  5.00rem;   /* 80px */
+  --sp-24:  6.00rem;   /* 96px */
+  --sp-28:  7.00rem;   /* 112px */
+  --sp-32:  8.00rem;   /* 128px */
+
+  /* Section vertical padding */
+  --section-pad-sm:   5rem;
+  --section-pad:      7rem;
+  --section-pad-lg:   9rem;
+
+  /* ── LAYOUT ─────────────────────────────────────────────────── */
+  --container-max:   1360px;
+  --container-wide:  1520px;
+  --container-mid:   1100px;
+  --container-narrow: 760px;
+  --container-xs:     560px;
+
+  /* Gutter / horizontal page padding */
+  --page-x: 3rem;
+  --page-x-md: 2rem;
+  --page-x-sm: 1.25rem;
+
+  /* ── Z-INDEX LAYERS ─────────────────────────────────────────── */
+  --z-base:     0;
+  --z-raised:   10;
+  --z-dropdown: 100;
+  --z-sticky:   150;
+  --z-nav:      200;
+  --z-mobile:   199;
+  --z-overlay:  300;
+  --z-modal:    400;
+  --z-toast:    500;
+
+  /* ── NAV ────────────────────────────────────────────────────── */
+  --nav-height: 72px;
+
+  /* ── BORDER RADIUS ──────────────────────────────────────────── */
+  --radius-sm:   2px;
+  --radius-md:   4px;
+  --radius-lg:   8px;
+  --radius-full: 9999px;
+
+}
+
+/* ── Reduced motion: override all animations globally ───────────── */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  .reveal,
+  .reveal-left,
+  .reveal-up,
+  .reveal-scale {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}
