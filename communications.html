@@ -477,6 +477,25 @@ footer{background:var(--navy-deep);padding:5rem 3rem 3rem;border-top:1px solid r
   .stats-bar-inner{gap:1.5rem;}
   .stat-divider{display:none;}
 }
+
+/* ═══ PHYSICAL NODE SECTION ══════════════════════ */
+.physical-section{background:var(--navy-deep);padding:8rem 3rem;}
+.physical-inner{max-width:1360px;margin:0 auto;}
+.physical-header{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:end;margin-bottom:4rem;}
+.physical-pull{font-size:.88rem;color:rgba(255,255,255,.5);line-height:1.85;}
+.physical-grid{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:start;}
+.physical-image-wrap{position:relative;}
+.physical-img{display:block;width:100%;height:auto;border:1px solid rgba(35,193,196,.15);background:#1a2332;}
+.physical-img-caption{padding:.8rem 1rem .9rem;background:rgba(0,15,30,.7);border:1px solid rgba(35,193,196,.1);border-top:none;font-size:.7rem;color:rgba(255,255,255,.35);line-height:1.55;}
+.pic-tag{display:block;font-family:'Questrial',sans-serif;font-size:.58rem;letter-spacing:.16em;text-transform:uppercase;color:rgba(35,193,196,.55);margin-bottom:.3rem;}
+.callout-item{display:flex;gap:1rem;align-items:flex-start;padding:1.2rem 0;border-bottom:1px solid rgba(255,255,255,.05);}
+.callout-item:last-child{border-bottom:none;}
+.callout-icon{width:32px;height:32px;flex-shrink:0;margin-top:.1rem;}
+.callout-icon svg{width:32px;height:32px;stroke:var(--teal-dim);stroke-width:1.2;fill:none;stroke-linecap:round;stroke-linejoin:round;}
+.callout-name{font-family:'Cormorant Garamond',serif;font-size:1.05rem;font-weight:400;color:var(--white);margin-bottom:.4rem;line-height:1.2;}
+.callout-desc{font-size:.77rem;color:rgba(255,255,255,.45);line-height:1.72;}
+@media(max-width:1100px){.physical-header,.physical-grid{grid-template-columns:1fr;gap:3rem;}}
+@media(max-width:768px){.physical-section{padding-left:1.5rem;padding-right:1.5rem;}}
 </style>
 </head>
 <body>
@@ -1147,6 +1166,99 @@ footer{background:var(--navy-deep);padding:5rem 3rem 3rem;border-top:1px solid r
   </div>
 </section>
 
+<!-- PHYSICAL NODE SECTION -->
+<section class="physical-section" id="physical-node">
+  <div class="physical-inner">
+    <div class="physical-header">
+      <div>
+        <div class="section-tag white reveal-left">Physical Infrastructure · Per Node</div>
+        <h2 class="h2 h2-white reveal">Every node is<br><em>a complete station.</em></h2>
+      </div>
+      <p class="physical-pull reveal">A single Te Puka Loloa node is a self-contained sovereign communications platform — solar-powered, cyclone-rated, and deployable by a four-person team in five to seven days. Everything from LTE radio to edge AI to rainwater collection is integrated into one skid-mounted shelter.</p>
+    </div>
+    <div class="physical-grid">
+
+      <!-- Image column -->
+      <div class="physical-image-col reveal">
+        <div class="physical-image-wrap">
+          <img src="images/comm-dark-node-infra-comps.png"
+               alt="Isometric diagram of a Te Puka Loloa communications node showing solar canopy, mast with LTE sector antennas, Guardian Terminal kiosk, ventilation louvers, power entry panel, external AC units, double access doors, rainwater collection tanks, and concrete foundation pad."
+               class="physical-img">
+          <div class="physical-img-caption">
+            <span class="pic-tag">Te Puka Loloa · Hybrid Communications Infrastructure</span>
+            10 m × 6 m fiberglass shelter · 150 MPH wind rating · 1.5 m above mean high water · Factory pre-wired
+          </div>
+        </div>
+      </div>
+
+      <!-- Callouts column -->
+      <div class="physical-callouts-col">
+
+        <div class="callout-item reveal">
+          <div class="callout-icon">
+            <svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+          </div>
+          <div>
+            <div class="callout-name">Solar Canopy · 6.4 kW</div>
+            <div class="callout-desc">16× 400W monocrystalline panels on engineered roof supports. Gutters channel rainwater to the steward's garden cistern. Dual Victron MPPT 250/100 controllers in redundant configuration — each maintains charging independently if the other fails.</div>
+          </div>
+        </div>
+
+        <div class="callout-item reveal">
+          <div class="callout-icon">
+            <svg viewBox="0 0 24 24"><line x1="12" y1="2" x2="12" y2="22"/><path d="M8 6l4-4 4 4"/><path d="M8 18l4 4 4-4"/></svg>
+          </div>
+          <div>
+            <div class="callout-name">Communications Mast · SMC STORM ST5-12</div>
+            <div class="callout-desc">12 m retractable mast with pole-mount base plate and cable tray. Three 120° LTE sector antennas, GigaBeam wireless bridge radio, and Wi-Fi access point for local mesh. Stows to 2.3 m on Guardian storm advisory — steward operates the winch.</div>
+          </div>
+        </div>
+
+        <div class="callout-item reveal">
+          <div class="callout-icon">
+            <svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+          </div>
+          <div>
+            <div class="callout-name">Guardian Terminal · 22" IP54 Kiosk</div>
+            <div class="callout-desc">Capacitive touchscreen HMI rated for use with work gloves. HID Signo 40 NFC + PIN authentication. Operates in Tuvaluan and English. Every Guardian recommendation, alert, and preservation action is visible here — the human authority point for the entire node.</div>
+          </div>
+        </div>
+
+        <div class="callout-item reveal">
+          <div class="callout-icon">
+            <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+          </div>
+          <div>
+            <div class="callout-name">Infrastructure Shelter · 10 m × 6 m</div>
+            <div class="callout-desc">Fiberglass construction, corrosion-resistant and salt-spray rated. R-19 insulation throughout. Skid base with M16 anchor eyelets for crane or flatbed delivery. Double access doors, ventilation louvers on all panels, and dual Daikin 12,000 BTU mini-split cooling.</div>
+          </div>
+        </div>
+
+        <div class="callout-item reveal">
+          <div class="callout-icon">
+            <svg viewBox="0 0 24 24"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+          </div>
+          <div>
+            <div class="callout-name">Power Entry Panel · Victron MultiPlus-II 48V</div>
+            <div class="callout-desc">Pure sine wave hybrid inverter at 94% efficiency. Feeds the entire 42U rack, dual HVAC units, Guardian Terminal, and lighting from one integrated panel. Cerbo GX publishes SOC, PV yield, and battery temperature to Guardian via MQTT — observable, never autonomous.</div>
+          </div>
+        </div>
+
+        <div class="callout-item reveal">
+          <div class="callout-icon">
+            <svg viewBox="0 0 24 24"><path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"/><path d="M12 8v4l3 3"/></svg>
+          </div>
+          <div>
+            <div class="callout-name">Rainwater Collection · Triple-tank cascade</div>
+            <div class="callout-desc">Solar canopy gutters channel rainwater into a triple-tank cascade system beside the shelter. Irrigates the steward's garden — a civic gathering space used for community cinema nights and cultural events. Infrastructure designed to give back to the place it serves.</div>
+          </div>
+        </div>
+
+      </div><!-- end callouts -->
+    </div><!-- end physical-grid -->
+  </div>
+</section>
+
 <!-- VLAN SECTION -->
 <section class="vlan-section" id="vlan">
   <div class="vlan-inner">
@@ -1555,12 +1667,12 @@ footer{background:var(--navy-deep);padding:5rem 3rem 3rem;border-top:1px solid r
     </div>
   </div>
   <div class="footer-bottom">
-    <div class="footer-copy">© 2025 Tuvalu Sovereign Vision Stewardship Trust · Te Fale o Te Mātāmua · kyle@sovereignvision.org</div>
+    <div class="footer-copy">© 2025 Tuvalu Sovereign Vision Stewardship Trust · Te Fale o Te Mātāmua · <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="d7bcaebbb297a4b8a1b2a5b2beb0b9a1bea4beb8b9f9b8a5b0">[email&#160;protected]</a></div>
     <div class="footer-lic">Protected under Civic Commons License v1.0 · sovereignvision.org</div>
   </div>
 </footer>
 
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
 /* ═════════════════════════════════════════════════
    NAV
 ═════════════════════════════════════════════════ */
