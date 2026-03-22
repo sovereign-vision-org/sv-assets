@@ -1,0 +1,2736 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Water Systems — Vai Tapu &amp; Vai Koko · Sovereign Vision</title>
+  <meta name="description" content="Vai Tapu and Vai Koko — Tuvalu's sovereign water system. Solar desalination, submerged lagoon storage, and coral restoration. 60,000 litres per day. v2.6 — gravity-stabilised, 1.55× verified. Reef Harbor sanctuary cluster formations.">
+  <link rel="canonical" href="https://sovereignvision.org/water-systems.html">
+  <meta property="og:title" content="Water Systems — Vai Tapu &amp; Vai Koko · Sovereign Vision">
+  <meta property="og:description" content="Sovereign water security for Tuvalu. v2.6 — gravity-stabilised lagoon tanks, Reef Harbor sanctuary cluster formations, and integrated coral nurseries.">
+  <link rel="icon" type="image/png" href="images/favicon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Questrial&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet">
+  <!-- Shared system CSS (loaded on live site; graceful fallback below if missing) -->
+  <link rel="stylesheet" href="assets/css/tokens.css">
+  <link rel="stylesheet" href="assets/css/base.css">
+  <link rel="stylesheet" href="assets/css/layout.css">
+  <link rel="stylesheet" href="assets/css/components.css">
+  <link rel="stylesheet" href="assets/css/responsive.css">
+
+<style>
+/* ═══════════════════════════════════════════════════════════════════
+   DESIGN TOKENS — self-contained fallback so page works standalone
+═══════════════════════════════════════════════════════════════════ */
+:root {
+  --coral:        #fe5337;
+  --coral-dim:    #c9402a;
+  --coral-pale:   rgba(254,83,55,.08);
+  --gold:         #ffc61d;
+  --gold-dim:     #d4a400;
+  --gold-pale:    rgba(255,198,29,.10);
+  --teal:         #23c1c4;
+  --teal-dim:     #0096b9;
+  --teal-pale:    rgba(35,193,196,.09);
+  --navy:         #002b4b;
+  --navy-mid:     #00203a;
+  --navy-deep:    #00152a;
+  --navy-light:   #0d4070;
+  --cream:        #faf6ee;
+  --cream-mid:    #f2ead8;
+  --cream-dark:   #e8ddc8;
+  --stone:        #4a5568;
+  --stone-light:  #718096;
+  --white:        #ffffff;
+  --text-on-dark: rgba(250,246,238,.70);
+  --text-dimmer:  rgba(250,246,238,.40);
+  --border-light: rgba(0,43,75,.10);
+  --border-teal:  rgba(35,193,196,.20);
+  --ease:         cubic-bezier(0.22,1,0.36,1);
+  --dur-xs:       .15s;
+  --dur-sm:       .25s;
+  --font-serif:   'Cormorant Garamond', serif;
+  --font-ui:      'Questrial', sans-serif;
+  --font-body:    'DM Sans', sans-serif;
+  --container-max:1360px;
+  --page-x:       3rem;
+  --section-pad:  7rem;
+  --nav-height:   72px;
+}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important;}}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{background:var(--cream);color:var(--navy);font-family:var(--font-body,'DM Sans',sans-serif);font-weight:300;overflow-x:hidden;-webkit-font-smoothing:antialiased;}
+
+/* ═══ NAV ═══════════════════════════════════════════════════════ */
+nav{position:fixed;top:0;left:0;right:0;z-index:200;padding:0 var(--page-x);height:var(--nav-height);display:flex;align-items:center;justify-content:space-between;background:rgba(255,255,255,.96);box-shadow:0 1px 0 var(--border-light),0 4px 24px rgba(0,43,75,.06);backdrop-filter:blur(12px);}
+.nav-logo{display:flex;align-items:center;gap:.7rem;text-decoration:none;flex-shrink:0;}
+.nav-logo img{width:42px;height:42px;object-fit:contain;display:block;}
+.nav-logo-text{font-family:var(--font-ui);font-size:.78rem;letter-spacing:.14em;text-transform:uppercase;color:var(--navy);line-height:1.25;}
+.nav-logo-text span{display:block;font-size:.58rem;letter-spacing:.12em;color:var(--stone-light);font-family:var(--font-body);}
+.nav-links{display:flex;align-items:center;gap:2rem;list-style:none;}
+.nav-links a{font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;color:var(--stone);text-decoration:none;font-weight:400;transition:color .25s;white-space:nowrap;}
+.nav-links a:hover,.nav-links a.active-page{color:var(--coral);}
+.nav-dropdown{position:relative;}
+.nav-dropdown>a{display:flex;align-items:center;gap:.3rem;}
+.nav-dropdown>a::after{content:'▾';font-size:.6rem;opacity:.6;transition:transform .25s;}
+.nav-dropdown.active>a::after{transform:rotate(180deg);}
+.dropdown-menu{position:absolute;top:calc(100% + 8px);left:50%;min-width:220px;background:var(--white);border:1px solid var(--border-light);box-shadow:0 12px 40px rgba(0,43,75,.12);padding:.5rem 0;opacity:0;pointer-events:none;transform:translateX(-50%) translateY(-6px);transition:opacity .2s var(--ease),transform .2s var(--ease);}
+.nav-dropdown.active .dropdown-menu{opacity:1;pointer-events:all;transform:translateX(-50%) translateY(0);}
+.dropdown-menu a{display:block;padding:.6rem 1.2rem;font-size:.72rem;letter-spacing:.07em;text-transform:uppercase;color:var(--navy)!important;text-decoration:none;transition:background .18s,color .18s;white-space:nowrap;}
+.dropdown-menu a:hover{background:var(--coral-pale);color:var(--coral)!important;}
+.nav-cta{background:var(--coral);color:var(--white)!important;padding:.5rem 1.4rem;font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;font-family:var(--font-ui);text-decoration:none;transition:background .25s,transform .2s;white-space:nowrap;flex-shrink:0;}
+.nav-cta:hover{background:var(--coral-dim);transform:translateY(-1px);}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:4px;background:none;border:none;}
+.hamburger span{width:22px;height:1.5px;background:var(--navy);display:block;transition:all .3s var(--ease);}
+.hamburger.open span:nth-child(1){transform:rotate(45deg) translate(4.7px,4.7px);}
+.hamburger.open span:nth-child(2){opacity:0;}
+.hamburger.open span:nth-child(3){transform:rotate(-45deg) translate(4.7px,-4.7px);}
+.mobile-menu{display:none;position:fixed;inset:0;z-index:199;background:var(--navy-deep);flex-direction:column;align-items:center;justify-content:center;gap:1.8rem;opacity:0;pointer-events:none;transition:opacity .35s;}
+.mobile-menu.open{opacity:1;pointer-events:all;}
+.mobile-menu a{font-family:var(--font-serif);font-size:2rem;font-weight:300;color:var(--white);text-decoration:none;letter-spacing:.04em;transition:color .25s;}
+.mobile-menu a:hover{color:var(--gold);}
+.mobile-menu .m-cta{font-family:var(--font-ui);font-size:.76rem;letter-spacing:.16em;text-transform:uppercase;color:var(--coral);border:1px solid var(--coral);padding:.65rem 2rem;margin-top:.5rem;}
+
+/* ═══ SHARED UTILITIES ══════════════════════════════════════════ */
+.section-tag{font-family:var(--font-ui);font-size:.62rem;letter-spacing:.22em;text-transform:uppercase;color:var(--coral);margin-bottom:.9rem;display:flex;align-items:center;gap:.7rem;}
+.section-tag::before{content:'';width:20px;height:1.5px;background:var(--coral);flex-shrink:0;}
+.section-tag.teal{color:var(--teal-dim);}
+.section-tag.teal::before{background:var(--teal-dim);}
+.section-tag.white{color:rgba(255,255,255,.7);}
+.section-tag.white::before{background:rgba(255,255,255,.5);}
+.section-tag.gold{color:var(--gold-dim);}
+.section-tag.gold::before{background:var(--gold);}
+.h2{font-family:var(--font-serif);font-size:clamp(2.2rem,4vw,3.8rem);font-weight:300;line-height:1.1;color:var(--navy);}
+.h2 em{font-style:italic;color:var(--coral);}
+.h2-white{color:var(--white);}
+.h2-white em{color:var(--gold);}
+.body-text{font-size:.96rem;line-height:1.85;color:var(--stone);}
+.body-text-white{font-size:.96rem;line-height:1.85;color:var(--text-on-dark);}
+.btn-coral{background:var(--coral);color:var(--white);border:1.5px solid var(--coral);padding:.8rem 2rem;font-family:var(--font-ui);font-size:.74rem;letter-spacing:.14em;text-transform:uppercase;text-decoration:none;display:inline-block;transition:background .25s,transform .2s;}
+.btn-coral:hover{background:var(--coral-dim);border-color:var(--coral-dim);transform:translateY(-2px);}
+.btn-ghost{background:transparent;color:rgba(255,255,255,.85);border:1.5px solid rgba(255,255,255,.35);padding:.8rem 2rem;font-family:var(--font-ui);font-size:.74rem;letter-spacing:.14em;text-transform:uppercase;text-decoration:none;display:inline-block;transition:all .25s;}
+.btn-ghost:hover{border-color:var(--white);color:var(--white);}
+.btn-ghost-white{background:transparent;color:rgba(255,255,255,.9);border:1.5px solid rgba(255,255,255,.4);padding:.8rem 2rem;font-family:var(--font-ui);font-size:.74rem;letter-spacing:.14em;text-transform:uppercase;text-decoration:none;display:inline-block;transition:all .25s;}
+.btn-ghost-white:hover{border-color:var(--white);color:var(--white);}
+.btn-white{background:var(--white);color:var(--teal-dim);border:1.5px solid var(--white);padding:.8rem 2rem;font-family:var(--font-ui);font-size:.74rem;letter-spacing:.14em;text-transform:uppercase;text-decoration:none;display:inline-block;transition:all .25s;}
+.btn-white:hover{background:transparent;color:var(--white);}
+.reveal{opacity:0;transform:translateY(22px);transition:opacity .8s var(--ease),transform .8s var(--ease);}
+.reveal-left{opacity:0;transform:translateX(-24px);transition:opacity .8s var(--ease),transform .8s var(--ease);}
+.reveal-right{opacity:0;transform:translateX(24px);transition:opacity .8s var(--ease),transform .8s var(--ease);}
+.reveal.visible,.reveal-left.visible,.reveal-right.visible{opacity:1;transform:none;}
+
+/* ═══ SANCTUARY CLUSTER ═════════════════════════════════════════ */
+.sanctuary-section{background:var(--navy-mid);padding:var(--section-pad) var(--page-x);position:relative;overflow:hidden;}
+.sanctuary-section::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 70% 60% at 30% 40%,rgba(35,193,196,.06) 0%,transparent 55%),radial-gradient(ellipse 50% 40% at 75% 75%,rgba(0,150,185,.05) 0%,transparent 50%);pointer-events:none;}
+.sanctuary-inner{max-width:var(--container-max);margin:0 auto;}
+.sanctuary-render-wrap{line-height:0;}
+.sanctuary-cols{display:grid;grid-template-columns:1fr 1fr;gap:4rem;margin-top:1rem;}
+.sanctuary-col{}
+.sanc-principle{display:flex;gap:1.4rem;margin-bottom:2rem;padding-bottom:2rem;border-bottom:1px solid rgba(255,255,255,.05);}
+.sanc-principle:last-child{border-bottom:none;margin-bottom:0;}
+.sanc-prin-num{font-family:var(--font-serif);font-size:2.2rem;font-weight:300;color:rgba(35,193,196,.25);line-height:1;flex-shrink:0;width:2.8rem;}
+.sanc-prin-title{font-family:var(--font-ui);font-size:.74rem;letter-spacing:.1em;text-transform:uppercase;color:var(--white);margin-bottom:.5rem;}
+.sanc-prin-body{font-size:.82rem;color:var(--text-on-dark);line-height:1.75;}
+.sanc-note-card{background:var(--navy-mid);padding:1.6rem 1.8rem;transition:background var(--dur-sm);}
+.sanc-note-card:hover{background:rgba(255,255,255,.02);}
+.sanc-note-icon{width:36px;height:36px;display:flex;align-items:center;justify-content:center;color:var(--teal);margin-bottom:1rem;}
+.sanc-note-title{font-family:var(--font-ui);font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;color:var(--white);margin-bottom:.6rem;}
+.sanc-note-body{font-size:.78rem;color:var(--text-on-dark);line-height:1.7;}
+@media(max-width:900px){
+  .sanctuary-cols{grid-template-columns:1fr;}
+}
+
+
+@keyframes fadeUp{from{opacity:0;transform:translateY(18px);}to{opacity:1;transform:translateY(0);}}
+@keyframes fadeIn{from{opacity:0;}to{opacity:1;}}
+@keyframes pulseDot{0%,100%{box-shadow:0 0 0 0 rgba(35,193,196,.5);}50%{box-shadow:0 0 0 5px rgba(35,193,196,0);}}
+@keyframes scrollPulse{0%,100%{opacity:.3;}50%{opacity:1;}}
+
+/* ═══ PAGE HERO ═════════════════════════════════════════════════ */
+.page-hero{background:var(--navy-deep);min-height:100vh;position:relative;overflow:hidden;display:flex;align-items:flex-end;}
+.page-hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 80% 60% at 20% 70%,rgba(35,193,196,.15) 0%,transparent 55%),radial-gradient(ellipse 50% 50% at 80% 20%,rgba(255,198,29,.07) 0%,transparent 55%),linear-gradient(to top,rgba(0,15,30,.98) 0%,rgba(0,21,42,.6) 45%,transparent 100%);pointer-events:none;z-index:1;}
+#hero-canvas{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:0;}
+.page-hero-inner{position:relative;z-index:2;max-width:var(--container-max);margin:0 auto;width:100%;padding:9rem var(--page-x) 5rem;display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:end;}
+.hero-breadcrumb{font-family:var(--font-ui);font-size:.6rem;letter-spacing:.2em;text-transform:uppercase;color:var(--text-dimmer);margin-bottom:2.2rem;display:flex;align-items:center;gap:.6rem;opacity:0;animation:fadeUp .7s .15s var(--ease) forwards;}
+.hero-breadcrumb a{color:var(--text-dimmer);text-decoration:none;transition:color var(--dur-sm);}
+.hero-breadcrumb a:hover{color:var(--teal);}
+.hero-system-tag{display:inline-flex;align-items:center;gap:.7rem;font-family:var(--font-ui);font-size:.6rem;letter-spacing:.22em;text-transform:uppercase;color:var(--teal);margin-bottom:1.4rem;opacity:0;animation:fadeUp .7s .25s var(--ease) forwards;}
+.hero-system-tag::before{content:'';width:20px;height:1px;background:var(--teal);flex-shrink:0;}
+.hero-h1{font-family:var(--font-serif);font-size:clamp(3rem,6.5vw,7rem);font-weight:300;line-height:.93;color:var(--white);letter-spacing:-.02em;opacity:0;animation:fadeUp .9s .35s var(--ease) forwards;margin-bottom:1.6rem;}
+.hero-h1 em{font-style:italic;color:var(--teal);}
+.hero-tuvaluan{display:block;font-family:var(--font-ui);font-size:clamp(.85rem,1.4vw,1rem);color:rgba(255,255,255,.3);font-weight:300;letter-spacing:.12em;margin-top:.6rem;}
+.hero-sub{font-size:clamp(.88rem,1.3vw,1rem);color:rgba(255,255,255,.65);max-width:480px;line-height:1.85;margin-bottom:2.4rem;opacity:0;animation:fadeUp .9s .55s var(--ease) forwards;}
+.hero-actions{display:flex;gap:1rem;flex-wrap:wrap;opacity:0;animation:fadeUp .9s .72s var(--ease) forwards;}
+.hero-right{opacity:0;animation:fadeUp .9s .8s var(--ease) forwards;align-self:center;}
+/* Hero stat panel */
+.hero-stat-panel{border:1px solid rgba(255,255,255,.1);background:rgba(0,0,0,.22);backdrop-filter:blur(10px);}
+.hero-stat-panel-header{padding:.9rem 1.3rem;border-bottom:1px solid rgba(255,255,255,.07);display:flex;align-items:center;gap:.7rem;}
+.hero-stat-panel-dot{width:6px;height:6px;border-radius:50%;background:var(--teal);flex-shrink:0;animation:pulseDot 2.5s infinite;}
+.hero-stat-panel-title{font-family:var(--font-ui);font-size:.6rem;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.32);}
+.hero-stats-grid{display:grid;grid-template-columns:1fr 1fr;}
+.h-stat{padding:1.5rem 1.3rem;border-right:1px solid rgba(255,255,255,.07);border-bottom:1px solid rgba(255,255,255,.07);transition:background .2s;}
+.h-stat:hover{background:rgba(255,255,255,.04);}
+.h-stat:nth-child(even){border-right:none;}
+.h-stat:nth-child(3),.h-stat:nth-child(4){border-bottom:none;}
+.h-stat-n{font-family:var(--font-serif);font-size:2.2rem;font-weight:300;color:var(--teal);line-height:1;margin-bottom:.3rem;}
+.h-stat-l{font-size:.62rem;letter-spacing:.07em;color:rgba(255,255,255,.38);line-height:1.4;}
+/* Hero water readiness bars */
+.hero-water-vis{padding:1.3rem;background:rgba(0,0,0,.15);border-top:1px solid rgba(255,255,255,.06);}
+.hero-water-label{font-family:var(--font-ui);font-size:.58rem;letter-spacing:.16em;text-transform:uppercase;color:rgba(255,255,255,.28);margin-bottom:.9rem;}
+.hw-row{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:.3rem;}
+.hw-name{font-size:.64rem;color:rgba(255,255,255,.4);}
+.hw-val{font-size:.64rem;color:rgba(255,255,255,.65);}
+.hero-water-bar{height:5px;background:rgba(255,255,255,.06);border-radius:3px;overflow:hidden;margin-bottom:.75rem;}
+.hero-water-bar:last-child{margin-bottom:0;}
+.hero-water-fill{height:100%;border-radius:3px;width:0%;transition:width 1.8s .9s var(--ease);}
+.hero-water-fill.teal{background:linear-gradient(90deg,var(--teal),rgba(35,193,196,.4));}
+.hero-water-fill.gold{background:linear-gradient(90deg,var(--gold),rgba(255,198,29,.4));}
+.hero-water-fill.coral{background:linear-gradient(90deg,var(--coral),rgba(254,83,55,.35));}
+/* Scroll hint */
+.hero-scroll{position:absolute;bottom:2rem;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:.4rem;opacity:0;animation:fadeIn .8s 1.8s forwards;z-index:3;pointer-events:none;}
+.hero-scroll-line{width:1px;height:32px;background:linear-gradient(to bottom,rgba(35,193,196,.6),transparent);animation:scrollPulse 2.2s 2s infinite;}
+.hero-scroll-label{font-family:var(--font-ui);font-size:.5rem;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.28);}
+
+/* ═══ STATEMENT BAND ════════════════════════════════════════════ */
+.statement-band{background:var(--navy-mid);border-top:1px solid rgba(35,193,196,.18);border-bottom:1px solid rgba(35,193,196,.18);padding:1.5rem var(--page-x);}
+.statement-band-inner{max-width:var(--container-max);margin:0 auto;display:flex;align-items:center;justify-content:center;gap:2rem;flex-wrap:wrap;}
+.statement-band-item{display:flex;align-items:center;gap:.7rem;font-family:var(--font-ui);font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.5);}
+.statement-band-item svg{stroke:var(--teal);fill:none;flex-shrink:0;}
+.statement-band-accent{color:rgba(254,83,55,.8);}
+.statement-band-accent svg{stroke:var(--coral);}
+.statement-band-sep{width:1px;height:18px;background:rgba(255,255,255,.1);flex-shrink:0;}
+
+/* ═══ CHALLENGE SECTION ═════════════════════════════════════════ */
+.challenge-section{background:var(--navy-mid);padding:var(--section-pad) var(--page-x);position:relative;overflow:hidden;}
+.challenge-section::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 60% 70% at 80% 40%,rgba(254,83,55,.05) 0%,transparent 60%);pointer-events:none;}
+.challenge-inner{max-width:var(--container-max);margin:0 auto;display:grid;grid-template-columns:1fr 1.4fr;gap:5rem;align-items:start;}
+.challenge-facts{display:flex;flex-direction:column;gap:1px;background:rgba(255,255,255,.06);margin-top:2rem;}
+.c-fact{background:var(--navy-mid);padding:1.4rem 1.6rem;display:flex;align-items:flex-start;gap:1.2rem;transition:background var(--dur-sm);}
+.c-fact:hover{background:rgba(255,255,255,.03);}
+.c-fact-icon{width:32px;height:32px;flex-shrink:0;}
+.c-fact-icon svg{width:32px;height:32px;stroke:var(--coral);stroke-width:1.2;fill:none;stroke-linecap:round;stroke-linejoin:round;}
+.c-fact-n{font-family:var(--font-serif);font-size:1.6rem;font-weight:300;color:var(--coral);line-height:1;margin-bottom:.2rem;}
+.c-fact-text{font-size:.78rem;color:var(--text-on-dark);line-height:1.6;}
+
+/* ═══ VAI TAPU ══════════════════════════════════════════════════ */
+.vai-tapu-section{background:var(--cream);padding:var(--section-pad) var(--page-x);border-bottom:1px solid var(--border-light);}
+.vai-tapu-inner{max-width:var(--container-max);margin:0 auto;}
+.system-header{display:flex;align-items:flex-end;justify-content:space-between;gap:3rem;margin-bottom:4rem;flex-wrap:wrap;}
+.system-badge{display:inline-flex;align-items:center;gap:.6rem;border:1px solid var(--border-teal);padding:.4rem .9rem;font-family:var(--font-ui);font-size:.58rem;letter-spacing:.16em;text-transform:uppercase;color:var(--teal-dim);}
+.system-badge-dot{width:5px;height:5px;border-radius:50%;background:var(--teal);flex-shrink:0;}
+.vt-layout{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:start;margin-top:3rem;}
+.vt-diagram-wrap{position:relative;}
+.vt-diagram-label{font-family:var(--font-ui);font-size:.58rem;letter-spacing:.16em;text-transform:uppercase;color:var(--stone-light);margin-bottom:.8rem;}
+#vt-diagram{width:100%;border:1px solid var(--border-light);cursor:pointer;display:block;}
+.vt-tooltip{position:absolute;background:var(--navy);color:var(--white);padding:.65rem 1rem;font-size:.72rem;line-height:1.55;pointer-events:none;opacity:0;transition:opacity .18s;z-index:10;max-width:210px;border-left:2px solid var(--teal);box-shadow:0 4px 16px rgba(0,0,0,.3);}
+.vt-stats-grid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--border-light);margin-top:1.5rem;}
+.vt-stat{background:var(--white);padding:1.3rem;text-align:center;}
+.vt-stat-n{font-family:var(--font-serif);font-size:1.8rem;font-weight:300;color:var(--teal-dim);line-height:1;margin-bottom:.2rem;}
+.vt-stat-l{font-size:.66rem;letter-spacing:.08em;color:var(--stone);line-height:1.4;}
+.spec-table{width:100%;border-collapse:collapse;margin-top:1.5rem;}
+.spec-table tr{border-bottom:1px solid var(--border-light);}
+.spec-table tr:last-child{border-bottom:none;}
+.spec-table td{padding:.72rem .4rem;font-size:.78rem;line-height:1.5;}
+.spec-table td:first-child{color:var(--stone-light);width:48%;font-family:var(--font-ui);font-size:.67rem;letter-spacing:.06em;text-transform:uppercase;}
+.spec-table td:last-child{color:var(--navy);font-weight:400;text-align:right;}
+/* Process flow arrows */
+.process-flow{display:flex;align-items:stretch;gap:0;margin-top:2rem;overflow:hidden;position:relative;}
+.pf-step{flex:1;background:var(--navy);padding:1.4rem .8rem 1.6rem;position:relative;text-align:center;transition:background var(--dur-sm);cursor:default;overflow:hidden;}
+.pf-step::before{content:'';position:absolute;bottom:0;left:0;right:0;height:2px;background:var(--teal);transform:scaleX(0);transform-origin:left;transition:transform .3s var(--ease);}
+.pf-step:hover{background:rgba(35,193,196,.07);}
+.pf-step:hover::before{transform:scaleX(1);}
+.pf-step::after{content:'';position:absolute;right:-12px;top:42%;transform:translateY(-50%);width:0;height:0;border-left:12px solid var(--navy);border-top:20px solid transparent;border-bottom:20px solid transparent;z-index:2;transition:border-left-color var(--dur-sm);}
+.pf-step:last-child::after{display:none;}
+.pf-step:hover::after{border-left-color:rgba(35,193,196,.07);}
+.pf-n{font-family:var(--font-serif);font-size:1.2rem;font-weight:300;color:rgba(35,193,196,.2);line-height:1;margin-bottom:.4rem;}
+.pf-icon{width:26px;height:26px;margin:0 auto .4rem;}
+.pf-icon svg{width:26px;height:26px;stroke:var(--teal);stroke-width:1.3;fill:none;stroke-linecap:round;display:block;}
+.pf-label{font-family:var(--font-ui);font-size:.52rem;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.55);line-height:1.5;}
+.pf-step:hover .pf-icon svg{stroke:rgba(255,255,255,.9);}
+.pf-step:hover .pf-label{color:rgba(255,255,255,.85);}
+
+/* ═══ SYSTEM SPLIT STRIP ════════════════════════════════════════ */
+.sys-split-strip{background:var(--cream-dark);border-top:1px solid var(--border-light);border-bottom:1px solid var(--border-light);padding:2.5rem var(--page-x);}
+.sys-split-inner{max-width:820px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:2rem;}
+.sys-split-item{flex:1;}
+.ss-left{text-align:right;}
+.ss-right{text-align:left;}
+.ss-tag{font-family:var(--font-ui);font-size:.6rem;letter-spacing:.18em;text-transform:uppercase;color:var(--teal-dim);margin-bottom:.3rem;}
+.ss-title{font-family:var(--font-ui);font-size:.58rem;letter-spacing:.14em;text-transform:uppercase;color:var(--stone-light);margin-bottom:.25rem;}
+.ss-figure{font-family:var(--font-serif);font-size:2.2rem;font-weight:300;color:var(--navy);line-height:1;}
+.ss-figure span{font-size:.8rem;color:var(--stone);font-family:var(--font-body);}
+.ss-detail{font-size:.7rem;color:var(--stone-light);margin-top:.4rem;line-height:1.5;}
+.sys-split-connector{display:flex;flex-direction:column;align-items:center;gap:.3rem;flex-shrink:0;}
+.ss-connector-label{font-family:var(--font-ui);font-size:.55rem;letter-spacing:.14em;text-transform:uppercase;color:rgba(35,193,196,.5);}
+
+/* ═══ VAI KOKO ══════════════════════════════════════════════════ */
+.vai-koko-section{background:var(--navy-deep);padding:var(--section-pad) var(--page-x);position:relative;overflow:hidden;}
+.vai-koko-section::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 70% 60% at 25% 55%,rgba(35,193,196,.08) 0%,transparent 55%),radial-gradient(ellipse 50% 40% at 80% 80%,rgba(255,198,29,.04) 0%,transparent 50%);pointer-events:none;}
+.vk-inner{max-width:var(--container-max);margin:0 auto;position:relative;z-index:1;}
+.vk-layout{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:start;margin-top:3rem;}
+/* #vk-canvas removed — replaced by reference image */
+.vk-label-row{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:1rem;}
+.vk-svg-wrap{position:relative;width:100%;background:transparent;line-height:0;}
+#vk-svg{width:100%;height:auto;display:block;}
+/* .vk-image-wrap retained for fallback */.vk-image-wrap{position:relative;width:100%;border:1px solid rgba(255,255,255,.08);overflow:hidden;background:#000d1a;}
+.vk-ref-image{width:100%;height:auto;display:block;object-fit:cover;}
+.vk-label{display:flex;align-items:center;gap:.4rem;font-size:.65rem;color:rgba(255,255,255,.45);cursor:default;padding:.3rem .6rem;border:1px solid transparent;transition:all var(--dur-sm);border-radius:2px;}
+.vk-label:hover,.vk-label.active{color:var(--white);border-color:rgba(255,255,255,.15);background:rgba(255,255,255,.05);}
+.vk-label-dot{width:6px;height:6px;border-radius:50%;flex-shrink:0;}
+.vk-specs{display:flex;flex-direction:column;gap:1px;background:rgba(255,255,255,.06);}
+.vk-spec-row{background:var(--navy-deep);padding:.85rem 1.4rem;display:flex;justify-content:space-between;align-items:center;gap:1rem;transition:background var(--dur-sm),border-left-color var(--dur-sm);border-left:2px solid transparent;}
+.vk-spec-row:hover{background:rgba(255,255,255,.04);border-left-color:var(--teal);}
+.vk-spec-row:nth-child(odd){background:rgba(0,0,0,.1);}
+.vk-spec-row:nth-child(odd):hover{background:rgba(255,255,255,.04);}
+.vk-spec-key{font-size:.67rem;color:rgba(255,255,255,.35);font-family:var(--font-ui);letter-spacing:.06em;text-transform:uppercase;}
+.vk-spec-val{font-size:.82rem;color:var(--white);font-weight:400;text-align:right;}
+.vk-spec-val.accent{color:var(--teal);}
+
+/* ═══ WATER FLOW DIAGRAM ════════════════════════════════════════ */
+.flow-section{background:var(--navy-deep);padding:var(--section-pad) var(--page-x);}
+.flow-inner{max-width:var(--container-max);margin:0 auto;}
+#flow-canvas{display:block;width:100%;max-width:960px;margin:2rem auto 0;cursor:pointer;border:1px solid rgba(255,255,255,.08);}
+.flow-info-panel{max-width:960px;margin:1.5rem auto 0;background:rgba(0,0,0,.3);border:1px solid rgba(255,255,255,.07);overflow:hidden;}
+.flow-info-header{display:flex;align-items:center;gap:.8rem;padding:1rem 1.6rem;border-bottom:1px solid rgba(255,255,255,.06);}
+.flow-info-dot{width:8px;height:8px;border-radius:50%;background:var(--teal);flex-shrink:0;transition:background .25s;}
+.flow-info-title{font-family:var(--font-ui);font-size:.64rem;letter-spacing:.16em;text-transform:uppercase;color:var(--teal);transition:color .25s;}
+.flow-hint{font-family:var(--font-ui);font-size:.58rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.18);margin-left:auto;}
+.flow-info-body{padding:1.2rem 1.6rem;}
+.flow-info-text{font-size:.83rem;color:var(--text-on-dark);line-height:1.75;}
+
+/* ═══ CAPACITY CHART ════════════════════════════════════════════ */
+.capacity-section{background:var(--cream);padding:var(--section-pad) var(--page-x);border-top:1px solid var(--border-light);}
+.cap-inner{max-width:var(--container-max);margin:0 auto;}
+.cap-layout{display:grid;grid-template-columns:1.2fr 1fr;gap:5rem;align-items:start;margin-top:3rem;}
+#cap-canvas{display:block;width:100%;border:1px solid var(--border-light);background:var(--white);padding:1rem;}
+.resilience-bars{display:flex;flex-direction:column;gap:1.6rem;margin-top:2rem;}
+.res-bar-top{display:flex;justify-content:space-between;margin-bottom:.5rem;}
+.res-bar-name{font-size:.78rem;color:var(--stone);}
+.res-bar-val{font-family:var(--font-serif);font-size:1.1rem;font-weight:300;color:var(--teal-dim);}
+.res-track{height:6px;background:var(--border-light);border-radius:4px;overflow:hidden;}
+.res-fill{height:100%;border-radius:4px;background:linear-gradient(90deg,var(--teal),rgba(35,193,196,.4));transition:width 1.4s var(--ease);}
+.res-fill.gold{background:linear-gradient(90deg,var(--gold),rgba(255,198,29,.4));}
+.res-fill.coral{background:linear-gradient(90deg,var(--coral),rgba(254,83,55,.4));}
+.res-fill.navy{background:linear-gradient(90deg,var(--navy-light),rgba(13,64,112,.4));}
+
+/* ═══ REEFSKIN ══════════════════════════════════════════════════ */
+.reefskin-section{background:var(--navy);padding:var(--section-pad) var(--page-x);}
+.rs-inner{max-width:var(--container-max);margin:0 auto;display:grid;grid-template-columns:1fr 1.3fr;gap:5rem;align-items:start;}
+.rs-timeline{display:flex;flex-direction:column;position:relative;margin-top:2rem;}
+.rs-timeline::before{content:'';position:absolute;left:15px;top:0;bottom:0;width:1px;background:linear-gradient(to bottom,var(--teal),rgba(35,193,196,.1));}
+.rs-event{display:flex;gap:1.8rem;padding:.8rem 0;align-items:flex-start;}
+.rs-dot-wrap{flex-shrink:0;position:relative;z-index:1;}
+.rs-dot{width:30px;height:30px;border-radius:50%;background:var(--navy);border:1.5px solid rgba(35,193,196,.3);display:flex;align-items:center;justify-content:center;transition:border-color var(--dur-sm),background var(--dur-sm);}
+.rs-dot svg{width:12px;height:12px;stroke:var(--teal);stroke-width:1.5;fill:none;}
+.rs-event:hover .rs-dot{border-color:var(--teal);background:rgba(35,193,196,.08);}
+.rs-month{font-family:var(--font-ui);font-size:.58rem;letter-spacing:.14em;text-transform:uppercase;color:var(--teal);margin-bottom:.2rem;}
+.rs-title{font-family:var(--font-serif);font-size:1rem;font-weight:300;color:var(--white);margin-bottom:.25rem;line-height:1.2;}
+.rs-body{font-size:.74rem;color:var(--text-on-dark);line-height:1.6;}
+.coral-panel{background:rgba(0,0,0,.25);border:1px solid rgba(255,255,255,.07);padding:2rem;}
+.coral-ring-wrap{position:relative;width:200px;height:200px;margin:0 auto 1.5rem;}
+#coral-ring-canvas{position:absolute;inset:0;width:100%;height:100%;}
+.coral-ring-center{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;}
+.coral-pct{font-family:var(--font-serif);font-size:2.4rem;font-weight:300;color:var(--teal);line-height:1;}
+.coral-label{font-size:.6rem;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.4);margin-top:.2rem;}
+.coral-metrics{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:rgba(255,255,255,.06);margin-top:1.5rem;}
+.cm-item{background:rgba(0,0,0,.15);padding:1rem;text-align:center;}
+.cm-n{font-family:var(--font-serif);font-size:1.3rem;font-weight:300;color:var(--gold);margin-bottom:.2rem;}
+.cm-l{font-size:.6rem;letter-spacing:.08em;color:rgba(255,255,255,.35);line-height:1.4;}
+
+/* ═══ GUARDIAN CARDS ════════════════════════════════════════════ */
+.governance-section{background:var(--cream);padding:var(--section-pad) var(--page-x);border-top:1px solid var(--border-light);}
+.gov-inner{max-width:var(--container-max);margin:0 auto;}
+.gov-layout{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border-light);margin-top:3rem;}
+.gov-card{background:var(--white);padding:2.2rem 1.8rem;transition:background var(--dur-sm);position:relative;overflow:hidden;}
+.gov-card::after{content:'';position:absolute;bottom:0;left:0;right:0;height:3px;transform:scaleX(0);transform-origin:left;transition:transform .35s var(--ease);}
+.gov-card:hover{background:#fefcf9;}
+.gov-card:hover::after{transform:scaleX(1);}
+.gov-card-teal::after{background:var(--teal);}
+.gov-card-gold::after{background:var(--gold);}
+.gov-card-coral::after{background:var(--coral);}
+.gov-card-icon{width:36px;height:36px;margin-bottom:1.2rem;}
+.gov-card-icon svg{width:36px;height:36px;stroke-width:1.2;fill:none;stroke-linecap:round;stroke-linejoin:round;}
+.gov-card-teal .gov-card-icon svg{stroke:var(--teal);}
+.gov-card-gold .gov-card-icon svg{stroke:var(--gold-dim);}
+.gov-card-coral .gov-card-icon svg{stroke:var(--coral);}
+.gov-card-label{font-family:var(--font-ui);font-size:.58rem;letter-spacing:.16em;text-transform:uppercase;margin-bottom:.4rem;}
+.gov-card-teal .gov-card-label{color:var(--teal-dim);}
+.gov-card-gold .gov-card-label{color:var(--gold-dim);}
+.gov-card-coral .gov-card-label{color:var(--coral-dim);}
+.gov-card-title{font-family:var(--font-serif);font-size:1.3rem;font-weight:300;color:var(--navy);margin-bottom:.7rem;line-height:1.2;}
+.gov-card-body{font-size:.78rem;color:var(--stone);line-height:1.72;}
+
+/* ═══ COST / TIERS ══════════════════════════════════════════════ */
+.cost-section{background:var(--navy-deep);padding:var(--section-pad) var(--page-x);}
+.cost-inner{max-width:var(--container-max);margin:0 auto;}
+.cost-layout{display:grid;grid-template-columns:1fr 1.4fr;gap:5rem;align-items:start;margin-top:3rem;}
+.cost-table{width:100%;border-collapse:collapse;}
+.cost-table tr{border-bottom:1px solid rgba(255,255,255,.06);}
+.cost-table tr:last-child{border-bottom:none;}
+.cost-table thead td{font-family:var(--font-ui);font-size:.6rem;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.35);padding:.6rem .4rem;}
+.cost-table td{padding:.9rem .4rem;font-size:.78rem;color:var(--text-on-dark);vertical-align:middle;}
+.cost-table td:last-child{text-align:right;font-weight:400;color:var(--white);}
+.cost-table tfoot td{color:var(--gold);}
+.cost-table tfoot tr{border-top:1px solid rgba(255,255,255,.12);}
+.tier-cards{display:flex;flex-direction:column;gap:1px;background:rgba(255,255,255,.06);}
+.tier-card{background:var(--navy-deep);padding:1.8rem;transition:background var(--dur-sm);cursor:pointer;border-left:3px solid transparent;}
+.tier-card:hover{background:rgba(255,255,255,.03);}
+.tier-card.selected{background:rgba(35,193,196,.06);border-left-color:var(--teal);}
+.tier-top{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:.6rem;}
+.tier-name{font-family:var(--font-ui);font-size:.62rem;letter-spacing:.16em;text-transform:uppercase;color:rgba(255,255,255,.5);}
+.tier-cost{font-family:var(--font-serif);font-size:1.5rem;font-weight:300;color:var(--gold);}
+.tier-title{font-family:var(--font-serif);font-size:1.2rem;font-weight:300;color:var(--white);margin-bottom:.45rem;line-height:1.2;}
+.tier-desc{font-size:.76rem;color:var(--text-on-dark);line-height:1.6;}
+.tier-bar-track{height:3px;background:rgba(255,255,255,.07);margin-top:1rem;overflow:hidden;}
+.tier-bar-fill{height:100%;background:linear-gradient(90deg,var(--teal),rgba(35,193,196,.35));transition:width 1.2s var(--ease);}
+
+/* ═══ RECOMMENDATIONS ═══════════════════════════════════════════ */
+.recs-section{background:var(--navy-mid);padding:var(--section-pad) var(--page-x);}
+.recs-inner{max-width:var(--container-max);margin:0 auto;}
+.recs-grid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:rgba(255,255,255,.06);margin-top:3rem;}
+.rec-card{background:var(--navy-mid);padding:2rem 1.8rem;transition:background var(--dur-sm);}
+.rec-card:hover{background:rgba(255,255,255,.03);}
+.rec-num{font-family:var(--font-serif);font-size:3rem;font-weight:300;color:rgba(255,255,255,.04);line-height:1;margin-bottom:.8rem;}
+.rec-label{font-family:var(--font-ui);font-size:.6rem;letter-spacing:.18em;text-transform:uppercase;color:var(--teal);margin-bottom:.4rem;}
+.rec-title{font-family:var(--font-serif);font-size:1.3rem;font-weight:300;color:var(--white);margin-bottom:.7rem;line-height:1.2;}
+.rec-body{font-size:.8rem;color:var(--text-on-dark);line-height:1.72;}
+.rec-tag{display:inline-block;margin-top:.8rem;font-family:var(--font-ui);font-size:.58rem;letter-spacing:.12em;text-transform:uppercase;border:1px solid rgba(255,255,255,.1);padding:.2rem .6rem;color:rgba(255,255,255,.38);}
+
+/* ═══ JOIN CTA ══════════════════════════════════════════════════ */
+.join-section{background:var(--teal-dim);padding:6rem var(--page-x);text-align:center;position:relative;overflow:hidden;}
+.join-section::before{content:'';position:absolute;inset:-30%;background:radial-gradient(ellipse at 50% 50%,rgba(255,255,255,.08) 0%,transparent 55%);pointer-events:none;}
+.join-inner{position:relative;z-index:1;max-width:680px;margin:0 auto;}
+.join-h2{font-family:var(--font-serif);font-size:clamp(2.2rem,4.5vw,4rem);font-weight:300;color:var(--white);line-height:1.1;margin-bottom:1.2rem;}
+.join-h2 em{font-style:italic;opacity:.85;}
+.join-body{font-size:.97rem;color:rgba(255,255,255,.8);line-height:1.75;margin-bottom:2.5rem;}
+
+/* ═══ FOOTER ════════════════════════════════════════════════════ */
+footer{background:var(--navy-deep);}
+.footer-top{max-width:var(--container-max);margin:0 auto;display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:3rem;padding:4rem var(--page-x) 3rem;border-bottom:1px solid rgba(255,255,255,.06);}
+.footer-logo-wrap{display:flex;align-items:center;gap:.7rem;margin-bottom:1rem;text-decoration:none;}
+.footer-logo-wrap img{width:38px;height:38px;object-fit:contain;}
+.footer-logo-name{font-family:var(--font-ui);font-size:.78rem;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);}
+.footer-desc{font-size:.78rem;color:var(--text-dimmer);line-height:1.72;max-width:280px;margin-bottom:1.4rem;}
+.footer-email{font-size:.72rem;color:var(--teal);text-decoration:none;letter-spacing:.04em;transition:color var(--dur-sm);}
+.footer-email:hover{color:#aad0e0;}
+.footer-col-h{font-family:var(--font-ui);font-size:.6rem;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.35);margin-bottom:1.2rem;}
+.footer-links{list-style:none;display:flex;flex-direction:column;gap:.6rem;}
+.footer-links a{font-size:.77rem;color:var(--text-dimmer);text-decoration:none;transition:color var(--dur-sm);}
+.footer-links a:hover{color:var(--white);}
+.footer-bottom{max-width:var(--container-max);margin:0 auto;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem;padding:2rem var(--page-x);}
+.footer-copy{font-size:.66rem;color:var(--text-dimmer);letter-spacing:.05em;}
+.footer-socials{display:flex;gap:1rem;}
+.footer-socials a{font-size:.66rem;letter-spacing:.12em;text-transform:uppercase;color:var(--text-dimmer);text-decoration:none;font-family:var(--font-ui);transition:color var(--dur-sm);}
+.footer-socials a:hover{color:var(--white);}
+
+/* ═══ RESPONSIVE ════════════════════════════════════════════════ */
+@media(max-width:1100px){
+  .page-hero-inner{grid-template-columns:1fr;gap:2.5rem;padding-top:7rem;}
+  .hero-right{display:none;}
+  .challenge-inner,.vt-layout,.vk-layout,.rs-inner,.cost-layout,.cap-layout{grid-template-columns:1fr;gap:3rem;}
+  .gov-layout{grid-template-columns:1fr 1fr;}
+  .footer-top{grid-template-columns:1fr 1fr;gap:2.5rem;}
+}
+@media(max-width:768px){
+  :root{--page-x:1.5rem;--section-pad:5rem;}
+  nav{padding:0 1.5rem;}
+  .nav-links,.nav-cta{display:none;}
+  .hamburger{display:flex;}
+  .mobile-menu{display:flex;}
+  .page-hero{min-height:auto;}
+  .page-hero-inner{padding-top:6rem;padding-bottom:4rem;}
+  .hero-right{display:none;}
+  .gov-layout,.recs-grid{grid-template-columns:1fr;}
+  .process-flow{flex-direction:column;}
+  .pf-step::after{display:none;}
+  .footer-top{grid-template-columns:1fr;}
+  .system-header{flex-direction:column;align-items:flex-start;}
+  .vt-stats-grid{grid-template-columns:1fr 1fr;}
+  .statement-band-inner{flex-direction:column;gap:1rem;}
+  .statement-band-sep{display:none;}
+  .sys-split-inner{flex-direction:column;text-align:center;}
+  .ss-left,.ss-right{text-align:center;}
+  .sys-split-connector{display:none;}
+}
+</style>
+</head>
+
+</head>
+
+<body data-page="water-systems">
+
+<!-- ═══ NAV ════════════════════════════════════════════════════════ -->
+<nav id="nav" role="navigation" aria-label="Main navigation">
+  <a href="index.html" class="nav-logo" aria-label="Sovereign Vision — Home">
+    <img src="images/logo-trans.png" alt="Sovereign Vision" width="42" height="42">
+    <div class="nav-logo-text">Sovereign Vision<span>Te Fale o Te Mātāmua · Tuvalu</span></div>
+  </a>
+  <ul class="nav-links" role="list">
+    <li class="nav-dropdown" role="none">
+      <a href="core-systems.html" aria-haspopup="true" aria-expanded="false">Core Systems</a>
+      <div class="dropdown-menu" role="menu">
+        <a href="energy.html">Power Generation</a>
+        <a href="water-systems.html" style="color:var(--coral)!important;">Water Systems</a>
+        <a href="water-systems.html#sanctuary" style="padding-left:1.8rem;font-size:.65rem;color:var(--stone)!important;">↳ Reef Harbor — Sanctuary</a>
+        <a href="food.html">Food Sovereignty</a>
+        <a href="communications.html">Communications</a>
+        <a href="waste-systems.html">Resource Recovery</a>
+        <a href="civic-infrastructure.html">Civic Infrastructure</a>
+        <a href="treasury.html">Sovereign Treasury</a>
+        <a href="guardian-arbor.html">Guardian &amp; Arbor AI</a>
+        <a href="datacenter.html">Sovereign Datacenter</a>
+      </div>
+    </li>
+    <li><a href="how-it-works.html">How It Works</a></li>
+    <li class="nav-dropdown" role="none">
+      <a href="legal-licensing.html" aria-haspopup="true" aria-expanded="false">Legal</a>
+      <div class="dropdown-menu" role="menu">
+        <a href="civic-commons-license.html">Civic Commons License</a>
+        <a href="digitalarchipelago.html">Digital Archipelago Accord</a>
+        <a href="trust-formation-status.html">Trust Formation Status</a>
+        <a href="terms.html">Terms of Use</a>
+        <a href="privacy-policy.html">Privacy Policy</a>
+        <a href="copyright-notice.html">Copyright Notice</a>
+      </div>
+    </li>
+    <li><a href="faq.html">FAQ</a></li>
+    <li class="nav-dropdown" role="none">
+      <a href="about-us.html" aria-haspopup="true" aria-expanded="false">About</a>
+      <div class="dropdown-menu" role="menu">
+        <a href="about-us.html">About Us</a>
+        <a href="continuity-vs-reinvention.html">Continuity vs Reinvention</a>
+        <a href="elders-council.html">Elders Council</a>
+        <a href="youth-voice.html">Youth Voice</a>
+      </div>
+    </li>
+  </ul>
+  <a href="contact.html" class="nav-cta">Partner With Us</a>
+  <button id="hamburger" class="hamburger" aria-label="Toggle navigation" aria-expanded="false" aria-controls="mobile-menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+<div class="mobile-menu" id="mobile-menu" role="dialog" aria-modal="true">
+  <a href="core-systems.html" onclick="closeMobileMenu()">Core Systems</a>
+  <a href="how-it-works.html" onclick="closeMobileMenu()">How It Works</a>
+  <a href="about-us.html"     onclick="closeMobileMenu()">About</a>
+  <a href="faq.html"          onclick="closeMobileMenu()">FAQ</a>
+  <a href="contact.html"      onclick="closeMobileMenu()" class="m-cta">Partner With Us</a>
+</div>
+
+<!-- ═══ HERO ═══════════════════════════════════════════════════════ -->
+<section class="page-hero" aria-label="Water Systems hero">
+  <canvas id="hero-canvas" aria-hidden="true"></canvas>
+  <div class="page-hero-inner">
+
+    <!-- Left column: headline + CTAs -->
+    <div class="hero-left">
+      <div class="hero-breadcrumb">
+        <a href="index.html">Home</a><span style="opacity:.4">›</span>
+        <a href="core-systems.html">Core Systems</a><span style="opacity:.4">›</span>
+        Water Systems
+      </div>
+      <div class="hero-system-tag">Vai Tapu · Vai Koko · Water Security</div>
+      <h1 class="hero-h1">
+        Water that <em>belongs</em><br>to the island.
+        <span class="hero-tuvaluan">Vai Tapu · Vai Koko</span>
+      </h1>
+      <p class="hero-sub">60,000 litres of potable water every day — produced by sunlight, stored in the lagoon, monitored by Guardian, and owned entirely by Tuvalu. No rivers. No aquifers. No dependency.</p>
+      <div class="hero-actions">
+        <a href="#vai-tapu" class="btn-coral">Vai Tapu — Desalination</a>
+        <a href="#vai-koko" class="btn-ghost">Vai Koko — Lagoon Storage</a>
+              <a href="#sanctuary" class="btn-ghost" style="border-color:rgba(35,193,196,.35);">Reef Harbor — Sanctuary</a>
+      </div>
+    </div>
+
+    <!-- Right column: live stat panel -->
+    <div class="hero-right">
+      <div class="hero-stat-panel">
+        <div class="hero-stat-panel-header">
+          <div class="hero-stat-panel-dot"></div>
+          <span class="hero-stat-panel-title">Phase 1 · System Status</span>
+        </div>
+        <div class="hero-stats-grid" aria-label="Key metrics">
+          <div class="h-stat">
+            <div class="h-stat-n" id="cnt-daily">0</div>
+            <div class="h-stat-l">Litres/day<br>total output</div>
+          </div>
+          <div class="h-stat">
+            <div class="h-stat-n" id="cnt-nodes">0</div>
+            <div class="h-stat-l">Vai Tapu<br>desalination nodes</div>
+          </div>
+          <div class="h-stat">
+            <div class="h-stat-n" id="cnt-tanks">0</div>
+            <div class="h-stat-l">Vai Koko tanks<br>Phase 1 target</div>
+          </div>
+          <div class="h-stat">
+            <div class="h-stat-n" id="cnt-stored">0</div>
+            <div class="h-stat-l">Litres stored<br>Phase 1 total</div>
+          </div>
+        </div>
+        <!-- Mini live bars -->
+        <div class="hero-water-vis">
+          <div class="hero-water-label">Storage readiness · Phase 1 targets</div>
+          <div style="margin-bottom:.6rem;">
+            <div class="hero-water-row"><span class="hero-water-name">Daily production</span><span class="hero-water-val">60,000 L/day</span></div>
+            <div class="hero-water-bar"><div class="hero-water-fill teal" id="hbar1"></div></div>
+          </div>
+          <div style="margin-bottom:.6rem;">
+            <div class="hero-water-row"><span class="hero-water-name">Lagoon storage</span><span class="hero-water-val">225,000 L</span></div>
+            <div class="hero-water-bar"><div class="hero-water-fill gold" id="hbar2"></div></div>
+          </div>
+          <div>
+            <div class="hero-water-row"><span class="hero-water-name">Storm resilience target</span><span class="hero-water-val">100% survival</span></div>
+            <div class="hero-water-bar"><div class="hero-water-fill coral" id="hbar3"></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Scroll hint -->
+  <div class="hero-scroll" aria-hidden="true">
+    <span class="hero-scroll-label">Scroll</span>
+    <div class="hero-scroll-line"></div>
+  </div>
+</section>
+
+<!-- ═══ STATEMENT BAND ════════════════════════════════════════════ -->
+<div class="statement-band" role="complementary">
+  <div class="statement-band-inner">
+    <div class="statement-band-item">
+      <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true"><path d="M12 2.69l5.66 5.66a8 8 0 11-11.31 0z"/></svg>
+      <span>No rivers. No aquifers. Only rain.</span>
+    </div>
+    <div class="statement-band-sep"></div>
+    <div class="statement-band-item statement-band-accent">
+      <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
+      <span>2011 drought: national emergency</span>
+    </div>
+    <div class="statement-band-sep"></div>
+    <div class="statement-band-item">
+      <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg>
+      <span>Vai Tapu &amp; Vai Koko — the permanent answer</span>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ THE CHALLENGE ════════════════════════════════════════════ -->
+<section class="challenge-section" aria-label="The water challenge">
+  <div class="challenge-inner">
+    <div>
+      <div class="section-tag white reveal">The Water Reality</div>
+      <h2 class="h2 h2-white reveal">Zero rivers.<br>Zero aquifers.<br><em>One solution.</em></h2>
+      <p class="body-text-white reveal" style="margin-top:1.5rem;">Tuvalu's fresh water story begins and ends with rainfall. There are no natural freshwater sources. Rainwater catchment, shared cisterns, and imported bottled water have been the only options for generations. The 2011 drought forced a national emergency. Climate change is making droughts longer and sea-level rise is contaminating what little groundwater exists.</p>
+      <p class="body-text-white reveal" style="margin-top:1rem;">Vai Tapu and Vai Koko are the permanent answer: a solar-powered desalination network paired with submerged lagoon storage — land-sparing, storm-resilient, and entirely locally operated.</p>
+    </div>
+    <div>
+      <div class="challenge-facts">
+        <div class="c-fact reveal">
+          <div class="c-fact-icon"><svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg></div>
+          <div><div class="c-fact-n">0</div><div class="c-fact-text">Natural rivers, lakes, or freshwater aquifers in all of Tuvalu</div></div>
+        </div>
+        <div class="c-fact reveal">
+          <div class="c-fact-icon"><svg viewBox="0 0 24 24"><path d="M12 2.69l5.66 5.66a8 8 0 11-11.31 0z"/></svg></div>
+          <div><div class="c-fact-n">2011</div><div class="c-fact-text">National state of emergency declared after a months-long drought collapsed water supply</div></div>
+        </div>
+        <div class="c-fact reveal">
+          <div class="c-fact-icon"><svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></div>
+          <div><div class="c-fact-n">3.9mm</div><div class="c-fact-text">Annual sea rise per year — twice the global average — contaminating shallow groundwater</div></div>
+        </div>
+        <div class="c-fact reveal">
+          <div class="c-fact-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg></div>
+          <div><div class="c-fact-n">4.6m</div><div class="c-fact-text">Highest point in Tuvalu — the entire nation sits below the height of a ceiling</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ VAI TAPU ══════════════════════════════════════════════════ -->
+<section class="vai-tapu-section" id="vai-tapu" aria-label="Vai Tapu desalination system">
+  <div class="vai-tapu-inner">
+    <div class="system-header">
+      <div>
+        <div class="section-tag teal reveal">Vai Tapu · Sacred Water</div>
+        <h2 class="h2 reveal">Solar desalination.<br><em>20,000 litres per day.</em></h2>
+      </div>
+      <div class="reveal">
+        <div class="system-badge"><div class="system-badge-dot"></div>3 nodes · Phase 1 · Funafuti</div>
+        <p class="body-text" style="max-width:380px;margin-top:.8rem;">Each Vai Tapu node is a self-contained, solar-powered desalination unit. Three nodes run in parallel during Phase 1, delivering a combined 60,000 L/day.</p>
+      </div>
+    </div>
+
+    <!-- Desalination process flow -->
+    <div class="process-flow reveal" aria-label="Desalination process steps">
+      <div class="pf-step">
+        <div class="pf-n">01</div>
+        <div class="pf-icon"><svg viewBox="0 0 24 24"><path d="M3 6h18M3 12h18M3 18h18"/></svg></div>
+        <div class="pf-label">Seawater<br>Intake</div>
+      </div>
+      <div class="pf-step">
+        <div class="pf-n">02</div>
+        <div class="pf-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83"/></svg></div>
+        <div class="pf-label">Solar<br>Power</div>
+      </div>
+      <div class="pf-step">
+        <div class="pf-n">03</div>
+        <div class="pf-icon"><svg viewBox="0 0 24 24"><path d="M7 16.5A4.5 4.5 0 0112 12a4.5 4.5 0 015 4.5"/><path d="M5 19h14"/><path d="M12 3v9"/></svg></div>
+        <div class="pf-label">Pre-<br>filtration</div>
+      </div>
+      <div class="pf-step">
+        <div class="pf-n">04</div>
+        <div class="pf-icon"><svg viewBox="0 0 24 24"><rect x="2" y="6" width="20" height="12" rx="2"/><path d="M12 6v12M6 9h.01M6 12h.01M6 15h.01"/></svg></div>
+        <div class="pf-label">RO<br>Membrane</div>
+      </div>
+      <div class="pf-step">
+        <div class="pf-n">05</div>
+        <div class="pf-icon"><svg viewBox="0 0 24 24"><path d="M12 22V12M12 12C12 7 6 4 6 4s-1 5 2 8M12 12c0-5 6-8 6-8s1 5-2 8"/></svg></div>
+        <div class="pf-label">Rainwater<br>Blending</div>
+      </div>
+      <div class="pf-step">
+        <div class="pf-n">06</div>
+        <div class="pf-icon"><svg viewBox="0 0 24 24"><path d="M12 2.69l5.66 5.66a8 8 0 11-11.31 0z"/></svg></div>
+        <div class="pf-label">Potable<br>Output</div>
+      </div>
+      <div class="pf-step">
+        <div class="pf-n">07</div>
+        <div class="pf-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
+        <div class="pf-label">Guardian<br>Monitor</div>
+      </div>
+    </div>
+
+    <div class="vt-layout">
+      <!-- Interactive SVG diagram -->
+      <div class="vt-diagram-wrap reveal-left">
+        <div class="vt-diagram-label">Vai Tapu — Process Flow (hover any component)</div>
+        <canvas id="vt-diagram" height="460" aria-label="Vai Tapu desalination process flow schematic — hover each component for details"></canvas>
+        <div class="vt-tooltip" id="vt-tooltip"></div>
+        <div class="vt-stats-grid">
+          <div class="vt-stat"><div class="vt-stat-n">20k</div><div class="vt-stat-l">Litres/day<br>per node</div></div>
+          <div class="vt-stat"><div class="vt-stat-n">6.4kW</div><div class="vt-stat-l">Solar array<br>per node</div></div>
+          <div class="vt-stat"><div class="vt-stat-n">28kWh</div><div class="vt-stat-l">LFP battery<br>bank</div></div>
+          <div class="vt-stat"><div class="vt-stat-n">6+hrs</div><div class="vt-stat-l">Autonomy<br>battery-only</div></div>
+        </div>
+      </div>
+      <!-- Specs + notes -->
+      <div class="reveal">
+        <div class="section-tag teal" style="margin-bottom:1.2rem;">Technical Specifications</div>
+        <table class="spec-table" aria-label="Vai Tapu technical specifications">
+          <tr><td>Daily output per node</td><td>20,000 L/day (potable)</td></tr>
+          <tr><td>Combined Phase 1 output</td><td>60,000 L/day (3 nodes)</td></tr>
+          <tr><td>Solar array</td><td>6.4 kW rooftop per node</td></tr>
+          <tr><td>Battery storage</td><td>28–30 kWh LFP per node</td></tr>
+          <tr><td>Tier 1 autonomy</td><td>6+ hours battery-only</td></tr>
+          <tr><td>Water quality output</td><td>WHO potable standard</td></tr>
+          <tr><td>RO pressure</td><td>55–70 bar operating</td></tr>
+          <tr><td>Brine discharge</td><td>Diluted · salt basin routed</td></tr>
+          <tr><td>Rainwater blending</td><td>Integrated dilution line</td></tr>
+          <tr><td>Guardian monitoring</td><td>60-second telemetry cycle</td></tr>
+          <tr><td>Cooling</td><td>Dual mini-split, Guardian-controlled</td></tr>
+          <tr><td>Network</td><td>MQTT telemetry · Te Puka Loloa mesh</td></tr>
+        </table>
+
+        <div style="margin-top:2rem;">
+          <div class="section-tag teal" style="margin-bottom:1rem;">Brine Management</div>
+          <p class="body-text" style="font-size:.82rem;">Vai Tapu's brine output is not discarded — it is routed through salt basins and halophyte beds before reaching the ocean. Salt is harvested for local use and potential export. This closed-loop approach protects the reef, generates a secondary product, and avoids the ecosystem damage common in conventional desalination.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ SYSTEM SPLIT CALLOUT ═══════════════════════════════════ -->
+<div class="sys-split-strip" aria-label="System comparison" role="complementary">
+  <div class="sys-split-inner">
+    <div class="sys-split-item ss-left">
+      <div class="ss-tag">Vai Tapu — Sacred Water</div>
+      <div class="ss-title">Produces</div>
+      <div class="ss-figure">20,000 <span>L/day per node</span></div>
+      <div class="ss-detail">Solar-powered · RO desalination · Guardian-monitored · Brine recovery</div>
+    </div>
+    <div class="sys-split-connector" aria-hidden="true">
+      <svg viewBox="0 0 80 40" fill="none" width="80" height="40">
+        <path d="M0 20 L30 20" stroke="rgba(35,193,196,.4)" stroke-width="1.5" stroke-dasharray="4 3"/>
+        <path d="M50 20 L80 20" stroke="rgba(255,198,29,.4)" stroke-width="1.5" stroke-dasharray="4 3"/>
+        <circle cx="40" cy="20" r="8" fill="rgba(35,193,196,.08)" stroke="rgba(35,193,196,.4)" stroke-width="1.5"/>
+        <path d="M37 20 L43 20 M40 17 L43 20 L40 23" stroke="rgba(35,193,196,.7)" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      <div class="ss-connector-label">pressurised pipe</div>
+    </div>
+    <div class="sys-split-item ss-right">
+      <div class="ss-tag">Vai Koko — Water Cocoon</div>
+      <div class="ss-title">Stores</div>
+      <div class="ss-figure">20,000 <span>L per tank</span></div>
+      <div class="ss-detail">Submerged lagoon · Coral crown · RGB status ring · Storm-proof</div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ VAI KOKO ══════════════════════════════════════════════════ -->
+<section class="vai-koko-section" id="vai-koko" aria-label="Vai Koko lagoon storage system">
+  <div class="vk-inner">
+    <div class="system-header">
+      <div>
+        <div class="section-tag teal reveal">Vai Koko · Water Cocoon</div>
+        <h2 class="h2 h2-white reveal">Stored in the lagoon.<br><em>Not on the land.</em></h2>
+      </div>
+      <div class="reveal">
+        <div class="system-badge" style="border-color:rgba(35,193,196,.3);color:var(--teal);"><div class="system-badge-dot"></div>~15,000 L potable · submerged · gravity-stabilised</div>
+        <p class="body-text-white" style="max-width:380px;margin-top:.8rem;font-size:.82rem;">The key conceptual reframe: Tuvalu has almost no dry land, but it has an enormous shallow lagoon. Vai Koko puts the storage where space is abundant — beneath the water, where it is also protected from storms.</p>
+      </div>
+    </div>
+
+    <div class="vk-layout">
+      <!-- Vai Koko reference image -->
+      <div class="reveal-left">
+        <div class="vt-diagram-label">Vai Koko Unit — Structural Cross Section · v2.6</div>
+        <div class="vk-svg-wrap" id="vk-svg-wrap">
+          <svg id="vk-svg" viewBox="0 0 480 580" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Vai Koko structural cross-section diagram">
+            <defs>
+              <!-- backgrounds -->
+              <linearGradient id="skyGrad" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stop-color="#002a3e"/>
+                <stop offset="100%" stop-color="#001e2e"/>
+              </linearGradient>
+              <linearGradient id="waterGrad" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stop-color="#003a52"/>
+                <stop offset="100%" stop-color="#001828"/>
+              </linearGradient>
+              <linearGradient id="seabedGrad" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stop-color="#1a2e1a"/>
+                <stop offset="100%" stop-color="#0d1e0d"/>
+              </linearGradient>
+              <!-- tank -->
+              <linearGradient id="tankFill" x1="0" y1="0" x2="1" y2="0">
+                <stop offset="0%" stop-color="#003d5c"/>
+                <stop offset="45%" stop-color="#005a82"/>
+                <stop offset="55%" stop-color="#005a82"/>
+                <stop offset="100%" stop-color="#003d5c"/>
+              </linearGradient>
+              <linearGradient id="waterFill" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stop-color="rgba(35,193,196,0.12)"/>
+                <stop offset="100%" stop-color="rgba(35,193,196,0.28)"/>
+              </linearGradient>
+              <linearGradient id="reefskinL" x1="0" y1="0" x2="1" y2="0">
+                <stop offset="0%" stop-color="#2a5a3a" stop-opacity="0.9"/>
+                <stop offset="100%" stop-color="#1e4a2a" stop-opacity="0.7"/>
+              </linearGradient>
+              <linearGradient id="concreteL" x1="0" y1="0" x2="1" y2="0">
+                <stop offset="0%" stop-color="#2a3a44"/>
+                <stop offset="100%" stop-color="#1e2e38"/>
+              </linearGradient>
+              <linearGradient id="raftGrad" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stop-color="#3a4a55"/>
+                <stop offset="100%" stop-color="#2a3840"/>
+              </linearGradient>
+              <linearGradient id="geobagGrad" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stop-color="#3a4a30"/>
+                <stop offset="100%" stop-color="#2a3a22"/>
+              </linearGradient>
+              <radialGradient id="tealGlow" cx="50%" cy="50%" r="50%">
+                <stop offset="0%" stop-color="#23c1c4" stop-opacity="0.4"/>
+                <stop offset="100%" stop-color="#23c1c4" stop-opacity="0"/>
+              </radialGradient>
+              <radialGradient id="goldGlow" cx="50%" cy="50%" r="50%">
+                <stop offset="0%" stop-color="#ffc61d" stop-opacity="0.5"/>
+                <stop offset="100%" stop-color="#ffc61d" stop-opacity="0"/>
+              </radialGradient>
+              <!-- filters -->
+              <filter id="glow-teal" x="-40%" y="-40%" width="180%" height="180%">
+                <feGaussianBlur in="SourceGraphic" stdDeviation="4" result="blur"/>
+                <feComposite in="SourceGraphic" in2="blur" operator="over"/>
+              </filter>
+              <filter id="glow-gold">
+                <feGaussianBlur in="SourceGraphic" stdDeviation="3" result="blur"/>
+                <feComposite in="SourceGraphic" in2="blur" operator="over"/>
+              </filter>
+              <filter id="soft-shadow">
+                <feDropShadow dx="0" dy="2" stdDeviation="4" flood-color="#000" flood-opacity="0.5"/>
+              </filter>
+              <!-- clip -->
+              <clipPath id="tankClip">
+                <path d="M158,164 L158,390 Q158,410 240,410 Q322,410 322,390 L322,164 Q322,148 240,148 Q158,148 158,164 Z"/>
+              </clipPath>
+              <!-- animated dashes -->
+              <style>
+                .flow-up { animation: flowUp 2.8s linear infinite; }
+                .flow-pulse { animation: ringPulse 2.2s ease-in-out infinite; }
+                .light-ring-glow { animation: lightPulse 3s ease-in-out infinite; }
+                .guardian-pulse { animation: guardPulse 2s ease-in-out infinite; }
+                .bubble { animation: bubbleRise 4s ease-in-out infinite; }
+                .bubble2 { animation: bubbleRise 4s 1.4s ease-in-out infinite; }
+                .bubble3 { animation: bubbleRise 4s 2.6s ease-in-out infinite; }
+                @keyframes flowUp {
+                  0%   { stroke-dashoffset: 40; }
+                  100% { stroke-dashoffset: 0; }
+                }
+                @keyframes ringPulse {
+                  0%, 100% { opacity: 0.6; r: 6; }
+                  50%       { opacity: 1.0; r: 9; }
+                }
+                @keyframes lightPulse {
+                  0%, 100% { opacity: 0.55; filter: url(#glow-teal); }
+                  50%       { opacity: 1.0;  filter: url(#glow-teal); }
+                }
+                @keyframes guardPulse {
+                  0%, 100% { opacity: 0.7; }
+                  50%       { opacity: 1.0; }
+                }
+                @keyframes bubbleRise {
+                  0%   { transform: translateY(0)   scaleX(1);   opacity: 0.5; }
+                  50%  { transform: translateY(-28px) scaleX(1.2); opacity: 0.8; }
+                  100% { transform: translateY(-56px) scaleX(0.9); opacity: 0; }
+                }
+                @media (prefers-reduced-motion: reduce) {
+                  .flow-up, .flow-pulse, .light-ring-glow, .guardian-pulse, .bubble, .bubble2, .bubble3 { animation: none; }
+                }
+              </style>
+            </defs>
+
+            <!-- ═══ BACKGROUND ZONES ═══ -->
+            <!-- Sky / above water -->
+            <rect x="0" y="0" width="480" height="105" fill="url(#skyGrad)"/>
+            <!-- Water zone -->
+            <rect x="0" y="105" width="480" height="340" fill="url(#waterGrad)"/>
+            <!-- Seabed -->
+            <rect x="0" y="445" width="480" height="135" fill="url(#seabedGrad)"/>
+
+            <!-- water surface shimmer lines -->
+            <path d="M0,105 Q60,102 120,106 Q180,110 240,105 Q300,100 360,106 Q420,112 480,105" fill="none" stroke="rgba(35,193,196,0.35)" stroke-width="1.5"/>
+            <path d="M0,110 Q80,107 160,111 Q240,115 320,109 Q400,103 480,110" fill="none" stroke="rgba(35,193,196,0.15)" stroke-width="1"/>
+
+            <!-- water depth label -->
+            <text x="14" y="130" font-family="Questrial,sans-serif" font-size="9" fill="rgba(255,255,255,0.4)" letter-spacing="0.08em">WATER DEPTH ~1.5m</text>
+            <line x1="14" y1="133" x2="14" y2="106" stroke="rgba(255,255,255,0.2)" stroke-width="0.5" stroke-dasharray="2,3"/>
+            <line x1="14" y1="133" x2="14" y2="160" stroke="rgba(255,255,255,0.2)" stroke-width="0.5" stroke-dasharray="2,3"/>
+            <line x1="10" y1="105" x2="18" y2="105" stroke="rgba(255,255,255,0.3)" stroke-width="1"/>
+            <line x1="10" y1="160" x2="18" y2="160" stroke="rgba(255,255,255,0.3)" stroke-width="1"/>
+
+            <!-- ═══ SEABED TEXTURE ═══ -->
+            <ellipse cx="240" cy="450" rx="160" ry="10" fill="rgba(30,50,20,0.6)"/>
+            <path d="M80,452 Q120,448 160,453 Q200,458 240,452 Q280,446 320,453 Q360,460 400,452" fill="none" stroke="rgba(60,80,40,0.5)" stroke-width="1"/>
+
+            <!-- ═══ GEOBAG FOUNDATION (bottom layer) ═══ -->
+            <!-- Surge arc bags (back 3) — partial ring -->
+            <ellipse cx="130" cy="455" rx="36" ry="18" fill="url(#geobagGrad)" stroke="rgba(90,110,70,0.5)" stroke-width="1.2"/>
+            <ellipse cx="240" cy="462" rx="40" ry="19" fill="url(#geobagGrad)" stroke="rgba(90,110,70,0.5)" stroke-width="1.2"/>
+            <ellipse cx="350" cy="455" rx="36" ry="18" fill="url(#geobagGrad)" stroke="rgba(90,110,70,0.5)" stroke-width="1.2"/>
+            <!-- Primary ring bags -->
+            <ellipse cx="155" cy="446" rx="34" ry="16" fill="url(#geobagGrad)" stroke="rgba(100,120,80,0.6)" stroke-width="1.2"/>
+            <ellipse cx="190" cy="453" rx="34" ry="16" fill="url(#geobagGrad)" stroke="rgba(100,120,80,0.6)" stroke-width="1.2"/>
+            <ellipse cx="240" cy="456" rx="38" ry="17" fill="url(#geobagGrad)" stroke="rgba(100,120,80,0.65)" stroke-width="1.2"/>
+            <ellipse cx="290" cy="453" rx="34" ry="16" fill="url(#geobagGrad)" stroke="rgba(100,120,80,0.6)" stroke-width="1.2"/>
+            <ellipse cx="325" cy="446" rx="34" ry="16" fill="url(#geobagGrad)" stroke="rgba(100,120,80,0.6)" stroke-width="1.2"/>
+            <!-- Central bag -->
+            <ellipse cx="240" cy="448" rx="32" ry="15" fill="url(#geobagGrad)" stroke="rgba(110,130,90,0.7)" stroke-width="1.5"/>
+
+            <!-- ═══ RIGID TRANSFER RAFT ═══ -->
+            <!-- Main raft plate -->
+            <rect x="138" y="430" width="204" height="14" rx="2" fill="url(#raftGrad)" stroke="rgba(120,150,170,0.7)" stroke-width="1.5"/>
+            <!-- Grid lines across raft -->
+            <line x1="180" y1="430" x2="180" y2="444" stroke="rgba(150,180,200,0.3)" stroke-width="0.8"/>
+            <line x1="220" y1="430" x2="220" y2="444" stroke="rgba(150,180,200,0.3)" stroke-width="0.8"/>
+            <line x1="260" y1="430" x2="260" y2="444" stroke="rgba(150,180,200,0.3)" stroke-width="0.8"/>
+            <line x1="300" y1="430" x2="300" y2="444" stroke="rgba(150,180,200,0.3)" stroke-width="0.8"/>
+            <!-- M20 bolt circles -->
+            <circle cx="150" cy="437" r="3.5" fill="rgba(170,195,215,0.6)" stroke="rgba(200,220,235,0.4)" stroke-width="0.8"/>
+            <circle cx="200" cy="437" r="3.5" fill="rgba(170,195,215,0.6)" stroke="rgba(200,220,235,0.4)" stroke-width="0.8"/>
+            <circle cx="240" cy="437" r="3.5" fill="rgba(170,195,215,0.6)" stroke="rgba(200,220,235,0.4)" stroke-width="0.8"/>
+            <circle cx="280" cy="437" r="3.5" fill="rgba(170,195,215,0.6)" stroke="rgba(200,220,235,0.4)" stroke-width="0.8"/>
+            <circle cx="330" cy="437" r="3.5" fill="rgba(170,195,215,0.6)" stroke="rgba(200,220,235,0.4)" stroke-width="0.8"/>
+            <!-- Central anchor post -->
+            <rect x="235" y="407" width="10" height="25" fill="rgba(100,130,150,0.8)" stroke="rgba(150,180,200,0.6)" stroke-width="1"/>
+            <rect x="228" y="404" width="24" height="6" rx="1" fill="rgba(120,150,170,0.7)" stroke="rgba(160,190,210,0.5)" stroke-width="0.8"/>
+
+            <!-- ═══ CONCRETE ANNULAR BALLAST (outer ring of tank) ═══ -->
+            <path d="M145,170 L145,400 Q145,418 240,418 Q335,418 335,400 L335,170 Q335,152 240,152 Q145,152 145,170 Z" fill="url(#concreteL)" stroke="rgba(80,100,115,0.5)" stroke-width="1"/>
+
+            <!-- ═══ REEFSKIN LAYER ═══ -->
+            <path d="M155,168 L155,396 Q155,412 240,412 Q325,412 325,396 L325,168 Q325,152 240,152 Q155,152 155,168 Z" fill="url(#reefskinL)" stroke="rgba(60,120,70,0.5)" stroke-width="1.2"/>
+            <!-- texture bumps -->
+            <circle cx="160" cy="220" r="3" fill="rgba(80,160,90,0.3)"/>
+            <circle cx="165" cy="260" r="2.5" fill="rgba(80,160,90,0.25)"/>
+            <circle cx="162" cy="300" r="3.5" fill="rgba(80,160,90,0.3)"/>
+            <circle cx="160" cy="340" r="2.5" fill="rgba(80,160,90,0.2)"/>
+            <circle cx="320" cy="220" r="3" fill="rgba(80,160,90,0.3)"/>
+            <circle cx="315" cy="260" r="2.5" fill="rgba(80,160,90,0.25)"/>
+            <circle cx="318" cy="300" r="3.5" fill="rgba(80,160,90,0.3)"/>
+            <circle cx="320" cy="340" r="2.5" fill="rgba(80,160,90,0.2)"/>
+
+            <!-- ═══ HDPE POTABLE CHAMBER (inner tank) ═══ -->
+            <path d="M165,170 L165,394 Q165,408 240,408 Q315,408 315,394 L315,170 Q315,155 240,155 Q165,155 165,170 Z" fill="url(#tankFill)" stroke="rgba(35,193,196,0.3)" stroke-width="1.5"/>
+
+            <!-- potable water fill inside (70% full) -->
+            <clipPath id="waterClip">
+              <path d="M167,172 L167,393 Q167,406 240,406 Q313,406 313,393 L313,172 Q313,157 240,157 Q167,157 167,172 Z"/>
+            </clipPath>
+            <rect x="167" y="240" width="146" height="166" fill="url(#waterFill)" clip-path="url(#waterClip)"/>
+            <!-- water surface ripple inside tank -->
+            <path d="M175,240 Q200,237 225,241 Q252,245 278,240 Q295,237 313,240" fill="none" stroke="rgba(35,193,196,0.4)" stroke-width="1.2" clip-path="url(#waterClip)"/>
+
+            <!-- animated flow arrows inside tank (buoyancy forces) -->
+            <line x1="240" y1="395" x2="240" y2="250"
+              stroke="rgba(35,193,196,0.3)" stroke-width="2" stroke-dasharray="8,6"
+              class="flow-up" style="stroke-dashoffset:40"/>
+            <line x1="200" y1="395" x2="200" y2="275"
+              stroke="rgba(35,193,196,0.18)" stroke-width="1.5" stroke-dasharray="6,5"
+              class="flow-up" style="stroke-dashoffset:40;animation-delay:0.9s"/>
+            <line x1="280" y1="395" x2="280" y2="275"
+              stroke="rgba(35,193,196,0.18)" stroke-width="1.5" stroke-dasharray="6,5"
+              class="flow-up" style="stroke-dashoffset:40;animation-delay:1.6s"/>
+
+            <!-- rising bubbles inside water -->
+            <circle cx="210" cy="360" r="3" fill="rgba(35,193,196,0.25)" class="bubble"/>
+            <circle cx="250" cy="370" r="2" fill="rgba(35,193,196,0.2)" class="bubble2"/>
+            <circle cx="270" cy="350" r="3.5" fill="rgba(35,193,196,0.2)" class="bubble3"/>
+
+            <!-- ═══ HDPE WALL DETAIL ═══ -->
+            <path d="M165,170 L165,394 Q165,408 240,408 Q315,408 315,394 L315,170 Q315,155 240,155 Q165,155 165,170 Z" fill="none" stroke="rgba(35,193,196,0.35)" stroke-width="2.5"/>
+
+            <!-- ═══ LIGHT RING (teal glow band) ═══ -->
+            <ellipse cx="240" cy="157" rx="82" ry="10" fill="none" stroke="rgba(35,193,196,0.15)" stroke-width="8" class="light-ring-glow"/>
+            <ellipse cx="240" cy="157" rx="82" ry="10" fill="none" stroke="#23c1c4" stroke-width="2.5" class="light-ring-glow"/>
+            <!-- light ring glow halo -->
+            <ellipse cx="240" cy="157" rx="95" ry="15" fill="url(#tealGlow)" class="light-ring-glow"/>
+
+            <!-- ═══ CONCRETE CROWN (top cap) ═══ -->
+            <ellipse cx="240" cy="155" rx="95" ry="18" fill="url(#concreteL)" stroke="rgba(80,100,115,0.6)" stroke-width="1.5"/>
+            <ellipse cx="240" cy="155" rx="80" ry="13" fill="rgba(20,40,55,0.6)" stroke="rgba(35,193,196,0.2)" stroke-width="1"/>
+
+            <!-- ═══ CORAL CROWN ═══ -->
+            <!-- Crown base ring -->
+            <ellipse cx="240" cy="134" rx="88" ry="14" fill="rgba(40,80,50,0.5)" stroke="rgba(60,130,70,0.5)" stroke-width="1.5"/>
+            <!-- coral structures -->
+            <g opacity="0.85">
+              <!-- central coral cluster -->
+              <path d="M240,80 L235,108 M240,80 L246,112 M240,80 L231,115" stroke="rgba(200,230,180,0.8)" stroke-width="2.5" stroke-linecap="round"/>
+              <path d="M236,88 L228,102 M244,90 L252,105" stroke="rgba(180,220,160,0.7)" stroke-width="1.8" stroke-linecap="round"/>
+              <circle cx="240" cy="78" r="5" fill="rgba(180,230,150,0.7)" stroke="rgba(200,255,170,0.5)" stroke-width="1"/>
+              <circle cx="231" cy="103" r="4" fill="rgba(170,220,140,0.7)"/>
+              <circle cx="252" cy="104" r="3.5" fill="rgba(200,240,160,0.6)"/>
+              <circle cx="228" cy="100" r="3" fill="rgba(160,210,130,0.6)"/>
+              <!-- left coral -->
+              <path d="M195,105 L190,128 M195,105 L200,130" stroke="rgba(200,230,180,0.7)" stroke-width="2" stroke-linecap="round"/>
+              <circle cx="195" cy="103" r="4" fill="rgba(180,230,150,0.65)"/>
+              <circle cx="190" cy="126" r="3" fill="rgba(170,220,140,0.6)"/>
+              <!-- right coral -->
+              <path d="M285,105 L280,128 M285,105 L290,130" stroke="rgba(200,230,180,0.7)" stroke-width="2" stroke-linecap="round"/>
+              <circle cx="285" cy="103" r="4" fill="rgba(180,230,150,0.65)"/>
+              <circle cx="290" cy="128" r="3" fill="rgba(170,220,140,0.6)"/>
+              <!-- far left -->
+              <path d="M215,110 L210,132" stroke="rgba(190,220,170,0.6)" stroke-width="1.8" stroke-linecap="round"/>
+              <circle cx="215" cy="109" r="3.5" fill="rgba(175,225,145,0.6)"/>
+              <!-- far right -->
+              <path d="M265,110 L270,132" stroke="rgba(190,220,170,0.6)" stroke-width="1.8" stroke-linecap="round"/>
+              <circle cx="265" cy="109" r="3.5" fill="rgba(175,225,145,0.6)"/>
+            </g>
+
+            <!-- ═══ ACCESS HATCH ═══ -->
+            <ellipse cx="240" cy="135" rx="26" ry="9" fill="rgba(15,30,40,0.9)" stroke="rgba(100,130,150,0.7)" stroke-width="2"/>
+            <ellipse cx="240" cy="133" rx="22" ry="7" fill="rgba(25,45,58,0.8)" stroke="rgba(120,150,170,0.5)" stroke-width="1"/>
+            <!-- hatch bolts -->
+            <circle cx="218" cy="133" r="2" fill="rgba(140,170,190,0.6)"/>
+            <circle cx="262" cy="133" r="2" fill="rgba(140,170,190,0.6)"/>
+            <circle cx="240" cy="126" r="2" fill="rgba(140,170,190,0.6)"/>
+            <circle cx="240" cy="140" r="2" fill="rgba(140,170,190,0.6)"/>
+
+            <!-- integrated solar segments on crown -->
+            <path d="M148,145 Q155,140 168,143" stroke="rgba(255,198,29,0.5)" stroke-width="2.5" stroke-linecap="round"/>
+            <path d="M170,140 Q180,136 195,139" stroke="rgba(255,198,29,0.45)" stroke-width="2.5" stroke-linecap="round"/>
+            <path d="M310,143 Q322,140 330,145" stroke="rgba(255,198,29,0.5)" stroke-width="2.5" stroke-linecap="round"/>
+            <path d="M285,139 Q298,136 308,140" stroke="rgba(255,198,29,0.45)" stroke-width="2.5" stroke-linecap="round"/>
+
+            <!-- ═══ GUARDIAN COMMUNICATION NODE ═══ -->
+            <circle cx="240" cy="156" r="7" fill="rgba(35,193,196,0.9)" filter="url(#glow-teal)" class="guardian-pulse"/>
+            <circle cx="240" cy="156" r="4" fill="#23c1c4"/>
+            <text x="240" y="160" text-anchor="middle" font-family="Questrial,sans-serif" font-size="5" font-weight="bold" fill="#001828">G</text>
+            <!-- guardian signal rings -->
+            <circle cx="240" cy="156" r="14" fill="none" stroke="rgba(35,193,196,0.3)" stroke-width="1" class="flow-pulse" style="animation-delay:0s"/>
+            <circle cx="240" cy="156" r="22" fill="none" stroke="rgba(35,193,196,0.15)" stroke-width="1" class="flow-pulse" style="animation-delay:0.8s"/>
+
+            <!-- inlet/outlet pipes on left side -->
+            <rect x="110" y="318" width="55" height="10" rx="3" fill="rgba(0,80,120,0.8)" stroke="rgba(35,193,196,0.5)" stroke-width="1.2"/>
+            <rect x="110" y="348" width="55" height="10" rx="3" fill="rgba(0,80,120,0.8)" stroke="rgba(35,193,196,0.4)" stroke-width="1.2"/>
+            <!-- animated flow in inlet -->
+            <rect x="112" y="319.5" width="50" height="7" rx="2" fill="none" stroke="rgba(35,193,196,0.5)" stroke-width="1.5" stroke-dasharray="6,4" class="flow-up" style="stroke-dashoffset:40"/>
+
+            <!-- ═══ ANNOTATION LINES & LABELS ═══ -->
+            <!-- Right-side annotations -->
+            <!-- Access Hatch -->
+            <line x1="266" y1="133" x2="370" y2="55" stroke="rgba(255,255,255,0.25)" stroke-width="0.8"/>
+            <circle cx="370" cy="55" r="2" fill="rgba(255,255,255,0.4)"/>
+            <text x="375" y="52" font-family="DM Sans,sans-serif" font-size="9.5" fill="rgba(255,255,255,0.75)" letter-spacing="0.02em">Circular Access Hatch</text>
+            <text x="375" y="63" font-family="DM Sans,sans-serif" font-size="8.5" fill="rgba(255,255,255,0.4)">(flush, 400–500 mm)</text>
+
+            <!-- Guardian Node -->
+            <line x1="248" y1="153" x2="370" y2="82" stroke="rgba(35,193,196,0.35)" stroke-width="0.8"/>
+            <circle cx="370" cy="82" r="2" fill="rgba(35,193,196,0.6)"/>
+            <text x="375" y="79" font-family="DM Sans,sans-serif" font-size="9.5" fill="rgba(35,193,196,0.9)" letter-spacing="0.02em">Guardian Comm Node</text>
+
+            <!-- Solar Segments -->
+            <line x1="300" y1="140" x2="370" y2="108" stroke="rgba(255,198,29,0.4)" stroke-width="0.8"/>
+            <circle cx="370" cy="108" r="2" fill="rgba(255,198,29,0.6)"/>
+            <text x="375" y="105" font-family="DM Sans,sans-serif" font-size="9.5" fill="rgba(255,198,29,0.85)">Solar Segments</text>
+            <text x="375" y="116" font-family="DM Sans,sans-serif" font-size="8.5" fill="rgba(255,255,255,0.35)">(integrated, subtle)</text>
+
+            <!-- HDPE Chamber -->
+            <line x1="316" y1="250" x2="370" y2="210" stroke="rgba(255,255,255,0.2)" stroke-width="0.8"/>
+            <circle cx="370" cy="210" r="2" fill="rgba(255,255,255,0.4)"/>
+            <text x="375" y="207" font-family="DM Sans,sans-serif" font-size="9.5" fill="rgba(255,255,255,0.75)">HDPE Potable Chamber</text>
+            <text x="375" y="218" font-family="DM Sans,sans-serif" font-size="8.5" fill="rgba(255,255,255,0.35)">double-wall · 10–15 mm</text>
+
+            <!-- Concrete Ballast -->
+            <line x1="336" y1="285" x2="370" y2="255" stroke="rgba(255,255,255,0.2)" stroke-width="0.8"/>
+            <circle cx="370" cy="255" r="2" fill="rgba(255,255,255,0.4)"/>
+            <text x="375" y="252" font-family="DM Sans,sans-serif" font-size="9.5" fill="rgba(255,255,255,0.75)">Concrete Annular Ballast</text>
+
+            <!-- Reefskin -->
+            <line x1="326" y1="320" x2="370" y2="298" stroke="rgba(80,160,90,0.4)" stroke-width="0.8"/>
+            <circle cx="370" cy="298" r="2" fill="rgba(80,160,90,0.6)"/>
+            <text x="375" y="295" font-family="DM Sans,sans-serif" font-size="9.5" fill="rgba(80,200,100,0.85)">Reefskin Layer</text>
+            <text x="375" y="306" font-family="DM Sans,sans-serif" font-size="8.5" fill="rgba(255,255,255,0.35)">biomimetic · marine concrete</text>
+
+            <!-- Central Anchor Post -->
+            <line x1="250" y1="412" x2="370" y2="345" stroke="rgba(255,255,255,0.2)" stroke-width="0.8"/>
+            <circle cx="370" cy="345" r="2" fill="rgba(255,255,255,0.4)"/>
+            <text x="375" y="342" font-family="DM Sans,sans-serif" font-size="9.5" fill="rgba(255,255,255,0.75)">Central Anchor Post</text>
+
+            <!-- Rigid Transfer Raft -->
+            <line x1="310" y1="437" x2="370" y2="388" stroke="rgba(150,190,220,0.4)" stroke-width="0.8"/>
+            <circle cx="370" cy="388" r="2" fill="rgba(150,190,220,0.6)"/>
+            <text x="375" y="385" font-family="DM Sans,sans-serif" font-size="9.5" fill="rgba(170,210,235,0.85)">Rigid Transfer Raft</text>
+            <text x="375" y="396" font-family="DM Sans,sans-serif" font-size="8.5" fill="rgba(255,255,255,0.35)">galv. steel · 7.5 m hex</text>
+
+            <!-- Geobags -->
+            <line x1="310" y1="450" x2="370" y2="425" stroke="rgba(100,130,80,0.4)" stroke-width="0.8"/>
+            <circle cx="370" cy="425" r="2" fill="rgba(100,130,80,0.6)"/>
+            <text x="375" y="422" font-family="DM Sans,sans-serif" font-size="9.5" fill="rgba(140,180,110,0.85)">Geobag Ballast (×10)</text>
+            <text x="375" y="433" font-family="DM Sans,sans-serif" font-size="8.5" fill="rgba(255,255,255,0.35)">3.0 m³ · local sand fill</text>
+
+            <!-- Surge arc label -->
+            <line x1="280" y1="460" x2="370" y2="463" stroke="rgba(100,130,80,0.3)" stroke-width="0.8"/>
+            <circle cx="370" cy="463" r="2" fill="rgba(100,130,80,0.5)"/>
+            <text x="375" y="466" font-family="DM Sans,sans-serif" font-size="9" fill="rgba(120,160,90,0.7)">Surge Arc (+3 bags)</text>
+
+            <!-- Left-side: inlet pipe label -->
+            <text x="48" y="316" font-family="DM Sans,sans-serif" font-size="8.5" fill="rgba(35,193,196,0.7)" text-anchor="middle">INLET</text>
+            <text x="48" y="326" font-family="DM Sans,sans-serif" font-size="8.5" fill="rgba(35,193,196,0.7)" text-anchor="middle">100mm</text>
+            <text x="48" y="346" font-family="DM Sans,sans-serif" font-size="8.5" fill="rgba(35,193,196,0.5)" text-anchor="middle">OUTLET</text>
+            <text x="48" y="356" font-family="DM Sans,sans-serif" font-size="8.5" fill="rgba(35,193,196,0.5)" text-anchor="middle">100mm</text>
+
+            <!-- ═══ WATER DEPTH INDICATORS ═══ -->
+            <!-- buoyancy force arrows (outside tank) -->
+            <line x1="128" y1="395" x2="128" y2="340" stroke="rgba(35,193,196,0.4)" stroke-width="1.5" stroke-dasharray="5,4" marker-end="url(#arrowTeal)"/>
+            <line x1="352" y1="395" x2="352" y2="340" stroke="rgba(35,193,196,0.4)" stroke-width="1.5" stroke-dasharray="5,4"/>
+            <!-- arrowhead manual -->
+            <polygon points="128,338 124,348 132,348" fill="rgba(35,193,196,0.5)"/>
+            <polygon points="352,338 348,348 356,348" fill="rgba(35,193,196,0.5)"/>
+            <text x="90" y="367" font-family="Questrial,sans-serif" font-size="7.5" fill="rgba(35,193,196,0.45)" transform="rotate(-90,90,367)">BUOYANCY</text>
+
+            <!-- ═══ SAFETY FACTOR BADGE ═══ -->
+            <rect x="16" y="460" width="120" height="42" rx="4" fill="rgba(35,193,196,0.08)" stroke="rgba(35,193,196,0.3)" stroke-width="1"/>
+            <rect x="16" y="460" width="120" height="3" rx="2" fill="rgba(35,193,196,0.6)"/>
+            <text x="76" y="476" text-anchor="middle" font-family="Questrial,sans-serif" font-size="8" fill="rgba(35,193,196,0.7)" letter-spacing="0.1em">SAFETY FACTOR</text>
+            <text x="76" y="492" text-anchor="middle" font-family="Cormorant Garamond,serif" font-size="16" font-weight="300" fill="#23c1c4">1.55×</text>
+            <text x="76" y="500" text-anchor="middle" font-family="DM Sans,sans-serif" font-size="7" fill="rgba(255,255,255,0.3)">full storm submersion</text>
+
+            <!-- ═══ CLASSIFICATION BADGE ═══ -->
+            <rect x="16" y="510" width="120" height="28" rx="4" fill="rgba(80,200,130,0.08)" stroke="rgba(80,200,130,0.25)" stroke-width="1"/>
+            <text x="76" y="522" text-anchor="middle" font-family="Questrial,sans-serif" font-size="7.5" fill="rgba(80,200,130,0.7)" letter-spacing="0.08em">CLASS A · GRAVITY-STABILISED</text>
+            <text x="76" y="533" text-anchor="middle" font-family="DM Sans,sans-serif" font-size="7" fill="rgba(255,255,255,0.3)">v2.6 · Verified Foundation</text>
+
+          </svg>
+        </div>
+        <!-- Component legend -->
+        <div class="vk-label-row" id="vk-labels" role="list" aria-label="Key components">
+          <div class="vk-label" role="listitem"><span class="vk-label-dot" style="background:#ffc61d"></span>Coral Crown</div>
+          <div class="vk-label" role="listitem"><span class="vk-label-dot" style="background:#23c1c4"></span>Light Ring</div>
+          <div class="vk-label" role="listitem"><span class="vk-label-dot" style="background:#0096b9"></span>HDPE Chamber</div>
+          <div class="vk-label" role="listitem"><span class="vk-label-dot" style="background:#8abcd4"></span>Reefskin</div>
+          <div class="vk-label" role="listitem"><span class="vk-label-dot" style="background:#fe5337"></span>Guardian Node</div>
+          <div class="vk-label" role="listitem"><span class="vk-label-dot" style="background:#718096"></span>Foundation Raft · 10-bag</div>
+        </div>
+      </div>
+      <!-- Specs -->
+      <!-- Specs -->
+      <div class="reveal">
+        <div class="section-tag teal" style="margin-bottom:1.2rem;">Dimensional Specifications</div>
+        <div class="vk-specs">
+          <div class="vk-spec-row"><span class="vk-spec-key">Tank height</span><span class="vk-spec-val accent">2,350 mm</span></div>
+          <div class="vk-spec-row"><span class="vk-spec-key">Tank diameter</span><span class="vk-spec-val accent">3,300 mm</span></div>
+          <div class="vk-spec-row"><span class="vk-spec-key">Volume capacity</span><span class="vk-spec-val accent">~15,000 L usable potable</span></div>
+          <div class="vk-spec-row"><span class="vk-spec-key">Wall thickness</span><span class="vk-spec-val">10–15 mm HDPE double-wall</span></div>
+          <div class="vk-spec-row"><span class="vk-spec-key">Deployment depth</span><span class="vk-spec-val">1.2–1.8 m lagoon floor</span></div>
+          <div class="vk-spec-row"><span class="vk-spec-key">Crown above waterline</span><span class="vk-spec-val">~0.85 m (typical tidal)</span></div>
+          <div class="vk-spec-row"><span class="vk-spec-key">Coral crown diameter</span><span class="vk-spec-val">~2.4 m</span></div>
+          <div class="vk-spec-row"><span class="vk-spec-key">Light ring diameter</span><span class="vk-spec-val">~2.0 m RGB</span></div>
+          <div class="vk-spec-row"><span class="vk-spec-key">Access hatch</span><span class="vk-spec-val">400–500 mm circular, flush, gasket-sealed</span></div>
+          <div class="vk-spec-row"><span class="vk-spec-key">Inlet/outlet ports</span><span class="vk-spec-val">100 mm HDPE/PVC</span></div>
+          <div class="vk-spec-row"><span class="vk-spec-key">Foundation — v2.6</span><span class="vk-spec-val accent">F3 Enhanced · 10-bag geobag array</span></div>
+          <div class="vk-spec-row"><span class="vk-spec-key">Transfer raft</span><span class="vk-spec-val">Galv. steel 7.5 m hex · all bags rigid</span></div>
+          <div class="vk-spec-row"><span class="vk-spec-key">Storm safety factor</span><span class="vk-spec-val accent">1.55× verified · full submersion</span></div>
+          <div class="vk-spec-row"><span class="vk-spec-key">System classification</span><span class="vk-spec-val">Class A — Gravity-stabilised</span></div>
+          <div class="vk-spec-row"><span class="vk-spec-key">Sensor suite</span><span class="vk-spec-val">Pressure · temp · GPS · salinity</span></div>
+          <div class="vk-spec-row"><span class="vk-spec-key">Power</span><span class="vk-spec-val">Micro-hydro + crown solar</span></div>
+          <div class="vk-spec-row"><span class="vk-spec-key">Unit cost (v2.6)</span><span class="vk-spec-val accent">~$11,124 USD</span></div>
+        </div>
+
+        <div style="margin-top:2rem;padding:1.4rem;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.07);">
+          <div style="font-family:var(--font-ui);font-size:.6rem;letter-spacing:.16em;text-transform:uppercase;color:var(--teal);margin-bottom:.6rem;">The Core Innovation</div>
+          <p style="font-size:.8rem;color:var(--text-on-dark);line-height:1.7;">Most small island storage solutions fight for land space that doesn't exist. Vai Koko inverts the logic — the lagoon is the storage medium. The tank sits on the lagoon floor, protected from cyclone winds, kept cool by submersion, and crowned with a living coral nursery. It is simultaneously infrastructure, reef restoration, and civic landmark.</p>
+        </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ WATER FLOW DIAGRAM ════════════════════════════════════════ -->
+<section class="flow-section" aria-label="Integrated water flow diagram">
+  <div class="flow-inner">
+    <div class="section-tag teal reveal">System Architecture</div>
+    <h2 class="h2 reveal">How water moves<br>through <em>the island.</em></h2>
+    <p class="body-text reveal" style="max-width:600px;margin-top:1rem;">Click any node in the diagram below to understand its role in the integrated water system. Vai Tapu produces — Vai Koko stores — Guardian coordinates.</p>
+    <canvas id="flow-canvas" height="340" aria-label="Interactive water flow system diagram. Click nodes for details."></canvas>
+    <div class="flow-info-panel" id="flow-info" aria-live="polite">
+      <div class="flow-info-header">
+        <div class="flow-info-dot" id="flow-dot"></div>
+        <div class="flow-info-title" id="flow-title">Select a node</div>
+        <span class="flow-hint">Click any node to explore</span>
+      </div>
+      <div class="flow-info-body">
+        <div class="flow-info-text" id="flow-text">Click any element in the diagram above to see its role in the integrated water system — from ocean intake through desalination, storage, distribution, and ecological return.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ CAPACITY & RESILIENCE ════════════════════════════════════ -->
+<section class="capacity-section" aria-label="Capacity and resilience data">
+  <div class="cap-inner">
+    <div class="section-tag reveal">Water Security Metrics</div>
+    <h2 class="h2 reveal">From production<br>to <em>national resilience.</em></h2>
+    <p class="body-text reveal" style="max-width:560px;margin-top:1rem;">Three deployment tiers — from a 35-tank pilot to a 250-tank national mesh — each adding measurable water security across the nine atolls.</p>
+    <div class="cap-layout">
+      <!-- Bar chart canvas -->
+      <div class="reveal-left">
+        <p style="font-family:var(--font-ui);font-size:.6rem;letter-spacing:.14em;text-transform:uppercase;color:var(--stone-light);margin-bottom:1rem;">Deployment Phase Storage Capacity (litres)</p>
+        <canvas id="cap-canvas" height="260" aria-label="Bar chart showing water storage capacity across deployment phases"></canvas>
+        <div class="cap-legend">
+          <div class="cap-leg-item"><div class="cap-leg-swatch" style="background:var(--teal);"></div>Vai Tapu daily output <span class="cap-leg-val"></span></div>
+          <div class="cap-leg-item"><div class="cap-leg-swatch" style="background:var(--teal-dim);"></div>Vai Koko total stored <span class="cap-leg-val"></span></div>
+          <div class="cap-leg-item"><div class="cap-leg-swatch" style="background:var(--gold-dim);"></div>Target by phase <span class="cap-leg-val"></span></div>
+        </div>
+      </div>
+      <!-- Resilience metrics -->
+      <div class="reveal">
+        <div class="section-tag teal" style="margin-bottom:1.5rem;">Phase 1 Target Metrics</div>
+        <div class="resilience-bars">
+          <div class="res-bar-wrap">
+            <div class="res-bar-top"><span class="res-bar-name">Energy uptime (solar + hydro)</span><span class="res-bar-val">95%+</span></div>
+            <div class="res-track"><div class="res-fill" data-width="95%"></div></div>
+          </div>
+          <div class="res-bar-wrap">
+            <div class="res-bar-top"><span class="res-bar-name">Coral survival rate at 6 months</span><span class="res-bar-val">75%+</span></div>
+            <div class="res-track"><div class="res-fill gold" data-width="75%"></div></div>
+          </div>
+          <div class="res-bar-wrap">
+            <div class="res-bar-top"><span class="res-bar-name">Tank survival post Category 4 storm</span><span class="res-bar-val">100%</span></div>
+            <div class="res-track"><div class="res-fill coral" data-width="100%"></div></div>
+          </div>
+          <div class="res-bar-wrap">
+            <div class="res-bar-top"><span class="res-bar-name">O&amp;M cost reduction via Guardian</span><span class="res-bar-val">40–60%</span></div>
+            <div class="res-track"><div class="res-fill navy" data-width="50%"></div></div>
+          </div>
+          <div class="res-bar-wrap">
+            <div class="res-bar-top"><span class="res-bar-name">Naming ceremonies conducted</span><span class="res-bar-val">15+</span></div>
+            <div class="res-track"><div class="res-fill gold" data-width="60%"></div></div>
+          </div>
+        </div>
+
+        <div style="margin-top:2.5rem;padding:1.4rem;background:rgba(0,43,75,.04);border:1px solid var(--border-light);">
+          <div class="section-tag" style="margin-bottom:.8rem;">10-Year O&amp;M Cost per Tank</div>
+          <table style="width:100%;border-collapse:collapse;">
+            <tr style="border-bottom:1px solid var(--border-light);">
+              <td style="padding:.6rem .3rem;font-size:.75rem;color:var(--stone);">Labour (inspections)</td>
+              <td style="text-align:right;font-size:.8rem;color:var(--navy);font-weight:400;">$2,800</td>
+            </tr>
+            <tr style="border-bottom:1px solid var(--border-light);">
+              <td style="padding:.6rem .3rem;font-size:.75rem;color:var(--stone);">Replacement parts</td>
+              <td style="text-align:right;font-size:.8rem;color:var(--navy);font-weight:400;">$1,200</td>
+            </tr>
+            <tr style="border-bottom:1px solid var(--border-light);">
+              <td style="padding:.6rem .3rem;font-size:.75rem;color:var(--stone);">Stewardship training</td>
+              <td style="text-align:right;font-size:.8rem;color:var(--navy);font-weight:400;">$1,000</td>
+            </tr>
+            <tr>
+              <td style="padding:.7rem .3rem;font-size:.75rem;color:var(--navy);font-weight:500;">Total 10-year O&amp;M</td>
+              <td style="text-align:right;font-size:.9rem;color:var(--teal-dim);font-family:var(--font-serif);font-weight:300;">~$5,000</td>
+            </tr>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ REEFSKIN + CORAL ══════════════════════════════════════════ -->
+<section class="reefskin-section" aria-label="Reefskin and coral restoration">
+  <div class="rs-inner">
+    <div>
+      <div class="section-tag gold reveal">Reefskin · Ecological Integration</div>
+      <h2 class="h2 h2-white reveal">Infrastructure that<br><em>heals the reef.</em></h2>
+      <p class="body-text-white reveal" style="margin-top:1.2rem;">Each Vai Koko tank is optionally coated with Reefskin — a biomimetic concrete layer with coral-mimicking microtopography. It accelerates marine colonisation, adds ballast mass to resist storm buoyancy, and transforms a water tank into an active participant in reef regeneration.</p>
+      <p class="body-text-white reveal" style="margin-top:1rem;">The Reefskin formula uses a low-pH concrete mix with calcite and strontium additives. It begins colonisation within 3–6 months. The light ring is always masked during application — it remains permanently visible for status signalling and ritual use.</p>
+      <div class="rs-timeline reveal">
+        <div class="rs-event">
+          <div class="rs-dot-wrap"><div class="rs-dot"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/></svg></div></div>
+          <div><div class="rs-month">Month 0</div><div class="rs-title">Reefskin casting &amp; ritual</div><div class="rs-body">Casting ceremony with community. Elder blesses the uncoated surface. Reefskin applied while protective verses are chanted. Light ring masked throughout.</div></div>
+        </div>
+        <div class="rs-event">
+          <div class="rs-dot-wrap"><div class="rs-dot"><svg viewBox="0 0 24 24"><path d="M12 2.69l5.66 5.66a8 8 0 11-11.31 0z"/></svg></div></div>
+          <div><div class="rs-month">Months 3–6</div><div class="rs-title">Early colonisation begins</div><div class="rs-body">Biofilm, algae, and encrusting organisms begin attaching to the textured surface. Guardian coral sensors start logging species presence.</div></div>
+        </div>
+        <div class="rs-event">
+          <div class="rs-dot-wrap"><div class="rs-dot"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div></div>
+          <div><div class="rs-month">Months 6–12</div><div class="rs-title">Coral fragment planting</div><div class="rs-body">Youth stewards plant locally sourced coral fragments into the crown's radial slots. Target: 75%+ survival at 6-month assessment.</div></div>
+        </div>
+        <div class="rs-event">
+          <div class="rs-dot-wrap"><div class="rs-dot"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div></div>
+          <div><div class="rs-month">Year 2+</div><div class="rs-title">Established reef habitat</div><div class="rs-body">Tank exterior becomes a mature micro-reef node. Biodiversity data shared with national ecological monitoring via Guardian dashboard.</div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Coral health ring -->
+    <div class="reveal">
+      <div class="coral-panel">
+        <div style="font-family:var(--font-ui);font-size:.62rem;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.35);margin-bottom:1.5rem;">Coral Health Target — Phase 1</div>
+        <div class="coral-ring-wrap">
+          <canvas id="coral-ring-canvas" aria-label="Coral survival rate donut chart showing 75% target"></canvas>
+          <div class="coral-ring-center">
+            <div class="coral-pct" id="coral-pct-display">0%</div>
+            <div class="coral-label">Survival<br>target</div>
+          </div>
+        </div>
+        <div class="coral-metrics">
+          <div class="cm-item"><div class="cm-n">3–6</div><div class="cm-l">Months to first<br>colonisation</div></div>
+          <div class="cm-item"><div class="cm-n">15+</div><div class="cm-l">Crown planting<br>ceremonies</div></div>
+          <div class="cm-item"><div class="cm-n">2.4m</div><div class="cm-l">Crown diameter<br>per tank</div></div>
+          <div class="cm-item"><div class="cm-n">200+</div><div class="cm-l">Tanks = national<br>reef network</div></div>
+        </div>
+        <p style="margin-top:1.5rem;font-size:.74rem;color:rgba(255,255,255,.4);line-height:1.65;border-left:2px solid rgba(255,255,255,.08);padding-left:.9rem;">Reefskin uses low-pH concrete with calcite and strontium additives — reef-safe by design. Each texture pattern represents a different clan or water spirit, giving physical variation and ceremonial meaning to each installation.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ GOVERNANCE + GUARDIAN ════════════════════════════════════ -->
+<section class="governance-section" aria-label="Guardian integration and governance">
+  <div class="gov-inner">
+    <div class="section-tag reveal">Guardian Integration</div>
+    <h2 class="h2 reveal">Watched. Predicted.<br><em>Protected.</em></h2>
+    <p class="body-text reveal" style="max-width:620px;margin-top:1rem;">Every Vai Tapu and Vai Koko unit is connected to the Guardian network. Telemetry runs every 60 seconds. Citizens can view their water system's health on public terminals. No data leaves the island.</p>
+    <div class="gov-layout">
+      <div class="gov-card gov-card-teal reveal">
+        <div class="gov-card-icon"><svg viewBox="0 0 24 24" stroke="currentColor"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></div>
+        <div class="gov-card-label">Real-Time Monitoring</div>
+        <h3 class="gov-card-title">Live water telemetry</h3>
+        <p class="gov-card-body">Guardian tracks flow rates, tank levels, water quality (pH, salinity, contaminants), pressure, and temperature across every node. 60-second heartbeat. Any anomaly triggers an immediate alert to the nearest steward and the Guardian dashboard.</p>
+      </div>
+      <div class="gov-card gov-card-gold reveal">
+        <div class="gov-card-icon"><svg viewBox="0 0 24 24" stroke="currentColor"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg></div>
+        <div class="gov-card-label">Predictive Management</div>
+        <h3 class="gov-card-title">Weather-informed distribution</h3>
+        <p class="gov-card-body">Guardian uses weather prediction data to inform rainwater collection strategies, pre-filling Vai Koko tanks before expected dry periods. Automatic conservation protocols activate when reserves fall below threshold — reducing non-essential use before shortages occur.</p>
+      </div>
+      <div class="gov-card gov-card-coral reveal">
+        <div class="gov-card-icon"><svg viewBox="0 0 24 24" stroke="currentColor"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg></div>
+        <div class="gov-card-label">Community Access</div>
+        <h3 class="gov-card-title">Equitable civic distribution</h3>
+        <p class="gov-card-body">Guardian monitors consumption patterns across communities and flags shortages or inequitable distribution to civic bodies. A community water credit system — where conservation earns credits redeemable for civic goods — is planned for Phase 2. Override always available to community stewards.</p>
+      </div>
+      <div class="gov-card gov-card-teal reveal">
+        <div class="gov-card-icon"><svg viewBox="0 0 24 24" stroke="currentColor"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg></div>
+        <div class="gov-card-label">Water Security</div>
+        <h3 class="gov-card-title">Contamination detection</h3>
+        <p class="gov-card-body">Continuous water quality monitoring ensures all output water meets WHO potable standards. Guardian tracks pH, salinity, and contaminants. Any quality degradation triggers automatic isolation of the affected node and routes production to backup units before distribution is affected.</p>
+      </div>
+      <div class="gov-card gov-card-gold reveal">
+        <div class="gov-card-icon"><svg viewBox="0 0 24 24" stroke="currentColor"><path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/></svg></div>
+        <div class="gov-card-label">Brine Recovery</div>
+        <h3 class="gov-card-title">Closed-loop resource use</h3>
+        <p class="gov-card-body">Brine from Vai Tapu is recovered to extract salt, magnesium, and biomass byproducts. A closed-loop system converts excess salt into construction materials or agricultural additives. Guardian ensures brine discharge routing is always through dilution basins and halophyte beds — never directly to the reef.</p>
+      </div>
+      <div class="gov-card gov-card-coral reveal">
+        <div class="gov-card-icon"><svg viewBox="0 0 24 24" stroke="currentColor"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg></div>
+        <div class="gov-card-label">Storm Protocol</div>
+        <h3 class="gov-card-title">Cyclone-grade resilience</h3>
+        <p class="gov-card-body">Vai Koko's submerged installation is its primary storm defence. The v2.6 F3 Enhanced foundation — 10 geobags on a rigid galvanised steel transfer raft — achieves a verified 1.55× safety factor under full storm-surge submersion with zero potable fill. This is true gravity stabilisation: the combined assembly is heavier than the water it displaces even without water inside. Guardian triggers storm protocol automatically, activating emergency reserves and alerting stewards. Target: 100% tank survival through Category 4.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ COST + DEPLOYMENT ════════════════════════════════════════ -->
+<section class="cost-section" aria-label="Cost and deployment tiers">
+  <div class="cost-inner">
+    <div class="section-tag white reveal">Investment Model</div>
+    <h2 class="h2 h2-white reveal">Phased deployment.<br><em>Scalable investment.</em></h2>
+    <div class="cost-layout">
+      <!-- BOM table -->
+      <div class="reveal">
+        <div style="font-family:var(--font-ui);font-size:.6rem;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.35);margin-bottom:1rem;">Vai Koko Bill of Materials — Per Unit · v2.6</div>
+        <table class="cost-table" aria-label="Vai Koko cost breakdown per unit">
+          <thead>
+            <tr><td>Component</td><td style="text-align:right;">Est. Cost (USD)</td></tr>
+          </thead>
+          <tbody>
+            <tr><td>Main tank body (UV HDPE, rotationally moulded)</td><td>$2,100</td></tr>
+            <tr><td>Reefskin bio-coating</td><td>$750</td></tr>
+            <tr><td>Coral crown module (porous marine concrete)</td><td>$475</td></tr>
+            <tr><td>Light ring + solar panels (marine-grade RGB)</td><td>$1,050</td></tr>
+            <tr><td>Access hatch + internal ladder</td><td>$320</td></tr>
+            <tr><td>Sensor suite (pressure, temp, GPS, salinity)</td><td>$850</td></tr>
+            <tr><td>Micro-hydro power turbine</td><td>$520</td></tr>
+            <tr><td>Foundation — 10 geobags (3.0 m³ each, local sand fill)</td><td>$650</td></tr>
+            <tr><td>Foundation — geobag fill &amp; labour (10 bags)</td><td>$610</td></tr>
+            <tr><td>Rigid transfer raft (7.5 m hex, hot-dip galv. steel)</td><td>$1,200</td></tr>
+            <tr><td>Raft anchor bolts (M20 stainless, 10 sets)</td><td>$600</td></tr>
+            <tr><td>Lateral strap retention kit (storm surge)</td><td>$149</td></tr>
+            <tr><td>Transport, install labour + barge logistics</td><td>$1,850</td></tr>
+          </tbody>
+          <tfoot>
+            <tr><td style="color:rgba(255,255,255,.5);">Total unit cost (v2.6 — verified)</td><td>~$11,124</td></tr>
+          </tfoot>
+        </table>
+        <p style="margin-top:1rem;font-size:.72rem;color:rgba(255,255,255,.3);line-height:1.6;">v2.6 cost reflects the corrected F3 Enhanced foundation: 10 geobags on a rigid steel transfer raft. The corrected F3 Enhanced foundation (10 geobags on a rigid steel transfer raft) achieves true gravity-stabilisation — verified 1.55× safety factor under full storm submersion at 0% fill.</p>
+        <p style="margin-top:.8rem;font-size:.72rem;color:rgba(255,255,255,.3);line-height:1.6;">Bulk production and regional manufacturing could reduce unit costs by 20–30%. Costs exclude local taxes, import duties, or cultural customisation.</p>
+        <p style="margin-top:.8rem;font-size:.72rem;color:rgba(255,255,255,.3);line-height:1.6;">Comparative: traditional above-ground 20,000 L tanks cost $3,600–$5,200 but occupy scarce land, offer no storm resilience, and provide no ecological or cultural value.</p>
+      </div>
+      <!-- Deployment tiers -->
+      <div class="reveal">
+        <div style="font-family:var(--font-ui);font-size:.6rem;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.35);margin-bottom:1rem;">National Rollout — Click a Tier</div>
+        <div class="tier-cards" id="tier-cards">
+          <div class="tier-card selected" data-tier="1" tabindex="0">
+            <div class="tier-top">
+              <span class="tier-name">Tier 1 · Pilot</span>
+              <span class="tier-cost">~$390k</span>
+            </div>
+            <div class="tier-title">Core hubs — Funafuti + 1 school per outer island</div>
+            <p class="tier-desc">35 tanks (v2.6 F3 Enhanced). ~525,000 L total stored. Prototype validation phase with Guardian monitoring. Sensor data shared nationally.</p>
+            <div class="tier-bar-track"><div class="tier-bar-fill" data-width="25%"></div></div>
+          </div>
+          <div class="tier-card" data-tier="2" tabindex="0">
+            <div class="tier-top">
+              <span class="tier-name">Tier 2 · Community Scale</span>
+              <span class="tier-cost">~$890k</span>
+            </div>
+            <div class="tier-title">One full cluster per island (3–5 tanks × 9 islands)</div>
+            <p class="tier-desc">80 tanks (v2.6). ~1.2M L total stored. Sanctuary cluster formations at school sites. Guardian civic dashboard live. Youth steward programme. 10-year O&M ~$400k.</p>
+            <div class="tier-bar-track"><div class="tier-bar-fill" data-width="55%"></div></div>
+          </div>
+          <div class="tier-card" data-tier="3" tabindex="0">
+            <div class="tier-top">
+              <span class="tier-name">Tier 3 · National Mesh</span>
+              <span class="tier-cost">~$2.2–2.8M</span>
+            </div>
+            <div class="tier-title">Full lagoon ring + critical resilience nodes</div>
+            <p class="tier-desc">200–250 tanks (v2.6). ~3.4M L distributed storage across 9 atolls. Full sanctuary network. Guardian-coordinated national water sovereignty. 10-year O&M ~$1–1.3M.</p>
+            <div class="tier-bar-track"><div class="tier-bar-fill" data-width="100%"></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ RECOMMENDATIONS ══════════════════════════════════════════ -->
+<section class="recs-section" aria-label="Improvement recommendations">
+  <div class="recs-inner">
+    <div class="section-tag white reveal">Engineering Review · White Paper v2.6</div>
+    <h2 class="h2 h2-white reveal">Open questions<br>and <em>honest limits.</em></h2>
+    <p class="body-text-white reveal" style="max-width:620px;margin-top:1rem;">These are genuine engineering and governance improvements identified through the v2.6 white paper and prior structural reviews and Guardian Water Systems v1.0 whitepapers. We publish them because credibility is built through honesty, not polish. If you can help solve any of these, reach out.</p>
+    <div class="recs-cta-row reveal">
+      <a href="contact.html" class="btn-ghost" style="margin-top:1.5rem;display:inline-block;">Contribute to the Engineering Work</a>
+    </div>
+    <div class="recs-grid">
+      <div class="rec-card reveal">
+        <div class="rec-num" aria-hidden="true">01</div>
+        <div class="rec-label">Engineering · Corrected v2.4–v2.6</div>
+        <h3 class="rec-title">Foundation upgraded to 10-bag rigid transfer raft</h3>
+        <p class="rec-body">The v2.4 design claimed gravity-stabilisation with 7 geobags at a 1.55× safety factor. Structural review found this incorrect: the outer 6 bags had no rigid load path and the system was tension-dependent in the storm case. v2.6 corrects this with a rigid galvanised steel transfer raft (F3 Enhanced foundation) connecting all 10 geobags, achieving a verified 1.55× safety factor under full storm submersion at 0% potable fill. This is true gravity stabilisation — cut the straps and the assembly stays on the lagoon floor.</p>
+        <span class="rec-tag">White Paper v2.6 · Section 5</span>
+      </div>
+      <div class="rec-card reveal">
+        <div class="rec-num" aria-hidden="true">02</div>
+        <div class="rec-label">Engineering</div>
+        <h3 class="rec-title">Floating tank variants for ultra-low-tide sites</h3>
+        <p class="rec-body">The current Vai Koko design assumes sandy lagoon substrate at 1.2–1.8 m deployment depth. Many outer island sites have coral rubble substrate or very shallow lagoons where the standard foundation is not feasible. A floating or semi-anchored variant should be designed to extend the addressable site range across the full archipelago.</p>
+        <span class="rec-tag">White Paper v2.6 · Limitations</span>
+      </div>
+      <div class="rec-card reveal">
+        <div class="rec-num" aria-hidden="true">02</div>
+        <div class="rec-label">AI Integration</div>
+        <h3 class="rec-title">Weather-predictive rainwater scheduling</h3>
+        <p class="rec-body">Guardian should integrate weather forecast data to pre-fill Vai Koko tanks ahead of predicted dry periods. The Guardian water whitepaper identifies this explicitly as a next-step recommendation. A 72-hour weather prediction window feeding into automated fill scheduling would significantly reduce drought exposure risk with minimal added complexity.</p>
+        <span class="rec-tag">Guardian Water Whitepaper v1.0 · Recommendation 4</span>
+      </div>
+      <div class="rec-card reveal">
+        <div class="rec-num" aria-hidden="true">04</div>
+        <div class="rec-label">Governance</div>
+        <h3 class="rec-title">Marine Infrastructure Consent Archive</h3>
+        <p class="rec-body">The whitepaper recommends — but has not yet implemented — a formal national Marine Infrastructure Consent Archive maintained by the Ministry of Public Utilities or Environment. This registry should record all lagoon-based tank placements, their clan-based stewards, and civic and spiritual roles. Without this, long-term land tenure disputes are a foreseeable risk.</p>
+        <span class="rec-tag">White Paper v2.6 · Legal &amp; Land Ownership</span>
+      </div>
+      <div class="rec-card reveal">
+        <div class="rec-num" aria-hidden="true">05</div>
+        <div class="rec-label">Closed-Loop Systems</div>
+        <h3 class="rec-title">Brine resource extraction beyond salt</h3>
+        <p class="rec-body">Current brine management routes output to salt basins and halophyte beds. The Guardian water whitepaper recommends a closed-loop brine system converting excess salt into construction materials or agricultural additives. This should be formalised in the Vai Tapu design as a first-class output stream — not an afterthought — and connected to the Resource Recovery node.</p>
+        <span class="rec-tag">Guardian Water Whitepaper v1.0 · Recommendation 2</span>
+      </div>
+      <div class="rec-card reveal">
+        <div class="rec-num" aria-hidden="true">06</div>
+        <div class="rec-label">Community Engagement</div>
+        <h3 class="rec-title">Water credit system for conservation incentives</h3>
+        <p class="rec-body">A citizen water credit programme — where users earn credits for conserving water, redeemable for civic goods or services — is identified in the Guardian whitepaper as a Phase 2 recommendation. Designing the data model and governance protocol for this in Phase 1 (not retrofitting it into Phase 2) will significantly reduce implementation friction.</p>
+        <span class="rec-tag">Guardian Water Whitepaper v1.0 · Recommendation 7</span>
+      </div>
+      <div class="rec-card reveal">
+        <div class="rec-num" aria-hidden="true">07</div>
+        <div class="rec-label">Open Engineering</div>
+        <h3 class="rec-title">Wastewater-to-agriculture reuse pathway</h3>
+        <p class="rec-body">Treated greywater from civic buildings and the desalination facility could be redirected for non-potable agricultural use — irrigation for floating farms (Vai Fenua) and halophyte beds. This closes the water loop, reduces total freshwater demand, and strengthens the food-water-energy nexus that is central to the Sovereign Vision. Currently undesigned.</p>
+        <span class="rec-tag">Guardian Water Whitepaper v1.0 · Recommendation 6</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ SANCTUARY CLUSTER ══════════════════════════════════════ -->
+<section class="sanctuary-section" id="sanctuary" aria-label="Vai Koko Reef Harbor — Sanctuary Cluster">
+  <div class="sanctuary-inner">
+    <div class="system-header">
+      <div>
+        <div class="section-tag teal reveal">Vai Koko Reef Harbor · Sanctuary Formation</div>
+        <h2 class="h2 h2-white reveal">Crescent formations.<br><em>Calmer water, richer reef.</em></h2>
+      </div>
+      <div class="reveal">
+        <div class="system-badge" style="border-color:rgba(35,193,196,.3);color:var(--teal);"><div class="system-badge-dot"></div>Permeable crescent · habitat nucleus · collective storage</div>
+        <p class="body-text-white" style="max-width:380px;margin-top:.8rem;font-size:.82rem;">When Vai Koko tanks are arranged in permeable crescent formations, they do something individual tanks cannot — they shape the water around them. The formation creates a protected inner zone with reduced current and elevated fish density, transforming a cluster of water infrastructure into a self-reinforcing marine habitat.</p>
+      </div>
+    </div>
+
+    <!-- Sanctuary render image -->
+    <div class="sanctuary-render-wrap reveal" style="margin:2.5rem 0;position:relative;border:1px solid rgba(255,255,255,.07);overflow:hidden;">
+      <img src="images/sanctuary_cluster.png" alt="Vai Koko Reef Harbor — sixteen tanks arranged in a permeable crescent formation in a shallow tropical lagoon, viewed from above. Geobag foundations visible beneath clear turquoise water. Coral crowns with glowing teal LED rings. A floating dock extends from shore." style="width:100%;display:block;max-height:640px;object-fit:cover;object-position:center 30%;">
+      <div style="position:absolute;top:1.2rem;left:1.4rem;font-family:var(--font-ui);font-size:.6rem;letter-spacing:.16em;text-transform:uppercase;color:rgba(255,255,255,.55);background:rgba(0,21,42,.65);backdrop-filter:blur(6px);padding:.4rem .8rem;border:1px solid rgba(255,255,255,.12);">Vai Koko Reef Harbor — Lagoon Sanctuary System</div>
+      <div style="position:absolute;bottom:1.2rem;right:1.4rem;font-family:var(--font-ui);font-size:.58rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(35,193,196,.7);background:rgba(0,21,42,.65);backdrop-filter:blur(6px);padding:.35rem .75rem;border:1px solid rgba(35,193,196,.2);">Concept render · Phase 2 configuration</div>
+    </div>
+
+    <!-- Two-col explainer -->
+    <div class="sanctuary-cols">
+      <!-- Left: how it works -->
+      <div class="sanctuary-col reveal-left">
+        <div class="section-tag teal" style="margin-bottom:1.2rem;">How the formation works</div>
+
+        <div class="sanc-principle">
+          <div class="sanc-prin-num">01</div>
+          <div>
+            <div class="sanc-prin-title">Permeable crescent geometry</div>
+            <p class="sanc-prin-body">Tanks are arranged in a curved arc — typically 120–160° of arc — with 8–12 metre spacing between units. The crescent is open on the downwind or down-current side. Water passes through the formation freely, but current velocity inside the arc is reduced by 30–50% compared to open water. This creates a calm zone without blocking tidal exchange.</p>
+          </div>
+        </div>
+
+        <div class="sanc-principle">
+          <div class="sanc-prin-num">02</div>
+          <div>
+            <div class="sanc-prin-title">Structural hard substrate creates fish habitat</div>
+            <p class="sanc-prin-body">Each tank's Reefskin exterior and coral crown function as artificial reef substrate. In a sandy lagoon with minimal natural hard substrate, the cluster introduces vertical complexity that is exploited within weeks by juvenile fish seeking shelter. The inner calm zone of the crescent becomes a nursery habitat that would not exist without the formation.</p>
+          </div>
+        </div>
+
+        <div class="sanc-principle">
+          <div class="sanc-prin-num">03</div>
+          <div>
+            <div class="sanc-prin-title">Formation-scale coral propagation</div>
+            <p class="sanc-prin-body">Individual tank crowns each support one coral nursery. A 16-tank sanctuary cluster supports 16 simultaneous propagation sites — each potentially seeded with different locally resilient species. The reduced current in the inner zone improves coral settlement success rates. The Reefskin surfaces collectively represent hundreds of square metres of colonisable reef analogue.</p>
+          </div>
+        </div>
+
+        <div class="sanc-principle">
+          <div class="sanc-prin-num">04</div>
+          <div>
+            <div class="sanc-prin-title">Civic and ritual significance at scale</div>
+            <p class="sanc-prin-body">A sanctuary formation is a place, not just infrastructure. The inner water — calm, fish-rich, glowing with teal LED rings at night — becomes a community gathering point, a swimming and snorkelling site, and a site for seasonal water ceremonies. Each tank in the formation has its own name, steward, and clan association. The cluster as a whole can be named as a single place in the collective memory of the island.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right: specs + diagram -->
+      <div class="sanctuary-col reveal">
+        <div class="section-tag teal" style="margin-bottom:1.2rem;">Sanctuary cluster specifications</div>
+
+        <div class="vk-specs" style="margin-bottom:2rem;">
+          <div class="vk-spec-row"><span class="vk-spec-key">Formation type</span><span class="vk-spec-val accent">Permeable crescent arc</span></div>
+          <div class="vk-spec-row"><span class="vk-spec-key">Arc angle</span><span class="vk-spec-val">120–160° (open on leeward side)</span></div>
+          <div class="vk-spec-row"><span class="vk-spec-key">Tank spacing</span><span class="vk-spec-val">8–12 m centre-to-centre (min. 8 m)</span></div>
+          <div class="vk-spec-row"><span class="vk-spec-key">Reference configuration</span><span class="vk-spec-val accent">16 tanks · ~240,000 L usable potable</span></div>
+          <div class="vk-spec-row"><span class="vk-spec-key">Formation footprint</span><span class="vk-spec-val">~45 m diameter arc</span></div>
+          <div class="vk-spec-row"><span class="vk-spec-key">Inner calm zone area</span><span class="vk-spec-val">~800–1,200 m² reduced current zone</span></div>
+          <div class="vk-spec-row"><span class="vk-spec-key">Current reduction (inner zone)</span><span class="vk-spec-val accent">~30–50% vs open lagoon</span></div>
+          <div class="vk-spec-row"><span class="vk-spec-key">Reef substrate introduced</span><span class="vk-spec-val">~200–400 m² active Reefskin surface</span></div>
+          <div class="vk-spec-row"><span class="vk-spec-key">Coral propagation sites</span><span class="vk-spec-val">16 simultaneous crown nurseries</span></div>
+          <div class="vk-spec-row"><span class="vk-spec-key">Guardian mesh nodes</span><span class="vk-spec-val">16 · tank-to-tank relay capable</span></div>
+          <div class="vk-spec-row"><span class="vk-spec-key">Night visual profile</span><span class="vk-spec-val">Teal LED ring arc — visible from shore</span></div>
+          <div class="vk-spec-row"><span class="vk-spec-key">Orientation guideline</span><span class="vk-spec-val">Open face toward prevailing swell (surge-facing arc bags on that side)</span></div>
+          <div class="vk-spec-row"><span class="vk-spec-key">Estimated unit count · Phase 2</span><span class="vk-spec-val">1–2 clusters per island (Tier 2)</span></div>
+          <div class="vk-spec-row"><span class="vk-spec-key">Capital cost (16-unit cluster)</span><span class="vk-spec-val accent">~$178,000 USD (v2.6 unit cost)</span></div>
+        </div>
+
+        <!-- SVG formation diagram -->
+        <div class="vt-diagram-label">Crescent formation plan view — 16-tank sanctuary cluster</div>
+        <div style="border:1px solid rgba(35,193,196,.15);padding:0;overflow:hidden;">
+          <svg viewBox="0 0 420 320" width="100%" role="img" aria-label="Plan view of 16 Vai Koko tanks arranged in a crescent arc formation with inner calm zone indicated">
+            <defs>
+              <radialGradient id="innerGlow" cx="50%" cy="55%" r="45%">
+                <stop offset="0%" stop-color="#23c1c4" stop-opacity="0.08"/>
+                <stop offset="100%" stop-color="#23c1c4" stop-opacity="0"/>
+              </radialGradient>
+              <radialGradient id="tankGlow" cx="50%" cy="50%" r="50%">
+                <stop offset="0%" stop-color="#23c1c4" stop-opacity="0.5"/>
+                <stop offset="100%" stop-color="#23c1c4" stop-opacity="0"/>
+              </radialGradient>
+              <style>
+                .sanc-tank-glow { animation: sanctGlow 3s ease-in-out infinite; }
+                .sanc-tank-glow:nth-child(3n+1) { animation-delay: 0s; }
+                .sanc-tank-glow:nth-child(3n+2) { animation-delay: 1s; }
+                .sanc-tank-glow:nth-child(3n)   { animation-delay: 2s; }
+                @keyframes sanctGlow {
+                  0%,100% { opacity: 0.5; }
+                  50%     { opacity: 1.0; }
+                }
+                @media (prefers-reduced-motion: reduce) {
+                  .sanc-tank-glow { animation: none; opacity: 0.7; }
+                }
+              </style>
+            </defs>
+
+            <!-- Lagoon background -->
+            <rect width="420" height="320" fill="#001828"/>
+            <!-- Sandy seabed texture -->
+            <ellipse cx="210" cy="200" rx="190" ry="140" fill="rgba(20,40,30,0.3)"/>
+
+            <!-- Inner calm zone highlight -->
+            <ellipse cx="210" cy="175" rx="110" ry="95" fill="url(#innerGlow)"/>
+            <ellipse cx="210" cy="175" rx="110" ry="95" fill="none" stroke="rgba(35,193,196,0.12)" stroke-width="1" stroke-dasharray="4,4"/>
+
+            <!-- Current flow arrows (outside formation) -->
+            <line x1="30" y1="120" x2="75" y2="148" stroke="rgba(255,255,255,0.08)" stroke-width="1.5" stroke-dasharray="5,4"/>
+            <polygon points="75,148 65,142 68,153" fill="rgba(255,255,255,0.1)"/>
+            <line x1="18" y1="175" x2="68" y2="175" stroke="rgba(255,255,255,0.08)" stroke-width="1.5" stroke-dasharray="5,4"/>
+            <polygon points="68,175 58,170 58,180" fill="rgba(255,255,255,0.1)"/>
+            <line x1="30" y1="230" x2="75" y2="202" stroke="rgba(255,255,255,0.08)" stroke-width="1.5" stroke-dasharray="5,4"/>
+            <polygon points="75,202 63,199 67,210" fill="rgba(255,255,255,0.1)"/>
+
+            <!-- HDPE pipe network connecting tanks -->
+            <!-- arc pipe running along the formation -->
+            <path d="M100,95 Q130,78 160,70 Q190,63 210,62 Q230,63 255,70 Q285,80 310,95" fill="none" stroke="rgba(35,193,196,0.18)" stroke-width="1.5" stroke-dasharray="6,4"/>
+            <path d="M88,130 Q90,110 100,95" fill="none" stroke="rgba(35,193,196,0.15)" stroke-width="1.5" stroke-dasharray="6,4"/>
+            <path d="M332,130 Q330,110 310,95" fill="none" stroke="rgba(35,193,196,0.15)" stroke-width="1.5" stroke-dasharray="6,4"/>
+            <path d="M82,175 Q84,152 88,130" fill="none" stroke="rgba(35,193,196,0.12)" stroke-width="1.5" stroke-dasharray="6,4"/>
+            <path d="M338,175 Q336,152 332,130" fill="none" stroke="rgba(35,193,196,0.12)" stroke-width="1.5" stroke-dasharray="6,4"/>
+            <path d="M90,215 Q84,195 82,175" fill="none" stroke="rgba(35,193,196,0.1)" stroke-width="1.5" stroke-dasharray="6,4"/>
+            <path d="M330,215 Q336,195 338,175" fill="none" stroke="rgba(35,193,196,0.1)" stroke-width="1.5" stroke-dasharray="6,4"/>
+            <path d="M115,248 Q100,234 90,215" fill="none" stroke="rgba(35,193,196,0.1)" stroke-width="1.5" stroke-dasharray="6,4"/>
+            <path d="M305,248 Q320,234 330,215" fill="none" stroke="rgba(35,193,196,0.1)" stroke-width="1.5" stroke-dasharray="6,4"/>
+            <!-- Pipe from shore -->
+            <line x1="210" y1="62" x2="210" y2="14" stroke="rgba(35,193,196,0.3)" stroke-width="2" stroke-dasharray="6,4"/>
+            <text x="214" y="22" font-family="Questrial,sans-serif" font-size="7" fill="rgba(35,193,196,0.55)" letter-spacing="0.06em">VAI TAPU SUPPLY</text>
+
+            <!-- TANK POSITIONS — 16-tank crescent arc -->
+            <!-- Top centre tanks -->
+            <g>
+              <!-- Tank 1 top-centre -->
+              <circle cx="210" cy="62" r="14" fill="rgba(0,40,65,0.9)" stroke="rgba(35,193,196,0.4)" stroke-width="1.5"/>
+              <circle cx="210" cy="62" r="18" fill="none" stroke="rgba(35,193,196,0.15)" stroke-width="1" class="sanc-tank-glow"/>
+              <circle cx="210" cy="62" r="6" fill="rgba(35,193,196,0.5)"/>
+
+              <!-- Tank 2 -->
+              <circle cx="255" cy="70" r="14" fill="rgba(0,40,65,0.9)" stroke="rgba(35,193,196,0.4)" stroke-width="1.5"/>
+              <circle cx="255" cy="70" r="18" fill="none" stroke="rgba(35,193,196,0.15)" stroke-width="1" class="sanc-tank-glow"/>
+              <circle cx="255" cy="70" r="6" fill="rgba(35,193,196,0.5)"/>
+
+              <!-- Tank 3 -->
+              <circle cx="162" cy="70" r="14" fill="rgba(0,40,65,0.9)" stroke="rgba(35,193,196,0.4)" stroke-width="1.5"/>
+              <circle cx="162" cy="70" r="18" fill="none" stroke="rgba(35,193,196,0.15)" stroke-width="1" class="sanc-tank-glow"/>
+              <circle cx="162" cy="70" r="6" fill="rgba(35,193,196,0.5)"/>
+
+              <!-- Tank 4 -->
+              <circle cx="298" cy="95" r="14" fill="rgba(0,40,65,0.9)" stroke="rgba(35,193,196,0.4)" stroke-width="1.5"/>
+              <circle cx="298" cy="95" r="18" fill="none" stroke="rgba(35,193,196,0.15)" stroke-width="1" class="sanc-tank-glow"/>
+              <circle cx="298" cy="95" r="6" fill="rgba(35,193,196,0.5)"/>
+
+              <!-- Tank 5 -->
+              <circle cx="122" cy="95" r="14" fill="rgba(0,40,65,0.9)" stroke="rgba(35,193,196,0.4)" stroke-width="1.5"/>
+              <circle cx="122" cy="95" r="18" fill="none" stroke="rgba(35,193,196,0.15)" stroke-width="1" class="sanc-tank-glow"/>
+              <circle cx="122" cy="95" r="6" fill="rgba(35,193,196,0.5)"/>
+
+              <!-- Tank 6 -->
+              <circle cx="332" cy="130" r="14" fill="rgba(0,40,65,0.9)" stroke="rgba(35,193,196,0.4)" stroke-width="1.5"/>
+              <circle cx="332" cy="130" r="18" fill="none" stroke="rgba(35,193,196,0.15)" stroke-width="1" class="sanc-tank-glow"/>
+              <circle cx="332" cy="130" r="6" fill="rgba(35,193,196,0.5)"/>
+
+              <!-- Tank 7 -->
+              <circle cx="88" cy="130" r="14" fill="rgba(0,40,65,0.9)" stroke="rgba(35,193,196,0.4)" stroke-width="1.5"/>
+              <circle cx="88" cy="130" r="18" fill="none" stroke="rgba(35,193,196,0.15)" stroke-width="1" class="sanc-tank-glow"/>
+              <circle cx="88" cy="130" r="6" fill="rgba(35,193,196,0.5)"/>
+
+              <!-- Tank 8 -->
+              <circle cx="340" cy="175" r="14" fill="rgba(0,40,65,0.9)" stroke="rgba(35,193,196,0.4)" stroke-width="1.5"/>
+              <circle cx="340" cy="175" r="18" fill="none" stroke="rgba(35,193,196,0.15)" stroke-width="1" class="sanc-tank-glow"/>
+              <circle cx="340" cy="175" r="6" fill="rgba(35,193,196,0.5)"/>
+
+              <!-- Tank 9 -->
+              <circle cx="80" cy="175" r="14" fill="rgba(0,40,65,0.9)" stroke="rgba(35,193,196,0.4)" stroke-width="1.5"/>
+              <circle cx="80" cy="175" r="18" fill="none" stroke="rgba(35,193,196,0.15)" stroke-width="1" class="sanc-tank-glow"/>
+              <circle cx="80" cy="175" r="6" fill="rgba(35,193,196,0.5)"/>
+
+              <!-- Tank 10 -->
+              <circle cx="332" cy="218" r="14" fill="rgba(0,40,65,0.9)" stroke="rgba(35,193,196,0.4)" stroke-width="1.5"/>
+              <circle cx="332" cy="218" r="18" fill="none" stroke="rgba(35,193,196,0.15)" stroke-width="1" class="sanc-tank-glow"/>
+              <circle cx="332" cy="218" r="6" fill="rgba(35,193,196,0.5)"/>
+
+              <!-- Tank 11 -->
+              <circle cx="88" cy="218" r="14" fill="rgba(0,40,65,0.9)" stroke="rgba(35,193,196,0.4)" stroke-width="1.5"/>
+              <circle cx="88" cy="218" r="18" fill="none" stroke="rgba(35,193,196,0.15)" stroke-width="1" class="sanc-tank-glow"/>
+              <circle cx="88" cy="218" r="6" fill="rgba(35,193,196,0.5)"/>
+
+              <!-- Tank 12 -->
+              <circle cx="308" cy="252" r="14" fill="rgba(0,40,65,0.9)" stroke="rgba(35,193,196,0.4)" stroke-width="1.5"/>
+              <circle cx="308" cy="252" r="18" fill="none" stroke="rgba(35,193,196,0.15)" stroke-width="1" class="sanc-tank-glow"/>
+              <circle cx="308" cy="252" r="6" fill="rgba(35,193,196,0.5)"/>
+
+              <!-- Tank 13 -->
+              <circle cx="112" cy="252" r="14" fill="rgba(0,40,65,0.9)" stroke="rgba(35,193,196,0.4)" stroke-width="1.5"/>
+              <circle cx="112" cy="252" r="18" fill="none" stroke="rgba(35,193,196,0.15)" stroke-width="1" class="sanc-tank-glow"/>
+              <circle cx="112" cy="252" r="6" fill="rgba(35,193,196,0.5)"/>
+
+              <!-- Tank 14 -->
+              <circle cx="268" cy="278" r="14" fill="rgba(0,40,65,0.9)" stroke="rgba(35,193,196,0.4)" stroke-width="1.5"/>
+              <circle cx="268" cy="278" r="18" fill="none" stroke="rgba(35,193,196,0.15)" stroke-width="1" class="sanc-tank-glow"/>
+              <circle cx="268" cy="278" r="6" fill="rgba(35,193,196,0.5)"/>
+
+              <!-- Tank 15 -->
+              <circle cx="152" cy="278" r="14" fill="rgba(0,40,65,0.9)" stroke="rgba(35,193,196,0.4)" stroke-width="1.5"/>
+              <circle cx="152" cy="278" r="18" fill="none" stroke="rgba(35,193,196,0.15)" stroke-width="1" class="sanc-tank-glow"/>
+              <circle cx="152" cy="278" r="6" fill="rgba(35,193,196,0.5)"/>
+
+              <!-- Tank 16 -->
+              <circle cx="210" cy="292" r="14" fill="rgba(0,40,65,0.9)" stroke="rgba(35,193,196,0.4)" stroke-width="1.5"/>
+              <circle cx="210" cy="292" r="18" fill="none" stroke="rgba(35,193,196,0.15)" stroke-width="1" class="sanc-tank-glow"/>
+              <circle cx="210" cy="292" r="6" fill="rgba(35,193,196,0.5)"/>
+            </g>
+
+            <!-- Calm zone label -->
+            <text x="210" y="155" text-anchor="middle" font-family="Questrial,sans-serif" font-size="8" fill="rgba(35,193,196,0.45)" letter-spacing="0.1em">CALM INNER ZONE</text>
+            <text x="210" y="168" text-anchor="middle" font-family="DM Sans,sans-serif" font-size="7" fill="rgba(255,255,255,0.2)">~30–50% reduced current</text>
+
+            <!-- Open face label -->
+            <text x="210" y="310" text-anchor="middle" font-family="Questrial,sans-serif" font-size="7" fill="rgba(255,255,255,0.25)" letter-spacing="0.06em">OPEN FACE — leeward / community-facing</text>
+
+            <!-- Scale bar -->
+            <line x1="340" y1="304" x2="400" y2="304" stroke="rgba(255,255,255,0.25)" stroke-width="1"/>
+            <line x1="340" y1="300" x2="340" y2="308" stroke="rgba(255,255,255,0.25)" stroke-width="1"/>
+            <line x1="400" y1="300" x2="400" y2="308" stroke="rgba(255,255,255,0.25)" stroke-width="1"/>
+            <text x="370" y="315" text-anchor="middle" font-family="DM Sans,sans-serif" font-size="7" fill="rgba(255,255,255,0.3)">~45 m</text>
+
+            <!-- Legend -->
+            <circle cx="20" cy="298" r="5" fill="rgba(0,40,65,0.9)" stroke="rgba(35,193,196,0.5)" stroke-width="1.5"/>
+            <circle cx="20" cy="298" r="2.5" fill="rgba(35,193,196,0.6)"/>
+            <text x="30" y="302" font-family="DM Sans,sans-serif" font-size="7" fill="rgba(255,255,255,0.4)">Vai Koko unit (plan view)</text>
+            <line x1="14" y1="310" x2="26" y2="310" stroke="rgba(35,193,196,0.3)" stroke-width="1.5" stroke-dasharray="4,3"/>
+            <text x="30" y="314" font-family="DM Sans,sans-serif" font-size="7" fill="rgba(255,255,255,0.3)">Supply pipe network</text>
+          </svg>
+        </div>
+
+        <!-- Honest ecology note -->
+        <div style="margin-top:1.5rem;padding:1.2rem 1.4rem;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.07);border-left:3px solid var(--teal-dim);">
+          <div style="font-family:var(--font-ui);font-size:.58rem;letter-spacing:.16em;text-transform:uppercase;color:var(--teal);margin-bottom:.5rem;">Honest assessment</div>
+          <p style="font-size:.78rem;color:var(--text-on-dark);line-height:1.7;">The ecological benefits of a sanctuary formation are proportional to time. A freshly installed cluster is infrastructure. At 2–3 years, with Reefskin colonisation established and coral crowns active, it begins to function as habitat. Long-term monitoring data from prototype units must precede any claims about specific ecological outcomes. The formation geometry improves the probability of success — it does not guarantee it.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Deployment and design notes -->
+    <div style="margin-top:3rem;display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1px;background:rgba(255,255,255,.06);">
+      <div class="sanc-note-card reveal">
+        <div class="sanc-note-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
+        </div>
+        <div class="sanc-note-title">Phased construction</div>
+        <p class="sanc-note-body">A sanctuary cluster does not need to be installed all at once. Start with 4–6 tanks on one arc end and add units incrementally. Each addition improves the formation's calm-water effect. Phase 1 pilots a 5-unit partial crescent; Phase 2 completes the arc.</p>
+      </div>
+      <div class="sanc-note-card reveal">
+        <div class="sanc-note-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+        </div>
+        <div class="sanc-note-title">Orientation to surge</div>
+        <p class="sanc-note-body">The open face of the crescent should be oriented toward the community — away from the prevailing surge direction. Surge-arc geobag bags (3 extra per unit, on the oceanward side) are particularly important for tanks on the exposed arc ends, which experience higher lateral loading.</p>
+      </div>
+      <div class="sanc-note-card reveal">
+        <div class="sanc-note-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+        </div>
+        <div class="sanc-note-title">Community stewardship at cluster scale</div>
+        <p class="sanc-note-body">A 16-tank cluster supports 16 individual steward assignments — each tank with its own name, clan association, and named steward. The cluster itself can have a formation name recognised by the broader community. Collective naming ceremonies and seasonal gatherings at the inner calm zone reinforce shared ownership.</p>
+      </div>
+      <div class="sanc-note-card reveal">
+        <div class="sanc-note-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+        </div>
+        <div class="sanc-note-title">Guardian mesh at cluster scale</div>
+        <p class="sanc-note-body">In a 16-tank cluster, Guardian beacon nodes can relay between units — forming a short-range mesh that improves telemetry reliability without requiring a direct line-of-sight to shore. Each tank's GPS position data also provides a formation-wide structural monitoring function: if any unit shifts, the collective GPS array detects it.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ JOIN ══════════════════════════════════════════════════════ -->
+<section class="join-section" aria-label="Call to action">
+  <div class="join-inner">
+    <div class="section-tag white reveal" style="justify-content:center;">Vai Tapu · Vai Koko</div>
+    <h2 class="join-h2 reveal">
+      Water sovereignty<br>is <em>achievable.</em>
+    </h2>
+    <p class="join-body reveal">If you are a marine engineer, desalination specialist, coral biologist, or aligned institution — this system needs you. Read the white paper, review the open questions, and reach out.</p>
+    <div style="display:flex;gap:.9rem;justify-content:center;flex-wrap:wrap;" class="reveal">
+      <a href="contact.html"      class="btn-white">Contact the Trust</a>
+      <a href="core-systems.html" class="btn-ghost-white">All Core Systems</a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ FOOTER ════════════════════════════════════════════════════ -->
+<footer role="contentinfo">
+  <div class="footer-top">
+    <div>
+      <a href="index.html" class="footer-logo-wrap" aria-label="Sovereign Vision — Home">
+        <img src="images/logo-trans.png" alt="Sovereign Vision" width="38" height="38">
+        <span class="footer-logo-name">Sovereign Vision</span>
+      </a>
+      <p class="footer-desc">A sovereign civilization infrastructure stack for Tuvalu — and an open-source blueprint for climate-vulnerable communities worldwide.</p>
+      <a href="/cdn-cgi/l/email-protection#6b0012070e2b18041d0e190e020c051d02180204054504190c" class="footer-email"><span class="__cf_email__" data-cfemail="c8a3b1a4ad88bba7beadbaada1afa6bea1bba1a7a6e6a7baaf">[email&#160;protected]</span></a>
+    </div>
+    <div>
+      <div class="footer-col-h">Core Systems</div>
+      <ul class="footer-links">
+        <li><a href="energy.html">Power Generation</a></li>
+        <li><a href="water-systems.html">Water Systems</a></li>
+        <li><a href="food.html">Food Sovereignty</a></li>
+        <li><a href="communications.html">Communications</a></li>
+        <li><a href="waste-systems.html">Resource Recovery</a></li>
+        <li><a href="civic-infrastructure.html">Civic Infrastructure</a></li>
+        <li><a href="treasury.html">Sovereign Treasury</a></li>
+        <li><a href="guardian-arbor.html">Guardian &amp; Arbor</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-col-h">About &amp; Governance</div>
+      <ul class="footer-links">
+        <li><a href="about-us.html">About Us</a></li>
+        <li><a href="how-it-works.html">How It Works</a></li>
+        <li><a href="elders-council.html">Elders Council</a></li>
+        <li><a href="youth-voice.html">Youth Voice</a></li>
+        <li><a href="faq.html">FAQ</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-col-h">Legal &amp; Project</div>
+      <ul class="footer-links">
+        <li><a href="legal-licensing.html">Legal &amp; Licensing</a></li>
+        <li><a href="civic-commons-license.html">Civic Commons License</a></li>
+        <li><a href="trust-formation-status.html">Trust Formation Status</a></li>
+        <li><a href="digitalarchipelago.html">Digital Archipelago Accord</a></li>
+        <li><a href="terms.html">Terms of Use</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div class="footer-copy">&copy; 2026 Tuvalu Sovereign Vision Stewardship Trust &middot; Civic Commons License v1.0 &middot; sovereignvision.org</div>
+    <div class="footer-socials">
+      <a href="https://github.com/sovereign-vision-org" target="_blank" rel="noopener noreferrer">GitHub</a>
+      <a href="https://linkedin.com/company/sovereign-vision-project" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+      <a href="https://www.instagram.com/tuvalu_vision_project" target="_blank" rel="noopener noreferrer">Instagram</a>
+    </div>
+  </div>
+</footer>
+
+<!-- ═══ SCRIPTS ═══════════════════════════════════════════════════ -->
+<script src="assets/js/nav.js"></script>
+<script src="assets/js/animations.js"></script>
+<script src="assets/js/site.js"></script>
+<script>
+(function(){
+'use strict';
+var R = window.matchMedia('(prefers-reduced-motion:reduce)').matches;
+
+/* ── Scroll reveal (inline fallback if animations.js not loaded) ── */
+(function(){
+  if(typeof window.SVAnimationsLoaded !== 'undefined') return; // skip if main JS handled it
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting){ e.target.classList.add('visible'); io.unobserve(e.target); }
+    });
+  },{threshold:.07,rootMargin:'0px 0px -20px 0px'});
+  document.querySelectorAll('.reveal,.reveal-left,.reveal-right').forEach(function(el){
+    io.observe(el);
+  });
+})();
+
+
+/* ── Nav hamburger (inline fallback) ── */
+(function(){
+  var ham = document.getElementById('hamburger');
+  var mob = document.getElementById('mobile-menu');
+  if(!ham || !mob) return;
+  var open = false;
+  function close(){ open=false; ham.classList.remove('open'); mob.style.display='none'; mob.style.opacity='0'; document.body.style.overflow=''; }
+  ham.addEventListener('click', function(){
+    if(open){ close(); return; }
+    open=true; ham.classList.add('open');
+    mob.style.display='flex'; mob.style.opacity='1';
+    document.body.style.overflow='hidden';
+  });
+  document.addEventListener('keydown', function(e){ if(e.key==='Escape') close(); });
+  window.closeMobileMenu = close;
+
+  /* Dropdown */
+  document.querySelectorAll('.nav-dropdown').forEach(function(dd){
+    var timer;
+    dd.addEventListener('mouseenter',function(){ clearTimeout(timer); dd.classList.add('active'); });
+    dd.addEventListener('mouseleave',function(){ timer=setTimeout(function(){ dd.classList.remove('active'); },120); });
+    var menu=dd.querySelector('.dropdown-menu');
+    if(menu){
+      menu.addEventListener('mouseenter',function(){ clearTimeout(timer); });
+      menu.addEventListener('mouseleave',function(){ timer=setTimeout(function(){ dd.classList.remove('active'); },120); });
+    }
+  });
+  document.addEventListener('click',function(e){
+    if(!e.target.closest('.nav-dropdown'))
+      document.querySelectorAll('.nav-dropdown').forEach(function(dd){ dd.classList.remove('active'); });
+  });
+})();
+
+/* ── Hero canvas: ocean waves + expanding rings ── */
+(function(){
+  var c = document.getElementById('hero-canvas');
+  if(!c) return;
+  var ctx = c.getContext('2d'), t = 0;
+  function resize(){ c.width = c.offsetWidth; c.height = c.offsetHeight || window.innerHeight; }
+  resize();
+  window.addEventListener('resize', resize, {passive:true});
+  var rings = [
+    {x:.25,y:.65,r:0,  maxR:300,speed:.6, col:'rgba(35,193,196,',a:.12},
+    {x:.75,y:.35,r:120,maxR:280,speed:.45,col:'rgba(35,193,196,',a:.07},
+    {x:.5, y:.8, r:60, maxR:220,speed:.8, col:'rgba(255,198,29,', a:.06},
+    {x:.15,y:.3, r:180,maxR:260,speed:.35,col:'rgba(35,193,196,',a:.08},
+  ];
+  var waves = [
+    {amp:30,freq:.006,speed:.015,yB:.75,col:'rgba(35,193,196,',a:.2 },
+    {amp:20,freq:.009,speed:.022,yB:.82,col:'rgba(35,193,196,',a:.12},
+    {amp:45,freq:.004,speed:.009,yB:.70,col:'rgba(0,43,75,',     a:.45},
+  ];
+  function draw(){
+    if(R) return;
+    var W=c.width, H=c.height;
+    ctx.clearRect(0,0,W,H);
+    waves.forEach(function(w){
+      ctx.beginPath();
+      for(var x=0;x<=W;x++){
+        var y=H*w.yB - Math.sin(x*w.freq+t*w.speed)*w.amp;
+        x===0 ? ctx.moveTo(x,y) : ctx.lineTo(x,y);
+      }
+      ctx.lineTo(W,H); ctx.lineTo(0,H); ctx.closePath();
+      ctx.fillStyle=w.col+w.a+')'; ctx.fill();
+    });
+    rings.forEach(function(r){
+      r.r+=r.speed; if(r.r>r.maxR) r.r=0;
+      var fade=1-(r.r/r.maxR);
+      ctx.beginPath(); ctx.arc(W*r.x,H*r.y,r.r,0,Math.PI*2);
+      ctx.strokeStyle=r.col+(r.a*fade)+')'; ctx.lineWidth=1; ctx.stroke();
+    });
+    t++; requestAnimationFrame(draw);
+  }
+  draw();
+})();
+
+/* ── Hero animated counters ── */
+(function(){
+  function animCount(id, target, suffix, dur){
+    var el = document.getElementById(id);
+    if(!el) return;
+    var start=0, steps=(dur||1200)/16, step=target/steps;
+    function frame(){
+      start = Math.min(start+step, target);
+      el.textContent = (target>=1000 ? Math.round(start/1000)+'k' : Math.round(start)) + (suffix||'');
+      if(start<target) requestAnimationFrame(frame);
+    }
+    setTimeout(frame, 900);
+  }
+  animCount('cnt-daily',  60,  'k',  1400);
+  animCount('cnt-nodes',  3,   '',   800 );
+  animCount('cnt-tanks',  15,  '+',  1000);
+  animCount('cnt-stored', 225, 'k',  1600);
+  /* Hero water bars */
+  setTimeout(function(){
+    var b1=document.getElementById('hbar1');
+    var b2=document.getElementById('hbar2');
+    var b3=document.getElementById('hbar3');
+    if(b1) b1.style.width='100%';
+    if(b2) b2.style.width='75%';
+    if(b3) b3.style.width='85%';
+  }, 1100);
+})();
+
+/* ── Vai Tapu: animated engineering flow diagram ── */
+(function(){
+  var c = document.getElementById('vt-diagram');
+  if(!c) return;
+  var ctx = c.getContext('2d');
+  var tip = document.getElementById('vt-tooltip');
+  var W=0, H=0, zones=[], tick=0, raf=null, hovered=null;
+
+  function resize(){ W=c.width=c.offsetWidth; H=c.height=400; draw(); }
+  resize();
+  new ResizeObserver(function(){requestAnimationFrame(resize);}).observe(c);
+
+  /* ── helpers ── */
+  function rr(x,y,w,h,r){
+    ctx.beginPath();
+    ctx.moveTo(x+r,y); ctx.lineTo(x+w-r,y);
+    ctx.quadraticCurveTo(x+w,y,x+w,y+r);
+    ctx.lineTo(x+w,y+h-r); ctx.quadraticCurveTo(x+w,y+h,x+w-r,y+h);
+    ctx.lineTo(x+r,y+h); ctx.quadraticCurveTo(x,y+h,x,y+h-r);
+    ctx.lineTo(x,y+r); ctx.quadraticCurveTo(x,y,x+r,y);
+    ctx.closePath();
+  }
+  function arrow(x1,y1,x2,y2,col,dash){
+    ctx.strokeStyle=col; ctx.lineWidth=2.5;
+    if(dash) ctx.setLineDash(dash); else ctx.setLineDash([]);
+    ctx.beginPath(); ctx.moveTo(x1,y1); ctx.lineTo(x2,y2); ctx.stroke();
+    ctx.setLineDash([]);
+    /* arrowhead */
+    var ang=Math.atan2(y2-y1,x2-x1);
+    ctx.fillStyle=col;
+    ctx.beginPath();
+    ctx.moveTo(x2,y2);
+    ctx.lineTo(x2-10*Math.cos(ang-0.4),y2-10*Math.sin(ang-0.4));
+    ctx.lineTo(x2-10*Math.cos(ang+0.4),y2-10*Math.sin(ang+0.4));
+    ctx.closePath(); ctx.fill();
+  }
+  function box(x,y,w,h,fillCol,strokeCol,label,sublabel,icon,glowCol){
+    /* glow */
+    if(glowCol){
+      ctx.shadowColor=glowCol; ctx.shadowBlur=14;
+    }
+    rr(x,y,w,h,6);
+    ctx.fillStyle=fillCol; ctx.fill();
+    ctx.shadowBlur=0;
+    ctx.strokeStyle=strokeCol; ctx.lineWidth=1.5;
+    rr(x,y,w,h,6); ctx.stroke();
+    /* icon */
+    if(icon){
+      ctx.fillStyle=strokeCol; ctx.font='16px serif'; ctx.textAlign='center';
+      ctx.fillText(icon,x+w/2,y+h*0.42);
+    }
+    /* label */
+    ctx.fillStyle='rgba(255,255,255,.92)'; ctx.font='bold 8px Questrial,sans-serif';
+    ctx.textAlign='center';
+    ctx.fillText(label.toUpperCase(),x+w/2,y+h*(icon?0.64:0.45));
+    if(sublabel){
+      ctx.fillStyle='rgba(255,255,255,.45)'; ctx.font='7px DM Sans,sans-serif';
+      ctx.fillText(sublabel,x+w/2,y+h*(icon?0.82:0.66));
+    }
+  }
+  function pipeLabel(x,y,text,col,align){
+    ctx.fillStyle=col||'rgba(255,255,255,.45)';
+    ctx.font='7px Questrial,sans-serif';
+    ctx.textAlign=align||'center';
+    ctx.fillText(text,x,y);
+  }
+
+  function draw(){
+    ctx.clearRect(0,0,W,H);
+    zones=[];
+
+    /* ── background ── */
+    var bg=ctx.createLinearGradient(0,0,0,H);
+    bg.addColorStop(0,'#001828'); bg.addColorStop(1,'#00111e');
+    ctx.fillStyle=bg; ctx.fillRect(0,0,W,H);
+
+    /* subtle grid */
+    ctx.strokeStyle='rgba(35,193,196,.04)'; ctx.lineWidth=1;
+    for(var gx=0;gx<W;gx+=40){ ctx.beginPath(); ctx.moveTo(gx,0); ctx.lineTo(gx,H); ctx.stroke(); }
+    for(var gy=0;gy<H;gy+=40){ ctx.beginPath(); ctx.moveTo(0,gy); ctx.lineTo(W,gy); ctx.stroke(); }
+
+    /* ── layout: 6 process boxes across top half, outputs below ── */
+    var pad=14, cols=6;
+    var bw=Math.floor((W-pad*2-10*(cols-1))/cols);  /* box width */
+    var bh=74, by1=52;   /* row 1 y */
+    var by2=by1+bh+52;   /* row 2 y — output/side streams */
+
+    /* box x positions */
+    var xs=[];
+    for(var i=0;i<cols;i++) xs.push(pad+i*(bw+10));
+
+    /* ── STEP LABELS row ── */
+    var steps=['01','02','03','04','05','06'];
+    var stepLabels=['SEAWATER\nINTAKE','PRE-\nFILTER','HIGH-PRESSURE\nPUMP','RO\nMEMBRANE','MINERAL\nBLEND','POTABLE\nOUTPUT'];
+    var stepColors=['rgba(35,193,196,.75)','rgba(35,193,196,.55)','rgba(255,198,29,.65)','rgba(35,193,196,.75)','rgba(35,193,196,.55)','rgba(80,200,130,.8)'];
+    var stepBg=['rgba(35,193,196,.08)','rgba(35,193,196,.06)','rgba(255,198,29,.08)','rgba(35,193,196,.09)','rgba(35,193,196,.06)','rgba(80,200,130,.09)'];
+    var stepDesc=[
+      'Screened seawater drawn from the lagoon at low depth. A mesh screen prevents coral debris and marine life from entering the system.',
+      'Multi-stage pre-filtration removes suspended solids, sediment, and biological matter. Protects the RO membrane and extends its service life.',
+      'Solar-powered high-pressure pump (55–70 bar) forces seawater through the RO membrane. Powered directly by the 6.4 kW rooftop PV array.',
+      'The reverse osmosis membrane removes 99%+ of dissolved salts and contaminants, producing potable water. Reject brine is routed separately.',
+      'Treated water is blended with collected rainwater and re-mineralised to WHO drinking standards. pH and salinity checked by Guardian sensors.',
+      'Potable output flows via pressurised HDPE pipe to Vai Koko lagoon storage tanks. Guardian monitors quality and volume every 60 seconds.'
+    ];
+
+    /* draw step boxes */
+    for(var i=0;i<cols;i++){
+      var bx=xs[i];
+      box(bx,by1,bw,bh,stepBg[i],stepColors[i],'','',' ',null);
+
+      /* step number */
+      ctx.fillStyle=stepColors[i]; ctx.font='bold 9px Questrial,sans-serif'; ctx.textAlign='center';
+      ctx.fillText(steps[i],bx+bw/2,by1+15);
+
+      /* multi-line label */
+      var lines=stepLabels[i].split('\n');
+      ctx.fillStyle='rgba(255,255,255,.85)'; ctx.font='bold 7.5px Questrial,sans-serif';
+      lines.forEach(function(l,li){
+        ctx.fillText(l,bx+bw/2,by1+30+li*11);
+      });
+
+      /* hover zone */
+      zones.push({x:bx+bw/2,y:by1+bh/2,rx:bw/2,ry:bh/2,label:stepLabels[i].replace('\n',' '),desc:stepDesc[i],bx:bx,bby:by1,bw:bw,bh:bh});
+    }
+
+    /* ── connecting arrows between boxes ── */
+    for(var i=0;i<cols-1;i++){
+      var ax=xs[i]+bw+2, ay=by1+bh/2;
+      arrow(ax,ay,xs[i+1]-2,ay,'rgba(35,193,196,.5)');
+    }
+    /* override pump arrow to gold */
+    arrow(xs[1]+bw+2,by1+bh/2,xs[2]-2,by1+bh/2,'rgba(255,198,29,.5)');
+    arrow(xs[2]+bw+2,by1+bh/2,xs[3]-2,by1+bh/2,'rgba(255,198,29,.5)');
+    /* output arrow green */
+    arrow(xs[4]+bw+2,by1+bh/2,xs[5]-2,by1+bh/2,'rgba(80,200,130,.5)');
+
+    /* ── SOLAR block — above pump box ── */
+    var sx=xs[2], sw=bw, sh=34, soy=by1-sh-10;
+    rr(sx,soy,sw,sh,5);
+    ctx.fillStyle='rgba(255,198,29,.09)'; ctx.fill();
+    ctx.strokeStyle='rgba(255,198,29,.5)'; ctx.lineWidth=1.5;
+    rr(sx,soy,sw,sh,5); ctx.stroke();
+    ctx.fillStyle='rgba(255,198,29,.8)'; ctx.font='bold 7.5px Questrial,sans-serif'; ctx.textAlign='center';
+    ctx.fillText('SOLAR ARRAY  6.4 kW',sx+sw/2,soy+13);
+    ctx.fillStyle='rgba(255,198,29,.4)'; ctx.font='7px DM Sans,sans-serif';
+    ctx.fillText('powers pump + charges battery',sx+sw/2,soy+26);
+    /* dashed power arrow down */
+    arrow(sx+sw/2,soy+sh,sx+sw/2,by1-2,'rgba(255,198,29,.45)',[4,3]);
+    zones.push({x:sx+sw/2,y:soy+sh/2,rx:sw/2,ry:sh/2,label:'Solar Array (6.4 kW)',
+      desc:'Rooftop PV panels provide direct power to the high-pressure RO pump and charge the 28–30 kWh LFP battery bank. Guardian monitors solar output every 60 s.',
+      bx:sx,bby:soy,bw:sw,bh:sh});
+
+    /* ── BATTERY block — above intake box ── */
+    var btx=xs[0], btw=bw, bts=34, btoy=by1-bts-10;
+    rr(btx,btoy,btw,bts,5);
+    ctx.fillStyle='rgba(35,193,196,.08)'; ctx.fill();
+    ctx.strokeStyle='rgba(35,193,196,.4)'; ctx.lineWidth=1.5;
+    rr(btx,btoy,btw,bts,5); ctx.stroke();
+    ctx.fillStyle='rgba(35,193,196,.8)'; ctx.font='bold 7.5px Questrial,sans-serif'; ctx.textAlign='center';
+    ctx.fillText('LFP BATTERY  28–30 kWh',btx+btw/2,btoy+13);
+    ctx.fillStyle='rgba(35,193,196,.4)'; ctx.font='7px DM Sans,sans-serif';
+    ctx.fillText('6+ hrs autonomy',btx+btw/2,btoy+26);
+    zones.push({x:btx+btw/2,y:btoy+bts/2,rx:btw/2,ry:bts/2,label:'LFP Battery Bank (28–30 kWh)',
+      desc:'Lithium iron phosphate battery provides over 6 hours of Tier 1 operation when solar is unavailable. Guardian manages charge cycles and triggers conservation below 20%.',
+      bx:btx,bby:btoy,bw:btw,bh:bts});
+
+    /* battery charge arrow from solar */
+    var chx1=sx+sw/2, chx2=btx+btw/2, chy=btoy+bts/2-14;
+    ctx.strokeStyle='rgba(255,198,29,.3)'; ctx.lineWidth=1.5; ctx.setLineDash([3,3]);
+    ctx.beginPath(); ctx.moveTo(chx1,soy+sh/2); ctx.lineTo(chx1,chy); ctx.lineTo(chx2,chy); ctx.lineTo(chx2,btoy+bts); ctx.stroke();
+    ctx.setLineDash([]);
+
+    /* ── GUARDIAN block — above filter ── */
+    var gx=xs[1], gw=bw, gs=34, goy=by1-gs-10;
+    rr(gx,goy,gw,gs,5);
+    ctx.fillStyle='rgba(35,193,196,.1)'; ctx.fill();
+    ctx.strokeStyle='rgba(35,193,196,.6)'; ctx.lineWidth=1.5;
+    rr(gx,goy,gw,gs,5); ctx.stroke();
+    ctx.fillStyle='rgba(35,193,196,.9)'; ctx.font='bold 7.5px Questrial,sans-serif'; ctx.textAlign='center';
+    ctx.fillText('GUARDIAN NODE',gx+gw/2,goy+13);
+    ctx.fillStyle='rgba(35,193,196,.45)'; ctx.font='7px DM Sans,sans-serif';
+    ctx.fillText('60 s telemetry · local AI',gx+gw/2,goy+26);
+    zones.push({x:gx+gw/2,y:goy+gs/2,rx:gw/2,ry:gs/2,label:'Guardian Node (Local Instance)',
+      desc:'On-island AI system monitors all sensors in real time. Controls pump speed, tracks water quality, manages battery state, and sends telemetry every 60 s. Manual override always available. No data leaves the island.',
+      bx:gx,bby:goy,bw:gw,bh:gs});
+
+    /* guardian monitor line down to membrane box */
+    ctx.strokeStyle='rgba(35,193,196,.25)'; ctx.lineWidth=1; ctx.setLineDash([2,4]);
+    ctx.beginPath(); ctx.moveTo(gx+gw/2,goy+gs); ctx.lineTo(gx+gw/2,by1); ctx.stroke();
+    ctx.setLineDash([]);
+
+    /* ── OUTPUT STREAMS row ── */
+    var row2y=by1+bh+16;
+
+    /* VAI KOKO output — below output box */
+    var vkx=xs[5], vkw=bw, vkh=48;
+    rr(vkx,row2y,vkw,vkh,5);
+    ctx.fillStyle='rgba(80,200,130,.08)'; ctx.fill();
+    ctx.strokeStyle='rgba(80,200,130,.55)'; ctx.lineWidth=1.5;
+    rr(vkx,row2y,vkw,vkh,5); ctx.stroke();
+    ctx.fillStyle='rgba(80,200,130,.85)'; ctx.font='bold 7.5px Questrial,sans-serif'; ctx.textAlign='center';
+    ctx.fillText('VAI KOKO TANKS',vkx+vkw/2,row2y+17);
+    ctx.fillStyle='rgba(255,255,255,.35)'; ctx.font='7px DM Sans,sans-serif';
+    ctx.fillText('lagoon storage',vkx+vkw/2,row2y+30);
+    ctx.fillText('~15,000 L/tank',vkx+vkw/2,row2y+41);
+    arrow(xs[5]+vkw/2,by1+bh+2,xs[5]+vkw/2,row2y-2,'rgba(80,200,130,.55)');
+    zones.push({x:vkx+vkw/2,y:row2y+vkh/2,rx:vkw/2,ry:vkh/2,label:'Vai Koko Lagoon Storage',
+      desc:'Treated potable water is pumped via pressurised HDPE pipe to Vai Koko submerged lagoon tanks. Each tank holds ~15,000 L usable potable (v2.6). Phase 1: 15 tanks = ~225,000 L stored. v2.6 F3 Enhanced foundation: 1.55× verified safety factor.',
+      bx:vkx,bby:row2y,bw:vkw,bh:vkh});
+
+    /* BRINE output — below RO box */
+    var bnx=xs[3], bnw=bw, bnh=48;
+    rr(bnx,row2y,bnw,bnh,5);
+    ctx.fillStyle='rgba(254,83,55,.07)'; ctx.fill();
+    ctx.strokeStyle='rgba(254,83,55,.45)'; ctx.lineWidth=1.5;
+    rr(bnx,row2y,bnw,bnh,5); ctx.stroke();
+    ctx.fillStyle='rgba(254,83,55,.8)'; ctx.font='bold 7.5px Questrial,sans-serif'; ctx.textAlign='center';
+    ctx.fillText('BRINE STREAM',bnx+bnw/2,row2y+17);
+    ctx.fillStyle='rgba(255,255,255,.35)'; ctx.font='7px DM Sans,sans-serif';
+    ctx.fillText('→ salt basin',bnx+bnw/2,row2y+30);
+    ctx.fillText('→ halophyte beds',bnx+bnw/2,row2y+41);
+    arrow(xs[3]+bnw/2,by1+bh+2,xs[3]+bnw/2,row2y-2,'rgba(254,83,55,.45)');
+    zones.push({x:bnx+bnw/2,y:row2y+bnh/2,rx:bnw/2,ry:bnh/2,label:'Brine Management',
+      desc:'Concentrate from the RO membrane is diluted and routed via pipe to salt basins and halophyte beds onshore. Salt is harvested for local use or export. Brine never discharges directly to the reef.',
+      bx:bnx,bby:row2y,bw:bnw,bh:bnh});
+
+    /* RAINWATER input — below blend box */
+    var rwx=xs[4], rww=bw, rwh=48;
+    rr(rwx,row2y,rww,rwh,5);
+    ctx.fillStyle='rgba(35,193,196,.06)'; ctx.fill();
+    ctx.strokeStyle='rgba(35,193,196,.35)'; ctx.lineWidth=1.5;
+    rr(rwx,row2y,rww,rwh,5); ctx.stroke();
+    ctx.fillStyle='rgba(35,193,196,.7)'; ctx.font='bold 7.5px Questrial,sans-serif'; ctx.textAlign='center';
+    ctx.fillText('RAINWATER',rwx+rww/2,row2y+17);
+    ctx.fillStyle='rgba(255,255,255,.35)'; ctx.font='7px DM Sans,sans-serif';
+    ctx.fillText('catchment blend',rwx+rww/2,row2y+30);
+    ctx.fillText('+ re-mineralise',rwx+rww/2,row2y+41);
+    arrow(rwx+rww/2,row2y-2,rwx+rww/2,by1+bh+2,'rgba(35,193,196,.35)');
+    zones.push({x:rwx+rww/2,y:row2y+rwh/2,rx:rww/2,ry:rwh/2,label:'Rainwater Blending',
+      desc:'Collected rainwater is blended with RO-treated water before re-mineralisation. This reduces energy demand, improves taste, and extends RO membrane life. pH and salinity verified by Guardian before distribution.',
+      bx:rwx,bby:row2y,bw:rww,bh:rwh});
+
+    /* ── FLOW LABELS on arrows ── */
+    pipeLabel(xs[0]+bw/2+(xs[1]-xs[0]-bw)/2, by1+bh/2-6,'salt\nwater','rgba(35,193,196,.35)');
+    pipeLabel(xs[3]+bw/2+(xs[4]-xs[3]-bw)/2, by1+bh/2-6,'fresh\nwater','rgba(80,200,130,.35)');
+
+    /* ── HOVER HIGHLIGHT ── */
+    /* drawn after everything — no extra pass needed; handled in mousemove */
+
+    /* ── bottom legend ── */
+    var ly=H-18;
+    var legend=[
+      {col:'rgba(35,193,196,.7)',label:'Water flow'},
+      {col:'rgba(255,198,29,.7)',label:'Power / solar'},
+      {col:'rgba(80,200,130,.7)',label:'Potable output'},
+      {col:'rgba(254,83,55,.65)',label:'Brine stream'},
+    ];
+    var lx=pad;
+    legend.forEach(function(l){
+      ctx.fillStyle=l.col; ctx.fillRect(lx,ly-6,14,6);
+      ctx.fillStyle='rgba(255,255,255,.35)'; ctx.font='7px DM Sans,sans-serif'; ctx.textAlign='left';
+      ctx.fillText(l.label,lx+18,ly);
+      lx+=lx+ctx.measureText(l.label).width+42;
+    });
+  }
+
+  /* ── tooltip hit test using rect zones ── */
+  c.addEventListener('mousemove',function(e){
+    if(R||!tip) return;
+    var rect=c.getBoundingClientRect(), sx=W/rect.width, sy=H/rect.height;
+    var mx=(e.clientX-rect.left)*sx, my=(e.clientY-rect.top)*sy;
+    var hit=null;
+    for(var i=zones.length-1;i>=0;i--){
+      var z=zones[i];
+      if(mx>=z.bx && mx<=z.bx+z.bw && my>=z.bby && my<=z.bby+z.bh){ hit=z; break; }
+    }
+    if(hit){
+      tip.style.opacity='1';
+      tip.innerHTML='<strong style="color:var(--teal);font-family:Questrial,sans-serif;font-size:.6rem;letter-spacing:.1em;text-transform:uppercase;display:block;margin-bottom:.3rem;">'+hit.label+'</strong>'+hit.desc;
+      var tx=Math.min(e.clientX-rect.left+14, rect.width-225);
+      var ty=Math.max(e.clientY-rect.top-90, 8);
+      tip.style.left=tx+'px'; tip.style.top=ty+'px';
+      c.style.cursor='pointer';
+
+      /* highlight box */
+      ctx.save();
+      rr(hit.bx,hit.bby,hit.bw,hit.bh,6);
+      ctx.strokeStyle='rgba(255,255,255,.35)'; ctx.lineWidth=2;
+      ctx.stroke();
+      ctx.restore();
+    } else {
+      if(tip.style.opacity!=='0'){ tip.style.opacity='0'; draw(); }
+      c.style.cursor='default';
+    }
+  });
+  c.addEventListener('mouseleave',function(){ if(tip){tip.style.opacity='0';} draw(); });
+})();
+
+/* ── Vai Koko animated cross-section (canvas replaced by reference image — block retained for future use) ── */
+(function(){
+  var c = document.getElementById('vk-canvas');
+  if(!c) return; /* canvas removed; image used instead */
+
+  function draw(){
+    ctx.clearRect(0,0,W,H);
+    var cx=W/2, wL=H*0.22, sL=H*0.45;
+    var tTop=H*0.1, tH=H*0.72, tW=W*0.45, tR=tW/2, tBot=tTop+tH;
+
+    /* BG */
+    var bg=ctx.createLinearGradient(0,0,0,H);
+    bg.addColorStop(0,'#001520'); bg.addColorStop(wL/H,'#003550'); bg.addColorStop(1,'#002030');
+    ctx.fillStyle=bg; ctx.fillRect(0,0,W,H);
+
+    /* Water surface */
+    ctx.strokeStyle='rgba(35,193,196,.18)'; ctx.lineWidth=1.5;
+    if(!R){
+      for(var i=0;i<3;i++){
+        ctx.beginPath();
+        for(var x=0;x<=W;x+=4){
+          var y=wL+Math.sin(x*0.025+t*0.04+i*1.2)*5;
+          x===0?ctx.moveTo(x,y):ctx.lineTo(x,y);
+        }
+        ctx.stroke();
+      }
+    } else {
+      ctx.beginPath(); ctx.moveTo(0,wL); ctx.lineTo(W,wL); ctx.stroke();
+    }
+    ctx.fillStyle='rgba(35,193,196,.22)'; ctx.font='8px Questrial,sans-serif'; ctx.textAlign='left';
+    ctx.fillText('LAGOON WATER LEVEL',10,wL-7);
+
+    /* Sand */
+    var sand=ctx.createLinearGradient(0,sL,0,H);
+    sand.addColorStop(0,'#4a3a20'); sand.addColorStop(1,'#2a1e0a');
+    ctx.fillStyle=sand; ctx.fillRect(0,sL,W,H-sL);
+    ctx.fillStyle='rgba(160,130,70,.22)'; ctx.font='8px Questrial,sans-serif'; ctx.textAlign='right';
+    ctx.fillText('LAGOON SAND SUBSTRATE',W-10,sL+14);
+
+    /* Foundation Raft + geobags (v2.6 F3 Enhanced) */
+    if(layers.anchor){
+      var sW=tW*1.55, sH=H*0.07, sX=cx-sW/2, sY=tBot-sH*0.3;
+      /* Rigid transfer raft plate */
+      ctx.fillStyle='rgba(60,75,90,.85)'; ctx.strokeStyle='rgba(120,150,170,.7)'; ctx.lineWidth=2;
+      ctx.beginPath(); ctx.rect(sX,sY,sW,sH*0.4); ctx.fill(); ctx.stroke();
+      /* Raft grid lines */
+      ctx.strokeStyle='rgba(150,180,200,.35)'; ctx.lineWidth=1;
+      for(var rg=1;rg<5;rg++){
+        var rx=sX+rg*(sW/5);
+        ctx.beginPath(); ctx.moveTo(rx,sY); ctx.lineTo(rx,sY+sH*0.4); ctx.stroke();
+      }
+      /* Geobags — 7 visible in cross-section */
+      var bW=sW/7.5, bH=H*0.065, bY=sY+sH*0.35;
+      for(var bg=0;bg<7;bg++){
+        var bx=sX+bg*(sW/7)+(sW/7-bW)/2;
+        ctx.fillStyle='rgba(90,105,80,.75)'; ctx.strokeStyle='rgba(130,150,110,.5)'; ctx.lineWidth=1;
+        ctx.beginPath();
+        ctx.ellipse(bx+bW/2,bY+bH*0.55,bW/2,bH/2,0,0,Math.PI*2);
+        ctx.fill(); ctx.stroke();
+      }
+      ctx.fillStyle='rgba(140,165,150,.45)'; ctx.font='8px Questrial,sans-serif'; ctx.textAlign='center';
+      ctx.fillText('F3 ENHANCED · 10-BAG RIGID TRANSFER RAFT',cx,sY+sH*0.22);
+    }
+
+    /* Reefskin */
+    if(layers.reefskin){
+      ctx.strokeStyle='rgba(100,160,130,.45)'; ctx.lineWidth=14;
+      ctx.beginPath();
+      ctx.moveTo(cx-tR-7,tTop+tH*0.15); ctx.lineTo(cx-tR-7,tBot-tH*0.1);
+      ctx.quadraticCurveTo(cx-tR-7,tBot,cx,tBot);
+      ctx.quadraticCurveTo(cx+tR+7,tBot,cx+tR+7,tBot-tH*0.1);
+      ctx.lineTo(cx+tR+7,tTop+tH*0.15);
+      ctx.stroke();
+    }
+
+    /* Tank body */
+    if(layers.tank){
+      var tg=ctx.createLinearGradient(cx-tR,0,cx+tR,0);
+      tg.addColorStop(0,'rgba(0,50,80,.9)'); tg.addColorStop(0.45,'rgba(0,90,130,.85)');
+      tg.addColorStop(0.55,'rgba(0,90,130,.85)'); tg.addColorStop(1,'rgba(0,50,80,.9)');
+      ctx.fillStyle=tg; ctx.strokeStyle='rgba(35,193,196,.3)'; ctx.lineWidth=2;
+      ctx.beginPath();
+      ctx.moveTo(cx-tR,tTop+tH*0.15); ctx.lineTo(cx-tR,tBot-tH*0.08);
+      ctx.quadraticCurveTo(cx-tR,tBot,cx,tBot);
+      ctx.quadraticCurveTo(cx+tR,tBot,cx+tR,tBot-tH*0.08);
+      ctx.lineTo(cx+tR,tTop+tH*0.15);
+      ctx.quadraticCurveTo(cx+tR,tTop,cx,tTop+tH*0.04);
+      ctx.quadraticCurveTo(cx-tR,tTop,cx-tR,tTop+tH*0.15);
+      ctx.fill(); ctx.stroke();
+
+      /* Water inside */
+      var fH=tH*0.7, fY=tBot-fH;
+      var fg=ctx.createLinearGradient(0,fY,0,tBot);
+      fg.addColorStop(0,'rgba(35,193,196,.15)'); fg.addColorStop(1,'rgba(35,193,196,.32)');
+      ctx.fillStyle=fg;
+      ctx.beginPath();
+      ctx.moveTo(cx-tR+4,fY); ctx.lineTo(cx+tR-4,fY);
+      ctx.lineTo(cx+tR-4,tBot-4);
+      ctx.quadraticCurveTo(cx+tR-4,tBot-2,cx,tBot-2);
+      ctx.quadraticCurveTo(cx-tR+4,tBot-2,cx-tR+4,tBot-4);
+      ctx.closePath(); ctx.fill();
+
+      if(!R){
+        var wY=fY+Math.sin(t*0.05)*3;
+        ctx.strokeStyle='rgba(35,193,196,.45)'; ctx.lineWidth=1.5; ctx.setLineDash([4,4]);
+        ctx.beginPath(); ctx.moveTo(cx-tR+4,wY); ctx.lineTo(cx+tR-4,wY); ctx.stroke();
+        ctx.setLineDash([]);
+      }
+      ctx.fillStyle='rgba(35,193,196,.55)'; ctx.font='bold 10px Questrial,sans-serif'; ctx.textAlign='center';
+      ctx.fillText('~15,000 L',cx,fY+fH*0.48);
+      ctx.font='8px DM Sans,sans-serif'; ctx.fillStyle='rgba(255,255,255,.28)';
+      ctx.fillText('fresh water',cx,fY+fH*0.48+14);
+
+      /* Hatch */
+      ctx.strokeStyle='rgba(35,193,196,.5)'; ctx.lineWidth=2;
+      ctx.beginPath(); ctx.arc(cx,tTop+tH*0.05,18,0,Math.PI*2); ctx.stroke();
+      ctx.fillStyle='rgba(35,193,196,.12)';
+      ctx.beginPath(); ctx.arc(cx,tTop+tH*0.05,18,0,Math.PI*2); ctx.fill();
+      ctx.fillStyle='rgba(35,193,196,.6)'; ctx.font='7px Questrial,sans-serif'; ctx.textAlign='center';
+      ctx.fillText('HATCH',cx,tTop+tH*0.05+3);
+
+      /* Inlet/outlet */
+      ctx.strokeStyle='rgba(255,198,29,.5)'; ctx.lineWidth=5; ctx.setLineDash([5,3]);
+      ctx.beginPath(); ctx.moveTo(cx-tR,tBot-tH*0.25); ctx.lineTo(0,tBot-tH*0.25); ctx.stroke();
+      ctx.beginPath(); ctx.moveTo(cx+tR,tBot-tH*0.25); ctx.lineTo(W,tBot-tH*0.25); ctx.stroke();
+      ctx.setLineDash([]);
+      ctx.fillStyle='rgba(255,198,29,.5)'; ctx.font='8px Questrial,sans-serif';
+      ctx.textAlign='left'; ctx.fillText('← inlet',4,tBot-tH*0.25-7);
+      ctx.textAlign='right'; ctx.fillText('outlet →',W-4,tBot-tH*0.25-7);
+    }
+
+    /* Light ring */
+    if(layers.light){
+      var lY=tTop+tH*0.12, lR=tR*0.62;
+      var pulse=!R ? 0.6+Math.sin(t*0.06)*0.4 : 1;
+      ctx.shadowColor='rgba(35,193,196,.7)'; ctx.shadowBlur=!R?14+Math.sin(t*0.08)*6:14;
+      ctx.strokeStyle='rgba(35,193,196,'+pulse+')'; ctx.lineWidth=6;
+      ctx.beginPath(); ctx.arc(cx,lY,lR,0,Math.PI*2); ctx.stroke();
+      ctx.shadowBlur=0; ctx.shadowColor='transparent';
+      ctx.fillStyle='rgba(35,193,196,.5)'; ctx.font='7px Questrial,sans-serif'; ctx.textAlign='center';
+      ctx.fillText('RGB STATUS RING',cx,lY+lR+15);
+    }
+
+    /* Coral crown */
+    if(layers.coral){
+      var crY=tTop-H*0.04, crR=tR*1.08;
+      ctx.fillStyle='rgba(100,160,80,.22)'; ctx.strokeStyle='rgba(120,180,100,.45)'; ctx.lineWidth=2;
+      ctx.beginPath(); ctx.ellipse(cx,crY,crR,H*0.048,0,0,Math.PI*2); ctx.fill(); ctx.stroke();
+      for(var ci=0;ci<8;ci++){
+        var ca=(ci/8)*Math.PI*2-Math.PI/2;
+        var crx=cx+Math.cos(ca)*crR*0.68, cry=crY+Math.sin(ca)*H*0.035;
+        ctx.fillStyle='rgba(160,220,90,.5)';
+        ctx.beginPath(); ctx.arc(crx,cry-5,3.5,0,Math.PI*2); ctx.fill();
+        ctx.strokeStyle='rgba(130,200,75,.4)'; ctx.lineWidth=1.5;
+        ctx.beginPath(); ctx.moveTo(crx,cry); ctx.lineTo(crx,cry-7); ctx.stroke();
+      }
+      ctx.fillStyle='rgba(130,190,80,.45)'; ctx.font='8px Questrial,sans-serif'; ctx.textAlign='center';
+      ctx.fillText('CORAL NURSERY CROWN (2.4m)',cx,crY-H*0.065);
+    }
+
+    /* Sensors */
+    if(layers.sensors){
+      var snY=tTop+tH*0.35, snX=cx+tR-12;
+      var sp=!R ? Math.sin(t*0.1)*0.5+0.5 : 1;
+      ctx.fillStyle='rgba(254,83,55,.85)';
+      ctx.beginPath(); ctx.arc(snX,snY,7,0,Math.PI*2); ctx.fill();
+      if(!R){
+        ctx.strokeStyle='rgba(254,83,55,'+(sp*0.45)+')'; ctx.lineWidth=2;
+        ctx.beginPath(); ctx.arc(snX,snY,7+sp*9,0,Math.PI*2); ctx.stroke();
+      }
+      ctx.fillStyle='rgba(254,83,55,.65)'; ctx.font='8px Questrial,sans-serif'; ctx.textAlign='left';
+      ctx.fillText('SENSOR NODE',snX+10,snY+3);
+      ctx.fillStyle='rgba(255,255,255,.28)'; ctx.font='7px DM Sans,sans-serif';
+      ctx.fillText('P·T·GPS·SAL·IMU',snX+10,snY+14);
+      ctx.strokeStyle='rgba(254,83,55,.22)'; ctx.lineWidth=1; ctx.setLineDash([3,4]);
+      ctx.beginPath(); ctx.moveTo(snX+5,snY); ctx.lineTo(W,snY-28); ctx.stroke();
+      ctx.setLineDash([]);
+      ctx.fillStyle='rgba(254,83,55,.35)'; ctx.font='7px Questrial,sans-serif'; ctx.textAlign='right';
+      ctx.fillText('→ Guardian Core',W-4,snY-18);
+    }
+
+    ctx.textAlign='left';
+    t++; requestAnimationFrame(draw);
+  }
+  draw();
+})();
+
+/* ── Water flow diagram (interactive node graph) ── */
+(function(){
+  var c = document.getElementById('flow-canvas');
+  if(!c) return;
+  var ctx = c.getContext('2d'), W=0, H=0, t=0, hovered=null;
+
+  var nodes = [
+    {id:'ocean',   x:.08,y:.50,r:30,col:'#005070',border:'#23c1c4',label:'Ocean',       sub:'Seawater',    info:{title:'Pacific Ocean — Seawater Source',        text:'Saltwater intake for all three Vai Tapu desalination nodes. Screened and pre-filtered before the RO membrane. Guardian monitors intake flow rate and salinity continuously.'}},
+    {id:'rain',    x:.08,y:.15,r:26,col:'#003a55',border:'#ffc61d',label:'Rain',         sub:'Catchment',   info:{title:'Rainwater Catchment',                     text:'Canopy runoff from civic buildings feeds into a blending system. Guardian uses weather forecasts to pre-fill tanks before dry periods.'}},
+    {id:'vaitapu', x:.30,y:.50,r:36,col:'#004060',border:'#23c1c4',label:'Vai Tapu',     sub:'RO Node',     info:{title:'Vai Tapu — RO Desalination (×3)',          text:'Solar-powered reverse osmosis. 20,000 L/day per node. Three nodes = 60,000 L/day. LFP battery provides 6+ hours autonomy. Guardian monitors every 60 s.'}},
+    {id:'vaikoko', x:.55,y:.50,r:36,col:'#003050',border:'#ffc61d',label:'Vai Koko',     sub:'Lagoon Tank', info:{title:'Vai Koko — Submerged Lagoon Storage (v2.6)',      text:'~15,000 L usable potable per tank. v2.6 F3 Enhanced foundation: 10 geobags on rigid transfer raft — 1.55× verified safety factor at 0% fill, full storm submersion. Class A gravity-stabilised. Coral crown. Guardian-monitored.'}},
+    {id:'guard',   x:.76,y:.25,r:26,col:'#002540',border:'#fe5337',label:'Guardian',     sub:'Core AI',     info:{title:'Guardian Core — Water Intelligence',       text:'Real-time monitoring of all nodes. 60-second telemetry. Weather-predictive scheduling. Automatic node isolation on quality failure. All data on-island.'}},
+    {id:'dist',    x:.76,y:.72,r:30,col:'#004540',border:'#23c1c4',label:'Distribution', sub:'Civic',       info:{title:'Civic Water Distribution',                 text:'Pressurised pipe network to homes, schools, clinics, civic spaces. Guardian monitors zone flow and flags unusual consumption or suspected leaks.'}},
+    {id:'brine',   x:.52,y:.18,r:22,col:'#401010',border:'#fe5337',label:'Brine',        sub:'Salt Basin',  info:{title:'Brine — Salt Basin & Halophytes',          text:'RO brine diluted and routed through salt basins and halophyte beds. Salt harvested for local use. Reef impact minimised.'}},
+    {id:'coral',   x:.76,y:.50,r:22,col:'#003510',border:'#7ab87a',label:'Coral',        sub:'Reef Nursery',info:{title:'Coral Crown — Reef Restoration',           text:'Every Vai Koko tank has a porous concrete coral nursery crown. Guardian tracks colonisation. Target: 75%+ survival at 6 months.'}},
+  ];
+
+  var arrows = [
+    {from:'ocean',  to:'vaitapu',col:'rgba(35,193,196,.55)'},
+    {from:'rain',   to:'vaitapu',col:'rgba(255,198,29,.55)'},
+    {from:'vaitapu',to:'vaikoko',col:'rgba(35,193,196,.65)'},
+    {from:'vaitapu',to:'brine',  col:'rgba(254,83,55,.4)'},
+    {from:'vaikoko',to:'dist',   col:'rgba(35,193,196,.55)'},
+    {from:'vaikoko',to:'coral',  col:'rgba(122,184,122,.5)'},
+    {from:'guard',  to:'vaitapu',col:'rgba(254,83,55,.3)',dashed:true},
+    {from:'guard',  to:'vaikoko',col:'rgba(254,83,55,.3)',dashed:true},
+    {from:'guard',  to:'dist',   col:'rgba(254,83,55,.3)',dashed:true},
+  ];
+
+  function resize(){ W=c.width=c.offsetWidth; H=c.height=340; }
+  resize();
+  new ResizeObserver(function(){requestAnimationFrame(resize);}).observe(c);
+
+  function getPos(id){
+    var n=nodes.find(function(x){return x.id===id;});
+    if(!n){console.warn('[flow] unknown id:',id);return{x:0,y:0};}
+    return{x:W*n.x,y:H*n.y};
+  }
+
+  var prog=0;
+  function drawArrow(from,to,col,dashed,p){
+    var f=getPos(from),t2=getPos(to);
+    var dx=t2.x-f.x,dy=t2.y-f.y,len=Math.hypot(dx,dy);
+    if(len===0)return;
+    var nx=dx/len,ny=dy/len;
+    var fn=nodes.find(function(x){return x.id===from;});
+    var tn=nodes.find(function(x){return x.id===to;});
+    if(!fn||!tn)return;
+    var sx=f.x+nx*fn.r,sy=f.y+ny*fn.r;
+    var ex=t2.x-nx*tn.r,ey=t2.y-ny*tn.r;
+    var px=sx+(ex-sx)*p,py=sy+(ey-sy)*p;
+    ctx.strokeStyle=col; ctx.lineWidth=2.5;
+    if(dashed)ctx.setLineDash([5,4]);else ctx.setLineDash([]);
+    ctx.beginPath(); ctx.moveTo(sx,sy); ctx.lineTo(px,py); ctx.stroke();
+    ctx.setLineDash([]);
+    if(p>=1){
+      var ah=8;
+      ctx.fillStyle=col;
+      ctx.beginPath();
+      ctx.moveTo(ex,ey);
+      ctx.lineTo(ex-nx*ah+ny*ah*0.5,ey-ny*ah-nx*ah*0.5);
+      ctx.lineTo(ex-nx*ah-ny*ah*0.5,ey-ny*ah+nx*ah*0.5);
+      ctx.closePath(); ctx.fill();
+    }
+  }
+
+  function draw(){
+    ctx.clearRect(0,0,W,H);
+    if(!R&&prog<1) prog=Math.min(1,prog+0.015);
+    arrows.forEach(function(a){drawArrow(a.from,a.to,a.col,a.dashed,prog);});
+    nodes.forEach(function(n){
+      var nx=W*n.x,ny=H*n.y,isH=hovered&&hovered.id===n.id;
+      if(isH){ctx.shadowColor=n.border;ctx.shadowBlur=20;}
+      ctx.beginPath(); ctx.arc(nx,ny,n.r+(isH?3:0),0,Math.PI*2);
+      ctx.fillStyle=n.col; ctx.fill();
+      ctx.strokeStyle=n.border; ctx.lineWidth=isH?2.5:1.5; ctx.stroke();
+      ctx.shadowBlur=0; ctx.shadowColor='transparent';
+      ctx.fillStyle='rgba(255,255,255,.9)'; ctx.font='bold 9px Questrial,sans-serif'; ctx.textAlign='center';
+      ctx.fillText(n.label,nx,ny-1);
+      ctx.fillStyle='rgba(255,255,255,.4)'; ctx.font='7px DM Sans,sans-serif';
+      ctx.fillText(n.sub,nx,ny+11);
+    });
+    ctx.textAlign='left';
+    if(!R)t++;else prog=1;
+    requestAnimationFrame(draw);
+  }
+  draw();
+
+  function getNode(e){
+    var rect=c.getBoundingClientRect();
+    var mx=(e.clientX-rect.left)*(W/rect.width);
+    var my=(e.clientY-rect.top)*(H/rect.height);
+    return nodes.find(function(n){return Math.hypot(mx-W*n.x,my-H*n.y)<n.r+8;})||null;
+  }
+  c.addEventListener('mousemove',function(e){hovered=getNode(e);c.style.cursor=hovered?'pointer':'default';});
+  c.addEventListener('mouseleave',function(){hovered=null;});
+  c.addEventListener('click',function(e){
+    var n=getNode(e); if(!n)return;
+    var ti=document.getElementById('flow-title');
+    var tx=document.getElementById('flow-text');
+    var dt=document.getElementById('flow-dot');
+    if(ti)ti.textContent=n.info.title;
+    if(tx)tx.textContent=n.info.text;
+    if(dt)dt.style.background=n.border;
+  });
+})();
+
+/* ── Capacity bar chart ── */
+(function(){
+  var c=document.getElementById('cap-canvas');
+  if(!c)return;
+  var ctx=c.getContext('2d'),animated=false,progress=0;
+  var bars=[
+    {label:'Daily Output\n(Phase 1)', val:60000,   col:'rgba(35,193,196,.85)'},
+    {label:'Vai Koko\n(Phase 1)',     val:225000,  col:'rgba(0,150,185,.75)' },
+    {label:'Vai Koko\n(Tier 2)',      val:600000,  col:'rgba(212,164,0,.72)' },
+    {label:'Vai Koko\n(National)',    val:1500000, col:'rgba(212,164,0,.88)' },
+  ];
+  var MAX=1800000;
+  function fmt(n){return n>=1000000?(n/1000000).toFixed(1)+'M':n>=1000?Math.round(n/1000)+'k':n;}
+  var W,H;
+  function resize(){W=c.width=c.offsetWidth;H=c.height=260;}
+  resize(); new ResizeObserver(function(){requestAnimationFrame(resize);}).observe(c);
+
+  new IntersectionObserver(function(entries){
+    entries.forEach(function(e){if(e.isIntersecting&&!animated){animated=true;anim();}});
+  },{threshold:.3}).observe(c);
+
+  function anim(){progress=Math.min(1,progress+0.022);draw();if(progress<1)requestAnimationFrame(anim);}
+
+  function draw(){
+    ctx.clearRect(0,0,W,H);
+    var pad=44,gap=14,bw=(W-pad*2-gap*(bars.length-1))/bars.length,maxH=H-72;
+    bars.forEach(function(b,i){
+      var bx=pad+i*(bw+gap),barH=Math.round(maxH*(b.val/MAX)*progress),by=H-barH-42;
+      ctx.fillStyle=b.col;
+      var r=Math.min(4,bw/2);
+      ctx.beginPath();
+      ctx.moveTo(bx+r,by); ctx.lineTo(bx+bw-r,by);
+      ctx.quadraticCurveTo(bx+bw,by,bx+bw,by+r);
+      ctx.lineTo(bx+bw,by+barH); ctx.lineTo(bx,by+barH);
+      ctx.lineTo(bx,by+r); ctx.quadraticCurveTo(bx,by,bx+r,by); ctx.closePath();
+      ctx.fill();
+      if(progress>.65){
+        ctx.fillStyle='rgba(0,43,75,.85)'; ctx.font='bold 9px Questrial,sans-serif'; ctx.textAlign='center';
+        ctx.fillText(fmt(b.val),bx+bw/2,by-6);
+      }
+      ctx.fillStyle='rgba(0,43,75,.45)'; ctx.font='8px DM Sans,sans-serif';
+      b.label.split('\n').forEach(function(l,li){ctx.fillText(l,bx+bw/2,H-26+li*12);});
+    });
+    [0,500000,1000000,1500000].forEach(function(v){
+      var y=H-42-Math.round(maxH*(v/MAX));
+      ctx.fillStyle='rgba(0,43,75,.25)'; ctx.font='7px DM Sans,sans-serif'; ctx.textAlign='right';
+      ctx.fillText(fmt(v),pad-8,y+3);
+      ctx.strokeStyle='rgba(0,43,75,.07)'; ctx.lineWidth=1; ctx.setLineDash([3,3]);
+      ctx.beginPath(); ctx.moveTo(pad,y); ctx.lineTo(W-10,y); ctx.stroke();
+      ctx.setLineDash([]);
+    });
+    ctx.textAlign='left';
+  }
+  if(R){progress=1;draw();}
+})();
+
+/* ── Coral ring donut chart ── */
+(function(){
+  var c=document.getElementById('coral-ring-canvas');
+  if(!c)return;
+  var ctx=c.getContext('2d'),pct=0,target=0.75,animated=false;
+  var disp=document.getElementById('coral-pct-display');
+  c.width=200; c.height=200;
+
+  function draw(p){
+    ctx.clearRect(0,0,200,200);
+    var cx=100,cy=100,r=76,thick=14;
+    ctx.strokeStyle='rgba(255,255,255,.07)'; ctx.lineWidth=thick;
+    ctx.beginPath(); ctx.arc(cx,cy,r,0,Math.PI*2); ctx.stroke();
+    var start=-Math.PI/2,end=start+p*Math.PI*2;
+    var gr=ctx.createLinearGradient(cx-r,0,cx+r,0);
+    gr.addColorStop(0,'rgba(35,193,196,.95)'); gr.addColorStop(1,'rgba(0,150,185,.65)');
+    ctx.strokeStyle=gr; ctx.lineWidth=thick; ctx.lineCap='round';
+    ctx.beginPath(); ctx.arc(cx,cy,r,start,end); ctx.stroke();
+    ctx.lineCap='butt';
+    ctx.strokeStyle='rgba(255,198,29,.22)'; ctx.lineWidth=thick;
+    ctx.beginPath(); ctx.arc(cx,cy,r,end,start+Math.PI*2); ctx.stroke();
+    if(disp) disp.textContent=Math.round(p*100)+'%';
+  }
+
+  new IntersectionObserver(function(entries){
+    entries.forEach(function(e){if(e.isIntersecting&&!animated){animated=true;anim();}});
+  },{threshold:.3}).observe(c);
+
+  function anim(){pct=Math.min(target,pct+0.012);draw(pct);if(pct<target)requestAnimationFrame(anim);}
+  draw(0);
+  if(R) draw(target);
+})();
+
+/* ── Resilience bars (scroll-triggered) ── */
+(function(){
+  var fills=document.querySelectorAll('.res-fill[data-width]');
+  new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting){e.target.style.width=e.target.dataset.width;}
+    });
+  },{threshold:.3}).observe(document.querySelector('.resilience-bars')||document.body);
+  fills.forEach(function(f){
+    f.style.width='0%';
+    new IntersectionObserver(function(entries){
+      entries.forEach(function(e){if(e.isIntersecting)e.target.style.width=e.target.dataset.width;});
+    },{threshold:.3}).observe(f);
+  });
+})();
+
+/* ── Tier card selector + bar animation ── */
+(function(){
+  var cards=document.querySelectorAll('.tier-card');
+  cards.forEach(function(card){
+    card.addEventListener('click',function(){
+      cards.forEach(function(c){c.classList.remove('selected');});
+      card.classList.add('selected');
+    });
+    card.addEventListener('keydown',function(e){
+      if(e.key==='Enter'||e.key===' '){e.preventDefault();card.click();}
+    });
+  });
+  var barFills=document.querySelectorAll('.tier-bar-fill[data-width]');
+  barFills.forEach(function(f){
+    f.style.width='0';
+    f.style.transition='width 1.2s cubic-bezier(.22,1,.36,1)';
+    new IntersectionObserver(function(entries){
+      entries.forEach(function(e){if(e.isIntersecting)e.target.style.width=e.target.dataset.width;});
+    },{threshold:.2}).observe(f);
+  });
+})();
+
+/* ── Stagger delays ── */
+[
+  ['.gov-layout .gov-card',    function(i){return i*.08+'s';}],
+  ['.recs-grid .rec-card',     function(i){return i*.10+'s';}],
+  ['.challenge-facts .c-fact', function(i){return i*.10+'s';}],
+  ['.tier-card',               function(i){return i*.10+'s';}],
+].forEach(function(pair){
+  document.querySelectorAll(pair[0]).forEach(function(el,i){
+    el.style.transitionDelay=pair[1](i);
+  });
+});
+
+})(); // end IIFE
+</script>
+</body>
+</html>
