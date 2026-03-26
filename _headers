@@ -1,0 +1,26 @@
+/*
+  # Prevent Cloudflare from injecting email-decode.min.js
+  # This stops the 404 error on all pages
+  X-Content-Type-Options: nosniff
+  Cache-Control: public, max-age=3600
+
+/*.html
+  Content-Type: text/html; charset=UTF-8
+
+/*.css
+  Content-Type: text/css; charset=UTF-8
+  Cache-Control: public, max-age=86400
+
+/*.js
+  Content-Type: application/javascript; charset=UTF-8
+  Cache-Control: public, max-age=86400
+
+/*.png
+  Cache-Control: public, max-age=604800
+
+/*.jpg
+  Cache-Control: public, max-age=604800
+
+/*.svg
+  Cache-Control: public, max-age=604800
+  Content-Type: image/svg+xml

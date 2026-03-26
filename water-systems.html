@@ -12,12 +12,6 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Questrial&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet">
-  <!-- Shared system CSS (loaded on live site; graceful fallback below if missing) -->
-  <link rel="stylesheet" href="assets/css/tokens.css">
-  <link rel="stylesheet" href="assets/css/base.css">
-  <link rel="stylesheet" href="assets/css/layout.css">
-  <link rel="stylesheet" href="assets/css/components.css">
-  <link rel="stylesheet" href="assets/css/responsive.css">
 
 <style>
 /* ═══════════════════════════════════════════════════════════════════
@@ -399,6 +393,36 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;padding:0 var(--page-x);heig
 .tier-bar-track{height:3px;background:rgba(255,255,255,.07);margin-top:1rem;overflow:hidden;}
 .tier-bar-fill{height:100%;background:linear-gradient(90deg,var(--teal),rgba(35,193,196,.35));transition:width 1.2s var(--ease);}
 
+/* ═══ SANCTUARY CLUSTER ═════════════════════════════════════════ */
+.sanctuary-section{background:var(--navy-mid);padding:var(--section-pad) var(--page-x);position:relative;overflow:hidden;}
+.sanctuary-section::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 70% 60% at 30% 40%,rgba(35,193,196,.06) 0%,transparent 55%),radial-gradient(ellipse 50% 40% at 75% 75%,rgba(0,150,185,.05) 0%,transparent 50%);pointer-events:none;}
+.sanctuary-inner{max-width:var(--container-max);margin:0 auto;}
+.sanctuary-render-wrap{line-height:0;}
+.sanctuary-media-frame{margin:2.5rem 0;position:relative;border:1px solid rgba(255,255,255,.07);overflow:hidden;background:var(--navy-deep);}
+.sanctuary-media-frame video{width:100%;height:420px;display:block;object-fit:cover;object-position:center center;background:var(--navy-deep);}
+@media(max-width:768px){.sanctuary-media-frame video{height:260px;}}
+.sanctuary-cols{display:grid;grid-template-columns:1fr 1fr;gap:4rem;margin-top:1rem;}
+.sanctuary-col{}
+.sanc-principle{display:flex;gap:1.4rem;margin-bottom:2rem;padding-bottom:2rem;border-bottom:1px solid rgba(255,255,255,.05);}
+.sanc-principle:last-child{border-bottom:none;margin-bottom:0;}
+.sanc-prin-num{font-family:var(--font-serif);font-size:2.2rem;font-weight:300;color:rgba(35,193,196,.25);line-height:1;flex-shrink:0;width:2.8rem;}
+.sanc-prin-title{font-family:var(--font-ui);font-size:.74rem;letter-spacing:.1em;text-transform:uppercase;color:var(--white);margin-bottom:.5rem;}
+.sanc-prin-body{font-size:.82rem;color:var(--text-on-dark);line-height:1.75;}
+.sanc-note-card{background:var(--navy-mid);padding:1.6rem 1.8rem;transition:background var(--dur-sm);}
+.sanc-note-card:hover{background:rgba(255,255,255,.02);}
+.sanc-note-icon{width:36px;height:36px;display:flex;align-items:center;justify-content:center;color:var(--teal);margin-bottom:1rem;}
+.sanc-note-title{font-family:var(--font-ui);font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;color:var(--white);margin-bottom:.6rem;}
+.sanc-note-body{font-size:.78rem;color:var(--text-on-dark);line-height:1.7;}
+@media(max-width:900px){
+  .sanctuary-cols{grid-template-columns:1fr;}
+}
+
+
+@keyframes fadeUp{from{opacity:0;transform:translateY(18px);}to{opacity:1;transform:translateY(0);}}
+@keyframes fadeIn{from{opacity:0;}to{opacity:1;}}
+@keyframes pulseDot{0%,100%{box-shadow:0 0 0 0 rgba(35,193,196,.5);}50%{box-shadow:0 0 0 5px rgba(35,193,196,0);}}
+@keyframes scrollPulse{0%,100%{opacity:.3;}50%{opacity:1;}}
+
 /* ═══ RECOMMENDATIONS ═══════════════════════════════════════════ */
 .recs-section{background:var(--navy-mid);padding:var(--section-pad) var(--page-x);}
 .recs-inner{max-width:var(--container-max);margin:0 auto;}
@@ -474,63 +498,9 @@ footer{background:var(--navy-deep);}
 
 <body data-page="water-systems">
 
-<!-- ═══ NAV ════════════════════════════════════════════════════════ -->
-<nav id="nav" role="navigation" aria-label="Main navigation">
-  <a href="index.html" class="nav-logo" aria-label="Sovereign Vision — Home">
-    <img src="images/logo-trans.png" alt="Sovereign Vision" width="42" height="42">
-    <div class="nav-logo-text">Sovereign Vision<span>Te Fale o Te Mātāmua · Tuvalu</span></div>
-  </a>
-  <ul class="nav-links" role="list">
-    <li class="nav-dropdown" role="none">
-      <a href="core-systems.html" aria-haspopup="true" aria-expanded="false">Core Systems</a>
-      <div class="dropdown-menu" role="menu">
-        <a href="energy.html">Power Generation</a>
-        <a href="water-systems.html" style="color:var(--coral)!important;">Water Systems</a>
-        <a href="water-systems.html#sanctuary" style="padding-left:1.8rem;font-size:.65rem;color:var(--stone)!important;">↳ Reef Harbor — Sanctuary</a>
-        <a href="food.html">Food Sovereignty</a>
-        <a href="communications.html">Communications</a>
-        <a href="waste-systems.html">Resource Recovery</a>
-        <a href="civic-infrastructure.html">Civic Infrastructure</a>
-        <a href="treasury.html">Sovereign Treasury</a>
-        <a href="guardian-arbor.html">Guardian &amp; Arbor AI</a>
-        <a href="datacenter.html">Sovereign Datacenter</a>
-      </div>
-    </li>
-    <li><a href="how-it-works.html">How It Works</a></li>
-    <li class="nav-dropdown" role="none">
-      <a href="legal-licensing.html" aria-haspopup="true" aria-expanded="false">Legal</a>
-      <div class="dropdown-menu" role="menu">
-        <a href="civic-commons-license.html">Civic Commons License</a>
-        <a href="digitalarchipelago.html">Digital Archipelago Accord</a>
-        <a href="trust-formation-status.html">Trust Formation Status</a>
-        <a href="terms.html">Terms of Use</a>
-        <a href="privacy-policy.html">Privacy Policy</a>
-        <a href="copyright-notice.html">Copyright Notice</a>
-      </div>
-    </li>
-    <li><a href="faq.html">FAQ</a></li>
-    <li class="nav-dropdown" role="none">
-      <a href="about-us.html" aria-haspopup="true" aria-expanded="false">About</a>
-      <div class="dropdown-menu" role="menu">
-        <a href="about-us.html">About Us</a>
-        <a href="continuity-vs-reinvention.html">Continuity vs Reinvention</a>
-        <a href="elders-council.html">Elders Council</a>
-        <a href="youth-voice.html">Youth Voice</a>
-      </div>
-    </li>
-  </ul>
-  <a href="contact.html" class="nav-cta">Partner With Us</a>
-  <button id="hamburger" class="hamburger" aria-label="Toggle navigation" aria-expanded="false" aria-controls="mobile-menu">
-    <span></span><span></span><span></span>
-  </button>
-</nav>
-<div class="mobile-menu" id="mobile-menu" role="dialog" aria-modal="true">
-  <a href="core-systems.html" onclick="closeMobileMenu()">Core Systems</a>
-  <a href="how-it-works.html" onclick="closeMobileMenu()">How It Works</a>
-  <a href="about-us.html"     onclick="closeMobileMenu()">About</a>
-  <a href="faq.html"          onclick="closeMobileMenu()">FAQ</a>
-  <a href="contact.html"      onclick="closeMobileMenu()" class="m-cta">Partner With Us</a>
-</div>
+<!-- ═══ NAV ═══════════════════════════════════════════════════════════ -->
+
+<div data-include="assets/partials/nav.html"></div>
 
 <!-- ═══ HERO ═══════════════════════════════════════════════════════ -->
 <section class="page-hero" aria-label="Water Systems hero">
@@ -662,97 +632,1350 @@ footer{background:var(--navy-deep);}
   </div>
 </section>
 
-<!-- ═══ VAI TAPU ══════════════════════════════════════════════════ -->
-<section class="vai-tapu-section" id="vai-tapu" aria-label="Vai Tapu desalination system">
-  <div class="vai-tapu-inner">
-    <div class="system-header">
-      <div>
-        <div class="section-tag teal reveal">Vai Tapu · Sacred Water</div>
-        <h2 class="h2 reveal">Solar desalination.<br><em>20,000 litres per day.</em></h2>
-      </div>
-      <div class="reveal">
-        <div class="system-badge"><div class="system-badge-dot"></div>3 nodes · Phase 1 · Funafuti</div>
-        <p class="body-text" style="max-width:380px;margin-top:.8rem;">Each Vai Tapu node is a self-contained, solar-powered desalination unit. Three nodes run in parallel during Phase 1, delivering a combined 60,000 L/day.</p>
-      </div>
-    </div>
+<!-- ═══════════════════════════════════════════════════════════════
+     VAI TAPU DETAILED PROCESS FLOW - v4.1
+     Source: vai_tapu_process_flow_v3.svg + White Paper RO v2.6
+     + Gemini reference diagram
+     9 stages: INTAKE - PRE-TREAT - RO CORE - POST-TREAT -
+               BRINE PATH - OUTPUT - SHUTDOWN - BYPASS - GUARDIAN
+     Self-contained HTML/CSS/JS - drop into water-systems.html
+════════════════════════════════════════════════════════════════ -->
+<section id="vai-process" class="vp-section" aria-label="Vai Tapu detailed process flow">
+<style>
+/* ── Reset ── */
+.vp-section*,.vp-section *::before,.vp-section *::after{box-sizing:border-box;margin:0;padding:0}
 
-    <!-- Desalination process flow -->
-    <div class="process-flow reveal" aria-label="Desalination process steps">
-      <div class="pf-step">
-        <div class="pf-n">01</div>
-        <div class="pf-icon"><svg viewBox="0 0 24 24"><path d="M3 6h18M3 12h18M3 18h18"/></svg></div>
-        <div class="pf-label">Seawater<br>Intake</div>
-      </div>
-      <div class="pf-step">
-        <div class="pf-n">02</div>
-        <div class="pf-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83"/></svg></div>
-        <div class="pf-label">Solar<br>Power</div>
-      </div>
-      <div class="pf-step">
-        <div class="pf-n">03</div>
-        <div class="pf-icon"><svg viewBox="0 0 24 24"><path d="M7 16.5A4.5 4.5 0 0112 12a4.5 4.5 0 015 4.5"/><path d="M5 19h14"/><path d="M12 3v9"/></svg></div>
-        <div class="pf-label">Pre-<br>filtration</div>
-      </div>
-      <div class="pf-step">
-        <div class="pf-n">04</div>
-        <div class="pf-icon"><svg viewBox="0 0 24 24"><rect x="2" y="6" width="20" height="12" rx="2"/><path d="M12 6v12M6 9h.01M6 12h.01M6 15h.01"/></svg></div>
-        <div class="pf-label">RO<br>Membrane</div>
-      </div>
-      <div class="pf-step">
-        <div class="pf-n">05</div>
-        <div class="pf-icon"><svg viewBox="0 0 24 24"><path d="M12 22V12M12 12C12 7 6 4 6 4s-1 5 2 8M12 12c0-5 6-8 6-8s1 5-2 8"/></svg></div>
-        <div class="pf-label">Rainwater<br>Blending</div>
-      </div>
-      <div class="pf-step">
-        <div class="pf-n">06</div>
-        <div class="pf-icon"><svg viewBox="0 0 24 24"><path d="M12 2.69l5.66 5.66a8 8 0 11-11.31 0z"/></svg></div>
-        <div class="pf-label">Potable<br>Output</div>
-      </div>
-      <div class="pf-step">
-        <div class="pf-n">07</div>
-        <div class="pf-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
-        <div class="pf-label">Guardian<br>Monitor</div>
-      </div>
-    </div>
+/* ── Shell ── */
+.vp-section{position:relative;background:var(--navy-deep,#00152a);padding:clamp(4rem,8vw,7rem) clamp(1.25rem,4vw,3rem);overflow:hidden;isolation:isolate}
+.vp-section::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 60% 50% at 8% 15%,rgba(35,193,196,.07) 0%,transparent 52%),radial-gradient(ellipse 40% 40% at 92% 12%,rgba(0,150,185,.05) 0%,transparent 48%);pointer-events:none;z-index:0}
+.vp-inner{position:relative;z-index:1;max-width:var(--container-max,1360px);margin:0 auto;display:grid;gap:clamp(1.5rem,3vw,2.5rem)}
 
-    <div class="vt-layout">
-      <!-- Interactive SVG diagram -->
-      <div class="vt-diagram-wrap reveal-left">
-        <div class="vt-diagram-label">Vai Tapu — Process Flow (hover any component)</div>
-        <canvas id="vt-diagram" height="460" aria-label="Vai Tapu desalination process flow schematic — hover each component for details"></canvas>
-        <div class="vt-tooltip" id="vt-tooltip"></div>
-        <div class="vt-stats-grid">
-          <div class="vt-stat"><div class="vt-stat-n">20k</div><div class="vt-stat-l">Litres/day<br>per node</div></div>
-          <div class="vt-stat"><div class="vt-stat-n">6.4kW</div><div class="vt-stat-l">Solar array<br>per node</div></div>
-          <div class="vt-stat"><div class="vt-stat-n">28kWh</div><div class="vt-stat-l">LFP battery<br>bank</div></div>
-          <div class="vt-stat"><div class="vt-stat-n">6+hrs</div><div class="vt-stat-l">Autonomy<br>battery-only</div></div>
-        </div>
-      </div>
-      <!-- Specs + notes -->
-      <div class="reveal">
-        <div class="section-tag teal" style="margin-bottom:1.2rem;">Technical Specifications</div>
-        <table class="spec-table" aria-label="Vai Tapu technical specifications">
-          <tr><td>Daily output per node</td><td>20,000 L/day (potable)</td></tr>
-          <tr><td>Combined Phase 1 output</td><td>60,000 L/day (3 nodes)</td></tr>
-          <tr><td>Solar array</td><td>6.4 kW rooftop per node</td></tr>
-          <tr><td>Battery storage</td><td>28–30 kWh LFP per node</td></tr>
-          <tr><td>Tier 1 autonomy</td><td>6+ hours battery-only</td></tr>
-          <tr><td>Water quality output</td><td>WHO potable standard</td></tr>
-          <tr><td>RO pressure</td><td>55–70 bar operating</td></tr>
-          <tr><td>Brine discharge</td><td>Diluted · salt basin routed</td></tr>
-          <tr><td>Rainwater blending</td><td>Integrated dilution line</td></tr>
-          <tr><td>Guardian monitoring</td><td>60-second telemetry cycle</td></tr>
-          <tr><td>Cooling</td><td>Dual mini-split, Guardian-controlled</td></tr>
-          <tr><td>Network</td><td>MQTT telemetry · Te Puka Loloa mesh</td></tr>
-        </table>
+/* ── Typography ── */
+.vp-eyebrow{display:inline-flex;align-items:center;gap:.65rem;font-family:var(--font-ui,'Questrial',sans-serif);font-size:.62rem;letter-spacing:.22em;text-transform:uppercase;color:var(--teal,#23c1c4);margin-bottom:.9rem}
+.vp-eyebrow::before{content:'';width:20px;height:1.5px;background:var(--teal,#23c1c4);flex-shrink:0}
+.vp-headline{font-family:var(--font-serif,'Cormorant Garamond',serif);font-size:clamp(2rem,4vw,3.6rem);font-weight:300;line-height:1.08;color:#fff;letter-spacing:-.02em;margin-bottom:.9rem}
+.vp-headline em{font-style:italic;color:var(--teal,#23c1c4)}
+.vp-intro{font-family:var(--font-body,'DM Sans',sans-serif);font-size:clamp(.88rem,1.2vw,1rem);line-height:1.82;color:rgba(250,246,238,.62);max-width:680px}
 
-        <div style="margin-top:2rem;">
-          <div class="section-tag teal" style="margin-bottom:1rem;">Brine Management</div>
-          <p class="body-text" style="font-size:.82rem;">Vai Tapu's brine output is not discarded — it is routed through salt basins and halophyte beds before reaching the ocean. Salt is harvested for local use and potential export. This closed-loop approach protects the reef, generates a secondary product, and avoids the ecosystem damage common in conventional desalination.</p>
-        </div>
-      </div>
-    </div>
+/* ── Stat strip ── */
+.vp-stats{display:flex;gap:0;flex-wrap:wrap;border:1px solid rgba(35,193,196,.12);background:rgba(0,21,42,.45);width:fit-content}
+.vp-stat{padding:.75rem 1.4rem;border-right:1px solid rgba(35,193,196,.1)}
+.vp-stat:last-child{border-right:none}
+.vp-stat-n{font-family:var(--font-serif,'Cormorant Garamond',serif);font-size:1.55rem;font-weight:300;color:var(--teal,#23c1c4);line-height:1}
+.vp-stat-l{font-family:var(--font-ui,'Questrial',sans-serif);font-size:.52rem;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.32);margin-top:.22rem}
+
+/* ── Shell: diagram + detail panel ── */
+.vp-shell{display:grid;grid-template-columns:1fr 296px;gap:14px;align-items:start}
+
+/* ── Flow diagram card ── */
+.vp-diagram{border-radius:20px;border:1px solid rgba(35,193,196,.12);background:linear-gradient(175deg,rgba(0,24,46,.95),rgba(0,10,22,.98));box-shadow:inset 0 1px 0 rgba(255,255,255,.03),0 24px 60px rgba(0,0,0,.4);overflow:hidden;position:relative}
+
+/* Stage lane headers */
+.vp-stage-rail{display:grid;grid-template-rows:auto;gap:0}
+
+/* Individual stage row */
+.vp-stage{position:relative;border-bottom:1px solid rgba(255,255,255,.04);transition:background .22s}
+.vp-stage:last-child{border-bottom:none}
+.vp-stage:hover{background:rgba(35,193,196,.025)}
+.vp-stage.vp-active{background:rgba(35,193,196,.04)}
+
+.vp-stage-head{display:flex;align-items:center;gap:.6rem;padding:.65rem 1.2rem .5rem 1.2rem;cursor:pointer;user-select:none}
+.vp-stage-label{font-family:var(--font-ui,'Questrial',sans-serif);font-size:.54rem;letter-spacing:.2em;text-transform:uppercase;font-weight:500;flex-shrink:0;min-width:62px;text-align:center;padding:.22rem .5rem;border-radius:4px}
+.vp-stage-title{font-family:var(--font-serif,'Cormorant Garamond',serif);font-size:1.08rem;font-weight:300;color:#fff;letter-spacing:-.01em;flex:1}
+.vp-stage-arrow{width:16px;height:16px;flex-shrink:0;color:rgba(255,255,255,.25);transition:transform .22s,color .22s}
+.vp-stage.vp-active .vp-stage-arrow{transform:rotate(90deg);color:var(--teal,#23c1c4)}
+
+/* Stage body: node grid */
+.vp-stage-body{display:none;padding:0 1.2rem 1rem 1.2rem}
+.vp-stage.vp-active .vp-stage-body{display:block}
+
+.vp-nodes{display:flex;flex-wrap:wrap;gap:8px;align-items:center;padding-top:.5rem}
+
+/* Individual nodes */
+.vp-node{border-radius:8px;border:1px solid;padding:.55rem .8rem;font-family:var(--font-body,'DM Sans',sans-serif);font-size:.75rem;line-height:1.4;cursor:pointer;transition:background .18s,border-color .18s,transform .15s;position:relative}
+.vp-node:hover{transform:translateY(-1px)}
+.vp-node.vp-node-sel{box-shadow:0 0 0 1px currentColor,0 4px 16px rgba(0,0,0,.3)}
+.vp-node-title{font-weight:500;display:block;margin-bottom:.12rem}
+.vp-node-sub{opacity:.7;font-size:.7rem}
+
+/* Node colours - matching SVG source */
+.vpn-sea{background:rgba(12,68,124,.55);border-color:rgba(133,183,235,.3);color:rgba(181,212,244,.9)}
+.vpn-pre{background:rgba(20,52,82,.55);border-color:rgba(80,140,200,.25);color:rgba(160,200,240,.88)}
+.vpn-ro{background:rgba(113,43,19,.55);border-color:rgba(240,153,123,.3);color:rgba(245,196,179,.9)}
+.vpn-post{background:rgba(39,80,10,.55);border-color:rgba(151,196,89,.3);color:rgba(192,221,151,.9)}
+.vpn-brine{background:rgba(80,50,0,.55);border-color:rgba(186,117,23,.3);color:rgba(239,186,80,.88)}
+.vpn-alert{background:rgba(121,31,31,.55);border-color:rgba(240,149,149,.3);color:rgba(247,193,193,.9)}
+.vpn-out{background:rgba(0,60,90,.55);border-color:rgba(35,193,196,.3);color:rgba(160,230,240,.9)}
+.vpn-sd{background:rgba(50,50,48,.55);border-color:rgba(180,178,169,.25);color:rgba(211,209,199,.88)}
+.vpn-bypass{background:rgba(40,40,38,.55);border-color:rgba(160,158,150,.22);color:rgba(180,178,169,.8)}
+.vpn-guardian{background:rgba(0,30,55,.55);border-color:rgba(35,193,196,.22);color:rgba(35,193,196,.88)}
+
+/* Pressure point badges */
+.vp-ppoint{display:inline-flex;align-items:center;gap:.35rem;padding:.28rem .55rem;border-radius:4px;background:rgba(68,68,65,.7);border:1px solid rgba(180,178,169,.25);font-family:var(--font-ui,'Questrial',sans-serif);font-size:.6rem;letter-spacing:.07em;color:rgba(180,178,169,.9)}
+
+/* Flow connector arrows between stages */
+.vp-flow-arrow{display:flex;align-items:center;justify-content:center;padding:.4rem 0;gap:.5rem}
+.vp-flow-line{flex:1;height:1.5px;max-width:200px}
+.vp-flow-label{font-family:var(--font-ui,'Questrial',sans-serif);font-size:.58rem;letter-spacing:.1em;text-transform:uppercase;white-space:nowrap}
+.vp-flow-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0}
+
+/* Stage colour theming */
+.vp-stage[data-stage="intake"]    .vp-stage-label{background:rgba(12,68,124,.6);color:rgba(181,212,244,.9)}
+.vp-stage[data-stage="pretreat"]  .vp-stage-label{background:rgba(20,52,82,.6);color:rgba(160,200,240,.9)}
+.vp-stage[data-stage="ro"]        .vp-stage-label{background:rgba(113,43,19,.6);color:rgba(245,196,179,.9)}
+.vp-stage[data-stage="posttreat"] .vp-stage-label{background:rgba(39,80,10,.6);color:rgba(192,221,151,.9)}
+.vp-stage[data-stage="brine"]     .vp-stage-label{background:rgba(80,50,0,.6);color:rgba(239,186,80,.9)}
+.vp-stage[data-stage="output"]    .vp-stage-label{background:rgba(0,60,90,.6);color:rgba(160,230,240,.9)}
+.vp-stage[data-stage="shutdown"]  .vp-stage-label{background:rgba(50,50,48,.6);color:rgba(211,209,199,.9)}
+.vp-stage[data-stage="bypass"]    .vp-stage-label{background:rgba(40,40,38,.6);color:rgba(180,178,169,.8)}
+.vp-stage[data-stage="guardian"]  .vp-stage-label{background:rgba(0,30,55,.6);color:rgba(35,193,196,.9)}
+
+/* ── Right panel ── */
+.vp-panel{border-radius:18px;border:1px solid rgba(35,193,196,.12);background:linear-gradient(175deg,rgba(0,22,44,.95),rgba(0,10,24,.99));box-shadow:0 16px 40px rgba(0,0,0,.3);padding:20px 16px 18px;display:flex;flex-direction:column;gap:11px;position:sticky;top:100px}
+.vp-p-eyebrow{font-family:var(--font-ui,'Questrial',sans-serif);font-size:.54rem;letter-spacing:.2em;text-transform:uppercase;color:rgba(35,193,196,.6)}
+.vp-p-stage-badge{display:inline-flex;align-items:center;gap:.4rem;padding:.22rem .6rem;border-radius:4px;font-family:var(--font-ui,'Questrial',sans-serif);font-size:.56rem;letter-spacing:.1em;text-transform:uppercase;width:fit-content}
+.vp-p-title{font-family:var(--font-serif,'Cormorant Garamond',serif);font-size:1.12rem;font-weight:300;line-height:1.22;color:#fff;letter-spacing:-.01em;min-height:2.5em}
+.vp-p-badge{display:inline-flex;align-items:center;gap:6px;padding:4px 8px;border-radius:999px;border:1px solid rgba(35,193,196,.17);background:rgba(0,43,75,.35);font-family:var(--font-ui,'Questrial',sans-serif);font-size:.6rem;letter-spacing:.06em;color:rgba(35,193,196,.82);width:fit-content}
+.vp-p-badge::before{content:'';width:5px;height:5px;border-radius:50%;background:var(--teal,#23c1c4);box-shadow:0 0 7px rgba(35,193,196,.7);flex-shrink:0;animation:vpDot 2.4s ease-in-out infinite}
+.vp-p-desc{font-family:var(--font-body,'DM Sans',sans-serif);font-size:.8rem;line-height:1.74;color:rgba(250,246,238,.56);flex:1}
+.vp-p-hr{height:1px;background:rgba(35,193,196,.08)}
+.vp-p-specs{list-style:none;display:grid;gap:5px}
+.vp-p-spec{display:flex;justify-content:space-between;align-items:baseline;padding:.45rem .7rem;border-radius:8px;background:rgba(0,21,42,.36);border:1px solid rgba(35,193,196,.07)}
+.vp-p-spec-k{font-family:var(--font-ui,'Questrial',sans-serif);font-size:.6rem;letter-spacing:.07em;text-transform:uppercase;color:rgba(255,255,255,.5)}
+.vp-p-spec-v{font-family:var(--font-body,'DM Sans',sans-serif);font-size:.75rem;color:rgba(35,193,196,.9);font-weight:400;text-align:right;max-width:55%}
+.vp-p-note{font-family:var(--font-body,'DM Sans',sans-serif);font-size:.72rem;line-height:1.6;color:rgba(250,246,238,.35);border-left:2px solid rgba(35,193,196,.12);padding-left:.7rem}
+
+/* ── Legend ── */
+.vp-legend{display:flex;flex-wrap:wrap;gap:6px 18px;padding:12px 16px;border:1px solid rgba(35,193,196,.09);background:rgba(0,21,42,.38);border-radius:12px}
+.vp-legend-hd{font-family:var(--font-ui,'Questrial',sans-serif);font-size:.55rem;letter-spacing:.18em;text-transform:uppercase;color:rgba(35,193,196,.55);width:100%}
+.vl-item{display:flex;align-items:center;gap:6px;font-family:var(--font-body,'DM Sans',sans-serif);font-size:.68rem;color:rgba(250,246,238,.48)}
+.vl-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0}
+.vl-line{width:20px;height:2.5px;border-radius:1px;flex-shrink:0}
+.vl-dash{width:20px;height:2px;flex-shrink:0;background:repeating-linear-gradient(90deg,rgba(186,117,23,.7) 0,rgba(186,117,23,.7) 4px,transparent 4px,transparent 7px)}
+.vl-alarm{width:20px;height:2px;flex-shrink:0;background:repeating-linear-gradient(90deg,rgba(226,75,74,.7) 0,rgba(226,75,74,.7) 4px,transparent 4px,transparent 7px)}
+
+.vp-caption{font-family:var(--font-ui,'Questrial',sans-serif);font-size:.58rem;letter-spacing:.18em;text-transform:uppercase;color:rgba(35,193,196,.36);text-align:center}
+
+@keyframes vpDot{0%,100%{opacity:.7}50%{opacity:1}}
+@media(prefers-reduced-motion:reduce){.vp-p-badge::before{animation:none}}
+@media(max-width:1100px){.vp-shell{grid-template-columns:1fr}.vp-panel{position:static}}
+@media(max-width:640px){.vp-diagram{border-radius:14px}.vp-panel{border-radius:14px;padding:14px 12px}.vp-stats{flex-direction:column}.vp-stat{border-right:none;border-bottom:1px solid rgba(35,193,196,.1)}.vp-stat:last-child{border-bottom:none}}
+
+/* ════════════════════════════════════════
+   ANIMATED PROCESS FLOW DIAGRAM  v5
+════════════════════════════════════════ */
+
+/* Diagram wrapper */
+.vpd-wrap{position:relative;border-radius:20px;border:1px solid rgba(35,193,196,.13);background:linear-gradient(175deg,rgba(0,24,46,.96),rgba(0,10,24,.99));box-shadow:inset 0 1px 0 rgba(255,255,255,.03),0 24px 60px rgba(0,0,0,.4);overflow:hidden;padding:0}
+.vpd-svg{width:100%;display:block;overflow:visible}
+
+/* Node interactive zones */
+.vpd-node{cursor:pointer;outline:none}
+.vpd-node rect,.vpd-node circle{transition:filter .22s,opacity .22s;transform-box:fill-box;transform-origin:center}
+.vpd-node:hover rect,.vpd-node:focus-visible rect,.vpd-node.vpd-lit rect{filter:drop-shadow(0 0 10px rgba(35,193,196,.42));opacity:1!important}
+.vpd-node.vpd-dim rect{opacity:.28!important;filter:none!important}
+.vpd-node.vpd-dim circle{opacity:.28!important}
+.vpd-node.vpd-lit circle{filter:drop-shadow(0 0 8px currentColor)}
+
+/* Stage highlight bands */
+.vpd-band{transition:opacity .25s}
+.vpd-band.vpd-band-dim{opacity:.22}
+.vpd-band.vpd-band-lit{opacity:1}
+
+/* Animated flow paths */
+.vpd-flow-feed{fill:none;stroke:rgba(55,138,221,.6);stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+.vpd-flow-perm{fill:none;stroke:rgba(29,158,117,.7);stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+.vpd-flow-post{fill:none;stroke:rgba(59,130,30,.7);stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+.vpd-flow-brine{fill:none;stroke:rgba(186,117,23,.65);stroke-width:2;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:6 4}
+.vpd-flow-alarm{fill:none;stroke:rgba(226,75,74,.55);stroke-width:1.6;stroke-linecap:round;stroke-dasharray:4 4}
+.vpd-flow-guardian{fill:none;stroke:rgba(35,193,196,.18);stroke-width:1.4;stroke-linecap:round}
+
+/* Animated pulses */
+.vpd-pulse-feed{fill:none;stroke:rgba(55,138,221,.88);stroke-width:2;stroke-linecap:round;stroke-dasharray:3 12;animation:vpdFeed 4.8s linear infinite;filter:drop-shadow(0 0 4px rgba(55,138,221,.6))}
+.vpd-pulse-perm{fill:none;stroke:rgba(29,158,117,.88);stroke-width:2;stroke-linecap:round;stroke-dasharray:3 12;animation:vpdPerm 5.2s linear infinite;filter:drop-shadow(0 0 4px rgba(29,158,117,.6))}
+.vpd-pulse-post{fill:none;stroke:rgba(59,130,30,.85);stroke-width:2;stroke-linecap:round;stroke-dasharray:3 12;animation:vpdPost 5.8s linear infinite;filter:drop-shadow(0 0 4px rgba(59,130,30,.5))}
+.vpd-pulse-brine{fill:none;stroke:rgba(186,117,23,.82);stroke-width:1.8;stroke-linecap:round;stroke-dasharray:3 14;animation:vpdBrine 6.5s linear infinite;filter:drop-shadow(0 0 4px rgba(186,117,23,.45))}
+.vpd-pulse-alarm{fill:none;stroke:rgba(226,75,74,.75);stroke-width:1.5;stroke-linecap:round;stroke-dasharray:2 10;animation:vpdAlarm 3.5s linear infinite}
+.vpd-pulse-guardian{fill:none;stroke:rgba(35,193,196,.45);stroke-width:1.2;stroke-linecap:round;stroke-dasharray:2 16;animation:vpdGuardian 8s linear infinite}
+
+/* ERD loop special */
+.vpd-erd-path{fill:none;stroke:rgba(186,117,23,.4);stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:5 4}
+.vpd-erd-pulse{fill:none;stroke:rgba(186,117,23,.75);stroke-width:1.4;stroke-linecap:round;stroke-dasharray:3 12;animation:vpdErd 7s linear infinite reverse}
+
+/* Guardian halo */
+.vpd-g-halo{animation:vpdHalo 5s ease-in-out infinite;transform-origin:center;transform-box:fill-box}
+
+/* Tank fill animation */
+.vpd-tank-fill{animation:vpdFill 4s ease-in-out infinite alternate;transform-origin:bottom center;transform-box:fill-box}
+.vpd-tank-fill-b{animation:vpdFill 4s ease-in-out 1.5s infinite alternate;transform-origin:bottom center;transform-box:fill-box}
+
+@keyframes vpdFeed    {from{stroke-dashoffset:480}to{stroke-dashoffset:0}}
+@keyframes vpdPerm    {from{stroke-dashoffset:480}to{stroke-dashoffset:0}}
+@keyframes vpdPost    {from{stroke-dashoffset:480}to{stroke-dashoffset:0}}
+@keyframes vpdBrine   {from{stroke-dashoffset:480}to{stroke-dashoffset:0}}
+@keyframes vpdAlarm   {from{stroke-dashoffset:240}to{stroke-dashoffset:0}}
+@keyframes vpdGuardian{from{stroke-dashoffset:640}to{stroke-dashoffset:0}}
+@keyframes vpdErd     {from{stroke-dashoffset:200}to{stroke-dashoffset:0}}
+@keyframes vpdHalo    {0%,100%{opacity:.35}50%{opacity:.85}}
+@keyframes vpdFill    {0%{opacity:.5;transform:scaleY(.7)}100%{opacity:.9;transform:scaleY(1)}}
+
+/* Stage progress bar */
+.vpd-stages-bar{display:flex;align-items:center;gap:0;padding:10px 16px 0;overflow-x:auto;scrollbar-width:none}
+.vpd-stages-bar::-webkit-scrollbar{display:none}
+.vpd-sb-step{display:flex;align-items:center;gap:0;flex-shrink:0}
+.vpd-sb-btn{display:flex;align-items:center;gap:.38rem;padding:.32rem .65rem;border-radius:6px;border:1px solid transparent;background:transparent;cursor:pointer;transition:background .18s,border-color .18s;font-family:var(--font-ui,'Questrial',sans-serif);font-size:.52rem;letter-spacing:.13em;text-transform:uppercase;color:rgba(255,255,255,.38);white-space:nowrap}
+.vpd-sb-btn:hover{background:rgba(35,193,196,.07);color:rgba(255,255,255,.7)}
+.vpd-sb-btn.vpd-sb-active{background:rgba(35,193,196,.1);border-color:rgba(35,193,196,.25);color:rgba(35,193,196,.9)}
+.vpd-sb-dot{width:5px;height:5px;border-radius:50%;flex-shrink:0;transition:background .18s}
+.vpd-sb-sep{width:18px;height:1px;background:rgba(255,255,255,.1);flex-shrink:0;margin:0 2px}
+
+/* Improvements to accordion */
+.vp-stage-body{animation:none}
+.vp-stage.vp-active .vp-stage-body{display:block;animation:vpSlideIn .28s cubic-bezier(.22,1,.36,1) both}
+@keyframes vpSlideIn{from{opacity:0;transform:translateY(-6px)}to{opacity:1;transform:none}}
+
+/* Flow connector between stages */
+.vp-stage-connector{display:flex;align-items:center;padding:.18rem 1.2rem;gap:.5rem;opacity:.55}
+.vpc-line{flex:1;height:1px;background:linear-gradient(90deg,transparent,rgba(255,255,255,.15),transparent)}
+.vpc-arrow{font-size:.65rem;color:rgba(255,255,255,.35)}
+.vpc-label{font-family:var(--font-ui,'Questrial',sans-serif);font-size:.52rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.28);white-space:nowrap}
+.vp-stage-connector.vpc-brine .vpc-line{background:linear-gradient(90deg,transparent,rgba(186,117,23,.3),transparent)}
+.vp-stage-connector.vpc-brine .vpc-arrow,.vp-stage-connector.vpc-brine .vpc-label{color:rgba(186,117,23,.45)}
+
+/* Node tooltip */
+.vpd-tooltip{position:fixed;background:rgba(0,20,40,.96);border:1px solid rgba(35,193,196,.22);border-radius:8px;padding:.5rem .8rem;font-family:var(--font-body,'DM Sans',sans-serif);font-size:.72rem;line-height:1.5;color:rgba(250,246,238,.82);pointer-events:none;z-index:9999;max-width:200px;opacity:0;transition:opacity .15s;transform:translateY(-4px)}
+.vpd-tooltip.vpd-tt-show{opacity:1;transform:translateY(0)}
+
+@media(prefers-reduced-motion:reduce){
+  .vpd-pulse-feed,.vpd-pulse-perm,.vpd-pulse-post,.vpd-pulse-brine,.vpd-pulse-alarm,.vpd-pulse-guardian,.vpd-erd-pulse,.vpd-g-halo,.vpd-tank-fill,.vpd-tank-fill-b{animation:none!important}
+  .vp-stage.vp-active .vp-stage-body{animation:none}
+}
+@media(max-width:768px){.vpd-stages-bar{padding:8px 12px 0}}
+</style>
+
+<div class="vp-inner">
+  <header>
+    <div class="vp-eyebrow">Detailed Process Flow &middot; v3</div>
+    <h2 class="vp-headline">Vai Tapu &middot; <em>From Seawater to Community Tap</em></h2>
+    <p class="vp-intro">Vai Tapu includes SBS dosing, pressure monitoring, an ERD isobaric loop, chlorination contact tank, auto-divert, XtremeRO conditional recovery, and bypass protocol. Click any stage to expand, then any node for full detail. Guardian oversees every stage in real time.</p>
+  </header>
+
+  <div class="vp-stats" role="list">
+    <div class="vp-stat"><div class="vp-stat-n">20,000 L</div><div class="vp-stat-l">Potable output &middot; per day</div></div>
+    <div class="vp-stat"><div class="vp-stat-n">45&ndash;50%</div><div class="vp-stat-l">Primary RO recovery</div></div>
+    <div class="vp-stat"><div class="vp-stat-n">up to 90%</div><div class="vp-stat-l">Total recovery &middot; with XtremeRO</div></div>
+    <div class="vp-stat"><div class="vp-stat-n">55 bar</div><div class="vp-stat-l">RO operating pressure</div></div>
+    <div class="vp-stat"><div class="vp-stat-n">6.4 kW</div><div class="vp-stat-l">Solar array &middot; 16&times;400W</div></div>
+    <div class="vp-stat"><div class="vp-stat-n">14 kWh</div><div class="vp-stat-l">Battery &middot; Pylontech LiFePO&#x2084;</div></div>
   </div>
+
+
+
+
+  <!-- ═══ ANIMATED PROCESS FLOW DIAGRAM ═══════════════════════ -->
+  <div class="vpd-wrap" id="vpdWrap" aria-label="Animated Vai Tapu process flow diagram">
+
+    <!-- Stage progress breadcrumb bar -->
+    <div class="vpd-stages-bar" id="vpdBar" role="tablist" aria-label="Process stages">
+      <div class="vpd-sb-step">
+        <button class="vpd-sb-btn vpd-sb-active" data-stage="guardian" role="tab" tabindex="0">
+          <span class="vpd-sb-dot" style="background:rgba(35,193,196,.8)"></span>Guardian
+        </button>
+        <span class="vpd-sb-sep"></span>
+      </div>
+      <div class="vpd-sb-step">
+        <button class="vpd-sb-btn" data-stage="intake" role="tab" tabindex="-1">
+          <span class="vpd-sb-dot" style="background:rgba(55,138,221,.7)"></span>Intake
+        </button>
+        <span class="vpd-sb-sep"></span>
+      </div>
+      <div class="vpd-sb-step">
+        <button class="vpd-sb-btn" data-stage="pretreat" role="tab" tabindex="-1">
+          <span class="vpd-sb-dot" style="background:rgba(29,158,117,.7)"></span>Pre-Treat
+        </button>
+        <span class="vpd-sb-sep"></span>
+      </div>
+      <div class="vpd-sb-step">
+        <button class="vpd-sb-btn" data-stage="ro" role="tab" tabindex="-1">
+          <span class="vpd-sb-dot" style="background:rgba(240,153,123,.7)"></span>RO Core
+        </button>
+        <span class="vpd-sb-sep"></span>
+      </div>
+      <div class="vpd-sb-step">
+        <button class="vpd-sb-btn" data-stage="posttreat" role="tab" tabindex="-1">
+          <span class="vpd-sb-dot" style="background:rgba(151,196,89,.7)"></span>Post-Treat
+        </button>
+        <span class="vpd-sb-sep"></span>
+      </div>
+      <div class="vpd-sb-step">
+        <button class="vpd-sb-btn" data-stage="brine" role="tab" tabindex="-1">
+          <span class="vpd-sb-dot" style="background:rgba(186,117,23,.7)"></span>Brine
+        </button>
+        <span class="vpd-sb-sep"></span>
+      </div>
+      <div class="vpd-sb-step">
+        <button class="vpd-sb-btn" data-stage="output" role="tab" tabindex="-1">
+          <span class="vpd-sb-dot" style="background:rgba(35,193,196,.7)"></span>Output
+        </button>
+        <span class="vpd-sb-sep"></span>
+      </div>
+      <div class="vpd-sb-step">
+        <button class="vpd-sb-btn" data-stage="shutdown" role="tab" tabindex="-1">
+          <span class="vpd-sb-dot" style="background:rgba(180,178,169,.5)"></span>Shutdown
+        </button>
+        <span class="vpd-sb-sep"></span>
+      </div>
+      <div class="vpd-sb-step">
+        <button class="vpd-sb-btn" data-stage="bypass" role="tab" tabindex="-1">
+          <span class="vpd-sb-dot" style="background:rgba(160,158,150,.5)"></span>Bypass
+        </button>
+      </div>
+    </div>
+
+    <!-- ── SVG diagram ── -->
+    <svg class="vpd-svg" id="vpdSvg" viewBox="0 0 1200 560" preserveAspectRatio="xMidYMid meet"
+         role="img" aria-labelledby="vpdSvgTitle vpdSvgDesc">
+      <title id="vpdSvgTitle"></title>
+      <desc id="vpdSvgDesc">Animated flow schematic showing seawater intake, pre-treatment stages, RO core with ERD loop, post-treatment conditioning, brine path with XtremeRO, freshwater output to community, shutdown/preservation, and Guardian oversight spanning all stages.</desc>
+
+      <defs>
+        <!-- Gradients -->
+        <linearGradient id="vgNodeFeed" x1="0" x2="1" y1="0" y2="0"><stop offset="0%" stop-color="rgba(12,68,124,.9)"/><stop offset="100%" stop-color="rgba(20,90,160,.7)"/></linearGradient>
+        <linearGradient id="vgNodePre" x1="0" x2="1" y1="0" y2="0"><stop offset="0%" stop-color="rgba(8,80,65,.9)"/><stop offset="100%" stop-color="rgba(15,110,85,.7)"/></linearGradient>
+        <linearGradient id="vgNodeRO" x1="0" x2="1" y1="0" y2="0"><stop offset="0%" stop-color="rgba(113,43,19,.9)"/><stop offset="100%" stop-color="rgba(150,60,25,.7)"/></linearGradient>
+        <linearGradient id="vgNodePost" x1="0" x2="1" y1="0" y2="0"><stop offset="0%" stop-color="rgba(39,80,10,.9)"/><stop offset="100%" stop-color="rgba(55,100,15,.7)"/></linearGradient>
+        <linearGradient id="vgNodeBrine" x1="0" x2="1" y1="0" y2="0"><stop offset="0%" stop-color="rgba(80,50,0,.9)"/><stop offset="100%" stop-color="rgba(110,70,0,.7)"/></linearGradient>
+        <linearGradient id="vgNodeOut" x1="0" x2="1" y1="0" y2="0"><stop offset="0%" stop-color="rgba(0,60,90,.9)"/><stop offset="100%" stop-color="rgba(0,80,110,.7)"/></linearGradient>
+        <linearGradient id="vgNodeSd" x1="0" x2="1" y1="0" y2="0"><stop offset="0%" stop-color="rgba(50,50,48,.9)"/><stop offset="100%" stop-color="rgba(68,68,65,.7)"/></linearGradient>
+        <linearGradient id="vgNodeAlert" x1="0" x2="1" y1="0" y2="0"><stop offset="0%" stop-color="rgba(121,31,31,.9)"/><stop offset="100%" stop-color="rgba(150,40,40,.7)"/></linearGradient>
+        <linearGradient id="vgNodeGuardian" x1="0" x2="1" y1="0" y2="0"><stop offset="0%" stop-color="rgba(0,30,55,.9)"/><stop offset="100%" stop-color="rgba(0,45,75,.7)"/></linearGradient>
+        <radialGradient id="vgGuardHalo" cx="50%" cy="50%" r="50%"><stop offset="0%" stop-color="rgba(35,193,196,.18)"/><stop offset="100%" stop-color="rgba(35,193,196,0)"/></radialGradient>
+        <filter id="vfGlow"><feDropShadow dx="0" dy="0" stdDeviation="5" flood-color="rgba(35,193,196,.3)"/></filter>
+        <filter id="vfGlowRO"><feDropShadow dx="0" dy="0" stdDeviation="5" flood-color="rgba(240,153,123,.3)"/></filter>
+        <filter id="vfGlowPost"><feDropShadow dx="0" dy="0" stdDeviation="5" flood-color="rgba(151,196,89,.28)"/></filter>
+        <filter id="vfGlowBrine"><feDropShadow dx="0" dy="0" stdDeviation="5" flood-color="rgba(186,117,23,.28)"/></filter>
+        <filter id="vfGlowOut"><feDropShadow dx="0" dy="0" stdDeviation="6" flood-color="rgba(35,193,196,.35)"/></filter>
+        <marker id="vdA"  markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L0,6 L8,3 z" fill="rgba(55,138,221,.85)"/></marker>
+        <marker id="vdAp" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L0,6 L8,3 z" fill="rgba(29,158,117,.85)"/></marker>
+        <marker id="vdApo" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L0,6 L8,3 z" fill="rgba(59,130,30,.8)"/></marker>
+        <marker id="vdAb" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L0,6 L8,3 z" fill="rgba(186,117,23,.8)"/></marker>
+        <marker id="vdAal" markerWidth="7" markerHeight="7" refX="5" refY="3" orient="auto"><path d="M0,0 L0,6 L7,3 z" fill="rgba(226,75,74,.7)"/></marker>
+        <marker id="vdAf" markerWidth="7" markerHeight="7" refX="5" refY="3" orient="auto"><path d="M0,0 L0,6 L7,3 z" fill="rgba(35,193,196,.5)"/></marker>
+      </defs>
+
+      <!-- Background -->
+      <rect width="1200" height="560" fill="transparent"/>
+
+      <!-- ── GUARDIAN HALO BAND (top spanning) ── -->
+      <g id="vpd-guardian-band" class="vpd-band" data-band="guardian">
+        <ellipse class="vpd-g-halo" cx="600" cy="52" rx="500" ry="36" fill="url(#vgGuardHalo)"/>
+        <ellipse class="vpd-g-halo" cx="600" cy="52" rx="280" ry="18" fill="rgba(35,193,196,.06)" style="animation-delay:.5s"/>
+        <!-- Guardian lattice -->
+        <path class="vpd-flow-guardian" d="M100 54 C240 28,380 42,500 60 S720 78,900 44 S1060 24,1120 54"/>
+        <path class="vpd-flow-guardian" d="M140 32 C290 62,440 72,560 48 S790 18,960 48 S1080 70,1140 36"/>
+        <path class="vpd-pulse-guardian" d="M100 50 C260 20,440 32,600 56 S840 80,1120 46"/>
+        <!-- Guardian nodes (dots at intersections) -->
+        <circle cx="280" cy="38" r="2" fill="rgba(35,193,196,.65)" filter="url(#vfGlow)"/>
+        <circle cx="480" cy="56" r="2" fill="rgba(35,193,196,.65)" filter="url(#vfGlow)"/>
+        <circle cx="600" cy="64" r="2" fill="rgba(35,193,196,.65)" filter="url(#vfGlow)"/>
+        <circle cx="760" cy="48" r="2" fill="rgba(35,193,196,.65)" filter="url(#vfGlow)"/>
+        <circle cx="920" cy="38" r="2" fill="rgba(35,193,196,.65)" filter="url(#vfGlow)"/>
+        <!-- Label -->
+        <text font-family="Questrial,sans-serif" font-size="9" fill="rgba(35,193,196,.55)" letter-spacing="0.12em" x="600" y="24" text-anchor="middle" style="text-transform:uppercase">Guardian - Sovereign Control Network</text>
+      </g>
+
+      <!-- ── STAGE ZONE BANDS (horizontal swim lanes) ── -->
+      <!-- Each band lightly shaded, y positions match node rows -->
+      <rect x="58" y="88" width="1084" height="78" rx="4" fill="rgba(12,68,124,.06)" id="band-intake" class="vpd-band" data-band="intake"/>
+      <rect x="58" y="174" width="1084" height="78" rx="4" fill="rgba(8,80,65,.05)" id="band-pretreat" class="vpd-band" data-band="pretreat"/>
+      <rect x="58" y="260" width="1084" height="78" rx="4" fill="rgba(8,80,65,.04)" id="band-pretreat2" class="vpd-band" data-band="pretreat"/>
+      <rect x="58" y="346" width="1084" height="78" rx="4" fill="rgba(113,43,19,.07)" id="band-ro" class="vpd-band" data-band="ro"/>
+      <rect x="58" y="432" width="1084" height="78" rx="4" fill="rgba(39,80,10,.06)" id="band-posttreat" class="vpd-band" data-band="posttreat"/>
+
+      <!-- Stage rail labels (left margin) -->
+      <text font-family="Questrial,sans-serif" font-size="8.5" fill="rgba(55,138,221,.55)" x="50" y="130" text-anchor="middle" letter-spacing=".1em" transform="rotate(-90,50,130)">INTAKE</text>
+      <text font-family="Questrial,sans-serif" font-size="8.5" fill="rgba(29,158,117,.5)" x="50" y="220" text-anchor="middle" letter-spacing=".1em" transform="rotate(-90,50,220)">PRE-TREAT</text>
+      <text font-family="Questrial,sans-serif" font-size="8.5" fill="rgba(29,158,117,.5)" x="50" y="300" text-anchor="middle" letter-spacing=".1em" transform="rotate(-90,50,300)">PRE-TREAT</text>
+      <text font-family="Questrial,sans-serif" font-size="8.5" fill="rgba(240,153,123,.55)" x="50" y="388" text-anchor="middle" letter-spacing=".1em" transform="rotate(-90,50,388)">RO CORE</text>
+      <text font-family="Questrial,sans-serif" font-size="8.5" fill="rgba(151,196,89,.5)" x="50" y="474" text-anchor="middle" letter-spacing=".1em" transform="rotate(-90,50,474)">POST-TREAT</text>
+
+      <!-- Dashed stage dividers -->
+      <g stroke="rgba(255,255,255,.07)" stroke-width=".6" stroke-dasharray="3 4">
+        <line x1="58" y1="168" x2="1142" y2="168"/>
+        <line x1="58" y1="254" x2="1142" y2="254"/>
+        <line x1="58" y1="340" x2="1142" y2="340"/>
+        <line x1="58" y1="426" x2="1142" y2="426"/>
+        <line x1="58" y1="512" x2="1142" y2="512"/>
+      </g>
+
+      <!-- ══════════════════════════════════════════
+           ROW 1: INTAKE  y≈92–162
+      ══════════════════════════════════════════ -->
+
+      <!-- Ocean intake node -->
+      <g class="vpd-node" id="vdn-ocean" data-stage="intake" data-title="Ocean Intake" data-sub="Wedge-wire screen" tabindex="0" role="button" aria-label="Ocean Intake">
+        <rect x="68" y="92" width="130" height="52" rx="7" fill="url(#vgNodeFeed)" stroke="rgba(133,183,235,.4)" stroke-width=".8" filter="url(#vfGlow)"/>
+        <text font-family="Cormorant Garamond,serif" font-size="13.5" font-weight="300" fill="rgba(181,212,244,.95)" x="133" y="114" text-anchor="middle" dominant-baseline="central">Ocean intake</text>
+        <text font-family="DM Sans,sans-serif" font-size="10.5" fill="rgba(133,183,235,.75)" x="133" y="132" text-anchor="middle" dominant-baseline="central">Wedge-wire screen</text>
+      </g>
+
+      <!-- Self-clean strainer -->
+      <g class="vpd-node" id="vdn-strainer" data-stage="intake" data-title="Self-clean Strainer" data-sub="Auto-flush cycle" tabindex="0" role="button" aria-label="Self-clean Strainer">
+        <rect x="222" y="92" width="130" height="52" rx="7" fill="url(#vgNodeFeed)" stroke="rgba(133,183,235,.4)" stroke-width=".8" filter="url(#vfGlow)"/>
+        <text font-family="Cormorant Garamond,serif" font-size="13.5" font-weight="300" fill="rgba(181,212,244,.95)" x="287" y="114" text-anchor="middle" dominant-baseline="central">Self-clean strainer</text>
+        <text font-family="DM Sans,sans-serif" font-size="10.5" fill="rgba(133,183,235,.75)" x="287" y="132" text-anchor="middle" dominant-baseline="central">Auto-flush cycle</text>
+      </g>
+
+      <!-- LP Pump pair -->
+      <g class="vpd-node" id="vdn-lp-pump" data-stage="intake" data-title="LP Pump Pair" data-sub="Duty / standby" tabindex="0" role="button" aria-label="LP Pump Pair">
+        <rect x="376" y="92" width="130" height="52" rx="7" fill="url(#vgNodeFeed)" stroke="rgba(133,183,235,.4)" stroke-width=".8" filter="url(#vfGlow)"/>
+        <text font-family="Cormorant Garamond,serif" font-size="13.5" font-weight="300" fill="rgba(181,212,244,.95)" x="441" y="114" text-anchor="middle" dominant-baseline="central">LP pump pair</text>
+        <text font-family="DM Sans,sans-serif" font-size="10.5" fill="rgba(133,183,235,.75)" x="441" y="132" text-anchor="middle" dominant-baseline="central">Duty / standby</text>
+      </g>
+
+      <!-- P1 badge -->
+      <g id="vdn-p1" data-stage="intake">
+        <rect x="524" y="100" width="88" height="28" rx="4" fill="rgba(68,68,65,.8)" stroke="rgba(180,178,169,.35)" stroke-width=".8"/>
+        <text font-family="Questrial,sans-serif" font-size="9.5" fill="rgba(200,198,190,.88)" x="568" y="114" text-anchor="middle" dominant-baseline="central" letter-spacing=".05em">P1 - LP check</text>
+      </g>
+
+      <!-- ── Flow: intake row ── -->
+      <path class="vpd-flow-feed" d="M198 118 H220" marker-end="url(#vdA)"/>
+      <path class="vpd-pulse-feed" d="M198 118 H220"/>
+      <path class="vpd-flow-feed" d="M352 118 H374" marker-end="url(#vdA)"/>
+      <path class="vpd-pulse-feed" d="M352 118 H374" style="animation-delay:.4s"/>
+      <path class="vpd-flow-feed" d="M506 118 H522" marker-end="url(#vdA)"/>
+      <path class="vpd-pulse-feed" d="M506 118 H522" style="animation-delay:.8s"/>
+      <!-- P1 to down connector -->
+      <path class="vpd-flow-feed" d="M568 128 L568 152 L430 152 L430 168" marker-end="url(#vdA)"/>
+      <path class="vpd-pulse-feed" d="M568 128 L568 152 L430 152 L430 168" style="animation-delay:1s"/>
+
+      <!-- ══════════════════════════════════════════
+           ROW 2: PRE-TREATMENT row 1  y≈178–248
+      ══════════════════════════════════════════ -->
+
+      <g class="vpd-node" id="vdn-coag" data-stage="pretreat" data-title="Coagulant Dosing" data-sub="Optional" tabindex="0" role="button" aria-label="Coagulant Dosing">
+        <rect x="68" y="178" width="118" height="52" rx="7" fill="url(#vgNodePre)" stroke="rgba(93,202,165,.4)" stroke-width=".8"/>
+        <text font-family="Cormorant Garamond,serif" font-size="13" font-weight="300" fill="rgba(159,225,203,.92)" x="127" y="200" text-anchor="middle" dominant-baseline="central">Coagulant</text>
+        <text font-family="DM Sans,sans-serif" font-size="10" fill="rgba(93,202,165,.72)" x="127" y="218" text-anchor="middle" dominant-baseline="central">Optional dosing</text>
+      </g>
+      <g class="vpd-node" id="vdn-mmf" data-stage="pretreat" data-title="Media / UF Skid" data-sub="Turbidity removal" tabindex="0" role="button" aria-label="Media UF Skid">
+        <rect x="204" y="178" width="130" height="52" rx="7" fill="url(#vgNodePre)" stroke="rgba(93,202,165,.4)" stroke-width=".8"/>
+        <text font-family="Cormorant Garamond,serif" font-size="13" font-weight="300" fill="rgba(159,225,203,.92)" x="269" y="200" text-anchor="middle" dominant-baseline="central">Media / UF skid</text>
+        <text font-family="DM Sans,sans-serif" font-size="10" fill="rgba(93,202,165,.72)" x="269" y="218" text-anchor="middle" dominant-baseline="central">Turbidity removal</text>
+      </g>
+      <g class="vpd-node" id="vdn-cart" data-stage="pretreat" data-title="5 µm Cartridge" data-sub="Duplex housings" tabindex="0" role="button" aria-label="5 micron Cartridge Filter">
+        <rect x="352" y="178" width="118" height="52" rx="7" fill="url(#vgNodePre)" stroke="rgba(93,202,165,.4)" stroke-width=".8"/>
+        <text font-family="Cormorant Garamond,serif" font-size="13" font-weight="300" fill="rgba(159,225,203,.92)" x="411" y="200" text-anchor="middle" dominant-baseline="central">5 micron cartridge</text>
+        <text font-family="DM Sans,sans-serif" font-size="10" fill="rgba(93,202,165,.72)" x="411" y="218" text-anchor="middle" dominant-baseline="central">Duplex housings</text>
+      </g>
+      <g class="vpd-node" id="vdn-uv" data-stage="pretreat" data-title="UV Module" data-sub="Biofouling prevention" tabindex="0" role="button" aria-label="UV Module">
+        <rect x="488" y="178" width="118" height="52" rx="7" fill="url(#vgNodePre)" stroke="rgba(93,202,165,.4)" stroke-width=".8"/>
+        <text font-family="Cormorant Garamond,serif" font-size="13" font-weight="300" fill="rgba(159,225,203,.92)" x="547" y="200" text-anchor="middle" dominant-baseline="central">UV module</text>
+        <text font-family="DM Sans,sans-serif" font-size="10" fill="rgba(93,202,165,.72)" x="547" y="218" text-anchor="middle" dominant-baseline="central">Biofouling prevention</text>
+      </g>
+
+      <!-- Row 2 flow -->
+      <path class="vpd-flow-perm" d="M186 204 H202" marker-end="url(#vdAp)"/>
+      <path class="vpd-pulse-perm" d="M186 204 H202"/>
+      <path class="vpd-flow-perm" d="M334 204 H350" marker-end="url(#vdAp)"/>
+      <path class="vpd-pulse-perm" d="M334 204 H350" style="animation-delay:.3s"/>
+      <path class="vpd-flow-perm" d="M470 204 H486" marker-end="url(#vdAp)"/>
+      <path class="vpd-pulse-perm" d="M470 204 H486" style="animation-delay:.6s"/>
+      <!-- UV down-right to row 3 -->
+      <path class="vpd-flow-perm" d="M606 204 L638 204 L638 254 L430 254 L430 260" marker-end="url(#vdAp)"/>
+      <path class="vpd-pulse-perm" d="M606 204 L638 204 L638 254 L430 254 L430 260" style="animation-delay:.9s"/>
+
+      <!-- ══════════════════════════════════════════
+           ROW 3: PRE-TREATMENT row 2  y≈264–334
+      ══════════════════════════════════════════ -->
+
+      <g class="vpd-node" id="vdn-sbs" data-stage="pretreat" data-title="SBS Dosing" data-sub="Sodium bisulfite - dechlor" tabindex="0" role="button" aria-label="SBS Dosing">
+        <rect x="68" y="264" width="130" height="52" rx="7" fill="url(#vgNodePre)" stroke="rgba(93,202,165,.35)" stroke-width=".8"/>
+        <text font-family="Cormorant Garamond,serif" font-size="13" font-weight="300" fill="rgba(159,225,203,.92)" x="133" y="286" text-anchor="middle" dominant-baseline="central">SBS dosing</text>
+        <text font-family="DM Sans,sans-serif" font-size="10" fill="rgba(93,202,165,.72)" x="133" y="304" text-anchor="middle" dominant-baseline="central">Sodium bisulfite - dechlorination</text>
+      </g>
+      <g class="vpd-node" id="vdn-antiscalant" data-stage="pretreat" data-title="Antiscalant" data-sub="Scaling prevention" tabindex="0" role="button" aria-label="Antiscalant">
+        <rect x="218" y="264" width="118" height="52" rx="7" fill="url(#vgNodePre)" stroke="rgba(93,202,165,.35)" stroke-width=".8"/>
+        <text font-family="Cormorant Garamond,serif" font-size="13" font-weight="300" fill="rgba(159,225,203,.92)" x="277" y="286" text-anchor="middle" dominant-baseline="central">Antiscalant</text>
+        <text font-family="DM Sans,sans-serif" font-size="10" fill="rgba(93,202,165,.72)" x="277" y="304" text-anchor="middle" dominant-baseline="central">Scaling prevention</text>
+      </g>
+      <g class="vpd-node" id="vdn-sdi" data-stage="pretreat" data-title="SDI / Turbidity" data-sub="Membrane checkpoint" tabindex="0" role="button" aria-label="SDI Turbidity Verification">
+        <rect x="354" y="264" width="130" height="52" rx="7" fill="url(#vgNodePre)" stroke="rgba(93,202,165,.35)" stroke-width=".8"/>
+        <text font-family="Cormorant Garamond,serif" font-size="13" font-weight="300" fill="rgba(159,225,203,.92)" x="419" y="286" text-anchor="middle" dominant-baseline="central">SDI / turbidity</text>
+        <text font-family="DM Sans,sans-serif" font-size="10" fill="rgba(93,202,165,.72)" x="419" y="304" text-anchor="middle" dominant-baseline="central">Membrane checkpoint</text>
+      </g>
+      <g class="vpd-node" id="vdn-feedtank" data-stage="pretreat" data-title="Sealed Feed Tank" data-sub="Recirculated - low residence" tabindex="0" role="button" aria-label="Sealed Feed Tank">
+        <rect x="504" y="264" width="142" height="52" rx="7" fill="url(#vgNodePre)" stroke="rgba(93,202,165,.35)" stroke-width=".8"/>
+        <text font-family="Cormorant Garamond,serif" font-size="13" font-weight="300" fill="rgba(159,225,203,.92)" x="575" y="283" text-anchor="middle" dominant-baseline="central">Feed tank</text>
+        <text font-family="DM Sans,sans-serif" font-size="10" fill="rgba(93,202,165,.72)" x="575" y="301" text-anchor="middle" dominant-baseline="central">Sealed - recirculated</text>
+      </g>
+      <!-- P2 badge -->
+      <g id="vdn-p2" data-stage="pretreat">
+        <rect x="662" y="272" width="100" height="28" rx="4" fill="rgba(68,68,65,.8)" stroke="rgba(180,178,169,.35)" stroke-width=".8"/>
+        <text font-family="Questrial,sans-serif" font-size="9.5" fill="rgba(200,198,190,.88)" x="712" y="286" text-anchor="middle" dominant-baseline="central" letter-spacing=".05em">P2 - feed press.</text>
+      </g>
+
+      <!-- Row 3 flow -->
+      <path class="vpd-flow-perm" d="M198 290 H216" marker-end="url(#vdAp)"/>
+      <path class="vpd-pulse-perm" d="M198 290 H216" style="animation-delay:.2s"/>
+      <path class="vpd-flow-perm" d="M336 290 H352" marker-end="url(#vdAp)"/>
+      <path class="vpd-pulse-perm" d="M336 290 H352" style="animation-delay:.5s"/>
+      <path class="vpd-flow-perm" d="M484 290 H502" marker-end="url(#vdAp)"/>
+      <path class="vpd-pulse-perm" d="M484 290 H502" style="animation-delay:.8s"/>
+      <path class="vpd-flow-perm" d="M646 290 H660" marker-end="url(#vdAp)"/>
+      <path class="vpd-pulse-perm" d="M646 290 H660" style="animation-delay:1.1s"/>
+      <!-- Down to RO core -->
+      <path class="vpd-flow-perm" d="M712 300 L712 334 L430 334 L430 340" marker-end="url(#vdAp)"/>
+      <path class="vpd-pulse-perm" d="M712 300 L712 334 L430 334 L430 340" style="animation-delay:1.4s"/>
+
+      <!-- ══════════════════════════════════════════
+           ROW 4: RO CORE  y≈350–420
+      ══════════════════════════════════════════ -->
+
+      <g class="vpd-node" id="vdn-hp" data-stage="ro" data-title="HP Pump + VFD" data-sub="Danfoss APP - 800 psi" tabindex="0" role="button" aria-label="HP Pump with VFD">
+        <rect x="68" y="350" width="148" height="52" rx="7" fill="url(#vgNodeRO)" stroke="rgba(240,153,123,.45)" stroke-width=".8" filter="url(#vfGlowRO)"/>
+        <text font-family="Cormorant Garamond,serif" font-size="13.5" font-weight="300" fill="rgba(245,196,179,.95)" x="142" y="372" text-anchor="middle" dominant-baseline="central">HP pump + VFD</text>
+        <text font-family="DM Sans,sans-serif" font-size="10" fill="rgba(240,153,123,.75)" x="142" y="390" text-anchor="middle" dominant-baseline="central">Danfoss APP - 800 psi</text>
+      </g>
+
+      <!-- P3 badge -->
+      <g id="vdn-p3" data-stage="ro">
+        <rect x="230" y="358" width="96" height="28" rx="4" fill="rgba(68,68,65,.8)" stroke="rgba(180,178,169,.35)" stroke-width=".8"/>
+        <text font-family="Questrial,sans-serif" font-size="9.5" fill="rgba(200,198,190,.88)" x="278" y="372" text-anchor="middle" dominant-baseline="central" letter-spacing=".05em">P3 - HP inlet</text>
+      </g>
+
+      <!-- RO Membranes -->
+      <g class="vpd-node" id="vdn-membranes" data-stage="ro" data-title="RO Membranes" data-sub="TFC staged - 55 bar - 45-50% recovery" tabindex="0" role="button" aria-label="RO Membranes">
+        <rect x="344" y="350" width="172" height="52" rx="7" fill="url(#vgNodeRO)" stroke="rgba(240,153,123,.45)" stroke-width=".8" filter="url(#vfGlowRO)"/>
+        <text font-family="Cormorant Garamond,serif" font-size="13.5" font-weight="300" fill="rgba(245,196,179,.95)" x="430" y="370" text-anchor="middle" dominant-baseline="central">RO membranes</text>
+        <text font-family="DM Sans,sans-serif" font-size="10" fill="rgba(240,153,123,.75)" x="430" y="387" text-anchor="middle" dominant-baseline="central">TFC - 55 bar - ~45–50% recovery</text>
+      </g>
+
+      <!-- P4 permeate badge -->
+      <g id="vdn-p4" data-stage="ro">
+        <rect x="530" y="358" width="96" height="28" rx="4" fill="rgba(68,68,65,.8)" stroke="rgba(180,178,169,.35)" stroke-width=".8"/>
+        <text font-family="Questrial,sans-serif" font-size="9.5" fill="rgba(200,198,190,.88)" x="578" y="372" text-anchor="middle" dominant-baseline="central" letter-spacing=".05em">P4 - permeate</text>
+      </g>
+
+      <!-- Conductivity check -->
+      <g class="vpd-node" id="vdn-cond" data-stage="ro" data-title="Conductivity Check" data-sub="TDS sensor inline" tabindex="0" role="button" aria-label="Conductivity Check">
+        <rect x="644" y="350" width="148" height="52" rx="7" fill="rgba(99,56,6,.85)" stroke="rgba(239,159,39,.45)" stroke-width=".8"/>
+        <text font-family="Cormorant Garamond,serif" font-size="13" font-weight="300" fill="rgba(250,199,117,.95)" x="718" y="372" text-anchor="middle" dominant-baseline="central">Conductivity check</text>
+        <text font-family="DM Sans,sans-serif" font-size="10" fill="rgba(239,159,39,.72)" x="718" y="390" text-anchor="middle" dominant-baseline="central">TDS sensor inline</text>
+      </g>
+
+      <!-- Auto divert -->
+      <g class="vpd-node" id="vdn-divert" data-stage="ro" data-title="Auto Divert" data-sub="Off-spec - drain" tabindex="0" role="button" aria-label="Auto Divert Valve">
+        <rect x="810" y="350" width="130" height="52" rx="7" fill="url(#vgNodeAlert)" stroke="rgba(240,149,149,.4)" stroke-width=".8"/>
+        <text font-family="Cormorant Garamond,serif" font-size="13" font-weight="300" fill="rgba(247,193,193,.95)" x="875" y="372" text-anchor="middle" dominant-baseline="central">Auto divert</text>
+        <text font-family="DM Sans,sans-serif" font-size="10" fill="rgba(240,149,149,.72)" x="875" y="390" text-anchor="middle" dominant-baseline="central">Off-spec → drain</text>
+      </g>
+
+      <!-- P5, P6 badges -->
+      <g id="vdn-p5" data-stage="ro">
+        <rect x="958" y="350" width="100" height="28" rx="4" fill="rgba(68,68,65,.8)" stroke="rgba(180,178,169,.35)" stroke-width=".8"/>
+        <text font-family="Questrial,sans-serif" font-size="9.5" fill="rgba(200,198,190,.88)" x="1008" y="364" text-anchor="middle" dominant-baseline="central" letter-spacing=".05em">P5 - brine press.</text>
+      </g>
+      <g id="vdn-p6" data-stage="ro">
+        <rect x="958" y="384" width="100" height="28" rx="4" fill="rgba(68,68,65,.8)" stroke="rgba(180,178,169,.35)" stroke-width=".8"/>
+        <text font-family="Questrial,sans-serif" font-size="9.5" fill="rgba(200,198,190,.88)" x="1008" y="398" text-anchor="middle" dominant-baseline="central" letter-spacing=".05em">P6 - post-divert</text>
+      </g>
+
+      <!-- RO Core flow paths -->
+      <path class="vpd-flow-feed" d="M216 376 H228" marker-end="url(#vdA)"/>
+      <path class="vpd-pulse-feed" d="M216 376 H228"/>
+      <path class="vpd-flow-feed" d="M326 376 H342" marker-end="url(#vdA)"/>
+      <path class="vpd-pulse-feed" d="M326 376 H342" style="animation-delay:.3s"/>
+      <!-- Permeate from membrane right →  conductivity -->
+      <path class="vpd-flow-perm" d="M516 376 H528" marker-end="url(#vdAp)"/>
+      <path class="vpd-pulse-perm" d="M516 376 H528" style="animation-delay:.2s"/>
+      <path class="vpd-flow-perm" d="M628 376 H642" marker-end="url(#vdAp)"/>
+      <path class="vpd-pulse-perm" d="M628 376 H642" style="animation-delay:.4s"/>
+      <path class="vpd-flow-perm" d="M792 376 H808" marker-end="url(#vdAp)"/>
+      <path class="vpd-pulse-perm" d="M792 376 H808" style="animation-delay:.6s"/>
+      <!-- Good permeate down to post-treatment -->
+      <path class="vpd-flow-perm" d="M875 402 L875 420 L430 420 L430 426" marker-end="url(#vdAp)"/>
+      <path class="vpd-pulse-perm" d="M875 402 L875 420 L430 420 L430 426" style="animation-delay:.8s"/>
+      <!-- Alarm path off divert -->
+      <path class="vpd-flow-alarm" d="M940 376 H956" marker-end="url(#vdAal)"/>
+
+      <!-- ── ERD LOOP (brine→feed boost) ── -->
+      <!-- Brine from membrane bottom → ERD → back to HP pump -->
+      <g class="vpd-node" id="vdn-erd" data-stage="brine" data-title="ERD Isobaric PX" data-sub="Brine - feed boost - ~30% HP energy saved" tabindex="0" role="button" aria-label="ERD Energy Recovery Device">
+        <rect x="68" y="434" width="150" height="52" rx="7" fill="rgba(80,50,0,.85)" stroke="rgba(216,90,48,.5)" stroke-width=".8" stroke-dasharray="5 3" filter="url(#vfGlowBrine)"/>
+        <text font-family="Cormorant Garamond,serif" font-size="13" font-weight="300" fill="rgba(239,186,80,.95)" x="143" y="456" text-anchor="middle" dominant-baseline="central">ERD isobaric PX</text>
+        <text font-family="DM Sans,sans-serif" font-size="10" fill="rgba(186,117,23,.72)" x="143" y="474" text-anchor="middle" dominant-baseline="central">Brine → feed - ~30% saved</text>
+      </g>
+      <!-- ERD brine in from membrane -->
+      <path class="vpd-erd-path" d="M430 402 L430 426 L218 426 L218 434" marker-end="url(#vdAb)"/>
+      <path class="vpd-erd-pulse" d="M430 402 L430 426 L218 426 L218 434"/>
+      <!-- ERD boosted feed back to HP pump -->
+      <path class="vpd-erd-path" d="M143 486 L143 520 L40 520 L40 376 L66 376" marker-end="url(#vdAb)"/>
+      <path class="vpd-erd-pulse" d="M143 486 L143 520 L40 520 L40 376 L66 376"/>
+      <text font-family="Questrial,sans-serif" font-size="8.5" fill="rgba(186,117,23,.55)" x="38" y="450" text-anchor="middle" letter-spacing=".08em" transform="rotate(-90,38,450)">ERD LOOP</text>
+
+      <!-- ══════════════════════════════════════════
+           ROW 5: POST-TREATMENT  y≈436–506
+      ══════════════════════════════════════════ -->
+
+      <g class="vpd-node" id="vdn-remin" data-stage="posttreat" data-title="Remineralisation" data-sub="Ca² + Mg² dosing" tabindex="0" role="button" aria-label="Remineralisation">
+        <rect x="248" y="436" width="130" height="52" rx="7" fill="url(#vgNodePost)" stroke="rgba(151,196,89,.4)" stroke-width=".8" filter="url(#vfGlowPost)"/>
+        <text font-family="Cormorant Garamond,serif" font-size="13" font-weight="300" fill="rgba(192,221,151,.95)" x="313" y="458" text-anchor="middle" dominant-baseline="central">Remineralise</text>
+        <text font-family="DM Sans,sans-serif" font-size="10" fill="rgba(151,196,89,.72)" x="313" y="476" text-anchor="middle" dominant-baseline="central">Ca + Mg dosing</text>
+      </g>
+      <g class="vpd-node" id="vdn-ph" data-stage="posttreat" data-title="pH Adjustment" data-sub="Target 6.5-8.5" tabindex="0" role="button" aria-label="pH Adjustment">
+        <rect x="396" y="436" width="118" height="52" rx="7" fill="url(#vgNodePost)" stroke="rgba(151,196,89,.4)" stroke-width=".8" filter="url(#vfGlowPost)"/>
+        <text font-family="Cormorant Garamond,serif" font-size="13" font-weight="300" fill="rgba(192,221,151,.95)" x="455" y="458" text-anchor="middle" dominant-baseline="central">pH adjustment</text>
+        <text font-family="DM Sans,sans-serif" font-size="10" fill="rgba(151,196,89,.72)" x="455" y="476" text-anchor="middle" dominant-baseline="central">Target 6.5-8.5</text>
+      </g>
+      <g class="vpd-node" id="vdn-chlor" data-stage="posttreat" data-title="Chlorination" data-sub="Residual disinfection" tabindex="0" role="button" aria-label="Chlorination">
+        <rect x="532" y="436" width="118" height="52" rx="7" fill="url(#vgNodePost)" stroke="rgba(151,196,89,.4)" stroke-width=".8" filter="url(#vfGlowPost)"/>
+        <text font-family="Cormorant Garamond,serif" font-size="13" font-weight="300" fill="rgba(192,221,151,.95)" x="591" y="458" text-anchor="middle" dominant-baseline="central">Chlorination</text>
+        <text font-family="DM Sans,sans-serif" font-size="10" fill="rgba(151,196,89,.72)" x="591" y="476" text-anchor="middle" dominant-baseline="central">Residual dosing</text>
+      </g>
+      <g class="vpd-node" id="vdn-ct" data-stage="posttreat" data-title="Contact Tank" data-sub="CT ≥ 30 min - C-T compliance" tabindex="0" role="button" aria-label="Contact Tank">
+        <rect x="668" y="436" width="148" height="52" rx="7" fill="url(#vgNodePost)" stroke="rgba(151,196,89,.4)" stroke-width=".8" filter="url(#vfGlowPost)"/>
+        <text font-family="Cormorant Garamond,serif" font-size="13" font-weight="300" fill="rgba(192,221,151,.95)" x="742" y="456" text-anchor="middle" dominant-baseline="central">Contact tank</text>
+        <text font-family="DM Sans,sans-serif" font-size="10" fill="rgba(151,196,89,.72)" x="742" y="474" text-anchor="middle" dominant-baseline="central">CT greater 30 min - C-T compliance</text>
+      </g>
+      <g class="vpd-node" id="vdn-qc" data-stage="posttreat" data-title="Final QC Check" data-sub="WHO / Tuvalu std" tabindex="0" role="button" aria-label="Final QC Check">
+        <rect x="834" y="436" width="130" height="52" rx="7" fill="url(#vgNodePost)" stroke="rgba(151,196,89,.4)" stroke-width=".8" filter="url(#vfGlowPost)"/>
+        <text font-family="Cormorant Garamond,serif" font-size="13" font-weight="300" fill="rgba(192,221,151,.95)" x="899" y="456" text-anchor="middle" dominant-baseline="central">Final QC check</text>
+        <text font-family="DM Sans,sans-serif" font-size="10" fill="rgba(151,196,89,.72)" x="899" y="474" text-anchor="middle" dominant-baseline="central">WHO / Tuvalu std</text>
+      </g>
+
+      <!-- Post-treatment flow -->
+      <path class="vpd-flow-post" d="M378 462 H394" marker-end="url(#vdApo)"/>
+      <path class="vpd-pulse-post" d="M378 462 H394"/>
+      <path class="vpd-flow-post" d="M514 462 H530" marker-end="url(#vdApo)"/>
+      <path class="vpd-pulse-post" d="M514 462 H530" style="animation-delay:.3s"/>
+      <path class="vpd-flow-post" d="M650 462 H666" marker-end="url(#vdApo)"/>
+      <path class="vpd-pulse-post" d="M650 462 H666" style="animation-delay:.6s"/>
+      <path class="vpd-flow-post" d="M816 462 H832" marker-end="url(#vdApo)"/>
+      <path class="vpd-pulse-post" d="M816 462 H832" style="animation-delay:.9s"/>
+      <!-- QC → output (right) -->
+      <path class="vpd-flow-post" d="M964 462 H1000 L1000 400 L1060 400" marker-end="url(#vdApo)"/>
+      <path class="vpd-pulse-post" d="M964 462 H1000 L1000 400 L1060 400" style="animation-delay:1.2s"/>
+
+      <!-- ══════════════════════════════════════════
+           OUTPUT / STORAGE / BRINE PATH  (right column)
+      ══════════════════════════════════════════ -->
+
+      <!-- Freshwater storage -->
+      <g class="vpd-node" id="vdn-fwstorage" data-stage="output" data-title="Freshwater Storage" data-sub="2,000–3,000 L - Guardian monitored" tabindex="0" role="button" aria-label="Freshwater Storage">
+        <rect x="1060" y="340" width="120" height="56" rx="7" fill="url(#vgNodeOut)" stroke="rgba(35,193,196,.45)" stroke-width=".8" filter="url(#vfGlowOut)"/>
+        <!-- Tank silhouette -->
+        <ellipse cx="1120" cy="350" rx="20" ry="6" fill="rgba(35,193,196,.25)" stroke="rgba(35,193,196,.45)" stroke-width=".8"/>
+        <rect x="1100" y="350" width="40" height="30" rx="2" fill="rgba(0,80,110,.6)" stroke="rgba(35,193,196,.35)" stroke-width=".8"/>
+        <rect x="1100" y="364" width="40" height="16" rx="1" fill="rgba(35,193,196,.22)"/>
+        <text font-family="Questrial,sans-serif" font-size="8.5" fill="rgba(160,230,240,.7)" x="1120" y="406" text-anchor="middle" letter-spacing=".08em">FRESHWATER</text>
+        <text font-family="DM Sans,sans-serif" font-size="9" fill="rgba(35,193,196,.55)" x="1120" y="417" text-anchor="middle">2,000–3,000 L</text>
+      </g>
+
+      <!-- Vai Koko -->
+      <g class="vpd-node" id="vdn-vaikoko" data-stage="output" data-title="Vai Koko Ring System" data-sub="Floating pods - 20,000 L each" tabindex="0" role="button" aria-label="Vai Koko Ring System">
+        <rect x="1060" y="440" width="120" height="56" rx="7" fill="url(#vgNodeOut)" stroke="rgba(35,193,196,.4)" stroke-width=".8" filter="url(#vfGlowOut)"/>
+        <circle cx="1120" cy="466" r="14" fill="none" stroke="rgba(35,193,196,.35)" stroke-width="1.5"/>
+        <circle cx="1120" cy="466" r="8" fill="rgba(35,193,196,.18)"/>
+        <text font-family="Questrial,sans-serif" font-size="8" fill="rgba(160,230,240,.7)" x="1120" y="492" text-anchor="middle" letter-spacing=".08em">VAI KOKO RING</text>
+      </g>
+
+      <!-- Community tap -->
+      <g class="vpd-node" id="vdn-commtap" data-stage="output" data-title="Community Taps" data-sub="WHO-compliant - Guardian display" tabindex="0" role="button" aria-label="Community Taps">
+        <rect x="1060" y="240" width="120" height="52" rx="7" fill="url(#vgNodeOut)" stroke="rgba(35,193,196,.4)" stroke-width=".8"/>
+        <text font-family="Cormorant Garamond,serif" font-size="13" font-weight="300" fill="rgba(160,230,240,.95)" x="1120" y="260" text-anchor="middle" dominant-baseline="central">Community</text>
+        <text font-family="DM Sans,sans-serif" font-size="10" fill="rgba(35,193,196,.65)" x="1120" y="278" text-anchor="middle" dominant-baseline="central">taps - Guardian display</text>
+      </g>
+      <!-- Freshwater → Vai Koko → Community -->
+      <path class="vpd-flow-post" d="M1120 396 L1120 438" marker-end="url(#vdApo)"/>
+      <path class="vpd-pulse-post" d="M1120 396 L1120 438" style="animation-delay:.5s"/>
+      <path class="vpd-flow-post" d="M1120 340 L1120 292" marker-end="url(#vdApo)"/>
+      <path class="vpd-pulse-post" d="M1120 340 L1120 292"/>
+
+      <!-- Brine path (right side, going down) -->
+      <!-- Brine out from RO membranes goes down-right to brine area -->
+      <path class="vpd-flow-brine" d="M516 376 L516 420 L958 420 L958 350" marker-end="url(#vdAb)"/>
+      <path class="vpd-pulse-brine" d="M516 376 L516 420 L958 420 L958 350"/>
+      <!-- XtremeRO -->
+      <g class="vpd-node" id="vdn-xtremero" data-stage="brine" data-title="Recovery & minimize brine" data-sub="with surplus energy only - up to 90%" tabindex="0" role="button" aria-label="XtremeRO Brine Recovery">
+        <rect x="900" y="240" width="148" height="56" rx="7" fill="url(#vgNodeBrine)" stroke="rgba(186,117,23,.45)" stroke-width=".8" stroke-dasharray="6 3" filter="url(#vfGlowBrine)"/>
+        <text font-family="Cormorant Garamond,serif" font-size="13.5" font-weight="300" fill="rgba(239,186,80,.95)" x="974" y="261" text-anchor="middle" dominant-baseline="central">Brine Recovery</text>
+        <text font-family="DM Sans,sans-serif" font-size="9.5" fill="rgba(186,117,23,.7)" x="974" y="279" text-anchor="middle" dominant-baseline="central">Holding Tank + XtremeRO recovery</text>
+        <text font-family="DM Sans,sans-serif" font-size="9.5" fill="rgba(186,117,23,.7)" x="974" y="292" text-anchor="middle" dominant-baseline="central">Up to 90% recovery</text>
+      </g>
+      <path class="vpd-flow-brine" d="M974 296 L974 340" marker-end="url(#vdAb)"/>
+      <path class="vpd-pulse-brine" d="M974 296 L974 340"/>
+      <!-- Brine up to XtremeRO -->
+      <path class="vpd-flow-brine" d="M958 350 L958 296 L1048 296" marker-end="url(#vdAb)"/>
+
+      <!-- Safe discharge label -->
+      <g id="vdn-discharge" data-stage="brine">
+        <rect x="900" y="158" width="148" height="48" rx="7" fill="rgba(40,20,0,.7)" stroke="rgba(186,117,23,.3)" stroke-width=".8" stroke-dasharray="4 3"/>
+        <text font-family="Cormorant Garamond,serif" font-size="12" font-weight="300" fill="rgba(239,186,80,.7)" x="974" y="178" text-anchor="middle" dominant-baseline="central">Basin evaporation - halophytes</text>
+        <text font-family="DM Sans,sans-serif" font-size="9.5" fill="rgba(186,117,23,.55)" x="974" y="196" text-anchor="middle" dominant-baseline="central">Safe marine discharge</text>
+      </g>
+      <path class="vpd-flow-brine" d="M974 240 L974 206" marker-end="url(#vdAb)"/>
+
+      <!-- Permeate flush / CIP (shutdown, bottom-left) -->
+      <g class="vpd-node" id="vdn-cip" data-stage="shutdown" data-title="CIP / Flush / Preserve" data-sub="Permeate flush - chemical - CIP" tabindex="0" role="button" aria-label="CIP Clean In Place">
+        <rect x="248" y="514" width="192" height="30" rx="6" fill="url(#vgNodeSd)" stroke="rgba(180,178,169,.3)" stroke-width=".8"/>
+        <text font-family="Cormorant Garamond,serif" font-size="12" font-weight="300" fill="rgba(211,209,199,.9)" x="344" y="529" text-anchor="middle" dominant-baseline="central">Permeate flush - preserve - CIP</text>
+      </g>
+      <path class="vpd-flow-perm" d="M313 502 L313 514" stroke="rgba(29,158,117,.3)" marker-end="url(#vdAp)" stroke-dasharray="3 4"/>
+
+      <!-- Bypass line (dotted, spanning) -->
+      <g id="vdn-bypass-line" data-stage="bypass">
+        <path d="M 68 550 H 860" fill="none" stroke="rgba(160,158,150,.3)" stroke-width="1.5" stroke-dasharray="6 4"/>
+        <path d="M 850 550 H 860" fill="none" stroke="rgba(160,158,150,.4)" stroke-width="1.5" marker-end="url(#vdAf)"/>
+        <text font-family="Questrial,sans-serif" font-size="9" fill="rgba(180,178,169,.4)" x="450" y="545" text-anchor="middle" letter-spacing=".1em" style="text-transform:uppercase">Bypass line - Guardian auth only - not potable without post-treatment</text>
+      </g>
+
+    </svg>
+  </div>
+
+
+  <div class="vp-shell">
+    <!-- ── FLOW DIAGRAM ── -->
+    <div class="vp-diagram" role="region" aria-label="Process flow stages - click to expand each stage">
+
+      <!-- Guardian band at top -->
+      <div class="vp-stage vp-active" data-stage="guardian"
+           data-title="Guardian"
+           data-badge="Sovereign &amp; localised control"
+           data-desc="Guardian acts as the central logic and control system. It monitors every key parameter in real time - salinity, flow rate, pressure, tank levels, solar input, and battery status - and executes automated protocols including membrane flushing, power throttling, and brine routing. Guardian manages data logging, alert generation, and adaptive logic. Arbor serves as the human-facing interface: translating Guardian insights into actionable tasks via touchscreen or mobile. In ritual contexts Arbor also supports cultural events - water drawdowns, harvest blessings, and system activation ceremonies."
+           data-badge-text="Oversight &middot; 60s telemetry"
+           data-specs='[["Platform","Victron Cerbo GX + Guardian Bridge"],["Protocol","Modbus TCP - MQTT - RS485 - CANbus"],["Inverter","Victron MultiPlus-II 48V - 5kVA"],["Battery","4× Pylontech US3000C - 14 kWh"],["Solar","6.4 kW - 16× 400W monocrystalline"],["Offline","Logs stored locally - sync when online"],["Interface","Touchscreen - Arbor civic UI"],["Civic","Real-time public water availability dashboard"]]'
+           data-note="System Status: Sovereign &amp; Localised Control - Guardian sees every sensor. No data leaves the island without consent.">
+        <div class="vp-stage-head">
+          <span class="vp-stage-label">GUARDIAN</span>
+          <span class="vp-stage-title">Guardian Terminal  Sovereign Control Network</span>
+          <svg class="vp-stage-arrow" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M6 4l4 4-4 4"/></svg>
+        </div>
+        <div class="vp-stage-body">
+          <div class="vp-nodes">
+            <div class="vp-node vpn-guardian" data-node="guardian-mon">
+              <span class="vp-node-title">Guardian monitoring</span>
+              <span class="vp-node-sub">Real-time telemetry - 60s heartbeat</span>
+            </div>
+            <div class="vp-node vpn-guardian" data-node="arbor">
+              <span class="vp-node-title">Guardian Terminal & Stewarts Arbor interface</span>
+              <span class="vp-node-sub">Civic dashboard - ritual integration</span>
+            </div>
+            <div class="vp-node vpn-guardian" data-node="cerbo">
+              <span class="vp-node-title">Cerbo GX bridge</span>
+              <span class="vp-node-sub">Victron - Modbus TCP - MQTT</span>
+            </div>
+            <div class="vp-node vpn-guardian" data-node="energy">
+              <span class="vp-node-title">Energy management</span>
+              <span class="vp-node-sub">6.4 kW solar - 14 kWh battery - VFD control</span>
+            </div>
+          </div>
+        </div>
+      </div>
+  <!-- ═══ SYSTEM REFERENCE IMAGE ══════════════════════════════ -->
+  <figure style="margin:0;border-radius:20px;overflow:hidden;border:1px solid rgba(35,193,196,.12);line-height:0;box-shadow:0 24px 60px rgba(0,0,0,.4)">
+    <img src="images/water-dark-unified system.png"
+         alt="Vai Tapu Modular Desalination and Recovery System - full system schematic showing ocean intake, pre-filtration, RO core, post-treatment potable water conditioning, brine beneficiation path, XtremeRO recovery, Vai Koko storage, and community distribution under Guardian oversight"
+         style="width:100%;height:auto;display:block">
+  </figure>
+      <!-- ── STAGE 1: INTAKE ── -->
+      <div class="vp-stage" data-stage="intake"
+           data-title="Ocean Intake"
+           data-badge="Seawater source"
+           data-desc="Seawater is drawn from the ocean through a coarse wedge-wire screen that removes large debris, sand, and marine organisms. A self-cleaning intake strainer with auto-flush cycle provides continuous protection. A low-pressure pump pair (duty/standby configuration) drives water into the pre-treatment train. P1 pressure is monitored after the LP pump as the first Guardian checkpoint."
+           data-badge-text="LP pump duty/standby"
+           data-specs='[["Intake screen","Wedge-wire coarse screen"],["Strainer","Self-cleaning - auto-flush"],["LP Pump","Duty / standby pair"],["Max feed TDS","40,000 ppm seawater"],["P1","LP check pressure sensor"],["Guardian","Dry-run protection - flow alert"]]'
+           data-note="P1 pressure sensor is Guardian&apos;s first confirmation that seawater is flowing correctly before pre-treatment.">
+        <div class="vp-stage-head">
+          <span class="vp-stage-label">INTAKE</span>
+          <span class="vp-stage-title">Seawater Intake &mdash; Wedge-wire - Self-clean - LP Pumps</span>
+          <svg class="vp-stage-arrow" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M6 4l4 4-4 4"/></svg>
+        </div>
+        <div class="vp-stage-body">
+          <div class="vp-nodes">
+            <div class="vp-node vpn-sea" data-node="intake-screen">
+              <span class="vp-node-title">Ocean intake</span>
+              <span class="vp-node-sub">Wedge-wire screen</span>
+            </div>
+            <div class="vp-node vpn-sea" data-node="strainer">
+              <span class="vp-node-title">Self-clean strainer</span>
+              <span class="vp-node-sub">Auto-flush cycle</span>
+            </div>
+            <div class="vp-node vpn-sea" data-node="lp-pump">
+              <span class="vp-node-title">LP pump pair</span>
+              <span class="vp-node-sub">Duty / standby</span>
+            </div>
+            <span class="vp-ppoint">P1 &mdash; LP check</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── STAGE 2: PRE-TREATMENT ── -->
+      <div class="vp-stage" data-stage="pretreat"
+           data-title="Pre-Treatment"
+           data-badge="Membrane protection"
+           data-desc="Pre-treatment protects the RO membranes from fouling and damage. Stages: optional coagulant dosing, dual-media or ultrafiltration (UF) skid, 5-micron cartridge filter (duplex housings), UV module for biofouling risk reduction, sodium bisulfite (SBS) dosing for dechlorination, antiscalant injection, and SDI / turbidity verification. The sealed feed tank acts as a recirculated low-residence buffer before the high-pressure pump. Guardian monitors differential pressure across filter housings and alerts stewards when cartridge replacement is needed."
+           data-badge-text="Coagulant - UF - 5&#x3BC;m - UV pretreatment - SBS - antiscalant"
+           data-specs='[["Coagulant","Optional - source-condition dependent"],["Media filter","Dual-media MMF or UF skid"],["Cartridge","5-micron duplex housing"],["UV module","Biofouling risk reduction"],["SBS dosing","Sodium bisulfite - dechlorination"],["Antiscalant","Scaling prevention injection"],["SDI/turbidity","Membrane protection checkpoint"],["Feed tank","Sealed - recirculated - low residence"],["P2","Pre-RO pressure sensor"]]'
+           data-note="SDI (Silt Density Index) verification is the last checkpoint before the high-pressure RO train - Guardian holds the system if SDI exceeds safe limits.">
+        <div class="vp-stage-head">
+          <span class="vp-stage-label">PRE-TREAT</span>
+          <span class="vp-stage-title">Pre-Treatment &mdash; Coagulant - UF - 5&mu;m - UV pretreatment - SBS - Antiscalant</span>
+          <svg class="vp-stage-arrow" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M6 4l4 4-4 4"/></svg>
+        </div>
+        <div class="vp-stage-body">
+          <div class="vp-nodes">
+            <div class="vp-node vpn-pre" data-node="coag">
+              <span class="vp-node-title">Coagulant dosing</span>
+              <span class="vp-node-sub">Optional - as required</span>
+            </div>
+            <div class="vp-node vpn-pre" data-node="mmf">
+              <span class="vp-node-title">MMF / UF skid</span>
+              <span class="vp-node-sub">Dual-media filtration</span>
+            </div>
+            <div class="vp-node vpn-pre" data-node="cartridge">
+              <span class="vp-node-title">5-micron cartridge</span>
+              <span class="vp-node-sub">Duplex housings</span>
+            </div>
+            <div class="vp-node vpn-pre" data-node="uv">
+              <span class="vp-node-title">UV module</span>
+              <span class="vp-node-sub">Biofouling prevention</span>
+            </div>
+            <div class="vp-node vpn-pre" data-node="sbs">
+              <span class="vp-node-title">SBS dosing</span>
+              <span class="vp-node-sub">Sodium bisulfite - dechlor</span>
+            </div>
+            <div class="vp-node vpn-pre" data-node="antiscalant">
+              <span class="vp-node-title">Antiscalant</span>
+              <span class="vp-node-sub">Scaling prevention</span>
+            </div>
+            <div class="vp-node vpn-pre" data-node="sdi">
+              <span class="vp-node-title">SDI / turbidity</span>
+              <span class="vp-node-sub">Membrane checkpoint</span>
+            </div>
+            <div class="vp-node vpn-pre" data-node="feedtank">
+              <span class="vp-node-title">Sealed feed tank</span>
+              <span class="vp-node-sub">Recirculated - low residence</span>
+            </div>
+            <span class="vp-ppoint">P2 &mdash; pre-RO</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── STAGE 3: RO CORE ── -->
+      <div class="vp-stage" data-stage="ro"
+           data-title="RO Core"
+           data-badge="Reverse osmosis &middot; 55 bar"
+           data-desc="The RO Core is the heart of Vai Tapu. A high-pressure pump with Variable Frequency Drive (VFD) - Danfoss APP at up to 800 psi (55 bar) - drives water through staged TFC RO membranes (Dow Filmtec, Hydranautics, or Toray). Primary recovery is ~45–50%. An Energy Recovery Device (ERD, isobaric pressure exchanger) captures brine reject pressure and boosts feed water, saving ~30% of high-pressure energy. Conductivity is monitored inline by a TDS sensor. An automatic divert valve diverts off-spec permeate (high TDS) to drain. P3 (HP inlet), P4 (permeate), P5 (brine pressure), and P6 (post-divert) are all Guardian-visible."
+           data-badge-text="HP pump - VFD - ERD - TFC membranes - 45&ndash;50% recovery"
+           data-specs='[["HP pump","Danfoss APP - VFD - up to 800 psi"],["Membranes","TFC staged - Dow Filmtec / Hydranautics / Toray"],["Operating pressure","55 bar (~800 psi) seawater"],["Primary recovery","~45–50% of feedwater"],["ERD","Isobaric pressure exchanger - saves ~30% HP energy"],["TDS sensor","Inline conductivity - auto-divert trigger"],["P3","HP inlet pressure"],["P4","Permeate side pressure"],["P5","Brine pressure at reject"],["P6","Post-divert pressure"]]'
+           data-note="Auto-divert valve is Guardian-triggered - if TDS rises above spec, permeate is diverted to drain and an alert is raised. No off-spec water reaches storage.">
+        <div class="vp-stage-head">
+          <span class="vp-stage-label">RO CORE</span>
+          <span class="vp-stage-title">RO Core &mdash; HP Pump - ERD - TFC Membranes - Conductivity - Auto-Divert</span>
+          <svg class="vp-stage-arrow" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M6 4l4 4-4 4"/></svg>
+        </div>
+        <div class="vp-stage-body">
+          <div class="vp-nodes">
+            <div class="vp-node vpn-ro" data-node="hp-pump">
+              <span class="vp-node-title">HP pump + VFD</span>
+              <span class="vp-node-sub">Danfoss APP - 800 psi</span>
+            </div>
+            <span class="vp-ppoint">P3 &mdash; HP inlet</span>
+            <div class="vp-node vpn-ro" data-node="membranes">
+              <span class="vp-node-title">RO membranes</span>
+              <span class="vp-node-sub">TFC staged - 55 bar - ~45&ndash;50% recovery</span>
+            </div>
+            <span class="vp-ppoint">P4 permeate</span>
+            <span class="vp-ppoint">P5 brine press.</span>
+            <div class="vp-node vpn-brine" data-node="erd">
+              <span class="vp-node-title">ERD isobaric PX</span>
+              <span class="vp-node-sub">Brine &rarr; feed boost - ~30% HP energy saved</span>
+            </div>
+            <div class="vp-node vpn-alert" data-node="conductivity">
+              <span class="vp-node-title">Conductivity check</span>
+              <span class="vp-node-sub">TDS sensor inline</span>
+            </div>
+            <div class="vp-node vpn-alert" data-node="autodivert">
+              <span class="vp-node-title">Auto divert</span>
+              <span class="vp-node-sub">Off-spec &rarr; drain</span>
+            </div>
+            <span class="vp-ppoint">P6 &mdash; post-divert</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── STAGE 4: POST-TREATMENT ── -->
+      <div class="vp-stage" data-stage="posttreat"
+           data-title="Post-Treatment"
+           data-badge="Potable conditioning"
+           data-desc="Post-treatment converts RO permeate into safe, palatable, WHO-compliant drinking water. Remineralisation adds Ca²⁺ and Mg²⁺. pH adjustment targets 6.5–8.5 (the range acceptable for community and ritual use). Chlorination applies residual disinfection. The Contact Tank ensures CT ≥ 30 minutes for full pathogen inactivation per compliance standards. Final QC check verifies WHO / Tuvalu standard for turbidity, TDS, and pH before water enters storage or distribution."
+           data-badge-text="Remineralise - pH 6.5&ndash;8.5 - chlorination - CT &#x2265;30 min - QC"
+           data-specs='[["Remineralisation","Ca²⁺ Mg²⁺ dosing"],["pH adjustment","Target 6.5–8.5"],["Chlorination","Residual disinfection dosing"],["Contact tank","CT ≥ 30 min - C-T compliance"],["Final QC","WHO / Tuvalu standard - turbidity - TDS - pH"],["Ritual tap","Disabled for direct ritual draw without post-treatment"]]'
+           data-note="Post-treatment is auto-enabled for bulk storage and clinic supply. It can be disabled for direct ritual draw - Guardian logs the event and the mode selection.">
+        <div class="vp-stage-head">
+          <span class="vp-stage-label">POST-TREAT</span>
+          <span class="vp-stage-title">Post-Treatment &mdash; Remineralise - pH - Chlorination - Contact Tank - QC</span>
+          <svg class="vp-stage-arrow" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M6 4l4 4-4 4"/></svg>
+        </div>
+        <div class="vp-stage-body">
+          <div class="vp-nodes">
+            <div class="vp-node vpn-post" data-node="remin">
+              <span class="vp-node-title">Remineralisation</span>
+              <span class="vp-node-sub">Ca&#xB2;&#x207A; Mg&#xB2;&#x207A; dosing</span>
+            </div>
+            <div class="vp-node vpn-post" data-node="ph">
+              <span class="vp-node-title">pH adjustment</span>
+              <span class="vp-node-sub">Target 6.5 - 8.5</span>
+            </div>
+            <div class="vp-node vpn-post" data-node="chlor">
+              <span class="vp-node-title">Chlorination</span>
+              <span class="vp-node-sub">Residual dosing</span>
+            </div>
+            <div class="vp-node vpn-post" data-node="contact-tank">
+              <span class="vp-node-title">Contact tank</span>
+              <span class="vp-node-sub">CT &#x2265; 30 min &middot; C&middot;T compliance</span>
+            </div>
+            <div class="vp-node vpn-post" data-node="finalqc">
+              <span class="vp-node-title">Final QC check</span>
+              <span class="vp-node-sub">WHO / Tuvalu std &middot; turbidity &middot; TDS &middot; pH</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── STAGE 5: BRINE PATH ── -->
+      <div class="vp-stage" data-stage="brine"
+           data-title="Brine Path"
+           data-badge="Sovereign circularity"
+           data-desc="Brine reject from the RO membranes first passes through the ERD loop for pressure recovery. It then enters the brine holding tank (800–1,200 L, buffered and level-monitored). From there, conditional secondary recovery via Saltworks XtremeRO™ pushes total water recovery to up to 90% - but XtremeRO only activates when surplus solar energy is available. A dilution manifold blends rainwater to control salinity before discharge. Remaining concentrate routes to salt basin evaporation (minerals extraction), halophyte beds, and finally - under compliance monitoring - to safe marine discharge. Guardian ensures brine is never discharged untreated."
+           data-badge-text="ERD loop - XtremeRO - dilution - halophytes - safe discharge"
+           data-specs='[["ERD reject loop","Brine pressure → feed boost"],["Brine holding tank","800-1,200 L - level monitored"],["XtremeRO™","Conditional - surplus energy only - up to 90% total recovery"],["XtremeRO power","~1.5–3.5 kWh/m³ brine processed"],["Dilution manifold","Rainwater blending - salinity control"],["Salt basin","Evaporation - NaCl - MgSO₄ recovery"],["Halophyte beds","Ecological irrigation"],["Marine discharge","Monitored outfall - Guardian compliant"]]'
+           data-note="XtremeRO is only activated by Guardian when surplus solar energy is detected - it will not draw from battery reserves. This protects primary water production.">
+        <div class="vp-stage-head">
+          <span class="vp-stage-label">BRINE PATH</span>
+          <span class="vp-stage-title">Brine Path &mdash; ERD - Holding - XtremeRO - Dilution - Minerals - Safe Discharge</span>
+          <svg class="vp-stage-arrow" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M6 4l4 4-4 4"/></svg>
+        </div>
+        <div class="vp-stage-body">
+          <div class="vp-nodes">
+            <div class="vp-node vpn-brine" data-node="erd-loop">
+              <span class="vp-node-title">ERD reject loop</span>
+              <span class="vp-node-sub">Pressure recovery &rarr; feed boost</span>
+            </div>
+            <div class="vp-node vpn-brine" data-node="brine-tank">
+              <span class="vp-node-title">Brine holding tank</span>
+              <span class="vp-node-sub">800-1,200 L · buffered · Guardian</span>
+            </div>
+            <div class="vp-node vpn-brine" data-node="xtremero">
+              <span class="vp-node-title">XtremeRO recovery</span>
+              <span class="vp-node-sub">Conditional - surplus energy - up to 90% total</span>
+            </div>
+            <div class="vp-node vpn-brine" data-node="dilution">
+              <span class="vp-node-title">Dilution manifold</span>
+              <span class="vp-node-sub">Rainwater blending</span>
+            </div>
+            <div class="vp-node vpn-brine" data-node="salt-basin">
+              <span class="vp-node-title">Salt basin evaporation</span>
+              <span class="vp-node-sub">Minerals &amp; extraction</span>
+            </div>
+            <div class="vp-node vpn-post" data-node="halophytes-b">
+              <span class="vp-node-title">Halophyte beds</span>
+              <span class="vp-node-sub">Ecological irrigation</span>
+            </div>
+            <div class="vp-node vpn-sea" data-node="marine-discharge">
+              <span class="vp-node-title">Safe marine discharge</span>
+              <span class="vp-node-sub">Monitored outfall</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── STAGE 6: OUTPUT ── -->
+      <div class="vp-stage" data-stage="output"
+           data-title="Output & Distribution"
+           data-badge="Freshwater to community"
+           data-desc="Clean, post-treated water passes through a freshwater storage holding tank (2,000–3,000 L) before entering the distribution network. Distribution feeds Vai Koko - the Floating Ring System (5,000–20,000 L pods) - and community tap access points. Guardian provides real-time civic visibility: % water from sky vs sea, tank levels, and quality metrics are shown on the public dashboard. Arbor notifies stewards and supports ritual drawdown events."
+           data-badge-text="Freshwater storage - Vai Koko ring - community taps - civic dashboard"
+           data-specs='[["Freshwater tank","2,000–3,000 L holding"],["Vai Koko pods","5,000–20,000 L per pod - lagoon-side"],["Distribution","Floating Ring HDPE manifold - Guardian valves"],["Community tap","WHO-compliant - Guardian-linked display"],["Civic dashboard","Real-time tank levels - % sky vs sea water"],["Arbor","Steward alerts - ritual drawdown support"]]'
+           data-note="Water output is the first thing the community sees. Guardian makes tank levels and water origin publicly visible at all times.">
+        <div class="vp-stage-head">
+          <span class="vp-stage-label">OUTPUT</span>
+          <span class="vp-stage-title">Output &mdash; Freshwater Storage &middot; Vai Koko Ring &middot; Community Taps</span>
+          <svg class="vp-stage-arrow" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M6 4l4 4-4 4"/></svg>
+        </div>
+        <div class="vp-stage-body">
+          <div class="vp-nodes">
+            <div class="vp-node vpn-out" data-node="fw-tank">
+              <span class="vp-node-title">Freshwater holding</span>
+              <span class="vp-node-sub">2,000&ndash;3,000 L &middot; Guardian monitored</span>
+            </div>
+            <div class="vp-node vpn-out" data-node="vai-koko-dist">
+              <span class="vp-node-title">Vai Koko ring system</span>
+              <span class="vp-node-sub">HDPE floating pods &middot; 5,000&ndash;20,000 L</span>
+            </div>
+            <div class="vp-node vpn-out" data-node="comm-tap">
+              <span class="vp-node-title">Community taps</span>
+              <span class="vp-node-sub">WHO-compliant &middot; civic display</span>
+            </div>
+            <div class="vp-node vpn-guardian" data-node="dashboard">
+              <span class="vp-node-title">Guardian dashboard</span>
+              <span class="vp-node-sub">% sky vs sea water &middot; public visibility</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── STAGE 7: SHUTDOWN / PRESERVATION ── -->
+      <div class="vp-stage" data-stage="shutdown"
+           data-title="Shutdown & Preservation"
+           data-badge="Membrane longevity"
+           data-desc="When the system shuts down - planned or emergency - Guardian triggers an automatic membrane preservation sequence. A dedicated permeate flush tank provides clean water for a low-pressure flush that removes concentrated brine from membranes. For extended downtime, a chemical preservation loop protects membranes from biological fouling or scaling. The Clean-in-Place (CIP) system performs scheduled recovery cleaning. All steps are Guardian-logged for maintenance history."
+           data-badge-text="Permeate flush - chemical preserve - CIP"
+           data-specs='[["Flush tank","Permeate flush tank - dedicated"],["Auto flush","Low-pressure membrane flush - automatic"],["Chemical loop","Preservation - extended downtime"],["CIP","Clean-in-place - scheduled recovery"],["Guardian","All shutdown events logged with timestamp"]]'
+           data-note="CIP is a scheduled maintenance procedure. Guardian prompts local stewards through Arbor when a CIP cycle is due, and guides them step by step.">
+        <div class="vp-stage-head">
+          <span class="vp-stage-label">SHUTDOWN</span>
+          <span class="vp-stage-title">Shutdown / Preservation &mdash; Permeate Flush &middot; Chemical Preserve &middot; CIP</span>
+          <svg class="vp-stage-arrow" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M6 4l4 4-4 4"/></svg>
+        </div>
+        <div class="vp-stage-body">
+          <div class="vp-nodes">
+            <div class="vp-node vpn-sd" data-node="flush-tank">
+              <span class="vp-node-title">Permeate flush tank</span>
+              <span class="vp-node-sub">Auto low-P flush</span>
+            </div>
+            <div class="vp-node vpn-sd" data-node="mem-preserve">
+              <span class="vp-node-title">Membrane preserve</span>
+              <span class="vp-node-sub">Chemical loop</span>
+            </div>
+            <div class="vp-node vpn-sd" data-node="cip">
+              <span class="vp-node-title">CIP loop</span>
+              <span class="vp-node-sub">Clean-in-place</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── STAGE 8: BYPASS ── -->
+      <div class="vp-stage" data-stage="bypass"
+           data-title="Bypass Line"
+           data-badge="Emergency supply only"
+           data-desc="The bypass line routes feed tank water directly to storage, bypassing the RO and post-treatment stages entirely. This is an emergency-only mode - water produced this way is NOT potable without post-treatment. Guardian controls the bypass valve and logs every activation event. An Emergency Supply node allows raw water distribution in crisis conditions. A Guardian Lock node records the bypass event and prevents it from being activated without authorisation. Activated only on Guardian auth."
+           data-badge-text="Feed tank direct to storage &middot; Guardian auth required"
+           data-specs='[["Bypass valve","Guardian-controlled"],["Emergency supply","Skips RO - raw water only"],["Guardian lock","Logs bypass event - auth required"],["Safety note","NOT potable without post-treatment"]]'
+           data-note="Bypass line activated only on Guardian authorisation - not for potable use without post-treatment. All bypass events are permanently logged.">
+        <div class="vp-stage-head">
+          <span class="vp-stage-label">BYPASS</span>
+          <span class="vp-stage-title">Bypass Line &mdash; Feed Tank Direct to Storage &middot; Guardian Auth</span>
+          <svg class="vp-stage-arrow" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M6 4l4 4-4 4"/></svg>
+        </div>
+        <div class="vp-stage-body">
+          <div class="vp-nodes">
+            <div class="vp-node vpn-bypass" data-node="bypass-valve">
+              <span class="vp-node-title">Bypass valve</span>
+              <span class="vp-node-sub">Guardian-controlled</span>
+            </div>
+            <div class="vp-node vpn-sd" data-node="emergency-supply">
+              <span class="vp-node-title">Emergency supply</span>
+              <span class="vp-node-sub">Skips RO &middot; raw only</span>
+            </div>
+            <div class="vp-node vpn-alert" data-node="guardian-lock">
+              <span class="vp-node-title">Guardian lock</span>
+              <span class="vp-node-sub">Logs bypass event</span>
+            </div>
+          </div>
+          <p style="font-family:'DM Sans',sans-serif;font-size:.72rem;color:rgba(240,149,149,.7);padding:.7rem .2rem 0;line-height:1.55">Activated only on Guardian auth &mdash; not for potable use without post-treatment</p>
+        </div>
+      </div>
+
+    </div><!-- /vp-diagram -->
+
+
+    
+    <!-- ── RIGHT PANEL ── -->
+    <aside class="vp-panel" aria-live="polite" aria-atomic="true">
+      <div class="vp-p-eyebrow">Stage Focus</div>
+      <div class="vp-p-stage-badge vpn-guardian" id="vpStageBadge" style="background:rgba(0,30,55,.6);border-color:rgba(35,193,196,.22);color:rgba(35,193,196,.9)">Guardian</div>
+      <h3 class="vp-p-title" id="vpTitle">Guardian</h3>
+      <div class="vp-p-badge" id="vpBadge">Sovereign &amp; localised control</div>
+      <p class="vp-p-desc" id="vpDesc">Guardian acts as the central logic and control system - monitoring every key parameter in real time and executing automated protocols. Arbor serves as the human-facing interface for stewards and civic use.</p>
+      <div class="vp-p-hr"></div>
+      <ul class="vp-p-specs" id="vpSpecs" aria-label="Stage specifications">
+        <li class="vp-p-spec"><span class="vp-p-spec-k">Platform</span><span class="vp-p-spec-v">Victron Cerbo GX + Guardian</span></li>
+        <li class="vp-p-spec"><span class="vp-p-spec-k">Protocol</span><span class="vp-p-spec-v">Modbus TCP - MQTT - RS485</span></li>
+        <li class="vp-p-spec"><span class="vp-p-spec-k">Battery</span><span class="vp-p-spec-v">4x Pylontech - 14 kWh</span></li>
+        <li class="vp-p-spec"><span class="vp-p-spec-k">Solar</span><span class="vp-p-spec-v">6.4 kW - 16x 400W mono</span></li>
+      </ul>
+      <p class="vp-p-note" id="vpNote">System Status: Sovereign &amp; Localised Control - Guardian sees every sensor. No data leaves the island without consent.</p>
+    </aside>
+  </div>
+
+  <!-- Legend -->
+  <div class="vp-legend" role="note" aria-label="Flow legend">
+    <div class="vp-legend-hd">Flow Legend</div>
+    <div class="vl-item"><div class="vl-dot" style="background:rgba(55,138,221,.9)"></div>Feedwater (seawater)</div>
+    <div class="vl-item"><div class="vl-dot" style="background:rgba(29,158,117,.9)"></div>Permeate / potable</div>
+    <div class="vl-item"><div class="vl-dot" style="background:rgba(59,109,17,.9)"></div>Post-treatment potable</div>
+    <div class="vl-item"><div class="vl-dot" style="background:rgba(186,117,23,.9)"></div>Brine / concentrate</div>
+    <div class="vl-dash"></div><span style="font-family:'DM Sans',sans-serif;font-size:.68rem;color:rgba(250,246,238,.45)">Brine dashed flow</span>
+    <div class="vl-item"><div class="vl-dot" style="background:rgba(226,75,74,.9)"></div>Alarm / divert path</div>
+    <div class="vl-alarm"></div><span style="font-family:'DM Sans',sans-serif;font-size:.68rem;color:rgba(250,246,238,.45)">Alarm dashed path</span>
+    <div class="vl-item"><div class="vl-dot" style="background:rgba(35,193,196,.8)"></div>Guardian oversight</div>
+    <div class="vl-item"><div class="vl-dot" style="background:rgba(180,178,169,.7)"></div>Neutral / shutdown</div>
+  </div>
+
+  <p class="vp-caption" aria-hidden="true">
+    Ocean Intake &nbsp;&rarr;&nbsp; Pre-Treatment &nbsp;&rarr;&nbsp; RO Core (ERD) &nbsp;&rarr;&nbsp; Post-Treatment &nbsp;&rarr;&nbsp; Output &nbsp;&nbsp;&middot;&nbsp;&nbsp; Brine &nbsp;&rarr;&nbsp; XtremeRO &nbsp;&rarr;&nbsp; Salt Recovery &nbsp;&rarr;&nbsp; Safe Discharge
+  </p>
+</div>
+
+<script>
+(function(){
+  'use strict';
+
+  // ── Stage accordion ──
+  var stages = Array.from(document.querySelectorAll('#vai-process .vp-stage'));
+  stages.forEach(function(stage){
+    var head = stage.querySelector('.vp-stage-head');
+    if(!head) return;
+    head.addEventListener('click', function(){
+      var isOpen = stage.classList.contains('vp-active');
+      stages.forEach(function(s){ s.classList.remove('vp-active'); });
+      if(!isOpen) {
+        stage.classList.add('vp-active');
+        updatePanel(stage, null);
+      }
+    });
+    head.setAttribute('tabindex','0');
+    head.setAttribute('role','button');
+    head.setAttribute('aria-expanded', stage.classList.contains('vp-active') ? 'true' : 'false');
+    head.addEventListener('keydown', function(e){
+      if(e.key==='Enter'||e.key===' '){ e.preventDefault(); head.click(); }
+    });
+  });
+
+  // ── Node selection ──
+  var nodes = Array.from(document.querySelectorAll('#vai-process .vp-node'));
+  nodes.forEach(function(node){
+    node.addEventListener('click', function(e){
+      e.stopPropagation();
+      nodes.forEach(function(n){ n.classList.remove('vp-node-sel'); });
+      node.classList.add('vp-node-sel');
+      // Find parent stage
+      var parentStage = node.closest('.vp-stage');
+      if(parentStage) updatePanel(parentStage, node);
+    });
+  });
+
+  // ── Panel updater ──
+  var elTitle   = document.getElementById('vpTitle');
+  var elBadge   = document.getElementById('vpBadge');
+  var elDesc    = document.getElementById('vpDesc');
+  var elSpecs   = document.getElementById('vpSpecs');
+  var elNote    = document.getElementById('vpNote');
+  var elStageBadge = document.getElementById('vpStageBadge');
+
+  // Stage colour map for badge
+  var stageColours = {
+    intake:    'background:rgba(12,68,124,.6);border-color:rgba(133,183,235,.3);color:rgba(181,212,244,.9)',
+    pretreat:  'background:rgba(20,52,82,.6);border-color:rgba(80,140,200,.3);color:rgba(160,200,240,.9)',
+    ro:        'background:rgba(113,43,19,.6);border-color:rgba(240,153,123,.3);color:rgba(245,196,179,.9)',
+    posttreat: 'background:rgba(39,80,10,.6);border-color:rgba(151,196,89,.3);color:rgba(192,221,151,.9)',
+    brine:     'background:rgba(80,50,0,.6);border-color:rgba(186,117,23,.3);color:rgba(239,186,80,.9)',
+    output:    'background:rgba(0,60,90,.6);border-color:rgba(35,193,196,.3);color:rgba(160,230,240,.9)',
+    shutdown:  'background:rgba(50,50,48,.6);border-color:rgba(180,178,169,.28);color:rgba(211,209,199,.9)',
+    bypass:    'background:rgba(40,40,38,.6);border-color:rgba(160,158,150,.25);color:rgba(180,178,169,.85)',
+    guardian:  'background:rgba(0,30,55,.6);border-color:rgba(35,193,196,.22);color:rgba(35,193,196,.9)'
+  };
+
+  function updatePanel(stage, node) {
+    var st = stage.dataset.stage || 'guardian';
+    // Stage label for badge
+    var stageLabels = {
+      intake:'INTAKE', pretreat:'PRE-TREAT', ro:'RO CORE', posttreat:'POST-TREAT',
+      brine:'BRINE PATH', output:'OUTPUT', shutdown:'SHUTDOWN', bypass:'BYPASS', guardian:'GUARDIAN'
+    };
+    elStageBadge.textContent = stageLabels[st] || st.toUpperCase();
+    elStageBadge.setAttribute('style', (stageColours[st] || '') + ';display:inline-flex;align-items:center;gap:.4rem;padding:.22rem .6rem;border-radius:4px;font-family:var(--font-ui,"Questrial",sans-serif);font-size:.56rem;letter-spacing:.1em;text-transform:uppercase;width:fit-content;border:1px solid');
+
+    if(node) {
+      // Node-level info
+      var nTitle = node.querySelector('.vp-node-title');
+      var nSub   = node.querySelector('.vp-node-sub');
+      elTitle.textContent = nTitle ? nTitle.textContent : (stage.dataset.title || '');
+      elBadge.textContent = nSub ? nSub.textContent : (stage.dataset['badge-text'] || stage.dataset.badge || '');
+      elDesc.innerHTML    = stage.dataset.desc || '';
+      elNote.innerHTML    = stage.dataset.note || '';
+    } else {
+      // Stage-level info
+      elTitle.innerHTML   = stage.dataset.title || '';
+      elBadge.textContent = stage.dataset['badge-text'] || stage.dataset.badge || '';
+      elDesc.innerHTML    = stage.dataset.desc  || '';
+      elNote.innerHTML    = stage.dataset.note  || '';
+    }
+
+    // Build specs table
+    var specsRaw = stage.dataset.specs || '[]';
+    var specs = [];
+    try { specs = JSON.parse(specsRaw); } catch(e){}
+    elSpecs.innerHTML = '';
+    specs.forEach(function(pair){
+      var li = document.createElement('li');
+      li.className = 'vp-p-spec';
+      li.innerHTML = '<span class="vp-p-spec-k">' + pair[0] + '</span><span class="vp-p-spec-v">' + pair[1] + '</span>';
+      elSpecs.appendChild(li);
+    });
+
+    // Update aria-expanded on all heads
+    stages.forEach(function(s){
+      var h = s.querySelector('.vp-stage-head');
+      if(h) h.setAttribute('aria-expanded', s.classList.contains('vp-active') ? 'true' : 'false');
+    });
+  }
+
+  // Init with guardian stage
+  var defaultStage = document.querySelector('#vai-process .vp-stage[data-stage="guardian"]');
+  if(defaultStage) updatePanel(defaultStage, null);
+
+
+  // ════════════════════════════════════════
+  //  ANIMATED DIAGRAM INTERACTIONS
+  // ════════════════════════════════════════
+
+  var vpdSvg = document.getElementById('vpdSvg');
+  var vpdBar = document.getElementById('vpdBar');
+  var tooltip = document.createElement('div');
+  tooltip.className = 'vpd-tooltip';
+  document.body.appendChild(tooltip);
+
+  // Stage → colour map for dot
+  var stageDotMap = {
+    guardian:'rgba(35,193,196,.85)', intake:'rgba(55,138,221,.8)',
+    pretreat:'rgba(29,158,117,.8)', ro:'rgba(240,153,123,.8)',
+    posttreat:'rgba(151,196,89,.8)', brine:'rgba(186,117,23,.8)',
+    output:'rgba(35,193,196,.8)', shutdown:'rgba(180,178,169,.65)',
+    bypass:'rgba(160,158,150,.55)'
+  };
+
+  // ── Stage breadcrumb bar ──
+  var sbBtns = Array.from(vpdBar.querySelectorAll('.vpd-sb-btn'));
+  sbBtns.forEach(function(btn){
+    btn.addEventListener('click', function(){
+      var st = btn.dataset.stage;
+      sbBtns.forEach(function(b){ b.classList.remove('vpd-sb-active'); b.setAttribute('tabindex','-1'); });
+      btn.classList.add('vpd-sb-active');
+      btn.setAttribute('tabindex','0');
+      // Sync accordion
+      var accordionStage = document.querySelector('#vai-process .vp-stage[data-stage="'+st+'"]');
+      if(accordionStage){
+        stages.forEach(function(s){ s.classList.remove('vp-active'); });
+        accordionStage.classList.add('vp-active');
+        updatePanel(accordionStage, null);
+        // Scroll accordion stage into view gently
+        setTimeout(function(){
+          accordionStage.scrollIntoView({behavior:'smooth',block:'nearest'});
+        }, 80);
+      }
+      // Highlight SVG bands
+      highlightSvgBands(st);
+    });
+    btn.addEventListener('keydown', function(e){
+      var idx = sbBtns.indexOf(btn);
+      if(e.key==='ArrowRight'||e.key==='ArrowDown'){
+        e.preventDefault();
+        sbBtns[Math.min(idx+1,sbBtns.length-1)].click();
+        sbBtns[Math.min(idx+1,sbBtns.length-1)].focus();
+      } else if(e.key==='ArrowLeft'||e.key==='ArrowUp'){
+        e.preventDefault();
+        sbBtns[Math.max(idx-1,0)].click();
+        sbBtns[Math.max(idx-1,0)].focus();
+      }
+    });
+  });
+
+  // ── SVG node interactions ──
+  var vpdNodes = vpdSvg ? Array.from(vpdSvg.querySelectorAll('.vpd-node')) : [];
+  vpdNodes.forEach(function(node){
+    node.addEventListener('mouseenter', function(e){
+      var title = node.dataset.title || '';
+      var sub   = node.dataset.sub   || '';
+      if(!title) return;
+      tooltip.innerHTML = '<strong style="display:block;margin-bottom:3px;color:rgba(255,255,255,.9)">'+title+'</strong><span style="color:rgba(250,246,238,.55)">'+sub+'</span>';
+      tooltip.classList.add('vpd-tt-show');
+      moveTT(e);
+    });
+    node.addEventListener('mousemove', moveTT);
+    node.addEventListener('mouseleave', function(){
+      tooltip.classList.remove('vpd-tt-show');
+    });
+    node.addEventListener('click', function(){
+      var st = node.dataset.stage;
+      if(!st) return;
+      // Trigger bar + accordion
+      var barBtn = vpdBar.querySelector('[data-stage="'+st+'"]');
+      if(barBtn) barBtn.click();
+    });
+    node.addEventListener('focus', function(){
+      var st = node.dataset.stage;
+      if(!st) return;
+      var barBtn = vpdBar.querySelector('[data-stage="'+st+'"]');
+      if(barBtn) barBtn.click();
+    });
+    node.addEventListener('keydown', function(e){
+      if(e.key==='Enter'||e.key===' '){
+        e.preventDefault();
+        node.click();
+      }
+    });
+  });
+
+  function moveTT(e){
+    var x = e.clientX + 14;
+    var y = e.clientY - 10;
+    if(x + 210 > window.innerWidth) x = e.clientX - 220;
+    tooltip.style.left = x+'px';
+    tooltip.style.top  = y+'px';
+  }
+
+  // ── SVG band highlighting ──
+  function highlightSvgBands(activeStage){
+    if(!vpdSvg) return;
+    var allBands   = vpdSvg.querySelectorAll('[data-band]');
+    var allNodes   = vpdSvg.querySelectorAll('[data-stage]');
+    allBands.forEach(function(b){
+      b.classList.remove('vpd-band-lit','vpd-band-dim');
+      b.classList.add(b.dataset.band===activeStage?'vpd-band-lit':'vpd-band-dim');
+    });
+    allNodes.forEach(function(n){
+      if(!n.classList.contains('vpd-node')) return;
+      n.classList.remove('vpd-lit','vpd-dim');
+      n.classList.add(n.dataset.stage===activeStage?'vpd-lit':'vpd-dim');
+    });
+  }
+
+  // ── Sync accordion stage changes → SVG + breadcrumb ──
+  var origAct = window._vpAct || null;
+  // Patch the existing accordion click handler to also update the bar
+  stages.forEach(function(stage){
+    var head = stage.querySelector('.vp-stage-head');
+    if(!head) return;
+    head.addEventListener('click', function(){
+      var st = stage.dataset.stage;
+      if(!st) return;
+      sbBtns.forEach(function(b){ b.classList.remove('vpd-sb-active'); b.setAttribute('tabindex','-1'); });
+      var barBtn = vpdBar.querySelector('[data-stage="'+st+'"]');
+      if(barBtn){ barBtn.classList.add('vpd-sb-active'); barBtn.setAttribute('tabindex','0'); }
+      highlightSvgBands(st);
+    }, true);
+  });
+
+  // Init SVG highlight
+  highlightSvgBands('guardian');
+
+})();
+</script>
 </section>
 
 <!-- ═══ SYSTEM SPLIT CALLOUT ═══════════════════════════════════ -->
@@ -1231,95 +2454,6 @@ footer{background:var(--navy-deep);}
   </div>
 </section>
 
-<!-- ═══ WATER FLOW DIAGRAM ════════════════════════════════════════ -->
-<section class="flow-section" aria-label="Integrated water flow diagram">
-  <div class="flow-inner">
-    <div class="section-tag teal reveal">System Architecture</div>
-    <h2 class="h2 reveal">How water moves<br>through <em>the island.</em></h2>
-    <p class="body-text reveal" style="max-width:600px;margin-top:1rem;">Click any node in the diagram below to understand its role in the integrated water system. Vai Tapu produces — Vai Koko stores — Guardian coordinates.</p>
-    <canvas id="flow-canvas" height="340" aria-label="Interactive water flow system diagram. Click nodes for details."></canvas>
-    <div class="flow-info-panel" id="flow-info" aria-live="polite">
-      <div class="flow-info-header">
-        <div class="flow-info-dot" id="flow-dot"></div>
-        <div class="flow-info-title" id="flow-title">Select a node</div>
-        <span class="flow-hint">Click any node to explore</span>
-      </div>
-      <div class="flow-info-body">
-        <div class="flow-info-text" id="flow-text">Click any element in the diagram above to see its role in the integrated water system — from ocean intake through desalination, storage, distribution, and ecological return.</div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ═══ CAPACITY & RESILIENCE ════════════════════════════════════ -->
-<section class="capacity-section" aria-label="Capacity and resilience data">
-  <div class="cap-inner">
-    <div class="section-tag reveal">Water Security Metrics</div>
-    <h2 class="h2 reveal">From production<br>to <em>national resilience.</em></h2>
-    <p class="body-text reveal" style="max-width:560px;margin-top:1rem;">Three deployment tiers — from a 35-tank pilot to a 250-tank national mesh — each adding measurable water security across the nine atolls.</p>
-    <div class="cap-layout">
-      <!-- Bar chart canvas -->
-      <div class="reveal-left">
-        <p style="font-family:var(--font-ui);font-size:.6rem;letter-spacing:.14em;text-transform:uppercase;color:var(--stone-light);margin-bottom:1rem;">Deployment Phase Storage Capacity (litres)</p>
-        <canvas id="cap-canvas" height="260" aria-label="Bar chart showing water storage capacity across deployment phases"></canvas>
-        <div class="cap-legend">
-          <div class="cap-leg-item"><div class="cap-leg-swatch" style="background:var(--teal);"></div>Vai Tapu daily output <span class="cap-leg-val"></span></div>
-          <div class="cap-leg-item"><div class="cap-leg-swatch" style="background:var(--teal-dim);"></div>Vai Koko total stored <span class="cap-leg-val"></span></div>
-          <div class="cap-leg-item"><div class="cap-leg-swatch" style="background:var(--gold-dim);"></div>Target by phase <span class="cap-leg-val"></span></div>
-        </div>
-      </div>
-      <!-- Resilience metrics -->
-      <div class="reveal">
-        <div class="section-tag teal" style="margin-bottom:1.5rem;">Phase 1 Target Metrics</div>
-        <div class="resilience-bars">
-          <div class="res-bar-wrap">
-            <div class="res-bar-top"><span class="res-bar-name">Energy uptime (solar + hydro)</span><span class="res-bar-val">95%+</span></div>
-            <div class="res-track"><div class="res-fill" data-width="95%"></div></div>
-          </div>
-          <div class="res-bar-wrap">
-            <div class="res-bar-top"><span class="res-bar-name">Coral survival rate at 6 months</span><span class="res-bar-val">75%+</span></div>
-            <div class="res-track"><div class="res-fill gold" data-width="75%"></div></div>
-          </div>
-          <div class="res-bar-wrap">
-            <div class="res-bar-top"><span class="res-bar-name">Tank survival post Category 4 storm</span><span class="res-bar-val">100%</span></div>
-            <div class="res-track"><div class="res-fill coral" data-width="100%"></div></div>
-          </div>
-          <div class="res-bar-wrap">
-            <div class="res-bar-top"><span class="res-bar-name">O&amp;M cost reduction via Guardian</span><span class="res-bar-val">40–60%</span></div>
-            <div class="res-track"><div class="res-fill navy" data-width="50%"></div></div>
-          </div>
-          <div class="res-bar-wrap">
-            <div class="res-bar-top"><span class="res-bar-name">Naming ceremonies conducted</span><span class="res-bar-val">15+</span></div>
-            <div class="res-track"><div class="res-fill gold" data-width="60%"></div></div>
-          </div>
-        </div>
-
-        <div style="margin-top:2.5rem;padding:1.4rem;background:rgba(0,43,75,.04);border:1px solid var(--border-light);">
-          <div class="section-tag" style="margin-bottom:.8rem;">10-Year O&amp;M Cost per Tank</div>
-          <table style="width:100%;border-collapse:collapse;">
-            <tr style="border-bottom:1px solid var(--border-light);">
-              <td style="padding:.6rem .3rem;font-size:.75rem;color:var(--stone);">Labour (inspections)</td>
-              <td style="text-align:right;font-size:.8rem;color:var(--navy);font-weight:400;">$2,800</td>
-            </tr>
-            <tr style="border-bottom:1px solid var(--border-light);">
-              <td style="padding:.6rem .3rem;font-size:.75rem;color:var(--stone);">Replacement parts</td>
-              <td style="text-align:right;font-size:.8rem;color:var(--navy);font-weight:400;">$1,200</td>
-            </tr>
-            <tr style="border-bottom:1px solid var(--border-light);">
-              <td style="padding:.6rem .3rem;font-size:.75rem;color:var(--stone);">Stewardship training</td>
-              <td style="text-align:right;font-size:.8rem;color:var(--navy);font-weight:400;">$1,000</td>
-            </tr>
-            <tr>
-              <td style="padding:.7rem .3rem;font-size:.75rem;color:var(--navy);font-weight:500;">Total 10-year O&amp;M</td>
-              <td style="text-align:right;font-size:.9rem;color:var(--teal-dim);font-family:var(--font-serif);font-weight:300;">~$5,000</td>
-            </tr>
-          </table>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
 <!-- ═══ REEFSKIN + CORAL ══════════════════════════════════════════ -->
 <section class="reefskin-section" aria-label="Reefskin and coral restoration">
   <div class="rs-inner">
@@ -1367,189 +2501,13 @@ footer{background:var(--navy-deep);}
         </div>
         <p style="margin-top:1.5rem;font-size:.74rem;color:rgba(255,255,255,.4);line-height:1.65;border-left:2px solid rgba(255,255,255,.08);padding-left:.9rem;">Reefskin uses low-pH concrete with calcite and strontium additives — reef-safe by design. Each texture pattern represents a different clan or water spirit, giving physical variation and ceremonial meaning to each installation.</p>
       </div>
-    </div>
-  </div>
-</section>
-
-<!-- ═══ GOVERNANCE + GUARDIAN ════════════════════════════════════ -->
-<section class="governance-section" aria-label="Guardian integration and governance">
-  <div class="gov-inner">
-    <div class="section-tag reveal">Guardian Integration</div>
-    <h2 class="h2 reveal">Watched. Predicted.<br><em>Protected.</em></h2>
-    <p class="body-text reveal" style="max-width:620px;margin-top:1rem;">Every Vai Tapu and Vai Koko unit is connected to the Guardian network. Telemetry runs every 60 seconds. Citizens can view their water system's health on public terminals. No data leaves the island.</p>
-    <div class="gov-layout">
-      <div class="gov-card gov-card-teal reveal">
-        <div class="gov-card-icon"><svg viewBox="0 0 24 24" stroke="currentColor"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></div>
-        <div class="gov-card-label">Real-Time Monitoring</div>
-        <h3 class="gov-card-title">Live water telemetry</h3>
-        <p class="gov-card-body">Guardian tracks flow rates, tank levels, water quality (pH, salinity, contaminants), pressure, and temperature across every node. 60-second heartbeat. Any anomaly triggers an immediate alert to the nearest steward and the Guardian dashboard.</p>
-      </div>
-      <div class="gov-card gov-card-gold reveal">
-        <div class="gov-card-icon"><svg viewBox="0 0 24 24" stroke="currentColor"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg></div>
-        <div class="gov-card-label">Predictive Management</div>
-        <h3 class="gov-card-title">Weather-informed distribution</h3>
-        <p class="gov-card-body">Guardian uses weather prediction data to inform rainwater collection strategies, pre-filling Vai Koko tanks before expected dry periods. Automatic conservation protocols activate when reserves fall below threshold — reducing non-essential use before shortages occur.</p>
-      </div>
-      <div class="gov-card gov-card-coral reveal">
-        <div class="gov-card-icon"><svg viewBox="0 0 24 24" stroke="currentColor"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg></div>
-        <div class="gov-card-label">Community Access</div>
-        <h3 class="gov-card-title">Equitable civic distribution</h3>
-        <p class="gov-card-body">Guardian monitors consumption patterns across communities and flags shortages or inequitable distribution to civic bodies. A community water credit system — where conservation earns credits redeemable for civic goods — is planned for Phase 2. Override always available to community stewards.</p>
-      </div>
-      <div class="gov-card gov-card-teal reveal">
-        <div class="gov-card-icon"><svg viewBox="0 0 24 24" stroke="currentColor"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg></div>
-        <div class="gov-card-label">Water Security</div>
-        <h3 class="gov-card-title">Contamination detection</h3>
-        <p class="gov-card-body">Continuous water quality monitoring ensures all output water meets WHO potable standards. Guardian tracks pH, salinity, and contaminants. Any quality degradation triggers automatic isolation of the affected node and routes production to backup units before distribution is affected.</p>
-      </div>
-      <div class="gov-card gov-card-gold reveal">
-        <div class="gov-card-icon"><svg viewBox="0 0 24 24" stroke="currentColor"><path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/></svg></div>
-        <div class="gov-card-label">Brine Recovery</div>
-        <h3 class="gov-card-title">Closed-loop resource use</h3>
-        <p class="gov-card-body">Brine from Vai Tapu is recovered to extract salt, magnesium, and biomass byproducts. A closed-loop system converts excess salt into construction materials or agricultural additives. Guardian ensures brine discharge routing is always through dilution basins and halophyte beds — never directly to the reef.</p>
-      </div>
-      <div class="gov-card gov-card-coral reveal">
-        <div class="gov-card-icon"><svg viewBox="0 0 24 24" stroke="currentColor"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg></div>
-        <div class="gov-card-label">Storm Protocol</div>
-        <h3 class="gov-card-title">Cyclone-grade resilience</h3>
-        <p class="gov-card-body">Vai Koko's submerged installation is its primary storm defence. The v2.6 F3 Enhanced foundation — 10 geobags on a rigid galvanised steel transfer raft — achieves a verified 1.55× safety factor under full storm-surge submersion with zero potable fill. This is true gravity stabilisation: the combined assembly is heavier than the water it displaces even without water inside. Guardian triggers storm protocol automatically, activating emergency reserves and alerting stewards. Target: 100% tank survival through Category 4.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ═══ COST + DEPLOYMENT ════════════════════════════════════════ -->
-<section class="cost-section" aria-label="Cost and deployment tiers">
-  <div class="cost-inner">
-    <div class="section-tag white reveal">Investment Model</div>
-    <h2 class="h2 h2-white reveal">Phased deployment.<br><em>Scalable investment.</em></h2>
-    <div class="cost-layout">
-      <!-- BOM table -->
-      <div class="reveal">
-        <div style="font-family:var(--font-ui);font-size:.6rem;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.35);margin-bottom:1rem;">Vai Koko Bill of Materials — Per Unit · v2.6</div>
-        <table class="cost-table" aria-label="Vai Koko cost breakdown per unit">
-          <thead>
-            <tr><td>Component</td><td style="text-align:right;">Est. Cost (USD)</td></tr>
-          </thead>
-          <tbody>
-            <tr><td>Main tank body (UV HDPE, rotationally moulded)</td><td>$2,100</td></tr>
-            <tr><td>Reefskin bio-coating</td><td>$750</td></tr>
-            <tr><td>Coral crown module (porous marine concrete)</td><td>$475</td></tr>
-            <tr><td>Light ring + solar panels (marine-grade RGB)</td><td>$1,050</td></tr>
-            <tr><td>Access hatch + internal ladder</td><td>$320</td></tr>
-            <tr><td>Sensor suite (pressure, temp, GPS, salinity)</td><td>$850</td></tr>
-            <tr><td>Micro-hydro power turbine</td><td>$520</td></tr>
-            <tr><td>Foundation — 10 geobags (3.0 m³ each, local sand fill)</td><td>$650</td></tr>
-            <tr><td>Foundation — geobag fill &amp; labour (10 bags)</td><td>$610</td></tr>
-            <tr><td>Rigid transfer raft (7.5 m hex, hot-dip galv. steel)</td><td>$1,200</td></tr>
-            <tr><td>Raft anchor bolts (M20 stainless, 10 sets)</td><td>$600</td></tr>
-            <tr><td>Lateral strap retention kit (storm surge)</td><td>$149</td></tr>
-            <tr><td>Transport, install labour + barge logistics</td><td>$1,850</td></tr>
-          </tbody>
-          <tfoot>
-            <tr><td style="color:rgba(255,255,255,.5);">Total unit cost (v2.6 — verified)</td><td>~$11,124</td></tr>
-          </tfoot>
-        </table>
-        <p style="margin-top:1rem;font-size:.72rem;color:rgba(255,255,255,.3);line-height:1.6;">v2.6 cost reflects the corrected F3 Enhanced foundation: 10 geobags on a rigid steel transfer raft. The corrected F3 Enhanced foundation (10 geobags on a rigid steel transfer raft) achieves true gravity-stabilisation — verified 1.55× safety factor under full storm submersion at 0% fill.</p>
-        <p style="margin-top:.8rem;font-size:.72rem;color:rgba(255,255,255,.3);line-height:1.6;">Bulk production and regional manufacturing could reduce unit costs by 20–30%. Costs exclude local taxes, import duties, or cultural customisation.</p>
-        <p style="margin-top:.8rem;font-size:.72rem;color:rgba(255,255,255,.3);line-height:1.6;">Comparative: traditional above-ground 20,000 L tanks cost $3,600–$5,200 but occupy scarce land, offer no storm resilience, and provide no ecological or cultural value.</p>
-      </div>
-      <!-- Deployment tiers -->
-      <div class="reveal">
-        <div style="font-family:var(--font-ui);font-size:.6rem;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.35);margin-bottom:1rem;">National Rollout — Click a Tier</div>
-        <div class="tier-cards" id="tier-cards">
-          <div class="tier-card selected" data-tier="1" tabindex="0">
-            <div class="tier-top">
-              <span class="tier-name">Tier 1 · Pilot</span>
-              <span class="tier-cost">~$390k</span>
-            </div>
-            <div class="tier-title">Core hubs — Funafuti + 1 school per outer island</div>
-            <p class="tier-desc">35 tanks (v2.6 F3 Enhanced). ~525,000 L total stored. Prototype validation phase with Guardian monitoring. Sensor data shared nationally.</p>
-            <div class="tier-bar-track"><div class="tier-bar-fill" data-width="25%"></div></div>
-          </div>
-          <div class="tier-card" data-tier="2" tabindex="0">
-            <div class="tier-top">
-              <span class="tier-name">Tier 2 · Community Scale</span>
-              <span class="tier-cost">~$890k</span>
-            </div>
-            <div class="tier-title">One full cluster per island (3–5 tanks × 9 islands)</div>
-            <p class="tier-desc">80 tanks (v2.6). ~1.2M L total stored. Sanctuary cluster formations at school sites. Guardian civic dashboard live. Youth steward programme. 10-year O&M ~$400k.</p>
-            <div class="tier-bar-track"><div class="tier-bar-fill" data-width="55%"></div></div>
-          </div>
-          <div class="tier-card" data-tier="3" tabindex="0">
-            <div class="tier-top">
-              <span class="tier-name">Tier 3 · National Mesh</span>
-              <span class="tier-cost">~$2.2–2.8M</span>
-            </div>
-            <div class="tier-title">Full lagoon ring + critical resilience nodes</div>
-            <p class="tier-desc">200–250 tanks (v2.6). ~3.4M L distributed storage across 9 atolls. Full sanctuary network. Guardian-coordinated national water sovereignty. 10-year O&M ~$1–1.3M.</p>
-            <div class="tier-bar-track"><div class="tier-bar-fill" data-width="100%"></div></div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ═══ RECOMMENDATIONS ══════════════════════════════════════════ -->
-<section class="recs-section" aria-label="Improvement recommendations">
-  <div class="recs-inner">
-    <div class="section-tag white reveal">Engineering Review · White Paper v2.6</div>
-    <h2 class="h2 h2-white reveal">Open questions<br>and <em>honest limits.</em></h2>
-    <p class="body-text-white reveal" style="max-width:620px;margin-top:1rem;">These are genuine engineering and governance improvements identified through the v2.6 white paper and prior structural reviews and Guardian Water Systems v1.0 whitepapers. We publish them because credibility is built through honesty, not polish. If you can help solve any of these, reach out.</p>
-    <div class="recs-cta-row reveal">
-      <a href="contact.html" class="btn-ghost" style="margin-top:1.5rem;display:inline-block;">Contribute to the Engineering Work</a>
-    </div>
-    <div class="recs-grid">
-      <div class="rec-card reveal">
-        <div class="rec-num" aria-hidden="true">01</div>
-        <div class="rec-label">Engineering · Corrected v2.4–v2.6</div>
-        <h3 class="rec-title">Foundation upgraded to 10-bag rigid transfer raft</h3>
-        <p class="rec-body">The v2.4 design claimed gravity-stabilisation with 7 geobags at a 1.55× safety factor. Structural review found this incorrect: the outer 6 bags had no rigid load path and the system was tension-dependent in the storm case. v2.6 corrects this with a rigid galvanised steel transfer raft (F3 Enhanced foundation) connecting all 10 geobags, achieving a verified 1.55× safety factor under full storm submersion at 0% potable fill. This is true gravity stabilisation — cut the straps and the assembly stays on the lagoon floor.</p>
-        <span class="rec-tag">White Paper v2.6 · Section 5</span>
-      </div>
-      <div class="rec-card reveal">
-        <div class="rec-num" aria-hidden="true">02</div>
-        <div class="rec-label">Engineering</div>
-        <h3 class="rec-title">Floating tank variants for ultra-low-tide sites</h3>
-        <p class="rec-body">The current Vai Koko design assumes sandy lagoon substrate at 1.2–1.8 m deployment depth. Many outer island sites have coral rubble substrate or very shallow lagoons where the standard foundation is not feasible. A floating or semi-anchored variant should be designed to extend the addressable site range across the full archipelago.</p>
-        <span class="rec-tag">White Paper v2.6 · Limitations</span>
-      </div>
-      <div class="rec-card reveal">
-        <div class="rec-num" aria-hidden="true">02</div>
-        <div class="rec-label">AI Integration</div>
-        <h3 class="rec-title">Weather-predictive rainwater scheduling</h3>
-        <p class="rec-body">Guardian should integrate weather forecast data to pre-fill Vai Koko tanks ahead of predicted dry periods. The Guardian water whitepaper identifies this explicitly as a next-step recommendation. A 72-hour weather prediction window feeding into automated fill scheduling would significantly reduce drought exposure risk with minimal added complexity.</p>
-        <span class="rec-tag">Guardian Water Whitepaper v1.0 · Recommendation 4</span>
-      </div>
-      <div class="rec-card reveal">
-        <div class="rec-num" aria-hidden="true">04</div>
-        <div class="rec-label">Governance</div>
-        <h3 class="rec-title">Marine Infrastructure Consent Archive</h3>
-        <p class="rec-body">The whitepaper recommends — but has not yet implemented — a formal national Marine Infrastructure Consent Archive maintained by the Ministry of Public Utilities or Environment. This registry should record all lagoon-based tank placements, their clan-based stewards, and civic and spiritual roles. Without this, long-term land tenure disputes are a foreseeable risk.</p>
-        <span class="rec-tag">White Paper v2.6 · Legal &amp; Land Ownership</span>
-      </div>
-      <div class="rec-card reveal">
-        <div class="rec-num" aria-hidden="true">05</div>
-        <div class="rec-label">Closed-Loop Systems</div>
-        <h3 class="rec-title">Brine resource extraction beyond salt</h3>
-        <p class="rec-body">Current brine management routes output to salt basins and halophyte beds. The Guardian water whitepaper recommends a closed-loop brine system converting excess salt into construction materials or agricultural additives. This should be formalised in the Vai Tapu design as a first-class output stream — not an afterthought — and connected to the Resource Recovery node.</p>
-        <span class="rec-tag">Guardian Water Whitepaper v1.0 · Recommendation 2</span>
-      </div>
-      <div class="rec-card reveal">
-        <div class="rec-num" aria-hidden="true">06</div>
-        <div class="rec-label">Community Engagement</div>
-        <h3 class="rec-title">Water credit system for conservation incentives</h3>
-        <p class="rec-body">A citizen water credit programme — where users earn credits for conserving water, redeemable for civic goods or services — is identified in the Guardian whitepaper as a Phase 2 recommendation. Designing the data model and governance protocol for this in Phase 1 (not retrofitting it into Phase 2) will significantly reduce implementation friction.</p>
-        <span class="rec-tag">Guardian Water Whitepaper v1.0 · Recommendation 7</span>
-      </div>
-      <div class="rec-card reveal">
-        <div class="rec-num" aria-hidden="true">07</div>
-        <div class="rec-label">Open Engineering</div>
-        <h3 class="rec-title">Wastewater-to-agriculture reuse pathway</h3>
-        <p class="rec-body">Treated greywater from civic buildings and the desalination facility could be redirected for non-potable agricultural use — irrigation for floating farms (Vai Fenua) and halophyte beds. This closes the water loop, reduces total freshwater demand, and strengthens the food-water-energy nexus that is central to the Sovereign Vision. Currently undesigned.</p>
-        <span class="rec-tag">Guardian Water Whitepaper v1.0 · Recommendation 6</span>
-      </div>
+      <br>
+        <!-- ═══ SYSTEM REFERENCE IMAGE ══════════════════════════════ -->
+  <figure style="margin:0;border-radius:20px;overflow:hidden;border:1px solid rgba(35,193,196,.12);line-height:0;box-shadow:0 24px 60px rgba(0,0,0,.4)">
+    <img src="images/water-dark-vaikoko-blueprint.png"
+         alt="Vai Tapu Modular Desalination and Recovery System - full system schematic showing ocean intake, pre-filtration, RO core, post-treatment potable water conditioning, brine beneficiation path, XtremeRO recovery, Vai Koko storage, and community distribution under Guardian oversight"
+         style="width:100%;height:auto;display:block">
+  </figure>
     </div>
   </div>
 </section>
@@ -1569,16 +2527,16 @@ footer{background:var(--navy-deep);}
     </div>
 
     <!-- Sanctuary render image -->
-    <div class="sanctuary-render-wrap reveal" style="margin:2.5rem 0;position:relative;border:1px solid rgba(255,255,255,.07);overflow:hidden;">
-      <img
-        src="images/vai-koko-lagoon-cluster.png"
-        alt="Vai Koko lagoon cluster — multiple submerged coral-crowned water tanks in crescent formation in the shallow turquoise waters of Funafuti lagoon. Swimmers snorkel among the tanks while a traditional outrigger canoe passes through. Coral growth visible on tank surfaces and on the lagoon floor."
-        style="width:100%;display:block;max-height:640px;object-fit:cover;object-position:center 42%;transition:transform 10s cubic-bezier(0.22,1,0.36,1);"
-        onmouseover="this.style.transform='scale(1.03)'"
-        onmouseout="this.style.transform='scale(1)'"
-        loading="lazy"
-        decoding="async"
-      >
+    <div class="sanctuary-render-wrap sanctuary-media-frame reveal">
+      <video
+        src="assets/videos/water-vaikoko-cluster-01.mp4"
+        autoplay
+        muted
+        loop
+        playsinline
+        preload="metadata"
+        aria-label="Multiple Vai Koko submerged water tanks with coral crowns in the shallow turquoise waters of Funafuti lagoon. Swimmers snorkel among the formation while a traditional outrigger canoe passes through. Natural reef growth visible on tank surfaces."
+      ></video>
       <!-- gradient overlay -->
       <div style="position:absolute;inset:0;background:linear-gradient(to bottom,transparent 45%,rgba(0,21,42,.68) 100%),linear-gradient(to right,rgba(0,21,42,.22) 0%,transparent 25%,transparent 75%,rgba(0,21,42,.22) 100%);pointer-events:none;"></div>
       <!-- top-left badge -->
@@ -1874,6 +2832,202 @@ footer{background:var(--navy-deep);}
   </div>
 </section>
 
+
+
+<!-- ═══ CAPACITY & RESILIENCE ════════════════════════════════════ -->
+<section class="capacity-section" aria-label="Capacity and resilience data">
+  <div class="cap-inner">
+    <div class="section-tag reveal">Water Security Metrics</div>
+    <h2 class="h2 reveal">From production<br>to <em>national resilience.</em></h2>
+    <p class="body-text reveal" style="max-width:560px;margin-top:1rem;">Three deployment tiers — from a 35-tank pilot to a 250-tank national mesh — each adding measurable water security across the nine atolls.</p>
+    <div class="cap-layout">
+      <!-- Bar chart canvas -->
+      <div class="reveal-left">
+        <p style="font-family:var(--font-ui);font-size:.6rem;letter-spacing:.14em;text-transform:uppercase;color:var(--stone-light);margin-bottom:1rem;">Deployment Phase Storage Capacity (litres)</p>
+        <canvas id="cap-canvas" height="260" aria-label="Bar chart showing water storage capacity across deployment phases"></canvas>
+        <div class="cap-legend">
+          <div class="cap-leg-item"><div class="cap-leg-swatch" style="background:var(--teal);"></div>Vai Tapu daily output <span class="cap-leg-val"></span></div>
+          <div class="cap-leg-item"><div class="cap-leg-swatch" style="background:var(--teal-dim);"></div>Vai Koko total stored <span class="cap-leg-val"></span></div>
+          <div class="cap-leg-item"><div class="cap-leg-swatch" style="background:var(--gold-dim);"></div>Target by phase <span class="cap-leg-val"></span></div>
+        </div>
+      </div>
+      <!-- Resilience metrics -->
+      <div class="reveal">
+        <div class="section-tag teal" style="margin-bottom:1.5rem;">Phase 1 Target Metrics</div>
+        <div class="resilience-bars">
+          <div class="res-bar-wrap">
+            <div class="res-bar-top"><span class="res-bar-name">Energy uptime (solar + hydro)</span><span class="res-bar-val">95%+</span></div>
+            <div class="res-track"><div class="res-fill" data-width="95%"></div></div>
+          </div>
+          <div class="res-bar-wrap">
+            <div class="res-bar-top"><span class="res-bar-name">Coral survival rate at 6 months</span><span class="res-bar-val">75%+</span></div>
+            <div class="res-track"><div class="res-fill gold" data-width="75%"></div></div>
+          </div>
+          <div class="res-bar-wrap">
+            <div class="res-bar-top"><span class="res-bar-name">Tank survival post Category 4 storm</span><span class="res-bar-val">100%</span></div>
+            <div class="res-track"><div class="res-fill coral" data-width="100%"></div></div>
+          </div>
+          <div class="res-bar-wrap">
+            <div class="res-bar-top"><span class="res-bar-name">O&amp;M cost reduction via Guardian</span><span class="res-bar-val">40–60%</span></div>
+            <div class="res-track"><div class="res-fill navy" data-width="50%"></div></div>
+          </div>
+          <div class="res-bar-wrap">
+            <div class="res-bar-top"><span class="res-bar-name">Naming ceremonies conducted</span><span class="res-bar-val">15+</span></div>
+            <div class="res-track"><div class="res-fill gold" data-width="60%"></div></div>
+          </div>
+        </div>
+
+        <div style="margin-top:2.5rem;padding:1.4rem;background:rgba(0,43,75,.04);border:1px solid var(--border-light);">
+          <div class="section-tag" style="margin-bottom:.8rem;">10-Year O&amp;M Cost per Tank</div>
+          <table style="width:100%;border-collapse:collapse;">
+            <tr style="border-bottom:1px solid var(--border-light);">
+              <td style="padding:.6rem .3rem;font-size:.75rem;color:var(--stone);">Labour (inspections)</td>
+              <td style="text-align:right;font-size:.8rem;color:var(--navy);font-weight:400;">$2,800</td>
+            </tr>
+            <tr style="border-bottom:1px solid var(--border-light);">
+              <td style="padding:.6rem .3rem;font-size:.75rem;color:var(--stone);">Replacement parts</td>
+              <td style="text-align:right;font-size:.8rem;color:var(--navy);font-weight:400;">$1,200</td>
+            </tr>
+            <tr style="border-bottom:1px solid var(--border-light);">
+              <td style="padding:.6rem .3rem;font-size:.75rem;color:var(--stone);">Stewardship training</td>
+              <td style="text-align:right;font-size:.8rem;color:var(--navy);font-weight:400;">$1,000</td>
+            </tr>
+            <tr>
+              <td style="padding:.7rem .3rem;font-size:.75rem;color:var(--navy);font-weight:500;">Total 10-year O&amp;M</td>
+              <td style="text-align:right;font-size:.9rem;color:var(--teal-dim);font-family:var(--font-serif);font-weight:300;">~$5,000</td>
+            </tr>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+<!-- ═══ GOVERNANCE + GUARDIAN ════════════════════════════════════ -->
+<section class="governance-section" aria-label="Guardian integration and governance">
+  <div class="gov-inner">
+    <div class="section-tag reveal">Guardian Integration</div>
+    <h2 class="h2 reveal">Watched. Predicted.<br><em>Protected.</em></h2>
+    <p class="body-text reveal" style="max-width:620px;margin-top:1rem;">Every Vai Tapu and Vai Koko unit is connected to the Guardian network. Telemetry runs every 60 seconds. Citizens can view their water system's health on public terminals. No data leaves the island.</p>
+    <div class="gov-layout">
+      <div class="gov-card gov-card-teal reveal">
+        <div class="gov-card-icon"><svg viewBox="0 0 24 24" stroke="currentColor"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></div>
+        <div class="gov-card-label">Real-Time Monitoring</div>
+        <h3 class="gov-card-title">Live water telemetry</h3>
+        <p class="gov-card-body">Guardian tracks flow rates, tank levels, water quality (pH, salinity, contaminants), pressure, and temperature across every node. 60-second heartbeat. Any anomaly triggers an immediate alert to the nearest steward and the Guardian dashboard.</p>
+      </div>
+      <div class="gov-card gov-card-gold reveal">
+        <div class="gov-card-icon"><svg viewBox="0 0 24 24" stroke="currentColor"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg></div>
+        <div class="gov-card-label">Predictive Management</div>
+        <h3 class="gov-card-title">Weather-informed distribution</h3>
+        <p class="gov-card-body">Guardian uses weather prediction data to inform rainwater collection strategies, pre-filling Vai Koko tanks before expected dry periods. Automatic conservation protocols activate when reserves fall below threshold — reducing non-essential use before shortages occur.</p>
+      </div>
+      <div class="gov-card gov-card-coral reveal">
+        <div class="gov-card-icon"><svg viewBox="0 0 24 24" stroke="currentColor"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg></div>
+        <div class="gov-card-label">Community Access</div>
+        <h3 class="gov-card-title">Equitable civic distribution</h3>
+        <p class="gov-card-body">Guardian monitors consumption patterns across communities and flags shortages or inequitable distribution to civic bodies. A community water credit system — where conservation earns credits redeemable for civic goods — is planned for Phase 2. Override always available to community stewards.</p>
+      </div>
+      <div class="gov-card gov-card-teal reveal">
+        <div class="gov-card-icon"><svg viewBox="0 0 24 24" stroke="currentColor"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg></div>
+        <div class="gov-card-label">Water Security</div>
+        <h3 class="gov-card-title">Contamination detection</h3>
+        <p class="gov-card-body">Continuous water quality monitoring ensures all output water meets WHO potable standards. Guardian tracks pH, salinity, and contaminants. Any quality degradation triggers automatic isolation of the affected node and routes production to backup units before distribution is affected.</p>
+      </div>
+      <div class="gov-card gov-card-gold reveal">
+        <div class="gov-card-icon"><svg viewBox="0 0 24 24" stroke="currentColor"><path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/></svg></div>
+        <div class="gov-card-label">Brine Recovery</div>
+        <h3 class="gov-card-title">Closed-loop resource use</h3>
+        <p class="gov-card-body">Brine from Vai Tapu is recovered to extract salt, magnesium, and biomass byproducts. A closed-loop system converts excess salt into construction materials or agricultural additives. Guardian ensures brine discharge routing is always through dilution basins and halophyte beds — never directly to the reef.</p>
+      </div>
+      <div class="gov-card gov-card-coral reveal">
+        <div class="gov-card-icon"><svg viewBox="0 0 24 24" stroke="currentColor"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg></div>
+        <div class="gov-card-label">Storm Protocol</div>
+        <h3 class="gov-card-title">Cyclone-grade resilience</h3>
+        <p class="gov-card-body">Vai Koko's submerged installation is its primary storm defence. The v2.6 F3 Enhanced foundation — 10 geobags on a rigid galvanised steel transfer raft — achieves a verified 1.55× safety factor under full storm-surge submersion with zero potable fill. This is true gravity stabilisation: the combined assembly is heavier than the water it displaces even without water inside. Guardian triggers storm protocol automatically, activating emergency reserves and alerting stewards. Target: 100% tank survival through Category 4.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ COST + DEPLOYMENT ════════════════════════════════════════ -->
+<section class="cost-section" aria-label="Cost and deployment tiers">
+  <div class="cost-inner">
+    <div class="section-tag white reveal">Investment Model</div>
+    <h2 class="h2 h2-white reveal">Phased deployment.<br><em>Scalable investment.</em></h2>
+    <div class="cost-layout">
+      <!-- BOM table -->
+      <div class="reveal">
+        <div style="font-family:var(--font-ui);font-size:.6rem;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.35);margin-bottom:1rem;">Vai Koko Bill of Materials — Per Unit · v2.6</div>
+        <table class="cost-table" aria-label="Vai Koko cost breakdown per unit">
+          <thead>
+            <tr><td>Component</td><td style="text-align:right;">Est. Cost (USD)</td></tr>
+          </thead>
+          <tbody>
+            <tr><td>Main tank body (UV HDPE, rotationally moulded)</td><td>$2,100</td></tr>
+            <tr><td>Reefskin bio-coating</td><td>$750</td></tr>
+            <tr><td>Coral crown module (porous marine concrete)</td><td>$475</td></tr>
+            <tr><td>Light ring + solar panels (marine-grade RGB)</td><td>$1,050</td></tr>
+            <tr><td>Access hatch + internal ladder</td><td>$320</td></tr>
+            <tr><td>Sensor suite (pressure, temp, GPS, salinity)</td><td>$850</td></tr>
+            <tr><td>Micro-hydro power turbine</td><td>$520</td></tr>
+            <tr><td>Foundation — 10 geobags (3.0 m³ each, local sand fill)</td><td>$650</td></tr>
+            <tr><td>Foundation — geobag fill &amp; labour (10 bags)</td><td>$610</td></tr>
+            <tr><td>Rigid transfer raft (7.5 m hex, hot-dip galv. steel)</td><td>$1,200</td></tr>
+            <tr><td>Raft anchor bolts (M20 stainless, 10 sets)</td><td>$600</td></tr>
+            <tr><td>Lateral strap retention kit (storm surge)</td><td>$149</td></tr>
+            <tr><td>Transport, install labour + barge logistics</td><td>$1,850</td></tr>
+          </tbody>
+          <tfoot>
+            <tr><td style="color:rgba(255,255,255,.5);">Total unit cost (v2.6 — verified)</td><td>~$11,124</td></tr>
+          </tfoot>
+        </table>
+        <p style="margin-top:1rem;font-size:.72rem;color:rgba(255,255,255,.3);line-height:1.6;">v2.6 cost reflects the corrected F3 Enhanced foundation: 10 geobags on a rigid steel transfer raft. The corrected F3 Enhanced foundation (10 geobags on a rigid steel transfer raft) achieves true gravity-stabilisation — verified 1.55× safety factor under full storm submersion at 0% fill.</p>
+        <p style="margin-top:.8rem;font-size:.72rem;color:rgba(255,255,255,.3);line-height:1.6;">Bulk production and regional manufacturing could reduce unit costs by 20–30%. Costs exclude local taxes, import duties, or cultural customisation.</p>
+        <p style="margin-top:.8rem;font-size:.72rem;color:rgba(255,255,255,.3);line-height:1.6;">Comparative: traditional above-ground 20,000 L tanks cost $3,600–$5,200 but occupy scarce land, offer no storm resilience, and provide no ecological or cultural value.</p>
+      </div>
+      <!-- Deployment tiers -->
+      <div class="reveal">
+        <div style="font-family:var(--font-ui);font-size:.6rem;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.35);margin-bottom:1rem;">National Rollout — Click a Tier</div>
+        <div class="tier-cards" id="tier-cards">
+          <div class="tier-card selected" data-tier="1" tabindex="0">
+            <div class="tier-top">
+              <span class="tier-name">Tier 1 · Pilot</span>
+              <span class="tier-cost">~$390k</span>
+            </div>
+            <div class="tier-title">Core hubs — Funafuti + 1 school per outer island</div>
+            <p class="tier-desc">35 tanks (v2.6 F3 Enhanced). ~525,000 L total stored. Prototype validation phase with Guardian monitoring. Sensor data shared nationally.</p>
+            <div class="tier-bar-track"><div class="tier-bar-fill" data-width="25%"></div></div>
+          </div>
+          <div class="tier-card" data-tier="2" tabindex="0">
+            <div class="tier-top">
+              <span class="tier-name">Tier 2 · Community Scale</span>
+              <span class="tier-cost">~$890k</span>
+            </div>
+            <div class="tier-title">One full cluster per island (3–5 tanks × 9 islands)</div>
+            <p class="tier-desc">80 tanks (v2.6). ~1.2M L total stored. Sanctuary cluster formations at school sites. Guardian civic dashboard live. Youth steward programme. 10-year O&M ~$400k.</p>
+            <div class="tier-bar-track"><div class="tier-bar-fill" data-width="55%"></div></div>
+          </div>
+          <div class="tier-card" data-tier="3" tabindex="0">
+            <div class="tier-top">
+              <span class="tier-name">Tier 3 · National Mesh</span>
+              <span class="tier-cost">~$2.2–2.8M</span>
+            </div>
+            <div class="tier-title">Full lagoon ring + critical resilience nodes</div>
+            <p class="tier-desc">200–250 tanks (v2.6). ~3.4M L distributed storage across 9 atolls. Full sanctuary network. Guardian-coordinated national water sovereignty. 10-year O&M ~$1–1.3M.</p>
+            <div class="tier-bar-track"><div class="tier-bar-fill" data-width="100%"></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+
 <!-- ═══ JOIN ══════════════════════════════════════════════════════ -->
 <section class="join-section" aria-label="Call to action">
   <div class="join-inner">
@@ -1898,7 +3052,7 @@ footer{background:var(--navy-deep);}
         <span class="footer-logo-name">Sovereign Vision</span>
       </a>
       <p class="footer-desc">A sovereign civilization infrastructure stack for Tuvalu — and an open-source blueprint for climate-vulnerable communities worldwide.</p>
-      <a href="/cdn-cgi/l/email-protection#6b0012070e2b18041d0e190e020c051d02180204054504190c" class="footer-email"><span class="__cf_email__" data-cfemail="c8a3b1a4ad88bba7beadbaada1afa6bea1bba1a7a6e6a7baaf">[email&#160;protected]</span></a>
+      <a href="mailto:info@sovereignvision.org" class="footer-email">&#64;sovereignvision.org</a>
     </div>
     <div>
       <div class="footer-col-h">Core Systems</div>
@@ -1946,9 +3100,6 @@ footer{background:var(--navy-deep);}
 </footer>
 
 <!-- ═══ SCRIPTS ═══════════════════════════════════════════════════ -->
-<script src="assets/js/nav.js"></script>
-<script src="assets/js/animations.js"></script>
-<script src="assets/js/site.js"></script>
 <script>
 (function(){
 'use strict';
@@ -2805,5 +3956,7 @@ var R = window.matchMedia('(prefers-reduced-motion:reduce)').matches;
 
 })(); // end IIFE
 </script>
+<script src="assets/js/includes.js"></script>
+<script src="assets/js/site.js" defer></script>
 </body>
 </html>

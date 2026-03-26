@@ -1,0 +1,6 @@
+# Cloudflare Pages redirects
+# Add redirects here as needed
+# Format: /old-path  /new-path  301
+
+# Example:
+# /home  /index.html  301

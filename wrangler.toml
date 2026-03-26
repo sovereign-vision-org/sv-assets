@@ -1,0 +1,11 @@
+name = "sovereign-vision"
+compatibility_date = "2024-01-01"
+
+[build]
+  command = ""
+  destination = "."
+
+# Disable Cloudflare's email obfuscation feature.
+# This prevents the automatic injection of email-decode.min.js
+# which causes a 404 error on pages where it can't load.
+# To disable via dashboard: Cloudflare Dashboard → your domain → Scrape Shield → Email Address Obfuscation → OFF

@@ -30,42 +30,8 @@
 html{scroll-behavior:smooth;}
 body{background:var(--cream);color:var(--navy);font-family:'DM Sans',sans-serif;font-weight:300;overflow-x:hidden;-webkit-font-smoothing:antialiased;}
 
-/* ═══ NAV ══════════════════════════════════════ */
-nav{position:fixed;top:0;left:0;right:0;z-index:200;padding:0 3rem;height:72px;display:flex;align-items:center;justify-content:space-between;transition:background .4s,box-shadow .4s;}
-nav.scrolled{background:rgba(255,255,255,.96);box-shadow:0 1px 0 var(--border-light),0 4px 24px rgba(0,43,75,.06);backdrop-filter:blur(12px);}
-.nav-logo{display:flex;align-items:center;gap:.7rem;text-decoration:none;flex-shrink:0;}
-.nav-logo img{width:42px;height:42px;object-fit:contain;display:block;}
-.nav-logo-text{font-family:'Questrial',sans-serif;font-size:.78rem;letter-spacing:.14em;text-transform:uppercase;color:var(--navy);line-height:1.25;}
-.nav-logo-text span{display:block;font-size:.58rem;letter-spacing:.12em;color:var(--stone-light);font-family:'DM Sans',sans-serif;}
-nav:not(.scrolled) .nav-logo-text{color:var(--white);}
-nav:not(.scrolled) .nav-logo-text span{color:rgba(255,255,255,.55);}
-.nav-links{display:flex;align-items:center;gap:2rem;list-style:none;}
-.nav-links a{font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.8);text-decoration:none;font-weight:400;transition:color .25s;white-space:nowrap;}
-nav.scrolled .nav-links a{color:var(--stone);}
-.nav-links a:hover{color:var(--coral)!important;}
-.nav-dropdown{position:relative;}
-.nav-dropdown>a{display:flex;align-items:center;gap:.3rem;}
-.nav-dropdown>a::after{content:'▾';font-size:.6rem;opacity:.6;transition:transform .25s;}
-.nav-dropdown.active>a::after{transform:rotate(180deg);}
-.nav-dropdown::after{content:'';position:absolute;top:100%;left:-20px;right:-20px;height:16px;background:transparent;display:none;}
-.nav-dropdown.active::after{display:block;}
-.dropdown-menu{position:absolute;top:calc(100% + 8px);left:50%;min-width:220px;background:var(--white);border:1px solid var(--border-light);box-shadow:0 12px 40px rgba(0,43,75,.12);padding:.5rem 0;opacity:0;pointer-events:none;transform:translateX(-50%) translateY(-6px);transition:opacity .2s var(--ease),transform .2s var(--ease);}
-.nav-dropdown.active .dropdown-menu{opacity:1;pointer-events:all;transform:translateX(-50%) translateY(0);}
-.dropdown-menu a{display:block;padding:.6rem 1.2rem;font-size:.72rem;letter-spacing:.07em;text-transform:uppercase;color:var(--navy)!important;text-decoration:none;transition:background .18s,color .18s;white-space:nowrap;}
-.dropdown-menu a:hover{background:var(--coral-pale);color:var(--coral)!important;}
-.nav-cta{background:var(--coral);color:var(--white)!important;padding:.5rem 1.4rem;font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;font-family:'Questrial',sans-serif;text-decoration:none;transition:background .25s,transform .2s;white-space:nowrap;flex-shrink:0;}
-.nav-cta:hover{background:var(--coral-dim);transform:translateY(-1px);}
-.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:4px;}
-.hamburger span{width:22px;height:1.5px;background:var(--white);display:block;transition:all .3s var(--ease);}
-nav.scrolled .hamburger span{background:var(--navy);}
-.hamburger.open span:nth-child(1){transform:rotate(45deg) translate(4.7px,4.7px);}
-.hamburger.open span:nth-child(2){opacity:0;}
-.hamburger.open span:nth-child(3){transform:rotate(-45deg) translate(4.7px,-4.7px);}
-.mobile-menu{display:none;position:fixed;inset:0;z-index:199;background:var(--navy-deep);flex-direction:column;align-items:center;justify-content:center;gap:1.8rem;opacity:0;pointer-events:none;transition:opacity .35s;}
-.mobile-menu.open{opacity:1;pointer-events:all;}
-.mobile-menu a{font-family:'Cormorant Garamond',serif;font-size:2rem;font-weight:300;color:var(--white);text-decoration:none;letter-spacing:.04em;transition:color .25s;}
-.mobile-menu a:hover{color:var(--gold);}
-.mobile-menu .m-cta{font-family:'Questrial',sans-serif;font-size:.76rem;letter-spacing:.16em;text-transform:uppercase;color:var(--coral);border:1px solid var(--coral);padding:.65rem 2rem;margin-top:.5rem;}
+/* ═══ NAV — styles owned by shared nav partial / site.css ══ */
+/* Nav CSS is intentionally omitted here — injected via assets/partials/nav.html */
 
 /* ═══ BUTTONS ══════════════════════════════════ */
 .btn-coral{background:var(--coral);color:var(--white);border:1.5px solid var(--coral);padding:.8rem 2rem;font-family:'Questrial',sans-serif;font-size:.74rem;letter-spacing:.14em;text-transform:uppercase;text-decoration:none;display:inline-block;transition:background .25s,transform .2s;}
@@ -496,65 +462,109 @@ footer{background:var(--navy-deep);padding:5rem 3rem 3rem;border-top:1px solid r
 .callout-desc{font-size:.77rem;color:rgba(255,255,255,.45);line-height:1.72;}
 @media(max-width:1100px){.physical-header,.physical-grid{grid-template-columns:1fr;gap:3rem;}}
 @media(max-width:768px){.physical-section{padding-left:1.5rem;padding-right:1.5rem;}}
+
+/* ═══ STORM PROTOCOL SECTION ════════════════════ */
+.storm-section{background:var(--navy-deep);padding:8rem 3rem;}
+.storm-inner{max-width:1360px;margin:0 auto;}
+.storm-header{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:end;margin-bottom:4rem;}
+.storm-pull{font-size:.88rem;color:rgba(255,255,255,.5);line-height:1.85;}
+.storm-philosophy{background:rgba(35,193,196,.06);border:1px solid rgba(35,193,196,.18);border-left:3px solid var(--teal-dim);padding:1.6rem 2rem;margin-bottom:3.5rem;}
+.storm-philosophy p{font-family:'Cormorant Garamond',serif;font-size:1.15rem;font-style:italic;font-weight:300;color:rgba(255,255,255,.8);line-height:1.6;}
+.storm-philosophy cite{display:block;margin-top:.7rem;font-family:'Questrial',sans-serif;font-size:.58rem;letter-spacing:.16em;text-transform:uppercase;color:rgba(35,193,196,.55);font-style:normal;}
+.storm-phases{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:rgba(255,255,255,.06);margin-bottom:2.5rem;}
+.sp-card{background:var(--navy-deep);padding:2rem 1.8rem;position:relative;overflow:hidden;}
+.sp-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;}
+.sp1::before{background:var(--teal);}
+.sp2::before{background:var(--gold);}
+.sp3::before{background:var(--coral);}
+.sp4::before{background:rgba(35,193,196,.6);}
+.sp-number{font-family:'Cormorant Garamond',serif;font-size:3.5rem;font-weight:300;line-height:1;color:rgba(255,255,255,.05);position:absolute;top:1.2rem;right:1.4rem;}
+.sp-label{font-family:'Questrial',sans-serif;font-size:.56rem;letter-spacing:.18em;text-transform:uppercase;margin-bottom:.4rem;}
+.sp1 .sp-label{color:var(--teal);}
+.sp2 .sp-label{color:var(--gold);}
+.sp3 .sp-label{color:var(--coral);}
+.sp4 .sp-label{color:rgba(35,193,196,.6);}
+.sp-title{font-family:'Cormorant Garamond',serif;font-size:1.2rem;font-weight:400;color:var(--white);margin-bottom:.6rem;line-height:1.2;}
+.sp-trigger{font-family:'Questrial',sans-serif;font-size:.6rem;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.28);margin-bottom:1rem;}
+.sp-steps{list-style:none;display:flex;flex-direction:column;gap:.4rem;}
+.sp-steps li{font-size:.75rem;color:rgba(255,255,255,.45);line-height:1.6;padding-left:.9rem;position:relative;}
+.sp-steps li::before{content:'';width:3px;height:3px;border-radius:50%;background:rgba(255,255,255,.2);position:absolute;left:0;top:.58rem;}
+.storm-sequence{background:rgba(255,255,255,.02);border:1px solid rgba(255,255,255,.06);margin-bottom:2.5rem;}
+.ss-header{display:grid;grid-template-columns:40px 1fr 2fr 1fr;background:rgba(255,255,255,.04);border-bottom:1px solid rgba(255,255,255,.06);}
+.ss-col-head{padding:.7rem 1rem;font-family:'Questrial',sans-serif;font-size:.58rem;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.3);}
+.ss-row{display:grid;grid-template-columns:40px 1fr 2fr 1fr;border-bottom:1px solid rgba(255,255,255,.04);}
+.ss-row:last-child{border-bottom:none;}
+.ss-row:hover{background:rgba(255,255,255,.02);}
+.ss-cell{padding:.85rem 1rem;font-size:.76rem;color:rgba(255,255,255,.5);line-height:1.55;border-right:1px solid rgba(255,255,255,.04);}
+.ss-cell:last-child{border-right:none;}
+.ss-step{font-family:'Cormorant Garamond',serif;font-size:1rem;color:rgba(255,255,255,.4);text-align:center;}
+.ss-action{color:rgba(255,255,255,.7);font-weight:400;}
+.ss-who-steward{color:var(--gold);}
+.ss-who-guardian{color:rgba(167,139,250,.7);}
+.storm-two-col{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:rgba(255,255,255,.06);}
+.storm-box{background:var(--navy-deep);padding:2.2rem 2rem;}
+.sb-label{font-family:'Questrial',sans-serif;font-size:.58rem;letter-spacing:.18em;text-transform:uppercase;margin-bottom:.9rem;}
+.sb-label.teal{color:rgba(35,193,196,.55);}
+.sb-label.gold{color:rgba(255,198,29,.55);}
+.sb-title{font-family:'Cormorant Garamond',serif;font-size:1.3rem;font-weight:300;color:var(--white);margin-bottom:1rem;line-height:1.2;}
+.sb-items{list-style:none;display:flex;flex-direction:column;gap:.5rem;}
+.sb-items li{font-size:.77rem;color:rgba(255,255,255,.45);line-height:1.6;display:flex;gap:.6rem;align-items:flex-start;}
+.sb-items li::before{content:'';width:4px;height:4px;border-radius:50%;flex-shrink:0;margin-top:.55rem;}
+.sb-items.teal li::before{background:var(--teal-dim);}
+.sb-items.gold li::before{background:var(--gold-dim);}
+.wind-context{background:rgba(254,83,55,.05);border:1px solid rgba(254,83,55,.14);padding:1.4rem 2rem;margin-top:2.5rem;}
+.wc-label{font-family:'Questrial',sans-serif;font-size:.58rem;letter-spacing:.18em;text-transform:uppercase;color:rgba(254,83,55,.6);margin-bottom:.7rem;}
+.wc-body{font-size:.78rem;color:rgba(255,255,255,.45);line-height:1.72;}
+.wc-body strong{color:rgba(255,255,255,.7);}
+@media(max-width:1100px){.storm-header{grid-template-columns:1fr;gap:2rem;}.storm-phases{grid-template-columns:repeat(2,1fr);}.storm-two-col{grid-template-columns:1fr;}.ss-header,.ss-row{grid-template-columns:40px 1fr 1fr;}.ss-col-head:nth-child(3),.ss-cell:nth-child(3){display:none;}}
+@media(max-width:768px){.storm-section{padding-left:1.5rem;padding-right:1.5rem;}.storm-phases{grid-template-columns:1fr;}.ss-header,.ss-row{grid-template-columns:40px 1fr;}.ss-col-head:nth-child(3),.ss-cell:nth-child(3),.ss-col-head:nth-child(4),.ss-cell:nth-child(4){display:none;}}
+
+
+/* ═══ NAV ════════════════════════════════════════════════════════════ */
+#nav{position:fixed;top:0;left:0;right:0;z-index:200;padding:0 var(--page-x);height:72px;display:flex;align-items:center;justify-content:space-between;transition:background .4s,box-shadow .4s;}
+#nav.scrolled{background:rgba(255,255,255,.96);box-shadow:0 1px 0 var(--border-light),0 4px 24px rgba(0,43,75,.06);backdrop-filter:blur(12px);}
+.nav-logo{display:flex;align-items:center;gap:.7rem;text-decoration:none;flex-shrink:0;}
+.nav-logo img{width:42px;height:42px;object-fit:contain;display:block;}
+.nav-logo-text{font-family:var(--font-ui);font-size:.78rem;letter-spacing:.14em;text-transform:uppercase;color:var(--navy);line-height:1.25;}
+.nav-logo-text span{display:block;font-size:.58rem;letter-spacing:.12em;color:var(--stone-light);font-family:var(--font-body);}
+#nav:not(.scrolled) .nav-logo-text{color:var(--white);}
+#nav:not(.scrolled) .nav-logo-text span{color:rgba(255,255,255,.55);}
+.nav-links{display:flex;align-items:center;gap:2rem;list-style:none;}
+.nav-links a{font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.8);text-decoration:none;font-weight:400;transition:color var(--dur-sm);white-space:nowrap;font-family:var(--font-ui);}
+#nav.scrolled .nav-links a{color:var(--stone);}
+.nav-links a:hover{color:var(--coral)!important;}
+.nav-dropdown{position:relative;}
+.nav-dropdown>a{display:flex;align-items:center;gap:.3rem;}
+.nav-dropdown>a::after{content:'▾';font-size:.6rem;opacity:.6;transition:transform var(--dur-sm);}
+.nav-dropdown.active>a::after{transform:rotate(180deg);}
+.nav-dropdown::after{content:'';position:absolute;top:100%;left:-20px;right:-20px;height:16px;background:transparent;display:none;}
+.nav-dropdown.active::after{display:block;}
+.dropdown-menu{position:absolute;top:calc(100% + 8px);left:50%;min-width:220px;background:var(--white);border:1px solid var(--border-light);box-shadow:0 12px 40px rgba(0,43,75,.12);padding:.5rem 0;opacity:0;pointer-events:none;transform:translateX(-50%) translateY(-6px);transition:opacity .2s var(--ease),transform .2s var(--ease);}
+.nav-dropdown.active .dropdown-menu{opacity:1;pointer-events:all;transform:translateX(-50%) translateY(0);}
+.dropdown-menu a{display:block;padding:.6rem 1.2rem;font-size:.72rem;letter-spacing:.07em;text-transform:uppercase;color:var(--navy)!important;transition:background .18s,color .18s;white-space:nowrap;font-family:var(--font-ui);}
+.dropdown-menu a:hover{background:var(--coral-pale);color:var(--coral)!important;}
+.nav-cta{background:var(--coral);color:var(--white)!important;padding:.5rem 1.4rem;font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;font-family:var(--font-ui);transition:background var(--dur-sm),transform .2s;white-space:nowrap;flex-shrink:0;}
+.nav-cta:hover{background:var(--coral-dim);transform:translateY(-1px);}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:4px;background:none;border:none;}
+.hamburger span{width:22px;height:1.5px;background:var(--white);display:block;transition:all .3s var(--ease);}
+#nav.scrolled .hamburger span{background:var(--navy);}
+.hamburger.open span:nth-child(1){transform:rotate(45deg) translate(4.7px,4.7px);}
+.hamburger.open span:nth-child(2){opacity:0;}
+.hamburger.open span:nth-child(3){transform:rotate(-45deg) translate(4.7px,-4.7px);}
+.mobile-menu{display:none;position:fixed;inset:0;z-index:199;background:var(--navy-deep);flex-direction:column;align-items:center;justify-content:center;gap:1.8rem;opacity:0;pointer-events:none;transition:opacity .35s;}
+.mobile-menu.open{opacity:1;pointer-events:all;}
+.mobile-menu a{font-family:var(--font-serif);font-size:2rem;font-weight:300;color:var(--white);transition:color var(--dur-sm);}
+.mobile-menu a:hover{color:var(--gold);}
+.mobile-menu .m-cta{font-family:var(--font-ui);font-size:.76rem;letter-spacing:.16em;text-transform:uppercase;color:var(--coral);border:1px solid var(--coral);padding:.65rem 2rem;margin-top:.5rem;}
 </style>
 </head>
 <body>
 
-<!-- NAV -->
-<nav id="nav">
-  <a href="index.html" class="nav-logo">
-    <img src="images/logo-trans.png" alt="Sovereign Vision">
-    <div class="nav-logo-text">Sovereign Vision<span>Te Fale o Te Mātāmua · Tuvalu</span></div>
-  </a>
-  <ul class="nav-links">
-    <li class="nav-dropdown">
-      <a href="core-systems.html">Core Systems</a>
-      <div class="dropdown-menu">
-        <a href="ai-overview.html">Civic Stewardship System</a>
-        <a href="communications.html" style="color:var(--coral)!important;">Communications</a>
-        <a href="datacenter.html">Sovereign Datacenter</a>
-        <a href="food.html">Food Sovereignty</a>
-        <a href="energy.html">Power Generation</a>
-        <a href="treasury.html">Sovereign Treasury</a>
-        <a href="civic-infrastructure.html">Civic Infrastructure</a>
-        <a href="water-systems.html">Water Systems</a>
-        <a href="waste-systems.html">Resource Recovery</a>
-      </div>
-    </li>
-    <li><a href="how-it-works.html">How It Works</a></li>
-    <li class="nav-dropdown">
-      <a href="legal-licensing.html">Legal</a>
-      <div class="dropdown-menu">
-        <a href="digitalarchipelago.html">Digital Archipelago Accord</a>
-        <a href="civic-commons-license.html">Civic Commons License</a>
-        <a href="trust-formation-status.html">Trust Formation Status</a>
-        <a href="terms.html">Terms of Use</a>
-        <a href="privacy-policy.html">Privacy Policy</a>
-        <a href="copyright-notice.html">Copyright Notice</a>
-      </div>
-    </li>
-    <li><a href="faq.html">FAQ</a></li>
-    <li class="nav-dropdown">
-      <a href="about-us.html">About</a>
-      <div class="dropdown-menu">
-        <a href="about-us.html">About Us</a>
-        <a href="continuity-vs-reinvention.html">Continuity vs Reinvention</a>
-        <a href="elders-council.html">Elders Council</a>
-        <a href="youth-voice.html">Youth Voice</a>
-      </div>
-    </li>
-  </ul>
-  <a href="contact.html" class="nav-cta">Contact</a>
-  <div class="hamburger" id="hamburger" aria-label="Menu" aria-expanded="false"><span></span><span></span><span></span></div>
-</nav>
-<div class="mobile-menu" id="mobile-menu">
-  <a href="core-systems.html" onclick="closeMobile()">Core Systems</a>
-  <a href="how-it-works.html" onclick="closeMobile()">How It Works</a>
-  <a href="legal-licensing.html" onclick="closeMobile()">Legal</a>
-  <a href="faq.html" onclick="closeMobile()">FAQ</a>
-  <a href="about-us.html" onclick="closeMobile()">About</a>
-  <a href="contact.html" onclick="closeMobile()" class="m-cta">Contact Us</a>
-</div>
+<!-- ═══ NAV ═══════════════════════════════════════════════════════════ -->
+
+<!-- NAV injected by includes.js from assets/partials/nav.html -->
+<!-- mobile-menu is part of the nav partial — not duplicated here -->
+<div data-include="assets/partials/nav.html"></div>
 
 <!-- HERO -->
 <section class="page-hero">
@@ -762,7 +772,7 @@ footer{background:var(--navy-deep);padding:5rem 3rem 3rem;border-top:1px solid r
       <button class="nc-btn lowpow" data-mode="lowpower">Low Power</button>
     </div>
     <div class="node-diagram-wrap reveal">
-      <canvas id="node-canvas" width="1200" height="540"></canvas>
+      <canvas id="node-canvas" width="1200" height="540" style="display:block;width:100%;height:auto;"></canvas>
     </div>
     <div class="node-info reveal">
       <div class="ni-label">Click any node on the diagram above</div>
@@ -1186,7 +1196,7 @@ footer{background:var(--navy-deep);padding:5rem 3rem 3rem;border-top:1px solid r
                class="physical-img">
           <div class="physical-img-caption">
             <span class="pic-tag">Te Puka Loloa · Hybrid Communications Infrastructure</span>
-            10 m × 6 m fiberglass shelter · 150 MPH wind rating · 1.5 m above mean high water · Factory pre-wired
+            6 m × 3.6 m fiberglass shelter · 150 MPH wind rating · 1.5 m above mean high water · Factory pre-wired
           </div>
         </div>
       </div>
@@ -1465,11 +1475,12 @@ footer{background:var(--navy-deep);padding:5rem 3rem 3rem;border-top:1px solid r
         <div class="tech-card-label">Physical Node</div>
         <div class="tech-card-title">Cyclone-rated shelter</div>
         <ul class="tech-list">
-          <li><span class="tk">Size</span><span class="tv">10×20 ft fiberglass</span></li>
-          <li><span class="tk">Wind rating</span><span class="tv">150 MPH design</span></li>
+          <li><span class="tk">Structure</span><span class="tv">Dual 20 ft modular (joined configuration)</span></li>
+          <li><span class="tk">Size</span><span class="tv">12'×20' ft fiberglass</span></li>
+          <li><span class="tk">Wind rating</span><span class="tv">Cyclone-rated to 150 mph</span></li>
           <li><span class="tk">Mast</span><span class="tv">SMC STORM ST5-12 · 12m</span></li>
           <li><span class="tk">Elevation</span><span class="tv">1.5m above mean high water</span></li>
-          <li><span class="tk">Cooling</span><span class="tv">Dual Daikin 12,000 BTU</span></li>
+          <li><span class="tk">Cooling</span><span class="tv">Dual 12,000 BTU climate control units</span></li>
           <li><span class="tk">Transport</span><span class="tv">Crane / flatbed / barge</span></li>
         </ul>
       </div>
@@ -1477,11 +1488,11 @@ footer{background:var(--navy-deep);padding:5rem 3rem 3rem;border-top:1px solid r
         <div class="tech-card-label">Compute Stack</div>
         <div class="tech-card-title">14 VM workloads</div>
         <ul class="tech-list">
-          <li><span class="tk">Edge servers</span><span class="tv">4× Helix 330 Pentium</span></li>
-          <li><span class="tk">AI inference</span><span class="tv">2× Jetson Orin NX 16GB</span></li>
-          <li><span class="tk">Backup node</span><span class="tv">Dragon Machine Pro ITX</span></li>
+          <li><span class="tk">Edge servers</span><span class="tv">4× Industrial Edge Compute Nodes</span></li>
+          <li><span class="tk">AI inference</span><span class="tv">2× Embedded AI accelerator modules (16 GB class)</span></li>
+          <li><span class="tk">Backup node</span><span class="tv">1x Small form-factor backup system</span></li>
           <li><span class="tk">LTE core VM</span><span class="tv">Open5GS EPC on HX330 #1</span></li>
-          <li><span class="tk">VoIP</span><span class="tv">FreeSWITCH SIP on HX330 #2</span></li>
+          <li><span class="tk">VoIP</span><span class="tv">SIP-based voice platform</span></li>
           <li><span class="tk">Orchestration</span><span class="tv">Git + Ansible · Steward-initiated</span></li>
         </ul>
       </div>
@@ -1490,9 +1501,9 @@ footer{background:var(--navy-deep);padding:5rem 3rem 3rem;border-top:1px solid r
         <div class="tech-card-title">Fully autonomous</div>
         <ul class="tech-list">
           <li><span class="tk">Solar</span><span class="tv">6.4 kW · 16× 400W · 4S4P</span></li>
-          <li><span class="tk">MPPT</span><span class="tv">2× Victron 250/100 · dual</span></li>
-          <li><span class="tk">Battery</span><span class="tv">14 kWh Pylontech LiFePO₄</span></li>
-          <li><span class="tk">Inverter</span><span class="tv">Victron MultiPlus-II 48/5000</span></li>
+          <li><span class="tk">MPPT</span><span class="tv">2× Charge controllers (high-capacity class)</span></li>
+          <li><span class="tk">Battery</span><span class="tv">14 kWh LiFePO₄ battery storage</span></li>
+          <li><span class="tk">Inverter</span><span class="tv">48 V / 5 kW inverter-charger system</span></li>
           <li><span class="tk">Daily harvest</span><span class="tv">25–30 kWh avg</span></li>
           <li><span class="tk">Autonomy</span><span class="tv">24+ hrs critical · SOC-tiered</span></li>
         </ul>
@@ -1502,9 +1513,9 @@ footer{background:var(--navy-deep);padding:5rem 3rem 3rem;border-top:1px solid r
         <div class="tech-card-title">Five independent layers</div>
         <ul class="tech-list">
           <li><span class="tk">LTE</span><span class="tv">Open5GS · OpenCellular · 3-sector</span></li>
-          <li><span class="tk">Wi-Fi</span><span class="tv">UniFi U6-Outdoor × 2 + UA-Pro</span></li>
-          <li><span class="tk">Satellite</span><span class="tv">Starlink Flat HP · auto-track</span></li>
-          <li><span class="tk">P2P relay</span><span class="tv">Ubiquiti GigaBeam Plus 60 GHz</span></li>
+          <li><span class="tk">Wi-Fi</span><span class="tv">1x Outdoor Wi-Fi 6 access point ×1 + indoor access point</span></li>
+          <li><span class="tk">Satellite</span><span class="tv">Flat high-performance satellite terminal · auto-tracking</span></li>
+          <li><span class="tk">P2P relay</span><span class="tv">60 GHz wireless bridge link</span></li>
           <li><span class="tk">Emergency</span><span class="tv">Icom IC-F5021 + Comet GP-3</span></li>
           <li><span class="tk">Coverage</span><span class="tv">500–800m LTE · 200–400m Wi-Fi</span></li>
         </ul>
@@ -1615,6 +1626,165 @@ footer{background:var(--navy-deep);padding:5rem 3rem 3rem;border-top:1px solid r
   </div>
 </section>
 
+<!-- STORM PROTOCOL -->
+<section class="storm-section" id="storm-protocol">
+  <div class="storm-inner">
+
+    <div class="storm-header">
+      <div>
+        <div class="section-tag white reveal-left">Category 5 Storm Protocol · Planned Shutdown</div>
+        <h2 class="h2 h2-white reveal">Survival first.<br><em>Restart fast.</em></h2>
+      </div>
+      <p class="storm-pull reveal">The 150 MPH shelter rating applies when the node is in stowed configuration — mast retracted, canopy folded, panels sealed. For Category 4–5 events, stewards execute a deliberate planned shutdown before the storm arrives. This is not a failure mode. It is the intended protocol.</p>
+    </div>
+
+    <div class="storm-philosophy reveal">
+      <p>"The node that weathers a Category 5 intact and restores service within hours is more resilient than one that attempts to operate through the storm and is destroyed."</p>
+      <cite>Te Puka Loloa · Storm Resilience Protocol · v3.2</cite>
+    </div>
+
+    <!-- Four phase cards -->
+    <div class="storm-phases">
+      <div class="sp-card sp1 reveal">
+        <div class="sp-number">1</div>
+        <div class="sp-label">Phase 1 · Guardian Advisory</div>
+        <div class="sp-title">Wind approaching 90 kph</div>
+        <div class="sp-trigger">Automatic alert — no steward action required</div>
+        <ul class="sp-steps">
+          <li>Guardian presents storm advisory on Terminal</li>
+          <li>Wind trend displayed from onsite weather station</li>
+          <li>Steward decides when preparation begins</li>
+          <li>Sensor polling increases to 30-second intervals</li>
+          <li>No automatic actions taken</li>
+        </ul>
+      </div>
+      <div class="sp-card sp2 reveal">
+        <div class="sp-number">2</div>
+        <div class="sp-label">Phase 2 · Physical Preparation</div>
+        <div class="sp-title">6–24 hours before arrival</div>
+        <div class="sp-trigger">Steward-initiated · Guardian guides each step</div>
+        <ul class="sp-steps">
+          <li>Lower mast to 2.3 m using winch · lock and clamp</li>
+          <li>Fold solar canopy flat · hinge mechanism · ~10 min</li>
+          <li>Secure or remove all external equipment</li>
+          <li>Close and lock all shelter access panels</li>
+          <li>Inspect anchor bolts and tie-downs</li>
+          <li>Charge battery bank to ≥90% SOC</li>
+        </ul>
+      </div>
+      <div class="sp-card sp3 reveal">
+        <div class="sp-number">3</div>
+        <div class="sp-label">Phase 3 · Controlled Shutdown</div>
+        <div class="sp-title">Storm imminent</div>
+        <div class="sp-trigger">Steward-confirmed at each stage</div>
+        <ul class="sp-steps">
+          <li>Notify LTE subscribers via SMS broadcast</li>
+          <li>Suspend guest Wi-Fi, then LTE radio stack</li>
+          <li>Guardian logs final telemetry snapshot</li>
+          <li>Suspend HVAC — shelter relies on thermal mass</li>
+          <li>Suspend inverter · isolate DC from AC loads</li>
+          <li>System enters sealed dormant state</li>
+        </ul>
+      </div>
+      <div class="sp-card sp4 reveal">
+        <div class="sp-number">4</div>
+        <div class="sp-label">Phase 4 · Post-Storm Restart</div>
+        <div class="sp-title">After storm passes</div>
+        <div class="sp-trigger">Steward-initiated · Guardian runs checklist</div>
+        <ul class="sp-steps">
+          <li>Physical inspection of shelter, anchors, mast, canopy</li>
+          <li>Guardian Terminal boots · sensor baseline check</li>
+          <li>Raise mast · inspect before energising</li>
+          <li>Restore inverter · Guardian presents restoration order</li>
+          <li>Restore LTE core · configuration integrity check</li>
+          <li>Full service restoration · typically 2–4 hours</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Shutdown sequence table -->
+    <div class="storm-sequence reveal">
+      <div class="ss-header">
+        <div class="ss-col-head">#</div>
+        <div class="ss-col-head">Action</div>
+        <div class="ss-col-head">Detail</div>
+        <div class="ss-col-head">Authority</div>
+      </div>
+      <div class="ss-row">
+        <div class="ss-cell ss-step">1</div>
+        <div class="ss-cell ss-action">Mast retracted to 2.3 m</div>
+        <div class="ss-cell">Winch locked · guy lines clamped · pivot base folded flat if side-mounted</div>
+        <div class="ss-cell ss-who-steward">Steward</div>
+      </div>
+      <div class="ss-row">
+        <div class="ss-cell ss-step">2</div>
+        <div class="ss-cell ss-action">Solar canopy folded flat</div>
+        <div class="ss-cell">Hinged frame stowed · zero wind load · drainage sealed</div>
+        <div class="ss-cell ss-who-steward">Steward</div>
+      </div>
+      <div class="ss-row">
+        <div class="ss-cell ss-step">3</div>
+        <div class="ss-cell ss-action">All panels sealed · anchors checked</div>
+        <div class="ss-cell">IP-rated seals engaged · M16 anchors torqued to specification</div>
+        <div class="ss-cell ss-who-steward">Steward</div>
+      </div>
+      <div class="ss-row">
+        <div class="ss-cell ss-step">4</div>
+        <div class="ss-cell ss-action">Battery charged to ≥90% SOC</div>
+        <div class="ss-cell">Maximum stored energy before power generation suspended</div>
+        <div class="ss-cell ss-who-guardian">Guardian advisory</div>
+      </div>
+      <div class="ss-row">
+        <div class="ss-cell ss-step">5</div>
+        <div class="ss-cell ss-action">Subscribers notified · services suspended</div>
+        <div class="ss-cell">SMS broadcast sent · VHF/UHF emergency channel remains live throughout</div>
+        <div class="ss-cell ss-who-steward">Steward</div>
+      </div>
+      <div class="ss-row">
+        <div class="ss-cell ss-step">6</div>
+        <div class="ss-cell ss-action">Inverter suspended · system dormant</div>
+        <div class="ss-cell">BMS active in standby with cell balancing · all racks sealed</div>
+        <div class="ss-cell ss-who-steward">Steward confirms</div>
+      </div>
+    </div>
+
+    <!-- What survives / restart two-col -->
+    <div class="storm-two-col">
+      <div class="storm-box reveal">
+        <div class="sb-label teal">What survives in stowed / dormant state</div>
+        <div class="sb-title">The shelter. The hardware. The data.</div>
+        <ul class="sb-items teal">
+          <li>Fiberglass shelter and M16 anchor foundation — structural rating applies</li>
+          <li>14 kWh LiFePO₄ battery bank — BMS cell balancing active throughout</li>
+          <li>All rack-mounted compute, networking, and storage hardware</li>
+          <li>Sealed electrical system — no operating loads exposed to storm</li>
+          <li>Local audit log and final telemetry snapshot on encrypted NVMe</li>
+          <li>VHF/UHF emergency radio — live throughout storm on independent power</li>
+        </ul>
+      </div>
+      <div class="storm-box reveal">
+        <div class="sb-label gold">Restart capability after storm</div>
+        <div class="sb-title">Full service within 2–4 hours.</div>
+        <ul class="sb-items gold">
+          <li>Guardian Terminal boots immediately on inverter restore — no reconfiguration</li>
+          <li>LTE core restarts from preserved configuration — subscribers reconnect automatically</li>
+          <li>Guardian Core sync resumes via Starlink once satellite reacquires signal</li>
+          <li>Solar canopy unfolds and generation resumes — battery recharging begins</li>
+          <li>Guardian presents post-storm checklist before any service is marked restored</li>
+          <li>Audit log records shutdown timestamp, storm duration, and full restart sequence</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Wind context strip -->
+    <div class="wind-context reveal">
+      <div class="wc-label">Wind Rating — Engineering Context</div>
+      <p class="wc-body">The <strong>150 MPH (241 km/h) shelter design rating</strong> applies in stowed configuration: mast at 2.3 m, canopy folded flat, all panels sealed. This exceeds the sustained wind speed of every cyclone that has made direct landfall in Funafuti on record. The South Pacific basin has produced <strong>gusts exceeding 300 km/h in extreme events</strong> — Cyclone Zoe (2002) peaked at 285 km/h sustained; Cyclone Pam (2015) produced a state of emergency in Tuvalu at 250 km/h. The protocol above is the engineered response to that reality. The solar canopy folding mechanism is a required component for Tuvalu deployment.</p>
+    </div>
+
+  </div>
+</section>
+
 <!-- JOIN -->
 <section class="join-section">
   <div class="join-inner">
@@ -1673,28 +1843,18 @@ footer{background:var(--navy-deep);padding:5rem 3rem 3rem;border-top:1px solid r
 </footer>
 
 <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
-/* ═════════════════════════════════════════════════
-   NAV
-═════════════════════════════════════════════════ */
-var nav=document.getElementById('nav');
-window.addEventListener('scroll',function(){nav.classList.toggle('scrolled',window.scrollY>40);});
-var ham=document.getElementById('hamburger'),mob=document.getElementById('mobile-menu');
-ham.addEventListener('click',function(){ham.classList.toggle('open');mob.classList.toggle('open');});
-function closeMobile(){ham.classList.remove('open');mob.classList.remove('open');}
-document.querySelectorAll('.nav-dropdown').forEach(function(dd){
-  var timer;
-  dd.addEventListener('mouseenter',function(){clearTimeout(timer);dd.classList.add('active');});
-  dd.addEventListener('mouseleave',function(){timer=setTimeout(function(){dd.classList.remove('active');},180);});
-});
+/* NAV — handled by assets/js/nav.js after includes.js injects nav.html */
 
 /* ═════════════════════════════════════════════════
    REVEAL
 ═════════════════════════════════════════════════ */
+document.addEventListener('DOMContentLoaded',function(){
 var revealEls=document.querySelectorAll('.reveal,.reveal-left,.reveal-up');
 var io=new IntersectionObserver(function(entries){
   entries.forEach(function(e){if(e.isIntersecting){e.target.classList.add('visible');io.unobserve(e.target);}});
 },{threshold:.12,rootMargin:'0px 0px -40px 0px'});
 revealEls.forEach(function(el){io.observe(el);});
+});
 
 /* ═════════════════════════════════════════════════
    HERO CANVAS — radio wave rings
@@ -1703,30 +1863,124 @@ revealEls.forEach(function(el){io.observe(el);});
   var c=document.getElementById('hero-canvas');
   if(!c)return;
   var ctx=c.getContext('2d');
-  var W,H,rings=[],stars=[];
-  function resize(){W=c.width=c.offsetWidth;H=c.height=c.offsetHeight;}
-  resize();window.addEventListener('resize',resize);
-  for(var i=0;i<80;i++)stars.push({x:Math.random()*W,y:Math.random()*H,r:Math.random()*.8+.2,o:Math.random()*.4+.1});
-  function addRing(){rings.push({x:W*.35+Math.random()*W*.3,y:H*.5+Math.random()*H*.2-H*.1,r:0,maxR:120+Math.random()*80,speed:.6+Math.random()*.4,o:.5});}
-  setInterval(addRing,600);addRing();addRing();addRing();
+  var W,H,rings=[],stars=[],waves=[];
+  var t=0;
+
+  function resize(){
+    W=c.width=c.offsetWidth||window.innerWidth;
+    H=c.height=c.offsetHeight||window.innerHeight;
+    if(W<10){W=c.width=window.innerWidth;}
+    if(H<10){H=c.height=window.innerHeight;}
+    stars=[];
+    for(var i=0;i<90;i++)stars.push({x:Math.random()*W,y:Math.random()*H*0.65,r:Math.random()*.9+.15,o:Math.random()*.45+.08});
+  }
+  resize();
+  window.addEventListener('resize',resize);
+  // Re-measure after full page load in case hero height resolved late
+  window.addEventListener('load',function(){resize();});
+
+  // Broadcast ring origins — multiple transmitter points across the island horizon
+  var ORIGINS=[
+    {xf:.18,yf:.72},{xf:.42,yf:.68},{xf:.65,yf:.74},{xf:.82,yf:.70}
+  ];
+
+  function addRing(){
+    var orig=ORIGINS[Math.floor(Math.random()*ORIGINS.length)];
+    rings.push({
+      xf:orig.xf,yf:orig.yf,
+      r:0,
+      maxR:100+Math.random()*140,
+      speed:.55+Math.random()*.5,
+      o:.55+Math.random()*.15
+    });
+  }
+  setInterval(addRing,480);
+  for(var i=0;i<12;i++){addRing();rings[rings.length-1].r=Math.random()*80;}
+
   function draw(){
     ctx.clearRect(0,0,W,H);
-    // Stars
-    stars.forEach(function(s){s.x+=W;if(s.x>W)s.x-=W;ctx.beginPath();ctx.arc(s.x,s.y,s.r,0,Math.PI*2);ctx.fillStyle='rgba(255,255,255,'+s.o+')';ctx.fill();});
-    // Rings
+    t+=0.012;
+
+    // Deep ocean gradient background
+    var bg=ctx.createLinearGradient(0,0,0,H);
+    bg.addColorStop(0,'rgba(0,15,30,1)');
+    bg.addColorStop(0.55,'rgba(0,21,42,1)');
+    bg.addColorStop(1,'rgba(0,35,55,1)');
+    ctx.fillStyle=bg;ctx.fillRect(0,0,W,H);
+
+    // Stars (upper sky area)
+    stars.forEach(function(s){
+      var twinkle=s.o+Math.sin(t*2+s.x*0.05)*0.08;
+      ctx.beginPath();ctx.arc(s.x,s.y,s.r,0,Math.PI*2);
+      ctx.fillStyle='rgba(255,255,255,'+twinkle+')';ctx.fill();
+    });
+
+    // Ocean wave lines across lower portion
+    var waveBaseY=H*0.70;
+    for(var w=0;w<5;w++){
+      ctx.beginPath();
+      var waveY=waveBaseY+(w*H*0.055);
+      var amp=2.5-w*0.4;
+      var freq=0.008+w*0.002;
+      var speed=(w+1)*0.3;
+      var alpha=0.04+w*0.015;
+      ctx.moveTo(0,waveY);
+      for(var x=0;x<=W;x+=4){
+        var y=waveY+Math.sin(x*freq+t*speed)*amp+Math.sin(x*freq*1.7+t*speed*0.6)*amp*0.4;
+        ctx.lineTo(x,y);
+      }
+      ctx.lineTo(W,H);ctx.lineTo(0,H);ctx.closePath();
+      var wg=ctx.createLinearGradient(0,waveY,0,H);
+      wg.addColorStop(0,'rgba(35,193,196,'+alpha+')');
+      wg.addColorStop(1,'rgba(0,43,75,'+alpha*2+')');
+      ctx.fillStyle=wg;ctx.fill();
+    }
+
+    // Subtle horizontal scan lines (island atoll silhouette)
+    var horizY=H*0.68;
+    ctx.beginPath();
+    ctx.moveTo(0,horizY+Math.sin(t*0.4)*2);
+    for(var x=0;x<=W;x+=6){
+      var hy=horizY+Math.sin(x*0.005+t*0.3)*4+Math.sin(x*0.012+t*0.18)*2;
+      ctx.lineTo(x,hy);
+    }
+    ctx.lineTo(W,H);ctx.lineTo(0,H);ctx.closePath();
+    ctx.fillStyle='rgba(0,21,42,0.55)';ctx.fill();
+
+    // Wireless broadcast rings from node positions
     rings=rings.filter(function(r){return r.r<r.maxR;});
     rings.forEach(function(r){
       r.r+=r.speed;
       var prog=r.r/r.maxR;
-      ctx.beginPath();ctx.arc(r.x,r.y,r.r,0,Math.PI*2);
-      ctx.strokeStyle='rgba(35,193,196,'+(r.o*(1-prog)*0.5)+')';
-      ctx.lineWidth=1.2*(1-prog);ctx.stroke();
+      var alpha=r.o*(1-prog)*(1-prog)*0.6;
+      ctx.beginPath();
+      ctx.arc(r.xf*W,r.yf*H,r.r,0,Math.PI*2);
+      ctx.strokeStyle='rgba(35,193,196,'+alpha+')';
+      ctx.lineWidth=1.5*(1-prog)+0.3;
+      ctx.stroke();
     });
-    // Ocean horizon gradient
-    var grad=ctx.createLinearGradient(0,H*.4,0,H);
-    grad.addColorStop(0,'rgba(0,21,42,0)');
-    grad.addColorStop(1,'rgba(35,193,196,0.04)');
-    ctx.fillStyle=grad;ctx.fillRect(0,H*.4,W,H*.6);
+
+    // Node dots on horizon line
+    ORIGINS.forEach(function(orig){
+      var nx=orig.xf*W, ny=orig.yf*H+Math.sin(t*0.4)*2;
+      // Glow
+      var grd=ctx.createRadialGradient(nx,ny,0,nx,ny,18);
+      grd.addColorStop(0,'rgba(35,193,196,0.18)');
+      grd.addColorStop(1,'rgba(35,193,196,0)');
+      ctx.beginPath();ctx.arc(nx,ny,18,0,Math.PI*2);
+      ctx.fillStyle=grd;ctx.fill();
+      // Dot
+      ctx.beginPath();ctx.arc(nx,ny,3,0,Math.PI*2);
+      ctx.fillStyle='rgba(35,193,196,0.75)';ctx.fill();
+    });
+
+    // Teal horizon glow
+    var hg=ctx.createLinearGradient(0,H*0.62,0,H*0.78);
+    hg.addColorStop(0,'rgba(35,193,196,0)');
+    hg.addColorStop(0.5,'rgba(35,193,196,0.035)');
+    hg.addColorStop(1,'rgba(35,193,196,0)');
+    ctx.fillStyle=hg;ctx.fillRect(0,H*0.62,W,H*0.16);
+
     requestAnimationFrame(draw);
   }
   draw();
@@ -1765,7 +2019,8 @@ revealEls.forEach(function(el){io.observe(el);});
 
   // Scale canvas to container
   function resizeCanvas(){
-    var w=canvas.parentElement.offsetWidth;
+    var w=canvas.parentElement.offsetWidth||1200;
+    if(w<10)w=1200;
     canvas.width=w;
     canvas.height=Math.round(w*0.45);
     drawAll();
@@ -1913,8 +2168,15 @@ revealEls.forEach(function(el){io.observe(el);});
     requestAnimationFrame(drawAll);
   }
 
-  resizeCanvas();
+  // Initial draw with intrinsic canvas dimensions (1200x540 from HTML attr)
+  drawAll();
+  // Resize properly once layout is available
+  window.addEventListener('load',function(){resizeCanvas();});
   window.addEventListener('resize',function(){resizeCanvas();});
+  // Belt-and-suspenders: resize at 200ms, 600ms, 1200ms intervals
+  setTimeout(function(){resizeCanvas();},200);
+  setTimeout(function(){resizeCanvas();},600);
+  setTimeout(function(){resizeCanvas();},1200);
 
   function nodeAt(mx,my){
     var rect=canvas.getBoundingClientRect();
@@ -1974,7 +2236,7 @@ revealEls.forEach(function(el){io.observe(el);});
     var c=document.getElementById(id);
     if(!c)return;
     var ctx=c.getContext('2d');
-    var W=c.offsetWidth,H=c.offsetHeight;
+    var W=100,H=100;
     c.width=W;c.height=H;
     var cx=W/2,cy=H/2,r=W*0.42;
     var startAngle=Math.PI*.75,endAngle=Math.PI*2.25;
@@ -1996,15 +2258,19 @@ revealEls.forEach(function(el){io.observe(el);});
       if(progress>=1)clearInterval(raf);
     },16);
   }
-  // Trigger on scroll
+  // Trigger on scroll into view
   var section=document.querySelector('.power-section');
   if(section){
     var triggered=false;
     var io2=new IntersectionObserver(function(entries){
       if(entries[0].isIntersecting&&!triggered){triggered=true;animGauges();}
-    },{threshold:.3});
+    },{threshold:.1});
     io2.observe(section);
   }
+  // Fallback: draw after full page load regardless of scroll position
+  window.addEventListener('load',function(){
+    setTimeout(function(){if(!triggered){triggered=true;animGauges();}},300);
+  });
   // Live animation
   setInterval(function(){
     gauges[1].val=Math.max(.3,Math.min(.95,gauges[1].val+(Math.random()-.5)*.02));
@@ -2050,8 +2316,13 @@ revealEls.forEach(function(el){io.observe(el);});
   if(!c)return;
   var ctx=c.getContext('2d');
 
-  function resize(){c.width=c.parentElement.offsetWidth;}
-  resize();window.addEventListener('resize',resize);
+  function resize(){
+    var w=c.parentElement.offsetWidth||800;
+    if(w<10)w=800;
+    c.width=w;
+  }
+  resize();
+  window.addEventListener('resize',function(){resize();draw();});
 
   // Generate 24hr SOC profile
   function genProfile(){
@@ -2131,13 +2402,22 @@ revealEls.forEach(function(el){io.observe(el);});
   }
 
   var triggered=false;
+  function triggerDraw(){
+    if(!triggered){triggered=true;}
+    resize();
+    draw();
+  }
   var so=document.querySelector('.soc-chart-wrap');
   if(so){
-    var io4=new IntersectionObserver(function(e){if(e[0].isIntersecting&&!triggered){triggered=true;draw();}},{threshold:.3});
+    var io4=new IntersectionObserver(function(e){
+      if(e[0].isIntersecting){triggerDraw();}
+    },{threshold:.1});
     io4.observe(so);
   }
-  setInterval(function(){profile=genProfile();if(triggered)draw();},5000);
-  window.addEventListener('resize',function(){if(triggered){resize();draw();}});
+  // Fallback: draw on load and periodically refresh
+  window.addEventListener('load',function(){setTimeout(triggerDraw,400);});
+  setTimeout(triggerDraw,1200);
+  setInterval(function(){profile=genProfile();if(triggered){resize();draw();}},5000);
 })();
 
 /* ═════════════════════════════════════════════════
@@ -2279,7 +2559,11 @@ revealEls.forEach(function(el){io.observe(el);});
   var ctx=c.getContext('2d');
   var triggered=false;
 
-  function resize(){c.width=c.parentElement.offsetWidth;}
+  function resize(){
+    var w=c.parentElement.offsetWidth||800;
+    if(w<10)w=800;
+    c.width=w;
+  }
   resize();window.addEventListener('resize',function(){resize();if(triggered)draw();});
 
   function draw(){
@@ -2339,8 +2623,19 @@ revealEls.forEach(function(el){io.observe(el);});
     ctx.fillText('GUARDIAN — ADVISORY ONLY',0,0);ctx.restore();
   }
 
-  var io5=new IntersectionObserver(function(e){if(e[0].isIntersecting&&!triggered){triggered=true;draw();}},{threshold:.3});
+  var io5=new IntersectionObserver(function(e){
+    if(e[0].isIntersecting&&!triggered){
+      triggered=true;
+      resize();
+      draw();
+    }
+  },{threshold:.1});
   io5.observe(c.parentElement);
+  // Fallback: draw on load
+  window.addEventListener('load',function(){
+    setTimeout(function(){if(!triggered){triggered=true;resize();draw();}},500);
+  });
+  setTimeout(function(){if(!triggered){triggered=true;resize();draw();}},1400);
 })();
 
 /* ═════════════════════════════════════════════════
@@ -2416,5 +2711,8 @@ revealEls.forEach(function(el){io.observe(el);});
   facts.forEach(function(f){io7.observe(f);});
 })();
 </script>
+<script src="assets/js/includes.js"></script>
+<script src="assets/js/nav.js" defer></script>
+<script src="assets/js/site.js" defer></script>
 </body>
 </html>
