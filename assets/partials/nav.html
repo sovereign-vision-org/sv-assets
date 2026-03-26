@@ -1,101 +1,60 @@
-<!-- ═══════════════════════════════════════════════════════════════════
-     SOVEREIGN VISION — Shared Navigation Partial
-     /assets/partials/nav.html
-     Loaded via fetch() into <div id="sv-nav-mount"></div>
-     Behaviour initialised by assets/js/nav.js
-     ═══════════════════════════════════════════════════════════════════ -->
-
 <nav id="nav" role="navigation" aria-label="Main navigation">
-
-  <!-- Logo -->
   <a href="index.html" class="nav-logo" aria-label="Sovereign Vision — Home">
-    <img src="/images/logo-trans.png" alt="Sovereign Vision logo" width="42" height="42">
-    <span class="nav-logo-text">
-      Sovereign Vision
-      <span>Tuvalu · Open Blueprint</span>
-    </span>
+    <img src="images/logo-trans.png" alt="Sovereign Vision" width="42" height="42">
+    <div class="nav-logo-text">Sovereign Vision<span>Te Fale o Te Mātāmua · Tuvalu</span></div>
   </a>
 
-  <!-- Desktop nav links -->
   <ul class="nav-links" role="list">
-
     <li class="nav-dropdown" role="none">
-      <a href="#" aria-haspopup="true" aria-expanded="false" role="menuitem">Systems</a>
-      <div class="dropdown-menu" role="menu" aria-label="Systems submenu">
-        <a href="energy.html" role="menuitem">Power Generation</a>
-        <a href="water-systems.html" role="menuitem">Water Systems</a>
-        <a href="food.html" role="menuitem">Food Sovereignty</a>
-        <a href="communications.html" role="menuitem">Communications</a>
-        <a href="waste-systems.html" role="menuitem">Resource Recovery</a>
-        <a href="civic-infrastructure.html" role="menuitem">Civic Infrastructure</a>
-        <a href="treasury.html" role="menuitem">Sovereign Treasury</a>
-        <a href="guardian-arbor.html" role="menuitem">Guardian &amp; Arbor AI</a>
+      <a href="core-systems.html" role="menuitem">Core Systems</a>
+      <div class="dropdown-menu" role="menu">
+        <a href="energy.html">Power Generation</a>
+        <a href="water-systems.html">Water Systems</a>
+        <a href="food.html">Food Sovereignty</a>
+        <a href="communications.html">Communications</a>
+        <a href="waste-systems.html">Resource Recovery</a>
+        <a href="civic-infrastructure.html">Civic Infrastructure</a>
+        <a href="treasury.html">Sovereign Treasury</a>
+        <a href="ai-overview.html">Guardian &amp; Arbor AI</a>
+        <a href="datacenter.html">Sovereign Datacenter</a>
       </div>
     </li>
-
+    <li role="none"><a href="how-it-works.html" role="menuitem">How It Works</a></li>
     <li class="nav-dropdown" role="none">
-      <a href="#" aria-haspopup="true" aria-expanded="false" role="menuitem">About</a>
-      <div class="dropdown-menu" role="menu" aria-label="About submenu">
-        <a href="about-us.html" role="menuitem">About Us</a>
-        <a href="how-it-works.html" role="menuitem">How It Works</a>
-        <a href="elders-council.html" role="menuitem">Elders Council</a>
-        <a href="youth-voice.html" role="menuitem">Youth Voice</a>
-        <a href="faq.html" role="menuitem">FAQ</a>
+      <a href="legal-licensing.html" role="menuitem">Legal</a>
+      <div class="dropdown-menu" role="menu">
+        <a href="civic-commons-license.html">Civic Commons License</a>
+        <a href="digitalarchipelago.html">Digital Archipelago Accord</a>
+        <a href="trust-formation-status.html">Trust Formation Status</a>
+        <a href="terms.html">Terms of Use</a>
+        <a href="privacy-policy.html">Privacy Policy</a>
+        <a href="copyright-notice.html">Copyright Notice</a>
       </div>
     </li>
-
+    <li role="none"><a href="faq.html" role="menuitem">FAQ</a></li>
     <li class="nav-dropdown" role="none">
-      <a href="#" aria-haspopup="true" aria-expanded="false" role="menuitem">Legal</a>
-      <div class="dropdown-menu" role="menu" aria-label="Legal submenu">
-        <a href="legal-licensing.html" role="menuitem">Legal &amp; Licensing</a>
-        <a href="civic-commons-license.html" role="menuitem">Civic Commons License</a>
-        <a href="trust-formation-status.html" role="menuitem">Trust Formation Status</a>
-        <a href="digitalarchipelago.html" role="menuitem">Digital Archipelago Accord</a>
+      <a href="about-us.html" role="menuitem">About</a>
+      <div class="dropdown-menu" role="menu">
+        <a href="about-us.html">About Us</a>
+        <a href="continuity-vs-reinvention.html">Continuity vs Reinvention</a>
+        <a href="elders-council.html">Elders Council</a>
+        <a href="youth-voice.html">Youth Voice</a>
       </div>
     </li>
-
-    <li role="none">
-      <a href="core-systems.html" role="menuitem">Documentation</a>
-    </li>
-
   </ul>
 
-  <!-- CTA -->
-  <a href="contact.html" class="nav-cta" aria-label="Partner with us">Partner With Us</a>
+  <a href="contact.html" class="nav-cta">Partner With Us</a>
 
-  <!-- Hamburger (mobile) -->
-  <button
-    id="hamburger"
-    class="hamburger"
-    aria-label="Toggle mobile menu"
-    aria-expanded="false"
-    aria-controls="mobile-menu"
-  >
-    <span></span>
-    <span></span>
-    <span></span>
+  <button id="hamburger" class="hamburger" aria-label="Toggle navigation" aria-expanded="false" aria-controls="mobile-menu">
+    <span></span><span></span><span></span>
   </button>
-
 </nav>
 
-<!-- Mobile full-screen overlay menu -->
-<div id="mobile-menu" class="mobile-menu" role="dialog" aria-modal="true" aria-label="Mobile navigation">
-
-  <a href="index.html" onclick="closeMobileMenu()">Home</a>
-
-  <!-- Systems -->
-  <a href="energy.html" onclick="closeMobileMenu()">Power &amp; Energy</a>
-  <a href="water-systems.html" onclick="closeMobileMenu()">Water Systems</a>
-  <a href="food.html" onclick="closeMobileMenu()">Food Sovereignty</a>
-  <a href="communications.html" onclick="closeMobileMenu()">Communications</a>
-  <a href="waste-systems.html" onclick="closeMobileMenu()">Resource Recovery</a>
-  <a href="guardian-arbor.html" onclick="closeMobileMenu()">Guardian &amp; Arbor</a>
-
-  <!-- About -->
-  <a href="about-us.html" onclick="closeMobileMenu()">About</a>
-  <a href="how-it-works.html" onclick="closeMobileMenu()">How It Works</a>
-
-  <!-- CTA -->
-  <a href="contact.html" class="m-cta" onclick="closeMobileMenu()">Partner With Us</a>
-
+<div class="mobile-menu" id="mobile-menu" role="dialog" aria-modal="true" aria-label="Mobile navigation">
+  <a href="core-systems.html"    onclick="closeMobileMenu()">Core Systems</a>
+  <a href="how-it-works.html"   onclick="closeMobileMenu()">How It Works</a>
+  <a href="about-us.html"       onclick="closeMobileMenu()">About</a>
+  <a href="faq.html"            onclick="closeMobileMenu()">FAQ</a>
+  <a href="legal-licensing.html" onclick="closeMobileMenu()">Legal</a>
+  <a href="contact.html"        onclick="closeMobileMenu()" class="m-cta">Partner With Us</a>
 </div>
